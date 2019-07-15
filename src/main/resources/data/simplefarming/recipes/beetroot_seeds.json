@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"B"
+	],
+	
+	"key":
+	{
+		"B": { "item": "minecraft:beetroot"}
+	},
+	
+	"result": {"item": "minecraft:beetroot_seeds"}
+	
+}

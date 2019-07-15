@@ -1,0 +1,6 @@
+{
+    "parent": "simplefarming:block/cross_crop",
+    "textures": {
+        "cross_crop": "simplefarming:block/cucumber_crop7"
+    }
+}

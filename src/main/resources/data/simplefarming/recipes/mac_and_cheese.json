@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "simplefarming:noodles"
+    },
+    {
+      "item": "simplefarming:noodles"
+    },
+    {
+      "item": "simplefarming:cheese_slice"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:mac_and_cheese"}
+	
+}

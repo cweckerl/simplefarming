@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "tag": "simplefarming:salad_greens"
+    },
+    {
+      "tag": "simplefarming:salad_greens"
+    },
+    {
+      "tag": "simplefarming:salad_greens"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:salad"}
+	
+}

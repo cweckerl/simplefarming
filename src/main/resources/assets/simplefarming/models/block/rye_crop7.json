@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "simplefarming:block/rye_crop7"
+    }
+}

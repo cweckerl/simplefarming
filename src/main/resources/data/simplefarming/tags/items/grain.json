@@ -1,0 +1,10 @@
+{
+	"replace": false,
+	"values":
+	[
+		"simplefarming:oat",
+		"simplefarming:rye",
+		"simplefarming:rice",
+		"minecraft:wheat"
+	]
+}

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "simplefarming:block/fruit_leaves_birch" },
+        "age=1": { "model": "simplefarming:block/fruit_leaves_birch" },
+        "age=2": { "model": "simplefarming:block/fruit_leaves_birch" },
+        "age=3": { "model": "simplefarming:block/apricot_leaves" }
+    }
+}

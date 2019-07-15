@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "simplefarming:block/banana_sapling"
+    }
+}

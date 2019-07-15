@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "tag": "simplefarming:vinegar_ingredients"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:vinegar"}
+	
+}

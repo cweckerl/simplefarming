@@ -1,0 +1,32 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "simplefarming:radish"
+    },
+    {
+      "item": "simplefarming:radish"
+    },
+    {
+      "item": "simplefarming:radish"
+    },
+    {
+      "item": "simplefarming:radish"
+    },
+    {
+      "item": "simplefarming:radish"
+    },
+    {
+      "item": "simplefarming:radish"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:radish_soup"}
+	
+}

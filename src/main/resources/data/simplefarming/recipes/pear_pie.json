@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "simplefarming:pear"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:pear_pie"}
+	
+}

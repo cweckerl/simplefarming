@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"SOS",
+		"GEG"
+	],
+	
+	"key":
+	{
+		"O": { "item": "simplefarming:onion"},
+		"S": { "item": "simplefarming:squash"},
+		"E": { "item": "minecraft:egg"},
+		"G": { "tag": "simplefarming:grain"}
+
+	},
+	
+	"result": {"item": "simplefarming:squash_casserole"}
+	
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "simplefarming:block/radish_crop3"
+    }
+}

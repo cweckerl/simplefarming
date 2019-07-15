@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "simplefarming:block/fruit_log" }
+    }
+}

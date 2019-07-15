@@ -1,0 +1,28 @@
+{
+	"replace": false,
+	"values":
+	[
+		"minecraft:wheat_seeds",
+		"minecraft:beetroot_seeds",
+		"minecraft:melon_seeds",
+		"minecraft:pumpkin_seeds",
+		"simplefarming:cantaloupe_seeds",
+		"simplefarming:carrot_seeds",
+		"simplefarming:corn_seeds",
+		"simplefarming:cucumber_seeds",
+		"simplefarming:eggplant_seeds",
+		"simplefarming:kenaf_seeds",
+		"simplefarming:lettuce_seeds",
+		"simplefarming:oat_seeds",
+		"simplefarming:onion_seeds",
+		"simplefarming:pepper_seeds",
+		"simplefarming:radish_seeds",
+		"simplefarming:rice_seeds",
+		"simplefarming:rye_seeds",
+		"simplefarming:soybean_seeds",
+		"simplefarming:spinach_seeds",
+		"simplefarming:squash_seeds",
+		"simplefarming:tomato_seeds",
+		"simplefarming:yam_seeds"
+	]
+}

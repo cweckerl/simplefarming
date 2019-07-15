@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "age=0": { "model": "simplefarming:block/scrop0" },
+        "age=1": { "model": "simplefarming:block/scrop1" },
+        "age=2": { "model": "simplefarming:block/scrop2" },
+        "age=3": { "model": "simplefarming:block/scrop3" },
+        "age=4": { "model": "simplefarming:block/scrop4" },
+        "age=5": { "model": "simplefarming:block/scrop5" },
+        "age=6": { "model": "simplefarming:block/scrop6" },
+        "age=7": { "model": "simplefarming:block/eggplant_crop7" }
+    }
+}

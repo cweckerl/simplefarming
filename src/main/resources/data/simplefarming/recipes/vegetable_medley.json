@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "tag": "simplefarming:vegetables"
+    },
+    {
+      "tag": "simplefarming:vegetables"
+    },
+    {
+      "tag": "simplefarming:vegetables"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:vegetable_medley"}
+	
+}

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "simplefarming:block/fruit_leaves_jungle" },
+        "age=1": { "model": "simplefarming:block/fruit_leaves_jungle" },
+        "age=2": { "model": "simplefarming:block/fruit_leaves_jungle" },
+        "age=3": { "model": "simplefarming:block/banana_leaves" }
+    }
+}

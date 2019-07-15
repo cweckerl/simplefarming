@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "simplefarming:block/cactus_crop" },
+        "age=1": { "model": "simplefarming:block/cactus_crop" },
+        "age=2": { "model": "simplefarming:block/cactus_crop" },
+        "age=3": { "model": "simplefarming:block/cactus_crop3" }
+    }
+}

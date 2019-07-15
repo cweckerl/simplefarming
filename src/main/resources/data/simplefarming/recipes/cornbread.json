@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"GBG"
+	],
+	
+	"key":
+	{
+		"G": { "tag": "simplefarming:grain"},
+		"B": { "item": "simplefarming:corn"}
+
+	},
+	
+	"result": {"item": "simplefarming:cornbread"}
+	
+}

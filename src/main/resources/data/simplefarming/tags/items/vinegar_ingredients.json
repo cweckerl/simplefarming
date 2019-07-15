@@ -1,0 +1,15 @@
+{
+	"replace": false,
+	"values":
+	[
+		"simplefarming:oat",
+		"simplefarming:rye",
+		"simplefarming:rice",
+		"simplefarming:apricot",
+		"simplefarming:raspberries",
+		"minecraft:wheat",
+		"minecraft:sugar_cane",
+		"minecraft:apple"
+
+	]
+}

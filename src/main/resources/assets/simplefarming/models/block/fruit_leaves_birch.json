@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "simplefarming:block/fruit_leaves_birch"
+    }
+}

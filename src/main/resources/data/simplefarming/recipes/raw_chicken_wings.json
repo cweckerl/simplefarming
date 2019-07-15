@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+	{
+      "item": "minecraft:chicken"
+    	}
+  ],
+  "result": 
+  {
+    "item": "simplefarming:raw_chicken_wings",
+    "count": 2
+  }
+}

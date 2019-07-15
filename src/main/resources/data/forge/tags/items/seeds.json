@@ -1,0 +1,24 @@
+{
+	"replace": false,
+	"values": [
+		"#forge:seeds/cantaloupe_seeds",
+		"#forge:seeds/carrot_seeds",
+		"#forge:seeds/corn_seeds",
+		"#forge:seeds/cucumber_seeds",
+		"#forge:seeds/eggplant_seeds",
+		"#forge:seeds/kenaf_seeds",
+		"#forge:seeds/lettuce_seeds",
+		"#forge:seeds/oat_seeds",
+		"#forge:seeds/onion_seeds",
+		"#forge:seeds/pepper_seeds",
+		"#forge:seeds/potato_seeds",
+		"#forge:seeds/radish_seeds",
+		"#forge:seeds/rice_seeds",
+		"#forge:seeds/rye_seeds",
+		"#forge:seeds/soybean_seeds",
+		"#forge:seeds/spinach_seeds",
+		"#forge:seeds/squash_seeds",
+		"#forge:seeds/tomato_seeds",
+		"#forge:seeds/yam_seeds"
+	]
+}

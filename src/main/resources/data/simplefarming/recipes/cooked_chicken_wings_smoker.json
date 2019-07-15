@@ -1,0 +1,8 @@
+{
+	"type": "minecraft:smoking",
+	"ingredient": {"item": "simplefarming:raw_chicken_wings"},
+	"result": "simplefarming:cooked_chicken_wings",
+	"experience": 0.35,
+	"cookingTime": 100
+
+}

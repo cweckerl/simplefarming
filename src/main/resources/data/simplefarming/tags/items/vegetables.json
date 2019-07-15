@@ -1,0 +1,23 @@
+{
+	"replace": false,
+	"values":
+	[
+		"simplefarming:corn",
+		"simplefarming:cucumber",
+		"simplefarming:eggplant",
+		"simplefarming:habanero",
+		"simplefarming:lettuce",
+		"simplefarming:onion",
+		"simplefarming:pepper",
+		"simplefarming:radish",
+		"simplefarming:soybean",
+		"simplefarming:spinach",
+		"simplefarming:squash",
+		"simplefarming:tomato",
+		"simplefarming:yam",
+		"minecraft:carrot",
+		"minecraft:beetroot",
+		"minecraft:potato"
+
+	]
+}

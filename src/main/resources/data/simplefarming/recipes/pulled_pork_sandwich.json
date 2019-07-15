@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "tag": "simplefarming:bread"
+    },
+    {
+      "item": "minecraft:cooked_porkchop"
+    },
+    {
+      "item": "simplefarming:onion"
+    },
+    {
+      "tag": "simplefarming:salad_greens"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:pulled_pork_sandwich"}
+	
+}

@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"OOO"
+	],
+	
+	"key":
+	{
+		"O": { "item": "simplefarming:oat"}
+	},
+	
+	"result": {"item": "simplefarming:oat_bread"}
+	
+}

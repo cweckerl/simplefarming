@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "simplefarming:block/oat_crop2"
+    }
+}
