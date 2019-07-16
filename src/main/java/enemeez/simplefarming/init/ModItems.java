@@ -32,6 +32,7 @@ public class ModItems
 	public static Item strawberries;
 	
 	//Harvested Food
+	public static Item cassava;
 	public static Item corn;
 	public static Item cucumber;
 	public static Item eggplant;
@@ -59,6 +60,7 @@ public class ModItems
 	//Seeds
 	public static Item cantaloupe_seeds;
 	public static Item carrot_seeds;
+	public static Item cassava_seeds;
 	public static Item corn_seeds;
 	public static Item cucumber_seeds;
 	public static Item eggplant_seeds;
@@ -162,6 +164,7 @@ public class ModItems
 		raspberries = register("raspberries", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY)));
 		strawberries = register("strawberries", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY)));	
 		
+		cassava = register("cassava", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CASSAVA)));
 		corn = register("corn", new GrainItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CORN)));
 		cucumber = register("cucumber", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CUCUMBER)));
 		eggplant = register("eggplant", new Item( (new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.EGGPLANT)));
@@ -186,6 +189,7 @@ public class ModItems
 		
 		cantaloupe_seeds = register("cantaloupe_seeds", new CustomSeed(ModBlocks.cantaloupe_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		carrot_seeds = register("carrot_seeds", new CustomSeed(ModBlocks.carrot_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+		cassava_seeds = register("cassava_seeds", new CustomSeed(ModBlocks.cassava_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		corn_seeds = register("corn_seeds", new CustomSeed(ModBlocks.corn_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		cucumber_seeds = register("cucumber_seeds", new CustomSeed(ModBlocks.cucumber_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		eggplant_seeds = register("eggplant_seeds", new CustomSeed(ModBlocks.eggplant_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));

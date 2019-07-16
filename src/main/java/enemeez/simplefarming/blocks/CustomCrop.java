@@ -153,6 +153,11 @@ public class CustomCrop extends CropsBlock
 	        	 spawnAsEntity(worldIn, pos, new ItemStack(ModBlocks.cantaloupe_block, 1));
 	        	 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_STONE_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 	         }
+	         if (verify==20)
+	         {
+	        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.cassava, random));
+	        	 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+	         }
 
 	         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 0);
 	                return true;

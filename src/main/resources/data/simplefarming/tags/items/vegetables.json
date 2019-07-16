@@ -2,6 +2,7 @@
 	"replace": false,
 	"values":
 	[
+		"simplefarming:cassava",
 		"simplefarming:corn",
 		"simplefarming:cucumber",
 		"simplefarming:eggplant",

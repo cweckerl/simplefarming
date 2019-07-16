@@ -11,6 +11,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.RavagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -76,31 +77,35 @@ public class DoubleCrop extends CropsBlock
 		{
 		 if (!worldIn.isRemote)
 		 {
-			 if (this.getAge(state) == 7) //5
+			 if (player.getHeldItem(handIn).getItem() == Items.BONE_MEAL)
 			 {
-		        spawnAsEntity(worldIn, pos, new ItemStack(ModItems.corn, 2));
-		         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
-		         worldIn.setBlockState(pos.down(), state.with(AGE, Integer.valueOf(0)), 3);
-		                return true;
-             }
+				if(this.getAge(state)==5)
+				{
+					ItemStack stack = player.getHeldItem(handIn);
+					worldIn.setBlockState(pos, this.withAge(6), 3); //4
+	        		if (worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState())
+	        		worldIn.setBlockState(pos.up(), this.withAge(7), 3); //5
+	        		stack.shrink(1);
+	        		return true;
+	        		
+				}
+			 }
 			 
-			 if (this.getAge(state) == 6) //5
+			 else
 			 {
-		        spawnAsEntity(worldIn, pos, new ItemStack(ModItems.corn, 2));
-		         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         worldIn.setBlockState(pos.up(), Blocks.AIR.getDefaultState());
-		         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 3);
-		                return true;
-             }
-			 
-			 
-			 
-			 else 
-		             {
-		                return false;
-		             }
-		          }
+
+				 if (this.getAge(state) == 7) //5
+				 {
+			        spawnAsEntity(worldIn, pos, new ItemStack(ModItems.corn, 2));
+			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+			         worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
+			         worldIn.setBlockState(pos.down(), state.with(AGE, Integer.valueOf(0)), 3);
+			                return true;
+	             }
+	
+			 }
+             
+		 }
 		return false;
 		}
 

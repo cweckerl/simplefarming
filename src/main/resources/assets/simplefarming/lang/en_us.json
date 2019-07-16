@@ -8,6 +8,7 @@
 	"block.simplefarming.strawberry_bush": "Strawberry Bush",
 
 	"block.simplefarming.cantaloupe_crop": "Cantaloupe Crop",
+	"block.simplefarming.cassava_crop": "Cassava Crop",
 	"block.simplefarming.corn_crop": "Corn Crop",
 	"block.simplefarming.cucumber_crop": "Cucumber Crop",
 	"block.simplefarming.eggplant_crop": "Eggplant Crop",
@@ -31,6 +32,7 @@
 
 	"item.simplefarming.cantaloupe_seeds": "Cantaloupe Seeds",
 	"item.simplefarming.carrot_seeds": "Carrot Seeds",
+	"item.simplefarming.cassava_seeds": "Cassava Seeds",
 	"item.simplefarming.corn_seeds": "Corn Seeds",
 	"item.simplefarming.cucumber_seeds": "Cucumber Seeds",
 	"item.simplefarming.eggplant_seeds": "Eggplant Seeds",
@@ -61,6 +63,7 @@
 	"item.simplefarming.raspberries": "Raspberries",
 	"item.simplefarming.strawberries": "Strawberries",
 	
+	"item.simplefarming.cassava": "Cassava",
 	"item.simplefarming.corn": "Corn",
 	"item.simplefarming.cucumber": "Cucumber",
 	"item.simplefarming.eggplant": "Eggplant",

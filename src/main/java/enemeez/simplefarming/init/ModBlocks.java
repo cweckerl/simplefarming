@@ -59,6 +59,7 @@ public class ModBlocks
 	public static Block cactus_crop;
 	public static Block cantaloupe_crop;
 	public static Block carrot_crop;
+	public static Block cassava_crop;
 	public static Block corn_crop;
 	public static Block cucumber_crop;
 	public static Block eggplant_crop;
@@ -229,6 +230,13 @@ public class ModBlocks
 				.tickRandomly()
 				.hardnessAndResistance(0)
 				.sound(SoundType.CROP)));
+		
+		cassava_crop = registerCrop("cassava_crop", new CustomCrop
+				(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0)
+				.sound(SoundType.CROP), ModItems.cassava_seeds, 20));
 				
 
 		cucumber_crop = registerCrop("cucumber_crop", new CustomCrop

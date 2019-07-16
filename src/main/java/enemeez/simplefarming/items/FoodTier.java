@@ -10,6 +10,7 @@ public class FoodTier
 	public static final Food BERRY = (new Food.Builder()).hunger(2).saturation(0.1F).fastToEat().build();
 	public static final Food FRUIT = (new Food.Builder()).hunger(4).saturation(0.3F).build();
 	public static final Food GOURD_SLICE = (new Food.Builder()).hunger(2).saturation(0.3F).build();
+	public static final Food CASSAVA = (new Food.Builder()).hunger(3).saturation(0.6F).build();
 	public static final Food CORN = (new Food.Builder()).hunger(4).saturation(0.6F).build();
 	public static final Food CUCUMBER = (new Food.Builder()).hunger(3).saturation(0.6F).build();
 	public static final Food EGGPLANT = (new Food.Builder()).hunger(3).saturation(0.6F).build();
