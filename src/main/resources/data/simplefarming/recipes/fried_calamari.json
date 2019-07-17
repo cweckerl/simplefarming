@@ -1,0 +1,8 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {"item": "simplefarming:raw_calamari"},
+	"result": "simplefarming:fried_calamari",
+	"experience": 0.35,
+	"cookingTime": 200
+
+}

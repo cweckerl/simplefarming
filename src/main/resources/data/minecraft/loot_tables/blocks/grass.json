@@ -3,6 +3,7 @@
   "pools": [
     {
       "rolls": 1,
+      "name": "simplegrass0",
       "entries": [
         {
           "type": "minecraft:alternatives",
@@ -240,6 +241,30 @@
                 }
               ],
               "name": "simplefarming:eggplant_seeds"
+            },
+            
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.005
+                }
+              ],
+              "functions": [
+                {
+                  "function": "minecraft:apply_bonus",
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:uniform_bonus_count",
+                  "parameters": {
+                    "bonusMultiplier": 2
+                  }
+                },
+                {
+                  "function": "minecraft:explosion_decay"
+                }
+              ],
+              "name": "simplefarming:honeydew_seeds"
             },
             
              

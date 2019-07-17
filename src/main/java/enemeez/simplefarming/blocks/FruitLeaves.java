@@ -114,7 +114,7 @@ public class FruitLeaves extends BushBlock implements IGrowable
 		         	if (verify == 6)
 				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.pear, 1));
 		         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_LILY_PAD_PLACE, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 0);
+		         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
 	                return true;
 	             } 
 				 else 

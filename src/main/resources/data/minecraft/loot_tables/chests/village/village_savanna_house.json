@@ -2,7 +2,8 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": {
+      "rolls": 
+{	"name": "savannapool0",
         "min": 3.0,
         "max": 8.0,
         "type": "minecraft:uniform"

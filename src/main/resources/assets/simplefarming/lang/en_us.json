@@ -1,6 +1,7 @@
 {
 	"itemGroup.simplefarming": "Simple Farming",
 	"block.simplefarming.cantaloupe_block": "Cantaloupe",
+	"block.simplefarming.honeydew_block": "Honeydew",
 	"block.simplefarming.squash_block": "Squash",
 	"block.simplefarming.blackberry_bush": "Blackberry Bush",
 	"block.simplefarming.blueberry_bush": "Blueberry Bush",
@@ -12,6 +13,7 @@
 	"block.simplefarming.corn_crop": "Corn Crop",
 	"block.simplefarming.cucumber_crop": "Cucumber Crop",
 	"block.simplefarming.eggplant_crop": "Eggplant Crop",
+	"block.simplefarming.honeydew_crop": "Honeydew Crop",
 	"block.simplefarming.kenaf_crop": "Kenaf Crop",
 	"block.simplefarming.lettuce_crop": "Lettuce Crop",
 	"block.simplefarming.oat_crop": "Oat Crop",
@@ -36,6 +38,7 @@
 	"item.simplefarming.corn_seeds": "Corn Seeds",
 	"item.simplefarming.cucumber_seeds": "Cucumber Seeds",
 	"item.simplefarming.eggplant_seeds": "Eggplant Seeds",
+	"item.simplefarming.honeydew_seeds": "Honeydew Seeds",
 	"item.simplefarming.kenaf_seeds": "Kenaf Seeds",
 	"item.simplefarming.lettuce_seeds": "Lettuce Seeds",
 	"item.simplefarming.oat_seeds": "Oat Seeds",
@@ -60,6 +63,7 @@
 	"item.simplefarming.blueberries": "Blueberries",
 	"item.simplefarming.cactus_fruit": "Cactus Fruit",
 	"item.simplefarming.cantaloupe": "Cantaloupe",
+	"item.simplefarming.honeydew": "Honeydew",
 	"item.simplefarming.raspberries": "Raspberries",
 	"item.simplefarming.strawberries": "Strawberries",
 	
@@ -101,6 +105,7 @@
 	
 	"block.simplefarming.fruit_log": "Fruit Log",
 	"block.simplefarming.fruit_planks": "Fruit Planks",
+	"block.simplefarming.chocolate_cake": "Chocolate Cake",
 	"block.simplefarming.cheese_block": "Wheel of Cheese",
 	"block.simplefarming.cactus_crop": "Opuntia",
 	
@@ -115,8 +120,12 @@
 	
 	"item.simplefarming.baked_yam": "Baked Yam",
 	"item.simplefarming.banana_bread": "Banana Bread",
+	"item.simplefarming.blt": "BLT",
+	"item.simplefarming.caesar_salad": "Caesar Salad",
+	"item.simplefarming.cassava_cake": "Cassava Cake",
 	"item.simplefarming.cheese_slice": "Cheese Slice",
 	"item.simplefarming.cheeseburger": "Cheeseburger",
+	"item.simplefarming.chicken_parmesan": "Chicken Parmesan",
 	"item.simplefarming.chili": "Chili",
 	"item.simplefarming.chocolate": "Chocolate",
 	"item.simplefarming.cooked_bacon": "Cooked Bacon",
@@ -130,6 +139,7 @@
 	"item.simplefarming.eggplant_parmesan": "Eggplant Parmesan",
 	"item.simplefarming.fish_fillet": "Fish Fillet",
 	"item.simplefarming.fish_sandwich": "Fish Sandwich",
+	"item.simplefarming.fried_calamari": "Fried Calamari",
 	"item.simplefarming.fruit_salad": "Fruit Salad",
 	"item.simplefarming.golden_habanero": "Golden Habanero",
 	"item.simplefarming.hamburger": "Hamburger",
@@ -148,6 +158,7 @@
 	"item.simplefarming.pulled_pork_sandwich": "Pulled Pork Sandwich",
 	"item.simplefarming.radish_soup": "Radish Soup",
 	"item.simplefarming.raw_bacon": "Raw Bacon",
+	"item.simplefarming.raw_calamari": "Raw Calamari",
 	"item.simplefarming.raw_chicken_wings": "Raw Chicken Wings",
 	"item.simplefarming.raw_sausage": "Raw Sausage",
 	"item.simplefarming.rice_bowl": "Rice Bowl",

@@ -1,3 +1,51 @@
+Build: 1.14.3-27.0.53 - Tue Jul 16 18:53:16 GMT 2019
+	lex:
+		Fixed PlayerSleepInBedEvent pos is always null Closes #5936 Fixed
+		decompile error causing Endless Loop in ModelBackery if model errors
+		exist. Fixed NPEs related to teleporting players without portals.
+
+=========
+Build: 1.14.3-27.0.52 - Tue Jul 16 16:59:45 GMT 2019
+	lex:
+		Add simple concurrency protection to Server world list. Closes #5938 and
+		#5739
+
+=========
+Build: 1.14.3-27.0.51 - Mon Jul 15 02:48:45 GMT 2019
+	cpw:
+		Update modlauncher to the 3.x series.
+		Signed-off-by: cpw <cpw+github@weeksfamily.ca>
+
+=========
+Build: 1.14.3-27.0.50 - Thu Jul 11 03:14:20 GMT 2019
+	tterrag1098:
+		Rework GuiModList mod info to use custom scrolling panel impl
+
+=========
+Build: 1.14.3-27.0.49 - Thu Jul 11 00:39:30 GMT 2019
+	lex:
+		Fix race condition in client mouse handler. Closes #5888
+
+	lex:
+		Cleanup Forge's Access Transformer, and add ATs for
+		Block.Properties#noDrop, and AxeItem/PickaxeItem. Closes #5866 and
+		Closes #5921
+
+=========
+Build: 1.14.3-27.0.47 - Wed Jul 10 02:21:09 GMT 2019
+	lex:
+		Re-implement state.onBlockExploded() Closes #5914
+
+	lex:
+		Implement Item.isRepairable in Crafting and Grindstone. Closes #5917
+
+	lex:
+		Implemented Item.get/setDamage hooks. Closes #5899
+
+	lex:
+		Added LootPool.Builder#bonusRolls setter. Closes #5887
+
+=========
 Build: 1.14.3-27.0.43 - Tue Jul 09 03:43:09 GMT 2019
 	williewillus:
 		Add general damage hook for items. Closes #5502 (#5670)

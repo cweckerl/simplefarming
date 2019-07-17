@@ -27,6 +27,7 @@ public class SimpleFarming
 				{
 					return new ItemStack(ModItems.tomato);
 				}
+				
     		};
 
     public SimpleFarming() 

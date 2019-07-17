@@ -3,6 +3,7 @@
   "pools": [
     {
       "rolls": 1,
+      "name": "apple0",
       "entries": [
         {
           "type": "minecraft:item",

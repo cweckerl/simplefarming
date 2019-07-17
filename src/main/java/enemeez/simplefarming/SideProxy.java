@@ -1,6 +1,7 @@
 package enemeez.simplefarming;
 
 import enemeez.simplefarming.config.Config;
+import enemeez.simplefarming.events.SquidEvent;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
 import enemeez.simplefarming.init.ModWorldGen;
@@ -43,6 +44,8 @@ public class SideProxy
 		private static void commonSetup(FMLCommonSetupEvent event)
 			{
 				SimpleFarming.LOGGER.debug("common setup");
+				
+				 MinecraftForge.EVENT_BUS.register(new SquidEvent());
 			
 				if (ModWorldGen.fruit_tree != null && ModWorldGen.berry_bush != null) 
 				{

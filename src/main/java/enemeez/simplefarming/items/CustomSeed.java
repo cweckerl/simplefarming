@@ -2,6 +2,7 @@ package enemeez.simplefarming.items;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -34,6 +35,12 @@ public class CustomSeed extends BlockItem
         if (entity instanceof ChickenEntity)
         {		
         		((ChickenEntity) entity).setInLove(player);
+        		stack.shrink(1);
+        		return true;
+        }
+        if (entity instanceof ParrotEntity)
+        {		
+        		((ParrotEntity) entity).setTamedBy(player);
         		stack.shrink(1);
         		return true;
         } 

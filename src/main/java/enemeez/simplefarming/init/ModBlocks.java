@@ -6,6 +6,7 @@ import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.blocks.CheeseBlock;
 import enemeez.simplefarming.blocks.CustomBush;
 import enemeez.simplefarming.blocks.CustomCactus;
+import enemeez.simplefarming.blocks.CustomCake;
 import enemeez.simplefarming.blocks.CustomCrop;
 import enemeez.simplefarming.blocks.CustomSapling;
 import enemeez.simplefarming.blocks.DoubleCrop;
@@ -32,10 +33,12 @@ public class ModBlocks
 	
 	//Gourds
 	public static Block cantaloupe_block;
+	public static Block honeydew_block;
 	public static Block squash_block;
 	
-	//Cheese
+	//Cake-like blocks
 	public static Block cheese_block;
+	public static Block chocolate_cake;
 	
 	//Tree
 	public static Block fruit_log;
@@ -63,6 +66,7 @@ public class ModBlocks
 	public static Block corn_crop;
 	public static Block cucumber_crop;
 	public static Block eggplant_crop;
+	public static Block honeydew_crop;
 	public static Block kenaf_crop;
 	public static Block lettuce_crop;
 	public static Block oat_crop;
@@ -84,6 +88,10 @@ public class ModBlocks
 	  if (!event.getName().equals(ForgeRegistries.BLOCKS.getRegistryName())) return;
 
 		cantaloupe_block = register("cantaloupe_block", new Block(
+				Block.Properties.create(Material.GOURD)
+				.sound(SoundType.WOOD)
+				.hardnessAndResistance(1.0f)));
+		honeydew_block = register("honeydew_block", new Block(
 				Block.Properties.create(Material.GOURD)
 				.sound(SoundType.WOOD)
 				.hardnessAndResistance(1.0f)));
@@ -166,11 +174,17 @@ public class ModBlocks
 				Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN)
 				.hardnessAndResistance(2.0F)
 				.sound(SoundType.WOOD)));
+		
+		chocolate_cake = register("chocolate_cake", new CustomCake(
+				Block.Properties.create(Material.CAKE)
+				.hardnessAndResistance(0.5F)
+				.sound(SoundType.CLOTH)));
 	
 		cheese_block = register("cheese_block", new CheeseBlock(
 				Block.Properties.create(Material.CAKE)
 				.hardnessAndResistance(0.5F)
 				.sound(SoundType.CLOTH)));
+		
 		
 		squash_crop = registerCrop("squash_crop", new CustomCrop
 				(Block.Properties.create(Material.PLANTS)
@@ -252,6 +266,13 @@ public class ModBlocks
 				.tickRandomly()
 				.hardnessAndResistance(0)
 				.sound(SoundType.CROP), ModItems.eggplant_seeds, 2));
+		
+		honeydew_crop = registerCrop("honeydew_crop", new CustomCrop
+				(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0)
+				.sound(SoundType.CROP), ModItems.honeydew_seeds, 21));
 		
 		kenaf_crop = registerCrop("kenaf_crop", new CustomCrop
 				(Block.Properties.create(Material.PLANTS)

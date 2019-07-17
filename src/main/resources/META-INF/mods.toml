@@ -14,11 +14,11 @@ issueTrackerURL="http://my.issue.tracker/" #optional
 # The modid of the mod
 modId="simplefarming" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="1.14.3-1.0.1" #mandatory
+version="1.14.3-1.02" #mandatory
  # A display name for the mod
 displayName="Simple Farming" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
-updateJSONURL="https://github.com/enemeez/simplefarming" #optional
+updateJSONURL="https://www.curseforge.com/minecraft/mc-mods/simple-farming" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
 displayURL="https://www.curseforge.com/minecraft/mc-mods/simple-farming" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
@@ -29,7 +29,7 @@ credits="Forge team" #optional
 authors="enemeez" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Extends the vanilla farming system with new fruits, vegetables, and meals.
+Extends the Vanilla farming system with more fruits, vegetables, and meals.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.examplemod]] #optional

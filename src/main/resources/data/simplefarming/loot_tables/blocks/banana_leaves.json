@@ -3,6 +3,7 @@
   "pools": [
     {
       "rolls": 1,
+      "name": "bananaleaves0",
       "entries": [
         {
           "type": "minecraft:item",
@@ -25,6 +26,7 @@
     
      {
       "rolls": 1,
+      "name": "bananaleaves1",
       "entries": [
         {
           "type": "minecraft:item",

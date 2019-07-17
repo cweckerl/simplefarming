@@ -3,6 +3,7 @@
   "pools": [
     {
       "rolls": 1,
+      "name": "cantaloupe0",
       "entries": [
         {
           "type": "minecraft:alternatives",

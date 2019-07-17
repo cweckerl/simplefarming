@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "tag": "simplefarming:bread"
+    },
+    {
+      "item": "simplefarming:lettuce"
+    },
+    {
+      "item": "simplefarming:cooked_bacon"
+    },
+    {
+      "item": "simplefarming:tomato"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:blt"}
+	
+}

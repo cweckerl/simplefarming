@@ -88,7 +88,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.strawberries, random));
 
 			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-			         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 0);
+			         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
 			                return true;
 			             } else {
 			                return false;

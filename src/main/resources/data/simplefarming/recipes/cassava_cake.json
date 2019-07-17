@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "simplefarming:cassava"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:cassava_cake"}
+	
+}
