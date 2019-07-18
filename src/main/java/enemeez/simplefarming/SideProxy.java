@@ -47,12 +47,30 @@ public class SideProxy
 				
 				 MinecraftForge.EVENT_BUS.register(new SquidEvent());
 			
-				if (ModWorldGen.fruit_tree != null && ModWorldGen.berry_bush != null) 
+				if (ModWorldGen.fruit_tree != null) 
 				{
 					for (Biome biome : ForgeRegistries.BIOMES)
 					{
 						biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModWorldGen.fruit_tree, IFeatureConfig.NO_FEATURE_CONFIG, Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
+						
+					}
+				}
+				
+				if (ModWorldGen.berry_bush != null) 
+				{
+					for (Biome biome : ForgeRegistries.BIOMES)
+					{
 						biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModWorldGen.berry_bush, IFeatureConfig.NO_FEATURE_CONFIG, Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
+						
+					}
+				}
+				
+				if (ModWorldGen.wild_crop != null) 
+				{
+					for (Biome biome : ForgeRegistries.BIOMES)
+					{
+						biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModWorldGen.wild_crop, IFeatureConfig.NO_FEATURE_CONFIG, Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
+						
 					}
 				}
 			

@@ -12,6 +12,7 @@ import enemeez.simplefarming.blocks.CustomSapling;
 import enemeez.simplefarming.blocks.DoubleCrop;
 import enemeez.simplefarming.blocks.FruitLeaves;
 import enemeez.simplefarming.blocks.FruitLog;
+import enemeez.simplefarming.blocks.WildCrop;
 import net.minecraft.block.Block;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.SoundType;
@@ -81,6 +82,9 @@ public class ModBlocks
 	public static Block squash_crop;
 	public static Block tomato_crop;
 	public static Block yam_crop;
+	
+	//temp fix
+	public static Block wild_crop;
 
 
 	public static void registerAll(RegistryEvent.Register<Block> event)
@@ -364,7 +368,13 @@ public class ModBlocks
 				.tickRandomly()
 				.hardnessAndResistance(0)
 				.sound(SoundType.CROP), ModItems.yam_seeds, 13));
-	
+		
+		wild_crop = registerCrop("wild_crop", new WildCrop(
+				Block.Properties.create(Material.TALL_PLANTS)
+				.doesNotBlockMovement()
+				.hardnessAndResistance(0)
+				.sound(SoundType.PLANT)));
+
 	}
 	
 	   private static <T extends Block> T register(String name, T block) 

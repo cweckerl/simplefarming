@@ -5,7 +5,6 @@ import java.util.Random;
 import enemeez.simplefarming.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.IGrowable;
 import net.minecraft.state.IntegerProperty;
@@ -101,36 +100,36 @@ public class CustomSapling extends BushBlock implements IGrowable
 			world.setBlockState(pos.up(0), trunk, 3);
 			for (int i=1; i<4; i++)
 			{
-				if(world.getBlockState(pos.up(i)) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(i)).getMaterial().isReplaceable())
+				if(world.getBlockState(pos.up(i)).getMaterial().isReplaceable())
 				world.setBlockState(pos.up(i), trunk, 3);
 			}
 			
-			if(world.getBlockState(pos.up(2).north()) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(2).north()).getMaterial().isReplaceable())
+			if(world.getBlockState(pos.up(2).north()).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(2).north(), leaves, 3);
-			if(world.getBlockState(pos.up(2).south()) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(2).south()).getMaterial().isReplaceable())
+			if(world.getBlockState(pos.up(2).south()).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(2).south(), leaves, 3);
-			if(world.getBlockState(pos.up(2).east()) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(2).east()).getMaterial().isReplaceable())
+			if(world.getBlockState(pos.up(2).east()).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(2).east(), leaves, 3);
-			if(world.getBlockState(pos.up(2).west()) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(2).west()).getMaterial().isReplaceable())
+			if(world.getBlockState(pos.up(2).west()).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(2).west(), leaves, 3);
 			
-			if(world.getBlockState(pos.up(3).north()) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(3).north()).getMaterial().isReplaceable())
+			if(world.getBlockState(pos.up(3).north()).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(3).north(), leaves, 3);
-			if(world.getBlockState(pos.up(3).north().west()) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(3).north().west()).getMaterial().isReplaceable())
+			if( world.getBlockState(pos.up(3).north().west()).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(3).north().west(), leaves, 3);
-			if(world.getBlockState(pos.up(3).north().east()) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(3).north().east()).getMaterial().isReplaceable())
+			if(world.getBlockState(pos.up(3).north().east()).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(3).north().east(), leaves, 3);
-			if(world.getBlockState(pos.up(3).south()) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(3).south()).getMaterial().isReplaceable())
+			if(world.getBlockState(pos.up(3).south()).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(3).south(), leaves, 3);
-			if(world.getBlockState(pos.up(3).south().west()) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(3).south().west()).getMaterial().isReplaceable())
+			if(world.getBlockState(pos.up(3).south().west()).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(3).south().west(), leaves, 3);
-			if(world.getBlockState(pos.up(3).south().east()) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(3).south().east()).getMaterial().isReplaceable())
+			if(world.getBlockState(pos.up(3).south().east()).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(3).south().east(), leaves, 3);
-			if(world.getBlockState(pos.up(3).east()) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(3).east()).getMaterial().isReplaceable())
+			if(world.getBlockState(pos.up(3).east()).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(3).east(), leaves, 3);
-			if(world.getBlockState(pos.up(3).west()) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(3).west()).getMaterial().isReplaceable())
+			if(world.getBlockState(pos.up(3).west()).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(3).west(), leaves, 3);
-			if(world.getBlockState(pos.up(4)) == Blocks.AIR.getDefaultState() || world.getBlockState(pos.up(4)).getMaterial().isReplaceable())
+			if(world.getBlockState(pos.up(4)).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(4), leaves, 3);
 			
 			

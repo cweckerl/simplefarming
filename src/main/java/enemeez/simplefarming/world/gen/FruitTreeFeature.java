@@ -27,7 +27,7 @@ public class FruitTreeFeature extends Feature<NoFeatureConfig>
 		if (random.nextInt(GenConfig.tree_chance.get()) != 0) {
 			return false;
 		}
-		if(world.getBlockState(pos.down()).getBlock().isIn(BlockTags.DIRT_LIKE) && world.getBlockState(pos).isAir(world, pos)) 
+		if(world.getBlockState(pos.down()).getBlock().isIn(BlockTags.DIRT_LIKE) && world.getBlockState(pos).getMaterial().isReplaceable()) 
 		{
 			int type = (int)((Math.random()*6)+1);
 			CustomSapling.generateTree(world, pos, random, type);

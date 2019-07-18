@@ -23,8 +23,6 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
@@ -33,16 +31,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class DoubleCrop extends CropsBlock 
 {
-	   public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7; //5
-	   protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
+	   public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7; 
 	   public DoubleCrop(Block.Properties builder) {
 	      super(builder);
 	      this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
 	   }
 
-	   public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-	      return SHAPE;
-	   }
 
 	   protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) 
 	   {
@@ -56,7 +50,7 @@ public class DoubleCrop extends CropsBlock
 	   }
 
 	   public int getMaxAge() {
-	      return 5; //3
+	      return 5; 
 	   }
 
 	   protected int getAge(BlockState state) {
@@ -194,7 +188,7 @@ public class DoubleCrop extends CropsBlock
 		   if (this.getAge(state) == 6 && worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState()) //4
 		   return false;
 		   else
-		   return (worldIn.getLightSubtracted(pos, 0) >= 8 || worldIn.func_217337_f(pos)) && checker(state, worldIn, pos);
+		   return (worldIn.getLightSubtracted(pos, 0) >= 8 || worldIn.isSkyLightMax(pos)) && checker(state, worldIn, pos);
 		}
 	   
 

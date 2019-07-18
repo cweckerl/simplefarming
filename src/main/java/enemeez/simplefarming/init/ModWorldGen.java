@@ -5,6 +5,7 @@ import enemeez.simplefarming.config.GenConfig;
 import enemeez.simplefarming.world.gen.BerryBushFeature;
 import enemeez.simplefarming.world.gen.CactusCropFeature;
 import enemeez.simplefarming.world.gen.FruitTreeFeature;
+import enemeez.simplefarming.world.gen.WildCropFeature;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
@@ -18,6 +19,7 @@ public class ModWorldGen
 	public static Feature<NoFeatureConfig> fruit_tree;
 	public static Feature<NoFeatureConfig> berry_bush;
 	public static Feature<NoFeatureConfig> cactus_crop;
+	public static Feature<NoFeatureConfig> wild_crop;
 	
 	
 	public static void registerAll(RegistryEvent.Register<Feature<?>> event)
@@ -31,6 +33,8 @@ public class ModWorldGen
 		berry_bush = register(r , new BerryBushFeature(NoFeatureConfig::deserialize), "berry_bush");
 		if (GenConfig.cactus_validate.get() == true)
 		cactus_crop = register(r , new CactusCropFeature(NoFeatureConfig::deserialize), "cactus_crop");
+		if (GenConfig.wild_crop_validate.get() == true)
+		wild_crop = register(r , new WildCropFeature(NoFeatureConfig::deserialize), "wild_crop");
 	}
 	
 	

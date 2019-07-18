@@ -3,6 +3,6 @@
 	"ingredient": {"item": "simplefarming:raw_bacon"},
 	"result": "simplefarming:cooked_bacon",
 	"experience": 0.35,
-	"cookingTime": 100
+	"cookingtime": 100
 
 }

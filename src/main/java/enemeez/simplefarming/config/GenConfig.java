@@ -13,6 +13,9 @@ public class GenConfig
 	public static ForgeConfigSpec.BooleanValue cactus_validate;
 	public static ForgeConfigSpec.IntValue cactus_chance;
 	
+	public static ForgeConfigSpec.BooleanValue wild_crop_validate;
+	public static ForgeConfigSpec.IntValue wild_crop_chance;
+	
 	public static void init(ForgeConfigSpec.Builder config)
 	{
 		config.comment("Simple Farming World Generation");
@@ -29,6 +32,14 @@ public class GenConfig
 				.comment("Indicates whether opuntias (cactus crops) should generate")
 				.define("Generate opuntias", true);
 		
+		wild_crop_validate = config
+				.comment("Indicates whether wild crops should generate. This feature is temporary and will eventually be replaced with Vanilla grass")
+				.define("Generate wild crops", true);
+		
+		
+		wild_crop_chance = config
+				.comment("Chance of wild crops generating in the overworld. Higher numbers indicate a lower probability (Default: 180)")
+				.defineInRange("Probability of wild crops generating", 100, 1, 1000000000);
 		
 		bush_chance = config
 				.comment("Chance of berry bushes generating in the overworld. Higher numbers indicate a lower probability (Default: 180)")

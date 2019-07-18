@@ -3,6 +3,6 @@
 	"ingredient": {"item": "simplefarming:corn_seeds"},
 	"result": "simplefarming:popcorn",
 	"experience": 0.35,
-	"cookingTime": 600
+	"cookingtime": 600
 
 }

@@ -29,7 +29,7 @@ public class CactusCropFeature extends Feature<NoFeatureConfig>
 		
 	
 			      
-			   if(world.getBlockState(pos.down()).getBlock().isIn(BlockTags.SAND) && world.getBlockState(pos).isAir(world, pos)) 
+			   if(world.getBlockState(pos.down()).getBlock().isIn(BlockTags.SAND) && world.getBlockState(pos).getMaterial().isReplaceable()) 
 				   CustomCactus.generateCactus(world, pos, random);
 
 			return true;

@@ -3,6 +3,6 @@
 	"ingredient": {"item": "simplefarming:raw_sausage"},
 	"result": "simplefarming:cooked_sausage",
 	"experience": 0.35,
-	"cookingTime": 200
+	"cookingtime": 200
 
 }

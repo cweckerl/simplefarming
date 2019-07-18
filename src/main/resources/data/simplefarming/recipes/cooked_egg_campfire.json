@@ -3,6 +3,6 @@
 	"ingredient": {"item": "minecraft:egg"},
 	"result": "simplefarming:cooked_egg",
 	"experience": 0.35,
-	"cookingTime": 600
+	"cookingtime": 600
 
 }

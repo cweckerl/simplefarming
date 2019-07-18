@@ -34,11 +34,11 @@ public class BerryBushFeature extends Feature<NoFeatureConfig>
 			   int place1 = (int)((Math.random()*4)+1);
 			   int place2 = (int)((Math.random()*4)+1);
 			      
-			   if(world.getBlockState(pos.north(place0).down()).getBlock().isIn(BlockTags.DIRT_LIKE) && world.getBlockState(pos.north(place0)).isAir(world, pos)) 
+			   if(world.getBlockState(pos.north(place0).down()).getBlock().isIn(BlockTags.DIRT_LIKE) && world.getBlockState(pos.north(place0)).getMaterial().isReplaceable()) 
 				   CustomBush.generateBush(world, pos.north(place0), random, type);
-			   if(world.getBlockState(pos.south(place1).down()).getBlock().isIn(BlockTags.DIRT_LIKE) && world.getBlockState(pos.south(place1)).isAir(world, pos)) 
+			   if(world.getBlockState(pos.south(place1).down()).getBlock().isIn(BlockTags.DIRT_LIKE) && world.getBlockState(pos.south(place1)).getMaterial().isReplaceable()) 
 				   CustomBush.generateBush(world, pos.south(place1), random, type);
-			   if(world.getBlockState(pos.east(place2).down()).getBlock().isIn(BlockTags.DIRT_LIKE) && world.getBlockState(pos.east(place2)).isAir(world, pos)) 
+			   if(world.getBlockState(pos.east(place2).down()).getBlock().isIn(BlockTags.DIRT_LIKE) && world.getBlockState(pos.east(place2)).getMaterial().isReplaceable()) 
 				   CustomBush.generateBush(world, pos.east(place2), random, type);
 			   
 			return true;
