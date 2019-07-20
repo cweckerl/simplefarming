@@ -1,611 +1,137 @@
 {
-  "type": "minecraft:block",
-  "pools": [
-    {
-      "rolls": 1,
-      "name": "simplegrass0",
-      "entries": [
-            
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "minecraft:melon_seeds"
+   "type":"minecraft:block",
+   "pools":[  
+      {  
+         "rolls":1,
+         "name":"wildcrop0",
+         "entries":[  
+            {  
+               "type":"item",
+               "name":"minecraft:beetroot_seeds",
+               "weight":1
             },
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "minecraft:pumpkin_seeds"
+ 	    {  
+               "type":"item",
+               "name":"minecraft:melon_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "minecraft:beetroot_seeds"
+	    {  
+               "type":"item",
+               "name":"minecraft:pumpkin_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:cantaloupe_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:carrot_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:carrot_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:potato_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:corn_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:carrot_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:cucumber_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:cantaloupe_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:eggplant_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:cassava_seeds",
+               "weight":1
             },
-            
-            {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:honeydew_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:corn_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:kenaf_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:cucumber_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:lettuce_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:eggplant_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:oat_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:honeydew_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:onion_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:kenaf_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:potato_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:lettuce_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:pepper_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:oat_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:radish_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:onion_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:rice_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:pepper_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:rye_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:radish_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:soybean_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:rice_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:spinach_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:rye_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:squash_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:soybean_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:tomato_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:spinach_seeds",
+               "weight":1
             },
-            
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:cassava_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:squash_seeds",
+               "weight":1
             },
-            
-             
-             {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.042
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:yam_seeds"
+	    {  
+               "type":"item",
+               "name":"simplefarming:tomato_seeds",
+               "weight":1
+            },
+	    {  
+               "type":"item",
+               "name":"simplefarming:yam_seeds",
+               "weight":1
             }
-            
-            
+
          ]
-        }
-      ]
-    }
-  ]
+      }
+   ]
 }

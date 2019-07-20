@@ -9,8 +9,6 @@ import net.minecraft.item.ItemStack;
 
 public class GrainItem extends Item
 {
-	
-
 	   public GrainItem(Properties properties) 
 	   {
 		   super(properties);

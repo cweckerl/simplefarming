@@ -1,3 +1,48 @@
+Build: 1.14.4-28.0.3 - Sat Jul 20 19:59:31 GMT 2019
+	ichttt:
+		Fix forge 1.14.4 startup in obfed enviroment (#5955)
+
+=========
+Build: 1.14.4-28.0.2 - Sat Jul 20 16:06:15 GMT 2019
+	thaun1:
+		Updated Example Version Range for 1.14.4 (#5950)
+		* Updated Example Version Range for 1.14.4
+		
+		* Also changed loader version and version range
+
+=========
+Build: 1.14.4-28.0.1 - Sat Jul 20 06:27:42 GMT 2019
+	lex:
+		Fix javac compile issues.
+
+	cpw:
+		Provisional update to 1.14.4. Missing a lot of playerinteractionmanager
+		patches because everything moved and I'm tired.
+		Fix up immediate problems.
+		bump to 28.
+
+=========
+Build: 1.14.3-27.0.60 - Fri Jul 19 16:08:38 GMT 2019
+	cpw:
+		Update mappings to 20190719 in prep for 1.14.4..
+		Signed-off-by: cpw <cpw+github@weeksfamily.ca>
+
+=========
+Build: 1.14.3-27.0.59 - Thu Jul 18 21:22:01 GMT 2019
+	github:
+		Remove OnlyIn Client Distribution from Effect and EffectType methods.
+		(#5925)
+
+=========
+Build: 1.14.3-27.0.58 - Thu Jul 18 21:15:19 GMT 2019
+	lex:
+		Change default BrewingRecipe to use an Ingredient for the input instead
+		of ItemStack. Closes #5944 Add AT for GameRules.register Closes #5946
+		Fix Forge Blockstate loader model path is inconsistent with vanilla
+		blockstates Closes #5892 Fix client crashing when opting not to load a
+		world when there's missing blocks Closes #5886
+
+=========
 Build: 1.14.3-27.0.57 - Wed Jul 17 05:38:23 GMT 2019
 	lex:
 		Fix CheckSpawn event logic for natural spawns.
