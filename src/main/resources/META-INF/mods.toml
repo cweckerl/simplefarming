@@ -14,16 +14,14 @@ issueTrackerURL="http://my.issue.tracker/" #optional
 # The modid of the mod
 modId="simplefarming" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="1.14.4-1.0.5" #mandatory
+version="1.14.4-1.0.6" #mandatory
  # A display name for the mod
 displayName="Simple Farming" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
-updateJSONURL="https://www.curseforge.com/minecraft/mc-mods/simple-farming/settings/general" #optional
+updateJSONURL="https://www.curseforge.com/minecraft/mc-mods/simple-farming" #optional
+# A URL for the "homepage" for this mod, displayed in the mod UI
+displayURL="https://www.curseforge.com/minecraft/mc-mods/simple-farming" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="examplemod.png" #optional
-# A text field displayed in the mod UI
-credits="Forge team" #optional
-# A text field displayed in the mod UI
 authors="enemeez" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''

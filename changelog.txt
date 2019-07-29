@@ -1,3 +1,42 @@
+Build: 1.14.4-28.0.11 - Sun Jul 21 01:04:23 GMT 2019
+	cpw:
+		Fix datafixer exception catch: Closes #5951
+		Signed-off-by: cpw <cpw+github@weeksfamily.ca>
+
+	cpw:
+		Fix objloader registering at wrong time. Closes #5847. Added test class
+		as suggested in the issue.
+		Note: most tests are commented out at the present time, pending rework.
+		Tests that work, work.
+		Signed-off-by: cpw <cpw+github@weeksfamily.ca>
+
+=========
+Build: 1.14.4-28.0.9 - Sat Jul 20 23:38:35 GMT 2019
+	Barteks2x:
+		Fix RegistryObject when used with generic registry entry classes
+
+	cpw:
+		Realms' removal has removed the need for additional jar transformation.
+		Signed-off-by: cpw <cpw+github@weeksfamily.ca>
+
+	cpw:
+		Fix error when ModsDiscoverer visits a non existent mods dir.
+		Closes cpw/modlauncher#30
+		Signed-off-by: cpw <cpw+github@weeksfamily.ca>
+
+=========
+Build: 1.14.4-28.0.5 - Sat Jul 20 23:20:18 GMT 2019
+	cpw:
+		Make I18N format errors less spammy, also remove single apostrophes from
+		current translations in en_us.json. Other langs may still have problems.
+		Closes #5952 Signed-off-by: cpw <cpw+github@weeksfamily.ca>
+
+=========
+Build: 1.14.4-28.0.4 - Sat Jul 20 21:55:28 GMT 2019
+	jojohostert:
+		Fix spam during startup (#5957)
+
+=========
 Build: 1.14.4-28.0.3 - Sat Jul 20 19:59:31 GMT 2019
 	ichttt:
 		Fix forge 1.14.4 startup in obfed enviroment (#5955)

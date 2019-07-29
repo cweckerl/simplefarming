@@ -25,13 +25,15 @@ public class ModItems
 	public static Item blueberries;
 	public static Item cactus_fruit;
 	public static Item cantaloupe;
+	public static Item cherries;
+	public static Item grapes;
 	public static Item honeydew;
 	public static Item orange;
 	public static Item pear;
 	public static Item plum;
 	public static Item raspberries;
 	public static Item strawberries;
-	
+
 	//Harvested Food
 	public static Item cassava;
 	public static Item corn;
@@ -55,6 +57,7 @@ public class ModItems
 	public static Item cheese_slice;
 
 	//Non Edible
+	public static Item curry_powder;
 	public static Item kenaf_fiber;
 	public static Item vinegar;
 	
@@ -152,13 +155,66 @@ public class ModItems
 	public static Item raspberry_pie;
 	public static Item strawberry_pie;
 	
+	//BlockItems
+	public static Item cantaloupe_block;
+	public static Item honeydew_block;
+	public static Item squash_block;
 	
-	static final Map<String, BlockItem> BLOCKS_TO_REGISTER = new LinkedHashMap<>();
+	public static Item apple_sapling;
+	public static Item apricot_sapling;
+	public static Item banana_sapling;
+	public static Item orange_sapling;
+	public static Item pear_sapling;
+	public static Item plum_sapling;
+	
+	public static Item blackberry_bush;
+	public static Item blueberry_bush;
+	public static Item raspberry_bush;
+	public static Item strawberry_bush;
+	
+	public static Item cheese_block;
+	public static Item chocolate_cake;
+	
+	public static Item oat_hay_block;
+	public static Item rice_hay_block;
+	public static Item rye_hay_block;
+	
+	public static Item cactus_crop;
+	
+	public static Item fruit_log;
 
+	public final static Map<Item, Float> COMPOST_FLOATS = new LinkedHashMap<>();
+	
 	public static void registerAll(RegistryEvent.Register<Item> event)
 	{
 		if (!event.getName().equals(ForgeRegistries.ITEMS.getRegistryName())) return;
-		BLOCKS_TO_REGISTER.forEach(ModItems::register);
+		
+		cantaloupe_block = register("cantaloupe_block", new BlockItem(ModBlocks.cantaloupe_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		honeydew_block = register("honeydew_block", new BlockItem(ModBlocks.honeydew_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		squash_block = register("squash_block", new BlockItem(ModBlocks.squash_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		
+		apple_sapling = register("apple_sapling", new BlockItem(ModBlocks.apple_sapling, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		apricot_sapling = register("apricot_sapling", new BlockItem(ModBlocks.apricot_sapling, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		banana_sapling = register("banana_sapling", new BlockItem(ModBlocks.banana_sapling, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		orange_sapling = register("orange_sapling", new BlockItem(ModBlocks.orange_sapling, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		pear_sapling = register("pear_sapling", new BlockItem(ModBlocks.pear_sapling, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		plum_sapling = register("plum_sapling", new BlockItem(ModBlocks.plum_sapling, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		
+		blackberry_bush = register("blackberry_bush", new BlockItem(ModBlocks.blackberry_bush, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		blueberry_bush = register("blueberry_bush", new BlockItem(ModBlocks.blueberry_bush, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		raspberry_bush = register("raspberry_bush", new BlockItem(ModBlocks.raspberry_bush, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		strawberry_bush = register("strawberry_bush", new BlockItem(ModBlocks.strawberry_bush, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		cactus_crop = register("cactus_crop", new BlockItem(ModBlocks.cactus_crop, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		
+		oat_hay_block = register("oat_hay_block", new BlockItem(ModBlocks.oat_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		rice_hay_block = register("rice_hay_block", new BlockItem(ModBlocks.rice_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		rye_hay_block = register("rye_hay_block", new BlockItem(ModBlocks.rye_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		
+		fruit_log = register("fruit_log", new BlockItem(ModBlocks.fruit_log, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		
+		cheese_block = register("cheese_block", new BlockItem(ModBlocks.cheese_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		chocolate_cake = register("chocolate_cake", new BlockItem(ModBlocks.chocolate_cake, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+
 		
 		apricot = register("apricot", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
 		banana = register("banana", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
@@ -166,6 +222,8 @@ public class ModItems
 		blueberries = register("blueberries", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY)));
 		cactus_fruit = register("cactus_fruit", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY)));
 		cantaloupe = register("cantaloupe", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.GOURD_SLICE)));
+		cherries = register("cherries", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
+		grapes = register("grapes", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
 		honeydew = register("honeydew", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.GOURD_SLICE)));
 		orange = register("orange", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
 		pear = register("pear", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
@@ -188,6 +246,7 @@ public class ModItems
 		tomato = register("tomato", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.TOMATO)));
 		yam = register("yam", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.YAM)));
 		
+		curry_powder = register("curry_powder", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		kenaf_fiber = register("kenaf_fiber", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		vinegar = register("vinegar", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 				
@@ -195,7 +254,7 @@ public class ModItems
 		rye = register("rye", new GrainItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		rice = register("rice", new GrainItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		noodles = register("noodles", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
-		
+				
 		cantaloupe_seeds = register("cantaloupe_seeds", new CustomSeed(ModBlocks.cantaloupe_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		carrot_seeds = register("carrot_seeds", new CustomSeed(ModBlocks.carrot_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		cassava_seeds = register("cassava_seeds", new CustomSeed(ModBlocks.cassava_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
@@ -284,15 +343,25 @@ public class ModItems
 		plum_pie = register("plum_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT_PIE)));
 		raspberry_pie = register("raspberry_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));
 		strawberry_pie = register("strawberry_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));	
+		
+		
 	}
 	
-	private static <T extends Item> T register(String name, T item)
-	{
-		ResourceLocation id = SimpleFarming.getId(name);
-		item.setRegistryName(id);
-		ForgeRegistries.ITEMS.register(item);
-		return item;
-	}
+		private static <T extends Item> T register(String name, T item)
+		{
+			ResourceLocation id = SimpleFarming.getId(name);
+			item.setRegistryName(id);
+			ForgeRegistries.ITEMS.register(item);
+			return item;
+		}
+		
+		private static <T extends BlockItem> T register(String name, T block_item)
+		{
+			ResourceLocation id = SimpleFarming.getId(name);
+			block_item.setRegistryName(id);
+			ForgeRegistries.ITEMS.register(block_item);
+			return block_item;
+		}
 	
 
 }

@@ -9,7 +9,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -34,7 +33,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 	{
 		private int verify;
 		public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-		private static final VoxelShape BOX = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+		private static final VoxelShape BOX = Block.makeCuboidShape(1.0D, 2.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
 		public CustomBush(Block.Properties p_i49971_1_, int verify) 
 		 {
@@ -47,13 +46,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 		   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 		   {
 			   	 if (verify==1)
-			   		  return new ItemStack(ModItems.blackberries);
+			   		  return new ItemStack(ModItems.blackberry_bush);
 		         if (verify==2)
-		        	  return new ItemStack(ModItems.blueberries);
+		        	  return new ItemStack(ModItems.blueberry_bush);
 		         if (verify==3)
-		        	  return new ItemStack(ModItems.raspberries);
+		        	  return new ItemStack(ModItems.raspberry_bush);
 		         else
-		        	  return new ItemStack(ModItems.strawberries);
+		        	  return new ItemStack(ModItems.strawberry_bush);
 		   }
 
 		   public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) 
@@ -79,7 +78,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 				 {
 			         int random = (int)((Math.random()*4)+1);
 			         if (verify==1)
+			         {
 			        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.blackberries, random));
+			         }
 			         if (verify==2)
 				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.blueberries, random));
 			         if (verify==3)
@@ -87,8 +88,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 			         if (verify==4)
 				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.strawberries, random));
 
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-			         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
+			        worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+			        worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
 			                return true;
 			             } else {
 			                return false;
@@ -99,7 +100,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 		   public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) 
 		   {
-		      if (entityIn instanceof LivingEntity && entityIn.getType() != EntityType.FOX) 
+		      if (entityIn instanceof LivingEntity) 
 		      {
 		         entityIn.setMotionMultiplier(state, new Vec3d((double)0.8F, 0.75D, (double)0.8F));
 		       }
@@ -135,4 +136,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 		      int i = Math.min(3, state.get(AGE) + 1);
 		      worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i)), 2);
 		   }
-		}	
+		
+		   
+	}	

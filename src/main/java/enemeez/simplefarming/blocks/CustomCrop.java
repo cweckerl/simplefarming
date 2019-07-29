@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
@@ -24,14 +23,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class CustomCrop extends CropsBlock
 { 
-	private Item seeds;
 	private int verify;
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
 	
-	public CustomCrop(Block.Properties builder, Item seeds, int verify) 
+	public CustomCrop(Block.Properties builder, int verify) 
 	{
 	   super(builder);
-	   this.seeds=seeds;
+
 	   this.verify=verify;
 
 	   this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
@@ -122,16 +120,7 @@ public class CustomCrop extends CropsBlock
 		         spawnAsEntity(worldIn, pos, new ItemStack(Items.POTATO, random));
 		         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 	         }
-	         if (verify==16)
-	         {
-		         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.corn, random));
-		         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-	         }
-	         if (verify==17)
-	         {
-		         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.kenaf_fiber, random));
-		         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-	         }
+
 	         if (verify==18)
 	         {
 	        	 spawnAsEntity(worldIn, pos, new ItemStack(ModBlocks.squash_block, 1));
@@ -163,13 +152,91 @@ public class CustomCrop extends CropsBlock
 	}
 	
 	@OnlyIn(Dist.CLIENT)
-	protected IItemProvider getSeedsItem() {
-	   return seeds;
-	}
+	   protected IItemProvider getSeedsItem() 
+	   {
+		 if (verify==1)
+        	 return ModItems.cucumber_seeds;	 
+         if (verify==2)
+        	 return ModItems.eggplant_seeds;
+         if (verify==3)
+        	 return ModItems.lettuce_seeds;
+         if (verify==4)
+	         return ModItems.oat_seeds;
+         if (verify==5)
+        	 return ModItems.onion_seeds;
+         if (verify==6)
+        	 return ModItems.pepper_seeds;
+         if (verify==7)
+        	 return ModItems.radish_seeds;
+         if (verify==8)
+        	 return ModItems.rice_seeds;
+         if (verify==9)
+        	 return ModItems.rye_seeds;
+         if (verify==10)
+        	 return ModItems.soybean_seeds;
+         if (verify==11)
+	         return ModItems.spinach_seeds;
+         if (verify==12)
+	         return ModItems.tomato_seeds;
+         if (verify==13)
+	         return ModItems.yam_seeds;
+         if (verify==14)
+	         return ModItems.carrot_seeds;
+         if (verify==15)
+	         return ModItems.potato_seeds;
+         if (verify==18)
+	         return ModItems.squash_seeds;
+         if (verify==19)
+	         return ModItems.cantaloupe_seeds;
+         if (verify==20)
+	         return ModItems.cassava_seeds;
+         else
+	         return ModItems.honeydew_seeds;
+	   }
+
+	   @OnlyIn(Dist.CLIENT)
+	   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
+	   {
+		   if (verify==1)
+	        	 return new ItemStack(ModItems.cucumber);	 
+	         if (verify==2)
+	        	 return new ItemStack(ModItems.eggplant);
+	         if (verify==3)
+	        	 return new ItemStack(ModItems.lettuce);
+	         if (verify==4)
+		         return new ItemStack(ModItems.oat);
+	         if (verify==5)
+	        	 return new ItemStack(ModItems.onion);
+	         if (verify==6)
+	        	 return new ItemStack(ModItems.pepper);
+	         if (verify==7)
+	        	 return new ItemStack(ModItems.radish);
+	         if (verify==8)
+	        	 return new ItemStack(ModItems.rice);
+	         if (verify==9)
+	        	 return new ItemStack(ModItems.rye);
+	         if (verify==10)
+	        	 return new ItemStack(ModItems.soybean);
+	         if (verify==11)
+		         return new ItemStack(ModItems.spinach);
+	         if (verify==12)
+		         return new ItemStack(ModItems.tomato);
+	         if (verify==13)
+		         return new ItemStack(ModItems.yam);
+	         if (verify==14)
+		         return new ItemStack(Items.CARROT);
+	         if (verify==15)
+		         return new ItemStack(Items.POTATO);
+	         if (verify==18)
+		         return new ItemStack(ModItems.squash_block);
+	         if (verify==19)
+		         return new ItemStack(ModItems.cantaloupe_block);
+	         if (verify==20)
+		         return new ItemStack(ModItems.cassava);
+	         else
+		         return new ItemStack(ModItems.honeydew_block);
+	   }
 	
-	@OnlyIn(Dist.CLIENT)
-	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-	   return new ItemStack(this.getSeedsItem());
-	}
+
 
 }

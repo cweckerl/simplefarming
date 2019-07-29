@@ -7,6 +7,11 @@
 	"block.simplefarming.blueberry_bush": "Blueberry Bush",
 	"block.simplefarming.raspberry_bush": "Raspberry Bush",
 	"block.simplefarming.strawberry_bush": "Strawberry Bush",
+	
+	"block.simplefarming.oat_hay_block": "Oat Hay Bale",
+	"block.simplefarming.rye_hay_block": "Rye Hay Bale",
+	"block.simplefarming.rice_hay_block": "Rice Hay Bale",
+	
 
 	"block.simplefarming.cantaloupe_crop": "Cantaloupe Crop",
 	"block.simplefarming.cassava_crop": "Cassava Crop",

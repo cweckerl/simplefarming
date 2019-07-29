@@ -1,10 +1,15 @@
 package enemeez.simplefarming;
 
 import enemeez.simplefarming.config.Config;
+import enemeez.simplefarming.config.GenConfig;
+import enemeez.simplefarming.events.GrassHarvestEvent;
 import enemeez.simplefarming.events.SquidEvent;
+import enemeez.simplefarming.events.TemptationTask;
+import enemeez.simplefarming.events.VillageHouseLoot;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
 import enemeez.simplefarming.init.ModWorldGen;
+import enemeez.simplefarming.items.CompostItems;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.IFeatureConfig;
@@ -46,7 +51,12 @@ public class SideProxy
 				SimpleFarming.LOGGER.debug("common setup");
 				
 				 MinecraftForge.EVENT_BUS.register(new SquidEvent());
-			
+				 MinecraftForge.EVENT_BUS.register(new VillageHouseLoot());
+				 if (GenConfig.grass_drops.get() == true)
+				 MinecraftForge.EVENT_BUS.register(new GrassHarvestEvent());
+				 MinecraftForge.EVENT_BUS.register(new TemptationTask());
+
+
 				if (ModWorldGen.fruit_tree != null) 
 				{
 					for (Biome biome : ForgeRegistries.BIOMES)
@@ -82,6 +92,9 @@ public class SideProxy
 					});
 				
 				}
+				
+				CompostItems.register();
+
 				
 			}
 		

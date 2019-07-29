@@ -3,6 +3,11 @@
         "age=0": { "model": "simplefarming:block/fruit_leaves_birch" },
         "age=1": { "model": "simplefarming:block/fruit_leaves_birch" },
         "age=2": { "model": "simplefarming:block/fruit_leaves_birch" },
-        "age=3": { "model": "simplefarming:block/apricot_leaves" }
+        "age=3": { "model": "simplefarming:block/fruit_leaves_birch" },
+        "age=4": { "model": "simplefarming:block/fruit_leaves_birch" },
+        "age=5": { "model": "simplefarming:block/fruit_leaves_birch" },
+        "age=6": { "model": "simplefarming:block/fruit_leaves_birch" },
+        "age=7": { "model": "simplefarming:block/apricot_leaves" }
     }
 }
+

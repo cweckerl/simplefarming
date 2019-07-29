@@ -37,7 +37,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class FruitLeaves extends BushBlock implements IGrowable 
 {
 	private int verify;
-	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
+	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
 	private static final VoxelShape BOX = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
 
 	public FruitLeaves(Block.Properties p_i49971_1_, int verify) 
@@ -51,7 +51,7 @@ public class FruitLeaves extends BushBlock implements IGrowable
 	   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 	   {
 		   if (verify==1)
-	       return new ItemStack(Items.APPLE);
+			   return new ItemStack(Items.APPLE);
 		   if (verify==2)
 		       return new ItemStack(ModItems.apricot);
 		   if (verify==3)
@@ -73,7 +73,7 @@ public class FruitLeaves extends BushBlock implements IGrowable
 	public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
 	      super.tick(state, worldIn, pos, random);
 	      int i = state.get(AGE);
-	      if (i < 3 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
+	      if (i < 7 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
 	         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
 	      }
 
@@ -99,7 +99,7 @@ public class FruitLeaves extends BushBlock implements IGrowable
 	   {
 		   if (!worldIn.isRemote)
 			 {
-				 if (state.get(AGE) == 3) 
+				 if (state.get(AGE) == 7) 
 				 {
 		         	if (verify == 1)
 			         spawnAsEntity(worldIn, pos, new ItemStack(Items.APPLE, 1));
@@ -175,7 +175,7 @@ public class FruitLeaves extends BushBlock implements IGrowable
 	   }
 
 	   public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-	      return state.get(AGE) < 3;
+	      return state.get(AGE) < 7;
 	   }
 
 	   public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {

@@ -44,10 +44,10 @@ public class CustomCactus extends BushBlock implements IGrowable
 	   @OnlyIn(Dist.CLIENT)
 	   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 	   {
-		   	return new ItemStack(ModItems.cactus_fruit);
+		   	return new ItemStack(ModItems.cactus_crop);
 	   }
 
-
+ 
 	   @SuppressWarnings("deprecation")
 	public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
 	      super.tick(state, worldIn, pos, random);

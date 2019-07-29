@@ -10,6 +10,7 @@ import net.minecraft.block.CropsBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.RavagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
@@ -31,9 +32,15 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class DoubleCrop extends CropsBlock 
 {
-	   public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7; 
-	   public DoubleCrop(Block.Properties builder) {
+	   public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
+	   int verify;
+	   Item seeds;
+	   
+	   public DoubleCrop(Block.Properties builder, Item seeds, int verify) 
+	   {
 	      super(builder);
+	      this.seeds=seeds;
+	      this.verify=verify;
 	      this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
 	   }
 
@@ -79,6 +86,7 @@ public class DoubleCrop extends CropsBlock
 					worldIn.setBlockState(pos, this.withAge(6), 3); //4
 	        		if (worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState())
 	        		worldIn.setBlockState(pos.up(), this.withAge(7), 3); //5
+	        		if (!player.isCreative())
 	        		stack.shrink(1);
 	        		return true;
 	        		
@@ -90,7 +98,11 @@ public class DoubleCrop extends CropsBlock
 
 				 if (this.getAge(state) == 7) //5
 				 {
-			        spawnAsEntity(worldIn, pos, new ItemStack(ModItems.corn, 2));
+					int random = (int)((Math.random()*4)+1);
+					if(verify==1)
+						spawnAsEntity(worldIn, pos, new ItemStack(ModItems.corn, random));
+					else
+						spawnAsEntity(worldIn, pos, new ItemStack(ModItems.kenaf_fiber, random));	
 			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 			         worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
 			         worldIn.setBlockState(pos.down(), state.with(AGE, Integer.valueOf(0)), 3);
@@ -102,6 +114,13 @@ public class DoubleCrop extends CropsBlock
 		 }
 		return false;
 		}
+	   
+	  
+	   
+	   
+	   
+	   
+	   
 
 	   public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
 	      super.tick(state, worldIn, pos, random);
@@ -212,13 +231,21 @@ public class DoubleCrop extends CropsBlock
 	   }
 
 	   @OnlyIn(Dist.CLIENT)
-	   protected IItemProvider getSeedsItem() {
-	      return ModItems.corn_seeds;
+	   protected IItemProvider getSeedsItem() 
+	   {
+		   if(verify==1)
+				return ModItems.corn_seeds;
+			else
+				return ModItems.kenaf_seeds;
 	   }
 
 	   @OnlyIn(Dist.CLIENT)
-	   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-	      return new ItemStack(this.getSeedsItem());
+	   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
+	   {
+		   if(verify==1)
+				return new ItemStack(ModItems.corn);
+			else
+				return new ItemStack(ModItems.kenaf_fiber);
 	   }
 
 	   /**

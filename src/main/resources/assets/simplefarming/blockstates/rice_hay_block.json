@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y": { "model": "simplefarming:block/rice_hay_block" },
+        "axis=z": { "model": "simplefarming:block/rice_hay_block", "x": 90 },
+        "axis=x": { "model": "simplefarming:block/rice_hay_block", "x": 90, "y": 90 }
+    }
+}

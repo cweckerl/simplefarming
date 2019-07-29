@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "simplefarming:block/kenaf_crop6"
+    }
+}

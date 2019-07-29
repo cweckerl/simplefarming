@@ -6,7 +6,6 @@ import net.minecraft.potion.Effects;
 
 public class FoodTier 
 {
-	
 	public static final Food BERRY = (new Food.Builder()).hunger(2).saturation(0.1F).fastToEat().build();
 	public static final Food FRUIT = (new Food.Builder()).hunger(4).saturation(0.3F).build();
 	public static final Food GOURD_SLICE = (new Food.Builder()).hunger(2).saturation(0.3F).build();
@@ -28,39 +27,38 @@ public class FoodTier
 	public static final Food BERRY_PIE = (new Food.Builder()).hunger(6).saturation(0.3F).build();
 	public static final Food FRUIT_PIE = (new Food.Builder()).hunger(8).saturation(0.3F).build();
 	
-	//each grain gives 1.66 hunger
 	public static final Food BANANA_BREAD = (new Food.Builder()).hunger(7).saturation(0.3F).build();
 	public static final Food BLT = (new Food.Builder()).hunger(14).saturation(0.8F).build();
 	public static final Food CAESAR_SALAD = (new Food.Builder()).hunger(11).saturation(0.6F).build();
 	public static final Food CASSAVA_CAKE = (new Food.Builder()).hunger(5).saturation(0.6F).build();
-	public static final Food CHEESE_SLICE = (new Food.Builder()).hunger(3).saturation(0.3F).build(); //milk 1, vinegar 2 + upp sat
+	public static final Food CHEESE_SLICE = (new Food.Builder()).hunger(3).saturation(0.3F).build(); 
 	public static final Food CHEESE_BURGER = (new Food.Builder()).hunger(21).saturation(0.8F).build();
 	public static final Food CHICKEN_PARMESAN = (new Food.Builder()).hunger(15).saturation(0.6F).build();
 	public static final Food CHILI = (new Food.Builder()).hunger(13).saturation(0.8F).build(); 
 	public static final Food CHOCOLATE = (new Food.Builder()).hunger(3).saturation(0.2F).build(); 
 	public static final Food COOKED_BACON = (new Food.Builder()).hunger(4).saturation(0.8F).fastToEat().meat().build();
 	public static final Food COOKED_CHICKEN_WINGS = (new Food.Builder()).hunger(3).saturation(0.6F).fastToEat().meat().build();
-	public static final Food COOKED_EGG = (new Food.Builder()).hunger(5).saturation(0.6F).build(); //egg is 1
+	public static final Food COOKED_EGG = (new Food.Builder()).hunger(5).saturation(0.6F).build(); 
 	public static final Food COOKED_SAUSAGE = (new Food.Builder()).hunger(4).saturation(0.8F).fastToEat().meat().build();
 	public static final Food CORN_SALAD = (new Food.Builder()).hunger(9).saturation(0.6F).build();
-	public static final Food CORN_BREAD = (new Food.Builder()).hunger(7).saturation(0.6F).build(); //check with out bread
+	public static final Food CORN_BREAD = (new Food.Builder()).hunger(7).saturation(0.6F).build(); 
 	public static final Food CUCUMBER_SOUP = (new Food.Builder()).hunger(6).saturation(0.6F).build();
 	public static final Food EGG_SANDWICH = (new Food.Builder()).hunger(14).saturation(0.8F).build();
-	public static final Food EGGPLANT_PARMESAN = (new Food.Builder()).hunger(16).saturation(0.6F).build(); //check with cheese
-	public static final Food FISH_FILLET = (new Food.Builder()).hunger(8).saturation(0.8F).build(); // + up sat
-	public static final Food FISH_SANDWICH = (new Food.Builder()).hunger(15).saturation(0.8F).build(); // ^
+	public static final Food EGGPLANT_PARMESAN = (new Food.Builder()).hunger(16).saturation(0.6F).build(); 
+	public static final Food FISH_FILLET = (new Food.Builder()).hunger(8).saturation(0.8F).build(); 
+	public static final Food FISH_SANDWICH = (new Food.Builder()).hunger(15).saturation(0.8F).build(); 
 	public static final Food FRIED_CALAMARI = (new Food.Builder()).hunger(5).saturation(0.6F).build();
 	public static final Food FRUIT_SALAD = (new Food.Builder()).hunger(8).saturation(0.3F).build();
-	public static final Food HAMBURGER = (new Food.Builder()).hunger(18).saturation(0.8F).build(); //sat
-	public static final Food HOTDOG = (new Food.Builder()).hunger(9).saturation(0.8F).build(); //sat same as steak??
-	public static final Food JAFFA_CAKE = (new Food.Builder()).hunger(8).saturation(0.3F).build(); //check logic
+	public static final Food HAMBURGER = (new Food.Builder()).hunger(18).saturation(0.8F).build(); 
+	public static final Food HOTDOG = (new Food.Builder()).hunger(9).saturation(0.8F).build(); 
+	public static final Food JAFFA_CAKE = (new Food.Builder()).hunger(8).saturation(0.3F).build(); 
 	public static final Food LASAGNA = (new Food.Builder()).hunger(24).saturation(0.8F).build();
 	public static final Food MAC_AND_CHEESE = (new Food.Builder()).hunger(10).saturation(0.6F).build();
 	public static final Food OATMEAL = (new Food.Builder()).hunger(3).saturation(0.6F).build();
 	public static final Food ONION_SOUP = (new Food.Builder()).hunger(6).saturation(0.6F).build();
 	public static final Food PANCAKES = (new Food.Builder()).hunger(4).saturation(0.6F).build();
 	public static final Food PASTA = (new Food.Builder()).hunger(10).saturation(0.6F).build();
-	public static final Food PICKLE = (new Food.Builder()).hunger(5).saturation(0.6F).build();  //reference berries for vinegar
+	public static final Food PICKLE = (new Food.Builder()).hunger(5).saturation(0.6F).build();  
 	public static final Food PICKLED_BEETROOT = (new Food.Builder()).hunger(3).saturation(0.6F).build();
 	public static final Food PIZZA = (new Food.Builder()).hunger(10).saturation(0.6F).build();
 	public static final Food POPCORN = (new Food.Builder()).hunger(1).saturation(0.1F).fastToEat().build();
@@ -76,7 +74,7 @@ public class FoodTier
 	public static final Food SPAGHETTI = (new Food.Builder()).hunger(10).saturation(0.6F).build();
 	public static final Food SPINACH_MUSHROOM_QUICHE = (new Food.Builder()).hunger(10).saturation(0.6F).build();
 	public static final Food SQUASH_CASSEROLE = (new Food.Builder()).hunger(9).saturation(0.6F).build();
-	public static final Food SUSHI = (new Food.Builder()).hunger(8).saturation(0.6F).build(); //0.6 because some fish raw
+	public static final Food SUSHI = (new Food.Builder()).hunger(8).saturation(0.6F).build(); 
 	public static final Food TOFU = (new Food.Builder()).hunger(6).saturation(0.6F).build();
 	public static final Food TOMATO_SOUP = (new Food.Builder()).hunger(6).saturation(0.6F).build();
 	public static final Food VEGETABLE_MEDLEY = (new Food.Builder()).hunger(6).saturation(0.6F).build();

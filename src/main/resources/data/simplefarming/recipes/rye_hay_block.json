@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"###",
+		"###",
+		"###"
+	],
+	
+	"key":
+	{
+		"#": { "item": "simplefarming:rye"}
+
+	},
+	
+	"result": {"item": "simplefarming:rye_hay_block"}
+	
+}

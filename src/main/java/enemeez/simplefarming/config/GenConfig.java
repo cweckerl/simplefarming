@@ -16,9 +16,15 @@ public class GenConfig
 	public static ForgeConfigSpec.BooleanValue wild_crop_validate;
 	public static ForgeConfigSpec.IntValue wild_crop_chance;
 	
+	public static ForgeConfigSpec.BooleanValue grass_drops;
+	
 	public static void init(ForgeConfigSpec.Builder config)
 	{
 		config.comment("Simple Farming World Generation");
+		
+		grass_drops = config
+				.comment("Indicates whether seeds should drop from grass blocks")
+				.define("Drop seeds from grass", true);
 		
 		bush_validate = config
 				.comment("Indicates whether berry bushes should generate")
@@ -33,12 +39,12 @@ public class GenConfig
 				.define("Generate opuntias", true);
 		
 		wild_crop_validate = config
-				.comment("Indicates whether wild crops should generate. This feature is temporary and will eventually be replaced with Vanilla grass")
-				.define("Generate wild crops", true);
+				.comment("(This feature is disabled by default because seeds drop from grass) Indicates whether wild crops should generate.")
+				.define("Generate wild crops", false);
 		
 		
 		wild_crop_chance = config
-				.comment("Chance of wild crops generating in the overworld. Higher numbers indicate a lower probability (Default: 180)")
+				.comment("Chance of wild crops generating in the overworld. Higher numbers indicate a lower probability (Default: 100)")
 				.defineInRange("Probability of wild crops generating", 100, 1, 1000000000);
 		
 		bush_chance = config
