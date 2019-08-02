@@ -1,0 +1,54 @@
+{
+    "textures": {
+	"particle": "minecraft:block/oak_log",
+        "oak_log": "minecraft:block/oak_log",
+        "oak_log_top": "minecraft:block/oak_log_top"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Cube",
+            "from": [ 6, 0, 6 ], 
+            "to": [ 10, 5, 10 ], 
+            "faces": {
+                "north": { "texture": "#oak_log", "uv": [ 0, 0, 4, 5 ] },
+                "east": { "texture": "#oak_log", "uv": [ 0, 0, 4, 5 ] },
+                "south": { "texture": "#oak_log", "uv": [ 0, 0, 4, 5 ] },
+                "west": { "texture": "#oak_log", "uv": [ 0, 0, 4, 5 ] },
+                "up": { "texture": "#oak_log_top", "uv": [ 6, 6, 10, 10 ] },
+                "down": { "texture": "#oak_log_top", "uv": [ 6, 6, 10, 10 ] }
+            }
+        }
+    ]
+}

@@ -25,30 +25,30 @@ public class VillageHouseLoot
 	public static void onLootLoad(LootTableLoadEvent event) 
 	{
 		if (desert.contains(event.getName())) 
-		{
-			LootPool pool = LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(SimpleFarming.MOD_ID, "chests/village/desert")).weight(1).quality(0)).build();
-			event.getTable().addPool(pool);
-		}
+			{
+				LootPool pool = LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(SimpleFarming.MOD_ID, "chests/village/desert")).weight(1).quality(0)).build();
+				event.getTable().addPool(pool);
+			}
 		if (plains.contains(event.getName())) 
-		{
-			LootPool pool = LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(SimpleFarming.MOD_ID, "chests/village/plains")).weight(1).quality(0)).build();
-			event.getTable().addPool(pool);
-		}
+			{
+				LootPool pool = LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(SimpleFarming.MOD_ID, "chests/village/plains")).weight(1).quality(0)).build();
+				event.getTable().addPool(pool);
+			}
 		if (savanna.contains(event.getName())) 
-		{
-			LootPool pool = LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(SimpleFarming.MOD_ID, "chests/village/savanna")).weight(1).quality(0)).build();
-			event.getTable().addPool(pool);
-		}
+			{
+				LootPool pool = LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(SimpleFarming.MOD_ID, "chests/village/savanna")).weight(1).quality(0)).build();
+				event.getTable().addPool(pool);
+			}
 		if (snowy.contains(event.getName())) 
-		{
-			LootPool pool = LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(SimpleFarming.MOD_ID, "chests/village/snowy")).weight(1).quality(0)).build();
-			event.getTable().addPool(pool);
-		}
+			{
+				LootPool pool = LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(SimpleFarming.MOD_ID, "chests/village/snowy")).weight(1).quality(0)).build();
+				event.getTable().addPool(pool);
+			}
 		if (taiga.contains(event.getName())) 
-		{
-			LootPool pool = LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(SimpleFarming.MOD_ID, "chests/village/taiga")).weight(1).quality(0)).build();
-			event.getTable().addPool(pool);
-		}
+			{
+				LootPool pool = LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(SimpleFarming.MOD_ID, "chests/village/taiga")).weight(1).quality(0)).build();
+				event.getTable().addPool(pool);
+			}
 		
 	}
 		

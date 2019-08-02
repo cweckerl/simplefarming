@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"SGS",
+		"GEG"
+	],
+	
+	"key":
+	{
+		"S": { "item": "simplefarming:spinach"},
+		"E": { "item": "minecraft:egg"},
+		"G": { "item": "simplefarming:quinoa_seeds"}
+
+	},
+	
+	"result": {"item": "simplefarming:spinach_quinoa_quiche"}
+	
+}

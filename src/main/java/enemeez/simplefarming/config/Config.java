@@ -1,7 +1,5 @@
 package enemeez.simplefarming.config;
 
-import java.io.File;
-
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
 
@@ -24,7 +22,7 @@ public class Config
 	public static void loadConfig(ForgeConfigSpec config, String path)
 	{
 		SimpleFarming.LOGGER.info("Config: " + path);
-		final CommentedFileConfig file = CommentedFileConfig.builder(new File(path)).sync().autosave().writingMode(WritingMode.REPLACE).build();
+		CommentedFileConfig file = CommentedFileConfig.builder(path).sync().autosave().writingMode(WritingMode.REPLACE).build();
 		SimpleFarming.LOGGER.info("Config built: " + path);
 		file.load();
 		SimpleFarming.LOGGER.info("Loaded Config: " + path);

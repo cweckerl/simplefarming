@@ -1,0 +1,213 @@
+{
+    "textures": {
+	"particle": "simplefarming:block/grape_leaves",
+        "grape_leaves": "simplefarming:block/grape_leaves",
+        "oak_planks": "minecraft:block/oak_planks"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "top bar",
+            "from": [ 0, 12, 7 ], 
+            "to": [ 16, 15, 9 ], 
+            "faces": {
+                "north": { "texture": "#oak_planks", "uv": [ 0, 10, 16, 13 ], "cullface": "north" },
+                "east": { "texture": "#oak_planks", "uv": [ 0, 3, 2, 6 ] },
+                "south": { "texture": "#oak_planks", "uv": [ 0, 6, 16, 9 ] },
+                "west": { "texture": "#oak_planks", "uv": [ 0, 7, 2, 10 ] },
+                "up": { "texture": "#oak_planks", "uv": [ 1, 7, 16, 9 ] },
+                "down": { "texture": "#oak_planks", "uv": [ 2, 6, 16, 8 ] }
+            }
+        },
+        {
+            "name": "leaf east inner big side ",
+            "from": [ 15, 1, 7 ], 
+            "to": [ 16, 6, 9 ], 
+            "faces": {
+                "east": { "texture": "#grape_leaves", "uv": [ 7, 10, 9, 15 ] },
+                "west": { "texture": "#grape_leaves", "uv": [ 7, 10, 9, 15 ] }
+            }
+        },
+        {
+            "name": "leaf east inner small side ",
+            "from": [ 15, 9, 7 ], 
+            "to": [ 16, 12, 9 ], 
+            "faces": {
+                "east": { "texture": "#grape_leaves", "uv": [ 7, 4, 9, 7 ] },
+                "west": { "texture": "#grape_leaves", "uv": [ 7, 4, 9, 7 ] }
+            }
+        },
+        {
+            "name": "leaf west inner big side ",
+            "from": [ 0, 1, 7 ], 
+            "to": [ 1, 6, 9 ], 
+            "faces": {
+                "east": { "texture": "#grape_leaves", "uv": [ 7, 10, 9, 15 ] },
+                "west": { "texture": "#grape_leaves", "uv": [ 7, 10, 9, 15 ] }
+            }
+        },
+        {
+            "name": "leaf west inner small side ",
+            "from": [ 0, 9, 7 ], 
+            "to": [ 1, 12, 9 ], 
+            "faces": {
+                "east": { "texture": "#grape_leaves", "uv": [ 7, 4, 9, 7 ] },
+                "west": { "texture": "#grape_leaves", "uv": [ 7, 4, 9, 7 ] }
+            }
+        },
+        {
+            "name": "leaf west inner top side ",
+            "from": [ 0, 15, 7 ], 
+            "to": [ 1, 16, 9 ], 
+            "faces": {
+                "west": { "texture": "#grape_leaves", "uv": [ 7, 0, 9, 1 ] },
+                "up": { "texture": "#grape_leaves", "uv": [ 7, 0, 8, 2 ] }
+            }
+        },
+        {
+            "name": "leaf east inner top side ",
+            "from": [ 15, 15, 7 ], 
+            "to": [ 16, 16, 9 ], 
+            "faces": {
+                "east": { "texture": "#grape_leaves", "uv": [ 7, 0, 9, 1 ] },
+                "up": { "texture": "#grape_leaves", "uv": [ 7, 0, 8, 2 ] }
+            }
+        },
+        {
+            "name": "leaf east side north",
+            "from": [ 15, 1, 9 ], 
+            "to": [ 16, 16, 16 ], 
+            "faces": {
+                "north": { "texture": "#grape_leaves", "uv": [ 0, 0, 1, 15 ] },
+                "east": { "texture": "#grape_leaves", "uv": [ 0, 0, 7, 15 ] },
+                "south": { "texture": "#grape_leaves", "uv": [ 0, 0, 1, 4 ] },
+                "west": { "texture": "#grape_leaves", "uv": [ 8, 0, 15, 15 ] },
+                "up": { "texture": "#grape_leaves", "uv": [ 11, 0, 12, 7 ] }
+            }
+        },
+        {
+            "name": "leaf east side south",
+            "from": [ 15, 1, 0 ], 
+            "to": [ 16, 16, 7 ], 
+            "faces": {
+                "north": { "texture": "#grape_leaves", "uv": [ 0, 0, 1, 15 ] },
+                "east": { "texture": "#grape_leaves", "uv": [ 9, 0, 16, 15 ] },
+                "south": { "texture": "#grape_leaves", "uv": [ 0, 0, 1, 4 ] },
+                "west": { "texture": "#grape_leaves", "uv": [ 1, 0, 8, 15 ] },
+                "up": { "texture": "#grape_leaves", "uv": [ 15, 0, 16, 7 ] }
+            }
+        },
+        {
+            "name": "leaf west side north",
+            "from": [ 0, 1, 0 ], 
+            "to": [ 1, 16, 7 ], 
+            "faces": {
+                "north": { "texture": "#grape_leaves", "uv": [ 0, 0, 1, 15 ] },
+                "east": { "texture": "#grape_leaves", "uv": [ 8, 0, 15, 15 ] },
+                "south": { "texture": "#grape_leaves", "uv": [ 0, 0, 1, 4 ] },
+                "west": { "texture": "#grape_leaves", "uv": [ 0, 0, 7, 15 ] },
+                "up": { "texture": "#grape_leaves", "uv": [ 15, 0, 16, 7 ] }
+            }
+        },
+        {
+            "name": "leaf west side south",
+            "from": [ 0, 1, 9 ], 
+            "to": [ 1, 16, 16 ], 
+            "faces": {
+                "north": { "texture": "#grape_leaves", "uv": [ 0, 0, 1, 15 ] },
+                "east": { "texture": "#grape_leaves", "uv": [ 1, 0, 8, 15 ] },
+                "south": { "texture": "#grape_leaves", "uv": [ 0, 0, 1, 4 ] },
+                "west": { "texture": "#grape_leaves", "uv": [ 9, 0, 16, 15 ] },
+                "up": { "texture": "#grape_leaves", "uv": [ 15, 0, 16, 7 ] }
+            }
+        },
+        {
+            "name": "top",
+            "from": [ 1, 15, 1 ], 
+            "to": [ 15, 16, 15 ], 
+            "faces": {
+                "east": { "texture": "#grape_leaves", "uv": [ 0, 0, 14, 1 ] },
+                "west": { "texture": "#grape_leaves", "uv": [ 0, 0, 14, 1 ] },
+                "up": { "texture": "#grape_leaves", "uv": [ 1, 1, 15, 15 ] },
+                "down": { "texture": "#grape_leaves", "uv": [ 1, 1, 15, 15 ] }
+            }
+        },
+        {
+            "name": "bot",
+            "from": [ 0, 0, 0 ], 
+            "to": [ 16, 1, 16 ], 
+            "faces": {
+                "north": { "texture": "#grape_leaves", "uv": [ 0, 15, 16, 16 ] },
+                "east": { "texture": "#grape_leaves", "uv": [ 0, 15, 16, 16 ] },
+                "south": { "texture": "#grape_leaves", "uv": [ 0, 15, 16, 16 ] },
+                "west": { "texture": "#grape_leaves", "uv": [ 0, 15, 16, 16 ] },
+                "up": { "texture": "#grape_leaves", "uv": [ 0, 0, 14, 16 ] },
+                "down": { "texture": "#grape_leaves", "uv": [ 1, 1, 16, 16 ] }
+            }
+        },
+        {
+            "name": "low bar",
+            "from": [ 0, 6, 7 ], 
+            "to": [ 16, 9, 9 ], 
+            "faces": {
+                "north": { "texture": "#oak_planks", "uv": [ 0, 10, 16, 13 ], "cullface": "north" },
+                "east": { "texture": "#oak_planks", "uv": [ 0, 3, 2, 6 ] },
+                "south": { "texture": "#oak_planks", "uv": [ 0, 6, 16, 9 ] },
+                "west": { "texture": "#oak_planks", "uv": [ 0, 7, 2, 10 ] },
+                "up": { "texture": "#oak_planks", "uv": [ 1, 7, 16, 9 ] },
+                "down": { "texture": "#oak_planks", "uv": [ 2, 6, 16, 8 ] }
+            }
+        },
+        {
+            "name": "side north",
+            "from": [ 1, 1, 0 ], 
+            "to": [ 15, 16, 1 ], 
+            "faces": {
+                "north": { "texture": "#grape_leaves", "uv": [ 1, 0, 15, 15 ] },
+                "south": { "texture": "#grape_leaves", "uv": [ 1, 0, 15, 15 ] },
+                "up": { "texture": "#grape_leaves", "uv": [ 2, 11, 16, 12 ] }
+            }
+        },
+        {
+            "name": "side south",
+            "from": [ 1, 1, 15 ], 
+            "to": [ 15, 16, 16 ], 
+            "faces": {
+                "north": { "texture": "#grape_leaves", "uv": [ 1, 0, 15, 15 ] },
+                "south": { "texture": "#grape_leaves", "uv": [ 1, 0, 15, 15 ] },
+                "up": { "texture": "#grape_leaves", "uv": [ 0, 11, 14, 12 ] }
+            }
+        }
+    ]
+}

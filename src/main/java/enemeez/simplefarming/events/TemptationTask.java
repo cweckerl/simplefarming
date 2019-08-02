@@ -35,7 +35,12 @@ public class TemptationTask
 				ModItems.spinach_seeds,
 				ModItems.squash_seeds,
 				ModItems.tomato_seeds,
-				ModItems.yam_seeds
+				ModItems.yam_seeds,
+				ModItems.ginger_seeds,
+				ModItems.grape_seeds,
+				ModItems.cumin_seeds,
+				ModItems.quinoa_seeds
+		
 			);
 	
 	private static final Ingredient WHEATS = Ingredient.fromItems(ModItems.oat, ModItems.rye, ModItems.rice, ModItems.corn);

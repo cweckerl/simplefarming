@@ -1,6 +1,7 @@
 package enemeez.simplefarming.events;
 
 import enemeez.simplefarming.SimpleFarming;
+import enemeez.simplefarming.config.GenConfig;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootPool;
 import net.minecraft.world.storage.loot.TableLootEntry;
@@ -19,6 +20,7 @@ public class GrassHarvestEvent
 
 		if (event.getName().equals(grass)) 
 		{
+			if (GenConfig.grass_drops.get() == true)
 			event.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(SimpleFarming.MOD_ID, "blocks/grass"))).build());
 		}
 	}

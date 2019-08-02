@@ -141,6 +141,11 @@ public class CustomCrop extends CropsBlock
 	        	 spawnAsEntity(worldIn, pos, new ItemStack(ModBlocks.honeydew_block, 1));
 	        	 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_STONE_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 	         }
+	         if (verify==22)
+	         {
+	        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.ginger, random));
+	        	 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+	         }
 
 	         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
 	                return true;
@@ -190,8 +195,10 @@ public class CustomCrop extends CropsBlock
 	         return ModItems.cantaloupe_seeds;
          if (verify==20)
 	         return ModItems.cassava_seeds;
-         else
+         if (verify==21)
 	         return ModItems.honeydew_seeds;
+         else
+        	 return ModItems.ginger_seeds;
 	   }
 
 	   @OnlyIn(Dist.CLIENT)
@@ -233,8 +240,10 @@ public class CustomCrop extends CropsBlock
 		         return new ItemStack(ModItems.cantaloupe_block);
 	         if (verify==20)
 		         return new ItemStack(ModItems.cassava);
-	         else
+	         if (verify==21)
 		         return new ItemStack(ModItems.honeydew_block);
+	         else
+		         return new ItemStack(ModItems.ginger);
 	   }
 	
 

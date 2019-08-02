@@ -12,7 +12,11 @@ import enemeez.simplefarming.blocks.CustomSapling;
 import enemeez.simplefarming.blocks.DoubleCrop;
 import enemeez.simplefarming.blocks.FruitLeaves;
 import enemeez.simplefarming.blocks.FruitLog;
+import enemeez.simplefarming.blocks.GrapeBlock;
+import enemeez.simplefarming.blocks.GrapeLeaves;
+import enemeez.simplefarming.blocks.GrapePlant;
 import enemeez.simplefarming.blocks.WildCrop;
+import enemeez.simplefarming.blocks.WildPlant;
 import net.minecraft.block.Block;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.HayBlock;
@@ -48,14 +52,25 @@ public class ModBlocks
 	public static Block apple_sapling;
 	public static Block apricot_sapling;
 	public static Block banana_sapling;
+	public static Block cherry_sapling;
+	public static Block mango_sapling;
 	public static Block orange_sapling;
 	public static Block plum_sapling;
 	public static Block pear_sapling;
+	
+	public static Block grape_plant;
+	public static Block grape_leaves;
+	public static Block grape_block;
+	public static Block grape_trellising_ns;
+	public static Block grape_trellising_we;
+
 	
 	//Leaves
 	public static Block apple_leaves;
 	public static Block apricot_leaves;
 	public static Block banana_leaves;
+	public static Block cherry_leaves;
+	public static Block mango_leaves;
 	public static Block orange_leaves;
 	public static Block plum_leaves;
 	public static Block pear_leaves;
@@ -69,6 +84,7 @@ public class ModBlocks
 	public static Block cucumber_crop;
 	public static Block eggplant_crop;
 	public static Block honeydew_crop;
+	public static Block ginger_crop;
 	public static Block kenaf_crop;
 	public static Block lettuce_crop;
 	public static Block oat_crop;
@@ -89,60 +105,75 @@ public class ModBlocks
 	public static Block rice_hay_block;
 	public static Block rye_hay_block;
 	
+	//Flowers
+	public static Block quinoa;
+	public static Block cumin;
+	
 	
 	//temp fix
 	public static Block wild_crop;
-
+	
 
 	public static void registerAll(RegistryEvent.Register<Block> event)
 	{ 
 	  if (!event.getName().equals(ForgeRegistries.BLOCKS.getRegistryName())) return;
-	  
 
-		cantaloupe_block = register("cantaloupe_block", new Block(		//item
+		cantaloupe_block = register("cantaloupe_block", new Block(		
 				Block.Properties.create(Material.GOURD)
 				.sound(SoundType.WOOD)
 				.hardnessAndResistance(1.0f)));
-		honeydew_block = register("honeydew_block", new Block(		//item
+		honeydew_block = register("honeydew_block", new Block(		
 				Block.Properties.create(Material.GOURD)
 				.sound(SoundType.WOOD)
 				.hardnessAndResistance(1.0f)));
-		squash_block = register("squash_block", new Block(		//item
+		squash_block = register("squash_block", new Block(		
 				Block.Properties.create(Material.GOURD)
 				.sound(SoundType.WOOD)
 				.hardnessAndResistance(1.0f)));
 		
-		apple_sapling = register("apple_sapling", new CustomSapling(		//item 
+		apple_sapling = register("apple_sapling", new CustomSapling(	
 				Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement()
 				.tickRandomly()
 				.hardnessAndResistance(0f)
 				.sound(SoundType.PLANT), 1));
-		apricot_sapling = register("apricot_sapling", new CustomSapling(		//item 
+		apricot_sapling = register("apricot_sapling", new CustomSapling(		
 				Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement()
 				.tickRandomly()
 				.hardnessAndResistance(0f)
 				.sound(SoundType.PLANT), 2));
-		banana_sapling = register("banana_sapling", new CustomSapling(		//item 
+		banana_sapling = register("banana_sapling", new CustomSapling(		
 				Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement()
 				.tickRandomly()
 				.hardnessAndResistance(0f)
 				.sound(SoundType.PLANT), 3));
-		orange_sapling = register("orange_sapling", new CustomSapling(		//item 
+		cherry_sapling = register("cherry_sapling", new CustomSapling(		
+				Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0f)
+				.sound(SoundType.PLANT), 7));
+		mango_sapling = register("mango_sapling", new CustomSapling(		
+				Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0f)
+				.sound(SoundType.PLANT), 8));
+		orange_sapling = register("orange_sapling", new CustomSapling(		
 				Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement()
 				.tickRandomly()
 				.hardnessAndResistance(0f)
 				.sound(SoundType.PLANT), 5));
-		pear_sapling = register("pear_sapling", new CustomSapling(		//item 
+		pear_sapling = register("pear_sapling", new CustomSapling(		
 				Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement()
 				.tickRandomly()
 				.hardnessAndResistance(0f)
 				.sound(SoundType.PLANT), 6));
-		plum_sapling = register("plum_sapling", new CustomSapling(		//item 
+		plum_sapling = register("plum_sapling", new CustomSapling(		
 				Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement()
 				.tickRandomly()
@@ -164,6 +195,16 @@ public class ModBlocks
 				.hardnessAndResistance(0.2F)
 				.tickRandomly()
 				.sound(SoundType.PLANT), 3 ));
+		cherry_leaves = register("cherry_leaves", new FruitLeaves(
+				Block.Properties.create(Material.LEAVES)
+				.hardnessAndResistance(0.2F)
+				.tickRandomly()
+				.sound(SoundType.PLANT), 7 ));
+		mango_leaves = register("mango_leaves", new FruitLeaves(
+				Block.Properties.create(Material.LEAVES)
+				.hardnessAndResistance(0.2F)
+				.tickRandomly()
+				.sound(SoundType.PLANT), 8 ));
 		orange_leaves = register("orange_leaves", new FruitLeaves(
 				Block.Properties.create(Material.LEAVES)
 				.hardnessAndResistance(0.2F)
@@ -185,48 +226,87 @@ public class ModBlocks
 				.hardnessAndResistance(2.0F)
 				.sound(SoundType.WOOD)));
 		
-		chocolate_cake = register("chocolate_cake", new CustomCake(		//item 
+		chocolate_cake = register("chocolate_cake", new CustomCake(		
 				Block.Properties.create(Material.CAKE)
 				.hardnessAndResistance(0.5F)
 				.sound(SoundType.CLOTH)));
 	
-		cheese_block = register("cheese_block", new CheeseBlock(		//item 
+		cheese_block = register("cheese_block", new CheeseBlock(		 
 				Block.Properties.create(Material.CAKE)
 				.hardnessAndResistance(0.5F)
 				.sound(SoundType.CLOTH)));
 
-		oat_hay_block = register("oat_hay_block", new HayBlock(				//item 
+		oat_hay_block = register("oat_hay_block", new HayBlock(				
 				Block.Properties.create(Material.ORGANIC, MaterialColor.YELLOW)
 				.hardnessAndResistance(0.5F)
 				.sound(SoundType.PLANT)));
-		rice_hay_block = register("rice_hay_block", new HayBlock(				//item 
+		rice_hay_block = register("rice_hay_block", new HayBlock(				 
 				Block.Properties.create(Material.ORGANIC, MaterialColor.GREEN)
 				.hardnessAndResistance(0.5F)
 				.sound(SoundType.PLANT)));
-		rye_hay_block = register("rye_hay_block", new HayBlock(				//item 
+		rye_hay_block = register("rye_hay_block", new HayBlock(				
 				Block.Properties.create(Material.ORGANIC, MaterialColor.GREEN)
 				.hardnessAndResistance(0.5F)
 				.sound(SoundType.PLANT)));
 		
-		blackberry_bush = register("blackberry_bush", new CustomBush(				//item 
+		cumin = register("cumin", new WildPlant(				
+				(Block.Properties.create(Material.PLANTS)
+				.tickRandomly()
+				.doesNotBlockMovement()
+				.hardnessAndResistance(0.2f)
+				.sound(SoundType.PLANT)),1));		
+		quinoa = register("quinoa", new WildPlant(				
+				(Block.Properties.create(Material.PLANTS)
+				.tickRandomly()
+				.doesNotBlockMovement()
+				.hardnessAndResistance(0.2f)
+				.sound(SoundType.PLANT)),2));
+
+		grape_plant = register("grape_plant", new GrapePlant(				
+				(Block.Properties.create(Material.PLANTS)
+				.tickRandomly()
+				.hardnessAndResistance(2.0F)
+				.sound(SoundType.WOOD))));
+		grape_leaves = register("grape_leaves", new GrapeLeaves(
+				Block.Properties.create(Material.LEAVES)
+				.hardnessAndResistance(0.2F)
+				.tickRandomly()
+				.sound(SoundType.PLANT)));
+		grape_trellising_ns = register("grape_trellising_ns", new GrapeLeaves(
+				Block.Properties.create(Material.LEAVES)
+				.hardnessAndResistance(0.2F)
+				.tickRandomly()
+				.sound(SoundType.PLANT)));
+		grape_trellising_we = register("grape_trellising_we", new GrapeLeaves(
+				Block.Properties.create(Material.LEAVES)
+				.hardnessAndResistance(0.2F)
+				.tickRandomly()
+				.sound(SoundType.PLANT)));
+		grape_block = register("grape_block", new GrapeBlock(
+				Block.Properties.create(Material.ORGANIC)
+				.hardnessAndResistance(0.2F)
+				.doesNotBlockMovement()
+				.sound(SoundType.SWEET_BERRY_BUSH)));
+		
+		blackberry_bush = register("blackberry_bush", new CustomBush(				
 				(Block.Properties.create(Material.PLANTS)
 				.tickRandomly()
 				.doesNotBlockMovement()
 				.hardnessAndResistance(0.2f)
 				.sound(SoundType.SWEET_BERRY_BUSH)),1));
-		blueberry_bush = register("blueberry_bush", new CustomBush(				//item 
+		blueberry_bush = register("blueberry_bush", new CustomBush(				
 				(Block.Properties.create(Material.PLANTS)
 				.tickRandomly()
 				.doesNotBlockMovement()
 				.hardnessAndResistance(0.2f)
 				.sound(SoundType.SWEET_BERRY_BUSH)),2));
-		raspberry_bush = register("raspberry_bush", new CustomBush(				//item 
+		raspberry_bush = register("raspberry_bush", new CustomBush(			
 				(Block.Properties.create(Material.PLANTS)
 				.tickRandomly()
 				.doesNotBlockMovement()
 				.hardnessAndResistance(0.2f)
 				.sound(SoundType.SWEET_BERRY_BUSH)),3));
-		strawberry_bush = register("strawberry_bush", new CustomBush(				//item 
+		strawberry_bush = register("strawberry_bush", new CustomBush(				
 				(Block.Properties.create(Material.PLANTS)
 				.tickRandomly()
 				.doesNotBlockMovement()
@@ -294,6 +374,13 @@ public class ModBlocks
 				.tickRandomly()
 				.hardnessAndResistance(0)
 				.sound(SoundType.CROP), 21));
+		
+		ginger_crop = register("ginger_crop", new CustomCrop
+				(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0)
+				.sound(SoundType.CROP), 22));
 		
 		kenaf_crop = register("kenaf_crop", new DoubleCrop
 				(Block.Properties.create(Material.PLANTS)
@@ -391,7 +478,6 @@ public class ModBlocks
 				.doesNotBlockMovement()
 				.hardnessAndResistance(0)
 				.sound(SoundType.PLANT)));
-
 	}
 	
 	   private static <T extends Block> T register(String name, T block) 

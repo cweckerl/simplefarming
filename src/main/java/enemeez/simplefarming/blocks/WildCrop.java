@@ -26,7 +26,7 @@ public class WildCrop extends BushBlock
 	   }
 
 	   public Block.OffsetType getOffsetType() {
-	      return Block.OffsetType.XYZ;
+	      return Block.OffsetType.XZ;
 	   }
 	   
 	   

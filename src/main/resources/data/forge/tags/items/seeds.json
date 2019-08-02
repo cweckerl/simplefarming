@@ -21,6 +21,10 @@
 		"#forge:seeds/spinach_seeds",
 		"#forge:seeds/squash_seeds",
 		"#forge:seeds/tomato_seeds",
+		"#forge:seeds/grape_seeds",
+		"#forge:seeds/ginger_seeds",
+		"#forge:seeds/cumin_seeds",
+		"#forge:seeds/quinoa_seeds",
 		"#forge:seeds/yam_seeds"
 	]
 }

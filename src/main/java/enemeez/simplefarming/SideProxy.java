@@ -50,11 +50,13 @@ public class SideProxy
 			{
 				SimpleFarming.LOGGER.debug("common setup");
 				
+				if (GenConfig.squid_drops.get() == true )
 				 MinecraftForge.EVENT_BUS.register(new SquidEvent());
 				 MinecraftForge.EVENT_BUS.register(new VillageHouseLoot());
-				 if (GenConfig.grass_drops.get() == true)
-				 MinecraftForge.EVENT_BUS.register(new GrassHarvestEvent());
 				 MinecraftForge.EVENT_BUS.register(new TemptationTask());
+				 MinecraftForge.EVENT_BUS.register(new GrassHarvestEvent());
+
+				 
 
 
 				if (ModWorldGen.fruit_tree != null) 
@@ -80,7 +82,7 @@ public class SideProxy
 					for (Biome biome : ForgeRegistries.BIOMES)
 					{
 						biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModWorldGen.wild_crop, IFeatureConfig.NO_FEATURE_CONFIG, Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
-						
+
 					}
 				}
 			
@@ -92,6 +94,17 @@ public class SideProxy
 					});
 				
 				}
+				
+				if (ModWorldGen.wild_plant != null) 
+				{
+					for (Biome biome : ForgeRegistries.BIOMES)
+					{
+						biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModWorldGen.wild_plant, IFeatureConfig.NO_FEATURE_CONFIG, Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
+
+					}
+				}
+				
+				
 				
 				CompostItems.register();
 

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "simplefarming:block/grape_trunk0" },
+        "age=1": { "model": "simplefarming:block/grape_trunk1" },
+        "age=2": { "model": "simplefarming:block/grape_trunk2" },
+        "age=3": { "model": "simplefarming:block/grape_trunk3" }
+    }
+}

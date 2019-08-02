@@ -13,6 +13,7 @@ public class FoodTier
 	public static final Food CORN = (new Food.Builder()).hunger(4).saturation(0.6F).build();
 	public static final Food CUCUMBER = (new Food.Builder()).hunger(3).saturation(0.6F).build();
 	public static final Food EGGPLANT = (new Food.Builder()).hunger(3).saturation(0.6F).build();
+	public static final Food GINGER = (new Food.Builder()).hunger(2).saturation(0.3F).build();
 	public static final Food ONION = (new Food.Builder()).hunger(3).saturation(0.3F).build();
 	public static final Food PEPPER = (new Food.Builder()).hunger(2).saturation(0.3F).build();
 	public static final Food RADISH = (new Food.Builder()).hunger(1).saturation(0.6F).build();
@@ -80,8 +81,20 @@ public class FoodTier
 	public static final Food VEGETABLE_MEDLEY = (new Food.Builder()).hunger(6).saturation(0.6F).build();
 	public static final Food VEGGIE_BURGER = (new Food.Builder()).hunger(16).saturation(0.6F).build();
 	
+	public static final Food TOFU_SCRAMBLE = (new Food.Builder()).hunger(12).saturation(0.6F).build();
+	public static final Food RAISINS = (new Food.Builder()).hunger(8).saturation(0.6F).build();
+	public static final Food CHICKEN_NOODLE_SOUP = (new Food.Builder()).hunger(13).saturation(0.6F).build();
+	public static final Food QUINOA_SALAD = (new Food.Builder()).hunger(5).saturation(0.6F).build();
+	public static final Food SQUASH_SOUP = (new Food.Builder()).hunger(12).saturation(0.6F).build();
+	public static final Food SPINACH_QUINOA_QUICHE = (new Food.Builder()).hunger(10).saturation(0.6F).build();
+	public static final Food BEEF_CURRY = (new Food.Builder()).hunger(18).saturation(0.8F).build();
+	public static final Food CHICKEN_CURRY = (new Food.Builder()).hunger(16).saturation(0.6F).build();
+	public static final Food MUTTON_CURRY = (new Food.Builder()).hunger(16).saturation(0.8F).build();
+	public static final Food PORK_CURRY = (new Food.Builder()).hunger(18).saturation(0.8F).build();
+	public static final Food VEGETABLE_CURRY = (new Food.Builder()).hunger(12).saturation(0.6F).build();
 	
-
+	//POWDER 5.334 + 5 + MEAT
+	
 
 
 

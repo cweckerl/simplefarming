@@ -21,7 +21,7 @@ public class SimpleFarming
     		{
 				public ItemStack createIcon() 
 				{
-					return new ItemStack(ModItems.tomato);
+					return new ItemStack(ModItems.grapes);
 				}
 				
     		};

@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "simplefarming:tofu"
+    },
+    {
+      "item": "simplefarming:onion"
+    },
+    {
+      "item": "simplefarming:tomato"
+    }
+
+
+	],
+	
+	"result": {"item": "simplefarming:tofu_scramble"}
+	
+}

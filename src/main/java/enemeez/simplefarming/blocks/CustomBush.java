@@ -33,7 +33,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 	{
 		private int verify;
 		public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-		private static final VoxelShape BOX = Block.makeCuboidShape(1.0D, 2.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+		protected static final VoxelShape SHAPE = Block.makeCuboidShape(1.0D, 2.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
 		public CustomBush(Block.Properties p_i49971_1_, int verify) 
 		 {
@@ -41,6 +41,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 		    this.verify=verify;
 		    this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
 		 }
+		
+		   public static void generateBush(IWorld world, BlockPos pos, Random random) 
+		   	{
+				   world.setBlockState(pos, ModBlocks.wild_crop.getDefaultState(), 3);
+		   	}
 
 		   @OnlyIn(Dist.CLIENT)
 		   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
@@ -57,7 +62,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 		   public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) 
 		   {
-			   return BOX;
+			   return SHAPE;
 		   }
 
 		   @SuppressWarnings("deprecation")
@@ -78,9 +83,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 				 {
 			         int random = (int)((Math.random()*4)+1);
 			         if (verify==1)
-			         {
 			        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.blackberries, random));
-			         }
 			         if (verify==2)
 				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.blueberries, random));
 			         if (verify==3)

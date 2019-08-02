@@ -19,6 +19,7 @@
 	"block.simplefarming.cucumber_crop": "Cucumber Crop",
 	"block.simplefarming.eggplant_crop": "Eggplant Crop",
 	"block.simplefarming.honeydew_crop": "Honeydew Crop",
+	"block.simplefarming.ginger_crop": "Ginger Crop",
 	"block.simplefarming.kenaf_crop": "Kenaf Crop",
 	"block.simplefarming.lettuce_crop": "Lettuce Crop",
 	"block.simplefarming.oat_crop": "Oat Crop",
@@ -34,6 +35,12 @@
 	"block.simplefarming.wild_crop": "Wild Crop",
 	"block.simplefarming.yam_crop": "Yam Crop",
 	
+	"block.simplefarming.grape_plant": "Grape Plant",
+	"block.simplefarming.grape_block": "Grapes",
+	"block.simplefarming.grape_leaves": "Grape Leaves",
+	"block.simplefarming.grape_leaves_ns": "Grape Leaves",
+	"block.simplefarming.grape_leaves_we": "Grape Leaves",
+	
 	"block.simplefarming.carrot_crop": "Carrot Crop",
 	"block.simplefarming.potato_crop": "Potato Crop",
 	
@@ -45,6 +52,8 @@
 	"item.simplefarming.cucumber_seeds": "Cucumber Seeds",
 	"item.simplefarming.eggplant_seeds": "Eggplant Seeds",
 	"item.simplefarming.honeydew_seeds": "Honeydew Seeds",
+	"item.simplefarming.ginger_seeds": "Ginger Seeds",
+	"item.simplefarming.grape_seeds": "Grape Seeds",
 	"item.simplefarming.kenaf_seeds": "Kenaf Seeds",
 	"item.simplefarming.lettuce_seeds": "Lettuce Seeds",
 	"item.simplefarming.oat_seeds": "Oat Seeds",
@@ -60,8 +69,16 @@
 	"item.simplefarming.tomato_seeds": "Tomato Seeds",
 	"item.simplefarming.yam_seeds": "Yam Seeds",
 	
+	"item.simplefarming.cumin_seeds": "Cumin Seeds",
+	"item.simplefarming.quinoa_seeds": "Quinoa Seeds",
+	
+	"item.simplefarming.curry_powder": "Curry Powder",
+	
 	"item.simplefarming.apricot": "Apricot",
 	"item.simplefarming.banana": "Banana",
+	"item.simplefarming.cherries": "Cherries",
+	"item.simplefarming.grapes": "Grapes",
+	"item.simplefarming.mango": "Mango",
 	"item.simplefarming.orange": "Orange",
 	"item.simplefarming.pear": "Pear",
 	"item.simplefarming.plum": "Plum",
@@ -78,6 +95,7 @@
 	"item.simplefarming.cucumber": "Cucumber",
 	"item.simplefarming.eggplant": "Eggplant",
 	"item.simplefarming.habanero": "Habanero",
+	"item.simplefarming.ginger": "Ginger",
 	"item.simplefarming.lettuce": "Lettuce",
 	"item.simplefarming.oat": "Oat",
 	"item.simplefarming.onion": "Onion",
@@ -98,6 +116,8 @@
 	"block.simplefarming.apple_leaves": "Apple Leaves",
 	"block.simplefarming.apricot_leaves": "Apricot Leaves",
 	"block.simplefarming.banana_leaves": "Banana Leaves",
+	"block.simplefarming.cherry_leaves": "Cherry Leaves",
+	"block.simplefarming.mango_leaves": "Mango Leaves",
 	"block.simplefarming.orange_leaves": "Orange Leaves",
 	"block.simplefarming.pear_leaves": "Pear Leaves",
 	"block.simplefarming.plum_leaves": "Plum Leaves",
@@ -105,6 +125,8 @@
 	"block.simplefarming.apple_sapling": "Apple Sapling",
 	"block.simplefarming.apricot_sapling": "Apricot Sapling",
 	"block.simplefarming.banana_sapling": "Banana Sapling",
+	"block.simplefarming.cherry_sapling": "Cherry Sapling",
+	"block.simplefarming.mango_sapling": "Mango Sapling",
 	"block.simplefarming.orange_sapling": "Orange Sapling",
 	"block.simplefarming.pear_sapling": "Pear Sapling",
 	"block.simplefarming.plum_sapling": "Plum Sapling",
@@ -119,6 +141,7 @@
 	"item.simplefarming.apricot_pie": "Apricot Pie",
 	"item.simplefarming.blackberry_pie": "Blackberry Pie",
 	"item.simplefarming.blueberry_pie": "Blueberry Pie",
+	"item.simplefarming.cherry_pie": "Cherry Pie",
 	"item.simplefarming.pear_pie": "Pear Pie",
 	"item.simplefarming.plum_pie": "Plum Pie",
 	"item.simplefarming.raspberry_pie": "Raspberry Pie",
@@ -181,6 +204,20 @@
 	"item.simplefarming.oat_bread": "Oat Bread",
 	"item.simplefarming.rice_bread": "Rice Bread",
 	"item.simplefarming.rye_bread": "Rye Bread",
+	
+	"item.simplefarming.raisins": "Raisins",
+	"item.simplefarming.spinach_quinoa_quiche": "Spinach Quinoa Quiche",
+	"item.simplefarming.chicken_noodle_soup": "Chicken Noodle Soup",
+	"item.simplefarming.squash_soup": "Squash Soup",
+	"item.simplefarming.quinoa_salad": "Quinoa Salad",
+	"item.simplefarming.tofu_scramble": "Tofu Scramble",
+	
+	"item.simplefarming.beef_curry": "Beef Curry",
+	"item.simplefarming.chicken_curry": "Chicken Curry",
+	"item.simplefarming.mutton_curry": "Mutton Curry",
+	"item.simplefarming.pork_curry": "Pork Curry",
+	"item.simplefarming.vegetable_curry": "Vegetable Curry",
+
 	
 	
 	
