@@ -59,6 +59,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 		         else
 		        	  return new ItemStack(ModItems.strawberry_bush);
 		   }
+		   
 
 		   public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) 
 		   {

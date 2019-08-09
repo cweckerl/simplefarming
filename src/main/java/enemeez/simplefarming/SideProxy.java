@@ -1,11 +1,7 @@
 package enemeez.simplefarming;
 
 import enemeez.simplefarming.config.Config;
-import enemeez.simplefarming.config.GenConfig;
-import enemeez.simplefarming.events.GrassHarvestEvent;
-import enemeez.simplefarming.events.SquidEvent;
 import enemeez.simplefarming.events.TemptationTask;
-import enemeez.simplefarming.events.VillageHouseLoot;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
 import enemeez.simplefarming.init.ModWorldGen;
@@ -33,7 +29,7 @@ public class SideProxy
 {
 		SideProxy()
 		{
-			ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.config, "simplefarming.toml");
+			ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.CONFIG, "simplefarming.toml");
 			FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::commonSetup);
 	        FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::enqueueIMC);
 	        FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::processIMC);
@@ -41,7 +37,7 @@ public class SideProxy
 	        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModItems::registerAll);
 	        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModWorldGen::registerAll);
 	        
-	        Config.loadConfig(Config.config, FMLPaths.CONFIGDIR.get().resolve("simplefarming.toml").toString());
+	        Config.loadConfig(Config.CONFIG, FMLPaths.CONFIGDIR.get().resolve("simplefarming.toml").toString());
 
 	        MinecraftForge.EVENT_BUS.addListener(SideProxy::serverStarting);
 		}
@@ -50,14 +46,8 @@ public class SideProxy
 			{
 				SimpleFarming.LOGGER.debug("common setup");
 				
-				if (GenConfig.squid_drops.get() == true )
-				 MinecraftForge.EVENT_BUS.register(new SquidEvent());
-				 MinecraftForge.EVENT_BUS.register(new VillageHouseLoot());
 				 MinecraftForge.EVENT_BUS.register(new TemptationTask());
-				 MinecraftForge.EVENT_BUS.register(new GrassHarvestEvent());
-
 				 
-
 
 				if (ModWorldGen.fruit_tree != null) 
 				{
@@ -104,11 +94,8 @@ public class SideProxy
 					}
 				}
 				
-				
-				
 				CompostItems.register();
 
-				
 			}
 		
 		private static void enqueueIMC(final InterModEnqueueEvent event){

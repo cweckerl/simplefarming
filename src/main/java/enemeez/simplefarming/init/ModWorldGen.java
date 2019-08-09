@@ -1,7 +1,7 @@
 package enemeez.simplefarming.init;
 
 import enemeez.simplefarming.SimpleFarming;
-import enemeez.simplefarming.config.GenConfig;
+import enemeez.simplefarming.config.EnableConfig;
 import enemeez.simplefarming.world.gen.BerryBushFeature;
 import enemeez.simplefarming.world.gen.CactusCropFeature;
 import enemeez.simplefarming.world.gen.FruitTreeFeature;
@@ -30,15 +30,15 @@ public class ModWorldGen
 		IForgeRegistry<Feature<?>> r = event.getRegistry();
 		
 		
-		if (GenConfig.tree_validate.get() == true)
+		if (EnableConfig.tree_validate.get())
 		fruit_tree = register(r , new FruitTreeFeature(NoFeatureConfig::deserialize), "fruit_tree");
-		if (GenConfig.bush_validate.get() == true)
+		if (EnableConfig.bush_validate.get())
 		berry_bush = register(r , new BerryBushFeature(NoFeatureConfig::deserialize), "berry_bush");
-		if (GenConfig.cactus_validate.get() == true)
+		if (EnableConfig.cactus_validate.get())
 		cactus_crop = register(r , new CactusCropFeature(NoFeatureConfig::deserialize), "cactus_crop");
-		if (GenConfig.wild_crop_validate.get() == true)
+		if (EnableConfig.wild_crop_validate.get())
 		wild_crop = register(r , new WildCropFeature(NoFeatureConfig::deserialize), "wild_crop");
-		if (GenConfig.wild_plant_validate.get() == true)
+		if (EnableConfig.wild_plant_validate.get())
 			wild_plant = register(r , new WildPlantFeature(NoFeatureConfig::deserialize), "wild_plant");
 		
 	}

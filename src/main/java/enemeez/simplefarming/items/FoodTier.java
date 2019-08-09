@@ -22,7 +22,6 @@ public class FoodTier
 	public static final Food TOMATO = (new Food.Builder()).hunger(3).saturation(0.6F).build();
 	public static final Food YAM = (new Food.Builder()).hunger(1).saturation(0.3F).build();
 	
-	
 	public static final Food BAKED_YAM = (new Food.Builder()).hunger(5).saturation(0.6F).build();
 	public static final Food GOLDEN_HABANERO = (new Food.Builder()).hunger(2).saturation(1.2F).effect(new EffectInstance(Effects.FIRE_RESISTANCE, 1200, 1), 1.0F).setAlwaysEdible().build();
 	public static final Food BERRY_PIE = (new Food.Builder()).hunger(6).saturation(0.3F).build();
@@ -92,12 +91,6 @@ public class FoodTier
 	public static final Food MUTTON_CURRY = (new Food.Builder()).hunger(16).saturation(0.8F).build();
 	public static final Food PORK_CURRY = (new Food.Builder()).hunger(18).saturation(0.8F).build();
 	public static final Food VEGETABLE_CURRY = (new Food.Builder()).hunger(12).saturation(0.6F).build();
-	
-	//POWDER 5.334 + 5 + MEAT
-	
-
-
-
 
 
 }

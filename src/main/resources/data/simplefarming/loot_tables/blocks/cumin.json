@@ -7,6 +7,16 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "simplefarming:cumin_seeds"
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "name": "cumin1",
+      "entries": [
+        {
+          "type": "minecraft:item",
           "functions": [
             {
               "function": "minecraft:apply_bonus",
@@ -31,10 +41,5 @@
         }
       ]
     }
-  ],
-  "functions": [
-    {
-      "function": "minecraft:explosion_decay"
-    }
   ]
-}
+ }

@@ -5,6 +5,7 @@ import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
+import net.minecraft.block.FarmlandBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -34,6 +35,10 @@ public class CustomCrop extends CropsBlock
 
 	   this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
 	}
+	
+	protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+	      return state.getBlock() instanceof FarmlandBlock;
+	   }
 	
 	public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
 	{

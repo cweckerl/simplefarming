@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.CropsBlock;
+import net.minecraft.block.FarmlandBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.RavagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -47,7 +48,7 @@ public class DoubleCrop extends CropsBlock
 
 	   protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) 
 	   {
-		   return state.getBlock() == Blocks.FARMLAND;
+		   return state.getBlock() instanceof FarmlandBlock;
 	      
 	   }
 	   
