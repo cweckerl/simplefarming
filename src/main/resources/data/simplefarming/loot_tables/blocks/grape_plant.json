@@ -3,7 +3,17 @@
   "pools": [
     {
       "rolls": 1.0,
-      "name": "grape_plant0",
+      "name": "grape0",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:grape_seeds"
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "name": "grape1",
       "entries": [
         {
           "type": "minecraft:item",
@@ -31,10 +41,5 @@
         }
       ]
     }
-  ],
-  "functions": [
-    {
-      "function": "minecraft:explosion_decay"
-    }
   ]
-}
+ }

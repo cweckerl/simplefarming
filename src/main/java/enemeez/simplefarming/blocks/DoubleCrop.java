@@ -100,10 +100,7 @@ public class DoubleCrop extends CropsBlock
 				 if (this.getAge(state) == 7) //5
 				 {
 					int random = (int)((Math.random()*4)+1);
-					if(verify==1)
-						spawnAsEntity(worldIn, pos, new ItemStack(ModItems.corn, random));
-					else
-						spawnAsEntity(worldIn, pos, new ItemStack(ModItems.kenaf_fiber, random));	
+					spawnAsEntity(worldIn, pos, new ItemStack(getItem(worldIn, pos, state).getItem(), random));
 			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 			         worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
 			         worldIn.setBlockState(pos.down(), state.with(AGE, Integer.valueOf(0)), 3);

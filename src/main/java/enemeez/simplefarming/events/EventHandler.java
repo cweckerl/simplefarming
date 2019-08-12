@@ -23,7 +23,6 @@ public class EventHandler
 	@SubscribeEvent
 	public static void onGrassBroken(BreakEvent event) 
 	{
-		
 			stacks = new ArrayList<ItemStack>();
 			stacks.add(new ItemStack(ModItems.cantaloupe_seeds));
 			stacks.add(new ItemStack(ModItems.carrot_seeds));
@@ -49,13 +48,14 @@ public class EventHandler
 			stacks.add(new ItemStack(ModItems.ginger_seeds));
 			stacks.add(new ItemStack(ModItems.grape_seeds));
 		
-			if (event.getState().getBlock() == Blocks.GRASS)
+			if (event.getState().getBlock() == Blocks.GRASS || event.getState().getBlock() == Blocks.TALL_GRASS)
 			{
 				if (Math.random() < 0.125)
 				{
 					if (event.getPlayer().getHeldItemMainhand().getItem() != Items.SHEARS)
 					{
 						event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState(), 2);
+						if (!event.getPlayer().isCreative())
 						event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), stacks.get((int)((Math.random()*23)+1))));
 					}
 				}

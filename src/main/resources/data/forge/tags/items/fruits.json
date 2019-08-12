@@ -1,0 +1,21 @@
+{
+	"replace": false,
+	"values": [
+		"#forge:fruits/apricot",
+		"#forge:fruits/banana",
+		"#forge:fruits/blackberries",
+		"#forge:fruits/blueberries",
+		"#forge:fruits/cactus_fruit",
+		"#forge:fruits/cantaloupe",
+		"#forge:fruits/cherries",
+		"#forge:fruits/grapes",
+		"#forge:fruits/honeydew",
+		"#forge:fruits/mango",
+		"#forge:fruits/orange",
+		"#forge:fruits/pear",
+		"#forge:fruits/plum",
+		"#forge:fruits/raspberries",
+		"#forge:fruits/strawberries"
+
+	]
+}

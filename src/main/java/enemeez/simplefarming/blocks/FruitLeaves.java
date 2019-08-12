@@ -98,24 +98,9 @@ public class FruitLeaves extends BushBlock implements IGrowable
 			 {
 				 if (state.get(AGE) == 7) 
 				 {
-		         	if (verify == 1)
-			         spawnAsEntity(worldIn, pos, new ItemStack(Items.APPLE, 1));
-		         	if (verify == 2)
-				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.apricot, 1));
-		         	if (verify == 3)
-				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.banana, 1));
-		         	if (verify == 4)
-				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.plum, 1));
-		         	if (verify == 5)
-				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.orange, 1));
-		         	if (verify == 6)
-				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.pear, 1));
-		         	if (verify == 7)
-				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.cherries, 1));
-		         	if (verify == 8)
-				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.mango, 1));
-		         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_LILY_PAD_PLACE, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
+					 spawnAsEntity(worldIn, pos, new ItemStack(getItem(worldIn, pos, state).getItem(), 1));
+					 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_LILY_PAD_PLACE, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+					 worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
 	                return true;
 	             } 
 			 else 
@@ -188,6 +173,7 @@ public class FruitLeaves extends BushBlock implements IGrowable
 	      int i = Math.min(7, state.get(AGE) + 1);
 	      worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i)), 2);
 	   }
+
 	  
 	   
 	}	
