@@ -22,6 +22,10 @@ public class Config
 		BUILDER.push("Enable/Disable World Generation Features");
 		EnableConfig.init(BUILDER);
 		BUILDER.pop();
+		
+		BUILDER.push("Enable/Disable Miscellaneous Features");
+		FeatureConfig.init(BUILDER);
+		BUILDER.pop();
 
 		CONFIG = BUILDER.build();
 	}

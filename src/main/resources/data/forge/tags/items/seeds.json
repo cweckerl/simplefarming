@@ -25,6 +25,8 @@
 		"#forge:seeds/ginger_seeds",
 		"#forge:seeds/cumin_seeds",
 		"#forge:seeds/quinoa_seeds",
+		"#forge:seeds/sorghum_seeds",
+		"#forge:seeds/peanut_seeds",
 		"#forge:seeds/yam_seeds"
 	]
 }

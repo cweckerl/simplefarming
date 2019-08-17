@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "simplefarming:strawberries"
+    },
+    {
+      "item": "simplefarming:strawberries"
+    },
+    {
+      "item": "simplefarming:strawberries"
+    }
+
+	],
+	
+	"result": {"item": "minecraft:red_dye"}
+	
+}

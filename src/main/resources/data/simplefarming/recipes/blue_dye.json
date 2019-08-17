@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "simplefarming:blueberries"
+    },
+    {
+      "item": "simplefarming:blueberries"
+    },
+    {
+      "item": "simplefarming:blueberries"
+    }
+
+	],
+	
+	"result": {"item": "minecraft:blue_dye"}
+	
+}

@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "tag": "simplefarming:bread"
+    },
+    {
+      "item": "minecraft:cooked_beef"
+    },
+    {
+      "tag": "simplefarming:peppers"
+    },
+    {
+      "item": "simplefarming:cheese_slice"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:italian_beef"}
+	
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "simplefarming:block/slim_crop",
+    "textures": {
+        "slim_crop": "simplefarming:block/peanut_crop3"
+    }
+}

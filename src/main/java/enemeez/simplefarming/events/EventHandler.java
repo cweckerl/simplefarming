@@ -3,6 +3,7 @@ package enemeez.simplefarming.events;
 import java.util.ArrayList;
 
 import enemeez.simplefarming.SimpleFarming;
+import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.ItemEntity;
@@ -25,7 +26,6 @@ public class EventHandler
 	{
 			stacks = new ArrayList<ItemStack>();
 			stacks.add(new ItemStack(ModItems.cantaloupe_seeds));
-			stacks.add(new ItemStack(ModItems.carrot_seeds));
 			stacks.add(new ItemStack(ModItems.cassava_seeds));
 			stacks.add(new ItemStack(ModItems.corn_seeds));
 			stacks.add(new ItemStack(ModItems.cucumber_seeds));
@@ -35,7 +35,6 @@ public class EventHandler
 			stacks.add(new ItemStack(ModItems.lettuce_seeds));
 			stacks.add(new ItemStack(ModItems.oat_seeds));
 			stacks.add(new ItemStack(ModItems.onion_seeds));
-			stacks.add(new ItemStack(ModItems.potato_seeds));
 			stacks.add(new ItemStack(ModItems.pepper_seeds));
 			stacks.add(new ItemStack(ModItems.radish_seeds));
 			stacks.add(new ItemStack(ModItems.rice_seeds));
@@ -47,6 +46,17 @@ public class EventHandler
 			stacks.add(new ItemStack(ModItems.yam_seeds));
 			stacks.add(new ItemStack(ModItems.ginger_seeds));
 			stacks.add(new ItemStack(ModItems.grape_seeds));
+			stacks.add(new ItemStack(ModItems.sorghum_seeds));
+			stacks.add(new ItemStack(ModItems.peanut_seeds));
+			
+			if (FeatureConfig.vanilla_seed_drops.get())
+			{
+				stacks.add(new ItemStack(Items.MELON_SEEDS));
+				stacks.add(new ItemStack(Items.PUMPKIN_SEEDS));
+				stacks.add(new ItemStack(Items.BEETROOT_SEEDS));
+				stacks.add(new ItemStack(ModItems.carrot_seeds));
+				stacks.add(new ItemStack(ModItems.potato_seeds));
+			}
 		
 			if (event.getState().getBlock() == Blocks.GRASS || event.getState().getBlock() == Blocks.TALL_GRASS)
 			{
@@ -56,7 +66,11 @@ public class EventHandler
 					{
 						event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState(), 2);
 						if (!event.getPlayer().isCreative())
-						event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), stacks.get((int)((Math.random()*23)+1))));
+						{
+							int random = (int)((Math.random()*(stacks.size()))+1);
+							event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), stacks.get(random)));
+						}
+							
 					}
 				}
 				

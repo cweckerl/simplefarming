@@ -5,6 +5,8 @@
 		"simplefarming:oat_bread",
 		"simplefarming:rye_bread",
 		"simplefarming:rice_bread",
+		"simplefarming:sorghum_bread",
+		"simplefarming:cornbread",
 		"minecraft:bread"
 	]
 }

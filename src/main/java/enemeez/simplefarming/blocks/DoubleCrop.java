@@ -227,8 +227,10 @@ public class DoubleCrop extends CropsBlock
 	   {
 		   if(verify==1)
 				return ModItems.corn_seeds;
-			else
+		   if(verify==2)
 				return ModItems.kenaf_seeds;
+		   else
+			   return ModItems.sorghum_seeds;
 	   }
 
 	   @OnlyIn(Dist.CLIENT)
@@ -236,8 +238,10 @@ public class DoubleCrop extends CropsBlock
 	   {
 		   if(verify==1)
 				return new ItemStack(ModItems.corn);
-			else
+			if (verify==2)
 				return new ItemStack(ModItems.kenaf_fiber);
+			else 
+				return new ItemStack(ModItems.sorghum);
 	   }
 
 	   /**

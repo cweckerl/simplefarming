@@ -39,7 +39,7 @@ public class ModWorldGen
 		if (EnableConfig.wild_crop_validate.get())
 		wild_crop = register(r , new WildCropFeature(NoFeatureConfig::deserialize), "wild_crop");
 		if (EnableConfig.wild_plant_validate.get())
-			wild_plant = register(r , new WildPlantFeature(NoFeatureConfig::deserialize), "wild_plant");
+		wild_plant = register(r , new WildPlantFeature(NoFeatureConfig::deserialize), "wild_plant");
 		
 	}
 	

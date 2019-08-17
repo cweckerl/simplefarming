@@ -89,11 +89,13 @@ public class ModBlocks
 	public static Block lettuce_crop;
 	public static Block oat_crop;
 	public static Block onion_crop;
+	public static Block peanut_crop;
 	public static Block pepper_crop;
 	public static Block potato_crop;
 	public static Block radish_crop;
 	public static Block rice_crop;
 	public static Block rye_crop;
+	public static Block sorghum_crop;
 	public static Block soybean_crop;
 	public static Block spinach_crop;
 	public static Block squash_crop;
@@ -410,6 +412,13 @@ public class ModBlocks
 				.hardnessAndResistance(0)
 				.sound(SoundType.CROP), 5));
 		
+		peanut_crop = register("peanut_crop", new CustomCrop
+				(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0)
+				.sound(SoundType.CROP), 23));
+		
 		pepper_crop = register("pepper_crop", new CustomCrop
 				(Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement()
@@ -444,6 +453,13 @@ public class ModBlocks
 				.tickRandomly()
 				.hardnessAndResistance(0)
 				.sound(SoundType.CROP), 9));
+		
+		sorghum_crop = register("sorghum_crop", new DoubleCrop
+				(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0)
+				.sound(SoundType.CROP), ModItems.sorghum_seeds, 3));
 		
 		soybean_crop = register("soybean_crop", new CustomCrop
 				(Block.Properties.create(Material.PLANTS)

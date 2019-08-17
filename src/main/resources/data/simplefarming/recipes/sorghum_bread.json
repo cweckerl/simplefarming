@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"GBG"
+	],
+	
+	"key":
+	{
+		"G": { "tag": "simplefarming:grain"},
+		"B": { "item": "simplefarming:sorghum"}
+
+	},
+	
+	"result": {"item": "simplefarming:sorghum_bread"}
+	
+}

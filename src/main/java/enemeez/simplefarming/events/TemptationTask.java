@@ -39,11 +39,12 @@ public class TemptationTask
 				ModItems.ginger_seeds,
 				ModItems.grape_seeds,
 				ModItems.cumin_seeds,
-				ModItems.quinoa_seeds
+				ModItems.quinoa_seeds,
+				ModItems.sorghum_seeds
 		
 			);
 	
-	private static final Ingredient WHEATS = Ingredient.fromItems(ModItems.oat, ModItems.rye, ModItems.rice, ModItems.corn);
+	private static final Ingredient WHEATS = Ingredient.fromItems(ModItems.oat, ModItems.rye, ModItems.rice, ModItems.corn, ModItems.sorghum);
 	
 	        @SubscribeEvent
 	        public void onEntitySpawn(EntityJoinWorldEvent event) {

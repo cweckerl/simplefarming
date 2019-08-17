@@ -1,0 +1,22 @@
+{
+	"replace": false,
+	"values":
+	[
+		"simplefarming:grapes",
+		"simplefarming:strawberries",
+		"simplefarming:apricot",
+		"simplefarming:blackberries",
+		"simplefarming:blueberries",
+		"simplefarming:cantaloupe",
+		"simplefarming:honeydew",
+		"simplefarming:orange",
+		"simplefarming:pear",
+		"simplefarming:plum",
+		"simplefarming:raspberries",
+		"simplefarming:cherries",
+		"simplefarming:mango",
+		"minecraft:apple",
+		"minecraft:melon_slice",
+		"minecraft:sweet_berries"
+	]
+}

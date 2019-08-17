@@ -137,6 +137,16 @@
             },
 	    {  
                "type":"item",
+               "name":"simplefarming:peanut_seeds",
+               "weight":1
+            },
+	    {  
+               "type":"item",
+               "name":"simplefarming:sorghum_seeds",
+               "weight":1
+            },
+	    {  
+               "type":"item",
                "name":"simplefarming:yam_seeds",
                "weight":1
             }
