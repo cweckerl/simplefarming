@@ -37,15 +37,17 @@ public class GrapeBlock extends BushBlock
 	
 	 public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
 		{
-			 if (!worldIn.isRemote)
-			 {
-			         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.grapes, 1));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-			         worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 2);
-		                return true;
-			 } 
-	
-		 	return false;
+			 
+				 if (!worldIn.isRemote)
+				 {
+				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.grapes, 1));
+				         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+				         worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 2);
+			                return true;
+				 } 
+		
+			
+			 	return false;
 		}
 	 
 	 public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) 

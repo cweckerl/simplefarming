@@ -37,7 +37,7 @@ public class WildPlant extends BushBlock implements IGrowable
 
 		   @OnlyIn(Dist.CLIENT)
 		   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
-		   {//TODO
+		   {
 			   	 if (verify==1)
 			   		  return new ItemStack(ModItems.cumin_seeds);
 			   	 else
@@ -46,20 +46,25 @@ public class WildPlant extends BushBlock implements IGrowable
 		   
 		   public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
 			{
-			 if (!worldIn.isRemote)
-			 {
-				 if (state.get(AGE)==3)
+				 if (!worldIn.isRemote)
 				 {
-			         int random = (int)((Math.random()*4)+1);
-			         spawnAsEntity(worldIn, pos, new ItemStack(getItem(worldIn, pos, state).getItem(), random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_CROP_PLANT, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-			         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
-			                return true;
-			             } else {
-			                return false;
-			             }
-			          }
-			 	return false;
+					 if (state.get(AGE)==3)
+					 {
+				         int random = (int)((Math.random()*4)+1);
+				         if (verify==1)
+				        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.cumin_seeds, random));
+				         if (verify==2)
+					         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.quinoa_seeds, random));
+				         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_CROP_PLANT, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+				         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
+				                return true;
+				             } else {
+				                return false;
+				             }
+				          }
+				 	
+				
+			   return false;
 			}
 
 

@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"###",
+		"#S#",
+		"###"
+	],
+	
+	"key":
+	{
+		"#": { "item": "simplefarming:mango"},
+		"S": { "item": "minecraft:oak_sapling"}
+	},
+	
+	"result": {"item": "simplefarming:mango_sapling"}
+	
+}

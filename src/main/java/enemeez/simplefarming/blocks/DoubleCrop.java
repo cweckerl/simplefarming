@@ -84,9 +84,9 @@ public class DoubleCrop extends CropsBlock
 				if(this.getAge(state)==5)
 				{
 					ItemStack stack = player.getHeldItem(handIn);
-					worldIn.setBlockState(pos, this.withAge(6), 3); //4
+					worldIn.setBlockState(pos, this.withAge(6), 2); //4
 	        		if (worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState())
-	        		worldIn.setBlockState(pos.up(), this.withAge(7), 3); //5
+	        		worldIn.setBlockState(pos.up(), this.withAge(7), 2); //5
 	        		if (!player.isCreative())
 	        		stack.shrink(1);
 	        		return true;
@@ -96,20 +96,25 @@ public class DoubleCrop extends CropsBlock
 			 
 			 else
 			 {
-
-				 if (this.getAge(state) == 7) //5
-				 {
-					int random = (int)((Math.random()*4)+1);
-					spawnAsEntity(worldIn, pos, new ItemStack(getItem(worldIn, pos, state).getItem(), random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-			         worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
-			         worldIn.setBlockState(pos.down(), state.with(AGE, Integer.valueOf(0)), 3);
-			                return true;
-	             }
+					 if (this.getAge(state) == 7) //5
+					 {
+						 int random = (int)((Math.random()*4)+1);
+					     if (verify==1)
+				        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.corn, random));
+				         if (verify==2)
+					         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.kenaf_fiber, random));
+				         if (verify==3)
+					         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.sorghum, random));
+				         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+				         worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 2);
+				         worldIn.setBlockState(pos.down(), state.with(AGE, Integer.valueOf(0)), 2);
+				                return true;
+		             }
+				 }
 	
 			 }
              
-		 }
+		 
 		return false;
 		}
 

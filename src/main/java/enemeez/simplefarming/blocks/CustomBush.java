@@ -78,27 +78,28 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 		   
 		   public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
 			{
-			 if (!worldIn.isRemote)
-			 {
-				 if (state.get(AGE)==3)
+				 if (!worldIn.isRemote)
 				 {
-			         int random = (int)((Math.random()*4)+1);
-			         if (verify==1)
-			        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.blackberries, random));
-			         if (verify==2)
-				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.blueberries, random));
-			         if (verify==3)
-				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.raspberries, random));
-			         if (verify==4)
-				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.strawberries, random));
-
-			        worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-			        worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
-			                return true;
-			             } else {
-			                return false;
-			             }
-			          }
+					 if (state.get(AGE)==3)
+					 {
+				         int random = (int)((Math.random()*4)+1);
+				         if (verify==1)
+				        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.blackberries, random));
+				         if (verify==2)
+					         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.blueberries, random));
+				         if (verify==3)
+					         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.raspberries, random));
+				         if (verify==4)
+					         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.strawberries, random));
+	
+				        worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+				        worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
+				                return true;
+				             } else {
+				                return false;
+				             }
+				          }
+			   
 			return false;
 			}
 

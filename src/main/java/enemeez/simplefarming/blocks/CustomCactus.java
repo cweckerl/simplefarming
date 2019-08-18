@@ -87,21 +87,22 @@ public class CustomCactus extends BushBlock implements IGrowable
 	   
 	   public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
 		{
-		 if (!worldIn.isRemote)
-		 {
-			 if (state.get(AGE)==3)
+			 if (!worldIn.isRemote)
 			 {
-		         int random = (int)((Math.random()*4)+1);
-			     spawnAsEntity(worldIn, pos, new ItemStack(ModItems.cactus_fruit, random));
-		         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
-		         return true;
-             } else {
-                return false;
-             }
-          }
+				 if (state.get(AGE)==3)
+				 {
+			         int random = (int)((Math.random()*4)+1);
+				     spawnAsEntity(worldIn, pos, new ItemStack(ModItems.cactus_fruit, random));
+			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+			         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
+			         return true;
+	             } else {
+	                return false;
+	             }
+	          }
+		   
 		 return false;
-}	
+     }	
 
 	   public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) 
 	   		{

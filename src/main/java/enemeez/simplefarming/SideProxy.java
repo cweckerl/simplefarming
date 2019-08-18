@@ -46,8 +46,7 @@ public class SideProxy
 			{
 				SimpleFarming.LOGGER.debug("common setup");
 				
-				 MinecraftForge.EVENT_BUS.register(new TemptationTask());
-				 
+				 MinecraftForge.EVENT_BUS.register(new TemptationTask());				 
 
 				if (ModWorldGen.fruit_tree != null) 
 				{

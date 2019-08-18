@@ -1,6 +1,5 @@
 package enemeez.simplefarming.blocks;
 
-import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
@@ -43,8 +42,6 @@ public class CustomCrop extends CropsBlock
 	
 	public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
 	{
-		if (FeatureConfig.right_click_harvest.get())
-		{
 		 if (!worldIn.isRemote)
 		 {
 			 if (this.isMaxAge(state))
@@ -166,7 +163,7 @@ public class CustomCrop extends CropsBlock
 		                return false;
 		             }
 		          }
-		}
+		
 		return false;
 		
 	}

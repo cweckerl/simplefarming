@@ -94,20 +94,37 @@ public class FruitLeaves extends BushBlock implements IGrowable
 	   
 	   public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
 	   {
-		   if (!worldIn.isRemote)
-			 {
-				 if (state.get(AGE) == 7) 
+			   if (!worldIn.isRemote)
 				 {
-					 spawnAsEntity(worldIn, pos, new ItemStack(getItem(worldIn, pos, state).getItem(), 1));
-					 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_LILY_PAD_PLACE, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-					 worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
-	                return true;
-	             } 
-			 else 
-			 {
-                return false;
-             }
-          }
+					 if (state.get(AGE) == 7) 
+					 {
+						 if (verify==1)
+							 spawnAsEntity(worldIn, pos, new ItemStack(Items.APPLE));
+						   if (verify==2)
+							   spawnAsEntity(worldIn, pos, new ItemStack(ModItems.apricot));
+						   if (verify==3)
+							   spawnAsEntity(worldIn, pos, new ItemStack(ModItems.banana));
+						   if (verify==4)
+							   spawnAsEntity(worldIn, pos, new ItemStack(ModItems.plum));
+						   if (verify==5)
+							   spawnAsEntity(worldIn, pos, new ItemStack(ModItems.orange));
+						   if (verify==6)
+							   spawnAsEntity(worldIn, pos, new ItemStack(ModItems.pear));
+						   if (verify==7)
+							   spawnAsEntity(worldIn, pos, new ItemStack(ModItems.cherries));
+						   if (verify==8)
+							   spawnAsEntity(worldIn, pos, new ItemStack(ModItems.mango));
+						 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_LILY_PAD_PLACE, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+						 worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
+		                return true;
+		             } 
+				 else 
+				 {
+	                return false;
+	             }
+					 
+				 }
+		   
 		   return false;
 	}
 
