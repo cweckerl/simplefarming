@@ -9,6 +9,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.FarmlandBlock;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.monster.RavagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -30,6 +31,7 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.util.FakePlayer;
 
 public class DoubleCrop extends CropsBlock 
 {
@@ -99,8 +101,13 @@ public class DoubleCrop extends CropsBlock
 
 				 if (this.getAge(state) == 7) //5
 				 {
-					int random = (int)((Math.random()*4)+1);
-					spawnAsEntity(worldIn, pos, new ItemStack(getItem(worldIn, pos, state).getItem(), random));
+					 int random = (int)((Math.random()*4)+1);
+					 ItemStack fruitStack = new ItemStack(getItem(worldIn, pos, state).getItem(), random);
+					 ItemEntity fruitItem = new ItemEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), fruitStack);
+					 worldIn.addEntity(fruitItem);
+					 if(!(player instanceof FakePlayer)) {
+						 fruitItem.onCollideWithPlayer(player);
+					 }
 			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 			         worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
 			         worldIn.setBlockState(pos.down(), state.with(AGE, Integer.valueOf(0)), 3);

@@ -9,6 +9,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
@@ -29,6 +30,7 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.util.FakePlayer;
 
 public class CustomCactus extends BushBlock implements IGrowable 
 {
@@ -92,7 +94,12 @@ public class CustomCactus extends BushBlock implements IGrowable
 			 if (state.get(AGE)==3)
 			 {
 		         int random = (int)((Math.random()*4)+1);
-			     spawnAsEntity(worldIn, pos, new ItemStack(ModItems.cactus_fruit, random));
+				 ItemStack fruitStack = new ItemStack(ModItems.cactus_fruit, random);
+				 ItemEntity fruitItem = new ItemEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), fruitStack);
+				 worldIn.addEntity(fruitItem);
+				 if(!(player instanceof FakePlayer)) {
+					 fruitItem.onCollideWithPlayer(player);
+				 }
 		         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 		         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
 		         return true;

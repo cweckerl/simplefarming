@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.IGrowable;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
@@ -23,6 +24,7 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.util.FakePlayer;
 
 public class WildPlant extends BushBlock implements IGrowable 
 {
@@ -51,7 +53,12 @@ public class WildPlant extends BushBlock implements IGrowable
 				 if (state.get(AGE)==3)
 				 {
 			         int random = (int)((Math.random()*4)+1);
-			         spawnAsEntity(worldIn, pos, new ItemStack(getItem(worldIn, pos, state).getItem(), random));
+					 ItemStack fruitStack = new ItemStack(getItem(worldIn, pos, state).getItem(), random);
+					 ItemEntity fruitItem = new ItemEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), fruitStack);
+					 worldIn.addEntity(fruitItem);
+					 if(!(player instanceof FakePlayer)) {
+						 fruitItem.onCollideWithPlayer(player);
+					 }
 			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_CROP_PLANT, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 			         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
 			                return true;

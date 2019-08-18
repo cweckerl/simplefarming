@@ -7,6 +7,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.BushBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
@@ -18,6 +19,7 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.FakePlayer;
 
 public class GrapeBlock extends BushBlock
 {
@@ -39,10 +41,15 @@ public class GrapeBlock extends BushBlock
 		{
 			 if (!worldIn.isRemote)
 			 {
-			         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.grapes, 1));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-			         worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 2);
-		                return true;
+				 ItemStack fruitStack = new ItemStack(ModItems.grapes, 1);
+				 ItemEntity fruitItem = new ItemEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), fruitStack);
+				 worldIn.addEntity(fruitItem);
+				 if(!(player instanceof FakePlayer)) {
+					 fruitItem.onCollideWithPlayer(player);
+				 }
+				 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+				 worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 2);
+					return true;
 			 } 
 	
 		 	return false;

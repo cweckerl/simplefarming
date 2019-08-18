@@ -12,6 +12,7 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -31,6 +32,7 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.util.FakePlayer;
 
 public class FruitLeaves extends BushBlock implements IGrowable 
 {
@@ -98,7 +100,12 @@ public class FruitLeaves extends BushBlock implements IGrowable
 			 {
 				 if (state.get(AGE) == 7) 
 				 {
-					 spawnAsEntity(worldIn, pos, new ItemStack(getItem(worldIn, pos, state).getItem(), 1));
+					 ItemStack fruitStack = new ItemStack(getItem(worldIn, pos, state).getItem(), 1);
+					 ItemEntity fruitItem = new ItemEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), fruitStack);
+					 worldIn.addEntity(fruitItem);
+					 if(!(player instanceof FakePlayer)) {
+						 fruitItem.onCollideWithPlayer(player);
+					 }
 					 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_LILY_PAD_PLACE, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 					 worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
 	                return true;

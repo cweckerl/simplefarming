@@ -10,7 +10,9 @@ import net.minecraft.block.BushBlock;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
@@ -28,8 +30,9 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.util.FakePlayer;
 
-	public class CustomBush extends BushBlock implements IGrowable 
+public class CustomBush extends BushBlock implements IGrowable
 	{
 		private int verify;
 		public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
@@ -82,15 +85,24 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 			 {
 				 if (state.get(AGE)==3)
 				 {
-			         int random = (int)((Math.random()*4)+1);
-			         if (verify==1)
-			        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.blackberries, random));
-			         if (verify==2)
-				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.blueberries, random));
-			         if (verify==3)
-				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.raspberries, random));
-			         if (verify==4)
-				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.strawberries, random));
+					 Item fruit = ModItems.blackberries;
+
+					 int random = (int)((Math.random()*4)+1);
+					 if (verify==1)
+						 fruit = ModItems.blackberries;
+					 if (verify==2)
+						 fruit = ModItems.blueberries;
+					 if (verify==3)
+						 fruit = ModItems.raspberries;
+					 if (verify==4)
+						 fruit = ModItems.strawberries;
+
+					 ItemStack fruitStack = new ItemStack(fruit, random);
+					 ItemEntity fruitItem = new ItemEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), fruitStack);
+					 worldIn.addEntity(fruitItem);
+					 if(!(player instanceof FakePlayer)) {
+						 fruitItem.onCollideWithPlayer(player);
+					 }
 
 			        worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 			        worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);

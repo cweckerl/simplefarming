@@ -7,7 +7,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.FarmlandBlock;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
@@ -22,6 +24,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.util.FakePlayer;
 
 public class CustomCrop extends CropsBlock
 { 
@@ -49,118 +52,126 @@ public class CustomCrop extends CropsBlock
 		 {
 			 if (this.isMaxAge(state))
 			 {
-		         int random = (int)((Math.random()*4)+1);
-		         if (verify==1)
-		         {
-		        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.cucumber, random));
-		        	 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==2)
-		         {
-			         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.eggplant, random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==3)
-		         {
-			         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.lettuce, random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==4)
-		         {
-			         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.oat, 1));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==5)
-		         {
-			         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.onion, random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==6)
-		         {
-			         if (Math.random()<=0.05)
-			        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.habanero, 1));
-			         else 
-			        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.pepper, random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==7)
-		         {
-			         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.radish, random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==8)
-		         {
-			         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.rice, 1));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==9)
-		         {
-			         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.rye, 1));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==10)
-		         {
-			         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.soybean, random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==11)
-		         {
-			         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.spinach, random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==12)
-		         {
-			         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.tomato, random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==13)
-		         {
-			         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.yam, random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==14)
-		         {
-			         spawnAsEntity(worldIn, pos, new ItemStack(Items.CARROT, random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==15)
-		         {
-			         spawnAsEntity(worldIn, pos, new ItemStack(Items.POTATO, random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-	
-		         if (verify==18)
-		         {
-		        	 spawnAsEntity(worldIn, pos, new ItemStack(ModBlocks.squash_block, 1));
-		        	 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_STONE_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==19)
-		         {
-		        	 spawnAsEntity(worldIn, pos, new ItemStack(ModBlocks.cantaloupe_block, 1));
-		        	 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_STONE_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==20)
-		         {
-		        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.cassava, random));
-		        	 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==21)
-		         {
-		        	 spawnAsEntity(worldIn, pos, new ItemStack(ModBlocks.honeydew_block, 1));
-		        	 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_STONE_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==22)
-		         {
-		        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.ginger, random));
-		        	 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-		         if (verify==23)
-		         {
-		        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.peanut, random));
-		        	 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-		         }
-	
-		         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
+				 Item fruit = ModItems.cucumber;
+				 Block fruitBlock = ModBlocks.squash_block;
+				 boolean isBlock = false;
+				 int itemCount = (int)((Math.random()*4)+1);
+
+				 if (verify==1)
+				 {
+					 fruit = ModItems.cucumber;
+				 }
+				 if (verify==2)
+				 {
+					 fruit = ModItems.eggplant;
+				 }
+				 if (verify==3)
+				 {
+					 fruit = ModItems.lettuce;
+				 }
+				 if (verify==4)
+				 {
+					 fruit = ModItems.oat;
+					 itemCount = 1;
+				 }
+				 if (verify==5)
+				 {
+					 fruit = ModItems.onion;
+				 }
+				 if (verify==6)
+				 {
+					 if (Math.random()<=0.05) {
+						 fruit = ModItems.habanero;
+						 itemCount = 1;
+					 }
+					 else {
+						 fruit = ModItems.pepper;
+					 }
+				 }
+				 if (verify==7)
+				 {
+					 fruit = ModItems.radish;
+				 }
+				 if (verify==8)
+				 {
+					 fruit = ModItems.rice;
+					 itemCount = 1;
+				 }
+				 if (verify==9)
+				 {
+					 fruit = ModItems.rye;
+					 itemCount = 1;
+				 }
+				 if (verify==10)
+				 {
+					 fruit = ModItems.soybean;
+				 }
+				 if (verify==11)
+				 {
+					 fruit = ModItems.spinach;
+				 }
+				 if (verify==12)
+				 {
+					 fruit = ModItems.tomato;
+				 }
+				 if (verify==13)
+				 {
+					 fruit = ModItems.yam;
+				 }
+				 if (verify==14)
+				 {
+					 fruit = Items.CARROT;
+				 }
+				 if (verify==15)
+				 {
+					 fruit = Items.POTATO;
+				 }
+				 if (verify==18)
+				 {
+					 isBlock = true;
+					 fruitBlock = ModBlocks.squash_block;
+					 itemCount = 1;
+				 }
+				 if (verify==19)
+				 {
+					 isBlock = true;
+					 fruitBlock = ModBlocks.cantaloupe_block;
+					 itemCount = 1;
+				 }
+				 if (verify==20)
+				 {
+					 fruit = ModItems.cassava;
+				 }
+				 if (verify==21)
+				 {
+					 isBlock = true;
+					 fruitBlock = ModBlocks.honeydew_block;
+					 itemCount = 1;
+				 }
+				 if (verify==22)
+				 {
+					 fruit = ModItems.ginger;
+				 }
+				 if (verify==23)
+				 {
+					 fruit = ModItems.peanut;
+				 }
+
+				 ItemStack fruitStack;
+				 if(!isBlock){
+					 fruitStack = new ItemStack(fruit, itemCount);
+				 } else {
+					 fruitStack = new ItemStack(fruitBlock, itemCount);
+				 }
+				 ItemEntity fruitItem = new ItemEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), fruitStack);
+				 worldIn.addEntity(fruitItem);
+				 if(!(player instanceof FakePlayer)) {
+					 fruitItem.onCollideWithPlayer(player);
+				 }
+
+				 worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+
+				 worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
 		                return true;
 		             } else {
 		                return false;
