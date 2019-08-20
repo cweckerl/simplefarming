@@ -2,6 +2,7 @@ package enemeez.simplefarming.blocks;
 
 import java.util.Random;
 
+import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -96,6 +97,7 @@ public class DoubleCrop extends CropsBlock
 			 
 			 else
 			 {
+				 if (!FeatureConfig.right_click_harvest.get()) return false;
 					 if (this.getAge(state) == 7) //5
 					 {
 						 int random = (int)((Math.random()*4)+1);

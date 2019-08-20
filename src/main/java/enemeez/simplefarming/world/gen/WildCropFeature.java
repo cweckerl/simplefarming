@@ -26,7 +26,7 @@ public class WildCropFeature extends Feature<NoFeatureConfig>
 	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random, BlockPos pos, NoFeatureConfig config) 
 	{
 		
-		if (random.nextInt(GenConfig.wild_crop_chance.get()) != 0) 
+		if (random.nextInt(GenConfig.wild_crop_chance.get()) != 0)  
 			return false;
 		
 			      

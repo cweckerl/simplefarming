@@ -24,9 +24,9 @@ public class FruitTreeFeature extends Feature<NoFeatureConfig>
 	@Override
 	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random, BlockPos pos, NoFeatureConfig config) 
 	{
-		if (random.nextInt(GenConfig.tree_chance.get()) != 0) {
+		if (random.nextInt(GenConfig.tree_chance.get()) != 0)
 			return false;
-		}
+		
 		if(world.getBlockState(pos.down()).getBlock().isIn(BlockTags.DIRT_LIKE) && world.getBlockState(pos).getMaterial().isReplaceable()) 
 		{
 			int type = (int)((Math.random()*8)+1);

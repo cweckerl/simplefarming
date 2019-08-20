@@ -40,7 +40,8 @@ public class TemptationTask
 				ModItems.grape_seeds,
 				ModItems.cumin_seeds,
 				ModItems.quinoa_seeds,
-				ModItems.sorghum_seeds
+				ModItems.sorghum_seeds,
+				ModItems.peanut_seeds
 		
 			);
 	

@@ -26,7 +26,7 @@ public class WildPlantFeature extends Feature<NoFeatureConfig>
 	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random, BlockPos pos, NoFeatureConfig config) 
 	{
 		
-		if (random.nextInt(GenConfig.wild_plant_chance.get()) != 0) 
+		if (random.nextInt(GenConfig.wild_plant_chance.get()) != 0)  
 			return false;
 		
 		   int type = (int)((Math.random()*2)+1);

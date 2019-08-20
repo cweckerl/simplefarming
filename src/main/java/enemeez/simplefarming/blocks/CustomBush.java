@@ -2,6 +2,7 @@ package enemeez.simplefarming.blocks;
 
 import java.util.Random;
 
+import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
@@ -78,6 +79,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 		   
 		   public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
 			{
+			   if (!FeatureConfig.right_click_harvest.get()) return false;
 				 if (!worldIn.isRemote)
 				 {
 					 if (state.get(AGE)==3)

@@ -24,11 +24,9 @@ public class CactusCropFeature extends Feature<NoFeatureConfig>
 	@Override
 	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random, BlockPos pos, NoFeatureConfig config) 
 	{
-		if (random.nextInt(GenConfig.cactus_chance.get()) != 0) 
+		if (random.nextInt(GenConfig.cactus_chance.get()) != 0)  
 			return false;
-		
-	
-			      
+	 
 			   if(world.getBlockState(pos.down()).getBlock().isIn(BlockTags.SAND) && world.getBlockState(pos).getMaterial().isReplaceable()) 
 				   CustomCactus.generateCactus(world, pos, random);
 

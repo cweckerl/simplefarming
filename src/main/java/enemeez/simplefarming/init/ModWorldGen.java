@@ -32,7 +32,7 @@ public class ModWorldGen
 		
 		if (EnableConfig.tree_validate.get())
 		fruit_tree = register(r , new FruitTreeFeature(NoFeatureConfig::deserialize), "fruit_tree");
-		if (EnableConfig.bush_validate.get())
+		if (EnableConfig.bush_validate.get()==true)
 		berry_bush = register(r , new BerryBushFeature(NoFeatureConfig::deserialize), "berry_bush");
 		if (EnableConfig.cactus_validate.get())
 		cactus_crop = register(r , new CactusCropFeature(NoFeatureConfig::deserialize), "cactus_crop");

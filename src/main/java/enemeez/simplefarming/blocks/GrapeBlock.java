@@ -1,5 +1,6 @@
 package enemeez.simplefarming.blocks;
 
+import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.BlockState;
@@ -37,7 +38,7 @@ public class GrapeBlock extends BushBlock
 	
 	 public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
 		{
-			 
+		 if (!FeatureConfig.right_click_harvest.get()) return false;
 				 if (!worldIn.isRemote)
 				 {
 				         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.grapes, 1));

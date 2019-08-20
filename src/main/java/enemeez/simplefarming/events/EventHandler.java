@@ -3,7 +3,6 @@ package enemeez.simplefarming.events;
 import java.util.ArrayList;
 
 import enemeez.simplefarming.SimpleFarming;
-import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.ItemEntity;
@@ -48,15 +47,12 @@ public class EventHandler
 			stacks.add(new ItemStack(ModItems.grape_seeds));
 			stacks.add(new ItemStack(ModItems.sorghum_seeds));
 			stacks.add(new ItemStack(ModItems.peanut_seeds));
+			stacks.add(new ItemStack(Items.MELON_SEEDS));
+			stacks.add(new ItemStack(Items.PUMPKIN_SEEDS));
+			stacks.add(new ItemStack(Items.BEETROOT_SEEDS));
+			stacks.add(new ItemStack(ModItems.carrot_seeds));
+			stacks.add(new ItemStack(ModItems.potato_seeds));
 			
-			if (FeatureConfig.vanilla_seed_drops.get())
-			{
-				stacks.add(new ItemStack(Items.MELON_SEEDS));
-				stacks.add(new ItemStack(Items.PUMPKIN_SEEDS));
-				stacks.add(new ItemStack(Items.BEETROOT_SEEDS));
-				stacks.add(new ItemStack(ModItems.carrot_seeds));
-				stacks.add(new ItemStack(ModItems.potato_seeds));
-			}
 		
 			if (event.getState().getBlock() == Blocks.GRASS || event.getState().getBlock() == Blocks.TALL_GRASS)
 			{
