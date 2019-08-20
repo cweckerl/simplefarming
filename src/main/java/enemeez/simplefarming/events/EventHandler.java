@@ -53,10 +53,9 @@ public class EventHandler
 			stacks.add(new ItemStack(ModItems.carrot_seeds));
 			stacks.add(new ItemStack(ModItems.potato_seeds));
 			
-		
 			if (event.getState().getBlock() == Blocks.GRASS || event.getState().getBlock() == Blocks.TALL_GRASS)
 			{
-				if (Math.random() < 0.125)
+				if (Math.random() <= 0.125)
 				{
 					if (event.getPlayer().getHeldItemMainhand().getItem() != Items.SHEARS)
 					{
@@ -86,6 +85,7 @@ public class EventHandler
 				event.getEntityLiving().entityDropItem(new ItemStack(ModItems.raw_calamari, (int)((Math.random()*3)+1)));
 	
 	}
+
 	
 	
 }

@@ -97,9 +97,9 @@ public class DoubleCrop extends CropsBlock
 			 
 			 else
 			 {
-				 if (!FeatureConfig.right_click_harvest.get()) return false;
 					 if (this.getAge(state) == 7) //5
 					 {
+						 if (!FeatureConfig.right_click_harvest.get()) return false;
 						 int random = (int)((Math.random()*4)+1);
 					     if (verify==1)
 				        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.corn, random));
