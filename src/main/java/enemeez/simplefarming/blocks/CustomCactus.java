@@ -2,7 +2,6 @@ package enemeez.simplefarming.blocks;
 
 import java.util.Random;
 
-import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
@@ -10,18 +9,13 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
@@ -48,6 +42,11 @@ public class CustomCactus extends BushBlock implements IGrowable
 		   	return new ItemStack(ModItems.cactus_crop);
 	   }
 
+	   public boolean isMaxAge(BlockState state) 
+   	   {
+	      return state.get(AGE)==3;
+	   }
+   
  
 	   @SuppressWarnings("deprecation")
 	public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
@@ -86,26 +85,6 @@ public class CustomCactus extends BushBlock implements IGrowable
 		   return worldIn.getBlockState(pos.down()).getBlock().isIn(BlockTags.SAND);
 		}
 	   
-	   public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
-		{
-		   if (!FeatureConfig.right_click_harvest.get()) return false;
-			 if (!worldIn.isRemote)
-			 {
-				 if (state.get(AGE)==3)
-				 {
-			         int random = (int)((Math.random()*4)+1);
-				     spawnAsEntity(worldIn, pos, new ItemStack(ModItems.cactus_fruit, random));
-			         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-			         worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 2);
-			         return true;
-	             } else {
-	                return false;
-	             }
-	          }
-		   
-		 return false;
-     }	
-
 	   public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) 
 	   		{
 		      entityIn.attackEntityFrom(DamageSource.CACTUS, 1.0F);

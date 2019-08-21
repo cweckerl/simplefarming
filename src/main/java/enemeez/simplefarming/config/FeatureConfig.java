@@ -16,7 +16,7 @@ public class FeatureConfig
 		
 		right_click_harvest = config
 				.comment("Indicates whether right-click harvesting on blocks should be enabled")
-				.define("Enable right-click harvesting", false);
+				.define("Enable right-click harvesting", true);
 
 		smart_harvesting = config
 				.comment("Indicates whether smart harvesting should be used when right-click harvesting")

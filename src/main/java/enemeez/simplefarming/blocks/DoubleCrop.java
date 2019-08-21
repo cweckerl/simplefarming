@@ -2,8 +2,6 @@ package enemeez.simplefarming.blocks;
 
 import java.util.Random;
 
-import enemeez.simplefarming.config.FeatureConfig;
-import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -11,20 +9,14 @@ import net.minecraft.block.CropsBlock;
 import net.minecraft.block.FarmlandBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.RavagerEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.Hand;
 import net.minecraft.util.IItemProvider;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
@@ -35,14 +27,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class DoubleCrop extends CropsBlock 
 {
 	   public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
-	   int verify;
-	   Item seeds;
+	   private Item seeds;
+	   private Item item;
 	   
-	   public DoubleCrop(Block.Properties builder, Item seeds, int verify) 
+	   public DoubleCrop(Block.Properties builder, Item seeds, Item item) 
 	   {
 	      super(builder);
 	      this.seeds=seeds;
-	      this.verify=verify;
+	      this.item=item;
 	      this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
 	   }
 
@@ -62,7 +54,7 @@ public class DoubleCrop extends CropsBlock
 	      return 5; 
 	   }
 
-	   protected int getAge(BlockState state) {
+	   public int getAge(BlockState state) {
 	      return state.get(this.getAgeProperty());
 	   }
 
@@ -75,50 +67,6 @@ public class DoubleCrop extends CropsBlock
 	   }
 	   
 	   
-	   
-	   public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
-		{
-		 if (!worldIn.isRemote)
-		 {
-			 if (player.getHeldItem(handIn).getItem() == Items.BONE_MEAL)
-			 {
-				if(this.getAge(state)==5)
-				{
-					ItemStack stack = player.getHeldItem(handIn);
-					worldIn.setBlockState(pos, this.withAge(6), 2); //4
-	        		if (worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState())
-	        		worldIn.setBlockState(pos.up(), this.withAge(7), 2); //5
-	        		if (!player.isCreative())
-	        		stack.shrink(1);
-	        		return true;
-	        		
-				}
-			 }
-			 
-			 else
-			 {
-					 if (this.getAge(state) == 7) //5
-					 {
-						 if (!FeatureConfig.right_click_harvest.get()) return false;
-						 int random = (int)((Math.random()*4)+1);
-					     if (verify==1)
-				        	 spawnAsEntity(worldIn, pos, new ItemStack(ModItems.corn, random));
-				         if (verify==2)
-					         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.kenaf_fiber, random));
-				         if (verify==3)
-					         spawnAsEntity(worldIn, pos, new ItemStack(ModItems.sorghum, random));
-				         worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-				         worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 2);
-				         worldIn.setBlockState(pos.down(), state.with(AGE, Integer.valueOf(0)), 2);
-				                return true;
-		             }
-				 }
-	
-			 }
-             
-		 
-		return false;
-		}
 
 
 	   public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
@@ -232,23 +180,13 @@ public class DoubleCrop extends CropsBlock
 	   @OnlyIn(Dist.CLIENT)
 	   protected IItemProvider getSeedsItem() 
 	   {
-		   if(verify==1)
-				return ModItems.corn_seeds;
-		   if(verify==2)
-				return ModItems.kenaf_seeds;
-		   else
-			   return ModItems.sorghum_seeds;
+		   return seeds;
 	   }
 
 	   @OnlyIn(Dist.CLIENT)
 	   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 	   {
-		   if(verify==1)
-				return new ItemStack(ModItems.corn);
-			if (verify==2)
-				return new ItemStack(ModItems.kenaf_fiber);
-			else 
-				return new ItemStack(ModItems.sorghum);
+		   return new ItemStack(item);
 	   }
 
 	   /**
