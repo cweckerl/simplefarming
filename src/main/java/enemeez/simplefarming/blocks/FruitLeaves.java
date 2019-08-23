@@ -3,6 +3,7 @@ package enemeez.simplefarming.blocks;
 import java.util.Random;
 
 import enemeez.simplefarming.init.ModBlocks;
+import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -11,8 +12,8 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
@@ -28,20 +29,35 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class FruitLeaves extends BushBlock implements IGrowable 
 {
-	private Item fruit;
+	private String name;
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
 
-	public FruitLeaves(Block.Properties p_i49971_1_, Item fruit) 
+	public FruitLeaves(Block.Properties p_i49971_1_, String name) 
 	 {
 	    super(p_i49971_1_);
-	    this.fruit=fruit;
+	    this.name=name;
 	    this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
 	 }
 
 	   @OnlyIn(Dist.CLIENT)
 	   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 	   {
-			 return new ItemStack(fruit);
+			if (name.equals("apple"))
+				return new ItemStack(Items.APPLE);
+			if (name.equals("apricot"))
+				return new ItemStack(ModItems.apricot);
+			if (name.equals("banana"))
+				return new ItemStack(ModItems.banana);
+			if (name.equals("cherries"))
+				return new ItemStack(ModItems.cherries);
+			if (name.equals("orange"))
+				return new ItemStack(ModItems.orange);
+			if (name.equals("mango"))
+				return new ItemStack(ModItems.mango);
+			if (name.equals("pear"))
+				return new ItemStack(ModItems.pear);
+			else
+				return new ItemStack(ModItems.plum);
 	   }
 
 

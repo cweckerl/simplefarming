@@ -28,15 +28,17 @@ public class VanillaHarvest
 	@SubscribeEvent
 	public void onCropHarvest(RightClickBlock event)
 	{
-
 		if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof CropsBlock && !(event.getWorld().getBlockState(event.getPos()).getBlock() instanceof DoubleCrop))
 		{
+			if(!event.getPlayer().getHeldItemMainhand().isEmpty() && event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) event.setCanceled(true); //prevents blocks from being placed
 			if (event.getWorld().isRemote) event.setCanceled(true);
 			CropsBlock crop = (CropsBlock) event.getWorld().getBlockState(event.getPos()).getBlock();
 	
 			if (crop.isMaxAge(event.getWorld().getBlockState(event.getPos())))
 				{
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
+					event.getPlayer().addExhaustion(.05F);
+					if (!event.getPlayer().addItemStackToInventory(spawn(crop)));
 					event.getWorld().addEntity(new ItemEntity(
 							(World) event.getWorld(),
 							event.getPos().getX(), 
@@ -51,12 +53,14 @@ public class VanillaHarvest
 		
 		if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof CustomBush)
 		{
+			if(!event.getPlayer().getHeldItemMainhand().isEmpty() && event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) event.setCanceled(true); //prevents blocks from being placed
 			if (event.getWorld().isRemote) event.setCanceled(true);
 			CustomBush bush = (CustomBush) event.getWorld().getBlockState(event.getPos()).getBlock();
 	
 			if (bush.isMaxAge(event.getWorld().getBlockState(event.getPos())))
 				{
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
+					event.getPlayer().addExhaustion(.05F);
 					event.getWorld().addEntity(new ItemEntity(
 							(World) event.getWorld(),
 							event.getPos().getX(), 
@@ -72,12 +76,14 @@ public class VanillaHarvest
 		
 		if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof CustomCactus)
 		{
+			if(!event.getPlayer().getHeldItemMainhand().isEmpty() && event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) event.setCanceled(true); //prevents blocks from being placed
 			if (event.getWorld().isRemote) event.setCanceled(true);
 			CustomCactus cactus = (CustomCactus) event.getWorld().getBlockState(event.getPos()).getBlock();
 	
 			if (cactus.isMaxAge(event.getWorld().getBlockState(event.getPos())))
 				{
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
+					event.getPlayer().addExhaustion(.05F);
 					event.getWorld().addEntity(new ItemEntity(
 							(World) event.getWorld(),
 							event.getPos().getX(), 
@@ -92,12 +98,14 @@ public class VanillaHarvest
 		
 		if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof FruitLeaves)
 		{
+			if(!event.getPlayer().getHeldItemMainhand().isEmpty() && event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) event.setCanceled(true); //prevents blocks from being placed
 			if (event.getWorld().isRemote) event.setCanceled(true);
 			FruitLeaves leaf = (FruitLeaves) event.getWorld().getBlockState(event.getPos()).getBlock();
 	
 			if (leaf.isMaxAge(event.getWorld().getBlockState(event.getPos())))
 				{
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
+					event.getPlayer().addExhaustion(.05F);
 					event.getWorld().addEntity(new ItemEntity(
 							(World) event.getWorld(),
 							event.getPos().getX(), 
@@ -111,9 +119,11 @@ public class VanillaHarvest
 		
 		if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof GrapeBlock)
 		{
+			if(!event.getPlayer().getHeldItemMainhand().isEmpty() && event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) event.setCanceled(true); //prevents blocks from being placed
 			if (event.getWorld().isRemote) event.setCanceled(true);
 			GrapeBlock grape = (GrapeBlock) event.getWorld().getBlockState(event.getPos()).getBlock();
 			event.getPlayer().swingArm(Hand.MAIN_HAND);
+			event.getPlayer().addExhaustion(.05F);
 			event.getWorld().addEntity(new ItemEntity(
 					(World) event.getWorld(),
 					event.getPos().getX(), 
@@ -127,12 +137,14 @@ public class VanillaHarvest
 		
 		if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof WildPlant)
 		{
+			if(!event.getPlayer().getHeldItemMainhand().isEmpty() && event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) event.setCanceled(true); //prevents blocks from being placed
 			if (event.getWorld().isRemote) event.setCanceled(true);
 			WildPlant plant = (WildPlant) event.getWorld().getBlockState(event.getPos()).getBlock();
 	
 			if (plant.isMaxAge(event.getWorld().getBlockState(event.getPos())))
 				{
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
+					event.getPlayer().addExhaustion(.05F);
 					event.getWorld().addEntity(new ItemEntity(
 							(World) event.getWorld(),
 							event.getPos().getX(), 
@@ -147,12 +159,14 @@ public class VanillaHarvest
 		
 		if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof NetherWartBlock)
 		{
+			if(!event.getPlayer().getHeldItemMainhand().isEmpty() && event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) event.setCanceled(true); //prevents blocks from being placed
 			if (event.getWorld().isRemote) event.setCanceled(true);
 			NetherWartBlock nether = (NetherWartBlock) event.getWorld().getBlockState(event.getPos()).getBlock();
 	
 			if (event.getWorld().getBlockState(event.getPos()).get(NetherWartBlock.AGE) == 3)
 				{
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
+					event.getPlayer().addExhaustion(.05F);
 					event.getWorld().addEntity(new ItemEntity(
 							(World) event.getWorld(),
 							event.getPos().getX(), 
@@ -168,6 +182,7 @@ public class VanillaHarvest
 
 		if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof DoubleCrop)
 		{
+			if(!event.getPlayer().getHeldItemMainhand().isEmpty() && event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) event.setCanceled(true); //prevents blocks from being placed
 			if (event.getWorld().isRemote) event.setCanceled(true);
 			DoubleCrop crop = (DoubleCrop) event.getWorld().getBlockState(event.getPos()).getBlock();
 	
@@ -176,6 +191,7 @@ public class VanillaHarvest
 					&& event.getPlayer().getHeldItemMainhand().getItem() == Items.BONE_MEAL)
 			{
 				event.getPlayer().swingArm(Hand.MAIN_HAND);
+				event.getPlayer().addExhaustion(.05F);
 				event.getWorld().setBlockState(event.getPos(), crop.getDefaultState().with(DoubleCrop.AGE, 6));
 				event.getWorld().setBlockState(event.getPos().up(), crop.getDefaultState().with(DoubleCrop.AGE, 7));
 				if (!event.getPlayer().isCreative())
@@ -185,7 +201,9 @@ public class VanillaHarvest
 				
 			if (crop.getAge(event.getWorld().getBlockState(event.getPos()))==7) 
 			{
+				if(!event.getPlayer().getHeldItemMainhand().isEmpty() && event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) event.setCanceled(true); //prevents blocks from being placed
 				event.getPlayer().swingArm(Hand.MAIN_HAND);
+				event.getPlayer().addExhaustion(.05F);
 				event.getWorld().addEntity(new ItemEntity(
 						(World) event.getWorld(),
 						event.getPos().getX(), 

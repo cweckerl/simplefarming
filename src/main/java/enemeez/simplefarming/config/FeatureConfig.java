@@ -19,9 +19,10 @@ public class FeatureConfig
 				.define("Enable right-click harvesting", true);
 
 		smart_harvesting = config
+				.comment("*** NOT IN USE***")
 				.comment("Indicates whether smart harvesting should be used when right-click harvesting")
 				.comment("Smart harvesting puts the item directly in the player's inventory instead of dropping the product")
-				.define("Use smart harvesting", true);
+				.define("Use smart harvesting", false);
 				
 
 	}

@@ -2,6 +2,7 @@ package enemeez.simplefarming.blocks;
 
 import java.util.Random;
 
+import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -9,7 +10,6 @@ import net.minecraft.block.CropsBlock;
 import net.minecraft.block.FarmlandBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.RavagerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
@@ -27,14 +27,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class DoubleCrop extends CropsBlock 
 {
 	   public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
-	   private Item seeds;
-	   private Item item;
+	   private String name;
 	   
-	   public DoubleCrop(Block.Properties builder, Item seeds, Item item) 
+	   public DoubleCrop(Block.Properties builder, String name) 
 	   {
 	      super(builder);
-	      this.seeds=seeds;
-	      this.item=item;
+	      this.name=name;
 	      this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
 	   }
 
@@ -180,13 +178,23 @@ public class DoubleCrop extends CropsBlock
 	   @OnlyIn(Dist.CLIENT)
 	   protected IItemProvider getSeedsItem() 
 	   {
-		   return seeds;
+		   if (name.equals("corn"))
+			   return ModItems.corn_seeds;
+		   if (name.equals("kenaf"))
+			   return ModItems.kenaf_seeds;
+		   else
+			   return ModItems.sorghum_seeds;
 	   }
 
 	   @OnlyIn(Dist.CLIENT)
 	   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 	   {
-		   return new ItemStack(item);
+		   if (name.equals("corn"))
+			   return new ItemStack(ModItems.corn);
+		   if (name.equals("kenaf"))
+			   return new ItemStack(ModItems.kenaf_fiber);
+		   else
+			   return new ItemStack(ModItems.sorghum);
 	   }
 
 	   /**

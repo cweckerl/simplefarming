@@ -3,13 +3,13 @@ package enemeez.simplefarming.blocks;
 import java.util.Random;
 
 import enemeez.simplefarming.init.ModBlocks;
+import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
@@ -26,21 +26,28 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 	public class CustomBush extends BushBlock implements IGrowable 
 	{
-		public Item bush;
+		private String name;
 		public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
 		protected static final VoxelShape SHAPE = Block.makeCuboidShape(1.0D, 2.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
-		public CustomBush(Block.Properties p_i49971_1_, Item bush) 
+		public CustomBush(Block.Properties p_i49971_1_, String name) 
 		 {
 		    super(p_i49971_1_);
-		    this.bush = bush;
+		    this.name=name;
 		    this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
 		 }
 		
 		   @OnlyIn(Dist.CLIENT)
 		   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 		   {
-			   	return new ItemStack(bush);
+			   if (name.equals("blackberries"))
+			   		return new ItemStack(ModItems.blackberry_bush);
+			   if (name.equals("blueberries"))
+			   		return new ItemStack(ModItems.blueberry_bush);
+			   if (name.equals("raspberries"))
+			   		return new ItemStack(ModItems.raspberry_bush);
+			   else
+			   		return new ItemStack(ModItems.strawberry_bush);
 		   }
 		   
 

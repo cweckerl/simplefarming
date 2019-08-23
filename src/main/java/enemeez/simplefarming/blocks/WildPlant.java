@@ -3,11 +3,11 @@ package enemeez.simplefarming.blocks;
 import java.util.Random;
 
 import enemeez.simplefarming.init.ModBlocks;
+import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.IGrowable;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
@@ -21,19 +21,22 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class WildPlant extends BushBlock implements IGrowable 
 {
-		private Item seeds;
+		private String name;
 		public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-		public WildPlant(Block.Properties p_i49971_1_, Item seeds) 
+		public WildPlant(Block.Properties p_i49971_1_, String name) 
 		 {
 		    super(p_i49971_1_);
-		    this.seeds=seeds;
+		    this.name=name;
 		    this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
 		 }
 
 		   @OnlyIn(Dist.CLIENT)
 		   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 		   {
-			   	return new ItemStack(seeds);
+			   if (name.equals("cumin"))
+				   return new ItemStack(ModItems.cumin_seeds);
+			   else
+			   		return new ItemStack(ModItems.quinoa_seeds);
 
 		   }
 		   
