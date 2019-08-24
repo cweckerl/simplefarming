@@ -76,6 +76,7 @@ public class ModBlocks
 	public static Block pear_leaves;
 	
 	//Crops
+	public static Block barley_crop;
 	public static Block cactus_crop;
 	public static Block cantaloupe_crop;
 	public static Block carrot_crop;
@@ -90,6 +91,7 @@ public class ModBlocks
 	public static Block oat_crop;
 	public static Block onion_crop;
 	public static Block peanut_crop;
+	public static Block pea_crop;
 	public static Block pepper_crop;
 	public static Block potato_crop;
 	public static Block radish_crop;
@@ -103,6 +105,7 @@ public class ModBlocks
 	public static Block yam_crop;
 
 	//Hay Bales
+	public static Block barley_hay_block;
 	public static Block oat_hay_block;
 	public static Block rice_hay_block;
 	public static Block rye_hay_block;
@@ -237,7 +240,11 @@ public class ModBlocks
 				Block.Properties.create(Material.CAKE)
 				.hardnessAndResistance(0.5F)
 				.sound(SoundType.CLOTH)));
-
+		
+		barley_hay_block = register("barley_hay_block", new HayBlock(				
+				Block.Properties.create(Material.ORGANIC, MaterialColor.GREEN)
+				.hardnessAndResistance(0.5F)
+				.sound(SoundType.PLANT)));
 		oat_hay_block = register("oat_hay_block", new HayBlock(				
 				Block.Properties.create(Material.ORGANIC, MaterialColor.YELLOW)
 				.hardnessAndResistance(0.5F)
@@ -328,6 +335,13 @@ public class ModBlocks
 				.hardnessAndResistance(0.2f)
 				.sound(SoundType.CLOTH))));
 		
+		barley_crop = register("barley_crop", new CustomCrop
+				(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0)
+				.sound(SoundType.CROP), "barley"));
+		
 		cantaloupe_crop = register("cantaloupe_crop", new CustomCrop
 				(Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement()
@@ -411,6 +425,13 @@ public class ModBlocks
 				.tickRandomly()
 				.hardnessAndResistance(0)
 				.sound(SoundType.CROP), "onion"));
+		
+		pea_crop = register("pea_crop", new CustomCrop
+				(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0)
+				.sound(SoundType.CROP), "pea"));
 		
 		peanut_crop = register("peanut_crop", new CustomCrop
 				(Block.Properties.create(Material.PLANTS)

@@ -47,6 +47,8 @@ public class EventHandler
 			stacks.add(new ItemStack(ModItems.grape_seeds));
 			stacks.add(new ItemStack(ModItems.sorghum_seeds));
 			stacks.add(new ItemStack(ModItems.peanut_seeds));
+			stacks.add(new ItemStack(ModItems.barley_seeds));
+			stacks.add(new ItemStack(ModItems.pea_seeds));
 			stacks.add(new ItemStack(Items.MELON_SEEDS));
 			stacks.add(new ItemStack(Items.PUMPKIN_SEEDS));
 			stacks.add(new ItemStack(Items.BEETROOT_SEEDS));
@@ -70,9 +72,7 @@ public class EventHandler
 				}
 				
 			}
-	}
-
-     
+	}  
 	
 	@SubscribeEvent
 	public static void onSquidKilled(LivingDropsEvent event) 

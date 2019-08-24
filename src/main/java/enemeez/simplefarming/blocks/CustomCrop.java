@@ -35,6 +35,8 @@ public class CustomCrop extends CropsBlock
 	@OnlyIn(Dist.CLIENT)
 	   protected IItemProvider getSeedsItem() 
 	   {
+		if (name.equals("barley"))
+			return ModItems.barley_seeds;
 		if (name.equals("carrot"))
 			return ModItems.carrot_seeds;
 		if (name.equals("potato"))
@@ -49,6 +51,8 @@ public class CustomCrop extends CropsBlock
 			return ModItems.oat;
 		if (name.equals("onion"))
 			return ModItems.onion;
+		if (name.equals("pea"))
+			return ModItems.pea_seeds;
 		if (name.equals("pepper"))
 			return ModItems.pepper;
 		if (name.equals("radish"))
@@ -82,6 +86,8 @@ public class CustomCrop extends CropsBlock
 	   @OnlyIn(Dist.CLIENT)
 	   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 	   {
+		   if (name.equals("barley"))
+				return new ItemStack(ModItems.barley);
 		   if (name.equals("carrot"))
 				return new ItemStack(Items.CARROT);
 		   if (name.equals("potato"))
@@ -96,6 +102,8 @@ public class CustomCrop extends CropsBlock
 				return new ItemStack(ModItems.oat);
 			if (name.equals("onion"))
 				return new ItemStack(ModItems.onion);
+			if (name.equals("pea"))
+				return new ItemStack(ModItems.pea_pod);
 			if (name.equals("pepper"))
 				return new ItemStack(ModItems.pepper);
 			if (name.equals("radish"))

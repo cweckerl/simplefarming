@@ -7,10 +7,54 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "simplefarming:pepper_seeds"
+          "functions": [
+            {
+              "function": "minecraft:apply_bonus",
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "parameters": {
+                "extra": 3,
+                "probability": 0.5714286
+              }
+            }
+          ],
+          "name": "simplefarming:pepper"
+        },
+        
+         {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.1
+            }
+          ],
+          "functions": [
+            {
+              "function": "minecraft:apply_bonus",
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:uniform_bonus_count",
+              "parameters": {
+                "bonusMultiplier": 2
+              }
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
+          "name": "simplefarming:habanero"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "simplefarming:pepper_crop",
+          "properties": {
+            "age": "7"
+          }
         }
       ]
-    },
+    }, 
     {
       "rolls": 1.0,
       "name": "pepper_crop1",
@@ -28,32 +72,8 @@
               }
             }
           ],
-          "name": "simplefarming:pepper"
-        },
-        
-         {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.1
-                }
-              ],
-              "functions": [
-                {
-                  "function": "minecraft:apply_bonus",
-                  "enchantment": "minecraft:fortune",
-                  "formula": "minecraft:uniform_bonus_count",
-                  "parameters": {
-                    "bonusMultiplier": 2
-                  }
-                },
-                {
-                  "function": "minecraft:explosion_decay"
-                }
-              ],
-              "name": "simplefarming:habanero"
-            }
+          "name": "simplefarming:pepper_seeds"
+        }
       ],
       "conditions": [
         {
@@ -71,4 +91,4 @@
       "function": "minecraft:explosion_decay"
     }
   ]
-}
+}t

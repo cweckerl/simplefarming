@@ -6,8 +6,37 @@
       "name": "ginger_crop0",
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "simplefarming:ginger_seeds"
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "simplefarming:ginger_crop",
+                  "properties": {
+                    "age": "7"
+                  }
+                }
+              ],
+	           "functions": [
+	            {
+	              "function": "minecraft:apply_bonus",
+	              "enchantment": "minecraft:fortune",
+	              "formula": "minecraft:binomial_with_bonus_count",
+	              "parameters": {
+	                "extra": 3,
+	                "probability": 0.5714286
+	              }
+	            }
+	          ],
+              "name": "simplefarming:ginger"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "simplefarming:ginger_seeds"
+            }
+          ]
         }
       ]
     },
@@ -28,7 +57,7 @@
               }
             }
           ],
-          "name": "simplefarming:ginger"
+          "name": "simplefarming:ginger_seeds"
         }
       ],
       "conditions": [

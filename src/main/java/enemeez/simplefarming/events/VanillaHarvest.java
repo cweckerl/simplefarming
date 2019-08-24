@@ -1,5 +1,7 @@
 package enemeez.simplefarming.events;
 
+import java.util.ArrayList;
+
 import enemeez.simplefarming.blocks.CustomBush;
 import enemeez.simplefarming.blocks.CustomCactus;
 import enemeez.simplefarming.blocks.DoubleCrop;
@@ -28,23 +30,26 @@ public class VanillaHarvest
 	@SubscribeEvent
 	public void onCropHarvest(RightClickBlock event)
 	{
+		ArrayList<ItemStack> drops;
 		if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof CropsBlock && !(event.getWorld().getBlockState(event.getPos()).getBlock() instanceof DoubleCrop))
 		{
 			if(!event.getPlayer().getHeldItemMainhand().isEmpty() && event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) event.setCanceled(true); //prevents blocks from being placed
 			if (event.getWorld().isRemote) event.setCanceled(true);
 			CropsBlock crop = (CropsBlock) event.getWorld().getBlockState(event.getPos()).getBlock();
-	
 			if (crop.isMaxAge(event.getWorld().getBlockState(event.getPos())))
 				{
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
 					event.getPlayer().addExhaustion(.05F);
-					if (!event.getPlayer().addItemStackToInventory(spawn(crop)));
-					event.getWorld().addEntity(new ItemEntity(
-							(World) event.getWorld(),
-							event.getPos().getX(), 
-							event.getPos().getY(), 
-							event.getPos().getZ(), 
-							spawn(crop)));
+					drops = spawn(crop);
+					for (int i=0; i<drops.size(); i++)
+					{
+						event.getWorld().addEntity(new ItemEntity(
+								(World) event.getWorld(),
+								event.getPos().getX(), 
+								event.getPos().getY(), 
+								event.getPos().getZ(), 
+								(ItemStack) drops.get(i)));
+					}
 		        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
 					event.getWorld().setBlockState(event.getPos(), crop.getDefaultState());
 					
@@ -61,12 +66,16 @@ public class VanillaHarvest
 				{
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
 					event.getPlayer().addExhaustion(.05F);
+					drops = spawn(bush);
+					for (int i=0; i<drops.size(); i++)
+					{
 					event.getWorld().addEntity(new ItemEntity(
 							(World) event.getWorld(),
 							event.getPos().getX(), 
 							event.getPos().getY(), 
 							event.getPos().getZ(), 
-							spawn(bush)));
+							(ItemStack) drops.get(i)));
+					}
 		        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
 					event.getWorld().setBlockState(event.getPos(), bush.getDefaultState());
 				}
@@ -84,12 +93,16 @@ public class VanillaHarvest
 				{
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
 					event.getPlayer().addExhaustion(.05F);
+					drops = spawn(cactus);
+					for (int i=0; i<drops.size(); i++)
+					{
 					event.getWorld().addEntity(new ItemEntity(
 							(World) event.getWorld(),
 							event.getPos().getX(), 
 							event.getPos().getY(), 
 							event.getPos().getZ(), 
-							spawn(cactus)));
+							(ItemStack) drops.get(i)));
+					}
 		        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
 					event.getWorld().setBlockState(event.getPos(), cactus.getDefaultState());
 				}
@@ -106,12 +119,16 @@ public class VanillaHarvest
 				{
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
 					event.getPlayer().addExhaustion(.05F);
+					drops = spawn(leaf);
+					for (int i=0; i<drops.size(); i++)
+					{
 					event.getWorld().addEntity(new ItemEntity(
 							(World) event.getWorld(),
 							event.getPos().getX(), 
 							event.getPos().getY(), 
 							event.getPos().getZ(), 
-							spawn(leaf)));
+							(ItemStack) drops.get(i)));
+					}
 		        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.BLOCK_NETHER_WART_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
 					event.getWorld().setBlockState(event.getPos(), leaf.getDefaultState());
 				}
@@ -124,12 +141,16 @@ public class VanillaHarvest
 			GrapeBlock grape = (GrapeBlock) event.getWorld().getBlockState(event.getPos()).getBlock();
 			event.getPlayer().swingArm(Hand.MAIN_HAND);
 			event.getPlayer().addExhaustion(.05F);
+			drops = spawn(grape);
+			for (int i=0; i<drops.size(); i++)
+			{
 			event.getWorld().addEntity(new ItemEntity(
 					(World) event.getWorld(),
 					event.getPos().getX(), 
 					event.getPos().getY(), 
 					event.getPos().getZ(), 
-					spawn(grape)));
+					(ItemStack) drops.get(i)));
+			}
         	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
 			event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState());
 				
@@ -145,12 +166,16 @@ public class VanillaHarvest
 				{
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
 					event.getPlayer().addExhaustion(.05F);
+					drops = spawn(plant);
+					for (int i=0; i<drops.size(); i++)
+					{
 					event.getWorld().addEntity(new ItemEntity(
 							(World) event.getWorld(),
 							event.getPos().getX(), 
 							event.getPos().getY(), 
 							event.getPos().getZ(), 
-							spawn(plant)));
+							(ItemStack) drops.get(i)));
+					}
 		        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
 					event.getWorld().setBlockState(event.getPos(), plant.getDefaultState());
 				}
@@ -167,12 +192,16 @@ public class VanillaHarvest
 				{
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
 					event.getPlayer().addExhaustion(.05F);
+					drops = spawn(nether);
+					for (int i=0; i<drops.size(); i++)
+					{
 					event.getWorld().addEntity(new ItemEntity(
 							(World) event.getWorld(),
 							event.getPos().getX(), 
 							event.getPos().getY(), 
 							event.getPos().getZ(), 
-							spawn(nether)));
+							(ItemStack) drops.get(i)));
+					}
 		        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.BLOCK_NETHER_WART_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
 					event.getWorld().setBlockState(event.getPos(), nether.getDefaultState());
 				}
@@ -204,12 +233,16 @@ public class VanillaHarvest
 				if(!event.getPlayer().getHeldItemMainhand().isEmpty() && event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) event.setCanceled(true); //prevents blocks from being placed
 				event.getPlayer().swingArm(Hand.MAIN_HAND);
 				event.getPlayer().addExhaustion(.05F);
+				drops = spawn(crop);
+				for (int i=0; i<drops.size(); i++)
+				{
 				event.getWorld().addEntity(new ItemEntity(
 						(World) event.getWorld(),
 						event.getPos().getX(), 
 						event.getPos().getY(), 
 						event.getPos().getZ(), 
-						spawn(crop)));
+						(ItemStack) drops.get(i)));
+				}
 	        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
 	        	event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState());
 	        	event.getWorld().setBlockState(event.getPos().down(), crop.getDefaultState());
@@ -217,110 +250,118 @@ public class VanillaHarvest
 		}
 	
 }
-	
-	
-	private ItemStack spawn(Block blockIn)
+
+	private ArrayList<ItemStack> spawn(Block blockIn)
 	{
+		ArrayList<ItemStack> stacks = new ArrayList<ItemStack>();;
+
         int random = (int)((Math.random()*4)+1);
 
 		if (blockIn == Blocks.WHEAT)
-			return new ItemStack(Items.WHEAT);
+			stacks.add(new ItemStack(Items.WHEAT));
 		if (blockIn == Blocks.CARROTS || blockIn == ModBlocks.carrot_crop)
-			return new ItemStack(Items.CARROT, random);
+			stacks.add(new ItemStack(Items.CARROT, random));
 		if (blockIn == Blocks.POTATOES || blockIn == ModBlocks.potato_crop)
 		{
 			if (Math.random()<=0.02)
-			return new ItemStack(Items.POISONOUS_POTATO);
-			else return new ItemStack(Items.POTATO, random);
+			stacks.add(new ItemStack(Items.POISONOUS_POTATO));
+			stacks.add(new ItemStack(Items.POTATO, random));
 		}
 		if (blockIn == Blocks.BEETROOTS)
-			return new ItemStack(Items.BEETROOT);
-		
+			stacks.add(new ItemStack(Items.BEETROOT));
 		if (blockIn == ModBlocks.cucumber_crop)
-			return new ItemStack(ModItems.cucumber, random);
+			stacks.add(new ItemStack(ModItems.cucumber, random));
 		if (blockIn == ModBlocks.eggplant_crop)
-			return new ItemStack(ModItems.eggplant, random);
+			stacks.add(new ItemStack(ModItems.eggplant, random));
 		if (blockIn == ModBlocks.lettuce_crop)
-			return new ItemStack(ModItems.lettuce, random);
+			stacks.add(new ItemStack(ModItems.lettuce, random));
 		if (blockIn == ModBlocks.oat_crop)
-			return new ItemStack(ModItems.oat);
+			stacks.add(new ItemStack(ModItems.oat));
 		if (blockIn == ModBlocks.onion_crop)
-			return new ItemStack(ModItems.onion, random);
+			stacks.add(new ItemStack(ModItems.onion, random));
 		if (blockIn == ModBlocks.pepper_crop)
 		{
-			if (Math.random()<=0.05)
-			return new ItemStack(ModItems.habanero);
-			else return new ItemStack(ModItems.pepper, random);
+			if (Math.random()<=0.1)
+			stacks.add(new ItemStack(ModItems.habanero));
+			stacks.add(new ItemStack(ModItems.pepper, random));
 		}
 		if (blockIn == ModBlocks.radish_crop)
-			return new ItemStack(ModItems.radish);
+			stacks.add(new ItemStack(ModItems.radish, random));
 		if (blockIn == ModBlocks.rice_crop)
-			return new ItemStack(ModItems.rice);
+			stacks.add(new ItemStack(ModItems.rice));
 		if (blockIn == ModBlocks.rye_crop)
-			return new ItemStack(ModItems.rye);
+			stacks.add(new ItemStack(ModItems.rye));
 		if (blockIn == ModBlocks.soybean_crop)
-			return new ItemStack(ModItems.soybean, random);
+			stacks.add(new ItemStack(ModItems.soybean, random));
 		if (blockIn == ModBlocks.spinach_crop)
-			return new ItemStack(ModItems.spinach, random);
+			stacks.add(new ItemStack(ModItems.spinach, random));
 		if (blockIn == ModBlocks.tomato_crop)
-			return new ItemStack(ModItems.tomato, random);
+			stacks.add(new ItemStack(ModItems.tomato, random));
 		if (blockIn == ModBlocks.yam_crop)
-			return new ItemStack(ModItems.yam, random);
+			stacks.add(new ItemStack(ModItems.yam, random));
 		if (blockIn == ModBlocks.squash_crop)
-			return new ItemStack(ModItems.squash_block);
+			stacks.add(new ItemStack(ModItems.squash_block));
 		if (blockIn == ModBlocks.cantaloupe_crop)
-			return new ItemStack(ModItems.cantaloupe_block);
+			stacks.add(new ItemStack(ModItems.cantaloupe_block));
 		if (blockIn == ModBlocks.cassava_crop)
-			return new ItemStack(ModItems.cassava, random);
+			stacks.add(new ItemStack(ModItems.cassava, random));
 		if (blockIn == ModBlocks.honeydew_crop)
-			return new ItemStack(ModItems.honeydew_block);
+			stacks.add(new ItemStack(ModItems.honeydew_block));
 		if (blockIn == ModBlocks.ginger_crop)
-			return new ItemStack(ModItems.ginger, random);
+			stacks.add(new ItemStack(ModItems.ginger, random));
 		if (blockIn == ModBlocks.peanut_crop)
-			return new ItemStack(ModItems.peanut, random);
+			stacks.add(new ItemStack(ModItems.peanut, random));
 		if (blockIn == ModBlocks.blackberry_bush)
-			return new ItemStack(ModItems.blackberries, random);
+			stacks.add(new ItemStack(ModItems.blackberries, random));
 		if (blockIn == ModBlocks.blueberry_bush)
-			return new ItemStack(ModItems.blueberries, random);
+			stacks.add(new ItemStack(ModItems.blueberries, random));
 		if (blockIn == ModBlocks.raspberry_bush)
-			return new ItemStack(ModItems.raspberries, random);
+			stacks.add(new ItemStack(ModItems.raspberries, random));
 		if (blockIn == ModBlocks.strawberry_bush)
-			return new ItemStack(ModItems.strawberries, random);
+			stacks.add(new ItemStack(ModItems.strawberries, random));
 		if (blockIn == ModBlocks.cactus_crop)
-			return new ItemStack(ModItems.cactus_fruit, random);
+			stacks.add(new ItemStack(ModItems.cactus_fruit, random));
 		if (blockIn == ModBlocks.apple_leaves)
-			return new ItemStack(Items.APPLE);
+			stacks.add(new ItemStack(Items.APPLE));
 		if (blockIn == ModBlocks.apricot_leaves)
-			return new ItemStack(ModItems.apricot);
+			stacks.add(new ItemStack(ModItems.apricot));
 		if (blockIn == ModBlocks.banana_leaves)
-			return new ItemStack(ModItems.banana);
+			stacks.add(new ItemStack(ModItems.banana));
 		if (blockIn == ModBlocks.cherry_leaves)
-			return new ItemStack(ModItems.cherries);
+			stacks.add(new ItemStack(ModItems.cherries));
 		if (blockIn == ModBlocks.orange_leaves)
-			return new ItemStack(ModItems.orange);
+			stacks.add(new ItemStack(ModItems.orange));
 		if (blockIn == ModBlocks.mango_leaves)
-			return new ItemStack(ModItems.mango);
+			stacks.add(new ItemStack(ModItems.mango));
 		if (blockIn == ModBlocks.pear_leaves)
-			return new ItemStack(ModItems.pear);
+			stacks.add(new ItemStack(ModItems.pear));
 		if (blockIn == ModBlocks.plum_leaves)
-			return new ItemStack(ModItems.plum);
+			stacks.add(new ItemStack(ModItems.plum));
 		if (blockIn == ModBlocks.grape_block)
-			return new ItemStack(ModItems.grapes);
+			stacks.add(new ItemStack(ModItems.grapes));
 		if (blockIn == ModBlocks.quinoa)
-			return new ItemStack(ModItems.quinoa_seeds, random);
+			stacks.add(new ItemStack(ModItems.quinoa_seeds, random));
 		if (blockIn == ModBlocks.cumin)
-			return new ItemStack(ModItems.cumin_seeds, random);
+			stacks.add(new ItemStack(ModItems.cumin_seeds, random));
 		if (blockIn == ModBlocks.corn_crop)
-			return new ItemStack(ModItems.corn, random);
+			stacks.add(new ItemStack(ModItems.corn, random));
 		if (blockIn == ModBlocks.kenaf_crop)
-			return new ItemStack(ModItems.kenaf_fiber, random);
+			stacks.add(new ItemStack(ModItems.kenaf_fiber, random));
 		if (blockIn == ModBlocks.sorghum_crop)
-			return new ItemStack(ModItems.sorghum, random);
+			stacks.add(new ItemStack(ModItems.sorghum, random));
 		if (blockIn == Blocks.NETHER_WART)
-			return new ItemStack(Items.NETHER_WART, (int)((Math.random()*3)+2));
+			stacks.add(new ItemStack(Items.NETHER_WART, (int)((Math.random()*3)+2)));
+		if (blockIn == ModBlocks.barley_crop)
+			stacks.add(new ItemStack(ModItems.barley));
+		if (blockIn == ModBlocks.pea_crop)
+			stacks.add(new ItemStack(ModItems.pea_pod, random));
 
 		else 
-			return new ItemStack(Items.AIR);
+			stacks.add(new ItemStack(Items.AIR));
+		
+		
+		return stacks;
+			
 		
 			
 	}
