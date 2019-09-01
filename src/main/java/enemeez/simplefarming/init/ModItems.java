@@ -4,9 +4,11 @@ import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.items.CustomSeed;
 import enemeez.simplefarming.items.FoodTier;
 import enemeez.simplefarming.items.GrainItem;
+import enemeez.simplefarming.items.PigItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Foods;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.SoupItem;
 import net.minecraft.util.ResourceLocation;
@@ -36,6 +38,7 @@ public class ModItems
 	public static Item barley;
 	public static Item cassava;
 	public static Item corn;
+	public static Item cotton;
 	public static Item cucumber;
 	public static Item eggplant;
 	public static Item habanero;
@@ -53,6 +56,7 @@ public class ModItems
 	public static Item soybean;
 	public static Item spinach;
 	public static Item squash;
+	public static Item sweet_potato;
 	public static Item tomato;
 	public static Item yam;	
 	//Cheese
@@ -74,6 +78,7 @@ public class ModItems
 	public static Item carrot_seeds;
 	public static Item cassava_seeds;
 	public static Item corn_seeds;
+	public static Item cotton_seeds;
 	public static Item cucumber_seeds;
 	public static Item eggplant_seeds;
 	public static Item honeydew_seeds;
@@ -94,15 +99,18 @@ public class ModItems
 	public static Item soybean_seeds;
 	public static Item spinach_seeds;
 	public static Item squash_seeds;
+	public static Item sweet_potato_seeds;
 	public static Item tomato_seeds;
 	public static Item yam_seeds;
 	
 	//Prepared Food
+	public static Item baked_sweet_potato;
 	public static Item baked_yam; 
 	public static Item banana_bread;
 	public static Item barley_bread;
 	public static Item blt;
 	public static Item caesar_salad;
+	public static Item carrot_soup;
 	public static Item cassava_cake;
 	public static Item cheeseburger;
 	public static Item chicken_noodle_soup;
@@ -112,6 +120,7 @@ public class ModItems
 	public static Item cooked_bacon;
 	public static Item cooked_chicken_wings; 
 	public static Item cooked_egg; 
+	public static Item cooked_horse_meat;
 	public static Item cooked_sausage; 
 	public static Item cornbread;
 	public static Item corn_salad;
@@ -121,6 +130,7 @@ public class ModItems
 	public static Item fish_fillet; 
 	public static Item fish_sandwich;
 	public static Item fried_calamari;
+	public static Item fried_rice;
 	public static Item fruit_salad;
 	public static Item hamburger;
 	public static Item hotdog; 
@@ -128,6 +138,7 @@ public class ModItems
 	public static Item jaffa_cake;
 	public static Item lasagna;
 	public static Item mac_and_cheese;
+	public static Item mushroom_barley;
 	public static Item noodles;
 	public static Item oatmeal;
 	public static Item oat_bread;
@@ -135,24 +146,28 @@ public class ModItems
 	public static Item pancakes;
 	public static Item pasta;
 	public static Item pbj;
+	public static Item pea_soup;
 	public static Item peanut_butter_cookie;
 	public static Item pickle; 
 	public static Item pickled_beetroot; 
 	public static Item pizza;
 	public static Item popcorn; 
 	public static Item pulled_pork_sandwich;
+	public static Item pumpkin_soup;
 	public static Item quinoa_salad;
 	public static Item radish_soup;
 	public static Item raisins;
 	public static Item raw_bacon;
 	public static Item raw_calamari;
 	public static Item raw_chicken_wings;
+	public static Item raw_horse_meat;
 	public static Item raw_sausage;
 	public static Item rice_bowl;
 	public static Item rice_bread;
 	public static Item rye_bread;
 	public static Item salad;
 	public static Item sandwich;
+	public static Item sausage_barley_soup;
 	public static Item sorghum_bread;
 	public static Item spaghetti;
 	public static Item spinach_mushroom_quiche;
@@ -160,10 +175,12 @@ public class ModItems
 	public static Item sorghum_porridge;
 	public static Item squash_casserole;
 	public static Item squash_soup;
+	public static Item sweet_potato_quinoa_cakes;
 	public static Item sushi;
 	public static Item tofu;
 	public static Item tofu_scramble;
 	public static Item tomato_soup;
+	public static Item trail_mix;
 	public static Item vegetable_medley;
 	public static Item veggie_burger;
 	
@@ -283,33 +300,37 @@ public class ModItems
 		pea_pod = register("pea_pod", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PEA_POD)));
 		peanut = register("peanut", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PEANUT)));
 		pepper = register("pepper", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PEPPER)));
-		radish = register("radish", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.RADISH)));
+		radish = register("radish", new PigItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.RADISH)));
 		sorghum = register("sorghum", new GrainItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SORGHUM)));
 		soybean = register("soybean", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SOYBEAN)));
 		spinach = register("spinach", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SALAD_GREENS)));
 		squash = register("squash", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.GOURD_SLICE)));
+		sweet_potato = register("sweet_potato", new PigItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SWEET_POTATO)));
 		tomato = register("tomato", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.TOMATO)));
-		yam = register("yam", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.YAM)));
+		yam = register("yam", new PigItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(Foods.POTATO)));
 		
-		curry_powder = register("curry_powder", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+		cotton = register("cotton", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		kenaf_fiber = register("kenaf_fiber", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
-		vinegar = register("vinegar", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
-				
 		barley = register("barley", new GrainItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		oat = register("oat", new GrainItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		rye = register("rye", new GrainItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		rice = register("rice", new GrainItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+		
+		curry_powder = register("curry_powder", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+		vinegar = register("vinegar", new Item((new Item.Properties()).containerItem(Items.GLASS_BOTTLE).maxStackSize(1).group(SimpleFarming.ITEM_GROUP)));
+		
 		noodles = register("noodles", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		
-		cumin_seeds = register("cumin_seeds", new CustomSeed(ModBlocks.cumin, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
-		quinoa_seeds = register("quinoa_seeds", new CustomSeed(ModBlocks.quinoa, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
-		sunflower_seeds = register("sunflower_seeds", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SUNFLOWER_SEEDS)));
+		cumin_seeds = register("cumin_seeds", new CustomSeed(ModBlocks.cumin, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDs)));
+		quinoa_seeds = register("quinoa_seeds", new CustomSeed(ModBlocks.quinoa, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDs)));
+		sunflower_seeds = register("sunflower_seeds", new CustomSeed(ModBlocks.sunflower, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDs)));
 		
 		barley_seeds = register("barley_seeds", new CustomSeed(ModBlocks.barley_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		cantaloupe_seeds = register("cantaloupe_seeds", new CustomSeed(ModBlocks.cantaloupe_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		carrot_seeds = register("carrot_seeds", new CustomSeed(ModBlocks.carrot_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		cassava_seeds = register("cassava_seeds", new CustomSeed(ModBlocks.cassava_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		corn_seeds = register("corn_seeds", new CustomSeed(ModBlocks.corn_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+		cotton_seeds = register("cotton_seeds", new CustomSeed(ModBlocks.cotton_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		cucumber_seeds = register("cucumber_seeds", new CustomSeed(ModBlocks.cucumber_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		eggplant_seeds = register("eggplant_seeds", new CustomSeed(ModBlocks.eggplant_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		honeydew_seeds = register("honeydew_seeds", new CustomSeed(ModBlocks.honeydew_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
@@ -330,19 +351,26 @@ public class ModItems
 		soybean_seeds = register("soybean_seeds", new CustomSeed(ModBlocks.soybean_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		spinach_seeds = register("spinach_seeds", new CustomSeed(ModBlocks.spinach_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		squash_seeds = register("squash_seeds", new CustomSeed(ModBlocks.squash_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+		sweet_potato_seeds = register("sweet_potato_seeds", new CustomSeed(ModBlocks.sweet_potato_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		tomato_seeds = register("tomato_seeds", new CustomSeed(ModBlocks.tomato_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		yam_seeds = register("yam_seeds", new CustomSeed(ModBlocks.yam_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 			
-		
-		baked_yam = register("baked_yam", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BAKED_YAM)));
+		apple_pie = register("apple_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT_PIE)));
+		apricot_pie = register("apricot_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT_PIE)));
+		baked_sweet_potato = register("baked_sweet_potato", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BAKED_SWEET_POTATO)));
+		baked_yam = register("baked_yam", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(Foods.BAKED_POTATO)));
 		banana_bread = register("banana_bread", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BANANA_BREAD)));
 		barley_bread = register("barley_bread", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(Foods.BREAD)));
 		beef_curry = register("beef_curry", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BEEF_CURRY)));
+		blackberry_pie = register("blackberry_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));
 		blt = register("blt", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BLT)));
+		blueberry_pie = register("blueberry_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));
 		caesar_salad = register("caesar_salad", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.CAESAR_SALAD)));
+		carrot_soup = register("carrot_soup", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.CARROT_SOUP)));
 		cassava_cake = register("cassava_cake", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CASSAVA_CAKE)));
 		cheese_slice = register("cheese_slice", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CHEESE_SLICE)));
 		cheeseburger = register("cheeseburger", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CHEESE_BURGER)));
+		cherry_pie = register("cherry_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT_PIE)));
 		chicken_curry = register("chicken_curry", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CHICKEN_CURRY)));
 		chicken_noodle_soup = register("chicken_noodle_soup", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.CHICKEN_NOODLE_SOUP)));
 		chicken_parmesan = register("chicken_parmesan", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CHICKEN_PARMESAN)));
@@ -350,8 +378,9 @@ public class ModItems
 		chocolate = register("chocolate", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CHOCOLATE)));
 		cooked_bacon = register("cooked_bacon", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.COOKED_BACON)));
 		cooked_chicken_wings = register("cooked_chicken_wings", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.COOKED_CHICKEN_WINGS)));
-		cooked_sausage = register("cooked_sausage", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.COOKED_SAUSAGE)));
 		cooked_egg = register("cooked_egg", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.COOKED_EGG)));
+		cooked_horse_meat = register("cooked_horse_meat", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(Foods.COOKED_BEEF)));
+		cooked_sausage = register("cooked_sausage", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.COOKED_SAUSAGE)));
 		cornbread = register("cornbread", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CORN_BREAD)));
 		corn_salad = register("corn_salad", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.CORN_SALAD)));
 		cucumber_soup = register("cucumber_soup", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.CUCUMBER_SOUP)));
@@ -360,6 +389,7 @@ public class ModItems
 		fish_fillet = register("fish_fillet", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FISH_FILLET)));
 		fish_sandwich = register("fish_sandwich", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FISH_SANDWICH)));
 		fried_calamari = register("fried_calamari", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRIED_CALAMARI)));
+		fried_rice = register("fried_rice", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRIED_RICE)));
 		fruit_salad = register("fruit_salad", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.FRUIT_SALAD)));
 		golden_habanero = register("golden_habanero", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).rarity(Rarity.RARE).food(FoodTier.GOLDEN_HABANERO)));	
 		hamburger = register("hamburger", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.HAMBURGER)));
@@ -368,6 +398,7 @@ public class ModItems
 		jaffa_cake = register("jaffa_cake", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.JAFFA_CAKE)));
 		lasagna = register("lasagna", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.LASAGNA)));
 		mac_and_cheese = register("mac_and_cheese", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.MAC_AND_CHEESE)));
+		mushroom_barley = register("mushroom_barley", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.MUSHROOM_BARLEY)));
 		mutton_curry = register("mutton_curry", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.MUTTON_CURRY)));
 		oatmeal = register("oatmeal", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.OATMEAL)));
 		oat_bread = register("oat_bread", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(Foods.BREAD)));
@@ -375,25 +406,33 @@ public class ModItems
 		pancakes = register("pancakes", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PANCAKES)));
 		pasta = register("pasta", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PASTA)));
 		pbj = register("pbj", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PBJ)));
+		pea_soup = register("pea_soup", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PEA_SOUP)));
 		peanut_butter_cookie = register("peanut_butter_cookie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PEANUT_BUTTER_COOKIE)));
+		peanut_butter_pie = register("peanut_butter_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PEANUT_BUTTER_PIE)));
+		pear_pie = register("pear_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT_PIE)));		
 		pickle = register("pickle", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PICKLE)));
 		pickled_beetroot = register("pickled_beetroot", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PICKLED_BEETROOT)));
 		pizza = register("pizza", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PIZZA)));
+		plum_pie = register("plum_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT_PIE)));
 		popcorn = register("popcorn", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.POPCORN)));
 		pork_curry = register("pork_curry", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PORK_CURRY)));
 		pulled_pork_sandwich = register("pulled_pork_sandwich", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PULLED_PORK_SANDWICH)));
+		pumpkin_soup = register("pumpkin_soup", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.PUMPKIN_SOUP)));
 		quinoa_salad = register("quinoa_salad", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.QUINOA_SALAD)));
 		radish_soup = register("radish_soup", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.RADISH_SOUP)));
 		raisins = register("raisins", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.RAISINS)));	
+		raspberry_pie = register("raspberry_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));
 		raw_bacon = register("raw_bacon", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.RAW_BACON)));
 		raw_chicken_wings = register("raw_chicken_wings", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.RAW_CHICKEN_WINGS)));
 		raw_calamari = register("raw_calamari", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.RAW_CALAMARI)));
+		raw_horse_meat = register("raw_horse_meat", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(Foods.BEEF)));
 		raw_sausage = register("raw_sausage", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.RAW_SAUSAGE)));
 		rice_bowl = register("rice_bowl", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.RICE_BOWL)));
 		rice_bread = register("rice_bread", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(Foods.BREAD)));
 		rye_bread = register("rye_bread", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(Foods.BREAD)));
 		salad = register("salad", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.SALAD)));
 		sandwich = register("sandwich", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SANDWICH)));
+		sausage_barley_soup = register("sausage_barley_soup", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.SAUSAGE_BARLEY)));
 		sorghum_bread = register("sorghum_bread", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SORGHUM_BREAD)));
 		sorghum_porridge = register("sorghum_porridge", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.SORGHUM_PORRIDGE)));
 		spaghetti = register("spaghetti", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SPAGHETTI)));
@@ -401,24 +440,16 @@ public class ModItems
 		spinach_quinoa_quiche = register("spinach_quinoa_quiche", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SPINACH_QUINOA_QUICHE)));
 		squash_casserole = register("squash_casserole", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SQUASH_CASSEROLE)));
 		squash_soup = register("squash_soup", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.SQUASH_SOUP)));
+		strawberry_pie = register("strawberry_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));	
 		sushi = register("sushi", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SUSHI)));
+		sweet_potato_quinoa_cakes = register("sweet_potato_quinoa_cakes", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SWEET_POTATO_QUINOA_CAKES)));
 		tofu = register("tofu", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.TOFU)));
 		tofu_scramble = register("tofu_scramble", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.TOFU_SCRAMBLE)));
+		trail_mix = register("trail_mix", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.TRAIL_MIX)));
 		tomato_soup = register("tomato_soup", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.TOMATO_SOUP)));
 		vegetable_curry = register("vegetable_curry", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.VEGETABLE_CURRY)));
 		vegetable_medley = register("vegetable_medley", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.VEGETABLE_MEDLEY))); 
 		veggie_burger = register("veggie_burger", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.VEGGIE_BURGER)));
-		apple_pie = register("apple_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT_PIE)));
-		apricot_pie = register("apricot_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT_PIE)));
-		blackberry_pie = register("blackberry_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));
-		blueberry_pie = register("blueberry_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));
-		cherry_pie = register("cherry_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT_PIE)));
-		peanut_butter_pie = register("peanut_butter_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.PEANUT_BUTTER_PIE)));
-		pear_pie = register("pear_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT_PIE)));
-		plum_pie = register("plum_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT_PIE)));
-		raspberry_pie = register("raspberry_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));
-		strawberry_pie = register("strawberry_pie", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));
-		
 		
 	}
 	

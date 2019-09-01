@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"BMB"
+	],
+	
+	"key":
+	{
+		"B": { "item": "simplefarming:barley"},
+		"M": { "tag": "simplefarming:mushrooms"}
+
+	},
+	
+	"result": {"item": "simplefarming:mushroom_barley"}
+	
+}

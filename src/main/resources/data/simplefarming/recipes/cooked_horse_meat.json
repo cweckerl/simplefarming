@@ -1,0 +1,8 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {"item": "simplefarming:raw_horse_meat"},
+	"result": "simplefarming:cooked_horse_meat",
+	"experience": 0.35,
+	"cookingTime": 200
+
+}

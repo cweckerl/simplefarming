@@ -35,6 +35,8 @@ public class WildPlant extends BushBlock implements IGrowable
 		   {
 			   if (name.equals("cumin"))
 				   return new ItemStack(ModItems.cumin_seeds);
+			   if (name.equals("sunflower"))
+				   return new ItemStack(ModItems.sunflower_seeds);
 			   else
 			   		return new ItemStack(ModItems.quinoa_seeds);
 
@@ -44,6 +46,7 @@ public class WildPlant extends BushBlock implements IGrowable
 	   	   {
 		      return state.get(AGE)==3;
 		   }
+		   
 	   
 
 		   @SuppressWarnings("deprecation")
@@ -55,8 +58,6 @@ public class WildPlant extends BushBlock implements IGrowable
 		      }
 
 		   }
-		   
-
 		   
 		   public static void generateBush(IWorld world, BlockPos pos, Random random, int type) 
 		   {

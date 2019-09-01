@@ -7,6 +7,7 @@ import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.passive.SquidEntity;
+import net.minecraft.entity.passive.horse.HorseEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.world.World;
@@ -23,6 +24,8 @@ public class EventHandler
 	@SubscribeEvent
 	public static void onGrassBroken(BreakEvent event) 
 	{
+		if (event.getPlayer().getHeldItemMainhand().getItem() != Items.SHEARS && !event.getPlayer().isCreative())
+		{
 			stacks = new ArrayList<ItemStack>();
 			stacks.add(new ItemStack(ModItems.cantaloupe_seeds));
 			stacks.add(new ItemStack(ModItems.cassava_seeds));
@@ -49,6 +52,8 @@ public class EventHandler
 			stacks.add(new ItemStack(ModItems.peanut_seeds));
 			stacks.add(new ItemStack(ModItems.barley_seeds));
 			stacks.add(new ItemStack(ModItems.pea_seeds));
+			stacks.add(new ItemStack(ModItems.cotton_seeds));
+			stacks.add(new ItemStack(ModItems.sweet_potato_seeds));
 			stacks.add(new ItemStack(Items.MELON_SEEDS));
 			stacks.add(new ItemStack(Items.PUMPKIN_SEEDS));
 			stacks.add(new ItemStack(Items.BEETROOT_SEEDS));
@@ -59,23 +64,19 @@ public class EventHandler
 			{
 				if (Math.random() <= 0.125)
 				{
-					if (event.getPlayer().getHeldItemMainhand().getItem() != Items.SHEARS)
-					{
 						event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState(), 2);
-						if (!event.getPlayer().isCreative())
-						{
-							int random = (int)((Math.random()*(stacks.size()))+1);
-							event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), stacks.get(random)));
-						}
+						int random = (int)((Math.random()*(stacks.size()))+1);
+						event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), stacks.get(random)));	
 							
-					}
+					
 				}
 				
 			}
-	}  
+		}  
+	}
 	
 	@SubscribeEvent
-	public static void onSquidKilled(LivingDropsEvent event) 
+	public static void onMobKilled(LivingDropsEvent event) 
 	{
 		
 		if ((event.getEntityLiving() instanceof SquidEntity))
@@ -83,6 +84,12 @@ public class EventHandler
 				event.getEntityLiving().entityDropItem(new ItemStack(ModItems.fried_calamari, (int)((Math.random()*3)+1)));
 			else
 				event.getEntityLiving().entityDropItem(new ItemStack(ModItems.raw_calamari, (int)((Math.random()*3)+1)));
+		
+		if ((event.getEntityLiving() instanceof HorseEntity))
+			if (event.getEntityLiving().isBurning())
+				event.getEntityLiving().entityDropItem(new ItemStack(ModItems.cooked_horse_meat, (int)((Math.random()*3)+1)));
+			else
+				event.getEntityLiving().entityDropItem(new ItemStack(ModItems.raw_horse_meat, (int)((Math.random()*3)+1)));
 	
 	}
 

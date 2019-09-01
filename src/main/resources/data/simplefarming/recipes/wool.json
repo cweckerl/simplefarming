@@ -3,14 +3,13 @@
 	
 	"pattern":
 	[
-		"###",
-		"###",
-		"###"
+		"##",
+		"##"
 	],
 	
 	"key":
 	{
-		"#": { "item": "simplefarming:kenaf_fiber"}
+		"#": { "item": "simplefarming:cotton"}
 	},
 	
 	"result": {"item": "minecraft:white_wool"}

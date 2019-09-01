@@ -1,0 +1,76 @@
+{
+"ambientocclusion": false,
+    "textures": {
+        "particle": "simplefarming:block/sunflower_stem",
+        "sunflower_front": "minecraft:block/sunflower_front",
+        "sunflower_stem": "simplefarming:block/sunflower_stem",
+        "sunflower_back": "minecraft:block/sunflower_back"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "stem2",
+            "from": [ 0, 0, 8 ], 
+            "to": [ 16, 16, 8 ], 
+            "shade": false,
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45.0, "rescale": true },
+            "faces": {
+                "north": { "texture": "#sunflower_stem", "uv": [ 0, 0, 16, 16 ] },
+                "south": { "texture": "#sunflower_stem", "uv": [ 0, 0, 16, 16 ] }
+            }
+        },
+        {
+            "name": "stem",
+            "from": [ 8, 0, 0 ], 
+            "to": [ 8, 16, 16 ], 
+            "shade": false,
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "y", "angle": 45.0, "rescale": true },
+            "faces": {
+                "east": { "texture": "#sunflower_stem", "uv": [ 0, 0, 16, 16 ] },
+                "west": { "texture": "#sunflower_stem", "uv": [ 0, 0, 16, 16 ] }
+            }
+        },
+        {
+            "name": "flower",
+            "from": [ 11.75, 7, 1 ], 
+            "to": [ 11.75, 23, 15 ], 
+            "shade": false,
+            "rotation": { "origin": [ 8, 8, 8 ], "axis": "z", "angle": 22.5, "rescale": true },
+            "faces": {
+                "east": { "texture": "#sunflower_front", "uv": [ 0, 0, 16, 16 ] },
+                "west": { "texture": "#sunflower_back", "uv": [ 0, 0, 16, 16 ] }
+            }
+        }
+    ]
+}

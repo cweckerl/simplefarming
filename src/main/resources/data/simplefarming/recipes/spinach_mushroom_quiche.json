@@ -9,7 +9,7 @@
 	
 	"key":
 	{
-		"M": { "item": "minecraft:brown_mushroom"},
+		"M": { "tag": "simplefarming:mushrooms"},
 		"S": { "item": "simplefarming:spinach"},
 		"E": { "item": "minecraft:egg"},
 		"G": { "tag": "simplefarming:grain"}

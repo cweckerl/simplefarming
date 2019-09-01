@@ -77,11 +77,13 @@ public class ModBlocks
 	
 	//Crops
 	public static Block barley_crop;
+	public static Block bean_crop;
 	public static Block cactus_crop;
 	public static Block cantaloupe_crop;
 	public static Block carrot_crop;
 	public static Block cassava_crop;
 	public static Block corn_crop;
+	public static Block cotton_crop;
 	public static Block cucumber_crop;
 	public static Block eggplant_crop;
 	public static Block honeydew_crop;
@@ -101,6 +103,7 @@ public class ModBlocks
 	public static Block soybean_crop;
 	public static Block spinach_crop;
 	public static Block squash_crop;
+	public static Block sweet_potato_crop;
 	public static Block tomato_crop;
 	public static Block yam_crop;
 
@@ -113,6 +116,7 @@ public class ModBlocks
 	//Flowers
 	public static Block quinoa;
 	public static Block cumin;
+	public static Block sunflower;
 	
 	
 	//temp fix
@@ -270,6 +274,12 @@ public class ModBlocks
 				.doesNotBlockMovement()
 				.hardnessAndResistance(0.2f)
 				.sound(SoundType.PLANT)), "quinoa"));
+		sunflower = register("sunflower", new WildPlant(				
+				(Block.Properties.create(Material.PLANTS)
+				.tickRandomly()
+				.doesNotBlockMovement()
+				.hardnessAndResistance(0.2f)
+				.sound(SoundType.PLANT)), "sunflower"));
 
 		grape_plant = register("grape_plant", new GrapePlant(				
 				(Block.Properties.create(Material.PLANTS)
@@ -342,6 +352,13 @@ public class ModBlocks
 				.hardnessAndResistance(0)
 				.sound(SoundType.CROP), "barley"));
 		
+		bean_crop = register("black_beans_crop", new CustomCrop
+				(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0)
+				.sound(SoundType.CROP), "beans"));
+		
 		cantaloupe_crop = register("cantaloupe_crop", new CustomCrop
 				(Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement()
@@ -362,6 +379,13 @@ public class ModBlocks
 				.tickRandomly()
 				.hardnessAndResistance(0)
 				.sound(SoundType.CROP), "corn"));
+		
+		cotton_crop = register("cotton_crop", new CustomCrop
+				(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0)
+				.sound(SoundType.CROP), "cotton"));
 		
 		cassava_crop = register("cassava_crop", new CustomCrop
 				(Block.Properties.create(Material.PLANTS)
@@ -495,6 +519,12 @@ public class ModBlocks
 				.tickRandomly()
 				.hardnessAndResistance(0)
 				.sound(SoundType.CROP), "spinach"));
+		sweet_potato_crop = register("sweet_potato_crop", new CustomCrop
+				(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0)
+				.sound(SoundType.CROP), "sweet_potato"));
 		
 		tomato_crop = register("tomato_crop", new CustomCrop
 				(Block.Properties.create(Material.PLANTS)

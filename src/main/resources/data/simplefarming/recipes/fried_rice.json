@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "simplefarming:rice"
+    },
+    {
+      "item": "simplefarming:cooked_egg"
+    },
+    {
+      "tag": "simplefarming:vegetables"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:fried_rice"}
+	
+}

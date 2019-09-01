@@ -5,6 +5,7 @@ import enemeez.simplefarming.init.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.passive.CowEntity;
+import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -44,12 +45,16 @@ public class TemptationTask
 				ModItems.peanut_seeds,
 				ModItems.barley_seeds,
 				ModItems.sunflower_seeds,
-				ModItems.pea_seeds
+				ModItems.pea_seeds,
+				ModItems.cotton_seeds,
+				ModItems.sweet_potato_seeds
 		
 			);
 	
 	private static final Ingredient WHEATS = Ingredient.fromItems(ModItems.barley, ModItems.oat, ModItems.rye, ModItems.rice, ModItems.corn, ModItems.sorghum);
 	
+	private static final Ingredient PIGS = Ingredient.fromItems(ModItems.sweet_potato, ModItems.radish, ModItems.yam);
+
 	        @SubscribeEvent
 	        public void onEntitySpawn(EntityJoinWorldEvent event) {
 	            Entity entity = event.getEntity();
@@ -63,7 +68,7 @@ public class TemptationTask
 	            if(entity instanceof CowEntity) 
 	            {
 	                CowEntity cow = (CowEntity)entity;
-	                cow.goalSelector.addGoal(3, new MoreTemptation(cow, 1.0D, false, WHEATS));
+	                cow.goalSelector.addGoal(3, new MoreTemptation(cow, 1.25D, false, WHEATS));
 	            }
 	            
 	            if(entity instanceof SheepEntity) 
@@ -71,6 +76,14 @@ public class TemptationTask
 	                SheepEntity sheep = (SheepEntity)entity;
 	                sheep.goalSelector.addGoal(3, new MoreTemptation(sheep, 1.0D, false, WHEATS));
 	            }
+	            
+	            if(entity instanceof PigEntity) 
+	            {
+	                PigEntity pig = (PigEntity)entity;
+	                pig.goalSelector.addGoal(4, new MoreTemptation(pig, 1.2D, false, PIGS));
+	            }
+	            
+
 	            
 	        }
 	    }

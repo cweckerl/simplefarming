@@ -17,21 +17,20 @@ public class FoodTier
 	public static final Food ONION = (new Food.Builder()).hunger(3).saturation(0.3F).build();
 	public static final Food PEANUT = (new Food.Builder()).hunger(1).saturation(0.3F).build();
 	public static final Food PEPPER = (new Food.Builder()).hunger(2).saturation(0.3F).build();
-	public static final Food PEA_POD = (new Food.Builder()).hunger(2).saturation(0.3F).build();
+	public static final Food PEA_POD = (new Food.Builder()).hunger(2).saturation(0.6F).build();
 	public static final Food RADISH = (new Food.Builder()).hunger(1).saturation(0.6F).build();
 	public static final Food SOYBEAN = (new Food.Builder()).hunger(2).saturation(0.3F).build();
 	public static final Food SORGHUM = (new Food.Builder()).hunger(4).saturation(0.6F).build();
 	public static final Food SALAD_GREENS = (new Food.Builder()).hunger(2).saturation(0.6F).build();
 	public static final Food TOMATO = (new Food.Builder()).hunger(3).saturation(0.6F).build();
-	public static final Food YAM = (new Food.Builder()).hunger(1).saturation(0.3F).build();
-	
-	public static final Food BAKED_YAM = (new Food.Builder()).hunger(5).saturation(0.6F).build();
+	public static final Food SWEET_POTATO = (new Food.Builder()).hunger(2).saturation(0.6F).build();
+	public static final Food SEEDs = (new Food.Builder()).hunger(1).saturation(0.1F).fastToEat().build();
+		
 	public static final Food GOLDEN_HABANERO = (new Food.Builder()).hunger(2).saturation(1.2F).effect(new EffectInstance(Effects.FIRE_RESISTANCE, 1200, 1), 1.0F).setAlwaysEdible().build();
 	public static final Food BERRY_PIE = (new Food.Builder()).hunger(4).saturation(0.1F).build();
 	public static final Food FRUIT_PIE = (new Food.Builder()).hunger(6).saturation(0.3F).build();
 	
-	public static final Food SUNFLOWER_SEEDS= (new Food.Builder()).hunger(1).saturation(0.1F).fastToEat().build();
-	
+	public static final Food BAKED_SWEET_POTATO= (new Food.Builder()).hunger(6).saturation(0.6F).build();
 	public static final Food BANANA_BREAD = (new Food.Builder()).hunger(7).saturation(0.3F).build();
 	public static final Food BLT = (new Food.Builder()).hunger(14).saturation(0.8F).build();
 	public static final Food CAESAR_SALAD = (new Food.Builder()).hunger(11).saturation(0.6F).build();
@@ -103,6 +102,16 @@ public class FoodTier
 	public static final Food ITALIAN_BEEF = (new Food.Builder()).hunger(18).saturation(0.8F).build();
 	public static final Food PEANUT_BUTTER_COOKIE = (new Food.Builder()).hunger(4).saturation(0.6F).build();
 	public static final Food PBJ = (new Food.Builder()).hunger(8).saturation(0.6F).build();
+	
+	public static final Food TRAIL_MIX = (new Food.Builder()).hunger(12).saturation(0.6F).build();
+	public static final Food CARROT_SOUP = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	public static final Food PUMPKIN_SOUP = (new Food.Builder()).hunger(6).saturation(0.6F).build();	
+	public static final Food PEA_SOUP = (new Food.Builder()).hunger(4).saturation(0.6F).build();
+	public static final Food FRIED_RICE = (new Food.Builder()).hunger(9).saturation(0.6F).build();
+	public static final Food SWEET_POTATO_QUINOA_CAKES = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	public static final Food SAUSAGE_BARLEY = (new Food.Builder()).hunger(10).saturation(0.8F).build();
+	public static final Food MUSHROOM_BARLEY = (new Food.Builder()).hunger(4).saturation(0.6F).build();
+
 
 
 

@@ -42,45 +42,49 @@ public class CustomCrop extends CropsBlock
 		if (name.equals("potato"))
 			return ModItems.potato_seeds;
 		if (name.equals("cucumber"))
-			return ModItems.cucumber;
+			return ModItems.cucumber_seeds;
 		if (name.equals("eggplant"))
-			return ModItems.eggplant;
+			return ModItems.eggplant_seeds;
 		if (name.equals("lettuce"))
-			return ModItems.lettuce;
+			return ModItems.lettuce_seeds;
 		if (name.equals("oat"))
-			return ModItems.oat;
+			return ModItems.oat_seeds;
 		if (name.equals("onion"))
-			return ModItems.onion;
+			return ModItems.onion_seeds;
 		if (name.equals("pea"))
 			return ModItems.pea_seeds;
 		if (name.equals("pepper"))
-			return ModItems.pepper;
+			return ModItems.pepper_seeds;
 		if (name.equals("radish"))
-			return ModItems.radish;
+			return ModItems.radish_seeds;
 		if (name.equals("rice"))
-			return ModItems.rice;
+			return ModItems.rice_seeds;
 		if (name.equals("rye"))
-			return ModItems.rye;
+			return ModItems.rye_seeds;
 		if (name.equals("soybean"))
-			return ModItems.soybean;
+			return ModItems.soybean_seeds;
 		if (name.equals("spinach"))
-			return ModItems.spinach;
+			return ModItems.spinach_seeds;
 		if (name.equals("tomato"))
-			return ModItems.tomato;
+			return ModItems.tomato_seeds;
 		if (name.equals("yam"))
-			return ModItems.yam;
+			return ModItems.yam_seeds;
 		if (name.equals("squash"))
-			return ModItems.squash_block;
+			return ModItems.squash_seeds;
 		if (name.equals("cantaloupe"))
-			return ModItems.cantaloupe_block;
+			return ModItems.cantaloupe_seeds;
 		if (name.equals("cassava"))
-			return ModItems.cassava;
+			return ModItems.cassava_seeds;
 		if (name.equals("honeydew"))
-			return ModItems.honeydew_block;
+			return ModItems.honeydew_seeds;
 		if (name.equals("ginger"))
-			return ModItems.ginger;
+			return ModItems.ginger_seeds;
+		if (name.equals("cotton"))
+			return ModItems.cotton_seeds;
+		if (name.equals("sweet_potato"))
+			return ModItems.sweet_potato;
 		else
-			return ModItems.peanut;
+			return ModItems.peanut_seeds;
 	   }
 
 	   @OnlyIn(Dist.CLIENT)
@@ -130,6 +134,10 @@ public class CustomCrop extends CropsBlock
 				return new ItemStack(ModItems.honeydew_block);
 			if (name.equals("ginger"))
 				return new ItemStack(ModItems.ginger);
+			if (name.equals("cotton"))
+				return new ItemStack(ModItems.cotton);
+			if (name.equals("sweet_potato"))
+				return new ItemStack(ModItems.sweet_potato);
 			else
 				return new ItemStack(ModItems.peanut);
 	   }
