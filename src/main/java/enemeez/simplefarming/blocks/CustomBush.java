@@ -21,8 +21,6 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 	public class CustomBush extends BushBlock implements IGrowable 
 	{
@@ -37,7 +35,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 		    this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
 		 }
 		
-		   @OnlyIn(Dist.CLIENT)
 		   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 		   {
 			   if (name.equals("blackberries"))

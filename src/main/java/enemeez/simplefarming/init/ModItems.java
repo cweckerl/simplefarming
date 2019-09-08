@@ -317,7 +317,7 @@ public class ModItems
 		rice = register("rice", new GrainItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		
 		curry_powder = register("curry_powder", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
-		vinegar = register("vinegar", new Item((new Item.Properties()).containerItem(Items.GLASS_BOTTLE).maxStackSize(1).group(SimpleFarming.ITEM_GROUP)));
+		vinegar = register("vinegar", new Item((new Item.Properties()).containerItem(Items.GLASS_BOTTLE).maxStackSize(16).group(SimpleFarming.ITEM_GROUP)));
 		
 		noodles = register("noodles", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		

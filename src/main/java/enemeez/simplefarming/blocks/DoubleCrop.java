@@ -21,8 +21,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class DoubleCrop extends CropsBlock 
 {
@@ -175,7 +173,6 @@ public class DoubleCrop extends CropsBlock
 	      super.onEntityCollision(state, worldIn, pos, entityIn);
 	   }
 
-	   @OnlyIn(Dist.CLIENT)
 	   protected IItemProvider getSeedsItem() 
 	   {
 		   if (name.equals("corn"))
@@ -186,7 +183,6 @@ public class DoubleCrop extends CropsBlock
 			   return ModItems.sorghum_seeds;
 	   }
 
-	   @OnlyIn(Dist.CLIENT)
 	   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 	   {
 		   if (name.equals("corn"))

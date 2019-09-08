@@ -12,8 +12,6 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class CustomCrop extends CropsBlock
 { 
@@ -31,8 +29,7 @@ public class CustomCrop extends CropsBlock
 	      return state.getBlock() instanceof FarmlandBlock;
 	   }
 	
-	
-	@OnlyIn(Dist.CLIENT)
+
 	   protected IItemProvider getSeedsItem() 
 	   {
 		if (name.equals("barley"))
@@ -87,7 +84,6 @@ public class CustomCrop extends CropsBlock
 			return ModItems.peanut_seeds;
 	   }
 
-	   @OnlyIn(Dist.CLIENT)
 	   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 	   {
 		   if (name.equals("barley"))

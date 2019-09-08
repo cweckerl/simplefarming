@@ -42,10 +42,10 @@
             "from": [ 6, 0, 6 ], 
             "to": [ 10, 1, 10 ], 
             "faces": {
-                "north": { "texture": "#oak_log", "uv": [ 0, 0, 4, 5 ] },
-                "east": { "texture": "#oak_log", "uv": [ 0, 0, 4, 5 ] },
-                "south": { "texture": "#oak_log", "uv": [ 0, 0, 4, 5 ] },
-                "west": { "texture": "#oak_log", "uv": [ 0, 0, 4, 5 ] },
+                "north": { "texture": "#oak_log", "uv": [ 6, 15, 10, 16 ] },
+                "east": { "texture": "#oak_log", "uv": [ 6, 15, 10, 16 ] },
+                "south": { "texture": "#oak_log", "uv": [ 6, 15, 10, 16 ] },
+                "west": { "texture": "#oak_log", "uv": [ 6, 15, 10, 16 ] },
                 "up": { "texture": "#oak_log_top", "uv": [ 6, 6, 10, 10 ] },
                 "down": { "texture": "#oak_log_top", "uv": [ 6, 6, 10, 10 ] }
             }

@@ -2,7 +2,9 @@ package enemeez.simplefarming;
 
 import enemeez.simplefarming.config.Config;
 import enemeez.simplefarming.config.FeatureConfig;
+import enemeez.simplefarming.events.DropEvents;
 import enemeez.simplefarming.events.ModHarvest;
+import enemeez.simplefarming.events.SmartHarvest;
 import enemeez.simplefarming.events.TemptationTask;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
@@ -49,8 +51,11 @@ public class SideProxy
 				SimpleFarming.LOGGER.debug("common setup");
 				
 				 MinecraftForge.EVENT_BUS.register(new TemptationTask());
-				 if (FeatureConfig.mod_harvest.get())
+				 if (FeatureConfig.mod_harvest.get() && FeatureConfig.smart_harvest.get() == false)
 					MinecraftForge.EVENT_BUS.register(new ModHarvest());
+				 MinecraftForge.EVENT_BUS.register(new DropEvents());
+				 if (FeatureConfig.smart_harvest.get())
+				 MinecraftForge.EVENT_BUS.register(new SmartHarvest());
 
 				if (ModWorldGen.fruit_tree != null) 
 				{

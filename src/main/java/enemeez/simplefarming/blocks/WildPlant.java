@@ -16,8 +16,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class WildPlant extends BushBlock implements IGrowable 
 {
@@ -30,7 +28,6 @@ public class WildPlant extends BushBlock implements IGrowable
 		    this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
 		 }
 
-		   @OnlyIn(Dist.CLIENT)
 		   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 		   {
 			   if (name.equals("cumin"))
@@ -92,5 +89,3 @@ public class WildPlant extends BushBlock implements IGrowable
 		
 		   
 }	
-
-

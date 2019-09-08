@@ -19,7 +19,7 @@ public class Config
 		GenConfig.init(BUILDER);
 		BUILDER.pop();
 		
-		BUILDER.push("Enable/Disable World Generation Features");
+		BUILDER.push("Enable/Disable World Generation");
 		EnableConfig.init(BUILDER);
 		BUILDER.pop();
 		

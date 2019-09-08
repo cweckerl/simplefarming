@@ -39,7 +39,6 @@ public class FruitLeaves extends BushBlock implements IGrowable
 	    this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
 	 }
 
-	   @OnlyIn(Dist.CLIENT)
 	   public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) 
 	   {
 			if (name.equals("apple"))
@@ -157,4 +156,4 @@ public class FruitLeaves extends BushBlock implements IGrowable
 
 	  
 	   
-	}	
+	}
