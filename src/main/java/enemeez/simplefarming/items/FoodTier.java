@@ -9,7 +9,7 @@ public class FoodTier
 	public static final Food BERRY = (new Food.Builder()).hunger(2).saturation(0.1F).fastToEat().build();
 	public static final Food FRUIT = (new Food.Builder()).hunger(4).saturation(0.3F).build();
 	public static final Food GOURD_SLICE = (new Food.Builder()).hunger(2).saturation(0.3F).build();
-	public static final Food CASSAVA = (new Food.Builder()).hunger(3).saturation(0.6F).build();
+	public static final Food CASSAVA = (new Food.Builder()).hunger(3).saturation(0.3F).build();
 	public static final Food CORN = (new Food.Builder()).hunger(4).saturation(0.6F).build();
 	public static final Food CUCUMBER = (new Food.Builder()).hunger(3).saturation(0.6F).build();
 	public static final Food EGGPLANT = (new Food.Builder()).hunger(3).saturation(0.6F).build();
@@ -25,6 +25,9 @@ public class FoodTier
 	public static final Food TOMATO = (new Food.Builder()).hunger(3).saturation(0.6F).build();
 	public static final Food SWEET_POTATO = (new Food.Builder()).hunger(2).saturation(0.6F).build();
 	public static final Food SEEDs = (new Food.Builder()).hunger(1).saturation(0.1F).fastToEat().build();
+	public static final Food ZUCCHINI = (new Food.Builder()).hunger(3).saturation(0.6F).build();
+	public static final Food BROCOLLI = (new Food.Builder()).hunger(3).saturation(0.3F).build();
+	public static final Food OLIVES = (new Food.Builder()).hunger(2).saturation(0.3F).build();
 		
 	public static final Food GOLDEN_HABANERO = (new Food.Builder()).hunger(2).saturation(1.2F).effect(new EffectInstance(Effects.FIRE_RESISTANCE, 1200, 1), 1.0F).setAlwaysEdible().build();
 	public static final Food BERRY_PIE = (new Food.Builder()).hunger(4).saturation(0.1F).build();
@@ -112,8 +115,9 @@ public class FoodTier
 	public static final Food SAUSAGE_BARLEY = (new Food.Builder()).hunger(10).saturation(0.8F).build();
 	public static final Food MUSHROOM_BARLEY = (new Food.Builder()).hunger(4).saturation(0.6F).build();
 
-
-
-
-
+	public static final Food BEEF_AND_BROCCOLI = (new Food.Builder()).hunger(14).saturation(0.8F).build();
+	public static final Food BROCCOLI_CHEESE_SOUP = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	public static final Food STUFFED_CORN_ZUCCHINI = (new Food.Builder()).hunger(14).saturation(0.6F).build();
+	public static final Food ZUCCHINI_BREAD = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	public static final Food OLIVE_TOMATO_SALAD = (new Food.Builder()).hunger(5).saturation(0.6F).build();
 }

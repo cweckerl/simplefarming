@@ -7,7 +7,7 @@
         "age=4": { "model": "simplefarming:block/fruit_leaves_oak" },
         "age=5": { "model": "simplefarming:block/fruit_leaves_oak" },
         "age=6": { "model": "simplefarming:block/fruit_leaves_oak" },
-        "age=7": { "model": "simplefarming:block/pear_leaves" }
+        "age=7": [{ "model": "simplefarming:block/pear_leaves3" }, { "model": "simplefarming:block/pear_leaves2" }, { "model": "simplefarming:block/pear_leaves1" }]
     }
 }
 

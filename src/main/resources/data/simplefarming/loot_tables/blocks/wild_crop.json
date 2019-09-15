@@ -165,6 +165,16 @@
                "name":"simplefarming:cotton_seeds",
                "weight":1
             },
+            {  
+               "type":"item",
+               "name":"simplefarming:broccoli_seeds",
+               "weight":1
+            },
+            {  
+               "type":"item",
+               "name":"simplefarming:zucchini_seeds",
+               "weight":1
+            },
 	    {  
                "type":"item",
                "name":"simplefarming:yam_seeds",

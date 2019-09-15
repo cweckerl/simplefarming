@@ -44,7 +44,7 @@ public class SmartHarvest
 							event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
 						}
 			        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
-						event.getWorld().setBlockState(event.getPos(), crop.getDefaultState());
+						event.getWorld().setBlockState(event.getPos(), crop.getDefaultState(), 2);
 						
 					}
 			}
@@ -65,7 +65,7 @@ public class SmartHarvest
 							event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
 						}
 			        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
-						event.getWorld().setBlockState(event.getPos(), bush.getDefaultState());
+						event.getWorld().setBlockState(event.getPos(), bush.getDefaultState(), 2);
 					}
 			}
 			
@@ -87,7 +87,7 @@ public class SmartHarvest
 							event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
 						}
 			        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
-						event.getWorld().setBlockState(event.getPos(), cactus.getDefaultState());
+						event.getWorld().setBlockState(event.getPos(), cactus.getDefaultState(), 2);
 					}
 			}
 			
@@ -108,7 +108,7 @@ public class SmartHarvest
 							event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
 						}
 			        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.BLOCK_NETHER_WART_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
-						event.getWorld().setBlockState(event.getPos(), leaf.getDefaultState());
+						event.getWorld().setBlockState(event.getPos(), leaf.getDefaultState(), 2);
 					}
 			}
 			
@@ -125,7 +125,7 @@ public class SmartHarvest
 					event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
 				}
 	        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
-				event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState());
+				event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState(), 2);
 					
 			}
 			
@@ -145,7 +145,7 @@ public class SmartHarvest
 							event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
 						}
 			        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
-						event.getWorld().setBlockState(event.getPos(), plant.getDefaultState());
+						event.getWorld().setBlockState(event.getPos(), plant.getDefaultState(), 2);
 					}
 					
 			}
@@ -165,7 +165,7 @@ public class SmartHarvest
 							event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
 						}
 			        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.BLOCK_NETHER_WART_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
-						event.getWorld().setBlockState(event.getPos(), nether.getDefaultState());
+						event.getWorld().setBlockState(event.getPos(), nether.getDefaultState(), 2);
 					}
 					
 			}
@@ -176,18 +176,6 @@ public class SmartHarvest
 				if(!event.getPlayer().getHeldItemMainhand().isEmpty()) event.setCanceled(true); //prevents blocks from being placed
 				if (event.getWorld().isRemote) event.setCanceled(true);
 				DoubleCrop crop = (DoubleCrop) event.getWorld().getBlockState(event.getPos()).getBlock();
-		
-				
-				if (crop.getAge(event.getWorld().getBlockState(event.getPos()))==5)
-				{
-					event.getPlayer().swingArm(Hand.MAIN_HAND);
-					event.getPlayer().addExhaustion(.05F);
-					event.getWorld().setBlockState(event.getPos(), crop.getDefaultState().with(DoubleCrop.AGE, 6));
-					event.getWorld().setBlockState(event.getPos().up(), crop.getDefaultState().with(DoubleCrop.AGE, 7));
-					if (!event.getPlayer().isCreative())
-		        		event.getPlayer().getHeldItem(Hand.MAIN_HAND).shrink(1); 
-				}
-				
 					
 				if (crop.getAge(event.getWorld().getBlockState(event.getPos()))==7) 
 				{
@@ -200,8 +188,27 @@ public class SmartHarvest
 						event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
 					}
 		        	event.getWorld().playSound((PlayerEntity)null, event.getPos(), SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
-		        	event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState());
-		        	event.getWorld().setBlockState(event.getPos().down(), crop.getDefaultState());
+		        	event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState(), 2);
+		        	event.getWorld().setBlockState(event.getPos().down(), crop.getDefaultState(), 2);
+				}
+			}
+		}
+		
+		if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof DoubleCrop)
+		{
+			if(event.getPlayer().getHeldItemMainhand().getItem() == Items.BONE_MEAL)
+			{
+				if (event.getWorld().isRemote) event.setCanceled(true);
+				DoubleCrop crop = (DoubleCrop) event.getWorld().getBlockState(event.getPos()).getBlock();
+		
+				if (crop.getAge(event.getWorld().getBlockState(event.getPos()))==6)
+				{
+					event.getPlayer().swingArm(Hand.MAIN_HAND);
+					event.getPlayer().addExhaustion(.05F);
+					event.getWorld().setBlockState(event.getPos(), crop.getDefaultState().with(DoubleCrop.AGE, 6), 2);
+					event.getWorld().setBlockState(event.getPos().up(), crop.getDefaultState().with(DoubleCrop.AGE, 7), 2);
+					if (!event.getPlayer().isCreative())
+		        		event.getPlayer().getHeldItem(Hand.MAIN_HAND).shrink(1); 
 				}
 			}
 		}

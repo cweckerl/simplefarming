@@ -34,6 +34,8 @@ public class CustomCrop extends CropsBlock
 	   {
 		if (name.equals("barley"))
 			return ModItems.barley_seeds;
+		if (name.equals("broccoli"))
+			return ModItems.broccoli_seeds;
 		if (name.equals("carrot"))
 			return ModItems.carrot_seeds;
 		if (name.equals("potato"))
@@ -79,7 +81,11 @@ public class CustomCrop extends CropsBlock
 		if (name.equals("cotton"))
 			return ModItems.cotton_seeds;
 		if (name.equals("sweet_potato"))
-			return ModItems.sweet_potato;
+			return ModItems.sweet_potato_seeds;
+		if (name.equals("broccoli"))
+			return ModItems.broccoli_seeds;
+		if (name.equals("zucchini"))
+			return ModItems.zucchini_seeds;
 		else
 			return ModItems.peanut_seeds;
 	   }
@@ -88,6 +94,8 @@ public class CustomCrop extends CropsBlock
 	   {
 		   if (name.equals("barley"))
 				return new ItemStack(ModItems.barley);
+		   if (name.equals("broccoli"))
+				return new ItemStack(ModItems.broccoli);
 		   if (name.equals("carrot"))
 				return new ItemStack(Items.CARROT);
 		   if (name.equals("potato"))
@@ -134,6 +142,10 @@ public class CustomCrop extends CropsBlock
 				return new ItemStack(ModItems.cotton);
 			if (name.equals("sweet_potato"))
 				return new ItemStack(ModItems.sweet_potato);
+			if (name.equals("broccoli"))
+				return new ItemStack(ModItems.broccoli);
+			if (name.equals("zucchini"))
+				return new ItemStack(ModItems.zucchini);
 			else
 				return new ItemStack(ModItems.peanut);
 	   }

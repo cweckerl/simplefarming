@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "simplefarming:olives"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:olive_oil"}
+	
+}

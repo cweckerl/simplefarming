@@ -7,7 +7,7 @@
         "age=4": { "model": "simplefarming:block/fruit_leaves_jungle" },
         "age=5": { "model": "simplefarming:block/fruit_leaves_jungle" },
         "age=6": { "model": "simplefarming:block/fruit_leaves_jungle" },
-        "age=7": { "model": "simplefarming:block/orange_leaves" }
+        "age=7": [{ "model": "simplefarming:block/orange_leaves3" }, { "model": "simplefarming:block/orange_leaves2" }, { "model": "simplefarming:block/orange_leaves1" }]
     }
 }
 

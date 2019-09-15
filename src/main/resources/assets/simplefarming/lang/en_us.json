@@ -7,12 +7,9 @@
 	"block.simplefarming.blueberry_bush": "Blueberry Bush",
 	"block.simplefarming.raspberry_bush": "Raspberry Bush",
 	"block.simplefarming.strawberry_bush": "Strawberry Bush",
-	
 	"block.simplefarming.oat_hay_block": "Oat Hay Bale",
 	"block.simplefarming.rye_hay_block": "Rye Hay Bale",
 	"block.simplefarming.rice_hay_block": "Rice Hay Bale",
-	
-
 	"block.simplefarming.cantaloupe_crop": "Cantaloupe Crop",
 	"block.simplefarming.cassava_crop": "Cassava Crop",
 	"block.simplefarming.corn_crop": "Corn Crop",
@@ -36,17 +33,13 @@
 	"block.simplefarming.tomato_crop": "Tomato Crop",
 	"block.simplefarming.wild_crop": "Wild Crop",
 	"block.simplefarming.yam_crop": "Yam Crop",
-	
 	"block.simplefarming.grape_plant": "Grape Plant",
 	"block.simplefarming.grape_block": "Grapes",
 	"block.simplefarming.grape_leaves": "Grape Leaves",
 	"block.simplefarming.grape_leaves_ns": "Grape Leaves",
 	"block.simplefarming.grape_leaves_we": "Grape Leaves",
-	
 	"block.simplefarming.carrot_crop": "Carrot Crop",
 	"block.simplefarming.potato_crop": "Potato Crop",
-	
-
 	"item.simplefarming.cantaloupe_seeds": "Cantaloupe Seeds",
 	"item.simplefarming.carrot_seeds": "Carrot Seeds",
 	"item.simplefarming.cassava_seeds": "Cassava Seeds",
@@ -72,12 +65,9 @@
 	"item.simplefarming.spinach_seeds": "Spinach Seeds",
 	"item.simplefarming.tomato_seeds": "Tomato Seeds",
 	"item.simplefarming.yam_seeds": "Yam Seeds",
-	
 	"item.simplefarming.cumin_seeds": "Cumin Seeds",
 	"item.simplefarming.quinoa_seeds": "Quinoa Seeds",
-	
 	"item.simplefarming.curry_powder": "Curry Powder",
-	
 	"item.simplefarming.apricot": "Apricot",
 	"item.simplefarming.banana": "Bananas",
 	"item.simplefarming.cherries": "Cherries",
@@ -93,7 +83,6 @@
 	"item.simplefarming.honeydew": "Honeydew",
 	"item.simplefarming.raspberries": "Raspberries",
 	"item.simplefarming.strawberries": "Strawberries",
-	
 	"item.simplefarming.cassava": "Cassava",
 	"item.simplefarming.corn": "Corn",
 	"item.simplefarming.cucumber": "Cucumber",
@@ -114,11 +103,9 @@
 	"item.simplefarming.squash": "Squash",
 	"item.simplefarming.tomato": "Tomato",
 	"item.simplefarming.yam": "Yam",
-	
 	"item.simplefarming.kenaf_fiber": "Kenaf Fiber",
 	"item.simplefarming.vinegar": "Vinegar",
 	"item.simplefarming.noodles": "Noodles",
-	
 	"block.simplefarming.apple_leaves": "Apple Leaves",
 	"block.simplefarming.apricot_leaves": "Apricot Leaves",
 	"block.simplefarming.banana_leaves": "Banana Leaves",
@@ -127,7 +114,6 @@
 	"block.simplefarming.orange_leaves": "Orange Leaves",
 	"block.simplefarming.pear_leaves": "Pear Leaves",
 	"block.simplefarming.plum_leaves": "Plum Leaves",
-	
 	"block.simplefarming.apple_sapling": "Apple Sapling",
 	"block.simplefarming.apricot_sapling": "Apricot Sapling",
 	"block.simplefarming.banana_sapling": "Banana Sapling",
@@ -136,13 +122,11 @@
 	"block.simplefarming.orange_sapling": "Orange Sapling",
 	"block.simplefarming.pear_sapling": "Pear Sapling",
 	"block.simplefarming.plum_sapling": "Plum Sapling",
-	
 	"block.simplefarming.fruit_log": "Fruit Log",
 	"block.simplefarming.fruit_planks": "Fruit Planks",
 	"block.simplefarming.chocolate_cake": "Chocolate Cake",
 	"block.simplefarming.cheese_block": "Wheel of Cheese",
 	"block.simplefarming.cactus_crop": "Opuntia",
-	
 	"item.simplefarming.apple_pie": "Apple Pie",
 	"item.simplefarming.apricot_pie": "Apricot Pie",
 	"item.simplefarming.blackberry_pie": "Blackberry Pie",
@@ -153,7 +137,6 @@
 	"item.simplefarming.plum_pie": "Plum Pie",
 	"item.simplefarming.raspberry_pie": "Raspberry Pie",
 	"item.simplefarming.strawberry_pie": "Strawberry Pie",
-	
 	"item.simplefarming.baked_yam": "Baked Yam",
 	"item.simplefarming.banana_bread": "Banana Bread",
 	"item.simplefarming.blt": "BLT",
@@ -212,34 +195,27 @@
 	"item.simplefarming.tofu": "Tofu",
 	"item.simplefarming.tomato_soup": "Tomato Soup",
 	"item.simplefarming.vegetable_medley": "Vegetable Medley",
-
 	"item.simplefarming.oat_bread": "Oat Bread",
 	"item.simplefarming.rice_bread": "Rice Bread",
 	"item.simplefarming.rye_bread": "Rye Bread",
-	
 	"item.simplefarming.raisins": "Raisins",
 	"item.simplefarming.spinach_quinoa_quiche": "Spinach Quinoa Quiche",
 	"item.simplefarming.chicken_noodle_soup": "Chicken Noodle Soup",
 	"item.simplefarming.squash_soup": "Squash Soup",
 	"item.simplefarming.quinoa_salad": "Quinoa Salad",
 	"item.simplefarming.tofu_scramble": "Tofu Scramble",
-	
 	"item.simplefarming.beef_curry": "Beef Curry",
 	"item.simplefarming.chicken_curry": "Chicken Curry",
 	"item.simplefarming.mutton_curry": "Mutton Curry",
 	"item.simplefarming.pork_curry": "Pork Curry",
 	"item.simplefarming.vegetable_curry": "Vegetable Curry",
-	
 	"block.simplefarming.pea_crop": "Pea Crop",
 	"block.simplefarming.cotton_crop": "Cotton Crop",
 	"block.simplefarming.sweet_potato_crop": "Sweet Potato Crop",
 	"block.simplefarming.barley_crop": "Barley Crop",
-	
 	"block.simplefarming.sunflower": "Sunflower",
 	"block.simplefarming.cumin": "Cumin",
 	"block.simplefarming.quinoa": "Qunioa",
-	
-	
 	"item.simplefarming.pea_pod": "Pea Pod",
 	"item.simplefarming.pea_seeds": "Pea Seeds",
 	"item.simplefarming.sweet_potato": "Sweet Potato",
@@ -255,13 +231,30 @@
 	"item.simplefarming.raw_horse_meat": "Raw Horse Meat",
 	"item.simplefarming.cooked_horse_meat": "Cooked Horse Meat",
 	"item.simplefarming.trail_mix": "Trail Mix",
-	"item.simplefarming.sweet_potato_quinoa_cakes": "Sweet Potato Quinoa Cakes",
+	"item.simplefarming.sweet_potato_quinoa_cakes": "Sweet Potato Quinoa Cake",
 	"item.simplefarming.sausage_barley_soup": "Sausage Barley Soup",
 	"block.simplefarming.barley_hay_block": "Barley Hay Bale",
 	"item.simplefarming.barley_bread": "Barley Bread",
 	"item.simplefarming.pea_soup": "Pea Soup",
 	"item.simplefarming.fried_rice": "Fried Rice",
 	"item.simplefarming.mushroom_barley": "Mushroom Barley",
+	
+	"item.simplefarming.olives": "Olives",
+	"item.simplefarming.broccoli": "Broccoli",
+	"item.simplefarming.zucchini": "Zucchini",
+	"item.simplefarming.olive_oil": "Olive Oil",
+	"item.simplefarming.broccoli_seeds": "Broccoli Seeds",
+	"item.simplefarming.zucchini_seeds": "Zucchini Seeds",
+	"item.simplefarming.beef_and_broccoli": "Beef and Broccoli",
+	"item.simplefarming.broccoli_cheese_soup": "Broccoli Cheese Soup",
+	"item.simplefarming.olive_tomato_salad": "Olive Tomato Salad",
+	"item.simplefarming.stuffed_corn_zucchini": "Stuffed Corn Zucchini",
+	"item.simplefarming.zucchini_bread": "Zucchini Bread",
+	"block.simplefarming.olive_sapling": "Olive Sapling",
+	"block.simplefarming.birthday_cake": "Birthday Cake",
+	"block.simplefarming.broccoli_crop": "Broccoli Crop",
+	"block.simplefarming.zucchini_crop": "Zucchini Crop",
+	"block.simplefarming.olive_leaves": "Olive Leaves",
 	
 
 	

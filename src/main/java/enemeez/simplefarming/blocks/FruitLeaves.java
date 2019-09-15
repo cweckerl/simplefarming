@@ -55,8 +55,10 @@ public class FruitLeaves extends BushBlock implements IGrowable
 				return new ItemStack(ModItems.mango);
 			if (name.equals("pear"))
 				return new ItemStack(ModItems.pear);
-			else
+			if (name.equals("plum"))
 				return new ItemStack(ModItems.plum);
+			else
+				return new ItemStack(ModItems.olives);
 	   }
 
 

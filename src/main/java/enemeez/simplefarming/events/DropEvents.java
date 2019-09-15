@@ -2,6 +2,7 @@ package enemeez.simplefarming.events;
 
 import java.util.ArrayList;
 
+import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.ItemEntity;
@@ -51,6 +52,9 @@ public class DropEvents
 			stacks.add(new ItemStack(ModItems.pea_seeds));
 			stacks.add(new ItemStack(ModItems.cotton_seeds));
 			stacks.add(new ItemStack(ModItems.sweet_potato_seeds));
+			stacks.add(new ItemStack(ModItems.broccoli_seeds));
+			stacks.add(new ItemStack(ModItems.zucchini_seeds));
+			
 			stacks.add(new ItemStack(Items.MELON_SEEDS));
 			stacks.add(new ItemStack(Items.PUMPKIN_SEEDS));
 			stacks.add(new ItemStack(Items.BEETROOT_SEEDS));
@@ -59,7 +63,7 @@ public class DropEvents
 			
 			if (event.getState().getBlock() == Blocks.GRASS || event.getState().getBlock() == Blocks.TALL_GRASS)
 			{
-				if (Math.random() <= 0.125)
+				if (Math.random() <= FeatureConfig.seed_drop.get()/100)
 				{
 						event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState(), 2);
 						int random = (int)((Math.random()*(stacks.size()))+1);

@@ -23,7 +23,7 @@ public class Config
 		EnableConfig.init(BUILDER);
 		BUILDER.pop();
 		
-		BUILDER.push("Enable/Disable Miscellaneous Features");
+		BUILDER.push("Miscellaneous Features");
 		FeatureConfig.init(BUILDER);
 		BUILDER.pop();
 

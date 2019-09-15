@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"RBR"
+	],
+	
+	"key":
+	{
+		"R": { "item": "simplefarming:broccoli"},
+		"B": { "item": "minecraft:cooked_beef"}
+
+	},
+	
+	"result": {"item": "simplefarming:beef_and_broccoli"}
+	
+}

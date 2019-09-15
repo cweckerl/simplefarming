@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "age=0": { "model": "simplefarming:block/gourd_crop0" },
+        "age=1": { "model": "simplefarming:block/crop_leaves" },
+        "age=2": { "model": "simplefarming:block/crop_leaves" },
+        "age=3": { "model": "simplefarming:block/crop_leaves" },
+        "age=4": { "model": "simplefarming:block/broccoli_crop2" },
+        "age=5": { "model": "simplefarming:block/broccoli_crop2" },
+        "age=6": { "model": "simplefarming:block/broccoli_crop2" },
+        "age=7": { "model": "simplefarming:block/broccoli_crop3" }
+    }
+}

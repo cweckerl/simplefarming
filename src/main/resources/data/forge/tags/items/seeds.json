@@ -32,6 +32,8 @@
 		"#forge:seeds/pea_seeds",
 		"#forge:seeds/sweet_potato_seeds",
 		"#forge:seeds/cotton_seeds",
+		"#forge:seeds/broccoli_seeds",
+		"#forge:seeds/zucchini_seeds",
 		"#forge:seeds/yam_seeds"
 	]
 }

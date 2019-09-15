@@ -122,6 +122,12 @@ public class HarvestDrops
 			stacks.add(new ItemStack(ModItems.sunflower_seeds, random));
 		if (blockIn == ModBlocks.cotton_crop)
 			stacks.add(new ItemStack(ModItems.cotton, random));
+		if (blockIn == ModBlocks.olive_leaves)
+			stacks.add(new ItemStack(ModItems.olives));
+		if (blockIn == ModBlocks.broccoli_crop)
+			stacks.add(new ItemStack(ModItems.broccoli, random));
+		if (blockIn == ModBlocks.zucchini_crop)
+			stacks.add(new ItemStack(ModItems.zucchini, random));
 		else 
 			stacks.add(new ItemStack(Items.AIR));
 

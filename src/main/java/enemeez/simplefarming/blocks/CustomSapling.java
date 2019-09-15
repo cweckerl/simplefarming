@@ -100,6 +100,8 @@ public class CustomSapling extends BushBlock implements IGrowable
 				leaves = ModBlocks.cherry_leaves.getDefaultState();
 			if (verify == 8)
 				leaves = ModBlocks.mango_leaves.getDefaultState();
+			if (verify == 9)
+				leaves = ModBlocks.olive_leaves.getDefaultState();
 			
 			world.setBlockState(pos.up(0), trunk, 3);
 			for (int i=1; i<4; i++)

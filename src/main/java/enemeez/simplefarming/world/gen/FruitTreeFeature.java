@@ -29,7 +29,7 @@ public class FruitTreeFeature extends Feature<NoFeatureConfig>
 		
 		if(world.getBlockState(pos.down()).getBlock().isIn(BlockTags.DIRT_LIKE) && world.getBlockState(pos).getMaterial().isReplaceable()) 
 		{
-			int type = (int)((Math.random()*8)+1);
+			int type = (int)((Math.random()*9)+1);
 			CustomSapling.generateTree(world, pos, random, type);
 			return true;
 		}

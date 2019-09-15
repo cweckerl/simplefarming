@@ -47,7 +47,9 @@ public class TemptationTask
 				ModItems.sunflower_seeds,
 				ModItems.pea_seeds,
 				ModItems.cotton_seeds,
-				ModItems.sweet_potato_seeds
+				ModItems.sweet_potato_seeds,
+				ModItems.broccoli_seeds,
+				ModItems.zucchini_seeds
 		
 			);
 	

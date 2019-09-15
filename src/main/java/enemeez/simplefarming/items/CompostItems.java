@@ -15,6 +15,7 @@ public class CompostItems
 		 ComposterBlock.CHANCES.put(ModItems.banana_sapling, 0.3F);
 		 ComposterBlock.CHANCES.put(ModItems.cherry_sapling, 0.3F);
 		 ComposterBlock.CHANCES.put(ModItems.mango_sapling, 0.3F);
+		 ComposterBlock.CHANCES.put(ModItems.olive_sapling, 0.3F);
 		 ComposterBlock.CHANCES.put(ModItems.orange_sapling, 0.3F);
 		 ComposterBlock.CHANCES.put(ModItems.pear_sapling, 0.3F);
 		 ComposterBlock.CHANCES.put(ModItems.plum_sapling, 0.3F);
@@ -30,12 +31,14 @@ public class CompostItems
 		 ComposterBlock.CHANCES.put(ModItems.rye_hay_block, 0.85F);
 		 ComposterBlock.CHANCES.put(ModItems.cheese_block, 1.0F);
 		 ComposterBlock.CHANCES.put(ModItems.chocolate_cake, 1.0F);
+		 ComposterBlock.CHANCES.put(ModItems.birthday_cake, 1.0F);
 		 
 		 ComposterBlock.CHANCES.put(ModItems.apricot, 0.65F);
 		 ComposterBlock.CHANCES.put(ModItems.banana, 0.65F);
 		 ComposterBlock.CHANCES.put(ModItems.cherries, 0.65F);
 		 ComposterBlock.CHANCES.put(ModItems.grapes, 0.65F);
 		 ComposterBlock.CHANCES.put(ModItems.mango, 0.65F);
+		 ComposterBlock.CHANCES.put(ModItems.olives, 0.65F);
 		 ComposterBlock.CHANCES.put(ModItems.orange, 0.65F);
 		 ComposterBlock.CHANCES.put(ModItems.pear, 0.65F);
 		 ComposterBlock.CHANCES.put(ModItems.plum, 0.65F);
@@ -48,6 +51,7 @@ public class CompostItems
 		 ComposterBlock.CHANCES.put(ModItems.honeydew, 0.3F);
 
 		 ComposterBlock.CHANCES.put(ModItems.barley, 0.65F);
+		 ComposterBlock.CHANCES.put(ModItems.broccoli, 0.65F);
 		 ComposterBlock.CHANCES.put(ModItems.cassava, 0.65F);
 		 ComposterBlock.CHANCES.put(ModItems.corn, 0.65F);
 		 ComposterBlock.CHANCES.put(ModItems.cotton, 0.65F);
@@ -72,6 +76,7 @@ public class CompostItems
 		 ComposterBlock.CHANCES.put(ModItems.sweet_potato, 0.65F);
 		 ComposterBlock.CHANCES.put(ModItems.tomato, 0.65F);
 		 ComposterBlock.CHANCES.put(ModItems.yam, 0.65F);
+		 ComposterBlock.CHANCES.put(ModItems.zucchini, 0.65F);
 		 
 		 ComposterBlock.CHANCES.put(ModItems.barley_seeds, 0.3F);
 		 ComposterBlock.CHANCES.put(ModItems.cassava_seeds, 0.3F);
@@ -103,6 +108,8 @@ public class CompostItems
 		 ComposterBlock.CHANCES.put(ModItems.ginger_seeds, 0.3F);
 		 ComposterBlock.CHANCES.put(ModItems.grape_seeds, 0.3F);
 		 ComposterBlock.CHANCES.put(ModItems.sunflower_seeds, 0.3F);
+		 ComposterBlock.CHANCES.put(ModItems.zucchini_seeds, 0.3F);
+		 ComposterBlock.CHANCES.put(ModItems.broccoli_seeds, 0.3F);
 		 
 		 ComposterBlock.CHANCES.put(ModItems.cheese_slice, 0.3F);
 		 ComposterBlock.CHANCES.put(ModItems.noodles, 0.85F);
@@ -176,6 +183,10 @@ public class CompostItems
 		 ComposterBlock.CHANCES.put(ModItems.fried_rice, 1.0F);
 		 ComposterBlock.CHANCES.put(ModItems.mushroom_barley, 1.0F);
 		 ComposterBlock.CHANCES.put(ModItems.sweet_potato_quinoa_cakes, 1.0F);
+		 
+		 ComposterBlock.CHANCES.put(ModItems.stuffed_corn_zucchini, 1.0F);
+		 ComposterBlock.CHANCES.put(ModItems.zucchini_bread, 1.0F);
+		 ComposterBlock.CHANCES.put(ModItems.beef_and_broccoli, 1.0F);
 
 		 
 	}

@@ -3,6 +3,7 @@ package enemeez.simplefarming.init;
 import javax.annotation.Nullable;
 
 import enemeez.simplefarming.SimpleFarming;
+import enemeez.simplefarming.blocks.BirthdayCake;
 import enemeez.simplefarming.blocks.CheeseBlock;
 import enemeez.simplefarming.blocks.CustomBush;
 import enemeez.simplefarming.blocks.CustomCactus;
@@ -11,10 +12,10 @@ import enemeez.simplefarming.blocks.CustomCrop;
 import enemeez.simplefarming.blocks.CustomSapling;
 import enemeez.simplefarming.blocks.DoubleCrop;
 import enemeez.simplefarming.blocks.FruitLeaves;
-import enemeez.simplefarming.blocks.FruitLog;
 import enemeez.simplefarming.blocks.GrapeBlock;
 import enemeez.simplefarming.blocks.GrapeLeaves;
 import enemeez.simplefarming.blocks.GrapePlant;
+import enemeez.simplefarming.blocks.ThinBlock;
 import enemeez.simplefarming.blocks.WildCrop;
 import enemeez.simplefarming.blocks.WildPlant;
 import net.minecraft.block.Block;
@@ -43,6 +44,7 @@ public class ModBlocks
 	public static Block squash_block;
 	
 	//Cake-like blocks
+	public static Block birthday_cake;
 	public static Block cheese_block;
 	public static Block chocolate_cake;
 	
@@ -54,6 +56,7 @@ public class ModBlocks
 	public static Block banana_sapling;
 	public static Block cherry_sapling;
 	public static Block mango_sapling;
+	public static Block olive_sapling;
 	public static Block orange_sapling;
 	public static Block plum_sapling;
 	public static Block pear_sapling;
@@ -71,13 +74,14 @@ public class ModBlocks
 	public static Block banana_leaves;
 	public static Block cherry_leaves;
 	public static Block mango_leaves;
+	public static Block olive_leaves;
 	public static Block orange_leaves;
 	public static Block plum_leaves;
 	public static Block pear_leaves;
 	
 	//Crops
 	public static Block barley_crop;
-	public static Block bean_crop;
+	public static Block broccoli_crop;
 	public static Block cactus_crop;
 	public static Block cantaloupe_crop;
 	public static Block carrot_crop;
@@ -106,6 +110,7 @@ public class ModBlocks
 	public static Block sweet_potato_crop;
 	public static Block tomato_crop;
 	public static Block yam_crop;
+	public static Block zucchini_crop;
 
 	//Hay Bales
 	public static Block barley_hay_block;
@@ -170,6 +175,12 @@ public class ModBlocks
 				.tickRandomly()
 				.hardnessAndResistance(0f)
 				.sound(SoundType.PLANT), 8));
+		olive_sapling = register("olive_sapling", new CustomSapling(		
+				Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0f)
+				.sound(SoundType.PLANT), 9));
 		orange_sapling = register("orange_sapling", new CustomSapling(		
 				Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement()
@@ -214,6 +225,11 @@ public class ModBlocks
 				.hardnessAndResistance(0.2F)
 				.tickRandomly()
 				.sound(SoundType.PLANT), "mango"));
+		olive_leaves = register("olive_leaves", new FruitLeaves(
+				Block.Properties.create(Material.LEAVES)
+				.hardnessAndResistance(0.2F)
+				.tickRandomly()
+				.sound(SoundType.PLANT), "olive"));
 		orange_leaves = register("orange_leaves", new FruitLeaves(
 				Block.Properties.create(Material.LEAVES)
 				.hardnessAndResistance(0.2F)
@@ -230,10 +246,17 @@ public class ModBlocks
 				.tickRandomly()
 				.sound(SoundType.PLANT), "plum"));
 				
-		fruit_log = register("fruit_log", new FruitLog(		
+		fruit_log = register("fruit_log", new ThinBlock(		
 				Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN)
 				.hardnessAndResistance(2.0F)
 				.sound(SoundType.WOOD)));
+		
+		birthday_cake = register("birthday_cake", new BirthdayCake(		
+				Block.Properties.create(Material.CAKE)
+				.hardnessAndResistance(0.5F)
+				.lightValue(14)
+				.sound(SoundType.CLOTH)));
+	
 		
 		chocolate_cake = register("chocolate_cake", new CustomCake(		
 				Block.Properties.create(Material.CAKE)
@@ -352,12 +375,12 @@ public class ModBlocks
 				.hardnessAndResistance(0)
 				.sound(SoundType.CROP), "barley"));
 		
-		bean_crop = register("black_beans_crop", new CustomCrop
+		broccoli_crop = register("broccoli_crop", new CustomCrop
 				(Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement()
 				.tickRandomly()
 				.hardnessAndResistance(0)
-				.sound(SoundType.CROP), "beans"));
+				.sound(SoundType.CROP), "broccoli"));
 		
 		cantaloupe_crop = register("cantaloupe_crop", new CustomCrop
 				(Block.Properties.create(Material.PLANTS)
@@ -539,6 +562,13 @@ public class ModBlocks
 				.tickRandomly()
 				.hardnessAndResistance(0)
 				.sound(SoundType.CROP), "yam"));
+		
+		zucchini_crop = register("zucchini_crop", new CustomCrop
+				(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement()
+				.tickRandomly()
+				.hardnessAndResistance(0)
+				.sound(SoundType.CROP), "zucchini"));
 		
 		wild_crop = register("wild_crop", new WildCrop(
 				Block.Properties.create(Material.TALL_PLANTS)
