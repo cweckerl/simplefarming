@@ -25,44 +25,45 @@ public class DropEvents
 		if (event.getPlayer().getHeldItemMainhand().getItem() != Items.SHEARS && !event.getPlayer().isCreative())
 		{
 			stacks = new ArrayList<ItemStack>();
-			stacks.add(new ItemStack(ModItems.cantaloupe_seeds));
-			stacks.add(new ItemStack(ModItems.cassava_seeds));
-			stacks.add(new ItemStack(ModItems.corn_seeds));
-			stacks.add(new ItemStack(ModItems.cucumber_seeds));
-			stacks.add(new ItemStack(ModItems.eggplant_seeds));
-			stacks.add(new ItemStack(ModItems.honeydew_seeds));
-			stacks.add(new ItemStack(ModItems.kenaf_seeds));
-			stacks.add(new ItemStack(ModItems.lettuce_seeds));
-			stacks.add(new ItemStack(ModItems.oat_seeds));
-			stacks.add(new ItemStack(ModItems.onion_seeds));
-			stacks.add(new ItemStack(ModItems.pepper_seeds));
-			stacks.add(new ItemStack(ModItems.radish_seeds));
-			stacks.add(new ItemStack(ModItems.rice_seeds));
-			stacks.add(new ItemStack(ModItems.rye_seeds));
-			stacks.add(new ItemStack(ModItems.soybean_seeds));
-			stacks.add(new ItemStack(ModItems.spinach_seeds));
-			stacks.add(new ItemStack(ModItems.squash_seeds));
-			stacks.add(new ItemStack(ModItems.tomato_seeds));
-			stacks.add(new ItemStack(ModItems.yam_seeds));
-			stacks.add(new ItemStack(ModItems.ginger_seeds));
-			stacks.add(new ItemStack(ModItems.grape_seeds));
-			stacks.add(new ItemStack(ModItems.sorghum_seeds));
-			stacks.add(new ItemStack(ModItems.peanut_seeds));
-			stacks.add(new ItemStack(ModItems.barley_seeds));
-			stacks.add(new ItemStack(ModItems.pea_seeds));
-			stacks.add(new ItemStack(ModItems.cotton_seeds));
-			stacks.add(new ItemStack(ModItems.sweet_potato_seeds));
-			stacks.add(new ItemStack(ModItems.broccoli_seeds));
-			stacks.add(new ItemStack(ModItems.zucchini_seeds));
-			
-			stacks.add(new ItemStack(Items.MELON_SEEDS));
-			stacks.add(new ItemStack(Items.PUMPKIN_SEEDS));
-			stacks.add(new ItemStack(Items.BEETROOT_SEEDS));
-			stacks.add(new ItemStack(ModItems.carrot_seeds));
-			stacks.add(new ItemStack(ModItems.potato_seeds));
 			
 			if (event.getState().getBlock() == Blocks.GRASS || event.getState().getBlock() == Blocks.TALL_GRASS)
 			{
+				stacks.add(new ItemStack(ModItems.cantaloupe_seeds));
+				stacks.add(new ItemStack(ModItems.cassava_seeds));
+				stacks.add(new ItemStack(ModItems.corn_seeds));
+				stacks.add(new ItemStack(ModItems.cucumber_seeds));
+				stacks.add(new ItemStack(ModItems.eggplant_seeds));
+				stacks.add(new ItemStack(ModItems.honeydew_seeds));
+				stacks.add(new ItemStack(ModItems.kenaf_seeds));
+				stacks.add(new ItemStack(ModItems.lettuce_seeds));
+				stacks.add(new ItemStack(ModItems.oat_seeds));
+				stacks.add(new ItemStack(ModItems.onion_seeds));
+				stacks.add(new ItemStack(ModItems.pepper_seeds));
+				stacks.add(new ItemStack(ModItems.radish_seeds));
+				stacks.add(new ItemStack(ModItems.rice_seeds));
+				stacks.add(new ItemStack(ModItems.rye_seeds));
+				stacks.add(new ItemStack(ModItems.soybean_seeds));
+				stacks.add(new ItemStack(ModItems.spinach_seeds));
+				stacks.add(new ItemStack(ModItems.squash_seeds));
+				stacks.add(new ItemStack(ModItems.tomato_seeds));
+				stacks.add(new ItemStack(ModItems.yam_seeds));
+				stacks.add(new ItemStack(ModItems.ginger_seeds));
+				stacks.add(new ItemStack(ModItems.grape_seeds));
+				stacks.add(new ItemStack(ModItems.sorghum_seeds));
+				stacks.add(new ItemStack(ModItems.peanut_seeds));
+				stacks.add(new ItemStack(ModItems.barley_seeds));
+				stacks.add(new ItemStack(ModItems.pea_seeds));
+				stacks.add(new ItemStack(ModItems.cotton_seeds));
+				stacks.add(new ItemStack(ModItems.sweet_potato_seeds));
+				stacks.add(new ItemStack(ModItems.broccoli_seeds));
+				stacks.add(new ItemStack(ModItems.zucchini_seeds));
+				
+				stacks.add(new ItemStack(Items.MELON_SEEDS));
+				stacks.add(new ItemStack(Items.PUMPKIN_SEEDS));
+				stacks.add(new ItemStack(Items.BEETROOT_SEEDS));
+				stacks.add(new ItemStack(ModItems.carrot_seeds));
+				stacks.add(new ItemStack(ModItems.potato_seeds));
+				
 				if (Math.random() <= FeatureConfig.seed_drop.get()/100)
 				{
 						event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState(), 2);

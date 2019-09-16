@@ -2,6 +2,7 @@ package enemeez.simplefarming;
 
 import enemeez.simplefarming.config.Config;
 import enemeez.simplefarming.config.FeatureConfig;
+import enemeez.simplefarming.events.DoubleCropBreak;
 import enemeez.simplefarming.events.DropEvents;
 import enemeez.simplefarming.events.ModHarvest;
 import enemeez.simplefarming.events.SmartHarvest;
@@ -56,6 +57,7 @@ public class SideProxy
 				 MinecraftForge.EVENT_BUS.register(new DropEvents());
 				 if (FeatureConfig.smart_harvest.get())
 				 MinecraftForge.EVENT_BUS.register(new SmartHarvest());
+				 MinecraftForge.EVENT_BUS.register(new DoubleCropBreak());
 
 				if (ModWorldGen.fruit_tree != null) 
 				{
@@ -75,6 +77,7 @@ public class SideProxy
 					}
 				}
 				
+				
 				if (ModWorldGen.wild_crop != null) 
 				{
 					for (Biome biome : ForgeRegistries.BIOMES)
@@ -92,6 +95,7 @@ public class SideProxy
 					});
 				
 				}
+				
 				
 				if (ModWorldGen.wild_plant != null) 
 				{

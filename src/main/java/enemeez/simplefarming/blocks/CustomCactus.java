@@ -26,7 +26,7 @@ import net.minecraft.world.World;
 public class CustomCactus extends BushBlock implements IGrowable 
 {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-	private static final VoxelShape BOX = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+	private static final VoxelShape BOX = Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 14.0D, 9.0D);
 
 	public CustomCactus(Block.Properties p_i49971_1_) 
 	 {

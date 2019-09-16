@@ -327,8 +327,7 @@ public class ModBlocks
 		grape_block = register("grape_block", new GrapeBlock(
 				Block.Properties.create(Material.ORGANIC)
 				.hardnessAndResistance(0.2F)
-				.doesNotBlockMovement()
-				.sound(SoundType.SWEET_BERRY_BUSH)));
+				.doesNotBlockMovement()));
 		
 		blackberry_bush = register("blackberry_bush", new CustomBush(				
 				(Block.Properties.create(Material.PLANTS)

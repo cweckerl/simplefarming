@@ -72,24 +72,21 @@ public class DoubleCrop extends CropsBlock
 
 
 	   public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) 
-	   {
-			   
-		   if (this.getAge(state) == 6 && worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState()) 
-		   return false;
-		   else
+	   	{
 		   return (worldIn.getLightSubtracted(pos, 0) >= 8 || worldIn.isSkyLightMax(pos)) && checker(state, worldIn, pos);
 		}
 	   
 
 	   public boolean checker(BlockState state, IWorldReader worldIn, BlockPos pos)
 	   {
-		   Block block = worldIn.getBlockState(pos.down()).getBlock();
+		   BlockState block = worldIn.getBlockState(pos.down());
 		   
-		   if (block == Blocks.FARMLAND)
+		   if (block.getBlock() == Blocks.FARMLAND)
 			   return true;
-		   if (block == this && !worldIn.getBlockState(pos.down(3)).getBlock().equals(Blocks.FARMLAND) && worldIn.getBlockState(pos.down()) == this.withAge(6))
+		   if (block == this.withAge(6) && !worldIn.getBlockState(pos.down(3)).getBlock().equals(Blocks.FARMLAND))
 		         return true; 
-		   else return false;
+		   else 
+			   return false;
 	   }
 
 
