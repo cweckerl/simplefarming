@@ -1,0 +1,9 @@
+{
+	"replace": false,
+	"values": [
+		"#forge:carbs/barley",
+		"#forge:carbs/oat",
+		"#forge:carbs/rye",
+		"#forge:carbs/sorghum"
+	]
+}

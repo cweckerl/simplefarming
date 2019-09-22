@@ -3,7 +3,6 @@ package enemeez.simplefarming;
 import enemeez.simplefarming.config.Config;
 import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.events.DoubleCropBreak;
-import enemeez.simplefarming.events.DropEvents;
 import enemeez.simplefarming.events.ModHarvest;
 import enemeez.simplefarming.events.SmartHarvest;
 import enemeez.simplefarming.events.TemptationTask;
@@ -30,125 +29,109 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class SideProxy 
-{
-		SideProxy()
-		{
-			ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.CONFIG, "simplefarming.toml");
-			FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::commonSetup);
-	        FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::enqueueIMC);
-	        FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::processIMC);
-	        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModBlocks::registerAll);
-	        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModItems::registerAll);
-	        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModWorldGen::registerAll);
-	        
-	        Config.loadConfig(Config.CONFIG, FMLPaths.CONFIGDIR.get().resolve("simplefarming.toml").toString());
+public class SideProxy {
+	SideProxy() {
+		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.CONFIG, "simplefarming.toml");
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::commonSetup);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::enqueueIMC);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::processIMC);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(ModBlocks::registerAll);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(ModItems::registerAll);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(ModWorldGen::registerAll);
 
-	        MinecraftForge.EVENT_BUS.addListener(SideProxy::serverStarting);
-		}
-		
-		private static void commonSetup(FMLCommonSetupEvent event)
-			{
-				SimpleFarming.LOGGER.debug("common setup");
-				
-				 MinecraftForge.EVENT_BUS.register(new TemptationTask());
-				 if (FeatureConfig.mod_harvest.get() && FeatureConfig.smart_harvest.get() == false)
-					MinecraftForge.EVENT_BUS.register(new ModHarvest());
-				 MinecraftForge.EVENT_BUS.register(new DropEvents());
-				 if (FeatureConfig.smart_harvest.get())
-				 MinecraftForge.EVENT_BUS.register(new SmartHarvest());
-				 MinecraftForge.EVENT_BUS.register(new DoubleCropBreak());
+		Config.loadConfig(Config.CONFIG, FMLPaths.CONFIGDIR.get().resolve("simplefarming.toml").toString());
 
-				if (ModWorldGen.fruit_tree != null) 
-				{
-					for (Biome biome : ForgeRegistries.BIOMES)
-					{
-						biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModWorldGen.fruit_tree, IFeatureConfig.NO_FEATURE_CONFIG, Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
-						
-					}
-				}
-				
-				if (ModWorldGen.berry_bush != null) 
-				{
-					for (Biome biome : ForgeRegistries.BIOMES)
-					{
-						biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModWorldGen.berry_bush, IFeatureConfig.NO_FEATURE_CONFIG, Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
-						
-					}
-				}
-				
-				
-				if (ModWorldGen.wild_crop != null) 
-				{
-					for (Biome biome : ForgeRegistries.BIOMES)
-					{
-						biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModWorldGen.wild_crop, IFeatureConfig.NO_FEATURE_CONFIG, Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
-
-					}
-				}
-			
-				if (ModWorldGen.cactus_crop != null) 
-				{
-					BiomeDictionary.getBiomes(BiomeDictionary.Type.DRY).forEach((biome) ->
-					{
-						biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModWorldGen.cactus_crop, IFeatureConfig.NO_FEATURE_CONFIG, Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
-					});
-				
-				}
-				
-				
-				if (ModWorldGen.wild_plant != null) 
-				{
-					for (Biome biome : ForgeRegistries.BIOMES)
-					{
-						biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModWorldGen.wild_plant, IFeatureConfig.NO_FEATURE_CONFIG, Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
-
-					}
-				}
-				
-				CompostItems.register();
-
-			}
-		
-		private static void enqueueIMC(final InterModEnqueueEvent event){
-		    }
-		
-		private static void processIMC(final InterModProcessEvent event){
-		    }
-		   
-		private static void serverStarting(FMLServerStartingEvent event) {
-			}
-	
-
-	
-		static class Client extends SideProxy
-		{		
-			Client()
-			{
-				FMLJavaModLoadingContext.get().getModEventBus().addListener(Client::clientSetup);
-			}
-			
-			private static void clientSetup(FMLClientSetupEvent event)
-			{
-				
-			}
-		}
-		
-		static class Server extends SideProxy
-		{
-			Server()
-			{
-				FMLJavaModLoadingContext.get().getModEventBus().addListener(Server::serverSetup);
-	
-			}
-			private static void serverSetup(FMLDedicatedServerSetupEvent event)
-			{
-				
-			}
-		}
-		
+		MinecraftForge.EVENT_BUS.addListener(SideProxy::serverStarting);
 	}
 
+	private static void commonSetup(FMLCommonSetupEvent event) {
+		SimpleFarming.LOGGER.debug("common setup");
 
+		MinecraftForge.EVENT_BUS.register(new TemptationTask());
+		if (FeatureConfig.mod_harvest.get() && FeatureConfig.smart_harvest.get() == false)
+			MinecraftForge.EVENT_BUS.register(new ModHarvest());
+		//MinecraftForge.EVENT_BUS.register(new DropEvents());
+		if (FeatureConfig.smart_harvest.get())
+			MinecraftForge.EVENT_BUS.register(new SmartHarvest());
+		MinecraftForge.EVENT_BUS.register(new DoubleCropBreak());
 
+		if (ModWorldGen.fruit_tree != null) {
+			for (Biome biome : ForgeRegistries.BIOMES) {
+				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+						Biome.createDecoratedFeature(ModWorldGen.fruit_tree, IFeatureConfig.NO_FEATURE_CONFIG,
+								Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
 
+			}
+		}
+
+		if (ModWorldGen.berry_bush != null) {
+			for (Biome biome : ForgeRegistries.BIOMES) {
+				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+						Biome.createDecoratedFeature(ModWorldGen.berry_bush, IFeatureConfig.NO_FEATURE_CONFIG,
+								Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
+
+			}
+		}
+
+		if (ModWorldGen.wild_crop != null) {
+			for (Biome biome : ForgeRegistries.BIOMES) {
+				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+						Biome.createDecoratedFeature(ModWorldGen.wild_crop, IFeatureConfig.NO_FEATURE_CONFIG,
+								Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
+
+			}
+		}
+
+		if (ModWorldGen.cactus_crop != null) {
+			BiomeDictionary.getBiomes(BiomeDictionary.Type.DRY).forEach((biome) -> {
+				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+						Biome.createDecoratedFeature(ModWorldGen.cactus_crop, IFeatureConfig.NO_FEATURE_CONFIG,
+								Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
+			});
+
+		}
+
+		if (ModWorldGen.wild_plant != null) {
+			for (Biome biome : ForgeRegistries.BIOMES) {
+				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+						Biome.createDecoratedFeature(ModWorldGen.wild_plant, IFeatureConfig.NO_FEATURE_CONFIG,
+								Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
+
+			}
+		}
+
+		CompostItems.register();
+
+	}
+
+	private static void enqueueIMC(final InterModEnqueueEvent event) {
+	}
+
+	private static void processIMC(final InterModProcessEvent event) {
+	}
+
+	private static void serverStarting(FMLServerStartingEvent event) {
+	}
+
+	static class Client extends SideProxy {
+		Client() {
+			FMLJavaModLoadingContext.get().getModEventBus().addListener(Client::clientSetup);
+		}
+
+		private static void clientSetup(FMLClientSetupEvent event) {
+
+		}
+	}
+
+	static class Server extends SideProxy {
+		Server() {
+			FMLJavaModLoadingContext.get().getModEventBus().addListener(Server::serverSetup);
+
+		}
+
+		private static void serverSetup(FMLDedicatedServerSetupEvent event) {
+
+		}
+	}
+
+}

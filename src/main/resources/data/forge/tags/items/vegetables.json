@@ -1,0 +1,13 @@
+{
+	"replace": false,
+	"values": [
+		"#forge:vegetables/broccoli",
+		"#forge:vegetables/eggplant",
+		"#forge:vegetables/lettuce",
+		"#forge:vegetables/onion",
+		"#forge:vegetables/pea_pod",
+		"#forge:vegetables/pepper",
+		"#forge:vegetables/radish",
+		"#forge:vegetables/zucchini"
+	]
+}

@@ -13,6 +13,8 @@
 
 	},
 	
-	"result": {"item": "simplefarming:peanut_butter_cookie"}
+	"result": {"item": "simplefarming:peanut_butter_cookie",
+	"count": 8
+	}
 	
 }
