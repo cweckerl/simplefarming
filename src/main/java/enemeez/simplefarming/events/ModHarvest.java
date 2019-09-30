@@ -63,11 +63,18 @@ public class ModHarvest {
 								(ServerWorld) event.getWorld(), event.getPos(),
 								event.getWorld().getTileEntity(event.getPos()));
 						for (int i = 0; i < drops.size(); i++) {
-							if (drops.get(i).getItem() != getCropSeed(crop) || crop == Blocks.POTATOES || crop == Blocks.CARROTS)
+							if (drops.get(i).getItem() != getCropSeed(crop))
 								event.getWorld()
 										.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
 												event.getPos().getY(), event.getPos().getZ(),
 												(ItemStack) drops.get(i)));
+							if (crop == Blocks.POTATOES || crop == Blocks.CARROTS) {
+								drops.remove(0);
+								event.getWorld()
+										.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
+												event.getPos().getY(), event.getPos().getZ(),
+												(ItemStack) drops.get(i)));
+							}
 						}
 						event.getPlayer().addExhaustion(.05F);
 						event.getWorld().playSound((PlayerEntity) null, event.getPos(), SoundEvents.BLOCK_CROP_BREAK,
@@ -195,6 +202,7 @@ public class ModHarvest {
 								(ServerWorld) event.getWorld(), event.getPos(),
 								event.getWorld().getTileEntity(event.getPos()));
 						for (int i = 0; i < drops.size(); i++) {
+							drops.remove(0);
 							event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
 									event.getPos().getY(), event.getPos().getZ(), (ItemStack) drops.get(i)));
 						}

@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "simplefarming:block/brewing_barrel_top",
+        "side": "simplefarming:block/brewing_barrel_side"
+    }
+}

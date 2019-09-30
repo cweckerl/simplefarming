@@ -14,6 +14,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.NetherWartBlock;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,6 +23,7 @@ import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -61,8 +63,20 @@ public class SmartHarvest {
 								(ServerWorld) event.getWorld(), event.getPos(),
 								event.getWorld().getTileEntity(event.getPos()));
 						for (int i = 0; i < drops.size(); i++) {
-							if (drops.get(i).getItem() != getCropSeed(crop) || crop == Blocks.POTATOES || crop == Blocks.CARROTS)
-								event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
+							if (drops.get(i).getItem() != getCropSeed(crop))
+								if (!event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i)))
+									event.getWorld()
+									.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
+											event.getPos().getY(), event.getPos().getZ(),
+											(ItemStack) drops.get(i)));
+							if (crop == Blocks.POTATOES || crop == Blocks.CARROTS) {
+								drops.remove(0);
+								if(!event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i)))
+									event.getWorld()
+									.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
+											event.getPos().getY(), event.getPos().getZ(),
+											(ItemStack) drops.get(i)));
+							}
 						}
 						event.getPlayer().addExhaustion(.05F);
 						event.getWorld().playSound((PlayerEntity) null, event.getPos(), SoundEvents.BLOCK_CROP_BREAK,
@@ -87,7 +101,11 @@ public class SmartHarvest {
 						for (int i = 0; i < drops.size(); i++) {
 							if (drops.get(i).getItem() != bush.getItem(event.getWorld(), event.getPos(),
 									event.getWorld().getBlockState(event.getPos())).getItem())
-								event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
+								if (!event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i)))
+									event.getWorld()
+									.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
+											event.getPos().getY(), event.getPos().getZ(),
+											(ItemStack) drops.get(i)));
 						}
 						event.getPlayer().addExhaustion(.05F);
 						event.getWorld().playSound((PlayerEntity) null, event.getPos(),
@@ -112,7 +130,11 @@ public class SmartHarvest {
 						for (int i = 0; i < drops.size(); i++) {
 							if (drops.get(i).getItem() != cactus.getItem(event.getWorld(), event.getPos(),
 									event.getWorld().getBlockState(event.getPos())).getItem())
-								event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
+								if(!event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i)))
+									event.getWorld()
+									.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
+											event.getPos().getY(), event.getPos().getZ(),
+											(ItemStack) drops.get(i)));
 						}
 						event.getPlayer().addExhaustion(.05F);
 						event.getWorld().playSound((PlayerEntity) null, event.getPos(),
@@ -137,7 +159,11 @@ public class SmartHarvest {
 						for (int i = 0; i < drops.size(); i++) {
 							if (drops.get(i).getItem() != leaf.getSapling(event.getWorld(), event.getPos(),
 									event.getWorld().getBlockState(event.getPos())).getItem())
-								event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
+								if (!event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i)))
+									event.getWorld()
+									.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
+											event.getPos().getY(), event.getPos().getZ(),
+											(ItemStack) drops.get(i)));
 						}
 						event.getPlayer().addExhaustion(.05F);
 						event.getWorld().playSound((PlayerEntity) null, event.getPos(),
@@ -157,7 +183,11 @@ public class SmartHarvest {
 							(ServerWorld) event.getWorld(), event.getPos(),
 							event.getWorld().getTileEntity(event.getPos()));
 					for (int i = 0; i < drops.size(); i++) {
-						event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
+						if (!event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i)))
+							event.getWorld()
+							.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
+									event.getPos().getY(), event.getPos().getZ(),
+									(ItemStack) drops.get(i)));
 					}
 					event.getPlayer().addExhaustion(.05F);
 					event.getWorld().playSound((PlayerEntity) null, event.getPos(),
@@ -180,7 +210,12 @@ public class SmartHarvest {
 								(ServerWorld) event.getWorld(), event.getPos(),
 								event.getWorld().getTileEntity(event.getPos()));
 						for (int i = 0; i < drops.size(); i++) {
-							event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
+							drops.remove(0);
+							if(!event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i)))
+								event.getWorld()
+								.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
+										event.getPos().getY(), event.getPos().getZ(),
+										(ItemStack) drops.get(i)));
 						}
 						event.getPlayer().addExhaustion(.05F);
 						event.getWorld().playSound((PlayerEntity) null, event.getPos(), SoundEvents.BLOCK_GRASS_BREAK,
@@ -203,7 +238,11 @@ public class SmartHarvest {
 								(ServerWorld) event.getWorld(), event.getPos(),
 								event.getWorld().getTileEntity(event.getPos()));
 						for (int i = 0; i < drops.size(); i++) {
-							event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
+							if(!event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i)))
+								event.getWorld()
+								.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
+										event.getPos().getY(), event.getPos().getZ(),
+										(ItemStack) drops.get(i)));
 						}
 						event.getPlayer().addExhaustion(.05F);
 						event.getWorld().playSound((PlayerEntity) null, event.getPos(),
@@ -230,7 +269,11 @@ public class SmartHarvest {
 								event.getWorld().getTileEntity(event.getPos()));
 						for (int i = 0; i < drops.size(); i++) {
 							if (drops.get(i).getItem() != getCropSeed(crop))
-								event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i));
+								if(!event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i)))
+									event.getWorld()
+									.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
+											event.getPos().getY(), event.getPos().getZ(),
+											(ItemStack) drops.get(i)));
 						}
 						event.getPlayer().addExhaustion(.05F);
 						event.getWorld().playSound((PlayerEntity) null, event.getPos(), SoundEvents.BLOCK_CROP_BREAK,

@@ -78,21 +78,23 @@ public class DropEvents {
 	@SubscribeEvent
 	public void onMobKilled(LivingDropsEvent event) {
 
-		if ((event.getEntityLiving() instanceof SquidEntity))
-			if (event.getEntityLiving().isBurning())
-				event.getEntityLiving()
-						.entityDropItem(new ItemStack(ModItems.fried_calamari, (int) ((Math.random() * 3) + 1)));
-			else
-				event.getEntityLiving()
-						.entityDropItem(new ItemStack(ModItems.raw_calamari, (int) ((Math.random() * 3) + 1)));
+		if (!event.getEntityLiving().world.isRemote()) {
+			if ((event.getEntityLiving() instanceof SquidEntity))
+				if (event.getEntityLiving().isBurning())
+					event.getEntityLiving()
+							.entityDropItem(new ItemStack(ModItems.fried_calamari, (int) ((Math.random() * 3) + 1)));
+				else
+					event.getEntityLiving()
+							.entityDropItem(new ItemStack(ModItems.raw_calamari, (int) ((Math.random() * 3) + 1)));
 
-		if ((event.getEntityLiving() instanceof HorseEntity))
-			if (event.getEntityLiving().isBurning())
-				event.getEntityLiving()
-						.entityDropItem(new ItemStack(ModItems.cooked_horse_meat, (int) ((Math.random() * 3) + 1)));
-			else
-				event.getEntityLiving()
-						.entityDropItem(new ItemStack(ModItems.raw_horse_meat, (int) ((Math.random() * 3) + 1)));
+			if ((event.getEntityLiving() instanceof HorseEntity))
+				if (event.getEntityLiving().isBurning())
+					event.getEntityLiving()
+							.entityDropItem(new ItemStack(ModItems.cooked_horse_meat, (int) ((Math.random() * 3) + 1)));
+				else
+					event.getEntityLiving()
+							.entityDropItem(new ItemStack(ModItems.raw_horse_meat, (int) ((Math.random() * 3) + 1)));
+		}
 
 	}
 

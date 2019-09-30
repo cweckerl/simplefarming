@@ -1,6 +1,7 @@
 package enemeez.simplefarming.init;
 
 import enemeez.simplefarming.SimpleFarming;
+import enemeez.simplefarming.items.AlcoholItem;
 import enemeez.simplefarming.items.BottleItem;
 import enemeez.simplefarming.items.CustomSeed;
 import enemeez.simplefarming.items.FoodTier;
@@ -217,6 +218,16 @@ public class ModItems {
 	public static Item pork_curry;
 	public static Item mutton_curry;
 	public static Item vegetable_curry;
+	
+	//Alcohol
+	public static Item beer;
+	public static Item cauim;
+	public static Item cider;
+	public static Item sake;
+	public static Item tiswin;
+	public static Item vodka;
+	public static Item whiskey;
+	public static Item wine;
 
 	// BlockItems
 	public static Item cantaloupe_block;
@@ -250,6 +261,8 @@ public class ModItems {
 	public static Item cactus_crop;
 
 	public static Item fruit_log;
+	
+	public static Item brewing_barrel;
 
 	public static void registerAll(RegistryEvent.Register<Item> event) {
 		if (!event.getName().equals(ForgeRegistries.ITEMS.getRegistryName()))
@@ -306,11 +319,13 @@ public class ModItems {
 				new BlockItem(ModBlocks.cactus_crop, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 
 		birthday_cake = register("birthday_cake",
-				new BlockItem(ModBlocks.birthday_cake, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+				new BlockItem(ModBlocks.birthday_cake, new Item.Properties().maxStackSize(1).group(SimpleFarming.ITEM_GROUP)));
 		chocolate_cake = register("chocolate_cake",
-				new BlockItem(ModBlocks.chocolate_cake, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+				new BlockItem(ModBlocks.chocolate_cake, new Item.Properties().maxStackSize(1).group(SimpleFarming.ITEM_GROUP)));
 		cheese_block = register("cheese_block",
 				new BlockItem(ModBlocks.cheese_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		brewing_barrel = register("brewing_barrel",
+				new BlockItem(ModBlocks.brewing_barrel, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 
 		apricot = register("apricot",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
@@ -399,6 +414,23 @@ public class ModItems {
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP)));
 
 		noodles = register("noodles", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+		
+		beer = register("beer", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
+				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "beer"));
+		cauim = register("cauim", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
+				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "cauim"));
+		cider = register("cider", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
+				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "cider"));
+		sake = register("sake", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
+				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "sake"));
+		tiswin = register("tiswin", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
+				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "tiswin"));
+		vodka = register("vodka", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
+				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "vodka"));
+		whiskey = register("whiskey", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
+				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "whiskey"));
+		wine = register("wine", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
+				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "wine"));
 
 		cumin_seeds = register("cumin_seeds", new CustomSeed(ModBlocks.cumin,
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDs)));

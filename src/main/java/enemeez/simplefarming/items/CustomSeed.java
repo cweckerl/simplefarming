@@ -35,7 +35,7 @@ public class CustomSeed extends BlockNamedItem {
 			if (entity instanceof ParrotEntity)
 				if (!entity.world.isRemote) {
 					if (!((ParrotEntity) entity).isTamed())
-						if (Math.random() < 0.33) {
+						if (Math.random() <= 0.33) {
 							((ParrotEntity) entity).setTamedBy(player);
 							((ParrotEntity) entity).setInLove(player);
 						}

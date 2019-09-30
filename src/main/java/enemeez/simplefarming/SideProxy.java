@@ -3,11 +3,14 @@ package enemeez.simplefarming;
 import enemeez.simplefarming.config.Config;
 import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.events.DoubleCropBreak;
+import enemeez.simplefarming.events.DropEvents;
+import enemeez.simplefarming.events.IntoxicationTracker;
 import enemeez.simplefarming.events.ModHarvest;
 import enemeez.simplefarming.events.SmartHarvest;
 import enemeez.simplefarming.events.TemptationTask;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
+import enemeez.simplefarming.init.ModTileEntities;
 import enemeez.simplefarming.init.ModWorldGen;
 import enemeez.simplefarming.items.CompostItems;
 import net.minecraft.world.biome.Biome;
@@ -36,6 +39,7 @@ public class SideProxy {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::enqueueIMC);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::processIMC);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(ModBlocks::registerAll);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(ModTileEntities::registerAll);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(ModItems::registerAll);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(ModWorldGen::registerAll);
 
@@ -46,14 +50,15 @@ public class SideProxy {
 
 	private static void commonSetup(FMLCommonSetupEvent event) {
 		SimpleFarming.LOGGER.debug("common setup");
-
+		
 		MinecraftForge.EVENT_BUS.register(new TemptationTask());
 		if (FeatureConfig.mod_harvest.get() && FeatureConfig.smart_harvest.get() == false)
 			MinecraftForge.EVENT_BUS.register(new ModHarvest());
-		//MinecraftForge.EVENT_BUS.register(new DropEvents());
+		MinecraftForge.EVENT_BUS.register(new DropEvents());
 		if (FeatureConfig.smart_harvest.get())
 			MinecraftForge.EVENT_BUS.register(new SmartHarvest());
 		MinecraftForge.EVENT_BUS.register(new DoubleCropBreak());
+		MinecraftForge.EVENT_BUS.register(new IntoxicationTracker());
 
 		if (ModWorldGen.fruit_tree != null) {
 			for (Biome biome : ForgeRegistries.BIOMES) {

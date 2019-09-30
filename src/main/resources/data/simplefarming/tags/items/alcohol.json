@@ -1,0 +1,14 @@
+{
+	"replace": false,
+	"values":
+	[
+		"simplefarming:beer",
+		"simplefarming:cauim",
+		"simplefarming:cider",
+		"simplefarming:sorghum_bread",
+		"simplefarming:tiswin",
+		"simplefarming:vodka",
+		"simplefarming:whiskey",
+		"simplefarming:wine"
+	]
+}
