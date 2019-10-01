@@ -2,7 +2,7 @@ package enemeez.simplefarming.blocks;
 
 import java.util.Random;
 
-import enemeez.simplefarming.world.gen.FruitTreeFeature;
+import enemeez.simplefarming.world.gen.feature.tree.FruitTreeFeature;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;

@@ -1,7 +1,6 @@
 package enemeez.simplefarming.init;
 
 import enemeez.simplefarming.SimpleFarming;
-import enemeez.simplefarming.items.AlcoholItem;
 import enemeez.simplefarming.items.BottleItem;
 import enemeez.simplefarming.items.CustomSeed;
 import enemeez.simplefarming.items.FoodTier;
@@ -324,8 +323,6 @@ public class ModItems {
 				new BlockItem(ModBlocks.chocolate_cake, new Item.Properties().maxStackSize(1).group(SimpleFarming.ITEM_GROUP)));
 		cheese_block = register("cheese_block",
 				new BlockItem(ModBlocks.cheese_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-		brewing_barrel = register("brewing_barrel",
-				new BlockItem(ModBlocks.brewing_barrel, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 
 		apricot = register("apricot",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
@@ -415,6 +412,7 @@ public class ModItems {
 
 		noodles = register("noodles", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		
+		/*
 		beer = register("beer", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "beer"));
 		cauim = register("cauim", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
@@ -431,6 +429,7 @@ public class ModItems {
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "whiskey"));
 		wine = register("wine", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "wine"));
+				*/
 
 		cumin_seeds = register("cumin_seeds", new CustomSeed(ModBlocks.cumin,
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDs)));

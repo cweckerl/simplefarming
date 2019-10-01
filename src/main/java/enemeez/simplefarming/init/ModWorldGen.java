@@ -4,9 +4,9 @@ import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.config.EnableConfig;
 import enemeez.simplefarming.world.gen.BerryBushFeature;
 import enemeez.simplefarming.world.gen.CactusCropFeature;
-import enemeez.simplefarming.world.gen.FruitTreeFeature;
 import enemeez.simplefarming.world.gen.WildCropFeature;
 import enemeez.simplefarming.world.gen.WildPlantFeature;
+import enemeez.simplefarming.world.gen.feature.tree.FruitTreeFeature;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
@@ -37,7 +37,6 @@ public class ModWorldGen {
 			wild_crop = register(r, new WildCropFeature(NoFeatureConfig::deserialize), "wild_crop");
 		if (EnableConfig.wild_plant_validate.get())
 			wild_plant = register(r, new WildPlantFeature(NoFeatureConfig::deserialize), "wild_plant");
-
 	}
 
 	private static <V extends R, R extends IForgeRegistryEntry<R>> V register(IForgeRegistry<R> registry, V value,

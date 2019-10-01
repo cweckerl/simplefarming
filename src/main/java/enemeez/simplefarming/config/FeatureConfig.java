@@ -19,7 +19,7 @@ public class FeatureConfig {
 				.define("Enable smart harvest", false);
 
 		seed_drop = config.comment("Chance of seeds dropping from breaking grass (Default: 6.25 (6.25%))")
-				.defineInRange("Probability of seeds dropping", 6.25, 0, 100);
+				.defineInRange("Percent chance of seeds dropping", 6.25, 0, 100);
 
 	}
 

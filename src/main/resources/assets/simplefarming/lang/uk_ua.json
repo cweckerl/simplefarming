@@ -224,7 +224,7 @@
 	"item.simplefarming.quinoa_salad": "Салат",
 	"item.simplefarming.tofu_scramble": "Пюре з тофу",
 	
-	"item.simplefarming.beef_curry": "Яловича з карі",
+	"item.simplefarming.beef_curry": "Яловичина з карі",
 	"item.simplefarming.chicken_curry": "Курка з карі",
 	"item.simplefarming.mutton_curry": "Баранина з карі",
 	"item.simplefarming.pork_curry": "Свинина з карі",
@@ -254,7 +254,7 @@
 	"item.simplefarming.pumpkin_soup": "Гарбузовий суп",
 	"item.simplefarming.raw_horse_meat": "Сире коняче мясо",
 	"item.simplefarming.cooked_horse_meat": "Смажене коняче мясо",
-	"item.simplefarming.trail_mix": "Трасова суміш",
+	"item.simplefarming.trail_mix": "Пластівці з сухофруктами",
 	"item.simplefarming.sweet_potato_quinoa_cakes": "Тістечка з солодкою картоплою та квіноєю",
 	"item.simplefarming.sausage_barley_soup": "Суп з сосисками та ячмінем",
 	"block.simplefarming.barley_hay_block": "Копиця ячменню",
@@ -262,6 +262,23 @@
 	"item.simplefarming.pea_soup": "Гороховий суп",
 	"item.simplefarming.fried_rice": "Смажений рис",
 	"item.simplefarming.mushroom_barley": "Гриби та ячмінь",
+	
+	"item.simplefarming.olives": "Оливки",
+	"item.simplefarming.broccoli": "Броколі",
+	"item.simplefarming.zucchini": "Цукіні",
+	"item.simplefarming.olive_oil": "Оливкова олія",
+	"item.simplefarming.broccoli_seeds": "Насіння броколі",
+	"item.simplefarming.zucchini_seeds": "Насіння цукіні",
+	"item.simplefarming.beef_and_broccoli": "Яловичина з броколі",
+	"item.simplefarming.broccoli_cheese_soup": "Сирний суп з броколі",
+	"item.simplefarming.olive_tomato_salad": "Салат з помідорів та оливок",
+	"item.simplefarming.stuffed_corn_zucchini": "Фаршировані кукурудза та цукіні",
+	"item.simplefarming.zucchini_bread": "Хліб з цукіні",
+	"block.simplefarming.olive_sapling": "Саджанець оливкового дерева",
+	"block.simplefarming.birthday_cake": "Святковий  торт",
+	"block.simplefarming.broccoli_crop": "Стручок броколі",
+	"block.simplefarming.zucchini_crop": "Стручок цукіні",
+	"block.simplefarming.olive_leaves": "Оливкове дерево",
 	
 
 	

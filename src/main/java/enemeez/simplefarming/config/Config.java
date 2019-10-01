@@ -24,6 +24,10 @@ public class Config {
 		BUILDER.push("Miscellaneous Features");
 		FeatureConfig.init(BUILDER);
 		BUILDER.pop();
+		
+		BUILDER.push("Blacklisted Dimensions");
+		DimensionConfig.init(BUILDER);
+		BUILDER.pop();
 
 		CONFIG = BUILDER.build();
 	}

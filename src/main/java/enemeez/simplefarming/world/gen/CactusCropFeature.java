@@ -6,8 +6,10 @@ import java.util.function.Function;
 import com.mojang.datafixers.Dynamic;
 
 import enemeez.simplefarming.blocks.CustomCactus;
+import enemeez.simplefarming.config.DimensionConfig;
 import enemeez.simplefarming.config.GenConfig;
 import enemeez.simplefarming.init.ModBlocks;
+import net.minecraft.block.Blocks;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
@@ -21,18 +23,26 @@ public class CactusCropFeature extends Feature<NoFeatureConfig> {
 		super(configFactory);
 	}
 
+	public boolean check(IWorld world, BlockPos pos) {
+		if (world.getBlockState(pos.down()).getBlock().isIn(BlockTags.SAND)
+				&& world.getBlockState(pos).getMaterial().isReplaceable()
+				&& world.getBlockState(pos) != Blocks.WATER.getDefaultState()
+				&& world.getBlockState(pos) != Blocks.LAVA.getDefaultState())
+			return true;
+		else
+			return false;
+	}
+
 	@Override
 	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random,
 			BlockPos pos, NoFeatureConfig config) {
-		if (random.nextInt(GenConfig.cactus_chance.get()) != 0)
+		if (random.nextInt(GenConfig.cactus_chance.get()) != 0
+				|| DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
+				|| !DimensionConfig.whitelist.get().contains(world.getDimension().getType().getId()))
 			return false;
-
-		if (world.getBlockState(pos.down()).getBlock().isIn(BlockTags.SAND)
-				&& world.getBlockState(pos).getMaterial().isReplaceable())
+		if (check(world, pos))
 			generateCactus(world, pos, random);
-
 		return true;
-
 	}
 
 	public static void generateCactus(IWorld world, BlockPos pos, Random random) {

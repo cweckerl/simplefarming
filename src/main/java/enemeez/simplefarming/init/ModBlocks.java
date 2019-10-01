@@ -4,7 +4,6 @@ import javax.annotation.Nullable;
 
 import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.blocks.BirthdayCake;
-import enemeez.simplefarming.blocks.BrewingBarrelBlock;
 import enemeez.simplefarming.blocks.CheeseBlock;
 import enemeez.simplefarming.blocks.CustomBush;
 import enemeez.simplefarming.blocks.CustomCactus;
@@ -129,9 +128,6 @@ public class ModBlocks {
 	public static void registerAll(RegistryEvent.Register<Block> event) {
 		if (!event.getName().equals(ForgeRegistries.BLOCKS.getRegistryName()))
 			return;
-
-		brewing_barrel = register("brewing_barrel", new BrewingBarrelBlock(
-				Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
 
 		cantaloupe_block = register("cantaloupe_block",
 				new Block(Block.Properties.create(Material.GOURD).sound(SoundType.WOOD).hardnessAndResistance(1.0f)));

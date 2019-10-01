@@ -137,7 +137,7 @@
 	"block.simplefarming.pear_sapling": "Саженец груши",
 	"block.simplefarming.plum_sapling": "Саженец сливы",
 	
-	"block.simplefarming.fruit_log": "Фруктовые бревно",
+	"block.simplefarming.fruit_log": "Фруктовое бревно",
 	"block.simplefarming.fruit_planks": "Фруктовые доски",
 	"block.simplefarming.chocolate_cake": "Шоколадный торт",
 	"block.simplefarming.cheese_block": "Головка сыра",
@@ -254,7 +254,7 @@
 	"item.simplefarming.pumpkin_soup": "Тыквеный суп",
 	"item.simplefarming.raw_horse_meat": "Сырая конина",
 	"item.simplefarming.cooked_horse_meat": "Приготовленная конина",
-	"item.simplefarming.trail_mix": "Трасовая смесь",
+	"item.simplefarming.trail_mix": "Хлопья с сухофруктами",
 	"item.simplefarming.sweet_potato_quinoa_cakes": "Кекс со сладким картофелем и киноей",
 	"item.simplefarming.sausage_barley_soup": "Суп с сосисками и ячменем",
 	"block.simplefarming.barley_hay_block": "Сноп ячменя",
@@ -262,6 +262,23 @@
 	"item.simplefarming.pea_soup": "Гороховый суп",
 	"item.simplefarming.fried_rice": "Жареный рис",
 	"item.simplefarming.mushroom_barley": "Грибы с ячменём",
+	
+	"item.simplefarming.olives": "Оливки",
+	"item.simplefarming.broccoli": "Брокколи",
+	"item.simplefarming.zucchini": "Цуккини",
+	"item.simplefarming.olive_oil": "Оливковое масло",
+	"item.simplefarming.broccoli_seeds": "Семена брокколи",
+	"item.simplefarming.zucchini_seeds": "Семена цуккини",
+	"item.simplefarming.beef_and_broccoli": "Говядина с брокколи",
+	"item.simplefarming.broccoli_cheese_soup": "Сирный суп з броколи",
+	"item.simplefarming.olive_tomato_salad": "Салат с пмидоров и оливок",
+	"item.simplefarming.stuffed_corn_zucchini": "Фаршированная кукурудза с цуккини",
+	"item.simplefarming.zucchini_bread": "Хлеб с цуккини",
+	"block.simplefarming.olive_sapling": "Саженец оливкового дерева",
+	"block.simplefarming.birthday_cake": "Праздничный торт",
+	"block.simplefarming.broccoli_crop": "Стручок брокколи",
+	"block.simplefarming.zucchini_crop": "Стручок цуккини",
+	"block.simplefarming.olive_leaves": "Оливковая листва",
 	
 
 	
