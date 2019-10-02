@@ -50,10 +50,10 @@ public class SideProxy {
 		SimpleFarming.LOGGER.debug("common setup");
 
 		MinecraftForge.EVENT_BUS.register(new TemptationTask());
-		if (FeatureConfig.mod_harvest.get() && FeatureConfig.smart_harvest.get() == false)
+		if (FeatureConfig.mod_harvest.get() && !FeatureConfig.smart_harvest.get())
 			MinecraftForge.EVENT_BUS.register(new ModHarvest());
 		MinecraftForge.EVENT_BUS.register(new DropEvents());
-		if (FeatureConfig.smart_harvest.get())
+		if (FeatureConfig.smart_harvest.get() && !FeatureConfig.mod_harvest.get())
 			MinecraftForge.EVENT_BUS.register(new SmartHarvest());
 		MinecraftForge.EVENT_BUS.register(new DoubleCropBreak());
 		MinecraftForge.EVENT_BUS.register(new IntoxicationTracker());

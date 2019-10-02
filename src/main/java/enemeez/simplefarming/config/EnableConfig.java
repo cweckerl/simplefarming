@@ -24,7 +24,7 @@ public class EnableConfig {
 				true);
 
 		wild_crop_validate = config.comment(
-				"Enable this feature to avoid conflicts with other mods that addgrass drops (And disable grass drops).")
+				"Enable this feature to avoid conflicts with other mods that add grass drops (And disable grass drops).")
 				.define("Generate wild crops", false);
 
 		wild_plant_validate = config.comment("Indicates whether wild plants, such as quinoa and cumin, should generate")

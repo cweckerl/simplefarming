@@ -1,150 +1,142 @@
 {
-    "textures": {
-        "particle": "simplefarming:block/bush_leaves",
-        "log_spruce_top": "minecraft:block/oak_log_top",
-        "log_spruce": "minecraft:block/oak_log",
-        "bush_leaves": "simplefarming:block/bush_leaves"
-    },
-    "display": {
-        "gui": {
-            "rotation": [ 30, 45, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 0.625, 0.625, 0.625 ]
-        },
-        "ground": {
-            "rotation": [ 0, 0, 0 ],
-            "translation": [ 0, 3, 0 ],
-            "scale": [ 0.25, 0.25, 0.25 ]
-        },
-        "fixed": {
-            "rotation": [ 0, 180, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 1, 1, 1 ]
-        },
-        "head": {
-            "rotation": [ 0, 180, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 1, 1, 1 ]
-        },
-        "firstperson_righthand": {
-            "rotation": [ 0, 315, 0 ],
-            "translation": [ 0, 2.5, 0 ],
-            "scale": [ 0.4, 0.4, 0.4 ]
-        },
-        "thirdperson_righthand": {
-            "rotation": [ 75, 315, 0 ],
-            "translation": [ 0, 2.5, 0 ],
-            "scale": [ 0.375, 0.375, 0.375 ]
-        }
-    },
-    "elements": [
-        {
-            "name": "stem",
-            "from": [ 5, 0, 5 ], 
-            "to": [ 11, 8, 11 ], 
-            "faces": {
-                "north": { "texture": "#log_spruce", "uv": [ 0, 0, 6, 8 ] },
-                "east": { "texture": "#log_spruce", "uv": [ 10, 0, 16, 8 ] },
-                "south": { "texture": "#log_spruce", "uv": [ 0, 8, 6, 16 ] },
-                "west": { "texture": "#log_spruce", "uv": [ 10, 8, 16, 16 ] },
-                "up": { "texture": "#log_spruce_top", "uv": [ 5, 5, 11, 11 ] },
-                "down": { "texture": "#log_spruce_top", "uv": [ 5, 5, 11, 11 ] }
-            }
-        },
-        {
-            "name": "basesouth",
-            "from": [ 2, 2, 11 ], 
-            "to": [ 14, 3, 14 ], 
-            "faces": {
-                "north": { "texture": "#bush_leaves", "uv": [ 2, 15, 14, 16 ] },
-                "up": { "texture": "#bush_leaves", "uv": [ 2, 2, 14, 5 ] },
-                "down": { "texture": "#bush_leaves", "uv": [ 2, 13, 14, 16 ] }
-            }
-        },
-        {
-            "name": "sideeast",
-            "from": [ 11, 2, 5 ], 
-            "to": [ 14, 3, 11 ], 
-            "faces": {
-                "up": { "texture": "#bush_leaves", "uv": [ 1, 0, 4, 6 ] },
-                "down": { "texture": "#bush_leaves", "uv": [ 1, 0, 4, 6 ] }
-            }
-        },
-        {
-            "name": "north",
-            "from": [ 2, 2, 1 ], 
-            "to": [ 14, 15, 2 ], 
-            "faces": {
-                "north": { "texture": "#bush_leaves", "uv": [ 2, 2, 14, 15 ] },
-                "south": { "texture": "#bush_leaves", "uv": [ 2, 2, 14, 15 ] },
-                "down": { "texture": "#bush_leaves", "uv": [ 2, 15, 14, 16 ] }
-            }
-        },
-        {
-            "name": "sidewest",
-            "from": [ 2, 2, 5 ], 
-            "to": [ 5, 3, 11 ], 
-            "faces": {
-                "up": { "texture": "#bush_leaves", "uv": [ 1, 0, 4, 6 ] },
-                "down": { "texture": "#bush_leaves", "uv": [ 1, 0, 4, 6 ] }
-            }
-        },
-        {
-            "name": "basenorth",
-            "from": [ 2, 2, 2 ], 
-            "to": [ 14, 3, 5 ], 
-            "faces": {
-                "south": { "texture": "#bush_leaves", "uv": [ 2, 15, 14, 16 ] },
-                "up": { "texture": "#bush_leaves", "uv": [ 2, 2, 14, 5 ] },
-                "down": { "texture": "#bush_leaves", "uv": [ 2, 13, 14, 16 ] }
-            }
-        },
-        {
-            "name": "south",
-            "from": [ 2, 2, 14 ], 
-            "to": [ 14, 15, 15 ], 
-            "faces": {
-                "north": { "texture": "#bush_leaves", "uv": [ 2, 2, 14, 15 ] },
-                "south": { "texture": "#bush_leaves", "uv": [ 2, 2, 14, 15 ] },
-                "down": { "texture": "#bush_leaves", "uv": [ 2, 15, 14, 16 ] }
-            }
-        },
-        {
-            "name": "west",
-            "from": [ 1, 2, 1 ], 
-            "to": [ 2, 15, 15 ], 
-            "faces": {
-                "north": { "texture": "#bush_leaves", "uv": [ 0, 1, 1, 14 ] },
-                "east": { "texture": "#bush_leaves", "uv": [ 1, 2, 15, 15 ] },
-                "south": { "texture": "#bush_leaves", "uv": [ 15, 1, 16, 14 ] },
-                "west": { "texture": "#bush_leaves", "uv": [ 1, 2, 15, 15 ] },
-                "down": { "texture": "#bush_leaves", "uv": [ 15, 2, 16, 16 ] }
-            }
-        },
-        {
-            "name": "east",
-            "from": [ 14, 2, 1 ], 
-            "to": [ 15, 15, 15 ], 
-            "faces": {
-                "north": { "texture": "#bush_leaves", "uv": [ 0, 2, 1, 15 ] },
-                "east": { "texture": "#bush_leaves", "uv": [ 1, 2, 15, 15 ] },
-                "south": { "texture": "#bush_leaves", "uv": [ 15, 1, 16, 14 ] },
-                "west": { "texture": "#bush_leaves", "uv": [ 1, 2, 15, 15 ] },
-                "down": { "texture": "#bush_leaves", "uv": [ 15, 2, 16, 16 ] }
-            }
-        },
-        {
-            "name": "top",
-            "from": [ 1, 15, 1 ], 
-            "to": [ 15, 16, 15 ], 
-            "faces": {
-                "north": { "texture": "#bush_leaves", "uv": [ 1, 0, 15, 1 ] },
-                "east": { "texture": "#bush_leaves", "uv": [ 1, 0, 15, 1 ] },
-                "south": { "texture": "#bush_leaves", "uv": [ 1, 0, 15, 1 ] },
-                "west": { "texture": "#bush_leaves", "uv": [ 1, 0, 15, 1 ] },
-                "up": { "texture": "#bush_leaves", "uv": [ 1, 1, 15, 15 ] },
-                "down": { "texture": "#bush_leaves", "uv": [ 1, 1, 15, 15 ] }
-            }
-        }
-    ]
+	"textures": {
+		"log_top": "block/oak_log_top",
+		"log": "block/oak_log",
+		"bush_leaves": "simplefarming:block/bush_leaves",
+		"particle": "simplefarming:block/bush_leaves"
+	},
+	"elements": [
+		{
+			"name": "stem",
+			"from": [5, 0, 5],
+			"to": [11, 8, 11],
+			"faces": {
+				"north": {"uv": [0, 0, 6, 8], "texture": "#log"},
+				"east": {"uv": [10, 0, 16, 8], "texture": "#log"},
+				"south": {"uv": [0, 8, 6, 16], "texture": "#log"},
+				"west": {"uv": [10, 8, 16, 16], "texture": "#log"},
+				"up": {"uv": [5, 5, 11, 11], "texture": "#log_top"},
+				"down": {"uv": [5, 5, 11, 11], "texture": "#log_top"}
+			}
+		},
+		{
+			"name": "basenorth",
+			"from": [2, 2, 2],
+			"to": [14, 3, 5],
+			"faces": {
+				"up": {"uv": [2, 2, 14, 5], "texture": "#bush_leaves"},
+				"down": {"uv": [2, 12, 14, 15], "texture": "#bush_leaves"}
+			}
+		},
+		{
+			"name": "basesouth",
+			"from": [2, 2, 11],
+			"to": [14, 3, 14],
+			"faces": {
+				"up": {"uv": [2, 2, 14, 5], "texture": "#bush_leaves"},
+				"down": {"uv": [2, 1, 14, 4], "texture": "#bush_leaves"}
+			}
+		},
+		{
+			"name": "sideeast",
+			"from": [11, 2, 5],
+			"to": [14, 3, 11],
+			"faces": {
+				"up": {"uv": [1, 0, 4, 6], "texture": "#bush_leaves"},
+				"down": {"uv": [12, 5, 15, 11], "texture": "#bush_leaves"}
+			}
+		},
+		{
+			"name": "sidewest",
+			"from": [2, 2, 5],
+			"to": [5, 3, 11],
+			"faces": {
+				"up": {"uv": [1, 0, 4, 6], "texture": "#bush_leaves"},
+				"down": {"uv": [1, 5, 4, 11], "texture": "#bush_leaves"}
+			}
+		},
+		{
+			"name": "north",
+			"from": [2, 2, 1],
+			"to": [14, 15, 2],
+			"faces": {
+				"north": {"uv": [2, 2, 14, 15], "texture": "#bush_leaves"},
+				"south": {"uv": [2, 2, 14, 15], "texture": "#bush_leaves"},
+				"down": {"uv": [2, 15, 14, 16], "texture": "#bush_leaves"}
+			}
+		},
+		{
+			"name": "south",
+			"from": [2, 2, 14],
+			"to": [14, 15, 15],
+			"faces": {
+				"north": {"uv": [2, 2, 14, 15], "texture": "#bush_leaves"},
+				"south": {"uv": [2, 2, 14, 15], "texture": "#bush_leaves"},
+				"down": {"uv": [2, 15, 14, 16], "texture": "#bush_leaves"}
+			}
+		},
+		{
+			"name": "west",
+			"from": [1, 2, 1],
+			"to": [2, 15, 15],
+			"faces": {
+				"north": {"uv": [0, 1, 1, 14], "texture": "#bush_leaves"},
+				"east": {"uv": [1, 2, 15, 15], "texture": "#bush_leaves"},
+				"south": {"uv": [15, 1, 16, 14], "texture": "#bush_leaves"},
+				"west": {"uv": [1, 2, 15, 15], "texture": "#bush_leaves"},
+				"down": {"uv": [15, 2, 16, 16], "texture": "#bush_leaves"}
+			}
+		},
+		{
+			"name": "east",
+			"from": [14, 2, 1],
+			"to": [15, 15, 15],
+			"faces": {
+				"north": {"uv": [0, 2, 1, 15], "texture": "#bush_leaves"},
+				"east": {"uv": [1, 2, 15, 15], "texture": "#bush_leaves"},
+				"south": {"uv": [15, 1, 16, 14], "texture": "#bush_leaves"},
+				"west": {"uv": [1, 2, 15, 15], "texture": "#bush_leaves"},
+				"down": {"uv": [15, 2, 16, 16], "texture": "#bush_leaves"}
+			}
+		},
+		{
+			"name": "top",
+			"from": [1, 15, 1],
+			"to": [15, 16, 15],
+			"faces": {
+				"north": {"uv": [1, 0, 15, 1], "texture": "#bush_leaves"},
+				"east": {"uv": [1, 0, 15, 1], "texture": "#bush_leaves"},
+				"south": {"uv": [1, 0, 15, 1], "texture": "#bush_leaves"},
+				"west": {"uv": [1, 0, 15, 1], "texture": "#bush_leaves"},
+				"up": {"uv": [1, 1, 15, 15], "texture": "#bush_leaves"},
+				"down": {"uv": [1, 1, 15, 15], "texture": "#bush_leaves"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 315, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 315, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [30, 45, 0],
+			"scale": [0.625, 0.625, 0.625]
+		},
+		"head": {
+			"rotation": [0, 180, 0]
+		},
+		"fixed": {
+			"rotation": [0, 180, 0]
+		}
+	}
 }

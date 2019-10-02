@@ -13,7 +13,7 @@ public class Config {
 
 	static {
 
-		BUILDER.push("Tweak World Generation Chances");
+		BUILDER.push("Tweak World Generation Rates");
 		GenConfig.init(BUILDER);
 		BUILDER.pop();
 
@@ -25,7 +25,7 @@ public class Config {
 		FeatureConfig.init(BUILDER);
 		BUILDER.pop();
 		
-		BUILDER.push("Blacklisted Dimensions");
+		BUILDER.push("Dimensions Settings");
 		DimensionConfig.init(BUILDER);
 		BUILDER.pop();
 
