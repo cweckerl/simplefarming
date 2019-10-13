@@ -17,6 +17,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
@@ -24,10 +25,10 @@ import net.minecraft.world.World;
 public class CustomCactus extends BushBlock implements IGrowable {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
 	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] {
-			Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D),
-			Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D),
-			Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D),
-			Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 14.0D, 9.0D) };
+			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
+			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
+			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
+			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 14.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D))};
 
 	public CustomCactus(Block.Properties p_i49971_1_) {
 		super(p_i49971_1_);

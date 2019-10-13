@@ -123,4 +123,6 @@ public class FoodTier {
 	public static final Food STUFFED_CORN_ZUCCHINI = (new Food.Builder()).hunger(14).saturation(0.6F).build();
 	public static final Food ZUCCHINI_BREAD = (new Food.Builder()).hunger(6).saturation(0.6F).build();
 	public static final Food OLIVE_TOMATO_SALAD = (new Food.Builder()).hunger(5).saturation(0.6F).build();
+	
+	public static final Food CANDY = (new Food.Builder()).hunger(2).saturation(0.6F).build();
 }

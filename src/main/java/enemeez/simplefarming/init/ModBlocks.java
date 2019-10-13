@@ -15,9 +15,11 @@ import enemeez.simplefarming.blocks.FruitLeaves;
 import enemeez.simplefarming.blocks.GrapeBlock;
 import enemeez.simplefarming.blocks.GrapeLeaves;
 import enemeez.simplefarming.blocks.GrapePlant;
+import enemeez.simplefarming.blocks.ScarecrowBlock;
 import enemeez.simplefarming.blocks.ThinBlock;
 import enemeez.simplefarming.blocks.WildCrop;
 import enemeez.simplefarming.blocks.WildPlant;
+import enemeez.simplefarming.blocks.brewingbarrel.BrewingBarrel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.HayBlock;
@@ -124,17 +126,20 @@ public class ModBlocks {
 	// Misc
 	public static Block wild_crop;
 	public static Block brewing_barrel;
+	public static Block scarecrow;
 
 	public static void registerAll(RegistryEvent.Register<Block> event) {
 		if (!event.getName().equals(ForgeRegistries.BLOCKS.getRegistryName()))
 			return;
+		brewing_barrel = register("brewing_barrel", new BrewingBarrel(
+				Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
 
 		cantaloupe_block = register("cantaloupe_block",
-				new Block(Block.Properties.create(Material.GOURD).sound(SoundType.WOOD).hardnessAndResistance(1.0f)));
+				new Block(Block.Properties.create(Material.GOURD).sound(SoundType.WOOD).hardnessAndResistance(1.0F)));
 		honeydew_block = register("honeydew_block",
-				new Block(Block.Properties.create(Material.GOURD).sound(SoundType.WOOD).hardnessAndResistance(1.0f)));
+				new Block(Block.Properties.create(Material.GOURD).sound(SoundType.WOOD).hardnessAndResistance(1.0F)));
 		squash_block = register("squash_block",
-				new Block(Block.Properties.create(Material.GOURD).sound(SoundType.WOOD).hardnessAndResistance(1.0f)));
+				new Block(Block.Properties.create(Material.GOURD).sound(SoundType.WOOD).hardnessAndResistance(1.0F)));
 
 		apple_sapling = register("apple_sapling", new CustomSapling(Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement().tickRandomly().hardnessAndResistance(0f).sound(SoundType.PLANT), 1));
@@ -194,6 +199,9 @@ public class ModBlocks {
 				.create(Material.ORGANIC, MaterialColor.GREEN).hardnessAndResistance(0.5F).sound(SoundType.PLANT)));
 		rye_hay_block = register("rye_hay_block", new HayBlock(Block.Properties
 				.create(Material.ORGANIC, MaterialColor.GREEN).hardnessAndResistance(0.5F).sound(SoundType.PLANT)));
+
+		scarecrow = register("scarecrow", new ScarecrowBlock(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement().hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)));
 
 		cumin = register("cumin", new WildPlant((Block.Properties.create(Material.PLANTS).tickRandomly()
 				.doesNotBlockMovement().hardnessAndResistance(0.2f).sound(SoundType.PLANT)), "cumin"));

@@ -238,7 +238,6 @@
 	"item.simplefarming.pea_soup": "Pea Soup",
 	"item.simplefarming.fried_rice": "Fried Rice",
 	"item.simplefarming.mushroom_barley": "Mushroom Barley",
-	
 	"item.simplefarming.olives": "Olives",
 	"item.simplefarming.broccoli": "Broccoli",
 	"item.simplefarming.zucchini": "Zucchini",
@@ -256,15 +255,19 @@
 	"block.simplefarming.zucchini_crop": "Zucchini Crop",
 	"block.simplefarming.olive_leaves": "Olive Leaves",
 	
+	"block.simplefarming.scarecrow": "Scarecrow",
+	"block.simplefarming.brewing_barrel": "Brewing Barrel",
+	"item.simplefarming.beer": "Beer",
+	"item.simplefarming.cider": "Cider",
+	"item.simplefarming.wine": "Wine",
+	"item.simplefarming.vodka": "Vodka",
+	"item.simplefarming.whiskey": "Whiskey",
+	"item.simplefarming.tiswin": "Tiswin",
+	"item.simplefarming.cauim": "Cauim",
+	"item.simplefarming.sake": "Sake",
+	"item.simplefarming.borscht": "Borscht",
+	"item.simplefarming.candy": "Candy",
+	
 
-	
-	
-	
 	"item.simplefarming.veggie_burger": "Veggie Burger"
-	
-	
-	
-
-
-
 }

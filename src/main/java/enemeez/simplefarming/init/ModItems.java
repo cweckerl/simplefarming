@@ -1,6 +1,7 @@
 package enemeez.simplefarming.init;
 
 import enemeez.simplefarming.SimpleFarming;
+import enemeez.simplefarming.items.AlcoholItem;
 import enemeez.simplefarming.items.BottleItem;
 import enemeez.simplefarming.items.CustomSeed;
 import enemeez.simplefarming.items.FoodTier;
@@ -117,8 +118,10 @@ public class ModItems {
 	public static Item barley_bread;
 	public static Item beef_and_broccoli;
 	public static Item blt;
+	public static Item borscht;
 	public static Item broccoli_cheese_soup;
 	public static Item caesar_salad;
+	public static Item candy;
 	public static Item carrot_soup;
 	public static Item cassava_cake;
 	public static Item cheeseburger;
@@ -262,6 +265,7 @@ public class ModItems {
 	public static Item fruit_log;
 	
 	public static Item brewing_barrel;
+	public static Item scarecrow;
 
 	public static void registerAll(RegistryEvent.Register<Item> event) {
 		if (!event.getName().equals(ForgeRegistries.ITEMS.getRegistryName()))
@@ -310,6 +314,9 @@ public class ModItems {
 				new BlockItem(ModBlocks.rice_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 		rye_hay_block = register("rye_hay_block",
 				new BlockItem(ModBlocks.rye_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		
+		scarecrow = register("scarecrow",
+				new BlockItem(ModBlocks.scarecrow, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 
 		fruit_log = register("fruit_log",
 				new BlockItem(ModBlocks.fruit_log, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
@@ -324,6 +331,9 @@ public class ModItems {
 		cheese_block = register("cheese_block",
 				new BlockItem(ModBlocks.cheese_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 
+		brewing_barrel = register("brewing_barrel",
+				new BlockItem(ModBlocks.brewing_barrel, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		
 		apricot = register("apricot",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
 		banana = register("banana",
@@ -412,7 +422,6 @@ public class ModItems {
 
 		noodles = register("noodles", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		
-		/*
 		beer = register("beer", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "beer"));
 		cauim = register("cauim", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
@@ -429,8 +438,7 @@ public class ModItems {
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "whiskey"));
 		wine = register("wine", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "wine"));
-				*/
-
+			
 		cumin_seeds = register("cumin_seeds", new CustomSeed(ModBlocks.cumin,
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDs)));
 		quinoa_seeds = register("quinoa_seeds", new CustomSeed(ModBlocks.quinoa,
@@ -520,12 +528,14 @@ public class ModItems {
 		blackberry_pie = register("blackberry_pie",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));
 		blt = register("blt", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BLT)));
+		borscht = register("borscht", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BLT)));
 		blueberry_pie = register("blueberry_pie",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));
 		broccoli_cheese_soup = register("broccoli_cheese_soup", new SoupItem((new Item.Properties())
 				.group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.BROCCOLI_CHEESE_SOUP)));
 		caesar_salad = register("caesar_salad", new SoupItem(
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.CAESAR_SALAD)));
+		candy = register("candy", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CANDY)));
 		carrot_soup = register("carrot_soup", new SoupItem(
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.CARROT_SOUP)));
 		cassava_cake = register("cassava_cake",

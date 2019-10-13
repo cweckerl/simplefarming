@@ -17,14 +17,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 public class CustomBush extends BushBlock implements IGrowable {
 	private String name;
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-	protected static final VoxelShape SHAPE = Block.makeCuboidShape(1.0D, 2.0D, 1.0D, 15.0D, 16.0D, 15.0D);
-
+	protected static final VoxelShape SHAPE = VoxelShapes.or(Block.makeCuboidShape(1.0D, 2.0D, 1.0D, 15.0D, 16.0D, 15.0D), 
+			Block.makeCuboidShape(5.0D, 0.D, 5.0D, 11.0D, 2.0D, 11.0D));
 	public CustomBush(Block.Properties p_i49971_1_, String name) {
 		super(p_i49971_1_);
 		this.name = name;
