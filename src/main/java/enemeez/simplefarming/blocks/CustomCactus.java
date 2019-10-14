@@ -6,14 +6,19 @@ import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
+import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.IGrowable;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -24,15 +29,52 @@ import net.minecraft.world.World;
 
 public class CustomCactus extends BushBlock implements IGrowable {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] {
-			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
-			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
-			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
-			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 14.0D, 9.0D), Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D))};
+	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+	private static final VoxelShape[] SHAPE_BY_AGE_X = new VoxelShape[] {
+			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D),
+					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
+			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D),
+					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
+			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D),
+					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
+			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 14.0D, 9.0D),
+					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)) };
+	private static final VoxelShape[] SHAPE_BY_AGE_Z = new VoxelShape[] {
+			VoxelShapes.or(Block.makeCuboidShape(7.0D, 2.0D, 2.0D, 9.0D, 12.0D, 14.0D),
+					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
+			VoxelShapes.or(Block.makeCuboidShape(7.0D, 2.0D, 2.0D, 9.0D, 12.0D, 14.0D),
+					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
+			VoxelShapes.or(Block.makeCuboidShape(7.0D, 2.0D, 2.0D, 9.0D, 12.0D, 14.0D),
+					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
+			VoxelShapes.or(Block.makeCuboidShape(7.0D, 2.0D, 2.0D, 9.0D, 14.0D, 14.0D),
+					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)) };
 
 	public CustomCactus(Block.Properties p_i49971_1_) {
 		super(p_i49971_1_);
-		this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
+		this.setDefaultState(
+				this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(AGE, Integer.valueOf(0)));
+	}
+
+	public BlockState getStateForPlacement(BlockItemUseContext context) {
+		return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().rotateY());
+	}
+
+	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+		Direction direction = state.get(FACING);
+		return direction.getAxis() == Direction.Axis.X ? SHAPE_BY_AGE_Z[state.get(this.getAgeProperty())] : SHAPE_BY_AGE_X[state.get(this.getAgeProperty())];
+	}
+	
+	public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos,
+			ISelectionContext context) {
+		return getShape(state, worldIn, pos, context);
+	}
+	
+	public BlockState rotate(BlockState state, Rotation rot) {
+		return state.with(FACING, rot.rotate(state.get(FACING)));
+	}
+	
+	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+		builder.add(AGE).add(FACING);
 	}
 
 	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
@@ -57,15 +99,6 @@ public class CustomCactus extends BushBlock implements IGrowable {
 
 	}
 
-	public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos,
-			ISelectionContext context) {
-		return SHAPE_BY_AGE[state.get(this.getAgeProperty())];
-	}
-
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return SHAPE_BY_AGE[state.get(this.getAgeProperty())];
-	}
-
 	public boolean isSolid(BlockState state) {
 		return false;
 	}
@@ -81,11 +114,7 @@ public class CustomCactus extends BushBlock implements IGrowable {
 
 	public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
 		if (isMaxAge(state))
-		entityIn.attackEntityFrom(DamageSource.CACTUS, 1.0F);
-	}
-
-	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-		builder.add(AGE);
+			entityIn.attackEntityFrom(DamageSource.CACTUS, 1.0F);
 	}
 
 	public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
@@ -100,4 +129,5 @@ public class CustomCactus extends BushBlock implements IGrowable {
 		int i = Math.min(3, state.get(AGE) + 1);
 		worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i)), 2);
 	}
+
 }

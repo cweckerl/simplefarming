@@ -314,7 +314,7 @@ public class ModItems {
 				new BlockItem(ModBlocks.rice_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 		rye_hay_block = register("rye_hay_block",
 				new BlockItem(ModBlocks.rye_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-		
+	
 		scarecrow = register("scarecrow",
 				new BlockItem(ModBlocks.scarecrow, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 

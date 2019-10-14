@@ -135,11 +135,11 @@ public class ModBlocks {
 				Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
 
 		cantaloupe_block = register("cantaloupe_block",
-				new Block(Block.Properties.create(Material.GOURD).sound(SoundType.WOOD).hardnessAndResistance(1.0F)));
+				new Block(Block.Properties.create(Material.PLANTS).sound(SoundType.WOOD).hardnessAndResistance(1.0F)));
 		honeydew_block = register("honeydew_block",
-				new Block(Block.Properties.create(Material.GOURD).sound(SoundType.WOOD).hardnessAndResistance(1.0F)));
+				new Block(Block.Properties.create(Material.PLANTS).sound(SoundType.WOOD).hardnessAndResistance(1.0F)));
 		squash_block = register("squash_block",
-				new Block(Block.Properties.create(Material.GOURD).sound(SoundType.WOOD).hardnessAndResistance(1.0F)));
+				new Block(Block.Properties.create(Material.PLANTS).sound(SoundType.WOOD).hardnessAndResistance(1.0F)));
 
 		apple_sapling = register("apple_sapling", new CustomSapling(Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement().tickRandomly().hardnessAndResistance(0f).sound(SoundType.PLANT), 1));

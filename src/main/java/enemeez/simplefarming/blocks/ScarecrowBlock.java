@@ -40,11 +40,6 @@ public class ScarecrowBlock extends BushBlock {
 		}
 	}
 	
-	
-	
-	
-	
-	
 
 	public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn,
 			BlockPos currentPos, BlockPos facingPos) {
