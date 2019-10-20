@@ -73,15 +73,15 @@ public class BerryBushFeature extends Feature<NoFeatureConfig> {
 	public void generateBush(IWorld world, BlockPos pos, Random random, int type) {
 		if (type == 1)
 			world.setBlockState(pos,
-					ModBlocks.blackberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 3);
+					ModBlocks.blackberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 2);
 		if (type == 2)
 			world.setBlockState(pos,
-					ModBlocks.blueberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 3);
+					ModBlocks.blueberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 2);
 		if (type == 3)
 			world.setBlockState(pos,
-					ModBlocks.raspberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 3);
+					ModBlocks.raspberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 2);
 		if (type == 4)
 			world.setBlockState(pos,
-					ModBlocks.strawberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 3);
+					ModBlocks.strawberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 2);
 	}
 }

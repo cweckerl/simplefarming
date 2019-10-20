@@ -6,6 +6,7 @@ import enemeez.simplefarming.events.DoubleCropBreak;
 import enemeez.simplefarming.events.IntoxicationTracker;
 import enemeez.simplefarming.events.LootTableHandler;
 import enemeez.simplefarming.events.ModHarvest;
+import enemeez.simplefarming.events.ScarecrowEvent;
 import enemeez.simplefarming.events.SmartHarvest;
 import enemeez.simplefarming.events.TemptationTask;
 import enemeez.simplefarming.init.ModBlocks;
@@ -52,12 +53,11 @@ public class SideProxy {
 		MinecraftForge.EVENT_BUS.register(new TemptationTask());
 		if (FeatureConfig.mod_harvest.get() && !FeatureConfig.smart_harvest.get())
 			MinecraftForge.EVENT_BUS.register(new ModHarvest());
-		//MinecraftForge.EVENT_BUS.register(new DropEvents());
 		if (FeatureConfig.smart_harvest.get() && !FeatureConfig.mod_harvest.get())
 			MinecraftForge.EVENT_BUS.register(new SmartHarvest());
 		MinecraftForge.EVENT_BUS.register(new DoubleCropBreak());
 		MinecraftForge.EVENT_BUS.register(new IntoxicationTracker());
-		//MinecraftForge.EVENT_BUS.register(new ScarecrowEvent());
+		MinecraftForge.EVENT_BUS.register(new ScarecrowEvent());
 
 		if (ModWorldGen.fruit_tree != null) {
 			for (Biome biome : ForgeRegistries.BIOMES) {

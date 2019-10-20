@@ -1,6 +1,8 @@
 {
     "variants": {
         "half=lower": { "model": "simplefarming:block/scarecrow_bot" },
-        "half=upper":    { "model": "simplefarming:block/scarecrow_top" }
+        "half=upper": { "model": "simplefarming:block/scarecrow_top" }
+
     }
 }
+

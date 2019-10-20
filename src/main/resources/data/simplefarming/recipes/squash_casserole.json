@@ -11,7 +11,7 @@
 	{
 		"O": { "item": "simplefarming:onion"},
 		"S": { "item": "simplefarming:squash"},
-		"E": { "item": "minecraft:egg"},
+		"E": { "tag": "forge:eggs"},
 		"G": { "tag": "simplefarming:grain"}
 
 	},

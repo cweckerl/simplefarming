@@ -14,7 +14,7 @@ issueTrackerURL="https://github.com/enemeez/simplefarming/issues" #optional
 # The modid of the mod
 modId="simplefarming" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="1.14.4-1.2.1" #mandatory
+version="1.14.4-1.2.2" #mandatory
  # A display name for the mod
 displayName="Simple Farming" #mandatory
 logoFile="examplemod.png" #optional
@@ -22,7 +22,7 @@ logoFile="examplemod.png" #optional
 authors="enemeez" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Extends the Vanilla farming system with more fruits, vegetables, and meals.
+Extends the vanilla farming system with more fruits, vegetables, and meals.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.examplemod]] #optional

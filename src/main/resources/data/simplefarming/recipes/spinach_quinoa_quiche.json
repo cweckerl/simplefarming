@@ -10,7 +10,7 @@
 	"key":
 	{
 		"S": { "item": "simplefarming:spinach"},
-		"E": { "item": "minecraft:egg"},
+		"E": { "tag": "forge:eggs"},
 		"G": { "item": "simplefarming:quinoa_seeds"}
 
 	},

@@ -25,6 +25,11 @@ public class Config {
 		FeatureConfig.init(BUILDER);
 		BUILDER.pop();
 		
+		BUILDER.push("Right-click Harvesting Settings");
+		RightClickConfig.init(BUILDER);
+		BUILDER.pop();
+		
+		
 		BUILDER.push("Dimensions Settings");
 		DimensionConfig.init(BUILDER);
 		BUILDER.pop();

@@ -10,6 +10,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class LootTableHandler {
 	private static ResourceLocation grass_drops = new ResourceLocation("minecraft", "blocks/grass");
+	private static ResourceLocation fern_drops = new ResourceLocation("minecraft", "blocks/fern");
+	private static ResourceLocation tall_grass_drops = new ResourceLocation("minecraft", "blocks/tall_grass");
+	
 	private static ResourceLocation horse_drops = new ResourceLocation("minecraft", "entities/horse");
 	private static ResourceLocation donkey_drops = new ResourceLocation("minecraft", "entities/donkey");
 	private static ResourceLocation mule_drops = new ResourceLocation("minecraft", "entities/mule");
@@ -23,7 +26,7 @@ public class LootTableHandler {
 
 	@SubscribeEvent
 	public void lootTableLoad(LootTableLoadEvent event) {
-		if (event.getName().equals(grass_drops))
+		if (event.getName().equals(grass_drops) || event.getName().equals(fern_drops) || event.getName().equals(tall_grass_drops))
 			event.getTable().addPool(LootPool.builder()
 					.addEntry(TableLootEntry.builder(new ResourceLocation(SimpleFarming.MOD_ID, "blocks/grass_drops")))
 					.name("sf_grass_drops").build());

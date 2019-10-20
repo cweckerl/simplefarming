@@ -528,7 +528,7 @@ public class ModItems {
 		blackberry_pie = register("blackberry_pie",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));
 		blt = register("blt", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BLT)));
-		borscht = register("borscht", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BLT)));
+		borscht = register("borscht", new SoupItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.BORSCHT)));
 		blueberry_pie = register("blueberry_pie",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY_PIE)));
 		broccoli_cheese_soup = register("broccoli_cheese_soup", new SoupItem((new Item.Properties())

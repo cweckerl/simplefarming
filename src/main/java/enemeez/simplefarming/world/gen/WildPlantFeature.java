@@ -73,8 +73,8 @@ public class WildPlantFeature extends Feature<NoFeatureConfig> {
 	
 	public static void generatePlant(IWorld world, BlockPos pos, Random random, int type) {
 		if (type == 1)
-			world.setBlockState(pos, ModBlocks.cumin.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3)), 3);
+			world.setBlockState(pos, ModBlocks.cumin.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3)), 2);
 		if (type == 2)
-			world.setBlockState(pos, ModBlocks.quinoa.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3)), 3);
+			world.setBlockState(pos, ModBlocks.quinoa.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3)), 2);
 	}
 }

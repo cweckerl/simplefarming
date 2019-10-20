@@ -70,6 +70,6 @@ public class WildCropFeature extends Feature<NoFeatureConfig> {
 	}
 
 	public static void generatePlant(IWorld world, BlockPos pos, Random random) {
-		world.setBlockState(pos, ModBlocks.wild_crop.getDefaultState(), 3);
+		world.setBlockState(pos, ModBlocks.wild_crop.getDefaultState(), 2);
 	}
 }

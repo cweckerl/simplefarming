@@ -48,11 +48,11 @@ public class CactusCropFeature extends Feature<NoFeatureConfig> {
 
 	public static void generateCactus(IWorld world, BlockPos pos, Random random) {
 		if (Math.random() < 0.5)
-			world.setBlockState(pos, ModBlocks.cactus_crop.getDefaultState().with(CustomCactus.FACING, Direction.NORTH)
-					.with(CustomCactus.AGE, Integer.valueOf(3)), 3);
+			world.setBlockState(pos, ModBlocks.cactus_crop.getDefaultState().with(CustomCactus.AGE, Integer.valueOf(3))
+					.with(CustomCactus.FACING, Direction.WEST), 2);
 		else
-			world.setBlockState(pos, ModBlocks.cactus_crop.getDefaultState().with(CustomCactus.FACING, Direction.SOUTH)
-					.with(CustomCactus.AGE, Integer.valueOf(3)), 3);
-			
+			world.setBlockState(pos, ModBlocks.cactus_crop.getDefaultState().with(CustomCactus.AGE, Integer.valueOf(3))
+					.with(CustomCactus.FACING, Direction.NORTH), 2);
+
 	}
 }

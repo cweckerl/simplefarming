@@ -7,7 +7,7 @@
       "item": "simplefarming:peanut"
     },
     {
-      "item": "minecraft:egg"
+      "tag": "forge:eggs"
     },
     {
       "item": "minecraft:sugar"

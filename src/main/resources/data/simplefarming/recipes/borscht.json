@@ -1,0 +1,26 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "simplefarming:onion"
+    },
+    {
+      "item": "minecraft:beetroot"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:borscht"}
+	
+}

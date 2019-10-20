@@ -11,7 +11,7 @@
 	{
 		"G": { "tag": "simplefarming:grain"},
 		"M": { "item": "minecraft:milk_bucket"},
-		"E": { "item": "minecraft:egg"},
+		"E": { "tag": "forge:eggs"},
 		"S": { "item": "minecraft:sugar"}
 
 	},

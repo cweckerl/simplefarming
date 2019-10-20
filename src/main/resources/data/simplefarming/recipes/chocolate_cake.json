@@ -11,7 +11,7 @@
 	"key":
 	{
 		"G": { "tag": "simplefarming:grain"},
-		"E": { "item": "minecraft:egg"},
+		"E": { "tag": "forge:eggs"},
 		"S": { "item": "minecraft:sugar"},
 		"C": { "item": "simplefarming:chocolate"}
 

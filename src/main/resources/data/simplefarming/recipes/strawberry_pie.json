@@ -7,7 +7,7 @@
       "item": "simplefarming:strawberries"
     },
     {
-      "item": "minecraft:egg"
+      "tag": "forge:eggs"
     },
     {
       "item": "minecraft:sugar"

@@ -12,7 +12,7 @@
 		"G": { "item": "simplefarming:eggplant"},
 		"T": { "item": "simplefarming:tomato"},
 		"C": { "item": "simplefarming:cheese_slice"},
-		"E": { "item": "minecraft:egg"}
+		"E": { "tag": "forge:eggs"}
 	},
 	
 	"result": {"item": "simplefarming:eggplant_parmesan"}
