@@ -185,6 +185,8 @@ public class CompostItems {
 		ComposterBlock.CHANCES.put(ModItems.stuffed_corn_zucchini, 1.0F);
 		ComposterBlock.CHANCES.put(ModItems.zucchini_bread, 1.0F);
 		ComposterBlock.CHANCES.put(ModItems.beef_and_broccoli, 1.0F);
+		
+		ComposterBlock.CHANCES.put(ModItems.candy, 1.0F);
 
 	}
 

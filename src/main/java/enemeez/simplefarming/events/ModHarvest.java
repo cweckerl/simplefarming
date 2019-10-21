@@ -70,8 +70,10 @@ public class ModHarvest {
 											.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
 													event.getPos().getY(), event.getPos().getZ(),
 													(ItemStack) drops.get(i)));
-
-								if (crop == Blocks.POTATOES || crop == Blocks.CARROTS) {
+							}
+							for (int i = 0; i < drops.size(); i++) {
+								if (drops.stream().distinct().limit(2).count() <= 1 || crop == Blocks.POTATOES
+										|| crop == Blocks.CARROTS) {
 									drops.remove(0);
 									event.getWorld()
 											.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
