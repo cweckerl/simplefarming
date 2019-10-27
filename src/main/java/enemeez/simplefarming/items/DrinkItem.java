@@ -4,19 +4,14 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.item.UseAction;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
-public class BottleItem extends Item {
+public class DrinkItem extends BottleItem{
 
-	public BottleItem(Properties builder) {
+	public DrinkItem(Properties builder) {
 		super(builder);
 	}
 
@@ -35,6 +30,7 @@ public class BottleItem extends Item {
 
 		if (!worldIn.isRemote) {
 			((PlayerEntity) entityLiving).getFoodStats().addStats(1, 0F);
+			entityLiving.clearActivePotions();
 		}
 
 		if (entityLiving == null || !((PlayerEntity) entityLiving).isCreative()) {
@@ -49,17 +45,6 @@ public class BottleItem extends Item {
 
 		return stack;
 	}
-
-	public int getUseDuration(ItemStack stack) {
-		return 32;
-	}
-
-	public UseAction getUseAction(ItemStack stack) {
-		return UseAction.DRINK;
-	}
-
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-		playerIn.setActiveHand(handIn);
-		return new ActionResult<>(ActionResultType.SUCCESS, playerIn.getHeldItem(handIn));
-	}
 }
+
+

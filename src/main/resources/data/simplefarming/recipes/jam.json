@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	
+	"ingredients":
+	[
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "tag": "simplefarming:jam_ingredients"
+    }
+
+	],
+	
+	"result": {"item": "simplefarming:jam"}
+	
+}

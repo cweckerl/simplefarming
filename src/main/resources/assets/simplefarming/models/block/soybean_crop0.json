@@ -1,6 +1,6 @@
 {
     "parent": "simplefarming:block/cross_crop",
     "textures": {
-        "cross_crop": "simplefarming:block/lcrop1"
+        "cross_crop": "simplefarming:block/soybean_crop1"
     }
 }
