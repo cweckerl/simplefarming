@@ -213,19 +213,7 @@
 
 	"item.simplefarming.oat_bread": "Haferbrot",
 	"item.simplefarming.rice_bread": "Reisbrot",
-	"item.simplefarming.rye_bread": "Roggenbrot",	
-	
-	"item.simplefarming.raisins": "Rosinen",
-	"item.simplefarming.spinach_quinoa_quiche": "Spinat-Quinoa-Quiche",
-	"item.simplefarming.chicken_noodle_soup": "Hühnernudelsuppe",
-	"item.simplefarming.squash_soup": "Kürbissuppe",
-	"item.simplefarming.quinoa_salad": "Quinoa-Salat",
-	"item.simplefarming.tofu_scramble": "Tofu Scramble",	
-	"item.simplefarming.beef_curry": "Fleisch-Curry",
-	"item.simplefarming.chicken_curry": "Hühnchen-Curry",
-	"item.simplefarming.mutton_curry": "Hammel-Curry",
-	"item.simplefarming.pork_curry": "Schweinefleisch-Curry",
-	"item.simplefarming.vegetable_curry": "Gemüse-Curry",
+	"item.simplefarming.rye_bread": "Roggenbrot",
 	
 	"block.simplefarming.pea_crop": "Erbsenpflanze",
 	"block.simplefarming.cotton_crop": "Baumwollstrauch",
@@ -235,6 +223,19 @@
 	"block.simplefarming.sunflower": "Sonnenblume",
 	"block.simplefarming.cumin": "Kreuzkümmel",
 	"block.simplefarming.quinoa": "Quinoa",
+	
+	"item.simplefarming.raisins": "Rosinen",
+	"item.simplefarming.spinach_quinoa_quiche": "Spinat-Quinoa-Quiche",
+	"item.simplefarming.chicken_noodle_soup": "Hühnernudelsuppe",
+	"item.simplefarming.squash_soup": "Kürbissuppe",
+	"item.simplefarming.quinoa_salad": "Quinoa-Salat",
+	"item.simplefarming.tofu_scramble": "Tofu Scramble",
+	
+	"item.simplefarming.beef_curry": "Fleisch-Curry",
+	"item.simplefarming.chicken_curry": "Hühnchen-Curry",
+	"item.simplefarming.mutton_curry": "Hammel-Curry",
+	"item.simplefarming.pork_curry": "Schweinefleisch-Curry",
+	"item.simplefarming.vegetable_curry": "Gemüse-Curry",
 	
 	"item.simplefarming.pea_pod": "Erbsenschote",
 	"item.simplefarming.pea_seeds": "Erbsensamen",
@@ -258,38 +259,6 @@
 	"item.simplefarming.pea_soup": "Erbsensuppe",
 	"item.simplefarming.fried_rice": "Gebratener Reis",
 	"item.simplefarming.mushroom_barley": "Graupensalat mit Pilzen",	
-	
-	"item.simplefarming.olives": "Oliven",
-	"item.simplefarming.broccoli": "Brokkoli",
-	"item.simplefarming.zucchini": "Zucchini",
-	"item.simplefarming.olive_oil": "Olivenöl",
-	"item.simplefarming.broccoli_seeds": "Brokkoli-Samen",
-	"item.simplefarming.zucchini_seeds": "Zucchini-Samen",
-	"item.simplefarming.beef_and_broccoli": "Rindfleisch und Brokkoli",
-	"item.simplefarming.broccoli_cheese_soup": "Brokkolikäsesuppe",
-	"item.simplefarming.olive_tomato_salad": "Oliven-Tomatensalat",
-	"item.simplefarming.stuffed_corn_zucchini": "Gefüllte Maiszucchini",
-	"item.simplefarming.zucchini_bread": "Zucchinibrot",
-	
-	"block.simplefarming.olive_sapling": "Olivensetzling",
-	"block.simplefarming.birthday_cake": "Geburtstagskuchen",
-	"block.simplefarming.broccoli_crop": "Brokkolipflanze",
-	"block.simplefarming.zucchini_crop": "Zucchinipflanze",
-	"block.simplefarming.olive_leaves": "Olivenbläter",
-	
-	"block.simplefarming.scarecrow": "Vogelscheuche",
-	"block.simplefarming.brewing_barrel": "Braufass",
-	
-	"item.simplefarming.beer": "Bier",
-	"item.simplefarming.cider": "Apfelwein",
-	"item.simplefarming.wine": "Wein",
-	"item.simplefarming.vodka": "Vodka",
-	"item.simplefarming.whiskey": "Whiskey",
-	"item.simplefarming.tiswin": "Tiswin",
-	"item.simplefarming.cauim": "Cauim",
-	"item.simplefarming.sake": "Sake",
-	"item.simplefarming.borscht": "Borscht",
-	"item.simplefarming.candy": "Bonbon",
 	
 	"item.simplefarming.veggie_burger": "Veggie Burger"
 }
