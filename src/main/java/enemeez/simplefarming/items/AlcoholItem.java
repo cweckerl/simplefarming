@@ -34,7 +34,7 @@ public class AlcoholItem extends BottleItem {
 		}
 
 		if (!worldIn.isRemote) {
-			if (name == "beer" )
+			if (name == "beer")
 				entityLiving.addPotionEffect(new EffectInstance(Effects.STRENGTH, 500, 0, false, true));
 			if (name == "cauim")
 				entityLiving.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 500, 0, false, true));
@@ -51,7 +51,6 @@ public class AlcoholItem extends BottleItem {
 			if (name == "wine")
 				entityLiving.addPotionEffect(new EffectInstance(Effects.REGENERATION, 500, 0, false, true));
 		}
-	
 
 		if (entityLiving == null || !((PlayerEntity) entityLiving).isCreative()) {
 			if (stack.isEmpty()) {

@@ -4,6 +4,7 @@ import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.items.AlcoholItem;
 import enemeez.simplefarming.items.BottleItem;
 import enemeez.simplefarming.items.CustomSeed;
+import enemeez.simplefarming.items.DrinkItem;
 import enemeez.simplefarming.items.FoodTier;
 import enemeez.simplefarming.items.GrainItem;
 import enemeez.simplefarming.items.PigItem;
@@ -69,6 +70,7 @@ public class ModItems {
 
 	// Non Edible
 	public static Item curry_powder;
+	public static Item jam;
 	public static Item kenaf_fiber;
 	public static Item olive_oil;
 	public static Item vinegar;
@@ -316,7 +318,7 @@ public class ModItems {
 				new BlockItem(ModBlocks.rye_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 	
 		scarecrow = register("scarecrow",
-				new BlockItem(ModBlocks.scarecrow, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+				new BlockItem(ModBlocks.scarecrow, new Item.Properties().maxStackSize(16).group(SimpleFarming.ITEM_GROUP)));
 
 		fruit_log = register("fruit_log",
 				new BlockItem(ModBlocks.fruit_log, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
@@ -415,9 +417,11 @@ public class ModItems {
 		rice = register("rice", new GrainItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 
 		curry_powder = register("curry_powder", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+		jam = register("jam", new Item((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
+				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP)));
 		olive_oil = register("olive_oil", new BottleItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP)));
-		vinegar = register("vinegar", new BottleItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
+		vinegar = register("vinegar", new DrinkItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP)));
 
 		noodles = register("noodles", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));

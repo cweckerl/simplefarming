@@ -108,6 +108,7 @@ public class CompostItems {
 		ComposterBlock.CHANCES.put(ModItems.sunflower_seeds, 0.3F);
 		ComposterBlock.CHANCES.put(ModItems.zucchini_seeds, 0.3F);
 		ComposterBlock.CHANCES.put(ModItems.broccoli_seeds, 0.3F);
+		ComposterBlock.CHANCES.put(ModItems.honeydew_seeds, 0.3F);
 
 		ComposterBlock.CHANCES.put(ModItems.cheese_slice, 0.3F);
 		ComposterBlock.CHANCES.put(ModItems.noodles, 0.85F);
