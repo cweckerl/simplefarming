@@ -7,7 +7,7 @@
       "item": "minecraft:bowl"
     },
     {
-      "item": "simplefarming:tomato"
+      "tag": "forge:crops/tomato"
     },
     {
       "item": "simplefarming:olives"

@@ -7,7 +7,7 @@
       "item": "minecraft:glass_bottle"
     },
     {
-      "tag": "simplefarming:vinegar_ingredients"
+      "tag": "forge:vinegar_ingredients"
     }
 
 	],

@@ -4,13 +4,13 @@
 	"ingredients":
 	[
     {
-      "item": "simplefarming:sweet_potato"
+      "tag": "forge:crops/sweet_potato"
     },
     {
-      "item": "simplefarming:quinoa_seeds"
+      "tag": "forge:quinoa"
     },
     {
-      "item": "simplefarming:onion"
+      "tag": "forge:crops/onion"
     }
 
 	],

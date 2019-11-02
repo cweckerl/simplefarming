@@ -10,7 +10,7 @@
       "item": "simplefarming:noodles"
     },
     {
-      "item": "simplefarming:tomato"
+      "tag": "forge:crops/tomato"
     }
 
 	],

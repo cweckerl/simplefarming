@@ -4,7 +4,7 @@
 	"ingredients":
 	[
     {
-      "item": "simplefarming:strawberries"
+      "tag": "forge:fruits/strawberries"
     },
     {
       "tag": "forge:eggs"

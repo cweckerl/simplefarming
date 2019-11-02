@@ -2,7 +2,9 @@
 	"type": "minecraft:crafting_shapeless",
 	"ingredients": 
 	[
-	{"item": "simplefarming:cactus_fruit"}
+	{"tag": "forge:fruits/cactus_fruit"},
+	{"tag": "forge:fruits/cactus_fruit"},
+	{"tag": "forge:fruits/cactus_fruit"}
 	],
 	
 	"result": {"item": "minecraft:pink_dye"}

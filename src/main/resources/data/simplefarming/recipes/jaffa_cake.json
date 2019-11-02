@@ -13,7 +13,7 @@
       "item": "simplefarming:chocolate"
     },
     {
-      "item": "simplefarming:orange"
+      "tag": "forge:fruits/orange"
     }
 
 	],

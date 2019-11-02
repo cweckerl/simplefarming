@@ -4,16 +4,16 @@
 	"ingredients":
 	[
     {
-      "item": "simplefarming:corn"
+      "tag": "forge:crops/corn"
     },
     {
-      "item": "simplefarming:corn"
+      "tag": "forge:crops/corn"
     },
     {
-      "item": "simplefarming:tomato"
+      "tag": "forge:crops/tomato"
     },
     {
-      "item": "simplefarming:zucchini"
+      "tag": "forge:crops/zucchini"
     }
 
 	],

@@ -4,13 +4,13 @@
 	"ingredients":
 	[
     {
-      "tag": "simplefarming:grain"
+      "tag": "forge:grain"
     },
     {
       "tag": "forge:eggs"
     },
     {
-      "item": "simplefarming:tomato"
+      "tag": "forge:crops/tomato"
     },
     {
       "item": "simplefarming:cheese_slice"

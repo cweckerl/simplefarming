@@ -4,16 +4,16 @@
 	"ingredients":
 	[
     {
-      "tag": "simplefarming:bread"
+      "tag": "forge:bread"
     },
     {
       "item": "minecraft:cooked_porkchop"
     },
     {
-      "item": "simplefarming:onion"
+      "tag": "forge:crops/onion"
     },
     {
-      "tag": "simplefarming:salad_greens"
+      "tag": "forge:salad_ingredients"
     }
 
 	],

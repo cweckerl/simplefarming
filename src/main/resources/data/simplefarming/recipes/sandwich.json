@@ -4,16 +4,16 @@
 	"ingredients":
 	[
     {
-      "tag": "simplefarming:bread"
+      "tag": "forge:bread"
     },
     {
       "item": "minecraft:cooked_chicken"
     },
     {
-      "item": "simplefarming:tomato"
+      "tag": "forge:crops/tomato"
     },
     {
-      "tag": "simplefarming:salad_greens"
+      "tag": "forge:salad_ingredients"
     }
 
 	],

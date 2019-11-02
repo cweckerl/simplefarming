@@ -10,7 +10,7 @@
 	
 	"key":
 	{
-		"G": { "tag": "simplefarming:grain"},
+		"G": { "tag": "forge:grain"},
 		"E": { "tag": "forge:eggs"},
 		"S": { "item": "minecraft:sugar"},
 		"C": { "item": "simplefarming:chocolate"}

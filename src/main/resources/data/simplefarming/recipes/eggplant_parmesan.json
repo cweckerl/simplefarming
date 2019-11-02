@@ -9,8 +9,8 @@
 	
 	"key":
 	{
-		"G": { "item": "simplefarming:eggplant"},
-		"T": { "item": "simplefarming:tomato"},
+		"G": { "tag": "forge:crops/eggplant"},
+		"T": { "tag": "forge:crops/tomato"},
 		"C": { "item": "simplefarming:cheese_slice"},
 		"E": { "tag": "forge:eggs"}
 	},

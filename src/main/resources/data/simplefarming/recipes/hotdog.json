@@ -4,7 +4,7 @@
 	"ingredients":
 	[
     {
-      "tag": "simplefarming:bread"
+      "tag": "forge:bread"
     },
     {
       "item": "simplefarming:cooked_sausage"

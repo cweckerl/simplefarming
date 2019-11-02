@@ -13,7 +13,7 @@
       "item": "minecraft:potato"
     },
     {
-      "item": "simplefarming:onion"
+      "tag": "forge:crops/onion"
     },
     {
       "item": "minecraft:beetroot"

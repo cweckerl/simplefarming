@@ -10,10 +10,10 @@
       "item": "minecraft:cooked_beef"
     },
     {
-      "item": "simplefarming:tomato"
+      "tag": "forge:crops/tomato"
     },
     {
-      "tag": "simplefarming:peppers"
+      "tag": "forge:peppers"
     }
 
 	],

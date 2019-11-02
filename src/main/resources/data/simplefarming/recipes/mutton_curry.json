@@ -10,7 +10,7 @@
 	"key":
 	{
 		"M": { "item": "minecraft:cooked_mutton"},
-		"R": { "item": "simplefarming:rice"},
+		"R": { "tag": "forge:grain/rice"},
 		"P": { "item": "simplefarming:curry_powder"}
 
 	},

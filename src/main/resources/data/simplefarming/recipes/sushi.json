@@ -4,7 +4,7 @@
 	"ingredients":
 	[
     {
-      "item": "simplefarming:rice"
+      "tag": "forge:grain/rice"
     },
     {
       "item": "minecraft:dried_kelp"

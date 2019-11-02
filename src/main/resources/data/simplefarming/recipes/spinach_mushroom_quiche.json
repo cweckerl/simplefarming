@@ -9,10 +9,10 @@
 	
 	"key":
 	{
-		"M": { "tag": "simplefarming:mushrooms"},
-		"S": { "item": "simplefarming:spinach"},
+		"M": { "tag": "forge:mushrooms"},
+		"S": { "tag": "forge:crops/spinach"},
 		"E": { "tag": "forge:eggs"},
-		"G": { "tag": "simplefarming:grain"}
+		"G": { "tag": "forge:grain"}
 
 	},
 	

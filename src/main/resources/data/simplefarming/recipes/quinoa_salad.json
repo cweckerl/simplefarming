@@ -7,13 +7,13 @@
       "item": "minecraft:bowl"
     },
     {
-      "item": "simplefarming:quinoa_seeds"
+      "tag": "forge:quinoa"
     },
     {
-      "item": "simplefarming:quinoa_seeds"
+      "tag": "forge:quinoa"
     },
     {
-      "item": "simplefarming:quinoa_seeds"
+      "tag": "forge:quinoa"
     }
 
 	],

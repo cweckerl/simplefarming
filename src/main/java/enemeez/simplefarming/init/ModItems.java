@@ -368,7 +368,7 @@ public class ModItems {
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY)));
 
 		broccoli = register("broccoli",
-				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BROCOLLI)));
+				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BROCCOLI)));
 		cassava = register("cassava",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CASSAVA)));
 		corn = register("corn",
@@ -444,11 +444,11 @@ public class ModItems {
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "wine"));
 			
 		cumin_seeds = register("cumin_seeds", new CustomSeed(ModBlocks.cumin,
-				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDs)));
+				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDS)));
 		quinoa_seeds = register("quinoa_seeds", new CustomSeed(ModBlocks.quinoa,
-				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDs)));
+				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDS)));
 		sunflower_seeds = register("sunflower_seeds", new CustomSeed(ModBlocks.sunflower,
-				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDs)));
+				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDS)));
 
 		barley_seeds = register("barley_seeds",
 				new CustomSeed(ModBlocks.barley_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));

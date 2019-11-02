@@ -7,10 +7,10 @@
       "item": "simplefarming:tofu"
     },
     {
-      "item": "simplefarming:onion"
+      "tag": "forge:crops/onion"
     },
     {
-      "item": "simplefarming:tomato"
+      "tag": "forge:crops/tomato"
     }
 
 

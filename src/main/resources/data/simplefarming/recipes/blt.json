@@ -4,16 +4,16 @@
 	"ingredients":
 	[
     {
-      "tag": "simplefarming:bread"
+      "tag": "forge:bread"
     },
     {
-      "item": "simplefarming:lettuce"
+      "tag": "forge:crops/lettuce"
     },
     {
       "item": "simplefarming:cooked_bacon"
     },
     {
-      "item": "simplefarming:tomato"
+      "tag": "forge:crops/tomato"
     }
 
 	],

@@ -4,7 +4,7 @@
 	"ingredients":
 	[
     {
-      "item": "simplefarming:apricot"
+      "tag": "forge:fruits/apricot"
     },
     {
       "tag": "forge:eggs"

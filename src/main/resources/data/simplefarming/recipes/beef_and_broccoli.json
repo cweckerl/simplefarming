@@ -8,7 +8,7 @@
 	
 	"key":
 	{
-		"R": { "item": "simplefarming:broccoli"},
+		"R": { "tag": "forge:crops/broccoli"},
 		"B": { "item": "minecraft:cooked_beef"}
 
 	},

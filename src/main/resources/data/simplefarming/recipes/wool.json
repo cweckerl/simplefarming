@@ -9,7 +9,7 @@
 	
 	"key":
 	{
-		"#": { "item": "simplefarming:cotton"}
+		"#": { "tag": "forge:crops/cotton"}
 	},
 	
 	"result": {"item": "minecraft:white_wool"}

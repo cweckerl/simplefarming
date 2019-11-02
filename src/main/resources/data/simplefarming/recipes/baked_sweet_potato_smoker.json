@@ -1,6 +1,6 @@
 {
 	"type": "minecraft:smoking",
-	"ingredient": {"item": "simplefarming:sweet_potato"},
+	"ingredient": {"tag": "forge:crops/sweet_potato"},
 	"result": "simplefarming:baked_sweet_potato",
 	"experience": 0.35,
 	"cookingtime": 100

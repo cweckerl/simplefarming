@@ -8,7 +8,7 @@
 	
 	"key":
 	{
-		"G": { "tag": "simplefarming:grain"},
+		"G": { "tag": "forge:grain"},
 		"C": { "item": "minecraft:cocoa_beans"}
 
 	},

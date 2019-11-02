@@ -7,24 +7,23 @@
       "item": "minecraft:bowl"
     },
     {
-      "item": "simplefarming:radish"
+      "tag": "forge:crops/radish"
     },
     {
-      "item": "simplefarming:radish"
+      "tag": "forge:crops/radish"
     },
     {
-      "item": "simplefarming:radish"
+      "tag": "forge:crops/radish"
     },
     {
-      "item": "simplefarming:radish"
+      "tag": "forge:crops/radish"
     },
     {
-      "item": "simplefarming:radish"
+      "tag": "forge:crops/radish"
     },
     {
-      "item": "simplefarming:radish"
+      "tag": "forge:crops/radish"
     }
-
 	],
 	
 	"result": {"item": "simplefarming:radish_soup"}

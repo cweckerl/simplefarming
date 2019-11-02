@@ -7,23 +7,24 @@
       "item": "minecraft:bowl"
     },
     {
-      "item": "simplefarming:squash"
+      "tag": "forge:crops/squash"
     },
     {
-      "item": "simplefarming:squash"
+      "tag": "forge:crops/squash"
     },
     {
-      "item": "simplefarming:squash"
+      "tag": "forge:crops/squash"
     },
     {
-      "item": "simplefarming:squash"
+      "tag": "forge:crops/squash"
     },
     {
-      "item": "simplefarming:squash"
+      "tag": "forge:crops/squash"
     },
     {
-      "item": "simplefarming:squash"
+      "tag": "forge:crops/squash"
     }
+
 
 	],
 	

@@ -8,8 +8,8 @@
 	
 	"key":
 	{
-		"G": { "tag": "simplefarming:grain"},
-		"B": { "tag": "simplefarming:cooked_fish"}
+		"G": { "tag": "forge:grain"},
+		"B": { "tag": "forge:cooked_fishes"}
 
 	},
 	

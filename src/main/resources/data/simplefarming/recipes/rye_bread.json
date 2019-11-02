@@ -8,7 +8,7 @@
 	
 	"key":
 	{
-		"O": { "item": "simplefarming:rye"}
+		"O": { "tag": "forge:grain/rye"}
 	},
 	
 	"result": {"item": "simplefarming:rye_bread"}

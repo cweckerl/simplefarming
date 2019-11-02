@@ -9,8 +9,8 @@
 	
 	"key":
 	{
-		"M": { "tag": "simplefarming:vegetables"},
-		"R": { "item": "simplefarming:rice"},
+		"M": { "tag": "forge:vegetables"},
+		"R": { "tag": "forge:grain/rice"},
 		"P": { "item": "simplefarming:curry_powder"}
 
 	},

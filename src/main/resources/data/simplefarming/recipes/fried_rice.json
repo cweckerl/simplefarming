@@ -4,13 +4,13 @@
 	"ingredients":
 	[
     {
-      "item": "simplefarming:rice"
+      "tag": "forge:grain/rice"
     },
     {
       "item": "simplefarming:cooked_egg"
     },
     {
-      "tag": "simplefarming:vegetables"
+      "tag": "forge:vegetables"
     }
 
 	],

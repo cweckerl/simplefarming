@@ -4,10 +4,10 @@
 	"ingredients":
 	[
     {
-      "tag": "simplefarming:bread"
+      "tag": "forge:bread"
     },
     {
-      "item": "simplefarming:peanut"
+      "tag": "forge:crops/peanut"
     },
     {
       "item": "simplefarming:jam"

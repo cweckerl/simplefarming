@@ -7,14 +7,15 @@
       "item": "minecraft:bowl"
     },
     {
-      "tag": "simplefarming:salad_greens"
+      "tag": "forge:salad_ingredients"
     },
     {
-      "tag": "simplefarming:salad_greens"
+      "tag": "forge:salad_ingredients"
     },
     {
-      "tag": "simplefarming:salad_greens"
+      "tag": "forge:salad_ingredients"
     }
+
 
 	],
 	

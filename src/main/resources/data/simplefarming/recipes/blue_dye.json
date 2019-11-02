@@ -4,13 +4,13 @@
 	"ingredients":
 	[
     {
-      "item": "simplefarming:blueberries"
+      "tag": "forge:fruits/blueberries"
     },
     {
-      "item": "simplefarming:blueberries"
+      "tag": "forge:fruits/blueberries"
     },
     {
-      "item": "simplefarming:blueberries"
+      "tag": "forge:fruits/blueberries"
     }
 
 	],

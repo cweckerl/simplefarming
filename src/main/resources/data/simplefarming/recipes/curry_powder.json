@@ -4,13 +4,13 @@
 	"ingredients":
 	[
     {
-      "tag": "simplefarming:peppers"
+      "tag": "forge:peppers"
     },
     {
       "item": "simplefarming:cumin_seeds"
     },
     {
-      "item": "simplefarming:ginger"
+      "tag": "forge:crops/ginger"
     }
 
 	],

@@ -23,9 +23,9 @@ public class FoodTier {
 	public static final Food SALAD_GREENS = (new Food.Builder()).hunger(2).saturation(0.6F).build();
 	public static final Food TOMATO = (new Food.Builder()).hunger(3).saturation(0.6F).build();
 	public static final Food SWEET_POTATO = (new Food.Builder()).hunger(2).saturation(0.6F).build();
-	public static final Food SEEDs = (new Food.Builder()).hunger(1).saturation(0.1F).fastToEat().build();
+	public static final Food SEEDS = (new Food.Builder()).hunger(1).saturation(0.1F).fastToEat().build();
 	public static final Food ZUCCHINI = (new Food.Builder()).hunger(3).saturation(0.6F).build();
-	public static final Food BROCOLLI = (new Food.Builder()).hunger(3).saturation(0.3F).build();
+	public static final Food BROCCOLI = (new Food.Builder()).hunger(3).saturation(0.3F).build();
 	public static final Food OLIVES = (new Food.Builder()).hunger(2).saturation(0.3F).build();
 
 	public static final Food GOLDEN_HABANERO = (new Food.Builder()).hunger(2).saturation(1.2F)

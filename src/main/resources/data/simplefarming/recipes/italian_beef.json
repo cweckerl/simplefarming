@@ -4,13 +4,13 @@
 	"ingredients":
 	[
     {
-      "tag": "simplefarming:bread"
+      "tag": "forge:bread"
     },
     {
       "item": "minecraft:cooked_beef"
     },
     {
-      "tag": "simplefarming:peppers"
+      "tag": "forge:peppers"
     },
     {
       "item": "simplefarming:cheese_slice"

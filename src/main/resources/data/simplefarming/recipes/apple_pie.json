@@ -4,7 +4,7 @@
 	"ingredients":
 	[
     {
-      "item": "minecraft:apple"
+      "tag": "forge:fruits/apple"
     },
     {
       "tag": "forge:eggs"

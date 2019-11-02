@@ -10,13 +10,13 @@
       "item": "simplefarming:cooked_sausage"
     },
     {
-      "item": "simplefarming:barley"
+      "tag": "forge:grain/barley"
     },
     {
-      "tag": "simplefarming:vegetables"
+      "tag": "forge:vegetables"
     },
     {
-      "tag": "simplefarming:vegetables"
+      "tag": "forge:vegetables"
     }
 
 	],

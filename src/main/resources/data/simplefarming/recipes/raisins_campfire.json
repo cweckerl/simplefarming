@@ -1,6 +1,6 @@
 {
 	"type": "minecraft:campfire_cooking",
-	"ingredient": {"item": "simplefarming:grapes"},
+	"ingredient": {"tag": "forge:fruits/grapes"},
 	"result": "simplefarming:raisins",
 	"experience": 0.35,
 	"cookingtime": 600

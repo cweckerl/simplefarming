@@ -4,13 +4,13 @@
 	"ingredients":
 	[
     {
-      "item": "simplefarming:blackberries"
+      "tag": "forge:fruits/blackberries"
     },
     {
-      "item": "simplefarming:blackberries"
+      "tag": "forge:fruits/blackberries"
     },
     {
-      "item": "simplefarming:blackberries"
+      "tag": "forge:fruits/blackberries"
     }
 
 	],

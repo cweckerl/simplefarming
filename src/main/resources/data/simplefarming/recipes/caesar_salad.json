@@ -4,7 +4,7 @@
 	"ingredients":
 	[
     {
-      "tag": "simplefarming:salad_greens"
+      "tag": "forge:salad_ingredients"
     },
    {
       "item": "minecraft:bowl"

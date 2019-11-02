@@ -7,10 +7,10 @@
       "item": "minecraft:bowl"
     },
     {
-      "item": "simplefarming:onion"
+      "tag": "forge:crops/onion"
     },
     {
-      "item": "simplefarming:onion"
+      "tag": "forge:crops/onion"
     }
 
 	],

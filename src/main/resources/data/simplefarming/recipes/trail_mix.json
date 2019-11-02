@@ -7,7 +7,7 @@
       "item": "simplefarming:raisins"
     },
     {
-      "item": "simplefarming:peanut"
+      "tag": "forge:crops/peanut"
     },
     {
       "item": "simplefarming:chocolate"

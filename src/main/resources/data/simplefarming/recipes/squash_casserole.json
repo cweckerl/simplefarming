@@ -9,10 +9,10 @@
 	
 	"key":
 	{
-		"O": { "item": "simplefarming:onion"},
-		"S": { "item": "simplefarming:squash"},
+		"O": { "tag": "forge:crops/onion"},
+		"S": { "tag": "forge:crops/squash"},
 		"E": { "tag": "forge:eggs"},
-		"G": { "tag": "simplefarming:grain"}
+		"G": { "tag": "forge:grain"}
 
 	},
 	

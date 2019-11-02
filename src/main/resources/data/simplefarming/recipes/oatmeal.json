@@ -7,10 +7,10 @@
       "item": "minecraft:bowl"
     },
     {
-      "item": "simplefarming:oat"
+      "tag": "forge:grain/oat"
     },
     {
-      "item": "simplefarming:oat"
+      "tag": "forge:grain/oat"
     }
 
 	],

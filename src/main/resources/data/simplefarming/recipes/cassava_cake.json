@@ -10,7 +10,7 @@
       "tag": "forge:eggs"
     },
     {
-      "item": "simplefarming:cassava"
+      "tag": "forge:crops/cassava"
     }
 
 	],

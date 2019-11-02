@@ -7,10 +7,10 @@
       "item": "minecraft:bowl"
     },
     {
-      "item": "simplefarming:rice"
+      "tag": "forge:grain/rice"
     },
     {
-      "item": "simplefarming:rice"
+      "tag": "forge:grain/rice"
     }
 
 	],

@@ -4,7 +4,7 @@
 	"ingredients":
 	[
     {
-      "item": "simplefarming:peanut"
+      "tag": "forge:crops/peanut"
     },
     {
       "tag": "forge:eggs"

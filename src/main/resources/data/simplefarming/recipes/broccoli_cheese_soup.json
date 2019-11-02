@@ -7,7 +7,7 @@
       "item": "minecraft:bowl"
     },
     {
-      "item": "simplefarming:broccoli"
+      "tag": "forge:crops/broccoli"
     },
     {
       "item": "simplefarming:cheese_slice"

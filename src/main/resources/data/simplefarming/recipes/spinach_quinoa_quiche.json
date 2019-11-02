@@ -9,9 +9,9 @@
 	
 	"key":
 	{
-		"S": { "item": "simplefarming:spinach"},
+		"S": { "tag": "forge:crops/spinach"},
 		"E": { "tag": "forge:eggs"},
-		"G": { "item": "simplefarming:quinoa_seeds"}
+		"G": { "tag": "forge:quinoa"}
 
 	},
 	

@@ -10,7 +10,7 @@
 	
 	"key":
 	{
-		"#": { "item": "simplefarming:apricot"},
+		"#": { "tag": "forge:fruits/apricot"},
 		"S": { "item": "minecraft:oak_sapling"}
 	},
 	

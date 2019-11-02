@@ -7,10 +7,10 @@
       "item": "minecraft:bowl"
     },
     {
-      "item": "simplefarming:cucumber"
+      "tag": "forge:crops/cucumber"
     },
     {
-      "item": "simplefarming:cucumber"
+      "tag": "forge:crops/cucumber"
     }
 
 	],

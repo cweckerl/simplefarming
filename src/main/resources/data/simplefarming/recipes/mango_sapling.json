@@ -10,7 +10,7 @@
 	
 	"key":
 	{
-		"#": { "item": "simplefarming:mango"},
+		"#": { "tag": "forge:fruits/mango"},
 		"S": { "item": "minecraft:oak_sapling"}
 	},
 	

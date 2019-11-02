@@ -8,8 +8,8 @@
 	
 	"key":
 	{
-		"G": { "tag": "simplefarming:grain"},
-		"B": { "item": "simplefarming:peanut"}
+		"G": { "tag": "forge:grain"},
+		"B": { "tag": "forge:crops/peanut"}
 
 	},
 	

@@ -4,7 +4,7 @@
 	"ingredients":
 	[
     {
-      "item": "simplefarming:pear"
+      "tag": "forge:fruits/pear"
     },
     {
       "tag": "forge:eggs"

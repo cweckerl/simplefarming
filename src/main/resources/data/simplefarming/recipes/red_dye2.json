@@ -4,13 +4,13 @@
 	"ingredients":
 	[
     {
-      "item": "simplefarming:strawberries"
+      "tag": "forge:fruits/strawberries"
     },
     {
-      "item": "simplefarming:strawberries"
+      "tag": "forge:fruits/strawberries"
     },
     {
-      "item": "simplefarming:strawberries"
+      "tag": "forge:fruits/strawberries"
     }
 
 	],
