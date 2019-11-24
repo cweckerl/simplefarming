@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "simplefarming:block/trellising_rope" },
+    "facing=south": { "model": "simplefarming:block/trellising_rope", "y": 180 },
+    "facing=west": { "model": "simplefarming:block/trellising_rope", "y": 270 },
+    "facing=east": { "model": "simplefarming:block/trellising_rope", "y": 90 }
+  }
+}

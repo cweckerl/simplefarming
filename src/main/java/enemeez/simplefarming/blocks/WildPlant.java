@@ -30,6 +30,10 @@ public class WildPlant extends BushBlock implements IGrowable {
 			return new ItemStack(ModItems.cumin_seeds);
 		if (name.equals("sunflower"))
 			return new ItemStack(ModItems.sunflower_seeds);
+		if (name.equals("marshmallow"))
+			return new ItemStack(ModItems.marshmallow_root);
+		if (name.equals("chicory"))
+			return new ItemStack(ModItems.chicory_root);
 		else
 			return new ItemStack(ModItems.quinoa_seeds);
 

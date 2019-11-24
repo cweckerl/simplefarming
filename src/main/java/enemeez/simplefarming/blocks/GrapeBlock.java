@@ -18,8 +18,7 @@ public class GrapeBlock extends BushBlock {
 	}
 
 	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
-		if (world.getBlockState(pos.up()).getBlock() == ModBlocks.grape_trellising_ns
-				|| world.getBlockState(pos.up()).getBlock() == ModBlocks.grape_trellising_we)
+		if (world.getBlockState(pos.up()).getBlock() == ModBlocks.grape_leaves)
 			return true;
 
 		return false;

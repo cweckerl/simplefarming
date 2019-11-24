@@ -82,6 +82,8 @@ public class CustomCrop extends CropsBlock {
 			return ModItems.broccoli_seeds;
 		if (name.equals("zucchini"))
 			return ModItems.zucchini_seeds;
+		if (name.equals("turnip"))
+			return ModItems.turnip_seeds;
 		else
 			return ModItems.peanut_seeds;
 	}
@@ -141,6 +143,8 @@ public class CustomCrop extends CropsBlock {
 			return new ItemStack(ModItems.broccoli);
 		if (name.equals("zucchini"))
 			return new ItemStack(ModItems.zucchini);
+		if (name.equals("turnip"))
+			return new ItemStack(ModItems.turnip);
 		else
 			return new ItemStack(ModItems.peanut);
 	}

@@ -1,0 +1,21 @@
+{
+	"textures": {
+		"0": "simplefarming:block/trellis",
+		"particle": "simplefarming:block/trellis"
+	},
+	"elements": [
+		{
+			"name": "trellis",
+			"from": [0, 7, 7],
+			"to": [16, 9, 9],
+			"faces": {
+				"north": {"uv": [0, 7, 16, 9], "texture": "#0"},
+				"east": {"uv": [0, 7, 2, 9], "texture": "#0"},
+				"south": {"uv": [0, 7, 16, 9], "texture": "#0"},
+				"west": {"uv": [14, 7, 16, 9], "texture": "#0"},
+				"up": {"uv": [0, 7, 16, 9], "texture": "#0"},
+				"down": {"uv": [0, 7, 16, 9], "texture": "#0"}
+			}
+		}
+	]
+}

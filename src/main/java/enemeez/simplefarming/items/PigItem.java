@@ -1,10 +1,12 @@
 package enemeez.simplefarming.items;
 
 import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
 
 public class PigItem extends Item {
 	public PigItem(Properties properties) {
@@ -13,11 +15,11 @@ public class PigItem extends Item {
 	}
 
 	public boolean itemInteractionForEntity(ItemStack itemstack, PlayerEntity player,
-			net.minecraft.entity.LivingEntity entity, net.minecraft.util.Hand hand) {
+			LivingEntity entity, Hand hand) {
 
 		ItemStack stack = player.getHeldItem(hand);
 
-		if (!entity.world.isRemote && !entity.isChild() && (int) ((AgeableEntity) entity).getGrowingAge() == 0) {
+		if (!entity.world.isRemote && !entity.isChild() && entity instanceof AgeableEntity && (int) ((AgeableEntity) entity).getGrowingAge() == 0) {
 			if (entity instanceof PigEntity) {
 				if (((PigEntity) entity).isInLove()) {
 					return false;

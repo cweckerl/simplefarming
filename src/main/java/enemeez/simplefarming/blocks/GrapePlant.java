@@ -56,7 +56,7 @@ public class GrapePlant extends BushBlock implements IGrowable {
 		}
 		if (i == 3) {
 			if (worldIn.getBlockState(pos.up()).getMaterial().isReplaceable())
-				worldIn.setBlockState(pos.up(), ModBlocks.grape_leaves.getDefaultState(), 2);
+				worldIn.setBlockState(pos.up(), ModBlocks.grape_leaves_base.getDefaultState(), 2);
 		}
 
 	}

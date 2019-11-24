@@ -62,9 +62,7 @@ public class BrewingBarrelTileEntity extends TileEntity implements ITickableTile
 					return stack;
 				return super.insertItem(slot, stack, simulate);
 			}
-
 		};
-
 	}
 
 

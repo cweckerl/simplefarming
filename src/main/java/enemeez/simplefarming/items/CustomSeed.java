@@ -2,11 +2,13 @@ package enemeez.simplefarming.items;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
 
 public class CustomSeed extends BlockNamedItem {
 
@@ -15,11 +17,11 @@ public class CustomSeed extends BlockNamedItem {
 	}
 
 	public boolean itemInteractionForEntity(ItemStack itemstack, PlayerEntity player,
-			net.minecraft.entity.LivingEntity entity, net.minecraft.util.Hand hand) {
+			LivingEntity entity, Hand hand) {
 
 		ItemStack stack = player.getHeldItem(hand);
 
-		if (!entity.world.isRemote && !entity.isChild() && (int) ((AgeableEntity) entity).getGrowingAge() == 0) {
+		if (!entity.world.isRemote && !entity.isChild() && entity instanceof AgeableEntity && (int) ((AgeableEntity) entity).getGrowingAge() == 0) {
 			if (entity instanceof ChickenEntity) {
 				if (((ChickenEntity) entity).isInLove()) {
 					return false;
@@ -29,7 +31,6 @@ public class CustomSeed extends BlockNamedItem {
 						stack.shrink(1);
 					return true;
 				}
-
 			}
 
 			if (entity instanceof ParrotEntity)
@@ -42,7 +43,6 @@ public class CustomSeed extends BlockNamedItem {
 					if (!player.isCreative())
 						stack.shrink(1);
 				}
-
 		}
 
 		if (entity.isChild()) {
@@ -52,9 +52,7 @@ public class CustomSeed extends BlockNamedItem {
 					true);
 			return true;
 		}
-
 		return false;
-
 	}
 
 }

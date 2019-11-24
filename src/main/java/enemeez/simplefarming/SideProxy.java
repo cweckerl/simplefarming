@@ -67,26 +67,24 @@ public class SideProxy {
 		MinecraftForge.EVENT_BUS.register(new DoubleCropBreak());
 		MinecraftForge.EVENT_BUS.register(new IntoxicationTracker());
 		MinecraftForge.EVENT_BUS.register(new ScarecrowEvent());
-		
-		if (FeatureConfig.mod_harvest.get() && !FeatureConfig.smart_harvest.get())
-			{
-				if (RightClickConfig.bush_right_click.get())
-					MinecraftForge.EVENT_BUS.register(new BerryBushHarvest());
-				if (RightClickConfig.cactus_right_click.get())
-					MinecraftForge.EVENT_BUS.register(new CactusCropHarvest());
-				if (RightClickConfig.crop_right_click.get())
-					MinecraftForge.EVENT_BUS.register(new CropHarvest());
-				if (RightClickConfig.doublecrop_right_click.get())
-					MinecraftForge.EVENT_BUS.register(new DoubleCropHarvest());
-				if (RightClickConfig.tree_right_click.get())
-					MinecraftForge.EVENT_BUS.register(new FruitLeavesHarvest());
-				if (RightClickConfig.grape_right_click.get())
-					MinecraftForge.EVENT_BUS.register(new GrapeHarvest());
-				if (RightClickConfig.plant_right_click.get())
-					MinecraftForge.EVENT_BUS.register(new WildPlantHarvest());
-			}
-		if (FeatureConfig.smart_harvest.get() && !FeatureConfig.mod_harvest.get())
-		{
+
+		if (FeatureConfig.mod_harvest.get() && !FeatureConfig.smart_harvest.get()) {
+			if (RightClickConfig.bush_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new BerryBushHarvest());
+			if (RightClickConfig.cactus_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new CactusCropHarvest());
+			if (RightClickConfig.crop_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new CropHarvest());
+			if (RightClickConfig.doublecrop_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new DoubleCropHarvest());
+			if (RightClickConfig.tree_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new FruitLeavesHarvest());
+			if (RightClickConfig.grape_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new GrapeHarvest());
+			if (RightClickConfig.plant_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new WildPlantHarvest());
+		}
+		if (FeatureConfig.smart_harvest.get() && !FeatureConfig.mod_harvest.get()) {
 			if (RightClickConfig.bush_right_click.get())
 				MinecraftForge.EVENT_BUS.register(new SmartBerryBushHarvest());
 			if (RightClickConfig.cactus_right_click.get())
@@ -102,8 +100,6 @@ public class SideProxy {
 			if (RightClickConfig.plant_right_click.get())
 				MinecraftForge.EVENT_BUS.register(new SmartWildPlantHarvest());
 		}
-			
-		
 
 		if (ModWorldGen.fruit_tree != null) {
 			for (Biome biome : ForgeRegistries.BIOMES) {
@@ -148,7 +144,6 @@ public class SideProxy {
 		CompostItems.register();
 
 	}
-
 
 	private static void enqueueIMC(final InterModEnqueueEvent event) {
 	}

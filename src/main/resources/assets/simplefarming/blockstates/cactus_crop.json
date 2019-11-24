@@ -1,21 +1,21 @@
 {
     "variants": {
-        "facing=south,age=0": { "model": "simplefarming:block/cactus_crop" },
-        "facing=west,age=0": { "model": "simplefarming:block/cactus_crop", "y": 90 },
-        "facing=north,age=0": { "model": "simplefarming:block/cactus_crop", "y": 180 },
-        "facing=east,age=0": { "model": "simplefarming:block/cactus_crop", "y": 270 },
-        "facing=south,age=1": { "model": "simplefarming:block/cactus_crop" },
-        "facing=west,age=1": { "model": "simplefarming:block/cactus_crop", "y": 90 },
-        "facing=north,age=1": { "model": "simplefarming:block/cactus_crop", "y": 180 },
-        "facing=east,age=1": { "model": "simplefarming:block/cactus_crop", "y": 270 },
-        "facing=south,age=2": { "model": "simplefarming:block/cactus_crop" },
-        "facing=west,age=2": { "model": "simplefarming:block/cactus_crop", "y": 90 },
-        "facing=north,age=2": { "model": "simplefarming:block/cactus_crop", "y": 180 },
-        "facing=east,age=2": { "model": "simplefarming:block/cactus_crop", "y": 270 },
-        "facing=south,age=3": { "model": "simplefarming:block/cactus_crop3" },
-        "facing=west,age=3": { "model": "simplefarming:block/cactus_crop3", "y": 90 },
-        "facing=north,age=3": { "model": "simplefarming:block/cactus_crop3", "y": 180 },
-        "facing=east,age=3": { "model": "simplefarming:block/cactus_crop3", "y": 270 }
+        "facing=south,age=0": { "model": "simplefarming:block/cactus_crop", "y": 90 },
+        "facing=west,age=0": { "model": "simplefarming:block/cactus_crop"},
+        "facing=north,age=0": { "model": "simplefarming:block/cactus_crop", "y": 270 },
+        "facing=east,age=0": { "model": "simplefarming:block/cactus_crop", "y": 180 },
+        "facing=south,age=1": { "model": "simplefarming:block/cactus_crop", "y": 90 },
+        "facing=west,age=1": { "model": "simplefarming:block/cactus_crop" },
+        "facing=north,age=1": { "model": "simplefarming:block/cactus_crop", "y": 270 },
+        "facing=east,age=1": { "model": "simplefarming:block/cactus_crop", "y": 180 },
+        "facing=south,age=2": { "model": "simplefarming:block/cactus_crop", "y": 90 },
+        "facing=west,age=2": { "model": "simplefarming:block/cactus_crop"},
+        "facing=north,age=2": { "model": "simplefarming:block/cactus_crop", "y": 270 },
+        "facing=east,age=2": { "model": "simplefarming:block/cactus_crop", "y": 180 },
+        "facing=south,age=3": { "model": "simplefarming:block/cactus_crop3", "y": 90 },
+        "facing=west,age=3": { "model": "simplefarming:block/cactus_crop3"},
+        "facing=north,age=3": { "model": "simplefarming:block/cactus_crop3", "y": 270 },
+        "facing=east,age=3": { "model": "simplefarming:block/cactus_crop3", "y": 180 }
     }
 }
 

@@ -3,6 +3,6 @@
         "age=0": { "model": "simplefarming:block/quinoa_plant0" },
         "age=1": { "model": "simplefarming:block/quinoa_plant0" },
         "age=2": { "model": "simplefarming:block/quinoa_plant0" },
-        "age=3": { "model": "simplefarming:block/quinoa_plant1" }
+        "age=3": [{ "model": "simplefarming:block/quinoa_plant11" }, { "model": "simplefarming:block/quinoa_plant12" }, { "model": "simplefarming:block/quinoa_plant13" }]
     }
 }

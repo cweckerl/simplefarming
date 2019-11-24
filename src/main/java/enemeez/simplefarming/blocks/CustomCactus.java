@@ -30,7 +30,7 @@ import net.minecraft.world.World;
 public class CustomCactus extends BushBlock implements IGrowable {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
 	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
-	private static final VoxelShape[] SHAPE_BY_AGE_Z = new VoxelShape[] {
+	private static final VoxelShape[] SHAPE_BY_AGE_X = new VoxelShape[] {
 			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D),
 					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
 			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D),
@@ -39,7 +39,7 @@ public class CustomCactus extends BushBlock implements IGrowable {
 					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
 			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 14.0D, 9.0D),
 					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)) };
-	private static final VoxelShape[] SHAPE_BY_AGE_X = new VoxelShape[] {
+	private static final VoxelShape[] SHAPE_BY_AGE_Z = new VoxelShape[] {
 			VoxelShapes.or(Block.makeCuboidShape(7.0D, 2.0D, 2.0D, 9.0D, 12.0D, 14.0D),
 					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
 			VoxelShapes.or(Block.makeCuboidShape(7.0D, 2.0D, 2.0D, 9.0D, 12.0D, 14.0D),
@@ -52,7 +52,7 @@ public class CustomCactus extends BushBlock implements IGrowable {
 	public CustomCactus(Block.Properties p_i49971_1_) {
 		super(p_i49971_1_);
 		this.setDefaultState(
-				this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(AGE, Integer.valueOf(0)));
+				this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
 	}
 
 	public BlockState getStateForPlacement(BlockItemUseContext context) {

@@ -21,7 +21,8 @@ public class TemptationTask {
 			ModItems.squash_seeds, ModItems.tomato_seeds, ModItems.yam_seeds, ModItems.ginger_seeds,
 			ModItems.grape_seeds, ModItems.cumin_seeds, ModItems.quinoa_seeds, ModItems.sorghum_seeds,
 			ModItems.peanut_seeds, ModItems.barley_seeds, ModItems.sunflower_seeds, ModItems.pea_seeds,
-			ModItems.cotton_seeds, ModItems.sweet_potato_seeds, ModItems.broccoli_seeds, ModItems.zucchini_seeds
+			ModItems.cotton_seeds, ModItems.sweet_potato_seeds, ModItems.broccoli_seeds, ModItems.zucchini_seeds,
+			ModItems.turnip_seeds
 
 	);
 

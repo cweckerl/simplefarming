@@ -1,7 +1,37 @@
 {
     "variants": {
-        "": { "model": "simplefarming:block/grape_top" }
+        "facing=south,age=0": { "model": "simplefarming:block/grape_leaves_top" },
+        "facing=west,age=0": { "model": "simplefarming:block/grape_leaves", "y": 90 },
+        "facing=north,age=0": { "model": "simplefarming:block/grape_leaves", "y": 180 },
+        "facing=east,age=0": { "model": "simplefarming:block/grape_leaves", "y": 270 },
+        "facing=south,age=1": { "model": "simplefarming:block/grape_leaves_top" },
+        "facing=west,age=1": { "model": "simplefarming:block/grape_leaves", "y": 90 },
+        "facing=north,age=1": { "model": "simplefarming:block/grape_leaves", "y": 180 },
+        "facing=east,age=1": { "model": "simplefarming:block/grape_leaves", "y": 270 },
+        "facing=south,age=2": { "model": "simplefarming:block/grape_leaves_top" },
+        "facing=west,age=2": { "model": "simplefarming:block/grape_leaves", "y": 90 },
+        "facing=north,age=2": { "model": "simplefarming:block/grape_leaves", "y": 180 },
+        "facing=east,age=2": { "model": "simplefarming:block/grape_leaves", "y": 270 },
+        "facing=south,age=3": { "model": "simplefarming:block/grape_leaves_top" },
+        "facing=west,age=3": { "model": "simplefarming:block/grape_leaves", "y": 90 },
+        "facing=north,age=3": { "model": "simplefarming:block/grape_leaves", "y": 180 },
+        "facing=east,age=3": { "model": "simplefarming:block/grape_leaves", "y": 270 },
+        "facing=south,age=4": { "model": "simplefarming:block/grape_leaves_top" },
+        "facing=west,age=4": { "model": "simplefarming:block/grape_leaves", "y": 90 },
+        "facing=north,age=4": { "model": "simplefarming:block/grape_leaves", "y": 180 },
+        "facing=east,age=4": { "model": "simplefarming:block/grape_leaves", "y": 270 },
+        "facing=south,age=5": { "model": "simplefarming:block/grape_leaves_top" },
+        "facing=west,age=5": { "model": "simplefarming:block/grape_leaves", "y": 90 },
+        "facing=north,age=5": { "model": "simplefarming:block/grape_leaves", "y": 180 },
+        "facing=east,age=5": { "model": "simplefarming:block/grape_leaves", "y": 270 },
+        "facing=south,age=6": { "model": "simplefarming:block/grape_leaves_top" },
+        "facing=west,age=6": { "model": "simplefarming:block/grape_leaves", "y": 90 },
+        "facing=north,age=6": { "model": "simplefarming:block/grape_leaves", "y": 180 },
+        "facing=east,age=6": { "model": "simplefarming:block/grape_leaves", "y": 270 },
+        "facing=south,age=7": { "model": "simplefarming:block/grape_leaves_top" },
+        "facing=west,age=7": { "model": "simplefarming:block/grape_leaves", "y": 90 },
+        "facing=north,age=7": { "model": "simplefarming:block/grape_leaves", "y": 180 },
+        "facing=east,age=7": { "model": "simplefarming:block/grape_leaves", "y": 270 }
     }
 }
-
 

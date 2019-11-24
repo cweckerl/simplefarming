@@ -20,6 +20,7 @@
 		"#forge:crops/spinach",
 		"#forge:crops/squash",
 		"#forge:crops/tomato",
+		"#forge:crops/turnip",
 		"#forge:crops/ginger",
 		"#forge:crops/sorghum",
 		"#forge:crops/peanut",
@@ -29,6 +30,7 @@
 		"#forge:crops/cotton",
 		"#forge:crops/broccoli",
 		"#forge:crops/zucchini",
+		"#forge:crops/wheat",
 		"#forge:crops/yam"
 	]
 }

@@ -22,6 +22,7 @@ public class FoodTier {
 	public static final Food SORGHUM = (new Food.Builder()).hunger(4).saturation(0.6F).build();
 	public static final Food SALAD_GREENS = (new Food.Builder()).hunger(2).saturation(0.6F).build();
 	public static final Food TOMATO = (new Food.Builder()).hunger(3).saturation(0.6F).build();
+	public static final Food TURNIP = (new Food.Builder()).hunger(2).saturation(0.6F).build();
 	public static final Food SWEET_POTATO = (new Food.Builder()).hunger(2).saturation(0.6F).build();
 	public static final Food SEEDS = (new Food.Builder()).hunger(1).saturation(0.1F).fastToEat().build();
 	public static final Food ZUCCHINI = (new Food.Builder()).hunger(3).saturation(0.6F).build();
@@ -126,4 +127,16 @@ public class FoodTier {
 	
 	public static final Food CANDY = (new Food.Builder()).hunger(5).saturation(0.2F).build();
 	public static final Food BORSCHT = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	
+	public static final Food SQUID_INK_PASTA = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	public static final Food FISH_AND_CHIPS = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	public static final Food MARSHMALLOW = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	public static final Food PAD_THAI = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	public static final Food POTATO_KNISH = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	public static final Food CHICORY_GRATIN = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	public static final Food TURNIP_BEETROOT_GRATIN = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	public static final Food ICE_CREAM_SUNDAE = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+
+
+	
 }

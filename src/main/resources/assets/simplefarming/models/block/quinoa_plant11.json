@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "simplefarming:block/quinoa_plant11"
+    }
+}
