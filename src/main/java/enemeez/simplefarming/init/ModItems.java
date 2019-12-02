@@ -277,10 +277,8 @@ public class ModItems {
 	public static Item cactus_crop;
 
 	public static Item fruit_log;
-
-	public static Item brewing_barrel;
 	public static Item scarecrow;
-	public static Item trellising_rope;
+	public static Item brewing_barrel;
 
 	public static void registerAll(RegistryEvent.Register<Item> event) {
 		if (!event.getName().equals(ForgeRegistries.ITEMS.getRegistryName()))
@@ -332,11 +330,10 @@ public class ModItems {
 
 		scarecrow = register("scarecrow", new BlockItem(ModBlocks.scarecrow,
 				new Item.Properties().maxStackSize(16).group(SimpleFarming.ITEM_GROUP)));
-		trellising_rope = register("trellising_rope",
-				new BlockItem(ModBlocks.trellising_rope, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-
 		fruit_log = register("fruit_log",
 				new BlockItem(ModBlocks.fruit_log, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		brewing_barrel = register("brewing_barrel",
+				new BlockItem(ModBlocks.brewing_barrel, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 
 		cactus_crop = register("cactus_crop",
 				new BlockItem(ModBlocks.cactus_crop, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
@@ -347,9 +344,6 @@ public class ModItems {
 				new Item.Properties().maxStackSize(1).group(SimpleFarming.ITEM_GROUP)));
 		cheese_block = register("cheese_block",
 				new BlockItem(ModBlocks.cheese_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-
-		brewing_barrel = register("brewing_barrel",
-				new BlockItem(ModBlocks.brewing_barrel, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 
 		apricot = register("apricot",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
@@ -421,7 +415,7 @@ public class ModItems {
 		tomato = register("tomato",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.TOMATO)));
 		turnip = register("turnip",
-				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.TURNIP)));
+				new PigItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.TURNIP)));
 		yam = register("yam", new PigItem((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(Foods.POTATO)));
 		zucchini = register("zucchini",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.ZUCCHINI)));

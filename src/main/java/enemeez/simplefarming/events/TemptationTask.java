@@ -29,7 +29,7 @@ public class TemptationTask {
 	private static final Ingredient WHEATS = Ingredient.fromItems(ModItems.barley, ModItems.oat, ModItems.rye,
 			ModItems.rice, ModItems.corn, ModItems.sorghum);
 
-	private static final Ingredient PIGS = Ingredient.fromItems(ModItems.sweet_potato, ModItems.radish, ModItems.yam);
+	private static final Ingredient PIGS = Ingredient.fromItems(ModItems.sweet_potato, ModItems.radish, ModItems.turnip, ModItems.yam);
 
 	@SubscribeEvent
 	public void onEntitySpawn(EntityJoinWorldEvent event) {

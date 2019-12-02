@@ -3,6 +3,7 @@ package enemeez.simplefarming;
 import enemeez.simplefarming.config.Config;
 import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.config.RightClickConfig;
+import enemeez.simplefarming.events.BrewingEvent;
 import enemeez.simplefarming.events.DoubleCropBreak;
 import enemeez.simplefarming.events.IntoxicationTracker;
 import enemeez.simplefarming.events.LootTableHandler;
@@ -67,6 +68,7 @@ public class SideProxy {
 		MinecraftForge.EVENT_BUS.register(new DoubleCropBreak());
 		MinecraftForge.EVENT_BUS.register(new IntoxicationTracker());
 		MinecraftForge.EVENT_BUS.register(new ScarecrowEvent());
+		MinecraftForge.EVENT_BUS.register(new BrewingEvent());
 
 		if (FeatureConfig.mod_harvest.get() && !FeatureConfig.smart_harvest.get()) {
 			if (RightClickConfig.bush_right_click.get())

@@ -78,6 +78,10 @@ public class FruitLeaves extends BushBlock implements IGrowable {
 			return new ItemStack(ModItems.olive_sapling);
 	}
 
+	public int getOpacity(BlockState state, IBlockReader worldIn, BlockPos pos) {
+		return 1;
+	}
+
 	@SuppressWarnings("deprecation")
 	public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
 		super.tick(state, worldIn, pos, random);
@@ -87,7 +91,7 @@ public class FruitLeaves extends BushBlock implements IGrowable {
 		}
 
 	}
-	
+
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(AGE);
 	}
@@ -120,14 +124,14 @@ public class FruitLeaves extends BushBlock implements IGrowable {
 			}
 		}
 	}
-	
+
 	public boolean causesSuffocation(BlockState state, IBlockReader worldIn, BlockPos pos) {
-	      return false;
-	   }
-	
-	 public boolean isSolid(BlockState state) {
-	      return false;
-	   }
+		return false;
+	}
+
+	public boolean isSolid(BlockState state) {
+		return false;
+	}
 
 	public boolean isMaxAge(BlockState state) {
 		return state.get(AGE) == 7;
@@ -138,7 +142,6 @@ public class FruitLeaves extends BushBlock implements IGrowable {
 			entityIn.setMotionMultiplier(state, new Vec3d((double) 0.8F, 0.75D, (double) 0.8F));
 		}
 	}
-
 
 	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
 
@@ -170,6 +173,5 @@ public class FruitLeaves extends BushBlock implements IGrowable {
 
 		return false;
 	}
-
 
 }

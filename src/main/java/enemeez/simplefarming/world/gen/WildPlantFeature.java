@@ -41,7 +41,7 @@ public class WildPlantFeature extends Feature<NoFeatureConfig> {
 				|| DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
 				|| !DimensionConfig.whitelist.get().contains(world.getDimension().getType().getId()))
 			return false;
-		int type = (int) ((Math.random() * 2) + 1);
+		int type = (int) ((Math.random() * 4) + 1);
 		int rolls = (int) ((Math.random() * 3) + 1);
 		for (int i = 0; i < rolls; i++) {
 			if (i == 0) {
@@ -70,11 +70,17 @@ public class WildPlantFeature extends Feature<NoFeatureConfig> {
 		}
 		return true;
 	}
-	
+
 	public static void generatePlant(IWorld world, BlockPos pos, Random random, int type) {
 		if (type == 1)
 			world.setBlockState(pos, ModBlocks.cumin.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3)), 2);
 		if (type == 2)
 			world.setBlockState(pos, ModBlocks.quinoa.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3)), 2);
+		if (type == 3)
+			world.setBlockState(pos, ModBlocks.marshmallow.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3)),
+					2);
+		if (type == 4)
+			world.setBlockState(pos, ModBlocks.chicory.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3)), 2);
+
 	}
 }

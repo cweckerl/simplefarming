@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.blocks.BirthdayCake;
+import enemeez.simplefarming.blocks.BrewingBarrel;
 import enemeez.simplefarming.blocks.CheeseBlock;
 import enemeez.simplefarming.blocks.CustomBush;
 import enemeez.simplefarming.blocks.CustomCactus;
@@ -17,14 +18,11 @@ import enemeez.simplefarming.blocks.GrapeLeaves;
 import enemeez.simplefarming.blocks.GrapePlant;
 import enemeez.simplefarming.blocks.ScarecrowBlock;
 import enemeez.simplefarming.blocks.ThinBlock;
-import enemeez.simplefarming.blocks.TrellisingRope;
 import enemeez.simplefarming.blocks.WildCrop;
 import enemeez.simplefarming.blocks.WildPlant;
-import enemeez.simplefarming.blocks.brewingbarrel.BrewingBarrel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.HayBlock;
-import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -129,19 +127,15 @@ public class ModBlocks {
 
 	// Misc
 	public static Block wild_crop;
-	public static Block brewing_barrel;
 	public static Block scarecrow;
-	public static Block trellising_rope;
+	public static Block brewing_barrel;
 
-	public static Block new_leaves;
 	public static void registerAll(RegistryEvent.Register<Block> event) {
 		if (!event.getName().equals(ForgeRegistries.BLOCKS.getRegistryName()))
 			return;
-		new_leaves = register("new_leaves", new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)));
+
 		brewing_barrel = register("brewing_barrel", new BrewingBarrel(
-				Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
-		trellising_rope = register("trellising_rope", new TrellisingRope(
-				Block.Properties.create(Material.WOOL).hardnessAndResistance(0.8F).sound(SoundType.CLOTH)));
+				Block.Properties.create(Material.WOOD).tickRandomly().hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
 
 		cantaloupe_block = register("cantaloupe_block",
 				new Block(Block.Properties.create(Material.PLANTS).sound(SoundType.WOOD).hardnessAndResistance(1.0F)));
@@ -330,7 +324,7 @@ public class ModBlocks {
 
 		tomato_crop = register("tomato_crop", new CustomCrop(Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), "tomato"));
-		
+
 		turnip_crop = register("turnip_crop", new CustomCrop(Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), "turnip"));
 

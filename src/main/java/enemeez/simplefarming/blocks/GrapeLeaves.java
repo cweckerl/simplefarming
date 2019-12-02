@@ -6,8 +6,8 @@ import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.BushBlock;
+import net.minecraft.block.FenceBlock;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.IGrowable;
 import net.minecraft.item.BlockItemUseContext;
@@ -53,50 +53,30 @@ public class GrapeLeaves extends BushBlock implements IGrowable {
 			worldIn.setBlockState(pos.down(), ModBlocks.grape_block.getDefaultState(), 2);
 		}
 
-		if (i == 7
-				&& (worldIn.getBlockState(pos.east()) == ModBlocks.trellising_rope.getDefaultState()
-						.with(TrellisingRope.FACING, Direction.NORTH)
-						|| worldIn.getBlockState(pos.east()) == ModBlocks.trellising_rope.getDefaultState()
-								.with(TrellisingRope.FACING, Direction.SOUTH))
+		if (i == 7 && worldIn.getBlockState(pos.east()).getBlock() instanceof FenceBlock
 				&& worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant) {
-			worldIn.setBlockState(pos.east(), Blocks.AIR.getDefaultState(), 2);
 			worldIn.setBlockState(pos.east(),
-					ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0)).with(FACING, Direction.WEST),
+					ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0)).with(FACING, Direction.NORTH),
 					2);
 		}
 
-		if (i == 7
-				&& (worldIn.getBlockState(pos.west()) == ModBlocks.trellising_rope.getDefaultState()
-						.with(TrellisingRope.FACING, Direction.SOUTH)
-						|| worldIn.getBlockState(pos.west()) == ModBlocks.trellising_rope.getDefaultState()
-								.with(TrellisingRope.FACING, Direction.NORTH))
+		if (i == 7 && worldIn.getBlockState(pos.west()).getBlock() instanceof FenceBlock
 				&& worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant) {
-			worldIn.setBlockState(pos.west(), Blocks.AIR.getDefaultState(), 2);
 			worldIn.setBlockState(pos.west(),
-					ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0)).with(FACING, Direction.WEST),
+					ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0)).with(FACING, Direction.NORTH),
 					2);
 		}
 
-		if (i == 7
-				&& (worldIn.getBlockState(pos.north()) == ModBlocks.trellising_rope.getDefaultState()
-						.with(TrellisingRope.FACING, Direction.WEST)
-						|| worldIn.getBlockState(pos.north()) == ModBlocks.trellising_rope.getDefaultState()
-								.with(TrellisingRope.FACING, Direction.EAST))
+		if (i == 7 && worldIn.getBlockState(pos.north()).getBlock() instanceof FenceBlock
 				&& worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant) {
-			worldIn.setBlockState(pos.north(), Blocks.AIR.getDefaultState(), 2);
 			worldIn.setBlockState(pos.north(), ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0))
-					.with(FACING, Direction.NORTH), 2);
+					.with(FACING, Direction.EAST), 2);
 		}
 
-		if (i == 7
-				&& (worldIn.getBlockState(pos.south()) == ModBlocks.trellising_rope.getDefaultState()
-						.with(TrellisingRope.FACING, Direction.EAST)
-						|| worldIn.getBlockState(pos.south()) == ModBlocks.trellising_rope.getDefaultState()
-								.with(TrellisingRope.FACING, Direction.WEST))
+		if (i == 7 && worldIn.getBlockState(pos.south()).getBlock() instanceof FenceBlock
 				&& worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant) {
-			worldIn.setBlockState(pos.south(), Blocks.AIR.getDefaultState(), 2);
 			worldIn.setBlockState(pos.south(), ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0))
-					.with(FACING, Direction.NORTH), 2);
+					.with(FACING, Direction.EAST), 2);
 		}
 
 	}
@@ -131,11 +111,11 @@ public class GrapeLeaves extends BushBlock implements IGrowable {
 		if (state.getBlock() == ModBlocks.grape_leaves
 				&& (world.getBlockState(pos.east()).getBlock() == ModBlocks.grape_leaves_base
 
-				|| world.getBlockState(pos.west()).getBlock() == ModBlocks.grape_leaves_base
+						|| world.getBlockState(pos.west()).getBlock() == ModBlocks.grape_leaves_base
 
-				|| world.getBlockState(pos.north()).getBlock() == ModBlocks.grape_leaves_base
+						|| world.getBlockState(pos.north()).getBlock() == ModBlocks.grape_leaves_base
 
-				|| world.getBlockState(pos.south()).getBlock() == ModBlocks.grape_leaves_base)
+						|| world.getBlockState(pos.south()).getBlock() == ModBlocks.grape_leaves_base)
 
 		)
 			return true;

@@ -8,7 +8,7 @@
         }
     },
     "textures": {
-        "end": "simplefarming:block/fruit_leaves_birch",
+        "end": "simplefarming:block/fruit_leaves_spruce",
         "side": "simplefarming:block/olive_leaves1"
     }
 }
