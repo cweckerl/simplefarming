@@ -201,6 +201,7 @@ public class CompostItems {
 		ComposterBlock.CHANCES.put(ModItems.turnip_beetroot_gratin, 1.0F);
 		ComposterBlock.CHANCES.put(ModItems.chicory_gratin, 1.0F);
 		ComposterBlock.CHANCES.put(ModItems.ice_cream_sundae, 1.0F);
+		ComposterBlock.CHANCES.put(ModItems.candy_cane, 1.0F);
 
 	}
 

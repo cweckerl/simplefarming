@@ -37,45 +37,49 @@ public class FruitLeaves extends BushBlock implements IGrowable {
 	}
 
 	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-		if (name.equals("apple"))
+		switch (name) {
+		case "apple":
 			return new ItemStack(Items.APPLE);
-		if (name.equals("apricot"))
+		case "apricot":
 			return new ItemStack(ModItems.apricot);
-		if (name.equals("banana"))
+		case "banana":
 			return new ItemStack(ModItems.banana);
-		if (name.equals("cherries"))
+		case "cherries":
 			return new ItemStack(ModItems.cherries);
-		if (name.equals("orange"))
+		case "orange":
 			return new ItemStack(ModItems.orange);
-		if (name.equals("mango"))
+		case "mango":
 			return new ItemStack(ModItems.mango);
-		if (name.equals("pear"))
+		case "pear":
 			return new ItemStack(ModItems.pear);
-		if (name.equals("plum"))
+		case "plum":
 			return new ItemStack(ModItems.plum);
-		else
+		default:
 			return new ItemStack(ModItems.olives);
+		}
 	}
 
 	public ItemStack getSapling(IBlockReader worldIn, BlockPos pos, BlockState state) {
-		if (name.equals("apple"))
+		switch (name) {
+		case "apple":
 			return new ItemStack(ModItems.apple_sapling);
-		if (name.equals("apricot"))
+		case "apricot":
 			return new ItemStack(ModItems.apricot_sapling);
-		if (name.equals("banana"))
+		case "banana":
 			return new ItemStack(ModItems.banana_sapling);
-		if (name.equals("cherries"))
+		case "cherries":
 			return new ItemStack(ModItems.cherry_sapling);
-		if (name.equals("orange"))
+		case "orange":
 			return new ItemStack(ModItems.orange_sapling);
-		if (name.equals("mango"))
+		case "mango":
 			return new ItemStack(ModItems.mango_sapling);
-		if (name.equals("pear"))
+		case "pear":
 			return new ItemStack(ModItems.pear_sapling);
-		if (name.equals("plum"))
+		case "plum":
 			return new ItemStack(ModItems.plum_sapling);
-		else
+		default:
 			return new ItemStack(ModItems.olive_sapling);
+		}
 	}
 
 	public int getOpacity(BlockState state, IBlockReader worldIn, BlockPos pos) {

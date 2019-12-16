@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		" C ",
+		"#B#",
+		"SMS"
+	],
+	
+	"key":
+	{
+		"C": { "tag": "forge:fruits/cherries"},
+		"B": { "tag": "forge:fruits/banana"},
+		"#": { "item": "minecraft:snowball"},
+		"S": { "item": "minecraft:sugar"},
+		"M": { "item": "minecraft:milk_bucket"}
+
+	},
+	
+	"result": {"item": "simplefarming:ice_cream_sundae"}
+	
+}

@@ -28,125 +28,125 @@ public class CustomCrop extends CropsBlock {
 	}
 
 	protected IItemProvider getSeedsItem() {
-		if (name.equals("barley"))
+		switch (name) {
+		case "barley":
 			return ModItems.barley_seeds;
-		if (name.equals("broccoli"))
+		case "broccoli":
 			return ModItems.broccoli_seeds;
-		if (name.equals("carrot"))
+		case "carrot":
 			return ModItems.carrot_seeds;
-		if (name.equals("potato"))
+		case "potato":
 			return ModItems.potato_seeds;
-		if (name.equals("cucumber"))
+		case "cucumber":
 			return ModItems.cucumber_seeds;
-		if (name.equals("eggplant"))
+		case "eggplant":
 			return ModItems.eggplant_seeds;
-		if (name.equals("lettuce"))
+		case "lettuce":
 			return ModItems.lettuce_seeds;
-		if (name.equals("oat"))
+		case "oat":
 			return ModItems.oat_seeds;
-		if (name.equals("onion"))
+		case "onion":
 			return ModItems.onion_seeds;
-		if (name.equals("pea"))
+		case "pea":
 			return ModItems.pea_seeds;
-		if (name.equals("pepper"))
+		case "pepper":
 			return ModItems.pepper_seeds;
-		if (name.equals("radish"))
+		case "radish":
 			return ModItems.radish_seeds;
-		if (name.equals("rice"))
+		case "rice":
 			return ModItems.rice_seeds;
-		if (name.equals("rye"))
+		case "rye":
 			return ModItems.rye_seeds;
-		if (name.equals("soybean"))
+		case "soybean":
 			return ModItems.soybean_seeds;
-		if (name.equals("spinach"))
+		case "spinach":
 			return ModItems.spinach_seeds;
-		if (name.equals("tomato"))
+		case "tomato":
 			return ModItems.tomato_seeds;
-		if (name.equals("yam"))
+		case "yam":
 			return ModItems.yam_seeds;
-		if (name.equals("squash"))
+		case "squash":
 			return ModItems.squash_seeds;
-		if (name.equals("cantaloupe"))
+		case "cantaloupe":
 			return ModItems.cantaloupe_seeds;
-		if (name.equals("cassava"))
+		case "cassava":
 			return ModItems.cassava_seeds;
-		if (name.equals("honeydew"))
+		case "honeydew":
 			return ModItems.honeydew_seeds;
-		if (name.equals("ginger"))
+		case "ginger":
 			return ModItems.ginger_seeds;
-		if (name.equals("cotton"))
+		case "cotton":
 			return ModItems.cotton_seeds;
-		if (name.equals("sweet_potato"))
+		case "sweet_potato":
 			return ModItems.sweet_potato_seeds;
-		if (name.equals("broccoli"))
-			return ModItems.broccoli_seeds;
-		if (name.equals("zucchini"))
+		case "zucchini":
 			return ModItems.zucchini_seeds;
-		if (name.equals("turnip"))
+		case "turnip":
 			return ModItems.turnip_seeds;
-		else
+		default:
 			return ModItems.peanut_seeds;
+		}
 	}
 
 	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-		if (name.equals("barley"))
+		switch (name) {
+		case "barley":
 			return new ItemStack(ModItems.barley);
-		if (name.equals("broccoli"))
+		case "broccoli":
 			return new ItemStack(ModItems.broccoli);
-		if (name.equals("carrot"))
+		case "carrot":
 			return new ItemStack(Items.CARROT);
-		if (name.equals("potato"))
+		case "potato":
 			return new ItemStack(Items.POTATO);
-		if (name.equals("cucumber"))
+		case "cucumber":
 			return new ItemStack(ModItems.cucumber);
-		if (name.equals("eggplant"))
+		case "eggplant":
 			return new ItemStack(ModItems.eggplant);
-		if (name.equals("lettuce"))
+		case "lettuce":
 			return new ItemStack(ModItems.lettuce);
-		if (name.equals("oat"))
+		case "oat":
 			return new ItemStack(ModItems.oat);
-		if (name.equals("onion"))
+		case "onion":
 			return new ItemStack(ModItems.onion);
-		if (name.equals("pea"))
+		case "pea":
 			return new ItemStack(ModItems.pea_pod);
-		if (name.equals("pepper"))
+		case "pepper":
 			return new ItemStack(ModItems.pepper);
-		if (name.equals("radish"))
+		case "radish":
 			return new ItemStack(ModItems.radish);
-		if (name.equals("rice"))
+		case "rice":
 			return new ItemStack(ModItems.rice);
-		if (name.equals("rye"))
+		case "rye":
 			return new ItemStack(ModItems.rye);
-		if (name.equals("soybean"))
+		case "soybean":
 			return new ItemStack(ModItems.soybean);
-		if (name.equals("spinach"))
+		case "spinach":
 			return new ItemStack(ModItems.spinach);
-		if (name.equals("tomato"))
+		case "tomato":
 			return new ItemStack(ModItems.tomato);
-		if (name.equals("yam"))
+		case "yam":
 			return new ItemStack(ModItems.yam);
-		if (name.equals("squash"))
+		case "squash":
 			return new ItemStack(ModItems.squash_block);
-		if (name.equals("cantaloupe"))
+		case "cantaloupe":
 			return new ItemStack(ModItems.cantaloupe_block);
-		if (name.equals("cassava"))
+		case "cassava":
 			return new ItemStack(ModItems.cassava);
-		if (name.equals("honeydew"))
+		case "honeydew":
 			return new ItemStack(ModItems.honeydew_block);
-		if (name.equals("ginger"))
+		case "ginger":
 			return new ItemStack(ModItems.ginger);
-		if (name.equals("cotton"))
+		case "cotton":
 			return new ItemStack(ModItems.cotton);
-		if (name.equals("sweet_potato"))
+		case "sweet_potato":
 			return new ItemStack(ModItems.sweet_potato);
-		if (name.equals("broccoli"))
-			return new ItemStack(ModItems.broccoli);
-		if (name.equals("zucchini"))
+		case "zucchini":
 			return new ItemStack(ModItems.zucchini);
-		if (name.equals("turnip"))
+		case "turnip":
 			return new ItemStack(ModItems.turnip);
-		else
+		default:
 			return new ItemStack(ModItems.peanut);
+		}
 	}
 
 }

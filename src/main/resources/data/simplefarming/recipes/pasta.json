@@ -11,10 +11,16 @@
     },
     {
       "item": "simplefarming:noodles"
+    },
+    {
+      "item": "minecraft:ink_sac"
+    },
+    {
+      "item": "minecraft:ink_sac"
     }
 
 	],
 	
-	"result": {"item": "simplefarming:pasta"}
+	"result": {"item": "simplefarming:squid_ink_pasta"}
 	
 }

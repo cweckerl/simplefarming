@@ -33,16 +33,18 @@ public class WildPlant extends BushBlock implements IGrowable {
 	}
 
 	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-		if (name.equals("cumin"))
+		switch (name) {
+		case "cumin":
 			return new ItemStack(ModItems.cumin_seeds);
-		if (name.equals("sunflower"))
+		case "sunflower":
 			return new ItemStack(ModItems.sunflower_seeds);
-		if (name.equals("marshmallow"))
+		case "marshmallow":
 			return new ItemStack(ModItems.marshmallow_root);
-		if (name.equals("chicory"))
+		case "chicory":
 			return new ItemStack(ModItems.chicory_root);
-		else
+		default:
 			return new ItemStack(ModItems.quinoa_seeds);
+		}
 
 	}
 

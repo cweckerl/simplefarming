@@ -78,20 +78,24 @@ public class DoubleCrop extends CropsBlock {
 	}
 
 	protected IItemProvider getSeedsItem() {
-		if (name.equals("corn"))
+		switch (name) {
+		case "corn":
 			return ModItems.corn_seeds;
-		if (name.equals("kenaf"))
+		case "kenaf":
 			return ModItems.kenaf_seeds;
-		else
+		default:
 			return ModItems.sorghum_seeds;
+		}
 	}
 
 	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-		if (name.equals("corn"))
+		switch (name) {
+		case "corn":
 			return new ItemStack(ModItems.corn);
-		if (name.equals("kenaf"))
+		case "kenaf":
 			return new ItemStack(ModItems.kenaf_fiber);
-		else
+		default:
 			return new ItemStack(ModItems.sorghum);
+		}
 	}
 }

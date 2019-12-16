@@ -33,14 +33,17 @@ public class CustomBush extends BushBlock implements IGrowable {
 	}
 
 	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-		if (name.equals("blackberries"))
+		switch(name)
+		{
+		case "blackberries":
 			return new ItemStack(ModItems.blackberry_bush);
-		if (name.equals("blueberries"))
+		case "blueberries":
 			return new ItemStack(ModItems.blueberry_bush);
-		if (name.equals("raspberries"))
+		case "raspberries":
 			return new ItemStack(ModItems.raspberry_bush);
-		else
+		default:
 			return new ItemStack(ModItems.strawberry_bush);
+		}
 	}
 
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {

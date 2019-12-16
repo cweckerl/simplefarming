@@ -43,24 +43,26 @@ public class FruitTreeFeature extends Feature<NoFeatureConfig> {
 		BlockState trunk = ModBlocks.fruit_log.getDefaultState();
 		BlockState leaves = null;
 
-		if (verify == 1)
+		switch (verify) {
+		case 1:
 			leaves = ModBlocks.apple_leaves.getDefaultState();
-		if (verify == 2)
+		case 2:
 			leaves = ModBlocks.apricot_leaves.getDefaultState();
-		if (verify == 3)
+		case 3:
 			leaves = ModBlocks.banana_leaves.getDefaultState();
-		if (verify == 4)
+		case 4:
 			leaves = ModBlocks.plum_leaves.getDefaultState();
-		if (verify == 5)
+		case 5:
 			leaves = ModBlocks.orange_leaves.getDefaultState();
-		if (verify == 6)
+		case 6:
 			leaves = ModBlocks.pear_leaves.getDefaultState();
-		if (verify == 7)
+		case 7:
 			leaves = ModBlocks.cherry_leaves.getDefaultState();
-		if (verify == 8)
+		case 8:
 			leaves = ModBlocks.mango_leaves.getDefaultState();
-		if (verify == 9)
+		default:
 			leaves = ModBlocks.olive_leaves.getDefaultState();
+		}
 
 		world.setBlockState(pos.up(0), trunk, 3);
 		for (int i = 1; i < 4; i++) {

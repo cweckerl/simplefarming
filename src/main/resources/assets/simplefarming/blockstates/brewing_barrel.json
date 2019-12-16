@@ -1,10 +1,10 @@
 {
-  "variants": {
-    "facing=north": { "model": "simplefarming:block/brewing_barrel" },
-    "facing=south": { "model": "simplefarming:block/brewing_barrel", "y": 180 },
-    "facing=west": { "model": "simplefarming:block/brewing_barrel", "y": 270 },
-    "facing=east": { "model": "simplefarming:block/brewing_barrel", "y": 90 },
-    "facing=up": { "model": "simplefarming:block/brewing_barrel", "x": -90 },
-    "facing=down": { "model": "simplefarming:block/brewing_barrel", "x": 90 }
-  }
+    "variants": {
+        "layers=0,progress=0": { "model": "simplefarming:block/brewing_barrel_layer0"},
+        "layers=1,progress=0": { "model": "simplefarming:block/brewing_barrel_layer1"},
+        "layers=1,progress=1": { "model": "simplefarming:block/brewing_barrel_closed"},
+        "layers=1,progress=2": { "model": "simplefarming:block/brewing_barrel_closed"},
+        "layers=1,progress=3": { "model": "simplefarming:block/brewing_barrel_closed"}
+    }
 }
+

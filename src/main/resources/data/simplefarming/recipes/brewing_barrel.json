@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"FIF",
+		"IBI",
+		"FUF"
+	],
+	
+	"key":
+	{
+		"B": { "item": "minecraft:barrel"},
+		"F": { "item": "simplefarming:fruit_log"},
+		"U": { "item": "minecraft:bucket"}, 
+		"I": { "tag": "forge:ingots/iron"}
+
+	},
+	
+	"result": {"item": "simplefarming:brewing_barrel"}
+	
+}

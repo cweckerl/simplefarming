@@ -36,8 +36,6 @@
 	"block.simplefarming.grape_plant": "Grape Plant",
 	"block.simplefarming.grape_block": "Grapes",
 	"block.simplefarming.grape_leaves": "Grape Leaves",
-	"block.simplefarming.grape_leaves_ns": "Grape Leaves",
-	"block.simplefarming.grape_leaves_we": "Grape Leaves",
 	"block.simplefarming.carrot_crop": "Carrot Crop",
 	"block.simplefarming.potato_crop": "Potato Crop",
 	"item.simplefarming.cantaloupe_seeds": "Cantaloupe Seeds",
@@ -254,7 +252,6 @@
 	"block.simplefarming.broccoli_crop": "Broccoli Crop",
 	"block.simplefarming.zucchini_crop": "Zucchini Crop",
 	"block.simplefarming.olive_leaves": "Olive Leaves",
-	
 	"block.simplefarming.scarecrow": "Scarecrow",
 	"block.simplefarming.brewing_barrel": "Brewing Barrel",
 	"item.simplefarming.beer": "Beer",
@@ -268,6 +265,23 @@
 	"item.simplefarming.borscht": "Borscht",
 	"item.simplefarming.candy": "Candy",
 	"item.simplefarming.jam": "Jam",
+
+	"item.simplefarming.turnip": "Turnip",
+	"item.simplefarming.turnip_seeds": "Turnip Seeds",
+	"item.simplefarming.chicory_root": "Chicory Root",
+	"item.simplefarming.marshmallow_root": "Marshmallow Root",
+	"item.simplefarming.candy_cane": "Candy Cane",
+	"item.simplefarming.chicory_gratin": "Chicory Gratin",
+	"item.simplefarming.fish_and_chips": "Fish and Chips",
+	"item.simplefarming.ice_cream_sundae": "Ice Cream Sundae",
+	"item.simplefarming.marshmallow": "Marshmallow",
+	"item.simplefarming.pad_thai": "Pad Thai",
+	"item.simplefarming.potato_knish": "Potato Knish",
+	"item.simplefarming.squid_ink_pasta": "Squid Ink Pasta",
+	"item.simplefarming.turnip_beetroot_gratin": "Turnip Beetroot Gratin",
+	"block.simplefarming.turnip_crop": "Turnip Crop",
+	"block.simplefarming.marshmallow": "Marshmallow",
+	"block.simplefarming.chicory": "Chicory",
 	
 
 	"item.simplefarming.veggie_burger": "Veggie Burger"

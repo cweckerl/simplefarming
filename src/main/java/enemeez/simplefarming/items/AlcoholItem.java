@@ -34,22 +34,7 @@ public class AlcoholItem extends BottleItem {
 		}
 
 		if (!worldIn.isRemote) {
-			if (name == "beer")
-				entityLiving.addPotionEffect(new EffectInstance(Effects.STRENGTH, 500, 0, false, true));
-			if (name == "cauim")
-				entityLiving.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 500, 0, false, true));
-			if (name == "cider")
-				entityLiving.addPotionEffect(new EffectInstance(Effects.LUCK, 500, 0, false, true));
-			if (name == "sake")
-				entityLiving.addPotionEffect(new EffectInstance(Effects.SPEED, 500, 0, false, true));
-			if (name == "tiswin")
-				entityLiving.addPotionEffect(new EffectInstance(Effects.HEALTH_BOOST, 500, 0, false, true));
-			if (name == "vodka")
-				entityLiving.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 500, 0, false, true));
-			if (name == "whiskey")
-				entityLiving.addPotionEffect(new EffectInstance(Effects.ABSORPTION, 500, 0, false, true));
-			if (name == "wine")
-				entityLiving.addPotionEffect(new EffectInstance(Effects.REGENERATION, 500, 0, false, true));
+			entityLiving.addPotionEffect(getEffect(name));
 		}
 
 		if (entityLiving == null || !((PlayerEntity) entityLiving).isCreative()) {
@@ -63,6 +48,28 @@ public class AlcoholItem extends BottleItem {
 		}
 
 		return stack;
+	}
+	
+	private EffectInstance getEffect(String name)
+	{
+		switch (name) {
+		case "beer":
+			 return new EffectInstance(Effects.STRENGTH, 500, 0, false, true);
+		case "cauim":
+			 return new EffectInstance(Effects.JUMP_BOOST, 500, 0, false, true);
+		case "cider":
+			 return new EffectInstance(Effects.LUCK, 500, 0, false, true);
+		case "sake":
+			 return new EffectInstance(Effects.SPEED, 500, 0, false, true);
+		case "tiswin":
+			 return new EffectInstance(Effects.HEALTH_BOOST, 500, 0, false, true);
+		case "vodka":
+			 return new EffectInstance(Effects.RESISTANCE, 500, 0, false, true);
+		case "whiskey":
+			 return new EffectInstance(Effects.ABSORPTION, 500, 0, false, true);
+		default:
+			 return new EffectInstance(Effects.REGENERATION, 500, 0, false, true);
+		}
 	}
 
 }

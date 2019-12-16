@@ -9,6 +9,7 @@ import enemeez.simplefarming.items.FoodTier;
 import enemeez.simplefarming.items.GrainItem;
 import enemeez.simplefarming.items.PigItem;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.Foods;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -128,6 +129,7 @@ public class ModItems {
 	public static Item broccoli_cheese_soup;
 	public static Item caesar_salad;
 	public static Item candy;
+	public static Item candy_cane;
 	public static Item carrot_soup;
 	public static Item cassava_cake;
 	public static Item cheeseburger;
@@ -454,11 +456,11 @@ public class ModItems {
 		wine = register("wine", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "wine"));
 
-		chicory_root = register("chicory_root", new CustomSeed(ModBlocks.chicory,
+		chicory_root = register("chicory_root", new BlockNamedItem(ModBlocks.chicory,
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDS)));
 		cumin_seeds = register("cumin_seeds", new CustomSeed(ModBlocks.cumin,
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDS)));
-		marshmallow_root = register("marshmallow_root", new CustomSeed(ModBlocks.marshmallow,
+		marshmallow_root = register("marshmallow_root", new BlockNamedItem(ModBlocks.marshmallow,
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDS)));
 		quinoa_seeds = register("quinoa_seeds", new CustomSeed(ModBlocks.quinoa,
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDS)));
@@ -559,6 +561,8 @@ public class ModItems {
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.CAESAR_SALAD)));
 		candy = register("candy",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CANDY)));
+		candy_cane = register("candy_cane",
+				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.CANDY_CANE)));
 		carrot_soup = register("carrot_soup", new SoupItem(
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.CARROT_SOUP)));
 		cassava_cake = register("cassava_cake",

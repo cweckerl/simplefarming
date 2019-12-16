@@ -7,12 +7,9 @@
 	"block.simplefarming.blueberry_bush": "Кущ чорниці",
 	"block.simplefarming.raspberry_bush": "Кущ малини",
 	"block.simplefarming.strawberry_bush": "Кущ полуниці",
-	
 	"block.simplefarming.oat_hay_block": "Копиця вівса",
 	"block.simplefarming.rye_hay_block": "Копиця жита",
 	"block.simplefarming.rice_hay_block": "Копиця рису",
-	
-
 	"block.simplefarming.cantaloupe_crop": "Паросток мускусної дині",
 	"block.simplefarming.cassava_crop": "Паросток маніоки",
 	"block.simplefarming.corn_crop": "Паросток кукурудзи",
@@ -36,17 +33,13 @@
 	"block.simplefarming.tomato_crop": "Паросток помідор",
 	"block.simplefarming.wild_crop": "Дикий паросток",
 	"block.simplefarming.yam_crop": "Паросток синьої картоплі",
-	
 	"block.simplefarming.grape_plant": "Паросток винограду",
 	"block.simplefarming.grape_block": "Виноград",
 	"block.simplefarming.grape_leaves": "Листя винограду",
 	"block.simplefarming.grape_leaves_ns": "Листя винограду",
 	"block.simplefarming.grape_leaves_we": "Листя винограду",
-	
 	"block.simplefarming.carrot_crop": "Паросток моркви",
 	"block.simplefarming.potato_crop": "Паросток картоплі",
-	
-
 	"item.simplefarming.cantaloupe_seeds": "Насіння мускусної дині",
 	"item.simplefarming.carrot_seeds": "Насіння моркви",
 	"item.simplefarming.cassava_seeds": "Насіння маніоки",
@@ -72,12 +65,9 @@
 	"item.simplefarming.spinach_seeds": "Насіння шпинату",
 	"item.simplefarming.tomato_seeds": "Насіння помідорів",
 	"item.simplefarming.yam_seeds": "Насіння синьої картоплі",
-	
 	"item.simplefarming.cumin_seeds": "Насіння кмину",
 	"item.simplefarming.quinoa_seeds": "Насіння кіної",
-	
 	"item.simplefarming.curry_powder": "Карі",
-	
 	"item.simplefarming.apricot": "Абрикос",
 	"item.simplefarming.banana": "Банани",
 	"item.simplefarming.cherries": "Черешні",
@@ -93,7 +83,6 @@
 	"item.simplefarming.honeydew": "Медова диня",
 	"item.simplefarming.raspberries": "Малина",
 	"item.simplefarming.strawberries": "Полуниця",
-	
 	"item.simplefarming.cassava": "Маніок",
 	"item.simplefarming.corn": "Кукурудза",
 	"item.simplefarming.cucumber": "Огірок",
@@ -114,11 +103,9 @@
 	"item.simplefarming.squash": "Кабачок",
 	"item.simplefarming.tomato": "Помідор",
 	"item.simplefarming.yam": "Синя картопля",
-	
 	"item.simplefarming.kenaf_fiber": "Волокна кенафу",
 	"item.simplefarming.vinegar": "Оцет",
 	"item.simplefarming.noodles": "Локшина",
-	
 	"block.simplefarming.apple_leaves": "Листя яблуні",
 	"block.simplefarming.apricot_leaves": "Листя абрикоса",
 	"block.simplefarming.banana_leaves": "Листя банана",
@@ -127,7 +114,6 @@
 	"block.simplefarming.orange_leaves": "Листя помаранча",
 	"block.simplefarming.pear_leaves": "Листя груші",
 	"block.simplefarming.plum_leaves": "Листя сливи",
-	
 	"block.simplefarming.apple_sapling": "Саджанець яблуні",
 	"block.simplefarming.apricot_sapling": "Саджанець абрикоса",
 	"block.simplefarming.banana_sapling": "Саджанець банана",
@@ -136,13 +122,11 @@
 	"block.simplefarming.orange_sapling": "Саджанець помаранча",
 	"block.simplefarming.pear_sapling": "Саджанець груші",
 	"block.simplefarming.plum_sapling": "Саджанець сливи",
-	
 	"block.simplefarming.fruit_log": "Фруктова колода",
 	"block.simplefarming.fruit_planks": "Фруктові дошки",
 	"block.simplefarming.chocolate_cake": "Шоколадний торт",
 	"block.simplefarming.cheese_block": "Головка сиру",
 	"block.simplefarming.cactus_crop": "Опунція",
-	
 	"item.simplefarming.apple_pie": "Яблуневий пиріг",
 	"item.simplefarming.apricot_pie": "Абрикосовий пиріг",
 	"item.simplefarming.blackberry_pie": "Ожиновий пиріг",
@@ -153,8 +137,7 @@
 	"item.simplefarming.plum_pie": "Сливовий пиріг",
 	"item.simplefarming.raspberry_pie": "Малиновий пиріг",
 	"item.simplefarming.strawberry_pie": "Полуничний пиріг",
-	
-	"item.simplefarming.baked_yam": "Спечена синя картопля",
+	"item.simplefarming.baked_yam": "Печена синя картопля",
 	"item.simplefarming.banana_bread": "Банановий хліб",
 	"item.simplefarming.blt": "БЛТ",
 	"item.simplefarming.caesar_salad": "Салат Цезарь",
@@ -181,18 +164,18 @@
 	"item.simplefarming.hamburger": "Гамбургер",
 	"item.simplefarming.hotdog": "Хот-дог",
 	"item.simplefarming.italian_beef": "Італійська яловичина",
-	"item.simplefarming.jaffa_cake": "Торт Джафа",
+	"item.simplefarming.jaffa_cake": "Бисквітне тістечко",
 	"item.simplefarming.lasagna": "Лазанья",
 	"item.simplefarming.mac_and_cheese": "Макарони з сиром",
 	"item.simplefarming.oatmeal": "Вівсяне борошно",
 	"item.simplefarming.onion_soup": "Суп з цибулі",
 	"item.simplefarming.pancakes": "Млинці",
 	"item.simplefarming.pasta": "Паста",
-	"item.simplefarming.pbj": "PB&J",
+	"item.simplefarming.pbj": "Сендвіч з арахісовим маслом і джемом",
 	"item.simplefarming.peanut_butter_cookie": "Печиво з арахісовим маслом",
 	"item.simplefarming.pickle": "Пікулі",
 	"item.simplefarming.pickled_beetroot": "Маринований буряк",
-	"item.simplefarming.pizza": "Піцца",
+	"item.simplefarming.pizza": "Піца",
 	"item.simplefarming.popcorn": "Попкорн",
 	"item.simplefarming.pulled_pork_sandwich": "Бутерброд зі свининою",
 	"item.simplefarming.radish_soup": "Суп з редиски",
@@ -212,34 +195,27 @@
 	"item.simplefarming.tofu": "Тофу",
 	"item.simplefarming.tomato_soup": "Суп з помідор",
 	"item.simplefarming.vegetable_medley": "Миска овочів",
-
 	"item.simplefarming.oat_bread": "Вівсяний хліб",
 	"item.simplefarming.rice_bread": "Рисовий хліб",
 	"item.simplefarming.rye_bread": "Житній хліб",
-	
 	"item.simplefarming.raisins": "Родзинки",
-	"item.simplefarming.spinach_quinoa_quiche": "Шпинат і квіноя",
+	"item.simplefarming.spinach_quinoa_quiche": "Запіканка зі шпинатом і квіноєю",
 	"item.simplefarming.chicken_noodle_soup": "Суп з локшиною і куркою",
 	"item.simplefarming.squash_soup": "Кабачковий суп",
 	"item.simplefarming.quinoa_salad": "Салат",
 	"item.simplefarming.tofu_scramble": "Пюре з тофу",
-	
 	"item.simplefarming.beef_curry": "Яловичина з карі",
 	"item.simplefarming.chicken_curry": "Курка з карі",
 	"item.simplefarming.mutton_curry": "Баранина з карі",
 	"item.simplefarming.pork_curry": "Свинина з карі",
 	"item.simplefarming.vegetable_curry": "Овочі з карі",
-	
 	"block.simplefarming.pea_crop": "Паросток гороху",
 	"block.simplefarming.cotton_crop": "Паросток бавовни",
 	"block.simplefarming.sweet_potato_crop": "Паросток солодкої картоплі",
 	"block.simplefarming.barley_crop": "Паросток ячміня",
-	
 	"block.simplefarming.sunflower": "Соняшник",
 	"block.simplefarming.cumin": "Кмин",
 	"block.simplefarming.quinoa": "Квіноя",
-	
-	
 	"item.simplefarming.pea_pod": "Стручок гороху",
 	"item.simplefarming.pea_seeds": "Насіння гороху",
 	"item.simplefarming.sweet_potato": "Солодка картопля",
@@ -249,20 +225,19 @@
 	"item.simplefarming.sunflower_seeds": "Насіння соняшника",
 	"item.simplefarming.cotton": "Бавовна",
 	"item.simplefarming.cotton_seeds": "Насіння бавовни",
-	"item.simplefarming.baked_sweet_potato": "Спечина солодка картопля",
+	"item.simplefarming.baked_sweet_potato": "Печена солодка картопля",
 	"item.simplefarming.carrot_soup": "Морквяний суп",
 	"item.simplefarming.pumpkin_soup": "Гарбузовий суп",
 	"item.simplefarming.raw_horse_meat": "Сире коняче мясо",
 	"item.simplefarming.cooked_horse_meat": "Смажене коняче мясо",
 	"item.simplefarming.trail_mix": "Пластівці з сухофруктами",
-	"item.simplefarming.sweet_potato_quinoa_cakes": "Тістечка з солодкою картоплою та квіноєю",
+	"item.simplefarming.sweet_potato_quinoa_cakes": "Тістечко з солодкою картоплою та квіноєю",
 	"item.simplefarming.sausage_barley_soup": "Суп з сосисками та ячмінем",
 	"block.simplefarming.barley_hay_block": "Копиця ячменню",
 	"item.simplefarming.barley_bread": "Ячмінний хліб",
 	"item.simplefarming.pea_soup": "Гороховий суп",
 	"item.simplefarming.fried_rice": "Смажений рис",
 	"item.simplefarming.mushroom_barley": "Гриби та ячмінь",
-	
 	"item.simplefarming.olives": "Оливки",
 	"item.simplefarming.broccoli": "Броколі",
 	"item.simplefarming.zucchini": "Цукіні",
@@ -278,17 +253,22 @@
 	"block.simplefarming.birthday_cake": "Святковий  торт",
 	"block.simplefarming.broccoli_crop": "Стручок броколі",
 	"block.simplefarming.zucchini_crop": "Стручок цукіні",
-	"block.simplefarming.olive_leaves": "Оливкове дерево",
+	"block.simplefarming.olive_leaves": "Оливкове листя",
 	
+	"block.simplefarming.scarecrow": "Опудало",
+	"block.simplefarming.brewing_barrel": "Пивоварна діжка",
+	"item.simplefarming.beer": "Пиво",
+	"item.simplefarming.cider": "Сидр",
+	"item.simplefarming.wine": "Вино",
+	"item.simplefarming.vodka": "Горілка",
+	"item.simplefarming.whiskey": "Віскі",
+	"item.simplefarming.tiswin": "Тисвін",
+	"item.simplefarming.cauim": "Каїм",
+	"item.simplefarming.sake": "Саке",
+	"item.simplefarming.borscht": "Борщ",
+	"item.simplefarming.candy": "Цукерка",
+	"item.simplefarming.jam": "Варення",
 
-	
-	
 	
 	"item.simplefarming.veggie_burger": "Вегетіріаньский бургер"
-	
-	
-	
-
-
-
 }

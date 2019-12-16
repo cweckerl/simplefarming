@@ -39,7 +39,7 @@ public class BerryBushFeature extends Feature<NoFeatureConfig> {
 
 		if (random.nextInt(GenConfig.bush_chance.get()) != 0
 				|| DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
-						|| !DimensionConfig.whitelist.get().contains(world.getDimension().getType().getId()))
+				|| !DimensionConfig.whitelist.get().contains(world.getDimension().getType().getId()))
 			return false;
 		int type = (int) ((Math.random() * 4) + 1);
 		for (int i = 0; i < type; i++) {
@@ -71,17 +71,19 @@ public class BerryBushFeature extends Feature<NoFeatureConfig> {
 	}
 
 	public void generateBush(IWorld world, BlockPos pos, Random random, int type) {
-		if (type == 1)
+		switch (type) {
+		case 1:
 			world.setBlockState(pos,
 					ModBlocks.blackberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 2);
-		if (type == 2)
+		case 2:
 			world.setBlockState(pos,
 					ModBlocks.blueberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 2);
-		if (type == 3)
+		case 3:
 			world.setBlockState(pos,
 					ModBlocks.raspberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 2);
-		if (type == 4)
+		default:
 			world.setBlockState(pos,
 					ModBlocks.strawberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 2);
+		}
 	}
 }

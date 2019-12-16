@@ -128,14 +128,15 @@ public class FoodTier {
 	public static final Food CANDY = (new Food.Builder()).hunger(5).saturation(0.2F).build();
 	public static final Food BORSCHT = (new Food.Builder()).hunger(6).saturation(0.6F).build();
 	
-	public static final Food SQUID_INK_PASTA = (new Food.Builder()).hunger(6).saturation(0.6F).build();
-	public static final Food FISH_AND_CHIPS = (new Food.Builder()).hunger(6).saturation(0.6F).build();
-	public static final Food MARSHMALLOW = (new Food.Builder()).hunger(6).saturation(0.6F).build();
-	public static final Food PAD_THAI = (new Food.Builder()).hunger(6).saturation(0.6F).build();
-	public static final Food POTATO_KNISH = (new Food.Builder()).hunger(6).saturation(0.6F).build();
-	public static final Food CHICORY_GRATIN = (new Food.Builder()).hunger(6).saturation(0.6F).build();
-	public static final Food TURNIP_BEETROOT_GRATIN = (new Food.Builder()).hunger(6).saturation(0.6F).build();
-	public static final Food ICE_CREAM_SUNDAE = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	public static final Food SQUID_INK_PASTA = (new Food.Builder()).hunger(12).saturation(0.6F).build();
+	public static final Food FISH_AND_CHIPS = (new Food.Builder()).hunger(9).saturation(0.8F).build();
+	public static final Food MARSHMALLOW = (new Food.Builder()).hunger(3).saturation(0.2F).build();
+	public static final Food PAD_THAI = (new Food.Builder()).hunger(18).saturation(0.6F).build();
+	public static final Food POTATO_KNISH = (new Food.Builder()).hunger(8).saturation(0.6F).build();
+	public static final Food CHICORY_GRATIN = (new Food.Builder()).hunger(9).saturation(0.6F).build();
+	public static final Food TURNIP_BEETROOT_GRATIN = (new Food.Builder()).hunger(10).saturation(0.6F).build();
+	public static final Food ICE_CREAM_SUNDAE = (new Food.Builder()).hunger(7).saturation(0.3F).build();
+	public static final Food CANDY_CANE = (new Food.Builder()).hunger(6).saturation(0.2F).build();
 
 
 	
