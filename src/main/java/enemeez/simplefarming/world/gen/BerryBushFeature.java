@@ -9,6 +9,7 @@ import enemeez.simplefarming.blocks.CustomBush;
 import enemeez.simplefarming.config.DimensionConfig;
 import enemeez.simplefarming.config.GenConfig;
 import enemeez.simplefarming.init.ModBlocks;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.math.BlockPos;
@@ -71,19 +72,19 @@ public class BerryBushFeature extends Feature<NoFeatureConfig> {
 	}
 
 	public void generateBush(IWorld world, BlockPos pos, Random random, int type) {
+			world.setBlockState(pos, getBush(type), 2);
+	}
+
+	private BlockState getBush(int type) {
 		switch (type) {
 		case 1:
-			world.setBlockState(pos,
-					ModBlocks.blackberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 2);
+			return ModBlocks.blackberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3));
 		case 2:
-			world.setBlockState(pos,
-					ModBlocks.blueberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 2);
+			return ModBlocks.blueberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3));
 		case 3:
-			world.setBlockState(pos,
-					ModBlocks.raspberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 2);
+			return ModBlocks.raspberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3));
 		default:
-			world.setBlockState(pos,
-					ModBlocks.strawberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3)), 2);
+			return ModBlocks.strawberry_bush.getDefaultState().with(CustomBush.AGE, Integer.valueOf(3));
 		}
 	}
 }

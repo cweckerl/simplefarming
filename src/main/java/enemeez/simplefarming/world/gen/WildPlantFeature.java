@@ -9,6 +9,7 @@ import enemeez.simplefarming.blocks.WildPlant;
 import enemeez.simplefarming.config.DimensionConfig;
 import enemeez.simplefarming.config.GenConfig;
 import enemeez.simplefarming.init.ModBlocks;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.math.BlockPos;
@@ -71,17 +72,22 @@ public class WildPlantFeature extends Feature<NoFeatureConfig> {
 		return true;
 	}
 
-	public static void generatePlant(IWorld world, BlockPos pos, Random random, int type) {
+	public void generatePlant(IWorld world, BlockPos pos, Random random, int type) {
+
+		world.setBlockState(pos, getPlant(type), 2);
+
+	}
+
+	public BlockState getPlant(int type) {
 		switch (type) {
 		case 1:
-			world.setBlockState(pos, ModBlocks.cumin.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3)), 2);
+			return ModBlocks.cumin.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3));
 		case 2:
-			world.setBlockState(pos, ModBlocks.quinoa.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3)), 2);
+			return ModBlocks.quinoa.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3));
 		case 3:
-			world.setBlockState(pos, ModBlocks.marshmallow.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3)),
-					2);
+			return ModBlocks.marshmallow.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3));
 		default:
-			world.setBlockState(pos, ModBlocks.chicory.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3)), 2);
+			return ModBlocks.chicory.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3));
 
 		}
 	}

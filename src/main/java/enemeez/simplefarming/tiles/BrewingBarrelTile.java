@@ -21,9 +21,9 @@ public class BrewingBarrelTile extends TileEntity implements IClearable {
 	}
 
 	public void setItem(Item p_195535_1_) {
-			this.inventory = p_195535_1_;
-			capacity++;
-			this.markDirty();
+		this.inventory = p_195535_1_;
+		capacity++;
+		this.markDirty();
 	}
 
 	public void clear() {

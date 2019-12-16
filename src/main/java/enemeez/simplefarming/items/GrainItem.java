@@ -30,7 +30,6 @@ public class GrainItem extends Item {
 						stack.shrink(1);
 					return true;
 				}
-
 			}
 
 			if (entity instanceof SheepEntity) {
@@ -43,7 +42,6 @@ public class GrainItem extends Item {
 					return true;
 				}
 			}
-
 		}
 
 		if (entity.isChild()) {

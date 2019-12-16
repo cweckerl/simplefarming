@@ -41,28 +41,7 @@ public class FruitTreeFeature extends Feature<NoFeatureConfig> {
 
 	public static void generateTree(IWorld world, BlockPos pos, Random random, int verify) {
 		BlockState trunk = ModBlocks.fruit_log.getDefaultState();
-		BlockState leaves = null;
-
-		switch (verify) {
-		case 1:
-			leaves = ModBlocks.apple_leaves.getDefaultState();
-		case 2:
-			leaves = ModBlocks.apricot_leaves.getDefaultState();
-		case 3:
-			leaves = ModBlocks.banana_leaves.getDefaultState();
-		case 4:
-			leaves = ModBlocks.plum_leaves.getDefaultState();
-		case 5:
-			leaves = ModBlocks.orange_leaves.getDefaultState();
-		case 6:
-			leaves = ModBlocks.pear_leaves.getDefaultState();
-		case 7:
-			leaves = ModBlocks.cherry_leaves.getDefaultState();
-		case 8:
-			leaves = ModBlocks.mango_leaves.getDefaultState();
-		default:
-			leaves = ModBlocks.olive_leaves.getDefaultState();
-		}
+		BlockState leaves = getLeaves(verify);
 
 		world.setBlockState(pos.up(0), trunk, 3);
 		for (int i = 1; i < 4; i++) {
@@ -97,5 +76,29 @@ public class FruitTreeFeature extends Feature<NoFeatureConfig> {
 		if (world.getBlockState(pos.up(4)).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(4), leaves, 3);
 
+	}
+	
+	private static BlockState getLeaves(int verify)
+	{
+		switch (verify) {
+		case 1:
+			return ModBlocks.apple_leaves.getDefaultState();
+		case 2:
+			return ModBlocks.apricot_leaves.getDefaultState();
+		case 3:
+			return ModBlocks.banana_leaves.getDefaultState();
+		case 4:
+			return ModBlocks.plum_leaves.getDefaultState();
+		case 5:
+			return ModBlocks.orange_leaves.getDefaultState();
+		case 6:
+			return ModBlocks.pear_leaves.getDefaultState();
+		case 7:
+			return ModBlocks.cherry_leaves.getDefaultState();
+		case 8:
+			return ModBlocks.mango_leaves.getDefaultState();
+		default:
+			return ModBlocks.olive_leaves.getDefaultState();
+		}
 	}
 }

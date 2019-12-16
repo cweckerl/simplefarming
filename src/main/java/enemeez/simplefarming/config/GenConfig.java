@@ -25,7 +25,7 @@ public class GenConfig {
 
 		tree_chance = config.comment(
 				"Chance of fruit trees generating in the overworld. Higher numbers indicate a lower probability (Default: 600)")
-				.defineInRange("Probability of fruit trees generating", 1000, 1, 1000000000);
+				.defineInRange("Probability of fruit trees generating", 1500, 1, 1000000000);
 
 		wild_crop_chance = config.comment(
 				"Chance of wild crops generating in the overworld. Higher numbers indicate a lower probability (Default: 100)")
