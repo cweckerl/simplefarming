@@ -1,4 +1,4 @@
-package enemeez.simplefarming.events.harvest.smart;
+package enemeez.simplefarming.events.harvest.standard;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-public class SmartGrapeHarvest {
+public class GrapeHarvest {
 
 	@SubscribeEvent
 	public void onCropHarvest(RightClickBlock event) {
@@ -31,9 +31,8 @@ public class SmartGrapeHarvest {
 							(ServerWorld) event.getWorld(), event.getPos(),
 							event.getWorld().getTileEntity(event.getPos()));
 					for (int i = 0; i < drops.size(); i++) {
-						if (!event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i)))
-							event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
-									event.getPos().getY(), event.getPos().getZ(), (ItemStack) drops.get(i)));
+						event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
+								event.getPos().getY(), event.getPos().getZ(), (ItemStack) drops.get(i)));
 					}
 					event.getPlayer().addExhaustion(.05F);
 					event.getWorld().playSound((PlayerEntity) null, event.getPos(),

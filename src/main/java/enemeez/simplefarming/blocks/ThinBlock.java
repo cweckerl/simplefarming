@@ -43,6 +43,7 @@ public class ThinBlock extends Block implements IWaterLoggable {
 		}
 	}
 
+	@Override
 	@Nullable
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		IFluidState ifluidstate = context.getWorld().getFluidState(context.getPos());
@@ -50,6 +51,7 @@ public class ThinBlock extends Block implements IWaterLoggable {
 				Boolean.valueOf(ifluidstate.isTagged(FluidTags.WATER) && ifluidstate.getLevel() == 8));
 	}
 
+	@Override
 	@SuppressWarnings("deprecation")
 	public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn,
 			BlockPos currentPos, BlockPos facingPos) {
@@ -62,6 +64,7 @@ public class ThinBlock extends Block implements IWaterLoggable {
 				: super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
 	}
 
+	@Override
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(WATERLOGGED);
 	}
@@ -71,6 +74,7 @@ public class ThinBlock extends Block implements IWaterLoggable {
 		return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
 	}
 
+	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
 		return BOX;
 	}

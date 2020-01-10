@@ -2,7 +2,7 @@ package enemeez.simplefarming.events.harvest.smart;
 
 import java.util.List;
 
-import enemeez.simplefarming.blocks.CustomCactus;
+import enemeez.simplefarming.blocks.growable.OpuntiaBlock;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,12 +21,11 @@ public class SmartCactusCropHarvest {
 	public void onCropHarvest(RightClickBlock event) {
 		if (event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) {
 			List<ItemStack> drops;
-			if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof CustomCactus) {
-				if (!event.getPlayer().getHeldItemMainhand().isEmpty())
-					event.setCanceled(true);
-				CustomCactus cactus = (CustomCactus) event.getWorld().getBlockState(event.getPos()).getBlock();
-
+			if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof OpuntiaBlock) {
+				OpuntiaBlock cactus = (OpuntiaBlock) event.getWorld().getBlockState(event.getPos()).getBlock();
 				if (cactus.isMaxAge(event.getWorld().getBlockState(event.getPos()))) {
+					if (!event.getPlayer().getHeldItemMainhand().isEmpty())
+						event.setCanceled(true);
 					if (!event.getWorld().isRemote) {
 						drops = Block.getDrops(event.getWorld().getBlockState(event.getPos()),
 								(ServerWorld) event.getWorld(), event.getPos(),
@@ -45,7 +44,7 @@ public class SmartCactusCropHarvest {
 								SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F,
 								0.8F + event.getWorld().rand.nextFloat() * 0.4F);
 						event.getWorld().setBlockState(event.getPos(), event.getWorld().getBlockState(event.getPos())
-								.with(CustomCactus.AGE, Integer.valueOf(0)), 2);
+								.with(OpuntiaBlock.AGE, Integer.valueOf(0)), 2);
 					}
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
 				}

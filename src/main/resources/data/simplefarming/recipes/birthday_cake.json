@@ -3,7 +3,7 @@
 	
 	"pattern":
 	[
-		"CTC",
+		"LTL",
 		"SES",
 		"GGG"
 	],
@@ -14,7 +14,7 @@
 		"E": { "tag": "forge:eggs"},
 		"S": { "item": "minecraft:sugar"},
 		"T": { "item": "minecraft:torch"},
-		"C": { "item": "simplefarming:chocolate"}
+		"L": { "item": "simplefarming:sprinkles"}
 
 	},
 	

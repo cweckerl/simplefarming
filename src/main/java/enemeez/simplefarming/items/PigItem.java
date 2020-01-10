@@ -14,6 +14,7 @@ public class PigItem extends Item {
 
 	}
 
+	@Override
 	public boolean itemInteractionForEntity(ItemStack itemstack, PlayerEntity player,
 			LivingEntity entity, Hand hand) {
 

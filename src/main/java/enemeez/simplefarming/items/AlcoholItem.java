@@ -20,6 +20,7 @@ public class AlcoholItem extends BottleItem {
 		this.name = name;
 	}
 
+	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
 		if (!worldIn.isRemote)
 			entityLiving.curePotionEffects(stack);

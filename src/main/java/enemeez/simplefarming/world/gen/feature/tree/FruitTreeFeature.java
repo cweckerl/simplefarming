@@ -8,9 +8,11 @@ import com.mojang.datafixers.Dynamic;
 import enemeez.simplefarming.config.DimensionConfig;
 import enemeez.simplefarming.config.GenConfig;
 import enemeez.simplefarming.init.ModBlocks;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.tags.BlockTags;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationSettings;
@@ -30,7 +32,7 @@ public class FruitTreeFeature extends Feature<NoFeatureConfig> {
 				|| !DimensionConfig.whitelist.get().contains(world.getDimension().getType().getId()))
 			return false;
 
-		if (world.getBlockState(pos.down()).getBlock().isIn(BlockTags.DIRT_LIKE)
+		if (isValidGround(world.getBlockState(pos.down()), world, pos)
 				&& world.getBlockState(pos).getMaterial().isReplaceable()) {
 			int type = (int) ((Math.random() * 9) + 1);
 			generateTree(world, pos, random, type);
@@ -77,9 +79,8 @@ public class FruitTreeFeature extends Feature<NoFeatureConfig> {
 			world.setBlockState(pos.up(4), leaves, 3);
 
 	}
-	
-	private static BlockState getLeaves(int verify)
-	{
+
+	private static BlockState getLeaves(int verify) {
 		switch (verify) {
 		case 1:
 			return ModBlocks.apple_leaves.getDefaultState();
@@ -100,5 +101,11 @@ public class FruitTreeFeature extends Feature<NoFeatureConfig> {
 		default:
 			return ModBlocks.olive_leaves.getDefaultState();
 		}
+	}
+
+	private boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+		Block block = state.getBlock();
+		return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT
+				|| block == Blocks.PODZOL;
 	}
 }

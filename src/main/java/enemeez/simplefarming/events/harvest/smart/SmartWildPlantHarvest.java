@@ -2,7 +2,7 @@ package enemeez.simplefarming.events.harvest.smart;
 
 import java.util.List;
 
-import enemeez.simplefarming.blocks.WildPlant;
+import enemeez.simplefarming.blocks.growable.PlantBlock;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,18 +17,17 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBloc
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class SmartWildPlantHarvest {
-	
+
 	@SubscribeEvent
 	public void onCropHarvest(RightClickBlock event) {
 		if (event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) {
 			List<ItemStack> drops;
-			if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof WildPlant) {
-				if (!event.getPlayer().getHeldItemMainhand().isEmpty())
-					event.setCanceled(true);
-				WildPlant plant = (WildPlant) event.getWorld().getBlockState(event.getPos()).getBlock();
-
+			if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof PlantBlock) {
+				PlantBlock plant = (PlantBlock) event.getWorld().getBlockState(event.getPos()).getBlock();
 				if (plant.isMaxAge(event.getWorld().getBlockState(event.getPos()))) {
 					if (!event.getWorld().isRemote) {
+						if (!event.getPlayer().getHeldItemMainhand().isEmpty())
+							event.setCanceled(true);
 						drops = Block.getDrops(event.getWorld().getBlockState(event.getPos()),
 								(ServerWorld) event.getWorld(), event.getPos(),
 								event.getWorld().getTileEntity(event.getPos()));

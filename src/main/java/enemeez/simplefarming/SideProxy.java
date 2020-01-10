@@ -3,18 +3,11 @@ package enemeez.simplefarming;
 import enemeez.simplefarming.config.Config;
 import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.config.RightClickConfig;
-import enemeez.simplefarming.events.DoubleCropBreak;
 import enemeez.simplefarming.events.IntoxicationTracker;
 import enemeez.simplefarming.events.LootTableHandler;
 import enemeez.simplefarming.events.ScarecrowEvent;
 import enemeez.simplefarming.events.TemptationTask;
-import enemeez.simplefarming.events.harvest.BerryBushHarvest;
-import enemeez.simplefarming.events.harvest.CactusCropHarvest;
-import enemeez.simplefarming.events.harvest.CropHarvest;
-import enemeez.simplefarming.events.harvest.DoubleCropHarvest;
-import enemeez.simplefarming.events.harvest.FruitLeavesHarvest;
-import enemeez.simplefarming.events.harvest.GrapeHarvest;
-import enemeez.simplefarming.events.harvest.WildPlantHarvest;
+import enemeez.simplefarming.events.harvest.DoubleCropBreak;
 import enemeez.simplefarming.events.harvest.smart.SmartBerryBushHarvest;
 import enemeez.simplefarming.events.harvest.smart.SmartCactusCropHarvest;
 import enemeez.simplefarming.events.harvest.smart.SmartCropHarvest;
@@ -22,16 +15,22 @@ import enemeez.simplefarming.events.harvest.smart.SmartDoubleCropHarvest;
 import enemeez.simplefarming.events.harvest.smart.SmartFruitLeavesHarvest;
 import enemeez.simplefarming.events.harvest.smart.SmartGrapeHarvest;
 import enemeez.simplefarming.events.harvest.smart.SmartWildPlantHarvest;
+import enemeez.simplefarming.events.harvest.standard.BerryBushHarvest;
+import enemeez.simplefarming.events.harvest.standard.CactusCropHarvest;
+import enemeez.simplefarming.events.harvest.standard.CropHarvest;
+import enemeez.simplefarming.events.harvest.standard.DoubleCropHarvest;
+import enemeez.simplefarming.events.harvest.standard.FruitLeavesHarvest;
+import enemeez.simplefarming.events.harvest.standard.GrapeHarvest;
+import enemeez.simplefarming.events.harvest.standard.WildPlantHarvest;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
 import enemeez.simplefarming.init.ModWorldGen;
-import enemeez.simplefarming.items.CompostItems;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.placement.IPlacementConfig;
-import net.minecraft.world.gen.placement.Placement;
-import net.minecraftforge.common.BiomeDictionary;
+import enemeez.simplefarming.integration.CompostItems;
+import enemeez.simplefarming.integration.FlammableBlocks;
+import enemeez.simplefarming.world.gen.SimpleGeneration;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
@@ -43,7 +42,6 @@ import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class SideProxy {
 	SideProxy() {
@@ -100,49 +98,9 @@ public class SideProxy {
 			if (RightClickConfig.plant_right_click.get())
 				MinecraftForge.EVENT_BUS.register(new SmartWildPlantHarvest());
 		}
-
-		if (ModWorldGen.fruit_tree != null) {
-			for (Biome biome : ForgeRegistries.BIOMES) {
-				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-						Biome.createDecoratedFeature(ModWorldGen.fruit_tree, IFeatureConfig.NO_FEATURE_CONFIG,
-								Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
-			}
-		}
-
-		if (ModWorldGen.berry_bush != null) {
-			for (Biome biome : ForgeRegistries.BIOMES) {
-				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-						Biome.createDecoratedFeature(ModWorldGen.berry_bush, IFeatureConfig.NO_FEATURE_CONFIG,
-								Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
-			}
-		}
-
-		if (ModWorldGen.wild_crop != null) {
-			for (Biome biome : ForgeRegistries.BIOMES) {
-				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-						Biome.createDecoratedFeature(ModWorldGen.wild_crop, IFeatureConfig.NO_FEATURE_CONFIG,
-								Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
-			}
-		}
-		if (ModWorldGen.cactus_crop != null) {
-			BiomeDictionary.getBiomes(BiomeDictionary.Type.DRY).forEach((biome) -> {
-				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-						Biome.createDecoratedFeature(ModWorldGen.cactus_crop, IFeatureConfig.NO_FEATURE_CONFIG,
-								Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
-			});
-
-		}
-
-		if (ModWorldGen.wild_plant != null) {
-			for (Biome biome : ForgeRegistries.BIOMES) {
-				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-						Biome.createDecoratedFeature(ModWorldGen.wild_plant, IFeatureConfig.NO_FEATURE_CONFIG,
-								Placement.DARK_OAK_TREE, IPlacementConfig.NO_PLACEMENT_CONFIG));
-			}
-		}
-		
+		SimpleGeneration.registerWorldGen();
+		FlammableBlocks.registerFlammable();
 		CompostItems.register();
-
 	}
 
 	private static void enqueueIMC(final InterModEnqueueEvent event) {
@@ -160,8 +118,33 @@ public class SideProxy {
 		}
 
 		private static void clientSetup(FMLClientSetupEvent event) {
+			Block[] blocks = { ModBlocks.apple_sapling, ModBlocks.apricot_sapling, ModBlocks.banana_sapling,
+					ModBlocks.cherry_sapling, ModBlocks.mango_sapling, ModBlocks.olive_sapling,
+					ModBlocks.orange_sapling, ModBlocks.plum_sapling, ModBlocks.pear_sapling, ModBlocks.grape_block,
+					ModBlocks.wild_crop, ModBlocks.chicory, ModBlocks.cumin, ModBlocks.marshmallow, ModBlocks.quinoa,
+					ModBlocks.sunflower, ModBlocks.barley_crop, ModBlocks.broccoli_crop, ModBlocks.cactus_crop,
+					ModBlocks.cantaloupe_crop, ModBlocks.carrot_crop, ModBlocks.cassava_crop, ModBlocks.corn_crop,
+					ModBlocks.cotton_crop, ModBlocks.cucumber_crop, ModBlocks.eggplant_crop, ModBlocks.honeydew_crop,
+					ModBlocks.ginger_crop, ModBlocks.kenaf_crop, ModBlocks.lettuce_crop, ModBlocks.oat_crop,
+					ModBlocks.onion_crop, ModBlocks.peanut_crop, ModBlocks.pea_crop, ModBlocks.pepper_crop,
+					ModBlocks.potato_crop, ModBlocks.radish_crop, ModBlocks.rice_crop, ModBlocks.rye_crop,
+					ModBlocks.sorghum_crop, ModBlocks.soybean_crop, ModBlocks.spinach_crop, ModBlocks.squash_crop,
+					ModBlocks.sweet_potato_crop, ModBlocks.tomato_crop, ModBlocks.turnip_crop, ModBlocks.yam_crop,
+					ModBlocks.zucchini_crop };
+			Block[] leaves = { ModBlocks.blackberry_bush, ModBlocks.blueberry_bush, ModBlocks.raspberry_bush,
+					ModBlocks.strawberry_bush, ModBlocks.apple_leaves, ModBlocks.apricot_leaves,
+					ModBlocks.banana_leaves, ModBlocks.cherry_leaves, ModBlocks.mango_leaves, ModBlocks.olive_leaves,
+					ModBlocks.orange_leaves, ModBlocks.plum_leaves, ModBlocks.pear_leaves, ModBlocks.grape_leaves,
+					ModBlocks.grape_leaves_base };
+			for (Block block : blocks) {
+				RenderTypeLookup.setRenderLayer(block, RenderType.func_228643_e_());
+			}
 
+			for (Block block : leaves) {
+				RenderTypeLookup.setRenderLayer(block, RenderType.func_228641_d_());
+			}
 		}
+
 	}
 
 	static class Server extends SideProxy {

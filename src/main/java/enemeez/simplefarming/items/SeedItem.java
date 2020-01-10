@@ -10,12 +10,13 @@ import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 
-public class CustomSeed extends BlockNamedItem {
+public class SeedItem extends BlockNamedItem {
 
-	public CustomSeed(Block blockIn, Properties properties) {
+	public SeedItem(Block blockIn, Properties properties) {
 		super(blockIn, properties);
 	}
 
+	@Override
 	public boolean itemInteractionForEntity(ItemStack itemstack, PlayerEntity player,
 			LivingEntity entity, Hand hand) {
 

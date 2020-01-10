@@ -1,4 +1,4 @@
-package enemeez.simplefarming.blocks;
+package enemeez.simplefarming.blocks.growable;
 
 import java.util.Random;
 
@@ -23,28 +23,30 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class GrapeLeaves extends BushBlock implements IGrowable {
+public class GrapeLeavesBlock extends BushBlock implements IGrowable {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
 	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 
-	public GrapeLeaves(Block.Properties p_i49971_1_) {
+	public GrapeLeavesBlock(Block.Properties p_i49971_1_) {
 		super(p_i49971_1_);
 		this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
 	}
-
-	@OnlyIn(Dist.CLIENT)
+	
+	@Override
 	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
 		return new ItemStack(ModItems.grapes);
 	}
 
+	@Override
 	@SuppressWarnings("deprecation")
-	public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
-		super.tick(state, worldIn, pos, random);
+	public void func_225534_a_(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+		super.func_225534_a_(state, worldIn, pos, random);
 		int i = state.get(AGE);
-		if (i < 7 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
+		if (i < 7 && random.nextInt(5) == 0 && worldIn.func_226659_b_(pos.up(), 0) >= 9) {
 			worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
 		}
 
@@ -55,32 +57,33 @@ public class GrapeLeaves extends BushBlock implements IGrowable {
 
 		if (i == 7 && worldIn.getBlockState(pos.east()).getBlock() instanceof FenceBlock
 				&& worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant) {
-			worldIn.setBlockState(pos.east(),
-					ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0)).with(FACING, Direction.NORTH),
-					2);
+			worldIn.setBlockState(pos.east(), ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0))
+					.with(FACING, Direction.NORTH), 2);
 		}
 
 		if (i == 7 && worldIn.getBlockState(pos.west()).getBlock() instanceof FenceBlock
 				&& worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant) {
-			worldIn.setBlockState(pos.west(),
-					ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0)).with(FACING, Direction.NORTH),
-					2);
+			worldIn.setBlockState(pos.west(), ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0))
+					.with(FACING, Direction.NORTH), 2);
 		}
 
 		if (i == 7 && worldIn.getBlockState(pos.north()).getBlock() instanceof FenceBlock
 				&& worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant) {
-			worldIn.setBlockState(pos.north(), ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0))
-					.with(FACING, Direction.EAST), 2);
+			worldIn.setBlockState(pos.north(),
+					ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0)).with(FACING, Direction.EAST),
+					2);
 		}
 
 		if (i == 7 && worldIn.getBlockState(pos.south()).getBlock() instanceof FenceBlock
 				&& worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant) {
-			worldIn.setBlockState(pos.south(), ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0))
-					.with(FACING, Direction.EAST), 2);
+			worldIn.setBlockState(pos.south(),
+					ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0)).with(FACING, Direction.EAST),
+					2);
 		}
 
 	}
 
+	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		if (worldIn.isRainingAt(pos.up())) {
@@ -97,17 +100,17 @@ public class GrapeLeaves extends BushBlock implements IGrowable {
 		}
 	}
 
+	@Override
 	protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
 		Block block = state.getBlock();
 		return block == ModBlocks.grape_plant;
 	}
 
+	@Override
 	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
-
 		if (state.getBlock() == ModBlocks.grape_leaves_base
 				&& world.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant)
 			return true;
-
 		if (state.getBlock() == ModBlocks.grape_leaves
 				&& (world.getBlockState(pos.east()).getBlock() == ModBlocks.grape_leaves_base
 
@@ -115,36 +118,38 @@ public class GrapeLeaves extends BushBlock implements IGrowable {
 
 						|| world.getBlockState(pos.north()).getBlock() == ModBlocks.grape_leaves_base
 
-						|| world.getBlockState(pos.south()).getBlock() == ModBlocks.grape_leaves_base)
-
-		)
+						|| world.getBlockState(pos.south()).getBlock() == ModBlocks.grape_leaves_base))
 			return true;
-
 		return false;
-
 	}
 
+	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().rotateY());
 	}
 
+	@Override
 	public BlockState rotate(BlockState state, Rotation rot) {
 		return state.with(FACING, rot.rotate(state.get(FACING)));
 	}
 
+	@Override
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(AGE).add(FACING);
 	}
 
+	@Override
 	public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
 		return state.get(AGE) < 7;
 	}
 
+	@Override
 	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
 		return true;
 	}
 
-	public void grow(World worldIn, Random rand, BlockPos pos, BlockState state) {
+	@Override
+	public void func_225535_a_(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
 		int i = Math.min(7, state.get(AGE) + 1);
 		worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i)), 2);
 	}

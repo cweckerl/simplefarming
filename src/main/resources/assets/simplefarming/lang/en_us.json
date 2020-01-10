@@ -265,7 +265,6 @@
 	"item.simplefarming.borscht": "Borscht",
 	"item.simplefarming.candy": "Candy",
 	"item.simplefarming.jam": "Jam",
-
 	"item.simplefarming.turnip": "Turnip",
 	"item.simplefarming.turnip_seeds": "Turnip Seeds",
 	"item.simplefarming.chicory_root": "Chicory Root",
@@ -282,6 +281,9 @@
 	"block.simplefarming.turnip_crop": "Turnip Crop",
 	"block.simplefarming.marshmallow": "Marshmallow",
 	"block.simplefarming.chicory": "Chicory",
+
+	"block.simplefarming.grape_leaves_base": "Grape Leaves",
+	"item.simplefarming.sprinkles": "Sprinkles",
 	
 
 	"item.simplefarming.veggie_burger": "Veggie Burger"

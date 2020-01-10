@@ -1,4 +1,4 @@
-package enemeez.simplefarming.items;
+package enemeez.simplefarming.integration;
 
 import net.minecraft.item.Food;
 import net.minecraft.potion.EffectInstance;
@@ -80,7 +80,7 @@ public class FoodTier {
 			.effect(new EffectInstance(Effects.HUNGER, 300, 0), 0.3F).fastToEat().meat().build();
 	public static final Food RAW_SAUSAGE = (new Food.Builder()).hunger(2).saturation(0.3F).fastToEat().meat().build();
 	public static final Food RICE_BOWL = (new Food.Builder()).hunger(3).saturation(0.6F).build();
-	public static final Food SALAD = (new Food.Builder()).hunger(6).saturation(0.6F).build();
+	public static final Food SALAD = (new Food.Builder()).hunger(12).saturation(0.6F).build();
 	public static final Food SANDWICH = (new Food.Builder()).hunger(16).saturation(0.6F).build();
 	public static final Food SPAGHETTI = (new Food.Builder()).hunger(10).saturation(0.6F).build();
 	public static final Food SPINACH_MUSHROOM_QUICHE = (new Food.Builder()).hunger(10).saturation(0.6F).build();
@@ -137,6 +137,9 @@ public class FoodTier {
 	public static final Food TURNIP_BEETROOT_GRATIN = (new Food.Builder()).hunger(10).saturation(0.6F).build();
 	public static final Food ICE_CREAM_SUNDAE = (new Food.Builder()).hunger(7).saturation(0.3F).build();
 	public static final Food CANDY_CANE = (new Food.Builder()).hunger(6).saturation(0.2F).build();
+	
+	public static final Food GUMBO = (new Food.Builder()).hunger(24).saturation(0.6F).build();
+
 
 
 	

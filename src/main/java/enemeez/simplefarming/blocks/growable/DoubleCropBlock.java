@@ -1,4 +1,4 @@
-package enemeez.simplefarming.blocks;
+package enemeez.simplefarming.blocks.growable;
 
 import java.util.Random;
 
@@ -15,36 +15,40 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
-public class DoubleCrop extends CropsBlock {
+public class DoubleCropBlock extends CropsBlock {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
 	private String name;
 
-	public DoubleCrop(Block.Properties builder, String name) {
+	public DoubleCropBlock(Block.Properties builder, String name) {
 		super(builder);
 		this.name = name;
 		this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
 	}
 
+	@Override
 	protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
 		return state.getBlock() instanceof FarmlandBlock;
 
 	}
 
+	@Override
 	public int getMaxAge() {
 		return 6;
 	}
 
+	@Override
 	public int getAge(BlockState state) {
 		return state.get(this.getAgeProperty());
 	}
-
-	public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
-		super.tick(state, worldIn, pos, random);
+	
+	@Override
+	public void func_225534_a_(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+		super.func_225534_a_(state, worldIn, pos, random);
 		if (!worldIn.isAreaLoaded(pos, 1))
 			return;
-		if (worldIn.getLightSubtracted(pos, 0) >= 9) {
+		if (worldIn.func_226659_b_(pos, 0) >= 9) {
 			int i = this.getAge(state);
 			if (i < 7) {
 				float f = getGrowthChance(this, worldIn, pos);
@@ -61,14 +65,14 @@ public class DoubleCrop extends CropsBlock {
 		}
 
 	}
-
+	
+	@Override
 	public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-		return (worldIn.getLightSubtracted(pos, 0) >= 8 || worldIn.isSkyLightMax(pos)) && checker(state, worldIn, pos);
+		return (worldIn.func_226659_b_(pos, 0) >= 8 || worldIn.func_226660_f_(pos)) && placementChecker(state, worldIn, pos);
 	}
 
-	public boolean checker(BlockState state, IWorldReader worldIn, BlockPos pos) {
+	private boolean placementChecker(BlockState state, IWorldReader worldIn, BlockPos pos) {
 		BlockState block = worldIn.getBlockState(pos.down());
-
 		if (block.getBlock() == Blocks.FARMLAND)
 			return true;
 		if (block == this.withAge(6) && !worldIn.getBlockState(pos.down(3)).getBlock().equals(Blocks.FARMLAND))
@@ -77,6 +81,7 @@ public class DoubleCrop extends CropsBlock {
 			return false;
 	}
 
+	@Override
 	protected IItemProvider getSeedsItem() {
 		switch (name) {
 		case "corn":
@@ -88,6 +93,7 @@ public class DoubleCrop extends CropsBlock {
 		}
 	}
 
+	@Override
 	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
 		switch (name) {
 		case "corn":

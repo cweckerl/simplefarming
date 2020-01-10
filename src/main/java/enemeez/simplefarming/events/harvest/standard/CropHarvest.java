@@ -1,10 +1,10 @@
-package enemeez.simplefarming.events.harvest;
+package enemeez.simplefarming.events.harvest.standard;
 
 import java.lang.reflect.Method;
 import java.util.List;
 
 import enemeez.simplefarming.SimpleFarming;
-import enemeez.simplefarming.blocks.DoubleCrop;
+import enemeez.simplefarming.blocks.growable.DoubleCropBlock;
 import enemeez.simplefarming.config.RightClickConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -49,11 +49,12 @@ public class CropHarvest {
 		if (event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) {
 			List<ItemStack> drops;
 			if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof CropsBlock
-					&& !(event.getWorld().getBlockState(event.getPos()).getBlock() instanceof DoubleCrop)) {
-				if (!event.getPlayer().getHeldItemMainhand().isEmpty())
-					event.setCanceled(true); // prevents blocks from being placed
+					&& !(event.getWorld().getBlockState(event.getPos()).getBlock() instanceof DoubleCropBlock)) {
+
 				CropsBlock crop = (CropsBlock) event.getWorld().getBlockState(event.getPos()).getBlock();
 				if (crop.isMaxAge(event.getWorld().getBlockState(event.getPos()))) {
+					if (!event.getPlayer().getHeldItemMainhand().isEmpty())
+						event.setCanceled(true); // prevents blocks from being placed
 					if (!event.getWorld().isRemote) {
 						drops = Block.getDrops(event.getWorld().getBlockState(event.getPos()),
 								(ServerWorld) event.getWorld(), event.getPos(),
@@ -88,12 +89,11 @@ public class CropHarvest {
 
 			if (RightClickConfig.crop_right_click.get())
 				if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof NetherWartBlock) {
-					if (!event.getPlayer().getHeldItemMainhand().isEmpty())
-						event.setCanceled(true);
 					NetherWartBlock nether = (NetherWartBlock) event.getWorld().getBlockState(event.getPos())
 							.getBlock();
-
 					if (event.getWorld().getBlockState(event.getPos()).get(NetherWartBlock.AGE) == 3) {
+						if (!event.getPlayer().getHeldItemMainhand().isEmpty())
+							event.setCanceled(true);
 						if (!event.getWorld().isRemote) {
 							drops = Block.getDrops(event.getWorld().getBlockState(event.getPos()),
 									(ServerWorld) event.getWorld(), event.getPos(),

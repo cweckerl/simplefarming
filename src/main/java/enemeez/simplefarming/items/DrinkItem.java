@@ -15,6 +15,7 @@ public class DrinkItem extends BottleItem{
 		super(builder);
 	}
 
+	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
 		if (!worldIn.isRemote)
 			entityLiving.curePotionEffects(stack);

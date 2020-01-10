@@ -20,6 +20,7 @@ public class BottleItem extends Item {
 		super(builder);
 	}
 
+	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
 		if (!worldIn.isRemote)
 			entityLiving.curePotionEffects(stack);
@@ -50,14 +51,17 @@ public class BottleItem extends Item {
 		return stack;
 	}
 
+	@Override
 	public int getUseDuration(ItemStack stack) {
 		return 32;
 	}
 
+	@Override
 	public UseAction getUseAction(ItemStack stack) {
 		return UseAction.DRINK;
 	}
 
+	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
 		playerIn.setActiveHand(handIn);
 		return new ActionResult<>(ActionResultType.SUCCESS, playerIn.getHeldItem(handIn));

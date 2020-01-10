@@ -1,4 +1,4 @@
-package enemeez.simplefarming.items;
+package enemeez.simplefarming.integration;
 
 import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.ComposterBlock;
@@ -193,15 +193,17 @@ public class CompostItems {
 		
 		ComposterBlock.CHANCES.put(ModItems.candy, 1.0F);
 		
-		ComposterBlock.CHANCES.put(ModItems.fish_and_chips, 1.0F);
+		ComposterBlock.CHANCES.put(ModItems.fish_and_chips, 0.85F);
 		ComposterBlock.CHANCES.put(ModItems.potato_knish, 1.0F);
 		ComposterBlock.CHANCES.put(ModItems.pad_thai, 1.0F);
 		ComposterBlock.CHANCES.put(ModItems.squid_ink_pasta, 1.0F);
-		ComposterBlock.CHANCES.put(ModItems.marshmallow, 1.0F);
+		ComposterBlock.CHANCES.put(ModItems.marshmallow, 0.85F);
 		ComposterBlock.CHANCES.put(ModItems.turnip_beetroot_gratin, 1.0F);
 		ComposterBlock.CHANCES.put(ModItems.chicory_gratin, 1.0F);
-		ComposterBlock.CHANCES.put(ModItems.ice_cream_sundae, 1.0F);
-		ComposterBlock.CHANCES.put(ModItems.candy_cane, 1.0F);
+		ComposterBlock.CHANCES.put(ModItems.ice_cream_sundae, 0.85F);
+		ComposterBlock.CHANCES.put(ModItems.candy_cane, 0.85F);
+		
+		ComposterBlock.CHANCES.put(ModItems.sprinkles, 0.3F);
 
 	}
 

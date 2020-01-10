@@ -5,14 +5,15 @@ import java.util.function.Function;
 
 import com.mojang.datafixers.Dynamic;
 
-import enemeez.simplefarming.blocks.WildPlant;
+import enemeez.simplefarming.blocks.growable.PlantBlock;
 import enemeez.simplefarming.config.DimensionConfig;
 import enemeez.simplefarming.config.GenConfig;
 import enemeez.simplefarming.init.ModBlocks;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationSettings;
@@ -24,8 +25,8 @@ public class WildPlantFeature extends Feature<NoFeatureConfig> {
 		super(configFactory);
 	}
 
-	public boolean check(IWorld world, BlockPos pos) {
-		if (world.getBlockState(pos.down()).getBlock().isIn(BlockTags.DIRT_LIKE)
+	private boolean check(IWorld world, BlockPos pos) {
+		if (isValidGround(world.getBlockState(pos.down()), world, pos)
 				&& world.getBlockState(pos).getMaterial().isReplaceable()
 				&& world.getBlockState(pos) != Blocks.WATER.getDefaultState()
 				&& world.getBlockState(pos) != Blocks.LAVA.getDefaultState())
@@ -37,7 +38,6 @@ public class WildPlantFeature extends Feature<NoFeatureConfig> {
 	@Override
 	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random,
 			BlockPos pos, NoFeatureConfig config) {
-
 		if (random.nextInt(GenConfig.wild_plant_chance.get()) != 0
 				|| DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
 				|| !DimensionConfig.whitelist.get().contains(world.getDimension().getType().getId()))
@@ -81,14 +81,20 @@ public class WildPlantFeature extends Feature<NoFeatureConfig> {
 	public BlockState getPlant(int type) {
 		switch (type) {
 		case 1:
-			return ModBlocks.cumin.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3));
+			return ModBlocks.cumin.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3));
 		case 2:
-			return ModBlocks.quinoa.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3));
+			return ModBlocks.quinoa.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3));
 		case 3:
-			return ModBlocks.marshmallow.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3));
+			return ModBlocks.marshmallow.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3));
 		default:
-			return ModBlocks.chicory.getDefaultState().with(WildPlant.AGE, Integer.valueOf(3));
+			return ModBlocks.chicory.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3));
 
 		}
+	}
+
+	private boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+		Block block = state.getBlock();
+		return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT
+				|| block == Blocks.PODZOL;
 	}
 }

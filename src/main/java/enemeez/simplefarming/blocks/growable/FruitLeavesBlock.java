@@ -1,10 +1,11 @@
-package enemeez.simplefarming.blocks;
+package enemeez.simplefarming.blocks.growable;
 
 import java.util.Random;
 
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.IGrowable;
@@ -23,19 +24,25 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class FruitLeaves extends BushBlock implements IGrowable {
+public class FruitLeavesBlock extends BushBlock implements IGrowable {
 	private String name;
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
 
-	public FruitLeaves(Block.Properties p_i49971_1_, String name) {
+	public FruitLeavesBlock(Block.Properties p_i49971_1_, String name) {
 		super(p_i49971_1_);
 		this.name = name;
 		this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
 	}
 
+	public BlockRenderType getRenderType(BlockState state) {
+		return BlockRenderType.MODEL;
+	}
+
+	@Override
 	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
 		switch (name) {
 		case "apple":
@@ -82,37 +89,43 @@ public class FruitLeaves extends BushBlock implements IGrowable {
 		}
 	}
 
+	@Override
 	public int getOpacity(BlockState state, IBlockReader worldIn, BlockPos pos) {
 		return 1;
 	}
 
+	@Override
 	@SuppressWarnings("deprecation")
-	public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
-		super.tick(state, worldIn, pos, random);
+	public void func_225534_a_(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+		super.func_225534_a_(state, worldIn, pos, random);
 		int i = state.get(AGE);
-		if (i < 7 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
+		if (i < 7 && random.nextInt(5) == 0 && worldIn.func_226659_b_(pos.up(), 0) >= 9) {
 			worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
 		}
-
 	}
 
+	@Override
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(AGE);
 	}
 
+	@Override
 	public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
 		return state.get(AGE) < 7;
 	}
 
+	@Override
 	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
 		return true;
 	}
 
-	public void grow(World worldIn, Random rand, BlockPos pos, BlockState state) {
+	@Override
+	public void func_225535_a_(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
 		int i = Math.min(7, state.get(AGE) + 1);
 		worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i)), 2);
 	}
 
+	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		if (worldIn.isRainingAt(pos.up())) {
@@ -133,7 +146,8 @@ public class FruitLeaves extends BushBlock implements IGrowable {
 		return false;
 	}
 
-	public boolean isSolid(BlockState state) {
+	@Override
+	public boolean func_229869_c_(BlockState p_229869_1_, IBlockReader p_229869_2_, BlockPos p_229869_3_) {
 		return false;
 	}
 
@@ -141,14 +155,15 @@ public class FruitLeaves extends BushBlock implements IGrowable {
 		return state.get(AGE) == 7;
 	}
 
+	@Override
 	public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
 		if (entityIn instanceof LivingEntity && entityIn.getType() != EntityType.FOX) {
 			entityIn.setMotionMultiplier(state, new Vec3d((double) 0.8F, 0.75D, (double) 0.8F));
 		}
 	}
 
+	@Override
 	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
-
 		BlockPos down = pos.down();
 		BlockPos up = pos.up();
 		BlockPos north = pos.north();
@@ -161,7 +176,6 @@ public class FruitLeaves extends BushBlock implements IGrowable {
 
 		BlockPos northeast = pos.north().east();
 		BlockPos northwest = pos.north().west();
-
 		if (world.getBlockState(down).equals(ModBlocks.fruit_log.getDefaultState())
 				|| world.getBlockState(up).equals(ModBlocks.fruit_log.getDefaultState())
 				|| world.getBlockState(north).equals(ModBlocks.fruit_log.getDefaultState())
@@ -172,9 +186,7 @@ public class FruitLeaves extends BushBlock implements IGrowable {
 				|| world.getBlockState(southwest).equals(ModBlocks.fruit_log.getDefaultState())
 				|| world.getBlockState(northeast).equals(ModBlocks.fruit_log.getDefaultState())
 				|| world.getBlockState(northwest).equals(ModBlocks.fruit_log.getDefaultState()))
-
 			return true;
-
 		return false;
 	}
 

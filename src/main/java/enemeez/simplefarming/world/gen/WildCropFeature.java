@@ -8,9 +8,11 @@ import com.mojang.datafixers.Dynamic;
 import enemeez.simplefarming.config.DimensionConfig;
 import enemeez.simplefarming.config.GenConfig;
 import enemeez.simplefarming.init.ModBlocks;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationSettings;
@@ -22,8 +24,8 @@ public class WildCropFeature extends Feature<NoFeatureConfig> {
 		super(configFactory);
 	}
 
-	public boolean check(IWorld world, BlockPos pos) {
-		if (world.getBlockState(pos.down()).getBlock().isIn(BlockTags.DIRT_LIKE)
+	private boolean check(IWorld world, BlockPos pos) {
+		if (isValidGround(world.getBlockState(pos.down()), world, pos)
 				&& world.getBlockState(pos).getMaterial().isReplaceable()
 				&& world.getBlockState(pos) != Blocks.WATER.getDefaultState()
 				&& world.getBlockState(pos) != Blocks.LAVA.getDefaultState())
@@ -35,7 +37,6 @@ public class WildCropFeature extends Feature<NoFeatureConfig> {
 	@Override
 	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random,
 			BlockPos pos, NoFeatureConfig config) {
-
 		if (random.nextInt(GenConfig.wild_crop_chance.get()) != 0
 				|| DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
 				|| !DimensionConfig.whitelist.get().contains(world.getDimension().getType().getId()))
@@ -71,5 +72,11 @@ public class WildCropFeature extends Feature<NoFeatureConfig> {
 
 	public static void generatePlant(IWorld world, BlockPos pos, Random random) {
 		world.setBlockState(pos, ModBlocks.wild_crop.getDefaultState(), 2);
+	}
+
+	private boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+		Block block = state.getBlock();
+		return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT
+				|| block == Blocks.PODZOL;
 	}
 }

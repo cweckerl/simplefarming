@@ -1,4 +1,4 @@
-package enemeez.simplefarming.blocks;
+package enemeez.simplefarming.blocks.growable;
 
 import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
@@ -13,11 +13,11 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 
-public class CustomCrop extends CropsBlock {
+public class SimpleCropBlock extends CropsBlock {
 	private String name;
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
 
-	public CustomCrop(Block.Properties builder, String name) {
+	public SimpleCropBlock(Block.Properties builder, String name) {
 		super(builder);
 		this.name = name;
 		this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));

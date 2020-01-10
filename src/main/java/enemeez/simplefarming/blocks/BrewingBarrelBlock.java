@@ -17,20 +17,22 @@ import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class BrewingBarrel extends ContainerBlock {
+public class BrewingBarrelBlock extends ContainerBlock {
 	public static final IntegerProperty PROGRESS = IntegerProperty.create("progress", 0, 3);
 	public static final IntegerProperty LAYERS = IntegerProperty.create("layers", 0, 1);
 
-	public BrewingBarrel(Properties properties) {
+	public BrewingBarrelBlock(Properties properties) {
 		super(properties);
 		this.setDefaultState(
 				this.stateContainer.getBaseState().with(LAYERS, Integer.valueOf(0)).with(PROGRESS, Integer.valueOf(0)));
@@ -50,6 +52,7 @@ public class BrewingBarrel extends ContainerBlock {
 		return new BrewingBarrelTile();
 	}
 
+	@Override
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(LAYERS, PROGRESS);
 	}
@@ -73,16 +76,17 @@ public class BrewingBarrel extends ContainerBlock {
 				this.getDefaultState().with(LAYERS, Integer.valueOf(0)).with(PROGRESS, Integer.valueOf(0)));
 	}
 
-	public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn,
+	@Override
+	public ActionResultType func_225533_a_(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn,
 			BlockRayTraceResult hit) {
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 		if (tileentity instanceof BrewingBarrelTile) {
-			if (player.isSneaking()) {
+			if (player.func_225608_bj_()) {
 				if (getLayers(state) == 1 && getProgress(state) == 0) {
 					this.dropItem(worldIn, pos);
 					state = state.with(LAYERS, Integer.valueOf(0));
 					worldIn.setBlockState(pos, state);
-					return true;
+					return ActionResultType.SUCCESS;
 				}
 			}
 			if (isAlcoholIngredient((player.getHeldItemMainhand().getItem()))
@@ -91,18 +95,17 @@ public class BrewingBarrel extends ContainerBlock {
 				player.getHeldItemMainhand().shrink(1);
 				state = state.with(LAYERS, Integer.valueOf(1));
 				worldIn.setBlockState(pos, state);
-				return true;
+				return ActionResultType.SUCCESS;
 			}
 			if (player.getHeldItemMainhand().getItem() == Items.GLASS_BOTTLE && this.getProgress(state) == 3) {
-				worldIn.addEntity(new ItemEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(),
-						new ItemStack(getProduct(((BrewingBarrelTile) tileentity).getItem()))));
+				player.addItemStackToInventory(new ItemStack(getProduct(((BrewingBarrelTile) tileentity).getItem())));
 				((BrewingBarrelTile) tileentity).clear();
 				player.getHeldItemMainhand().shrink(1);
 				this.reset(state, worldIn, pos);
-				return true;
+				return ActionResultType.SUCCESS;
 			}
 		}
-		return false;
+		return ActionResultType.PASS;
 
 	}
 
@@ -138,6 +141,7 @@ public class BrewingBarrel extends ContainerBlock {
 		}
 	}
 
+	@Override
 	@SuppressWarnings("deprecation")
 	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (state.getBlock() != newState.getBlock()) {
@@ -148,9 +152,9 @@ public class BrewingBarrel extends ContainerBlock {
 
 	@Override
 	@SuppressWarnings("deprecation")
-	public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+	public void func_225534_a_(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 		if (this.readyToFerment(state)) {
-			super.tick(state, worldIn, pos, random);
+			super.func_225534_a_(state, worldIn, pos, random);
 			int i = state.get(PROGRESS);
 			if (i < 3 && random.nextInt(5) == 0) {
 				worldIn.setBlockState(pos,
@@ -161,6 +165,7 @@ public class BrewingBarrel extends ContainerBlock {
 
 	}
 
+	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		if (this.getProgress(stateIn) < 3 && this.getProgress(stateIn) > 0) {
@@ -181,17 +186,15 @@ public class BrewingBarrel extends ContainerBlock {
 		}
 		return Items.AIR;
 	}
-	
 
 	public boolean isAlcoholIngredient(Item itemIn) {
-		Item[] ingredients = {ModItems.barley, Items.POTATO, ModItems.rice, Items.APPLE, ModItems.cactus_fruit,
-				ModItems.cassava, ModItems.grapes, Items.WHEAT};
+		Item[] ingredients = { ModItems.barley, Items.POTATO, ModItems.rice, Items.APPLE, ModItems.cactus_fruit,
+				ModItems.cassava, ModItems.grapes, Items.WHEAT };
 		for (int i = 0; i < ingredients.length; i++) {
 			if (itemIn.equals(ingredients[i]))
 				return true;
 		}
 		return false;
 	}
-
 
 }

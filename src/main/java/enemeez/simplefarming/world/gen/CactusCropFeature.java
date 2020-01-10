@@ -5,7 +5,7 @@ import java.util.function.Function;
 
 import com.mojang.datafixers.Dynamic;
 
-import enemeez.simplefarming.blocks.CustomCactus;
+import enemeez.simplefarming.blocks.growable.OpuntiaBlock;
 import enemeez.simplefarming.config.DimensionConfig;
 import enemeez.simplefarming.config.GenConfig;
 import enemeez.simplefarming.init.ModBlocks;
@@ -24,7 +24,7 @@ public class CactusCropFeature extends Feature<NoFeatureConfig> {
 		super(configFactory);
 	}
 
-	public boolean check(IWorld world, BlockPos pos) {
+	private boolean check(IWorld world, BlockPos pos) {
 		if (world.getBlockState(pos.down()).getBlock().isIn(BlockTags.SAND)
 				&& world.getBlockState(pos).getMaterial().isReplaceable()
 				&& world.getBlockState(pos) != Blocks.WATER.getDefaultState()
@@ -48,11 +48,11 @@ public class CactusCropFeature extends Feature<NoFeatureConfig> {
 
 	public static void generateCactus(IWorld world, BlockPos pos, Random random) {
 		if (Math.random() < 0.5)
-			world.setBlockState(pos, ModBlocks.cactus_crop.getDefaultState().with(CustomCactus.AGE, Integer.valueOf(3))
-					.with(CustomCactus.FACING, Direction.WEST), 2);
+			world.setBlockState(pos, ModBlocks.cactus_crop.getDefaultState().with(OpuntiaBlock.AGE, Integer.valueOf(3))
+					.with(OpuntiaBlock.FACING, Direction.WEST), 2);
 		else
-			world.setBlockState(pos, ModBlocks.cactus_crop.getDefaultState().with(CustomCactus.AGE, Integer.valueOf(3))
-					.with(CustomCactus.FACING, Direction.NORTH), 2);
+			world.setBlockState(pos, ModBlocks.cactus_crop.getDefaultState().with(OpuntiaBlock.AGE, Integer.valueOf(3))
+					.with(OpuntiaBlock.FACING, Direction.NORTH), 2);
 
 	}
 }

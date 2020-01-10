@@ -1,11 +1,11 @@
 package enemeez.simplefarming.init;
 
 import enemeez.simplefarming.SimpleFarming;
+import enemeez.simplefarming.integration.FoodTier;
 import enemeez.simplefarming.items.AlcoholItem;
 import enemeez.simplefarming.items.BottleItem;
-import enemeez.simplefarming.items.CustomSeed;
+import enemeez.simplefarming.items.SeedItem;
 import enemeez.simplefarming.items.DrinkItem;
-import enemeez.simplefarming.items.FoodTier;
 import enemeez.simplefarming.items.GrainItem;
 import enemeez.simplefarming.items.PigItem;
 import net.minecraft.item.BlockItem;
@@ -73,6 +73,7 @@ public class ModItems {
 	// Non Edible
 	public static Item curry_powder;
 	public static Item jam;
+	public static Item sprinkles;
 	public static Item kenaf_fiber;
 	public static Item olive_oil;
 	public static Item vinegar;
@@ -285,7 +286,6 @@ public class ModItems {
 	public static void registerAll(RegistryEvent.Register<Item> event) {
 		if (!event.getName().equals(ForgeRegistries.ITEMS.getRegistryName()))
 			return;
-
 		cantaloupe_block = register("cantaloupe_block",
 				new BlockItem(ModBlocks.cantaloupe_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 		honeydew_block = register("honeydew_block",
@@ -432,6 +432,7 @@ public class ModItems {
 		curry_powder = register("curry_powder", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		jam = register("jam", new Item((new Item.Properties()).containerItem(Items.GLASS_BOTTLE).maxStackSize(1)
 				.group(SimpleFarming.ITEM_GROUP)));
+		sprinkles = register("sprinkles", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		olive_oil = register("olive_oil", new BottleItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP)));
 		vinegar = register("vinegar", new DrinkItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
@@ -458,79 +459,79 @@ public class ModItems {
 
 		chicory_root = register("chicory_root", new BlockNamedItem(ModBlocks.chicory,
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDS)));
-		cumin_seeds = register("cumin_seeds", new CustomSeed(ModBlocks.cumin,
+		cumin_seeds = register("cumin_seeds", new SeedItem(ModBlocks.cumin,
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDS)));
 		marshmallow_root = register("marshmallow_root", new BlockNamedItem(ModBlocks.marshmallow,
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDS)));
-		quinoa_seeds = register("quinoa_seeds", new CustomSeed(ModBlocks.quinoa,
+		quinoa_seeds = register("quinoa_seeds", new SeedItem(ModBlocks.quinoa,
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDS)));
-		sunflower_seeds = register("sunflower_seeds", new CustomSeed(ModBlocks.sunflower,
+		sunflower_seeds = register("sunflower_seeds", new SeedItem(ModBlocks.sunflower,
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.SEEDS)));
 
 		barley_seeds = register("barley_seeds",
-				new CustomSeed(ModBlocks.barley_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.barley_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		broccoli_seeds = register("broccoli_seeds",
-				new CustomSeed(ModBlocks.broccoli_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.broccoli_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		cantaloupe_seeds = register("cantaloupe_seeds",
-				new CustomSeed(ModBlocks.cantaloupe_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.cantaloupe_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		carrot_seeds = register("carrot_seeds",
-				new CustomSeed(ModBlocks.carrot_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.carrot_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		cassava_seeds = register("cassava_seeds",
-				new CustomSeed(ModBlocks.cassava_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.cassava_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		corn_seeds = register("corn_seeds",
-				new CustomSeed(ModBlocks.corn_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.corn_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		cotton_seeds = register("cotton_seeds",
-				new CustomSeed(ModBlocks.cotton_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.cotton_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		cucumber_seeds = register("cucumber_seeds",
-				new CustomSeed(ModBlocks.cucumber_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.cucumber_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		eggplant_seeds = register("eggplant_seeds",
-				new CustomSeed(ModBlocks.eggplant_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.eggplant_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		honeydew_seeds = register("honeydew_seeds",
-				new CustomSeed(ModBlocks.honeydew_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.honeydew_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		ginger_seeds = register("ginger_seeds",
-				new CustomSeed(ModBlocks.ginger_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.ginger_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		grape_seeds = register("grape_seeds",
-				new CustomSeed(ModBlocks.grape_plant, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.grape_plant, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		kenaf_seeds = register("kenaf_seeds",
-				new CustomSeed(ModBlocks.kenaf_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.kenaf_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		lettuce_seeds = register("lettuce_seeds",
-				new CustomSeed(ModBlocks.lettuce_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.lettuce_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		oat_seeds = register("oat_seeds",
-				new CustomSeed(ModBlocks.oat_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.oat_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		onion_seeds = register("onion_seeds",
-				new CustomSeed(ModBlocks.onion_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.onion_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		pea_seeds = register("pea_seeds",
-				new CustomSeed(ModBlocks.pea_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.pea_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		peanut_seeds = register("peanut_seeds",
-				new CustomSeed(ModBlocks.peanut_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.peanut_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		pepper_seeds = register("pepper_seeds",
-				new CustomSeed(ModBlocks.pepper_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.pepper_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		potato_seeds = register("potato_seeds",
-				new CustomSeed(ModBlocks.potato_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.potato_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		radish_seeds = register("radish_seeds",
-				new CustomSeed(ModBlocks.radish_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.radish_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		rice_seeds = register("rice_seeds",
-				new CustomSeed(ModBlocks.rice_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.rice_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		rye_seeds = register("rye_seeds",
-				new CustomSeed(ModBlocks.rye_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.rye_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		sorghum_seeds = register("sorghum_seeds",
-				new CustomSeed(ModBlocks.sorghum_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.sorghum_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		soybean_seeds = register("soybean_seeds",
-				new CustomSeed(ModBlocks.soybean_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.soybean_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		spinach_seeds = register("spinach_seeds",
-				new CustomSeed(ModBlocks.spinach_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.spinach_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		squash_seeds = register("squash_seeds",
-				new CustomSeed(ModBlocks.squash_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.squash_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		sweet_potato_seeds = register("sweet_potato_seeds",
-				new CustomSeed(ModBlocks.sweet_potato_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.sweet_potato_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		tomato_seeds = register("tomato_seeds",
-				new CustomSeed(ModBlocks.tomato_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.tomato_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		turnip_seeds = register("turnip_seeds",
-				new CustomSeed(ModBlocks.turnip_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.turnip_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		yam_seeds = register("yam_seeds",
-				new CustomSeed(ModBlocks.yam_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.yam_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 		zucchini_seeds = register("zucchini_seeds",
-				new CustomSeed(ModBlocks.zucchini_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
+				new SeedItem(ModBlocks.zucchini_crop, (new Item.Properties()).group(SimpleFarming.ITEM_GROUP)));
 
 		apple_pie = register("apple_pie",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT_PIE)));
@@ -741,8 +742,8 @@ public class ModItems {
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.TRAIL_MIX)));
 		tomato_soup = register("tomato_soup", new SoupItem(
 				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).maxStackSize(1).food(FoodTier.TOMATO_SOUP)));
-		turnip_beetroot_gratin = register("turnip_beetroot_gratin",
-				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.TURNIP_BEETROOT_GRATIN)));
+		turnip_beetroot_gratin = register("turnip_beetroot_gratin", new Item(
+				(new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.TURNIP_BEETROOT_GRATIN)));
 		vegetable_curry = register("vegetable_curry",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.VEGETABLE_CURRY)));
 		vegetable_medley = register("vegetable_medley", new SoupItem((new Item.Properties())
@@ -752,7 +753,6 @@ public class ModItems {
 		zucchini_bread = register("zucchini_bread",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.ZUCCHINI_BREAD)));
 	}
-
 	private static <T extends Item> T register(String name, T item) {
 		ResourceLocation id = SimpleFarming.getId(name);
 		item.setRegistryName(id);

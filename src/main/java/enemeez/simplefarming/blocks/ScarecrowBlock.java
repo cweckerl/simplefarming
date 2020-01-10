@@ -39,16 +39,19 @@ public class ScarecrowBlock extends BushBlock {
 				this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER));
 	}
 
+	@Override
 	public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
 		if (entityIn instanceof LivingEntity) {
 			entityIn.setMotionMultiplier(state, new Vec3d((double) 0.8F, 0.75D, (double) 0.8F));
 		}
 	}
 
+	@Override
 	public BlockState rotate(BlockState state, Rotation rot) {
 		return state.with(FACING, rot.rotate(state.get(FACING)));
 	}
-
+	
+	@Override
 	public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn,
 			BlockPos currentPos, BlockPos facingPos) {
 		DoubleBlockHalf doubleblockhalf = stateIn.get(HALF);
@@ -61,7 +64,8 @@ public class ScarecrowBlock extends BushBlock {
 			return Blocks.AIR.getDefaultState();
 		}
 	}
-
+	
+	@Override
 	@Nullable
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		BlockPos blockpos = context.getPos();
@@ -71,12 +75,14 @@ public class ScarecrowBlock extends BushBlock {
 								context.getPlacementHorizontalFacing().rotateY())
 						: null;
 	}
-
+	
+	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
 		worldIn.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(FACING,
 				worldIn.getBlockState(pos).get(FACING)), 3);
 	}
-
+	
+	@Override
 	public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
 		if (state.get(HALF) != DoubleBlockHalf.UPPER) {
 			return super.isValidPosition(state, worldIn, pos);
@@ -96,12 +102,14 @@ public class ScarecrowBlock extends BushBlock {
 		worldIn.setBlockState(pos.up(), this.getDefaultState().with(FACING, worldIn.getBlockState(pos).get(FACING))
 				.with(HALF, DoubleBlockHalf.UPPER), flags);
 	}
-
+	
+	@Override
 	public void harvestBlock(World worldIn, PlayerEntity player, BlockPos pos, BlockState state,
 			@Nullable TileEntity te, ItemStack stack) {
 		super.harvestBlock(worldIn, player, pos, Blocks.AIR.getDefaultState(), te, stack);
 	}
-
+	
+	@Override
 	public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player) {
 		DoubleBlockHalf doubleblockhalf = state.get(HALF);
 		BlockPos blockpos = doubleblockhalf == DoubleBlockHalf.LOWER ? pos.up() : pos.down();
@@ -117,11 +125,13 @@ public class ScarecrowBlock extends BushBlock {
 
 		super.onBlockHarvested(worldIn, pos, state, player);
 	}
-
+	
+	@Override
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(HALF).add(FACING);
 	}
-
+	
+	@Override
 	@OnlyIn(Dist.CLIENT)
 	public long getPositionRandom(BlockState state, BlockPos pos) {
 		return MathHelper.getCoordinateRandom(pos.getX(),

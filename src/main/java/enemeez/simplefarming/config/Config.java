@@ -29,7 +29,6 @@ public class Config {
 		RightClickConfig.init(BUILDER);
 		BUILDER.pop();
 		
-		
 		BUILDER.push("Dimensions Settings");
 		DimensionConfig.init(BUILDER);
 		BUILDER.pop();
