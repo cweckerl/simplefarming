@@ -2,12 +2,12 @@ package enemeez.simplefarming.init;
 
 import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.integration.FoodTier;
-import enemeez.simplefarming.items.AlcoholItem;
-import enemeez.simplefarming.items.BottleItem;
-import enemeez.simplefarming.items.SeedItem;
-import enemeez.simplefarming.items.DrinkItem;
-import enemeez.simplefarming.items.GrainItem;
-import enemeez.simplefarming.items.PigItem;
+import enemeez.simplefarming.item.AlcoholItem;
+import enemeez.simplefarming.item.BottleItem;
+import enemeez.simplefarming.item.DrinkItem;
+import enemeez.simplefarming.item.GrainItem;
+import enemeez.simplefarming.item.PigItem;
+import enemeez.simplefarming.item.SeedItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.Foods;

@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 import enemeez.simplefarming.SimpleFarming;
-import enemeez.simplefarming.blocks.growable.DoubleCropBlock;
+import enemeez.simplefarming.block.growable.DoubleCropBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.CropsBlock;

@@ -2,7 +2,7 @@ package enemeez.simplefarming.events;
 
 import java.util.ArrayList;
 
-import enemeez.simplefarming.items.AlcoholItem;
+import enemeez.simplefarming.item.AlcoholItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;

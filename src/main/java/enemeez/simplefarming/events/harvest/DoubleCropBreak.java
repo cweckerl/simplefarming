@@ -1,6 +1,6 @@
 package enemeez.simplefarming.events.harvest;
 
-import enemeez.simplefarming.blocks.growable.DoubleCropBlock;
+import enemeez.simplefarming.block.growable.DoubleCropBlock;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.util.Hand;

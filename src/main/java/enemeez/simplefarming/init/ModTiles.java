@@ -1,7 +1,7 @@
 package enemeez.simplefarming.init;
 
-import enemeez.simplefarming.blocks.BrewingBarrelBlock;
-import enemeez.simplefarming.tiles.BrewingBarrelTile;
+import enemeez.simplefarming.block.BrewingBarrelBlock;
+import enemeez.simplefarming.tileentity.BrewingBarrelTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,11 +15,11 @@ public class ModTiles {
 	public static BrewingBarrelBlock BARREL;
 
 	@ObjectHolder("simplefarming:brewing_barrel")
-	public static TileEntityType<BrewingBarrelTile> BARREL_TILE;
+	public static TileEntityType<BrewingBarrelTileEntity> BARREL_TILE;
 
 	@SubscribeEvent
 	public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
-		event.getRegistry().register(TileEntityType.Builder.create(BrewingBarrelTile::new, ModTiles.BARREL)
+		event.getRegistry().register(TileEntityType.Builder.create(BrewingBarrelTileEntity::new, ModTiles.BARREL)
 				.build(null).setRegistryName("brewing_barrel"));
 	}
 }

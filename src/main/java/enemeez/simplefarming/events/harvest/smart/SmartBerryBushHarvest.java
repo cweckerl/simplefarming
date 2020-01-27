@@ -2,7 +2,7 @@ package enemeez.simplefarming.events.harvest.smart;
 
 import java.util.List;
 
-import enemeez.simplefarming.blocks.growable.BerryBushBlock;
+import enemeez.simplefarming.block.growable.BerryBushBlock;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;

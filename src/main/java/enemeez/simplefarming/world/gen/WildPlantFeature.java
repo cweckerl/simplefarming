@@ -5,7 +5,7 @@ import java.util.function.Function;
 
 import com.mojang.datafixers.Dynamic;
 
-import enemeez.simplefarming.blocks.growable.PlantBlock;
+import enemeez.simplefarming.block.growable.PlantBlock;
 import enemeez.simplefarming.config.DimensionConfig;
 import enemeez.simplefarming.config.GenConfig;
 import enemeez.simplefarming.init.ModBlocks;

@@ -2,7 +2,7 @@ package enemeez.simplefarming.events.harvest.standard;
 
 import java.util.List;
 
-import enemeez.simplefarming.blocks.growable.PlantBlock;
+import enemeez.simplefarming.block.growable.PlantBlock;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
