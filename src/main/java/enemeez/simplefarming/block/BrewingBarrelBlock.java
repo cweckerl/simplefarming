@@ -80,11 +80,11 @@ public class BrewingBarrelBlock extends ContainerBlock {
 	}
 
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
+	public ActionResultType func_225533_a_(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
 			Hand handIn, BlockRayTraceResult hit) {
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 		if (tileentity instanceof BrewingBarrelTileEntity) {
-			if (player.isShiftKeyDown()) {
+			if (player.func_225608_bj_()) {
 				if (getLayers(state) == 1 && getProgress(state) == 0) {
 					this.dropItem(worldIn, pos);
 					state = state.with(LAYERS, Integer.valueOf(0));
@@ -157,9 +157,9 @@ public class BrewingBarrelBlock extends ContainerBlock {
 
 	@Override
 	@SuppressWarnings("deprecation")
-	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+	public void func_225534_a_(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 		if (this.readyToFerment(state)) {
-			super.tick(state, worldIn, pos, random);
+			super.func_225534_a_(state, worldIn, pos, random);
 			int i = state.get(PROGRESS);
 			if (i < 3 && random.nextInt(5) == 0) {
 				worldIn.setBlockState(pos,
