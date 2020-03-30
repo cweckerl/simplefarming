@@ -1,0 +1,9 @@
+{
+    "type": "simplefarming:brewing",
+    "ingredient": {
+        "item": "simplefarming:grapes"
+    },
+    "result": {
+        "item": "simplefarming:wine"
+    }
+}

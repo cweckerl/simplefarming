@@ -2,7 +2,7 @@ package enemeez.simplefarming.block;
 
 import java.util.Random;
 
-import enemeez.simplefarming.init.ModItems;
+import enemeez.simplefarming.init.ModRecipes;
 import enemeez.simplefarming.tileentity.BrewingBarrelTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -10,6 +10,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.ContainerBlock;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -79,11 +80,11 @@ public class BrewingBarrelBlock extends ContainerBlock {
 	}
 
 	@Override
-	public ActionResultType func_225533_a_(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
+	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
 			Hand handIn, BlockRayTraceResult hit) {
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 		if (tileentity instanceof BrewingBarrelTileEntity) {
-			if (player.func_225608_bj_()) {
+			if (player.isShiftKeyDown()) {
 				if (getLayers(state) == 1 && getProgress(state) == 0) {
 					this.dropItem(worldIn, pos);
 					state = state.with(LAYERS, Integer.valueOf(0));
@@ -91,7 +92,7 @@ public class BrewingBarrelBlock extends ContainerBlock {
 					return ActionResultType.SUCCESS;
 				}
 			}
-			if (isAlcoholIngredient((player.getHeldItemMainhand().getItem()))
+			if (isAlcoholIngredient(worldIn, player.getHeldItemMainhand())
 					&& ((BrewingBarrelTileEntity) tileentity).getCapacity() == 0) {
 				this.insertItem(worldIn, pos, state, player.getHeldItemMainhand().getItem());
 				player.getHeldItemMainhand().shrink(1);
@@ -100,7 +101,7 @@ public class BrewingBarrelBlock extends ContainerBlock {
 				return ActionResultType.SUCCESS;
 			}
 			if (player.getHeldItemMainhand().getItem() == Items.GLASS_BOTTLE && this.getProgress(state) == 3) {
-				player.addItemStackToInventory(new ItemStack(getProduct(((BrewingBarrelTileEntity) tileentity).getItem())));
+				player.addItemStackToInventory(getProduct(worldIn, ((BrewingBarrelTileEntity) tileentity).getItem()));
 				((BrewingBarrelTileEntity) tileentity).clear();
 				worldIn.playSound((PlayerEntity) null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F,
 						0.8F + worldIn.rand.nextFloat() * 0.4F);
@@ -156,9 +157,9 @@ public class BrewingBarrelBlock extends ContainerBlock {
 
 	@Override
 	@SuppressWarnings("deprecation")
-	public void func_225534_a_(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 		if (this.readyToFerment(state)) {
-			super.func_225534_a_(state, worldIn, pos, random);
+			super.tick(state, worldIn, pos, random);
 			int i = state.get(PROGRESS);
 			if (i < 3 && random.nextInt(5) == 0) {
 				worldIn.setBlockState(pos,
@@ -180,25 +181,14 @@ public class BrewingBarrelBlock extends ContainerBlock {
 		}
 	}
 
-	public Item getProduct(Item itemIn) {
-		Item[] recipes = { Items.WHEAT, ModItems.whiskey, ModItems.barley, ModItems.beer, Items.POTATO, ModItems.vodka,
-				ModItems.rice, ModItems.sake, Items.APPLE, ModItems.cider, ModItems.cactus_fruit, ModItems.tiswin,
-				ModItems.cassava, ModItems.cauim, ModItems.grapes, ModItems.wine };
-		for (int i = 0; i < recipes.length; i++) {
-			if (itemIn == recipes[i])
-				return recipes[i + 1];
-		}
-		return Items.AIR;
+	public ItemStack getProduct(World worldIn, Item itemIn) {
+		return worldIn.getRecipeManager().getRecipe(ModRecipes.BREWING_BARREL_RECIPE_TYPE, new Inventory(new ItemStack(itemIn)), worldIn)
+				.map(recipe -> recipe.getCraftingResult(null))
+				.orElse(ItemStack.EMPTY);
 	}
 
-	public boolean isAlcoholIngredient(Item itemIn) {
-		Item[] ingredients = { ModItems.barley, Items.POTATO, ModItems.rice, Items.APPLE, ModItems.cactus_fruit,
-				ModItems.cassava, ModItems.grapes, Items.WHEAT };
-		for (int i = 0; i < ingredients.length; i++) {
-			if (itemIn.equals(ingredients[i]))
-				return true;
-		}
-		return false;
+	public boolean isAlcoholIngredient(World worldIn, ItemStack itemstackIn) {
+		return worldIn.getRecipeManager().getRecipe(ModRecipes.BREWING_BARREL_RECIPE_TYPE, new Inventory(itemstackIn), worldIn).isPresent();
 	}
 
 }
