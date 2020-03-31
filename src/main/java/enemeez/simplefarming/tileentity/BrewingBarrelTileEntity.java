@@ -32,6 +32,7 @@ public class BrewingBarrelTileEntity extends TileEntity implements IClearable {
 	public void clear() {
 		this.setItem(ItemStack.EMPTY.getItem());
 		capacity = 0;
+		this.markDirty();
 	}
 
 	public int getCapacity() {
