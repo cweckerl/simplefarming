@@ -1,0 +1,35 @@
+{
+	"parent": "simplefarming:root",
+	"display": {
+		"icon": {
+			"item": "simplefarming:grapes"
+		},
+		"title": {
+			"translate": "advancements.simplefarming.grapes.title"
+		},
+		"description": {
+			"translate": "advancements.simplefarming.grapes.description"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"grapes": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:grapes"
+					}
+				]
+			}
+		}
+	},
+	"requirements": [
+		[
+			"grapes"
+		]
+	]
+}

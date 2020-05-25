@@ -29,6 +29,7 @@ public class FoodTier {
 	public static final Food BROCCOLI = (new Food.Builder()).hunger(3).saturation(0.3F).build();
 	public static final Food OLIVES = (new Food.Builder()).hunger(2).saturation(0.3F).build();
 
+	@SuppressWarnings("deprecation")
 	public static final Food GOLDEN_HABANERO = (new Food.Builder()).hunger(2).saturation(1.2F)
 			.effect(new EffectInstance(Effects.FIRE_RESISTANCE, 1200, 1), 1.0F).setAlwaysEdible().build();
 	public static final Food BERRY_PIE = (new Food.Builder()).hunger(4).saturation(0.1F).build();
@@ -76,6 +77,7 @@ public class FoodTier {
 	public static final Food RADISH_SOUP = (new Food.Builder()).hunger(6).saturation(0.6F).build();
 	public static final Food RAW_BACON = (new Food.Builder()).hunger(2).saturation(0.3F).fastToEat().meat().build();
 	public static final Food RAW_CALAMARI = (new Food.Builder()).hunger(2).saturation(0.1F).build();
+	@SuppressWarnings("deprecation")
 	public static final Food RAW_CHICKEN_WINGS = (new Food.Builder()).hunger(1).saturation(0.3F)
 			.effect(new EffectInstance(Effects.HUNGER, 300, 0), 0.3F).fastToEat().meat().build();
 	public static final Food RAW_SAUSAGE = (new Food.Builder()).hunger(2).saturation(0.3F).fastToEat().meat().build();

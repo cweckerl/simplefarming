@@ -46,10 +46,13 @@ public class FruitTreeFeature extends Feature<NoFeatureConfig> {
 		BlockState leaves = getLeaves(verify);
 
 		world.setBlockState(pos.up(0), trunk, 3);
-		for (int i = 1; i < 4; i++) {
+		for (int i = 1; i < 3; i++) {
 			if (world.getBlockState(pos.up(i)).getMaterial().isReplaceable())
 				world.setBlockState(pos.up(i), trunk, 3);
 		}
+		// this used to be frut_log_top
+		world.setBlockState(pos.up(3), ModBlocks.fruit_log.getDefaultState(), 3);
+
 		if (world.getBlockState(pos.up(2).north()).getMaterial().isReplaceable())
 			world.setBlockState(pos.up(2).north(), leaves, 3);
 		if (world.getBlockState(pos.up(2).south()).getMaterial().isReplaceable())

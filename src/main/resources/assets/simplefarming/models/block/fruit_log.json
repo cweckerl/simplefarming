@@ -1,103 +1,47 @@
 {
-    "textures": {
-        "particle": "block/oak_log",
-        "fruit_log": "block/oak_log",
-        "fruit_log_top": ":block/oak_log_top"
-    },
-    "display": {
-        "gui": {
-            "rotation": [ 30, 45, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 0.625, 0.625, 0.625 ]
-        },
-        "ground": {
-            "rotation": [ 0, 0, 0 ],
-            "translation": [ 0, 3, 0 ],
-            "scale": [ 0.25, 0.25, 0.25 ]
-        },
-        "fixed": {
-            "rotation": [ 0, 180, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 1, 1, 1 ]
-        },
-        "head": {
-            "rotation": [ 0, 180, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 1, 1, 1 ]
-        },
-        "firstperson_righthand": {
-            "rotation": [ 0, 315, 0 ],
-            "translation": [ 0, 2.5, 0 ],
-            "scale": [ 0.4, 0.4, 0.4 ]
-        },
-        "thirdperson_righthand": {
-            "rotation": [ 75, 315, 0 ],
-            "translation": [ 0, 2.5, 0 ],
-            "scale": [ 0.375, 0.375, 0.375 ]
-        }
-    },
-    "elements": [
-        {
-            "name": "bot",
-            "from": [ 4, 0, 4 ], 
-            "to": [ 12, 1, 12 ], 
-            "faces": {
-                "north": { "texture": "#fruit_log", "uv": [ 0, 15, 8, 16 ] },
-                "east": { "texture": "#fruit_log", "uv": [ 0, 15, 8, 16 ] },
-                "south": { "texture": "#fruit_log", "uv": [ 0, 15, 8, 16 ] },
-                "west": { "texture": "#fruit_log", "uv": [ 0, 15, 8, 16 ] },
-                "up": { "texture": "#fruit_log_top", "uv": [ 4, 4, 12, 12 ] },
-                "down": { "texture": "#fruit_log_top", "uv": [ 4, 4, 12, 12 ] }
-            }
-        },
-        {
-            "name": "north trunk",
-            "from": [ 4, 1, 4 ], 
-            "to": [ 12, 15, 5 ], 
-            "faces": {
-                "north": { "texture": "#fruit_log", "uv": [ 0, 1, 8, 15 ] },
-                "east": { "texture": "#fruit_log", "uv": [ 7, 0, 8, 14 ] },
-                "west": { "texture": "#fruit_log", "uv": [ 0, 0, 1, 14 ] }
-            }
-        },
-        {
-            "name": "south trunk",
-            "from": [ 4, 1, 11 ], 
-            "to": [ 12, 15, 12 ], 
-            "faces": {
-                "east": { "texture": "#fruit_log", "uv": [ 0, 1, 1, 15 ] },
-                "south": { "texture": "#fruit_log", "uv": [ 0, 1, 8, 15 ] },
-                "west": { "texture": "#fruit_log", "uv": [ 7, 0, 8, 14 ] }
-            }
-        },
-        {
-            "name": "top",
-            "from": [ 4, 15, 4 ], 
-            "to": [ 12, 16, 12 ], 
-            "faces": {
-                "north": { "texture": "#fruit_log", "uv": [ 0, 0, 8, 1 ] },
-                "east": { "texture": "#fruit_log", "uv": [ 0, 0, 8, 1 ] },
-                "south": { "texture": "#fruit_log", "uv": [ 0, 0, 8, 1 ] },
-                "west": { "texture": "#fruit_log", "uv": [ 0, 0, 8, 1 ] },
-                "up": { "texture": "#fruit_log_top", "uv": [ 4, 4, 12, 12 ] },
-                "down": { "texture": "#fruit_log_top", "uv": [ 4, 4, 12, 12 ] }
-            }
-        },
-        {
-            "name": "west trunk",
-            "from": [ 4, 1, 5 ], 
-            "to": [ 5, 15, 11 ], 
-            "faces": {
-                "west": { "texture": "#fruit_log", "uv": [ 1, 1, 7, 15 ] }
-            }
-        },
-        {
-            "name": "east trunk",
-            "from": [ 11, 1, 5 ], 
-            "to": [ 12, 15, 11 ], 
-            "faces": {
-                "east": { "texture": "#fruit_log", "uv": [ 0, 1, 6, 15 ] }
-            }
-        }
-    ]
+	"textures": {
+		"particle": "block/oak_log",
+		"fruit_log": "block/oak_log",
+		"fruit_log_top": "block/oak_log_top"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 4],
+			"to": [12, 16, 12],
+			"faces": {
+				"north": {"uv": [4, 0, 12, 16], "texture": "#fruit_log"},
+				"east": {"uv": [4, 0, 12, 16], "texture": "#fruit_log"},
+				"south": {"uv": [4, 0, 12, 16], "texture": "#fruit_log"},
+				"west": {"uv": [4, 0, 12, 16], "texture": "#fruit_log"},
+				"up": {"uv": [4, 4, 12, 12], "texture": "#fruit_log_top"},
+				"down": {"uv": [4, 4, 12, 12], "texture": "#fruit_log_top"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 315, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 315, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [30, 45, 0],
+			"scale": [0.625, 0.625, 0.625]
+		},
+		"head": {
+			"rotation": [0, 180, 0]
+		},
+		"fixed": {
+			"rotation": [0, 180, 0]
+		}
+	}
 }

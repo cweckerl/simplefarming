@@ -1,5 +1,6 @@
 package enemeez.simplefarming.events;
 
+import enemeez.simplefarming.config.EnableConfig;
 import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.config.RightClickConfig;
 import enemeez.simplefarming.events.harvest.DoubleCropBreak;
@@ -27,6 +28,9 @@ public class EventSetup {
 		MinecraftForge.EVENT_BUS.register(new DoubleCropBreak());
 		MinecraftForge.EVENT_BUS.register(new IntoxicationTracker());
 		MinecraftForge.EVENT_BUS.register(new ScarecrowEvent());
+		
+		if (EnableConfig.stem_toggle.get())
+			MinecraftForge.EVENT_BUS.register(new StemReplaceEvent());
 
 		if (FeatureConfig.mod_harvest.get() && !FeatureConfig.smart_harvest.get()) {
 			if (RightClickConfig.bush_right_click.get())

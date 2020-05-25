@@ -1,0 +1,308 @@
+{
+	"parent": "simplefarming:berries",
+	"display": {
+		"icon": {
+			"item": "simplefarming:broccoli"
+		},
+		"title": {
+			"translate": "advancements.simplefarming.crops.title"
+		},
+		"description": {
+			"translate": "advancements.simplefarming.crops.description"
+		},
+		"frame": "challenge",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"broccoli": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:broccoli"
+					}
+				]
+			}
+		},
+		"cassava": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:cassava"
+					}
+				]
+			}
+		},
+		"corn": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:corn"
+					}
+				]
+			}
+		},
+		"cucumber": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:cucumber"
+					}
+				]
+			}
+		},
+		"eggplant": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:eggplant"
+					}
+				]
+			}
+		},
+		"habanero": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:habanero"
+					}
+				]
+			}
+		},
+		"ginger": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:ginger"
+					}
+				]
+			}
+		},
+		"lettuce": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:lettuce"
+					}
+				]
+			}
+		},
+		"onion": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:onion"
+					}
+				]
+			}
+		},
+		"pea_pod": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:pea_pod"
+					}
+				]
+			}
+		},
+		"peanut": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:peanut"
+					}
+				]
+			}
+		},
+		"pepper": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:pepper"
+					}
+				]
+			}
+		},
+		"radish": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:radish"
+					}
+				]
+			}
+		},
+		"sorghum": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:sorghum"
+					}
+				]
+			}
+		},
+		"soybean": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:soybean"
+					}
+				]
+			}
+		},
+		"spinach": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:spinach"
+					}
+				]
+			}
+		},
+		"squash": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:squash"
+					}
+				]
+			}
+		},
+		"sweet_potato": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:sweet_potato"
+					}
+				]
+			}
+		},
+		"tomato": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:tomato"
+					}
+				]
+			}
+		},
+		"turnip": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:turnip"
+					}
+				]
+			}
+		},
+		"yam": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:yam"
+					}
+				]
+			}
+		},
+		"zucchini": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "simplefarming:zucchini"
+					}
+				]
+			}
+		}
+	},
+	"requirements": [
+		[
+			"broccoli"
+		],
+		[
+			"cassava"
+		],
+		[
+			"corn"
+		],
+		[
+			"cucumber"
+		],
+		[
+			"eggplant"
+		],
+		[
+			"habanero"
+		],
+		[
+			"ginger"
+		],
+		[
+			"lettuce"
+		],
+		[
+			"onion"
+		],
+		[
+			"pea_pod"
+		],
+		[
+			"peanut"
+		],
+		[
+			"pepper"
+		],
+		[
+			"radish"
+		],
+		[
+			"sorghum"
+		],
+		[
+			"soybean"
+		],
+		[
+			"spinach"
+		],
+		[
+			"squash"
+		],
+		[
+			"sweet_potato"
+		],
+		[
+			"tomato"
+		],
+		[
+			"turnip"
+		],
+		[
+			"yam"
+		],
+		[
+			"zucchini"
+		]
+	]
+}

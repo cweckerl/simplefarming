@@ -21,11 +21,11 @@ public class CheeseBlock extends CakeBlock {
 		this.setDefaultState(this.stateContainer.getBaseState().with(BITES, Integer.valueOf(0)));
 	}
 
-	public ActionResultType func_225533_a_(BlockState state, World world, BlockPos pos, PlayerEntity entity, Hand hand,
-			BlockRayTraceResult blockTrace) {
-		if (world.isRemote) {
-			ItemStack itemstack = entity.getHeldItem(hand);
-			if (this.func_226911_a_(world, pos, state, entity) == ActionResultType.SUCCESS) {
+	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
+			Hand handIn, BlockRayTraceResult hit) {
+		if (worldIn.isRemote) {
+			ItemStack itemstack = player.getHeldItem(handIn);
+			if (this.func_226911_a_(worldIn, pos, state, player) == ActionResultType.SUCCESS) {
 				return ActionResultType.SUCCESS;
 			}
 
@@ -34,13 +34,13 @@ public class CheeseBlock extends CakeBlock {
 			}
 		}
 
-		return this.func_226911_a_(world, pos, state, entity);
+		return this.func_226911_a_(worldIn, pos, state, player);
 	}
 
 	private ActionResultType func_226911_a_(IWorld world, BlockPos pos, BlockState state, PlayerEntity entity) {
+		int i = state.get(BITES);
 		world.addEntity(new ItemEntity((World) world, pos.getX(), pos.getY(), pos.getZ(),
 				new ItemStack(ModItems.cheese_slice, 1)));
-		int i = state.get(BITES);
 		if (i < 6) {
 			world.setBlockState(pos, state.with(BITES, Integer.valueOf(i + 1)), 3);
 		} else {
@@ -49,5 +49,4 @@ public class CheeseBlock extends CakeBlock {
 
 		return ActionResultType.SUCCESS;
 	}
-
 }

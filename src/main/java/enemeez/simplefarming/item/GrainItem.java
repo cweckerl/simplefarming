@@ -16,12 +16,12 @@ public class GrainItem extends Item {
 	}
 
 	@Override
-	public boolean itemInteractionForEntity(ItemStack itemstack, PlayerEntity player,
-			LivingEntity entity, Hand hand) {
+	public boolean itemInteractionForEntity(ItemStack itemstack, PlayerEntity player, LivingEntity entity, Hand hand) {
 
 		ItemStack stack = player.getHeldItem(hand);
 
-		if (!entity.world.isRemote && !entity.isChild() && entity instanceof AgeableEntity && (int) ((AgeableEntity) entity).getGrowingAge() == 0) {
+		if (!entity.world.isRemote && !entity.isChild() && entity instanceof AgeableEntity
+				&& (int) ((AgeableEntity) entity).getGrowingAge() == 0) {
 			if (entity instanceof CowEntity) {
 				if (((CowEntity) entity).isInLove()) {
 					return false;

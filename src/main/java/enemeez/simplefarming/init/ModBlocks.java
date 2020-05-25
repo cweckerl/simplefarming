@@ -112,6 +112,10 @@ public class ModBlocks {
 	public static Block yam_crop;
 	public static Block zucchini_crop;
 
+	// Alternate crops
+	public static Block melon_crop;
+	public static Block pumpkin_crop;
+
 	// Hay Bales
 	public static Block barley_hay_block;
 	public static Block oat_hay_block;
@@ -130,9 +134,11 @@ public class ModBlocks {
 	public static Block scarecrow;
 	public static Block brewing_barrel;
 
+
 	public static void registerAll(RegistryEvent.Register<Block> event) {
 		if (!event.getName().equals(ForgeRegistries.BLOCKS.getRegistryName()))
 			return;
+
 		brewing_barrel = register("brewing_barrel", new BrewingBarrelBlock(Block.Properties.create(Material.WOOD)
 				.tickRandomly().hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
 
@@ -163,23 +169,23 @@ public class ModBlocks {
 				.doesNotBlockMovement().tickRandomly().hardnessAndResistance(0f).sound(SoundType.PLANT), 4));
 
 		apple_leaves = register("apple_leaves", new FruitLeavesBlock(Block.Properties.create(Material.LEAVES)
-				.hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT), "apple"));
+				.hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT), "apple"));
 		apricot_leaves = register("apricot_leaves", new FruitLeavesBlock(Block.Properties.create(Material.LEAVES)
-				.hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT), "apricot"));
+				.hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT), "apricot"));
 		banana_leaves = register("banana_leaves", new FruitLeavesBlock(Block.Properties.create(Material.LEAVES)
-				.hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT), "banana"));
+				.hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT), "banana"));
 		cherry_leaves = register("cherry_leaves", new FruitLeavesBlock(Block.Properties.create(Material.LEAVES)
-				.hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT), "cherries"));
+				.hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT), "cherries"));
 		mango_leaves = register("mango_leaves", new FruitLeavesBlock(Block.Properties.create(Material.LEAVES)
-				.hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT), "mango"));
+				.hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT), "mango"));
 		olive_leaves = register("olive_leaves", new FruitLeavesBlock(Block.Properties.create(Material.LEAVES)
-				.hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT), "olive"));
+				.hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT), "olive"));
 		orange_leaves = register("orange_leaves", new FruitLeavesBlock(Block.Properties.create(Material.LEAVES)
-				.hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT), "orange"));
+				.hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT), "orange"));
 		pear_leaves = register("pear_leaves", new FruitLeavesBlock(Block.Properties.create(Material.LEAVES)
-				.hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT), "pear"));
+				.hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT), "pear"));
 		plum_leaves = register("plum_leaves", new FruitLeavesBlock(Block.Properties.create(Material.LEAVES)
-				.hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT), "plum"));
+				.hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT), "plum"));
 
 		fruit_log = register("fruit_log", new ThinBlock(Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN)
 				.hardnessAndResistance(2.0F).sound(SoundType.WOOD)));
@@ -219,24 +225,24 @@ public class ModBlocks {
 		grape_plant = register("grape_plant", new GrapePlantBlock((Block.Properties.create(Material.PLANTS)
 				.tickRandomly().hardnessAndResistance(2.0F).sound(SoundType.WOOD))));
 		grape_leaves = register("grape_leaves", new GrapeLeavesBlock(Block.Properties.create(Material.LEAVES)
-				.hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)));
+				.hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT)));
 		grape_leaves_base = register("grape_leaves_base", new GrapeLeavesBlock(Block.Properties.create(Material.LEAVES)
-				.hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)));
+				.hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT)));
 		grape_block = register("grape_block", new GrapeBlock(
 				Block.Properties.create(Material.ORGANIC).hardnessAndResistance(0.2F).doesNotBlockMovement()));
 
 		blackberry_bush = register("blackberry_bush",
 				new BerryBushBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement()
-						.hardnessAndResistance(0.2f).sound(SoundType.SWEET_BERRY_BUSH)), "blackberries"));
+						.hardnessAndResistance(0.2f).notSolid().sound(SoundType.SWEET_BERRY_BUSH)), "blackberries"));
 		blueberry_bush = register("blueberry_bush",
 				new BerryBushBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement()
-						.hardnessAndResistance(0.2f).sound(SoundType.SWEET_BERRY_BUSH)), "blueberries"));
+						.hardnessAndResistance(0.2f).notSolid().sound(SoundType.SWEET_BERRY_BUSH)), "blueberries"));
 		raspberry_bush = register("raspberry_bush",
 				new BerryBushBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement()
-						.hardnessAndResistance(0.2f).sound(SoundType.SWEET_BERRY_BUSH)), "raspberries"));
+						.hardnessAndResistance(0.2f).notSolid().sound(SoundType.SWEET_BERRY_BUSH)), "raspberries"));
 		strawberry_bush = register("strawberry_bush",
 				new BerryBushBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement()
-						.hardnessAndResistance(0.2f).sound(SoundType.SWEET_BERRY_BUSH)), "strawberries"));
+						.hardnessAndResistance(0.2f).notSolid().sound(SoundType.SWEET_BERRY_BUSH)), "strawberries"));
 
 		squash_crop = register("squash_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS)
 				.doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.STEM), "squash"));
@@ -335,6 +341,12 @@ public class ModBlocks {
 
 		wild_crop = register("wild_crop", new WildCropBlock(Block.Properties.create(Material.TALL_PLANTS)
 				.doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.PLANT)));
+
+		melon_crop = register("melon_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.STEM), "melon"));
+
+		pumpkin_crop = register("pumpkin_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS)
+				.doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.STEM), "pumpkin"));
 	}
 
 	private static <T extends Block> T register(String name, T block) {

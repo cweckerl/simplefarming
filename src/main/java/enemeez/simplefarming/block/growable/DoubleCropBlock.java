@@ -21,8 +21,8 @@ public class DoubleCropBlock extends CropsBlock {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
 	private String name;
 
-	public DoubleCropBlock(Block.Properties builder, String name) {
-		super(builder);
+	public DoubleCropBlock(Block.Properties properties, String name) {
+		super(properties);
 		this.name = name;
 		this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
 	}
@@ -33,6 +33,8 @@ public class DoubleCropBlock extends CropsBlock {
 
 	}
 
+	
+	// Max age of lower half of crop
 	@Override
 	public int getMaxAge() {
 		return 6;
@@ -43,12 +45,13 @@ public class DoubleCropBlock extends CropsBlock {
 		return state.get(this.getAgeProperty());
 	}
 	
+	// Tick function
 	@Override
-	public void func_225534_a_(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-		super.func_225534_a_(state, worldIn, pos, random);
+	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+		super.tick(state, worldIn, pos, random);
 		if (!worldIn.isAreaLoaded(pos, 1))
 			return;
-		if (worldIn.func_226659_b_(pos, 0) >= 9) {
+		if (worldIn.getLightSubtracted(pos, 0) >= 9) {
 			int i = this.getAge(state);
 			if (i < 7) {
 				float f = getGrowthChance(this, worldIn, pos);
@@ -68,7 +71,7 @@ public class DoubleCropBlock extends CropsBlock {
 	
 	@Override
 	public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-		return (worldIn.func_226659_b_(pos, 0) >= 8 || worldIn.func_226660_f_(pos)) && placementChecker(state, worldIn, pos);
+		return (worldIn.getLightSubtracted(pos, 0) >= 8 || worldIn.canSeeSky(pos)) && placementChecker(state, worldIn, pos);
 	}
 
 	private boolean placementChecker(BlockState state, IWorldReader worldIn, BlockPos pos) {

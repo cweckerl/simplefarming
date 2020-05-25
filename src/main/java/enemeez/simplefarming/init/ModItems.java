@@ -242,11 +242,19 @@ public class ModItems {
 	public static Item beer;
 	public static Item cauim;
 	public static Item cider;
+	public static Item mead;
 	public static Item sake;
 	public static Item tiswin;
 	public static Item vodka;
 	public static Item whiskey;
 	public static Item wine;
+
+	// Tools
+	public static Item wooden_scythe;
+	public static Item stone_scythe;
+	public static Item iron_scythe;
+	public static Item golden_scythe;
+	public static Item diamond_scythe;
 
 	// BlockItems
 	public static Item cantaloupe_block;
@@ -286,12 +294,42 @@ public class ModItems {
 	public static void registerAll(RegistryEvent.Register<Item> event) {
 		if (!event.getName().equals(ForgeRegistries.ITEMS.getRegistryName()))
 			return;
+
 		cantaloupe_block = register("cantaloupe_block",
 				new BlockItem(ModBlocks.cantaloupe_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 		honeydew_block = register("honeydew_block",
 				new BlockItem(ModBlocks.honeydew_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 		squash_block = register("squash_block",
 				new BlockItem(ModBlocks.squash_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+
+		blackberry_bush = register("blackberry_bush",
+				new BlockItem(ModBlocks.blackberry_bush, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		blueberry_bush = register("blueberry_bush",
+				new BlockItem(ModBlocks.blueberry_bush, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		raspberry_bush = register("raspberry_bush",
+				new BlockItem(ModBlocks.raspberry_bush, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		strawberry_bush = register("strawberry_bush",
+				new BlockItem(ModBlocks.strawberry_bush, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+
+		cactus_crop = register("cactus_crop",
+				new BlockItem(ModBlocks.cactus_crop, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+
+		scarecrow = register("scarecrow", new BlockItem(ModBlocks.scarecrow,
+				new Item.Properties().maxStackSize(16).group(SimpleFarming.ITEM_GROUP)));
+
+		barley_hay_block = register("barley_hay_block",
+				new BlockItem(ModBlocks.barley_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		oat_hay_block = register("oat_hay_block",
+				new BlockItem(ModBlocks.oat_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		rice_hay_block = register("rice_hay_block",
+				new BlockItem(ModBlocks.rice_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		rye_hay_block = register("rye_hay_block",
+				new BlockItem(ModBlocks.rye_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+
+		fruit_log = register("fruit_log",
+				new BlockItem(ModBlocks.fruit_log, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
+		brewing_barrel = register("brewing_barrel",
+				new BlockItem(ModBlocks.brewing_barrel, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 
 		apple_sapling = register("apple_sapling",
 				new BlockItem(ModBlocks.apple_sapling, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
@@ -311,34 +349,6 @@ public class ModItems {
 				new BlockItem(ModBlocks.pear_sapling, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 		plum_sapling = register("plum_sapling",
 				new BlockItem(ModBlocks.plum_sapling, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-
-		blackberry_bush = register("blackberry_bush",
-				new BlockItem(ModBlocks.blackberry_bush, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-		blueberry_bush = register("blueberry_bush",
-				new BlockItem(ModBlocks.blueberry_bush, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-		raspberry_bush = register("raspberry_bush",
-				new BlockItem(ModBlocks.raspberry_bush, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-		strawberry_bush = register("strawberry_bush",
-				new BlockItem(ModBlocks.strawberry_bush, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-
-		barley_hay_block = register("barley_hay_block",
-				new BlockItem(ModBlocks.barley_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-		oat_hay_block = register("oat_hay_block",
-				new BlockItem(ModBlocks.oat_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-		rice_hay_block = register("rice_hay_block",
-				new BlockItem(ModBlocks.rice_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-		rye_hay_block = register("rye_hay_block",
-				new BlockItem(ModBlocks.rye_hay_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-
-		scarecrow = register("scarecrow", new BlockItem(ModBlocks.scarecrow,
-				new Item.Properties().maxStackSize(16).group(SimpleFarming.ITEM_GROUP)));
-		fruit_log = register("fruit_log",
-				new BlockItem(ModBlocks.fruit_log, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-		brewing_barrel = register("brewing_barrel",
-				new BlockItem(ModBlocks.brewing_barrel, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
-
-		cactus_crop = register("cactus_crop",
-				new BlockItem(ModBlocks.cactus_crop, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 
 		birthday_cake = register("birthday_cake", new BlockItem(ModBlocks.birthday_cake,
 				new Item.Properties().maxStackSize(1).group(SimpleFarming.ITEM_GROUP)));
@@ -446,6 +456,8 @@ public class ModItems {
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "cauim"));
 		cider = register("cider", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "cider"));
+		mead = register("mead", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
+				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "mead"));
 		sake = register("sake", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
 				.maxStackSize(1).group(SimpleFarming.ITEM_GROUP), "sake"));
 		tiswin = register("tiswin", new AlcoholItem((new Item.Properties()).containerItem(Items.GLASS_BOTTLE)
@@ -753,6 +765,7 @@ public class ModItems {
 		zucchini_bread = register("zucchini_bread",
 				new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.ZUCCHINI_BREAD)));
 	}
+
 	private static <T extends Item> T register(String name, T item) {
 		ResourceLocation id = SimpleFarming.getId(name);
 		item.setRegistryName(id);

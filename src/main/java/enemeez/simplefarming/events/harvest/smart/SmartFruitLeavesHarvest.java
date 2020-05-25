@@ -4,6 +4,7 @@ import java.util.List;
 
 import enemeez.simplefarming.block.growable.FruitLeavesBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -44,7 +45,11 @@ public class SmartFruitLeavesHarvest {
 						event.getWorld().playSound((PlayerEntity) null, event.getPos(),
 								SoundEvents.BLOCK_NETHER_WART_BREAK, SoundCategory.BLOCKS, 1.0F,
 								0.8F + event.getWorld().rand.nextFloat() * 0.4F);
-						event.getWorld().setBlockState(event.getPos(), leaf.getDefaultState(), 2);
+						event.getWorld().setBlockState(event.getPos(),
+								leaf.getDefaultState().with(FruitLeavesBlock.AGE, Integer.valueOf(0))
+										.with(LeavesBlock.DISTANCE, Integer.valueOf(1))
+										.with(LeavesBlock.PERSISTENT, Boolean.valueOf(false)),
+								2);
 					}
 					event.getPlayer().swingArm(Hand.MAIN_HAND);
 				}

@@ -26,7 +26,6 @@ public class IntoxicationTracker {
 				effects.add(new EffectInstance(Effects.MINING_FATIGUE, 2000, 0, false, true));
 				effects.add(new EffectInstance(Effects.HUNGER, 2000, 0, false, true));
 				effects.add(new EffectInstance(Effects.POISON, 2000, 0, false, true));
-				effects.add(new EffectInstance(Effects.NAUSEA, 2000, 0, false, true));
 				effects.add(new EffectInstance(Effects.UNLUCK, 2000, 0, false, true));
 				int random = (int) ((Math.random() * effects.size()));
 				event.getEntity().sendMessage(new StringTextComponent("You start to feel tipsy..."));

@@ -1,0 +1,99 @@
+{
+    "textures": {
+        "particle": "simplefarming:block/gourd_leaves",
+        "melon_side": "block/melon_side",
+        "gourd_leaves": "simplefarming:block/gourd_leaves",
+        "melon_top": "block/melon_top"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "gourd",
+            "from": [ 6, -1, 6 ], 
+            "to": [ 10, 3, 10 ], 
+            "faces": {
+                "north": { "texture": "#melon_side", "uv": [ 6, 0, 10, 4 ] },
+                "east": { "texture": "#melon_side", "uv": [ 6, 0, 10, 4 ] },
+                "south": { "texture": "#melon_side", "uv": [ 6, 0, 10, 4 ] },
+                "west": { "texture": "#melon_side", "uv": [ 6, 0, 10, 4 ] },
+                "up": { "texture": "#melon_top", "uv": [ 6, 6, 10, 10 ] },
+                "down": { "texture": "#melon_top", "uv": [ 6, 6, 10, 10 ] }
+            }
+        },
+        {
+            "name": "north",
+            "from": [ 0, -1, 1 ], 
+            "to": [ 16, 1, 1 ], 
+            "faces": {
+                "north": { "texture": "#gourd_leaves", "uv": [ 0, 9, 16, 11 ] },
+                "south": { "texture": "#gourd_leaves", "uv": [ 0, 9, 16, 11 ] },
+                "up": { "texture": "#gourd_leaves", "uv": [ 0, 12, 16, 12 ] },
+                "down": { "texture": "#gourd_leaves", "uv": [ 0, 12, 16, 12 ] }
+            }
+        },
+        {
+            "name": "south",
+            "from": [ 0, -1, 15 ], 
+            "to": [ 16, 1, 15 ], 
+            "faces": {
+                "north": { "texture": "#gourd_leaves", "uv": [ 0, 9, 16, 11 ] },
+                "south": { "texture": "#gourd_leaves", "uv": [ 0, 9, 16, 11 ] },
+                "up": { "texture": "#gourd_leaves", "uv": [ 0, 12, 16, 12 ] },
+                "down": { "texture": "#gourd_leaves", "uv": [ 0, 12, 16, 12 ] }
+            }
+        },
+        {
+            "name": "west",
+            "from": [ 1, -1, 0 ], 
+            "to": [ 1, 1, 16 ], 
+            "faces": {
+                "east": { "texture": "#gourd_leaves", "uv": [ 0, 9, 16, 11 ] },
+                "west": { "texture": "#gourd_leaves", "uv": [ 0, 9, 16, 11 ] },
+                "up": { "texture": "#gourd_leaves", "uv": [ 5, 0, 5, 16 ] },
+                "down": { "texture": "#gourd_leaves", "uv": [ 5, 0, 5, 16 ] }
+            }
+        },
+        {
+            "name": "east",
+            "from": [ 15, -1, 0 ], 
+            "to": [ 15, 1, 16 ], 
+            "faces": {
+                "east": { "texture": "#gourd_leaves", "uv": [ 0, 9, 16, 11 ] },
+                "west": { "texture": "#gourd_leaves", "uv": [ 0, 9, 16, 11 ] },
+                "up": { "texture": "#gourd_leaves", "uv": [ 5, 0, 5, 16 ] },
+                "down": { "texture": "#gourd_leaves", "uv": [ 5, 0, 5, 16 ] }
+            }
+        }
+     ]
+}

@@ -74,12 +74,12 @@
 		{
 			"name": "grain",
 			"from": [1, 1, 1],
-			"to": [15, 11, 15],
+			"to": [15, 15, 15],
 			"faces": {
-				"north": {"uv": [1, 0, 15, 10], "texture": "#2"},
-				"east": {"uv": [1, 0, 15, 10], "texture": "#2"},
-				"south": {"uv": [1, 0, 15, 10], "texture": "#2"},
-				"west": {"uv": [1, 0, 15, 10], "texture": "#2"},
+				"north": {"uv": [1, 0, 15, 14], "texture": "#2"},
+				"east": {"uv": [1, 0, 15, 14], "texture": "#2"},
+				"south": {"uv": [1, 0, 15, 14], "texture": "#2"},
+				"west": {"uv": [1, 0, 15, 14], "texture": "#2"},
 				"up": {"uv": [1, 1, 15, 15], "texture": "#2"},
 				"down": {"uv": [1, 1, 15, 15], "texture": "#2"}
 			}

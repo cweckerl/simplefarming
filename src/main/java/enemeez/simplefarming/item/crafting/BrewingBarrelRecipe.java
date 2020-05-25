@@ -1,4 +1,4 @@
-package enemeez.simplefarming.integration;
+package enemeez.simplefarming.item.crafting;
 
 import enemeez.simplefarming.init.ModRecipes;
 import net.minecraft.inventory.IInventory;
@@ -11,17 +11,17 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class BrewingBarrelRecipe implements IRecipe<IInventory> {
-	
+
 	private final ResourceLocation id;
 	private final ItemStack result;
 	private final Ingredient ingredient;
-	
+
 	public BrewingBarrelRecipe(ResourceLocation id, Ingredient ingredient, ItemStack result) {
 		this.id = id;
 		this.ingredient = ingredient;
 		this.result = result;
 	}
-	
+
 	public Ingredient getIngredient() {
 		return ingredient;
 	}
@@ -50,13 +50,13 @@ public class BrewingBarrelRecipe implements IRecipe<IInventory> {
 	public ResourceLocation getId() {
 		return id;
 	}
-	
-	//Disable RecipeBook for this recipe
+
+	// Disable RecipeBook for this recipe
 	@Override
 	public boolean isDynamic() {
 		return true;
 	}
-	
+
 	@Override
 	public IRecipeSerializer<?> getSerializer() {
 		return ModRecipes.BREWING_BARREL_RECIPE_SERIALIZER;

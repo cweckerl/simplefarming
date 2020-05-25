@@ -33,10 +33,11 @@ public class SimpleSaplingBlock extends BushBlock implements IGrowable {
 		return SHAPE;
 	}
 
+	// Tick method
 	@Override
 	@SuppressWarnings("deprecation")
-	public void func_225534_a_(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-		super.func_225534_a_(state, worldIn, pos, random);
+	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+		super.tick(state, worldIn, pos, random);
 		if (!worldIn.isAreaLoaded(pos, 1))
 			return; // Forge: prevent loading unloaded chunks when checking neighbor's light
 		if (worldIn.getLight(pos.up()) >= 9 && random.nextInt(7) == 0) {
@@ -45,6 +46,7 @@ public class SimpleSaplingBlock extends BushBlock implements IGrowable {
 
 	}
 
+	// Tree spawn method 
 	public void func_226942_a_(ServerWorld worldIn, BlockPos pos, BlockState state, Random rand) {
 		if (state.get(STAGE) == 0) {
 			worldIn.setBlockState(pos, state.cycle(STAGE), 4);
@@ -64,12 +66,14 @@ public class SimpleSaplingBlock extends BushBlock implements IGrowable {
 		return (double) worldIn.rand.nextFloat() < 0.45D;
 	}
 	
+	// Calls tree spawn method
 	@Override
-	public void func_225535_a_(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
 		this.func_226942_a_(worldIn, pos, state, rand);
 	}
 	@Override
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(STAGE);
 	}
+
 }

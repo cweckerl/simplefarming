@@ -31,8 +31,8 @@ public class GrapeLeavesBlock extends BushBlock implements IGrowable {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
 	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 
-	public GrapeLeavesBlock(Block.Properties p_i49971_1_) {
-		super(p_i49971_1_);
+	public GrapeLeavesBlock(Block.Properties properties) {
+		super(properties);
 		this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
 	}
 	
@@ -41,12 +41,13 @@ public class GrapeLeavesBlock extends BushBlock implements IGrowable {
 		return new ItemStack(ModItems.grapes);
 	}
 
+	// Tick method
 	@Override
 	@SuppressWarnings("deprecation")
-	public void func_225534_a_(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-		super.func_225534_a_(state, worldIn, pos, random);
+	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+		super.tick(state, worldIn, pos, random);
 		int i = state.get(AGE);
-		if (i < 7 && random.nextInt(5) == 0 && worldIn.func_226659_b_(pos.up(), 0) >= 9) {
+		if (i < 7 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
 			worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
 		}
 
@@ -148,8 +149,10 @@ public class GrapeLeavesBlock extends BushBlock implements IGrowable {
 		return true;
 	}
 
+	
+	// Grow method
 	@Override
-	public void func_225535_a_(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
 		int i = Math.min(7, state.get(AGE) + 1);
 		worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i)), 2);
 	}

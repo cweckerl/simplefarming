@@ -33,7 +33,7 @@ public class GrapeBlock extends BushBlock {
 	}
 
 	@Override
-	public boolean func_229869_c_(BlockState p_229869_1_, IBlockReader p_229869_2_, BlockPos p_229869_3_) {
+	public boolean causesSuffocation(BlockState state, IBlockReader reader, BlockPos pos) {
 		return false;
 	}
 

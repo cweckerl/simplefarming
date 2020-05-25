@@ -1,6 +1,7 @@
 package enemeez.simplefarming.events;
 
 import enemeez.simplefarming.SimpleFarming;
+import enemeez.simplefarming.config.EnableConfig;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootPool;
 import net.minecraft.world.storage.loot.LootTables;
@@ -26,7 +27,7 @@ public class LootTableHandler {
 
 	@SubscribeEvent
 	public void lootTableLoad(LootTableLoadEvent event) {
-		if (event.getName().equals(grass_drops) || event.getName().equals(fern_drops) || event.getName().equals(tall_grass_drops))
+		if (EnableConfig.wild_crop_validate.get() && event.getName().equals(grass_drops) || event.getName().equals(fern_drops) || event.getName().equals(tall_grass_drops))
 			event.getTable().addPool(LootPool.builder()
 					.addEntry(TableLootEntry.builder(new ResourceLocation(SimpleFarming.MOD_ID, "blocks/grass_drops")))
 					.name("sf_grass_drops").build());

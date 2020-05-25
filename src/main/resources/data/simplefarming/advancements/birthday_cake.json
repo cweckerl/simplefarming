@@ -1,0 +1,35 @@
+{
+	"parent": "simplefarming:root",
+	"display": {
+		"icon": {
+			"item": "simplefarming:birthday_cake"
+		},
+		"title": {
+			"translate": "advancements.simplefarming.birthday_cake.title"
+		},
+		"description": {
+			"translate": "advancements.simplefarming.birthday_cake.description"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+		"criteria": {
+			"birthday_cake": {
+				"trigger": "minecraft:inventory_changed",
+				"conditions": {
+					"items": [
+						{
+							"item": "simplefarming:birthday_cake"
+						}
+					]
+				}
+			}
+		},
+		"requirements": [
+			[
+				"birthday_cake"
+			]
+		]
+}

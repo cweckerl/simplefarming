@@ -24,6 +24,9 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
@@ -34,6 +37,16 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class BrewingBarrelBlock extends ContainerBlock {
 	public static final IntegerProperty PROGRESS = IntegerProperty.create("progress", 0, 3);
 	public static final IntegerProperty LAYERS = IntegerProperty.create("layers", 0, 1);
+	protected static final VoxelShape BOTTOM = Block.makeCuboidShape(16.0D, 1.0D, 16.0D, 0.0D, 0.0D, 0.0D);
+	protected static final VoxelShape SIDE1 = Block.makeCuboidShape(16.0D, 16.0D, 1.0D, 0.0D, 0.0D, 0.0D);
+	protected static final VoxelShape SIDE2 = Block.makeCuboidShape(1.0D, 16.0D, 16.0D, 0.0D, 0.0D, 0.0D);
+	protected static final VoxelShape SIDE3 = Block.makeCuboidShape(16.0D, 16.0D, 15.0D, 0.0D, 0.0D, 16.0D);
+	protected static final VoxelShape SIDE4 = Block.makeCuboidShape(15.0D, 16.0D, 16.0D, 16.0D, 0.0D, 0.0D);
+	private static final VoxelShape SHAPE = VoxelShapes.or(BOTTOM, SIDE1, SIDE2, SIDE3, SIDE4);
+	protected static final VoxelShape CLOSED = Block.makeCuboidShape(16.0D, 16.0D, 16.0D, 0.0D, 0.0D, 0.0D);
+
+
+
 
 	public BrewingBarrelBlock(Properties properties) {
 		super(properties);
@@ -48,6 +61,11 @@ public class BrewingBarrelBlock extends ContainerBlock {
 	@Override
 	public boolean hasTileEntity(BlockState state) {
 		return true;
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+		return getProgress(state) > 0 ? CLOSED : SHAPE;
 	}
 
 	@Override
@@ -80,11 +98,11 @@ public class BrewingBarrelBlock extends ContainerBlock {
 	}
 
 	@Override
-	public ActionResultType func_225533_a_(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
+	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
 			Hand handIn, BlockRayTraceResult hit) {
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 		if (tileentity instanceof BrewingBarrelTileEntity) {
-			if (player.func_225608_bj_()) {
+			if (player.isSneaking()) {
 				if (getLayers(state) == 1 && getProgress(state) == 0) {
 					this.dropItem(worldIn, pos);
 					state = state.with(LAYERS, Integer.valueOf(0));
@@ -157,9 +175,9 @@ public class BrewingBarrelBlock extends ContainerBlock {
 
 	@Override
 	@SuppressWarnings("deprecation")
-	public void func_225534_a_(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 		if (this.readyToFerment(state)) {
-			super.func_225534_a_(state, worldIn, pos, random);
+			super.tick(state, worldIn, pos, random);
 			int i = state.get(PROGRESS);
 			if (i < 3 && random.nextInt(5) == 0) {
 				worldIn.setBlockState(pos,
@@ -182,13 +200,14 @@ public class BrewingBarrelBlock extends ContainerBlock {
 	}
 
 	public ItemStack getProduct(World worldIn, Item itemIn) {
-		return worldIn.getRecipeManager().getRecipe(ModRecipes.BREWING_BARREL_RECIPE_TYPE, new Inventory(new ItemStack(itemIn)), worldIn)
-				.map(recipe -> recipe.getCraftingResult(null))
-				.orElse(ItemStack.EMPTY);
+		return worldIn.getRecipeManager()
+				.getRecipe(ModRecipes.BREWING_BARREL_RECIPE_TYPE, new Inventory(new ItemStack(itemIn)), worldIn)
+				.map(recipe -> recipe.getCraftingResult(null)).orElse(ItemStack.EMPTY);
 	}
 
 	public boolean isAlcoholIngredient(World worldIn, ItemStack itemstackIn) {
-		return worldIn.getRecipeManager().getRecipe(ModRecipes.BREWING_BARREL_RECIPE_TYPE, new Inventory(itemstackIn), worldIn).isPresent();
+		return worldIn.getRecipeManager()
+				.getRecipe(ModRecipes.BREWING_BARREL_RECIPE_TYPE, new Inventory(itemstackIn), worldIn).isPresent();
 	}
 
 }

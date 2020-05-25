@@ -32,27 +32,37 @@ import net.minecraft.world.server.ServerWorld;
 public class OpuntiaBlock extends BushBlock implements IGrowable {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
 	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
-	private static final VoxelShape[] SHAPE_BY_AGE_X = new VoxelShape[] {
-			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D),
-					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
-			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D),
-					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
-			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 12.0D, 9.0D),
-					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
-			VoxelShapes.or(Block.makeCuboidShape(2.0D, 2.0D, 7.0D, 14.0D, 14.0D, 9.0D),
-					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)) };
-	private static final VoxelShape[] SHAPE_BY_AGE_Z = new VoxelShape[] {
-			VoxelShapes.or(Block.makeCuboidShape(7.0D, 2.0D, 2.0D, 9.0D, 12.0D, 14.0D),
-					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
-			VoxelShapes.or(Block.makeCuboidShape(7.0D, 2.0D, 2.0D, 9.0D, 12.0D, 14.0D),
-					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
-			VoxelShapes.or(Block.makeCuboidShape(7.0D, 2.0D, 2.0D, 9.0D, 12.0D, 14.0D),
-					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)),
-			VoxelShapes.or(Block.makeCuboidShape(7.0D, 2.0D, 2.0D, 9.0D, 14.0D, 14.0D),
-					Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D)) };
 
-	public OpuntiaBlock(Block.Properties p_i49971_1_) {
-		super(p_i49971_1_);
+	// X Axis hitbox
+	private static final VoxelShape TOP_MIDDLE_X = Block.makeCuboidShape(4.0D, 10.0D, 7.0D, 12.0D, 12.0D, 9.0D);
+	private static final VoxelShape MIDDLE_X = Block.makeCuboidShape(2.0D, 4.0D, 7.0D, 14.0D, 10.0D, 9.0D);
+	private static final VoxelShape BOT_MIDDLE_X = Block.makeCuboidShape(4.0D, 2.0D, 7.0D, 12.0D, 4.0D, 9.0D);
+	private static final VoxelShape BOT_X = Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D);
+	private static final VoxelShape FRUIT_1_X = Block.makeCuboidShape(12.0D, 10.0D, 7.0D, 14.0D, 12.0D, 9.0D);
+	private static final VoxelShape FRUIT_2_X = Block.makeCuboidShape(10.0D, 12.0D, 7.0D, 12.0D, 14.0D, 9.0D);
+	private static final VoxelShape FRUIT_3_X = Block.makeCuboidShape(7.0D, 12.0D, 7.0D, 9.0D, 14.0D, 9.0D);
+	private static final VoxelShape FRUIT_4_X = Block.makeCuboidShape(4.0D, 12.0D, 7.0D, 6.0D, 14.0D, 9.0D);
+	private static final VoxelShape FRUIT_5_X = Block.makeCuboidShape(2.0D, 10.0D, 7.0D, 4.0D, 12.0D, 9.0D);
+	private static final VoxelShape UNRIPE_X = VoxelShapes.or(TOP_MIDDLE_X, BOT_MIDDLE_X, MIDDLE_X, BOT_X);
+	private static final VoxelShape RIPE_X = VoxelShapes.or(TOP_MIDDLE_X, BOT_MIDDLE_X, MIDDLE_X, BOT_X, FRUIT_1_X,
+			FRUIT_2_X, FRUIT_3_X, FRUIT_4_X, FRUIT_5_X);
+
+	// Z Axis hitbox
+	private static final VoxelShape TOP_MIDDLE_Z = Block.makeCuboidShape(7.0D, 10.0D, 4.0D, 9.0D, 12.0D, 12.0D);
+	private static final VoxelShape MIDDLE_Z = Block.makeCuboidShape(7.0D, 4.0D, 2.0D, 9.0D, 10.0D, 14.0D);
+	private static final VoxelShape BOT_MIDDLE_Z = Block.makeCuboidShape(7.0D, 2.0D, 4.0D, 9.0D, 4.0D, 12.0D);
+	private static final VoxelShape BOT_Z = Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D); // good
+	private static final VoxelShape FRUIT_1_Z = Block.makeCuboidShape(7.0D, 10.0D, 12.0D, 9.0D, 12.0D, 14.0D);
+	private static final VoxelShape FRUIT_2_Z = Block.makeCuboidShape(7.0D, 12.0D, 10.0D, 9.0D, 14.0D, 12.0D);
+	private static final VoxelShape FRUIT_3_Z = Block.makeCuboidShape(7.0D, 12.0D, 7.0D, 9.0D, 14.0D, 9.0D);
+	private static final VoxelShape FRUIT_4_Z = Block.makeCuboidShape(7.0D, 12.0D, 4.0D, 9.0D, 14.0D, 6.0D);
+	private static final VoxelShape FRUIT_5_Z = Block.makeCuboidShape(7.0D, 10.0D, 2.0D, 9.0D, 12.0D, 4.0D);
+	private static final VoxelShape UNRIPE_Z = VoxelShapes.or(TOP_MIDDLE_Z, BOT_MIDDLE_Z, MIDDLE_Z, BOT_Z);
+	private static final VoxelShape RIPE_Z = VoxelShapes.or(TOP_MIDDLE_Z, BOT_MIDDLE_Z, MIDDLE_Z, BOT_Z, FRUIT_1_Z,
+			FRUIT_2_Z, FRUIT_3_Z, FRUIT_4_Z, FRUIT_5_Z);
+
+	public OpuntiaBlock(Block.Properties properties) {
+		super(properties);
 		this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
 	}
 
@@ -64,8 +74,8 @@ public class OpuntiaBlock extends BushBlock implements IGrowable {
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
 		Direction direction = state.get(FACING);
-		return direction.getAxis() == Direction.Axis.X ? SHAPE_BY_AGE_X[state.get(this.getAgeProperty())]
-				: SHAPE_BY_AGE_Z[state.get(this.getAgeProperty())];
+		return direction.getAxis() == Direction.Axis.X ? isMaxAge(state) ? RIPE_X : UNRIPE_X
+				: isMaxAge(state) ? RIPE_Z : UNRIPE_Z;
 	}
 
 	@Override
@@ -97,12 +107,13 @@ public class OpuntiaBlock extends BushBlock implements IGrowable {
 		return AGE;
 	}
 
+	// method
 	@Override
 	@SuppressWarnings("deprecation")
-	public void func_225534_a_(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-		super.func_225534_a_(state, worldIn, pos, random);
+	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+		super.tick(state, worldIn, pos, random);
 		int i = state.get(AGE);
-		if (i < 3 && random.nextInt(5) == 0 && worldIn.func_226659_b_(pos.up(), 0) >= 9) {
+		if (i < 3 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
 			worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
 		}
 
@@ -139,8 +150,9 @@ public class OpuntiaBlock extends BushBlock implements IGrowable {
 		return true;
 	}
 
+	// Grow method
 	@Override
-	public void func_225535_a_(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
 		int i = Math.min(3, state.get(AGE) + 1);
 		worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i)), 2);
 	}

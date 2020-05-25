@@ -68,6 +68,8 @@ public class AlcoholItem extends BottleItem {
 			 return new EffectInstance(Effects.RESISTANCE, 500, 0, false, true);
 		case "whiskey":
 			 return new EffectInstance(Effects.ABSORPTION, 500, 0, false, true);
+		case "mead":
+			 return new EffectInstance(Effects.HASTE, 500, 0, false, true);
 		default:
 			 return new EffectInstance(Effects.REGENERATION, 500, 0, false, true);
 		}

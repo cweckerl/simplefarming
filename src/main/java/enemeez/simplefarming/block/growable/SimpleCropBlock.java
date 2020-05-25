@@ -14,8 +14,8 @@ import net.minecraft.world.IBlockReader;
 public class SimpleCropBlock extends CropsBlock {
 	private String name;
 
-	public SimpleCropBlock(Block.Properties builder, String name) {
-		super(builder);
+	public SimpleCropBlock(Block.Properties properties, String name) {
+		super(properties);
 		this.name = name;
 		this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
 	}
@@ -24,6 +24,9 @@ public class SimpleCropBlock extends CropsBlock {
 		return state.getBlock() instanceof FarmlandBlock;
 	}
 
+	
+	// Crops are given textures/models based on name
+	// No extra inheritance of SimpleCropBlock method
 	protected IItemProvider getSeedsItem() {
 		switch (name) {
 		case "barley":
@@ -80,6 +83,10 @@ public class SimpleCropBlock extends CropsBlock {
 			return ModItems.zucchini_seeds;
 		case "turnip":
 			return ModItems.turnip_seeds;
+		case "melon":
+			return Items.MELON_SEEDS;
+		case "pumpkin":
+			return Items.PUMPKIN_SEEDS;
 		default:
 			return ModItems.peanut_seeds;
 		}
@@ -141,6 +148,10 @@ public class SimpleCropBlock extends CropsBlock {
 			return new ItemStack(ModItems.zucchini);
 		case "turnip":
 			return new ItemStack(ModItems.turnip);
+		case "melon":
+			return new ItemStack(Items.MELON);
+		case "pumpkin":
+			return new ItemStack(Items.PUMPKIN);
 		default:
 			return new ItemStack(ModItems.peanut);
 		}
