@@ -58,8 +58,12 @@ public class DoubleCropBlock extends CropsBlock {
 				if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state,
 						random.nextInt((int) (25.0F / f) + 1) == 0)) {
 					if (i == 6) {
-						if (worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState())
+						if (worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState() &&
+						worldIn.getBlockState(pos.down()).getBlock() == Blocks.FARMLAND) {
 							worldIn.setBlockState(pos.up(), this.withAge(7), 2);
+						} else if (worldIn.getBlockState(pos.down()) == this.withAge(6)) {
+							worldIn.setBlockState(pos, this.withAge(7), 2);
+						}
 					} else
 						worldIn.setBlockState(pos, this.withAge(i + 1), 2);
 					net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
