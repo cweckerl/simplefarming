@@ -28,7 +28,7 @@ public class EventSetup {
 		MinecraftForge.EVENT_BUS.register(new DoubleCropBreak());
 		MinecraftForge.EVENT_BUS.register(new IntoxicationTracker());
 		MinecraftForge.EVENT_BUS.register(new ScarecrowEvent());
-		
+
 		if (EnableConfig.stem_toggle.get())
 			MinecraftForge.EVENT_BUS.register(new StemReplaceEvent());
 

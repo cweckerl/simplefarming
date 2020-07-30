@@ -28,8 +28,7 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 	public FruitLeavesBlock(Block.Properties properties, String name) {
 		super(properties);
 		this.name = name;
-		this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0))
-				.with(DISTANCE, Integer.valueOf(1)).with(PERSISTENT, Boolean.valueOf(false)));
+		this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)).with(DISTANCE, Integer.valueOf(1)).with(PERSISTENT, Boolean.valueOf(false)));
 	}
 
 	@Override
@@ -79,16 +78,17 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 		}
 	}
 
+	@Override
 	public boolean ticksRandomly(BlockState state) {
 		return state.get(DISTANCE) == 7 && !state.get(PERSISTENT) || !isMaxAge(state);
 	}
 
+	@Override
 	public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 		if (!state.get(PERSISTENT) && state.get(DISTANCE) == 7) {
 			spawnDrops(state, worldIn, pos);
 			worldIn.removeBlock(pos, false);
 		} else {
-			super.tick(state, worldIn, pos, random);
 			int i = state.get(AGE);
 			if (i < 7 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
 				worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
@@ -121,8 +121,7 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 	}
 
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		return updateDistance(this.getDefaultState().with(PERSISTENT, Boolean.valueOf(true)), context.getWorld(),
-				context.getPos());
+		return updateDistance(this.getDefaultState().with(PERSISTENT, Boolean.valueOf(true)), context.getWorld(), context.getPos());
 	}
 
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
@@ -161,7 +160,6 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 
 	@Override
 	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
-		// unused
 		int i = Math.min(7, state.get(AGE) + 1);
 		worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i)), 2);
 	}

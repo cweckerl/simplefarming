@@ -1,14 +1,57 @@
 {
-    "parent": "block/cube_column",
-    "display": {
-        "firstperson_righthand": {
-            "rotation": [ 0, 135, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 0.40, 0.40, 0.40 ]
-        }
-    },
-    "textures": {
-        "end": "simplefarming:block/fruit_leaves_birch",
-        "side": "simplefarming:block/apricot_leaves3"
-    }
+	"textures": {
+		"fruit": "simplefarming:block/apricot_leaves3",
+		"leaves": "block/birch_leaves",
+		"particle": "block/birch_leaves"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#leaves", "tintindex": 0},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#leaves", "tintindex": 0},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#leaves", "tintindex": 0},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#leaves", "tintindex": 0},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#leaves", "tintindex": 0},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#leaves", "tintindex": 0}
+			}
+		},
+		{
+			"name": "fruit north",
+			"from": [0, 0, -0.01],
+			"to": [16, 16, -0.01],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#fruit"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#fruit"}
+			}
+		},
+		{
+			"name": "fruit south",
+			"from": [0, 0, 16.01],
+			"to": [16, 16, 16.01],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#fruit"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#fruit"}
+			}
+		},
+		{
+			"name": "fruit east",
+			"from": [16.01, 0, 0],
+			"to": [16.01, 16, 16],
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#fruit"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#fruit"}
+			}
+		},
+		{
+			"name": "fruit west",
+			"from": [-0.01, 0, 0],
+			"to": [-0.01, 16, 16],
+			"faces": {
+				"east": {"uv": [0, 0, 16, 16], "texture": "#fruit"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#fruit"}
+			}
+		}
+	]
 }

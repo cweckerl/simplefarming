@@ -20,8 +20,7 @@ public class GrainItem extends Item {
 
 		ItemStack stack = player.getHeldItem(hand);
 
-		if (!entity.world.isRemote && !entity.isChild() && entity instanceof AgeableEntity
-				&& (int) ((AgeableEntity) entity).getGrowingAge() == 0) {
+		if (!entity.world.isRemote && !entity.isChild() && entity instanceof AgeableEntity && (int) ((AgeableEntity) entity).getGrowingAge() == 0) {
 			if (entity instanceof CowEntity) {
 				if (((CowEntity) entity).isInLove()) {
 					return false;
@@ -48,8 +47,7 @@ public class GrainItem extends Item {
 		if (entity.isChild()) {
 			if (!player.isCreative())
 				stack.shrink(1);
-			((AgeableEntity) entity).ageUp((int) ((float) (-((AgeableEntity) entity).getGrowingAge() / 20) * 0.1F),
-					true);
+			((AgeableEntity) entity).ageUp((int) ((float) (-((AgeableEntity) entity).getGrowingAge() / 20) * 0.1F), true);
 			return true;
 		}
 

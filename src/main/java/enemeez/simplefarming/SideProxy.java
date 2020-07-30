@@ -3,13 +3,19 @@ package enemeez.simplefarming;
 import enemeez.simplefarming.client.ClientRenderer;
 import enemeez.simplefarming.config.Config;
 import enemeez.simplefarming.events.EventSetup;
+import enemeez.simplefarming.events.SeedDrops;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
 import enemeez.simplefarming.init.ModWorldGen;
 import enemeez.simplefarming.integration.CompostItems;
 import enemeez.simplefarming.integration.FlammableBlocks;
 import enemeez.simplefarming.world.gen.SimpleGeneration;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -24,14 +30,17 @@ import net.minecraftforge.fml.loading.FMLPaths;
 public class SideProxy {
 	SideProxy() {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.CONFIG, "simplefarming.toml");
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::commonSetup);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::enqueueIMC);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::processIMC);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(ModBlocks::registerAll);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(ModItems::registerAll);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(ModWorldGen::registerAll);
-
 		Config.loadConfig(Config.CONFIG, FMLPaths.CONFIGDIR.get().resolve("simplefarming.toml").toString());
+
+		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		eventBus.addListener(SideProxy::commonSetup);
+		eventBus.addListener(SideProxy::enqueueIMC);
+		eventBus.addListener(SideProxy::processIMC);
+
+		eventBus.addGenericListener(Block.class, ModBlocks::registerAll);
+		eventBus.addGenericListener(Item.class, ModItems::registerAll);
+		eventBus.addGenericListener(Feature.class, ModWorldGen::registerFeature);
+		eventBus.addGenericListener(GlobalLootModifierSerializer.class, SeedDrops::registerModifiers);
 
 		MinecraftForge.EVENT_BUS.addListener(SideProxy::serverStarting);
 	}

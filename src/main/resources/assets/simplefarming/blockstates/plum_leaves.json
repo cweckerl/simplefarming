@@ -1,12 +1,12 @@
 {
     "variants": {
-        "age=0": { "model": "simplefarming:block/fruit_leaves_birch" },
-        "age=1": { "model": "simplefarming:block/fruit_leaves_birch" },
-        "age=2": { "model": "simplefarming:block/fruit_leaves_birch" },
-        "age=3": { "model": "simplefarming:block/fruit_leaves_birch" },
-        "age=4": { "model": "simplefarming:block/fruit_leaves_birch" },
-        "age=5": { "model": "simplefarming:block/fruit_leaves_birch" },
-        "age=6": { "model": "simplefarming:block/fruit_leaves_birch" },
+        "age=0": { "model": "block/birch_leaves" },
+        "age=1": { "model": "block/birch_leaves" },
+        "age=2": { "model": "block/birch_leaves" },
+        "age=3": { "model": "block/birch_leaves" },
+        "age=4": { "model": "block/birch_leaves" },
+        "age=5": { "model": "block/birch_leaves" },
+        "age=6": { "model": "block/birch_leaves" },
         "age=7": [{ "model": "simplefarming:block/plum_leaves3" }, { "model": "simplefarming:block/plum_leaves2" }, { "model": "simplefarming:block/plum_leaves1" }]
     }
 }

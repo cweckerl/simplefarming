@@ -1,6 +1,6 @@
 {
     "textures": {
-        "particle": "simplefarming:block/pumpkin_side",
+        "particle": "block/pumpkin_side",
         "pumpkin_side": "block/pumpkin_side",
         "gourd_leaves": "simplefarming:block/gourd_leaves",
         "pumpkin_top": "block/pumpkin_top"

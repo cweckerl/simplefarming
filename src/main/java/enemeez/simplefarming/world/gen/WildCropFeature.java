@@ -8,11 +8,8 @@ import com.mojang.datafixers.Dynamic;
 import enemeez.simplefarming.config.DimensionConfig;
 import enemeez.simplefarming.config.GenConfig;
 import enemeez.simplefarming.init.ModBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import enemeez.simplefarming.util.WorldGenHelper;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationSettings;
@@ -24,46 +21,34 @@ public class WildCropFeature extends Feature<NoFeatureConfig> {
 		super(configFactory);
 	}
 
-	private boolean check(IWorld world, BlockPos pos) {
-		if (isValidGround(world.getBlockState(pos.down()), world, pos)
-				&& world.getBlockState(pos).getMaterial().isReplaceable()
-				&& world.getBlockState(pos) != Blocks.WATER.getDefaultState()
-				&& world.getBlockState(pos) != Blocks.LAVA.getDefaultState())
-			return true;
-		else
-			return false;
-	}
-
 	@Override
-	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random,
-			BlockPos pos, NoFeatureConfig config) {
-		if (random.nextInt(GenConfig.wild_crop_chance.get()) != 0
-				|| DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
+	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random, BlockPos pos, NoFeatureConfig config) {
+		if (random.nextInt(GenConfig.wild_crop_chance.get()) != 0 || DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
 				|| !DimensionConfig.whitelist.get().contains(world.getDimension().getType().getId()))
 			return false;
-		int rolls = (int) ((Math.random() * 5) + 1);
+		int rolls = random.nextInt(5) + 1;
 		for (int i = 0; i < rolls; i++) {
 			if (i == 0) {
-				int initial = (int) ((Math.random() * 2) + 1);
-				int offset = (int) ((Math.random() * 2) + 1);
-				if (check(world, pos.north(initial).west(offset)))
+				int initial = random.nextInt(2) + 1;
+				int offset = random.nextInt(2) + 1;
+				if (WorldGenHelper.checkConditions(world, pos.north(initial).west(offset)))
 					generatePlant(world, pos.north(initial).west(offset), random);
 			}
 			if (i == 1) {
-				int initial = (int) ((Math.random() * 2) + 1);
-				int offset = (int) ((Math.random() * 2) + 1);
-				if (check(world, pos.south(initial).east(offset)))
+				int initial = random.nextInt(2) + 1;
+				int offset = random.nextInt(2) + 1;
+				if (WorldGenHelper.checkConditions(world, pos.south(initial).east(offset)))
 					generatePlant(world, pos.south(initial).east(offset), random);
 			}
 			if (i == 2) {
-				int initial = (int) ((Math.random() * 2) + 1);
-				int offset = (int) ((Math.random() * 2) + 1);
-				if (check(world, pos.north(initial).east(offset)))
+				int initial = random.nextInt(2) + 1;
+				int offset = random.nextInt(2) + 1;
+				if (WorldGenHelper.checkConditions(world, pos.north(initial).east(offset)))
 					generatePlant(world, pos.north(initial).east(offset), random);
 			} else {
-				int initial = (int) ((Math.random() * 2) + 1);
-				int offset = (int) ((Math.random() * 2) + 1);
-				if (check(world, pos.south(initial).west(offset)))
+				int initial = random.nextInt(2) + 1;
+				int offset = random.nextInt(2) + 1;
+				if (WorldGenHelper.checkConditions(world, pos.south(initial).west(offset)))
 					generatePlant(world, pos.south(initial).west(offset), random);
 			}
 		}
@@ -74,9 +59,4 @@ public class WildCropFeature extends Feature<NoFeatureConfig> {
 		world.setBlockState(pos, ModBlocks.wild_crop.getDefaultState(), 2);
 	}
 
-	private boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-		Block block = state.getBlock();
-		return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT
-				|| block == Blocks.PODZOL;
-	}
 }

@@ -1,5 +1,6 @@
 package enemeez.simplefarming.world.gen;
 
+import enemeez.simplefarming.config.EnableConfig;
 import enemeez.simplefarming.init.ModWorldGen;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
@@ -13,39 +14,34 @@ public class SimpleGeneration {
 
 	public static void registerWorldGen() {
 
-		if (ModWorldGen.berry_bush != null) {
+		if (EnableConfig.bush_validate.get()) {
 			for (Biome biome : ForgeRegistries.BIOMES) {
 				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-						ModWorldGen.berry_bush.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG)
-								.withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
+						ModWorldGen.BERRY_BUSH.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
 			}
-			if (ModWorldGen.fruit_tree != null) {
+			if (EnableConfig.tree_validate.get()) {
 				for (Biome biome : ForgeRegistries.BIOMES) {
 					biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-							ModWorldGen.fruit_tree.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(
-									Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
+							ModWorldGen.FRUIT_TREE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
 				}
 			}
-			if (ModWorldGen.wild_crop != null) {
+			if (EnableConfig.wild_crop_validate.get()) {
 				for (Biome biome : ForgeRegistries.BIOMES) {
 					biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-							ModWorldGen.wild_crop.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(
-									Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
+							ModWorldGen.WILD_CROP.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
 				}
 			}
-			if (ModWorldGen.cactus_crop != null) {
+			if (EnableConfig.cactus_validate.get()) {
 				BiomeDictionary.getBiomes(BiomeDictionary.Type.DRY).forEach((biome) -> {
 					biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-							ModWorldGen.cactus_crop.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(
-									Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
+							ModWorldGen.CACTUS_CROP.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
 				});
 
 			}
-			if (ModWorldGen.wild_plant != null) {
+			if (EnableConfig.wild_plant_validate.get()) {
 				for (Biome biome : ForgeRegistries.BIOMES) {
 					biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-							ModWorldGen.wild_plant.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(
-									Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
+							ModWorldGen.WILD_PLANT.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
 				}
 			}
 		}

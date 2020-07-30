@@ -7,7 +7,7 @@ public class FeatureConfig {
 	public static ForgeConfigSpec.BooleanValue smart_harvest;
 
 	public static void init(ForgeConfigSpec.Builder config) {
-		
+
 		mod_harvest = config.comment("Indicates whether right-click harvesting crops should be enabled. Respective parts of the right-clicking function can be enabled/disabled below.")
 				.define("Enable right-click harvesting for crops", true);
 

@@ -28,20 +28,14 @@ public class SmartWildPlantHarvest {
 					if (!event.getWorld().isRemote) {
 						if (!event.getPlayer().getHeldItemMainhand().isEmpty())
 							event.setCanceled(true);
-						drops = Block.getDrops(event.getWorld().getBlockState(event.getPos()),
-								(ServerWorld) event.getWorld(), event.getPos(),
-								event.getWorld().getTileEntity(event.getPos()));
+						drops = Block.getDrops(event.getWorld().getBlockState(event.getPos()), (ServerWorld) event.getWorld(), event.getPos(), event.getWorld().getTileEntity(event.getPos()));
 						for (int i = 0; i < drops.size(); i++) {
 							drops.remove(0);
 							if (!event.getPlayer().addItemStackToInventory((ItemStack) drops.get(i)))
-								event.getWorld()
-										.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
-												event.getPos().getY(), event.getPos().getZ(),
-												(ItemStack) drops.get(i)));
+								event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), (ItemStack) drops.get(i)));
 						}
 						event.getPlayer().addExhaustion(.05F);
-						event.getWorld().playSound((PlayerEntity) null, event.getPos(), SoundEvents.BLOCK_GRASS_BREAK,
-								SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
+						event.getWorld().playSound((PlayerEntity) null, event.getPos(), SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
 						event.getWorld().setBlockState(event.getPos(), plant.getDefaultState(), 2);
 					}
 					event.getPlayer().swingArm(Hand.MAIN_HAND);

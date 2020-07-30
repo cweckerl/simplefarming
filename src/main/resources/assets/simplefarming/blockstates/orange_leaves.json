@@ -1,12 +1,12 @@
 {
     "variants": {
-        "age=0": { "model": "simplefarming:block/fruit_leaves_jungle" },
-        "age=1": { "model": "simplefarming:block/fruit_leaves_jungle" },
-        "age=2": { "model": "simplefarming:block/fruit_leaves_jungle" },
-        "age=3": { "model": "simplefarming:block/fruit_leaves_jungle" },
-        "age=4": { "model": "simplefarming:block/fruit_leaves_jungle" },
-        "age=5": { "model": "simplefarming:block/fruit_leaves_jungle" },
-        "age=6": { "model": "simplefarming:block/fruit_leaves_jungle" },
+        "age=0": { "model": "block/jungle_leaves" },
+        "age=1": { "model": "block/jungle_leaves" },
+        "age=2": { "model": "block/jungle_leaves" },
+        "age=3": { "model": "block/jungle_leaves" },
+        "age=4": { "model": "block/jungle_leaves" },
+        "age=5": { "model": "block/jungle_leaves" },
+        "age=6": { "model": "block/jungle_leaves" },
         "age=7": [{ "model": "simplefarming:block/orange_leaves3" }, { "model": "simplefarming:block/orange_leaves2" }, { "model": "simplefarming:block/orange_leaves1" }]
     }
 }

@@ -283,7 +283,6 @@
 	"block.simplefarming.chicory": "Chicory",
 	"block.simplefarming.grape_leaves_base": "Grape Leaves",
 	"item.simplefarming.sprinkles": "Sprinkles",
-	
 	"advancements.simplefarming.root.description": "So many foods to choose from!",
 	"advancements.simplefarming.berries.title": "Berry Good!",
 	"advancements.simplefarming.berries.description": "Collect all wild berry variants",
@@ -302,7 +301,5 @@
 	"advancements.simplefarming.wine.title": "Belt The Grape",
 	"advancements.simplefarming.wine.description": "Craft a bottle of wine using grapes in the brewing barrel",
 	"item.simplefarming.mead": "Mead",
-	
-	
 	"item.simplefarming.veggie_burger": "Veggie Burger"
 }

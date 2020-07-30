@@ -11,8 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class BrewingBarrelRecipeSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>>
-		implements IRecipeSerializer<BrewingBarrelRecipe> {
+public class BrewingBarrelRecipeSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<BrewingBarrelRecipe> {
 
 	@Override
 	public BrewingBarrelRecipe read(ResourceLocation recipeId, JsonObject json) {

@@ -45,13 +45,9 @@ public class BrewingBarrelBlock extends ContainerBlock {
 	private static final VoxelShape SHAPE = VoxelShapes.or(BOTTOM, SIDE1, SIDE2, SIDE3, SIDE4);
 	protected static final VoxelShape CLOSED = Block.makeCuboidShape(16.0D, 16.0D, 16.0D, 0.0D, 0.0D, 0.0D);
 
-
-
-
 	public BrewingBarrelBlock(Properties properties) {
 		super(properties);
-		this.setDefaultState(
-				this.stateContainer.getBaseState().with(LAYERS, Integer.valueOf(0)).with(PROGRESS, Integer.valueOf(0)));
+		this.setDefaultState(this.stateContainer.getBaseState().with(LAYERS, Integer.valueOf(0)).with(PROGRESS, Integer.valueOf(0)));
 	}
 
 	public BlockRenderType getRenderType(BlockState state) {
@@ -87,19 +83,15 @@ public class BrewingBarrelBlock extends ContainerBlock {
 	}
 
 	private boolean readyToFerment(BlockState state) {
-		if (getLayers(state) == 1)
-			return true;
-		return false;
+		return getLayers(state) == 1 ? true : false;
 	}
 
 	public void reset(BlockState state, World worldIn, BlockPos pos) {
-		worldIn.setBlockState(pos,
-				this.getDefaultState().with(LAYERS, Integer.valueOf(0)).with(PROGRESS, Integer.valueOf(0)));
+		worldIn.setBlockState(pos, this.getDefaultState().with(LAYERS, Integer.valueOf(0)).with(PROGRESS, Integer.valueOf(0)));
 	}
 
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
-			Hand handIn, BlockRayTraceResult hit) {
+	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 		if (tileentity instanceof BrewingBarrelTileEntity) {
 			if (player.isSneaking()) {
@@ -110,8 +102,7 @@ public class BrewingBarrelBlock extends ContainerBlock {
 					return ActionResultType.SUCCESS;
 				}
 			}
-			if (isAlcoholIngredient(worldIn, player.getHeldItemMainhand())
-					&& ((BrewingBarrelTileEntity) tileentity).getCapacity() == 0) {
+			if (isAlcoholIngredient(worldIn, player.getHeldItemMainhand()) && ((BrewingBarrelTileEntity) tileentity).getCapacity() == 0) {
 				this.insertItem(worldIn, pos, state, player.getHeldItemMainhand().getItem());
 				player.getHeldItemMainhand().shrink(1);
 				state = state.with(LAYERS, Integer.valueOf(1));
@@ -121,8 +112,7 @@ public class BrewingBarrelBlock extends ContainerBlock {
 			if (player.getHeldItemMainhand().getItem() == Items.GLASS_BOTTLE && this.getProgress(state) == 3) {
 				player.addItemStackToInventory(getProduct(worldIn, ((BrewingBarrelTileEntity) tileentity).getItem()));
 				((BrewingBarrelTileEntity) tileentity).clear();
-				worldIn.playSound((PlayerEntity) null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F,
-						0.8F + worldIn.rand.nextFloat() * 0.4F);
+				worldIn.playSound((PlayerEntity) null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 				player.getHeldItemMainhand().shrink(1);
 				this.reset(state, worldIn, pos);
 				return ActionResultType.SUCCESS;
@@ -155,8 +145,7 @@ public class BrewingBarrelBlock extends ContainerBlock {
 					double d1 = (double) (worldIn.rand.nextFloat() * 0.7F) + (double) 0.060000002F + 0.6D;
 					double d2 = (double) (worldIn.rand.nextFloat() * 0.7F) + (double) 0.15F;
 					ItemStack itemstack1 = new ItemStack(item);
-					ItemEntity itementity = new ItemEntity(worldIn, (double) pos.getX() + d0, (double) pos.getY() + d1,
-							(double) pos.getZ() + d2, itemstack1);
+					ItemEntity itementity = new ItemEntity(worldIn, (double) pos.getX() + d0, (double) pos.getY() + d1, (double) pos.getZ() + d2, itemstack1);
 					itementity.setDefaultPickupDelay();
 					worldIn.addEntity(itementity);
 				}
@@ -165,27 +154,22 @@ public class BrewingBarrelBlock extends ContainerBlock {
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (state.getBlock() != newState.getBlock()) {
 			this.dropItem(worldIn, pos);
-			super.onReplaced(state, worldIn, pos, newState, isMoving);
+			// super.onReplaced(state, worldIn, pos, newState, isMoving);
 		}
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
-	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+	public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 		if (this.readyToFerment(state)) {
-			super.tick(state, worldIn, pos, random);
+			// super.tick(state, worldIn, pos, random);
 			int i = state.get(PROGRESS);
 			if (i < 3 && random.nextInt(5) == 0) {
-				worldIn.setBlockState(pos,
-						this.getDefaultState().with(LAYERS, Integer.valueOf(1)).with(PROGRESS, Integer.valueOf(i + 1)),
-						2);
+				worldIn.setBlockState(pos, this.getDefaultState().with(LAYERS, Integer.valueOf(1)).with(PROGRESS, Integer.valueOf(i + 1)), 2);
 			}
 		}
-
 	}
 
 	@Override
@@ -200,14 +184,12 @@ public class BrewingBarrelBlock extends ContainerBlock {
 	}
 
 	public ItemStack getProduct(World worldIn, Item itemIn) {
-		return worldIn.getRecipeManager()
-				.getRecipe(ModRecipes.BREWING_BARREL_RECIPE_TYPE, new Inventory(new ItemStack(itemIn)), worldIn)
-				.map(recipe -> recipe.getCraftingResult(null)).orElse(ItemStack.EMPTY);
+		return worldIn.getRecipeManager().getRecipe(ModRecipes.BREWING_BARREL_RECIPE_TYPE, new Inventory(new ItemStack(itemIn)), worldIn).map(recipe -> recipe.getCraftingResult(null))
+				.orElse(ItemStack.EMPTY);
 	}
 
 	public boolean isAlcoholIngredient(World worldIn, ItemStack itemstackIn) {
-		return worldIn.getRecipeManager()
-				.getRecipe(ModRecipes.BREWING_BARREL_RECIPE_TYPE, new Inventory(itemstackIn), worldIn).isPresent();
+		return worldIn.getRecipeManager().getRecipe(ModRecipes.BREWING_BARREL_RECIPE_TYPE, new Inventory(itemstackIn), worldIn).isPresent();
 	}
 
 }

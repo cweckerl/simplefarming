@@ -24,9 +24,11 @@ public class SimpleCropBlock extends CropsBlock {
 		return state.getBlock() instanceof FarmlandBlock;
 	}
 
-	
-	// Crops are given textures/models based on name
-	// No extra inheritance of SimpleCropBlock method
+	/*
+	 * Crops are given textures/models based on name No individual inheritance of
+	 * SimpleCropBlock method
+	 */
+
 	protected IItemProvider getSeedsItem() {
 		switch (name) {
 		case "barley":

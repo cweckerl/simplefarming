@@ -21,13 +21,12 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.ForgeHooks;
 
 public class BerryBushBlock extends BushBlock implements IGrowable {
 	private String name;
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-	protected static final VoxelShape SHAPE = VoxelShapes.or(
-			Block.makeCuboidShape(1.0D, 2.0D, 1.0D, 15.0D, 16.0D, 15.0D),
-			Block.makeCuboidShape(5.0D, 0.D, 5.0D, 11.0D, 2.0D, 11.0D));
+	protected static final VoxelShape SHAPE = VoxelShapes.or(Block.makeCuboidShape(1.0D, 2.0D, 1.0D, 15.0D, 16.0D, 15.0D), Block.makeCuboidShape(5.0D, 0.D, 5.0D, 11.0D, 2.0D, 11.0D));
 
 	public BerryBushBlock(Block.Properties properties, String name) {
 		super(properties);
@@ -56,14 +55,13 @@ public class BerryBushBlock extends BushBlock implements IGrowable {
 
 	// Tick method
 	@Override
-	@SuppressWarnings("deprecation")
-	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-		super.tick(state, worldIn, pos, random);
+	public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 		int i = state.get(AGE);
-		if (i < 3 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
-			worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
-		}
 
+		if (i < 3 && worldIn.getLightSubtracted(pos.up(), 0) >= 9 && ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt(5) == 0)) {
+			worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
+			ForgeHooks.onCropsGrowPost(worldIn, pos, state);
+		}
 	}
 
 	public boolean isMaxAge(BlockState state) {

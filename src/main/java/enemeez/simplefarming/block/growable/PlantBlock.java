@@ -55,12 +55,9 @@ public class PlantBlock extends BushBlock implements IGrowable {
 		return state.get(AGE) == 3;
 	}
 
-	
 	// Tick method
 	@Override
-	@SuppressWarnings("deprecation")
-	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-		super.tick(state, worldIn, pos, random);
+	public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 		int i = state.get(AGE);
 		if (i < 3 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
 			worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);

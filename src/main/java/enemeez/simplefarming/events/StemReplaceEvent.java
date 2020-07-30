@@ -14,11 +14,9 @@ public class StemReplaceEvent {
 		BlockPos pos = event.getPos();
 		Block block = event.getWorld().getBlockState(pos).getBlock();
 		if (block == Blocks.PUMPKIN_STEM) {
-			event.getWorld().setBlockState(pos,
-					ModBlocks.pumpkin_crop.getDefaultState().with(SimpleCropBlock.AGE, Integer.valueOf(0)), 2);
+			event.getWorld().setBlockState(pos, ModBlocks.pumpkin_crop.getDefaultState().with(SimpleCropBlock.AGE, Integer.valueOf(0)), 2);
 		} else if (block == Blocks.MELON_STEM) {
-			event.getWorld().setBlockState(pos,
-					ModBlocks.melon_crop.getDefaultState().with(SimpleCropBlock.AGE, Integer.valueOf(0)), 2);
+			event.getWorld().setBlockState(pos, ModBlocks.melon_crop.getDefaultState().with(SimpleCropBlock.AGE, Integer.valueOf(0)), 2);
 		}
 	}
 }

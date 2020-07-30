@@ -23,6 +23,7 @@ public class BirthdayCakeBlock extends CakeBlock {
 		double d0 = (double) ((float) pos.getX() + 0.5F);
 		double d1 = (double) ((float) pos.getY() + 0.16D);
 		double d2 = (double) ((float) pos.getZ() + 0.5F);
-		worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+		if (stateIn.get(BITES) < 6)
+			worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
 	}
 }

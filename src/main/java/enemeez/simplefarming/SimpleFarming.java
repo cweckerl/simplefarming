@@ -20,11 +20,10 @@ public class SimpleFarming {
 		public ItemStack createIcon() {
 			return new ItemStack(ModItems.tomato);
 		}
-
 	};
 
 	public SimpleFarming() {
-		DistExecutor.runForDist(() -> () -> new SideProxy.Client(), () -> () -> new SideProxy.Server());
+		DistExecutor.unsafeRunForDist(() -> () -> new SideProxy.Client(), () -> () -> new SideProxy.Server());
 	}
 
 	@Nonnull

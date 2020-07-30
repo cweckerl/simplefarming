@@ -28,12 +28,13 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.PlantType;
 
 public class OpuntiaBlock extends BushBlock implements IGrowable {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
 	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 
-	// X Axis hitbox
+	// X axis hit box
 	private static final VoxelShape TOP_MIDDLE_X = Block.makeCuboidShape(4.0D, 10.0D, 7.0D, 12.0D, 12.0D, 9.0D);
 	private static final VoxelShape MIDDLE_X = Block.makeCuboidShape(2.0D, 4.0D, 7.0D, 14.0D, 10.0D, 9.0D);
 	private static final VoxelShape BOT_MIDDLE_X = Block.makeCuboidShape(4.0D, 2.0D, 7.0D, 12.0D, 4.0D, 9.0D);
@@ -44,10 +45,9 @@ public class OpuntiaBlock extends BushBlock implements IGrowable {
 	private static final VoxelShape FRUIT_4_X = Block.makeCuboidShape(4.0D, 12.0D, 7.0D, 6.0D, 14.0D, 9.0D);
 	private static final VoxelShape FRUIT_5_X = Block.makeCuboidShape(2.0D, 10.0D, 7.0D, 4.0D, 12.0D, 9.0D);
 	private static final VoxelShape UNRIPE_X = VoxelShapes.or(TOP_MIDDLE_X, BOT_MIDDLE_X, MIDDLE_X, BOT_X);
-	private static final VoxelShape RIPE_X = VoxelShapes.or(TOP_MIDDLE_X, BOT_MIDDLE_X, MIDDLE_X, BOT_X, FRUIT_1_X,
-			FRUIT_2_X, FRUIT_3_X, FRUIT_4_X, FRUIT_5_X);
+	private static final VoxelShape RIPE_X = VoxelShapes.or(TOP_MIDDLE_X, BOT_MIDDLE_X, MIDDLE_X, BOT_X, FRUIT_1_X, FRUIT_2_X, FRUIT_3_X, FRUIT_4_X, FRUIT_5_X);
 
-	// Z Axis hitbox
+	// Z axis hit box
 	private static final VoxelShape TOP_MIDDLE_Z = Block.makeCuboidShape(7.0D, 10.0D, 4.0D, 9.0D, 12.0D, 12.0D);
 	private static final VoxelShape MIDDLE_Z = Block.makeCuboidShape(7.0D, 4.0D, 2.0D, 9.0D, 10.0D, 14.0D);
 	private static final VoxelShape BOT_MIDDLE_Z = Block.makeCuboidShape(7.0D, 2.0D, 4.0D, 9.0D, 4.0D, 12.0D);
@@ -58,8 +58,7 @@ public class OpuntiaBlock extends BushBlock implements IGrowable {
 	private static final VoxelShape FRUIT_4_Z = Block.makeCuboidShape(7.0D, 12.0D, 4.0D, 9.0D, 14.0D, 6.0D);
 	private static final VoxelShape FRUIT_5_Z = Block.makeCuboidShape(7.0D, 10.0D, 2.0D, 9.0D, 12.0D, 4.0D);
 	private static final VoxelShape UNRIPE_Z = VoxelShapes.or(TOP_MIDDLE_Z, BOT_MIDDLE_Z, MIDDLE_Z, BOT_Z);
-	private static final VoxelShape RIPE_Z = VoxelShapes.or(TOP_MIDDLE_Z, BOT_MIDDLE_Z, MIDDLE_Z, BOT_Z, FRUIT_1_Z,
-			FRUIT_2_Z, FRUIT_3_Z, FRUIT_4_Z, FRUIT_5_Z);
+	private static final VoxelShape RIPE_Z = VoxelShapes.or(TOP_MIDDLE_Z, BOT_MIDDLE_Z, MIDDLE_Z, BOT_Z, FRUIT_1_Z, FRUIT_2_Z, FRUIT_3_Z, FRUIT_4_Z, FRUIT_5_Z);
 
 	public OpuntiaBlock(Block.Properties properties) {
 		super(properties);
@@ -74,13 +73,11 @@ public class OpuntiaBlock extends BushBlock implements IGrowable {
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
 		Direction direction = state.get(FACING);
-		return direction.getAxis() == Direction.Axis.X ? isMaxAge(state) ? RIPE_X : UNRIPE_X
-				: isMaxAge(state) ? RIPE_Z : UNRIPE_Z;
+		return direction.getAxis() == Direction.Axis.X ? isMaxAge(state) ? RIPE_X : UNRIPE_X : isMaxAge(state) ? RIPE_Z : UNRIPE_Z;
 	}
 
 	@Override
-	public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos,
-			ISelectionContext context) {
+	public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
 		return getShape(state, worldIn, pos, context);
 	}
 
@@ -107,16 +104,12 @@ public class OpuntiaBlock extends BushBlock implements IGrowable {
 		return AGE;
 	}
 
-	// method
 	@Override
-	@SuppressWarnings("deprecation")
-	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-		super.tick(state, worldIn, pos, random);
+	public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 		int i = state.get(AGE);
 		if (i < 3 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
 			worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
 		}
-
 	}
 
 	@Override
@@ -125,8 +118,8 @@ public class OpuntiaBlock extends BushBlock implements IGrowable {
 	}
 
 	@Override
-	public net.minecraftforge.common.PlantType getPlantType(IBlockReader world, BlockPos pos) {
-		return net.minecraftforge.common.PlantType.Desert;
+	public PlantType getPlantType(IBlockReader world, BlockPos pos) {
+		return PlantType.Desert;
 	}
 
 	@Override

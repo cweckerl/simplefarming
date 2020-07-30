@@ -21,11 +21,8 @@ import net.minecraft.world.server.ServerWorld;
 
 public class GrapePlantBlock extends BushBlock implements IGrowable {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] {
-			Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 1.0D, 10.0D),
-			Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 5.0D, 10.0D),
-			Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 11.0D, 10.0D),
-			Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D) };
+	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] { Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 1.0D, 10.0D), Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 5.0D, 10.0D),
+			Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 11.0D, 10.0D), Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D) };
 
 	public GrapePlantBlock(Block.Properties properties) {
 		super(properties);
@@ -34,7 +31,6 @@ public class GrapePlantBlock extends BushBlock implements IGrowable {
 
 	@Override
 	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-
 		return new ItemStack(ModItems.grapes);
 	}
 
@@ -49,9 +45,7 @@ public class GrapePlantBlock extends BushBlock implements IGrowable {
 
 	// Tick method
 	@Override
-	@SuppressWarnings("deprecation")
-	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-		super.tick(state, worldIn, pos, random);
+	public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 		int i = state.get(AGE);
 		if (i < 3 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
 			worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
@@ -78,7 +72,6 @@ public class GrapePlantBlock extends BushBlock implements IGrowable {
 		return true;
 	}
 
-	
 	// Grow method
 	@Override
 	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {

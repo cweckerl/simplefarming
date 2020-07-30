@@ -17,8 +17,7 @@ public class SeedItem extends BlockNamedItem {
 	}
 
 	@Override
-	public boolean itemInteractionForEntity(ItemStack itemstack, PlayerEntity player,
-			LivingEntity entity, Hand hand) {
+	public boolean itemInteractionForEntity(ItemStack itemstack, PlayerEntity player, LivingEntity entity, Hand hand) {
 
 		ItemStack stack = player.getHeldItem(hand);
 
@@ -49,8 +48,7 @@ public class SeedItem extends BlockNamedItem {
 		if (entity.isChild()) {
 			if (!player.isCreative())
 				stack.shrink(1);
-			((AgeableEntity) entity).ageUp((int) ((float) (-((AgeableEntity) entity).getGrowingAge() / 20) * 0.1F),
-					true);
+			((AgeableEntity) entity).ageUp((int) ((float) (-((AgeableEntity) entity).getGrowingAge() / 20) * 0.1F), true);
 			return true;
 		}
 		return false;

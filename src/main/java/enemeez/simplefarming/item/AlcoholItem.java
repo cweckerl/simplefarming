@@ -50,28 +50,27 @@ public class AlcoholItem extends BottleItem {
 
 		return stack;
 	}
-	
-	private EffectInstance getEffect(String name)
-	{
+
+	private EffectInstance getEffect(String name) {
 		switch (name) {
 		case "beer":
-			 return new EffectInstance(Effects.STRENGTH, 500, 0, false, true);
+			return new EffectInstance(Effects.STRENGTH, 500, 0, false, true);
 		case "cauim":
-			 return new EffectInstance(Effects.JUMP_BOOST, 500, 0, false, true);
+			return new EffectInstance(Effects.JUMP_BOOST, 500, 0, false, true);
 		case "cider":
-			 return new EffectInstance(Effects.LUCK, 500, 0, false, true);
+			return new EffectInstance(Effects.LUCK, 500, 0, false, true);
 		case "sake":
-			 return new EffectInstance(Effects.SPEED, 500, 0, false, true);
+			return new EffectInstance(Effects.SPEED, 500, 0, false, true);
 		case "tiswin":
-			 return new EffectInstance(Effects.HEALTH_BOOST, 500, 0, false, true);
+			return new EffectInstance(Effects.HEALTH_BOOST, 500, 0, false, true);
 		case "vodka":
-			 return new EffectInstance(Effects.RESISTANCE, 500, 0, false, true);
+			return new EffectInstance(Effects.RESISTANCE, 500, 0, false, true);
 		case "whiskey":
-			 return new EffectInstance(Effects.ABSORPTION, 500, 0, false, true);
+			return new EffectInstance(Effects.ABSORPTION, 500, 0, false, true);
 		case "mead":
-			 return new EffectInstance(Effects.HASTE, 500, 0, false, true);
+			return new EffectInstance(Effects.HASTE, 500, 0, false, true);
 		default:
-			 return new EffectInstance(Effects.REGENERATION, 500, 0, false, true);
+			return new EffectInstance(Effects.REGENERATION, 500, 0, false, true);
 		}
 	}
 

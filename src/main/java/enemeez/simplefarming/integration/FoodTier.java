@@ -29,9 +29,7 @@ public class FoodTier {
 	public static final Food BROCCOLI = (new Food.Builder()).hunger(3).saturation(0.3F).build();
 	public static final Food OLIVES = (new Food.Builder()).hunger(2).saturation(0.3F).build();
 
-	@SuppressWarnings("deprecation")
-	public static final Food GOLDEN_HABANERO = (new Food.Builder()).hunger(2).saturation(1.2F)
-			.effect(new EffectInstance(Effects.FIRE_RESISTANCE, 1200, 1), 1.0F).setAlwaysEdible().build();
+	public static final Food GOLDEN_HABANERO = (new Food.Builder()).hunger(2).saturation(1.2F).effect(() -> new EffectInstance(Effects.FIRE_RESISTANCE, 1200, 1), 1.0F).setAlwaysEdible().build();
 	public static final Food BERRY_PIE = (new Food.Builder()).hunger(4).saturation(0.1F).build();
 	public static final Food FRUIT_PIE = (new Food.Builder()).hunger(6).saturation(0.3F).build();
 
@@ -46,11 +44,9 @@ public class FoodTier {
 	public static final Food CHILI = (new Food.Builder()).hunger(13).saturation(0.8F).build();
 	public static final Food CHOCOLATE = (new Food.Builder()).hunger(3).saturation(0.2F).build();
 	public static final Food COOKED_BACON = (new Food.Builder()).hunger(4).saturation(0.8F).fastToEat().meat().build();
-	public static final Food COOKED_CHICKEN_WINGS = (new Food.Builder()).hunger(3).saturation(0.6F).fastToEat().meat()
-			.build();
+	public static final Food COOKED_CHICKEN_WINGS = (new Food.Builder()).hunger(3).saturation(0.6F).fastToEat().meat().build();
 	public static final Food COOKED_EGG = (new Food.Builder()).hunger(5).saturation(0.6F).build();
-	public static final Food COOKED_SAUSAGE = (new Food.Builder()).hunger(4).saturation(0.8F).fastToEat().meat()
-			.build();
+	public static final Food COOKED_SAUSAGE = (new Food.Builder()).hunger(4).saturation(0.8F).fastToEat().meat().build();
 	public static final Food CORN_SALAD = (new Food.Builder()).hunger(9).saturation(0.6F).build();
 	public static final Food CORN_BREAD = (new Food.Builder()).hunger(7).saturation(0.6F).build();
 	public static final Food CUCUMBER_SOUP = (new Food.Builder()).hunger(6).saturation(0.6F).build();
@@ -77,9 +73,8 @@ public class FoodTier {
 	public static final Food RADISH_SOUP = (new Food.Builder()).hunger(6).saturation(0.6F).build();
 	public static final Food RAW_BACON = (new Food.Builder()).hunger(2).saturation(0.3F).fastToEat().meat().build();
 	public static final Food RAW_CALAMARI = (new Food.Builder()).hunger(2).saturation(0.1F).build();
-	@SuppressWarnings("deprecation")
-	public static final Food RAW_CHICKEN_WINGS = (new Food.Builder()).hunger(1).saturation(0.3F)
-			.effect(new EffectInstance(Effects.HUNGER, 300, 0), 0.3F).fastToEat().meat().build();
+
+	public static final Food RAW_CHICKEN_WINGS = (new Food.Builder()).hunger(1).saturation(0.3F).effect(() -> new EffectInstance(Effects.HUNGER, 300, 0), 0.3F).fastToEat().meat().build();
 	public static final Food RAW_SAUSAGE = (new Food.Builder()).hunger(2).saturation(0.3F).fastToEat().meat().build();
 	public static final Food RICE_BOWL = (new Food.Builder()).hunger(3).saturation(0.6F).build();
 	public static final Food SALAD = (new Food.Builder()).hunger(12).saturation(0.6F).build();
@@ -126,10 +121,10 @@ public class FoodTier {
 	public static final Food STUFFED_CORN_ZUCCHINI = (new Food.Builder()).hunger(14).saturation(0.6F).build();
 	public static final Food ZUCCHINI_BREAD = (new Food.Builder()).hunger(6).saturation(0.6F).build();
 	public static final Food OLIVE_TOMATO_SALAD = (new Food.Builder()).hunger(5).saturation(0.6F).build();
-	
+
 	public static final Food CANDY = (new Food.Builder()).hunger(5).saturation(0.2F).build();
 	public static final Food BORSCHT = (new Food.Builder()).hunger(6).saturation(0.6F).build();
-	
+
 	public static final Food SQUID_INK_PASTA = (new Food.Builder()).hunger(12).saturation(0.6F).build();
 	public static final Food FISH_AND_CHIPS = (new Food.Builder()).hunger(9).saturation(0.8F).build();
 	public static final Food MARSHMALLOW = (new Food.Builder()).hunger(3).saturation(0.2F).build();
@@ -139,10 +134,5 @@ public class FoodTier {
 	public static final Food TURNIP_BEETROOT_GRATIN = (new Food.Builder()).hunger(10).saturation(0.6F).build();
 	public static final Food ICE_CREAM_SUNDAE = (new Food.Builder()).hunger(7).saturation(0.3F).build();
 	public static final Food CANDY_CANE = (new Food.Builder()).hunger(6).saturation(0.2F).build();
-	
-	public static final Food GUMBO = (new Food.Builder()).hunger(24).saturation(0.6F).build();
 
-
-
-	
 }

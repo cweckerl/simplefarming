@@ -1,12 +1,33 @@
 {
     "variants": {
-        "age=0": { "model": "simplefarming:block/corn_crop0" },
-        "age=1": { "model": "simplefarming:block/corn_crop1" },
-        "age=2": { "model": "simplefarming:block/corn_crop2" },
-        "age=3": { "model": "simplefarming:block/corn_crop3" },
-        "age=4": { "model": "simplefarming:block/corn_crop4" },
-        "age=5": { "model": "simplefarming:block/corn_crop5" },
-        "age=6": { "model": "simplefarming:block/corn_crop6" },
-        "age=7": { "model": "simplefarming:block/corn_crop7" }
+        "age=0,half=lower": { "model": "simplefarming:block/corn_crop0" },
+        "age=0,half=upper": { "model": "simplefarming:block/corn_crop0" },
+
+        "age=1,half=lower": { "model": "simplefarming:block/corn_crop1" },
+        "age=1,half=upper": { "model": "simplefarming:block/corn_crop0" },
+
+
+        "age=2,half=lower": { "model": "simplefarming:block/corn_crop2" },
+        "age=2,half=upper": { "model": "simplefarming:block/corn_crop0" },
+
+
+        "age=3,half=lower": { "model": "simplefarming:block/corn_crop3" },
+        "age=3,half=upper": { "model": "simplefarming:block/corn_crop0" },
+
+
+        "age=4,half=lower": { "model": "simplefarming:block/corn_crop4" },
+        "age=4,half=upper": { "model": "simplefarming:block/corn_crop0" },
+
+
+        "age=5,half=lower": { "model": "simplefarming:block/corn_crop5" },
+        "age=5,half=upper": { "model": "simplefarming:block/corn_crop0" },
+
+
+        "age=6,half=lower": { "model": "simplefarming:block/corn_crop5" },
+        "age=6,half=upper": { "model": "simplefarming:block/corn_crop0" },
+
+
+        "age=7,half=lower": { "model": "simplefarming:block/corn_crop6" },
+        "age=7,half=upper": { "model": "simplefarming:block/corn_crop7" }
     }
 }

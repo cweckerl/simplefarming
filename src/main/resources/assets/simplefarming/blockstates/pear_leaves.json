@@ -1,12 +1,12 @@
 {
     "variants": {
-        "age=0": { "model": "simplefarming:block/fruit_leaves_oak" },
-        "age=1": { "model": "simplefarming:block/fruit_leaves_oak" },
-        "age=2": { "model": "simplefarming:block/fruit_leaves_oak" },
-        "age=3": { "model": "simplefarming:block/fruit_leaves_oak" },
-        "age=4": { "model": "simplefarming:block/fruit_leaves_oak" },
-        "age=5": { "model": "simplefarming:block/fruit_leaves_oak" },
-        "age=6": { "model": "simplefarming:block/fruit_leaves_oak" },
+        "age=0": { "model": "block/oak_leaves" },
+        "age=1": { "model": "block/oak_leaves" },
+        "age=2": { "model": "block/oak_leaves" },
+        "age=3": { "model": "block/oak_leaves" },
+        "age=4": { "model": "block/oak_leaves" },
+        "age=5": { "model": "block/oak_leaves" },
+        "age=6": { "model": "block/oak_leaves" },
         "age=7": [{ "model": "simplefarming:block/pear_leaves3" }, { "model": "simplefarming:block/pear_leaves2" }, { "model": "simplefarming:block/pear_leaves1" }]
     }
 }

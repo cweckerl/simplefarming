@@ -25,9 +25,9 @@ public class ModRecipes {
 
 		BREWING_BARREL_RECIPE_TYPE = Registry.register(Registry.RECIPE_TYPE, SimpleFarming.getId("brewing"), new IRecipeType<BrewingBarrelRecipe>() {
 			@Override
-	        public String toString() {
-	            return SimpleFarming.getId("brewing").toString();
-	        }
+			public String toString() {
+				return SimpleFarming.getId("brewing").toString();
+			}
 		});
 	}
 }

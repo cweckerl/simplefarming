@@ -27,16 +27,12 @@ public class GrapeHarvest {
 				if (!event.getPlayer().getHeldItemMainhand().isEmpty())
 					event.setCanceled(true);
 				if (!event.getWorld().isRemote) {
-					drops = Block.getDrops(event.getWorld().getBlockState(event.getPos()),
-							(ServerWorld) event.getWorld(), event.getPos(),
-							event.getWorld().getTileEntity(event.getPos()));
+					drops = Block.getDrops(event.getWorld().getBlockState(event.getPos()), (ServerWorld) event.getWorld(), event.getPos(), event.getWorld().getTileEntity(event.getPos()));
 					for (int i = 0; i < drops.size(); i++) {
-						event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
-								event.getPos().getY(), event.getPos().getZ(), (ItemStack) drops.get(i)));
+						event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), (ItemStack) drops.get(i)));
 					}
 					event.getPlayer().addExhaustion(.05F);
-					event.getWorld().playSound((PlayerEntity) null, event.getPos(),
-							SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F,
+					event.getWorld().playSound((PlayerEntity) null, event.getPos(), SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F,
 							0.8F + event.getWorld().rand.nextFloat() * 0.4F);
 					event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState(), 2);
 				}

@@ -9,7 +9,7 @@ import net.minecraft.item.Items;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.World;
 
-public class DrinkItem extends BottleItem{
+public class DrinkItem extends BottleItem {
 
 	public DrinkItem(Properties builder) {
 		super(builder);
@@ -47,5 +47,3 @@ public class DrinkItem extends BottleItem{
 		return stack;
 	}
 }
-
-

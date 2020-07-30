@@ -48,38 +48,27 @@ public class CropHarvest {
 	public void onCropHarvest(RightClickBlock event) {
 		if (event.getPlayer().getHeldItemMainhand().getItem() != Items.BONE_MEAL) {
 			List<ItemStack> drops;
-			if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof CropsBlock
-					&& !(event.getWorld().getBlockState(event.getPos()).getBlock() instanceof DoubleCropBlock)) {
+			if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof CropsBlock && !(event.getWorld().getBlockState(event.getPos()).getBlock() instanceof DoubleCropBlock)) {
 
 				CropsBlock crop = (CropsBlock) event.getWorld().getBlockState(event.getPos()).getBlock();
 				if (crop.isMaxAge(event.getWorld().getBlockState(event.getPos()))) {
 					if (!event.getPlayer().getHeldItemMainhand().isEmpty())
 						event.setCanceled(true); // prevents blocks from being placed
 					if (!event.getWorld().isRemote) {
-						drops = Block.getDrops(event.getWorld().getBlockState(event.getPos()),
-								(ServerWorld) event.getWorld(), event.getPos(),
-								event.getWorld().getTileEntity(event.getPos()));
+						drops = Block.getDrops(event.getWorld().getBlockState(event.getPos()), (ServerWorld) event.getWorld(), event.getPos(), event.getWorld().getTileEntity(event.getPos()));
 						for (int i = 0; i < drops.size(); i++) {
 							if (drops.get(i).getItem() != getCropSeed(crop))
-								event.getWorld()
-										.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
-												event.getPos().getY(), event.getPos().getZ(),
-												(ItemStack) drops.get(i)));
+								event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), (ItemStack) drops.get(i)));
 						}
 						for (int i = 0; i < drops.size(); i++) {
-							if (drops.stream().distinct().limit(2).count() <= 1 || crop == Blocks.POTATOES
-									|| crop == Blocks.CARROTS) {
+							if (drops.stream().distinct().limit(2).count() <= 1 || crop == Blocks.POTATOES || crop == Blocks.CARROTS) {
 								drops.remove(0);
-								event.getWorld()
-										.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
-												event.getPos().getY(), event.getPos().getZ(),
-												(ItemStack) drops.get(i)));
+								event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), (ItemStack) drops.get(i)));
 							}
 
 						}
 						event.getPlayer().addExhaustion(.05F);
-						event.getWorld().playSound((PlayerEntity) null, event.getPos(), SoundEvents.BLOCK_CROP_BREAK,
-								SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
+						event.getWorld().playSound((PlayerEntity) null, event.getPos(), SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
 						event.getWorld().setBlockState(event.getPos(), crop.getDefaultState(), 2);
 
 					}
@@ -89,24 +78,17 @@ public class CropHarvest {
 
 			if (RightClickConfig.crop_right_click.get())
 				if (event.getWorld().getBlockState(event.getPos()).getBlock() instanceof NetherWartBlock) {
-					NetherWartBlock nether = (NetherWartBlock) event.getWorld().getBlockState(event.getPos())
-							.getBlock();
+					NetherWartBlock nether = (NetherWartBlock) event.getWorld().getBlockState(event.getPos()).getBlock();
 					if (event.getWorld().getBlockState(event.getPos()).get(NetherWartBlock.AGE) == 3) {
 						if (!event.getPlayer().getHeldItemMainhand().isEmpty())
 							event.setCanceled(true);
 						if (!event.getWorld().isRemote) {
-							drops = Block.getDrops(event.getWorld().getBlockState(event.getPos()),
-									(ServerWorld) event.getWorld(), event.getPos(),
-									event.getWorld().getTileEntity(event.getPos()));
+							drops = Block.getDrops(event.getWorld().getBlockState(event.getPos()), (ServerWorld) event.getWorld(), event.getPos(), event.getWorld().getTileEntity(event.getPos()));
 							for (int i = 0; i < drops.size(); i++) {
-								event.getWorld()
-										.addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
-												event.getPos().getY(), event.getPos().getZ(),
-												(ItemStack) drops.get(i)));
+								event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), (ItemStack) drops.get(i)));
 							}
 							event.getPlayer().addExhaustion(.05F);
-							event.getWorld().playSound((PlayerEntity) null, event.getPos(),
-									SoundEvents.BLOCK_NETHER_WART_BREAK, SoundCategory.BLOCKS, 1.0F,
+							event.getWorld().playSound((PlayerEntity) null, event.getPos(), SoundEvents.BLOCK_NETHER_WART_BREAK, SoundCategory.BLOCKS, 1.0F,
 									0.8F + event.getWorld().rand.nextFloat() * 0.4F);
 							event.getWorld().setBlockState(event.getPos(), nether.getDefaultState(), 2);
 						}

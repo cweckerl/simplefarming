@@ -24,11 +24,11 @@ public class Config {
 		BUILDER.push("Miscellaneous Features");
 		FeatureConfig.init(BUILDER);
 		BUILDER.pop();
-		
+
 		BUILDER.push("Right-click Harvesting Settings");
 		RightClickConfig.init(BUILDER);
 		BUILDER.pop();
-		
+
 		BUILDER.push("Dimensions Settings");
 		DimensionConfig.init(BUILDER);
 		BUILDER.pop();
@@ -37,8 +37,7 @@ public class Config {
 	}
 
 	public static void loadConfig(ForgeConfigSpec config, String path) {
-		CommentedFileConfig file = CommentedFileConfig.builder(path).sync().autosave().writingMode(WritingMode.REPLACE)
-				.build();
+		CommentedFileConfig file = CommentedFileConfig.builder(path).sync().autosave().writingMode(WritingMode.REPLACE).build();
 		file.load();
 		config.setConfig(file);
 	}

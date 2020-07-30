@@ -38,21 +38,21 @@ public class BrewingBarrelTileEntity extends TileEntity implements IClearable {
 	public int getCapacity() {
 		return capacity;
 	}
-	
+
 	@Override
 	public void read(CompoundNBT compound) {
 		super.read(compound);
-		if(compound.contains("capacity")) {
+		if (compound.contains("capacity")) {
 			capacity = compound.getInt("capacity");
 		}
-		if(compound.contains("inventory")) {
+		if (compound.contains("inventory")) {
 			inventory = ForgeRegistries.ITEMS.getValue(new ResourceLocation(compound.getString("inventory")));
 		}
-		if(inventory == null) {
+		if (inventory == null) {
 			inventory = ItemStack.EMPTY.getItem();
 		}
 	}
-	
+
 	@Override
 	public CompoundNBT write(CompoundNBT compound) {
 		compound.putInt("capacity", capacity);

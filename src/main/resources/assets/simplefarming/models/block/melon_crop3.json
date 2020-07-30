@@ -1,6 +1,6 @@
 {
     "textures": {
-        "particle": "simplefarming:block/melon_side",
+        "particle": "block/melon_side",
         "melon_side": "block/melon_side",
         "gourd_leaves": "simplefarming:block/gourd_leaves",
         "melon_top": "block/melon_top"

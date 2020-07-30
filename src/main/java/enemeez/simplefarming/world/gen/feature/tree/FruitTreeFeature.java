@@ -8,11 +8,9 @@ import com.mojang.datafixers.Dynamic;
 import enemeez.simplefarming.config.DimensionConfig;
 import enemeez.simplefarming.config.GenConfig;
 import enemeez.simplefarming.init.ModBlocks;
-import net.minecraft.block.Block;
+import enemeez.simplefarming.util.WorldGenHelper;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationSettings;
@@ -22,65 +20,6 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 public class FruitTreeFeature extends Feature<NoFeatureConfig> {
 	public FruitTreeFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configFactory) {
 		super(configFactory);
-	}
-
-	@Override
-	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random,
-			BlockPos pos, NoFeatureConfig config) {
-		if (random.nextInt(GenConfig.tree_chance.get()) != 0
-				|| DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
-				|| !DimensionConfig.whitelist.get().contains(world.getDimension().getType().getId()))
-			return false;
-
-		if (isValidGround(world.getBlockState(pos.down()), world, pos)
-				&& world.getBlockState(pos).getMaterial().isReplaceable()) {
-			int type = (int) ((Math.random() * 9) + 1);
-			generateTree(world, pos, random, type);
-			return true;
-		}
-		return false;
-	}
-
-	public static void generateTree(IWorld world, BlockPos pos, Random random, int verify) {
-		BlockState trunk = ModBlocks.fruit_log.getDefaultState();
-		BlockState leaves = getLeaves(verify);
-
-		world.setBlockState(pos.up(0), trunk, 3);
-		for (int i = 1; i < 3; i++) {
-			if (world.getBlockState(pos.up(i)).getMaterial().isReplaceable())
-				world.setBlockState(pos.up(i), trunk, 3);
-		}
-		// this used to be frut_log_top
-		world.setBlockState(pos.up(3), ModBlocks.fruit_log.getDefaultState(), 3);
-
-		if (world.getBlockState(pos.up(2).north()).getMaterial().isReplaceable())
-			world.setBlockState(pos.up(2).north(), leaves, 3);
-		if (world.getBlockState(pos.up(2).south()).getMaterial().isReplaceable())
-			world.setBlockState(pos.up(2).south(), leaves, 3);
-		if (world.getBlockState(pos.up(2).east()).getMaterial().isReplaceable())
-			world.setBlockState(pos.up(2).east(), leaves, 3);
-		if (world.getBlockState(pos.up(2).west()).getMaterial().isReplaceable())
-			world.setBlockState(pos.up(2).west(), leaves, 3);
-
-		if (world.getBlockState(pos.up(3).north()).getMaterial().isReplaceable())
-			world.setBlockState(pos.up(3).north(), leaves, 3);
-		if (world.getBlockState(pos.up(3).north().west()).getMaterial().isReplaceable())
-			world.setBlockState(pos.up(3).north().west(), leaves, 3);
-		if (world.getBlockState(pos.up(3).north().east()).getMaterial().isReplaceable())
-			world.setBlockState(pos.up(3).north().east(), leaves, 3);
-		if (world.getBlockState(pos.up(3).south()).getMaterial().isReplaceable())
-			world.setBlockState(pos.up(3).south(), leaves, 3);
-		if (world.getBlockState(pos.up(3).south().west()).getMaterial().isReplaceable())
-			world.setBlockState(pos.up(3).south().west(), leaves, 3);
-		if (world.getBlockState(pos.up(3).south().east()).getMaterial().isReplaceable())
-			world.setBlockState(pos.up(3).south().east(), leaves, 3);
-		if (world.getBlockState(pos.up(3).east()).getMaterial().isReplaceable())
-			world.setBlockState(pos.up(3).east(), leaves, 3);
-		if (world.getBlockState(pos.up(3).west()).getMaterial().isReplaceable())
-			world.setBlockState(pos.up(3).west(), leaves, 3);
-		if (world.getBlockState(pos.up(4)).getMaterial().isReplaceable())
-			world.setBlockState(pos.up(4), leaves, 3);
-
 	}
 
 	private static BlockState getLeaves(int verify) {
@@ -106,9 +45,50 @@ public class FruitTreeFeature extends Feature<NoFeatureConfig> {
 		}
 	}
 
-	private boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-		Block block = state.getBlock();
-		return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT
-				|| block == Blocks.PODZOL;
+	@Override
+	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random, BlockPos pos, NoFeatureConfig config) {
+		if (random.nextInt(GenConfig.tree_chance.get()) != 0 || DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
+				|| !DimensionConfig.whitelist.get().contains(world.getDimension().getType().getId())) {
+			return false;
+		}
+		if (WorldGenHelper.isValidGround(world.getBlockState(pos.down()), world, pos) && world.getBlockState(pos).getMaterial().isReplaceable()) {
+			int type = random.nextInt(9) + 1;
+			generateTree(world, pos, random, type);
+			return true;
+		}
+		return false;
 	}
+
+	public static void generateTree(IWorld world, BlockPos pos, Random random, int verify) {
+		BlockState trunk = ModBlocks.fruit_log.getDefaultState();
+		BlockState leaves = getLeaves(verify);
+
+		for (int y = 0; y < 4; y++) {
+			if (world.getBlockState(pos.up(y)).getMaterial().isReplaceable() || y == 0)
+				world.setBlockState(pos.up(y), trunk, 3);
+		}
+
+		for (int x = -1; x < 2; x++) {
+			for (int z = -1; z < 2; z++) {
+				if (world.getBlockState(pos.up(3).add(x, 0, z)).getMaterial().isReplaceable())
+					world.setBlockState(pos.up(3).add(x, 0, z), leaves, 3);
+			}
+		}
+
+		for (int x = -1; x < 2; x++) {
+			if (x != 0) {
+				if (world.getBlockState(pos.up(2).add(x, 0, 0)).getMaterial().isReplaceable())
+					world.setBlockState(pos.up(2).add(x, 0, 0), leaves, 3);
+			} else {
+				if (world.getBlockState(pos.up(2).add(x, 0, 1)).getMaterial().isReplaceable())
+					world.setBlockState(pos.up(2).add(x, 0, 1), leaves, 3);
+				if (world.getBlockState(pos.up(2).add(x, 0, -1)).getMaterial().isReplaceable())
+					world.setBlockState(pos.up(2).add(x, 0, -1), leaves, 3);
+			}
+		}
+
+		if (world.getBlockState(pos.up(4)).getMaterial().isReplaceable())
+			world.setBlockState(pos.up(4), leaves, 3);
+	}
+
 }
