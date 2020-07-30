@@ -36,6 +36,9 @@ public class SideProxy {
 		eventBus.addListener(SideProxy::commonSetup);
 		eventBus.addListener(SideProxy::enqueueIMC);
 		eventBus.addListener(SideProxy::processIMC);
+		eventBus.addListener(ModBlocks::registerAll);
+		eventBus.addListener(ModItems::registerAll);
+		eventBus.addListener(ModWorldGen::registerAll);
 
 		MinecraftForge.EVENT_BUS.addListener(SideProxy::serverStarting);
 	}
