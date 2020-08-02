@@ -20,7 +20,11 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.util.Constants;
 
+/**
+ * Modified by Elenterius on 02.08.2020
+ */
 public class DoubleCropBlock extends CropsBlock {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
@@ -30,13 +34,12 @@ public class DoubleCropBlock extends CropsBlock {
 	public DoubleCropBlock(Block.Properties properties, String name) {
 		super(properties);
 		this.name = name;
-		this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)).with(HALF, DoubleBlockHalf.LOWER));
+		this.setDefaultState(this.stateContainer.getBaseState().with(getAgeProperty(), 0).with(HALF, DoubleBlockHalf.LOWER));
 	}
 
 	@Override
 	protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
 		return state.getBlock() instanceof FarmlandBlock;
-
 	}
 
 	// Max age of lower half of crop
@@ -47,7 +50,7 @@ public class DoubleCropBlock extends CropsBlock {
 
 	@Override
 	public int getAge(BlockState state) {
-		return state.get(this.getAgeProperty());
+		return state.get(getAgeProperty());
 	}
 
 	public DoubleBlockHalf getHalf(BlockState state) {
@@ -60,18 +63,19 @@ public class DoubleCropBlock extends CropsBlock {
 		if (!worldIn.isAreaLoaded(pos, 1))
 			return;
 		if (worldIn.getLightSubtracted(pos, 0) >= 9) {
-			int i = this.getAge(state);
-			if (i < getMaxAge()) {
+			int age = getAge(state);
+			if (age < getMaxAge()) {
 				float f = getGrowthChance(this, worldIn, pos);
 				if (ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt((int) (25.0F / f) + 1) == 0)) {
-					if (i == 6) {
-						if (worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState() && worldIn.getBlockState(pos.down()).getBlock() == Blocks.FARMLAND) {
-							worldIn.setBlockState(pos.up(), this.withAge(7).with(HALF, DoubleBlockHalf.UPPER), 2);
-							worldIn.setBlockState(pos, this.withAge(7).with(HALF, DoubleBlockHalf.LOWER), 2);
+					if (age == 6) {
+						if (worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState() && worldIn.getBlockState(pos.down()).getBlock() instanceof FarmlandBlock) {
+							worldIn.setBlockState(pos.up(), this.withAge(7).with(HALF, DoubleBlockHalf.UPPER), Constants.BlockFlags.BLOCK_UPDATE);
+							worldIn.setBlockState(pos, this.withAge(7).with(HALF, DoubleBlockHalf.LOWER), Constants.BlockFlags.BLOCK_UPDATE);
 							ForgeHooks.onCropsGrowPost(worldIn, pos, state);
 						}
-					} else
-						worldIn.setBlockState(pos, this.withAge(i + 1), 2);
+					} else {
+						worldIn.setBlockState(pos, this.withAge(age + 1), Constants.BlockFlags.BLOCK_UPDATE);
+					}
 					ForgeHooks.onCropsGrowPost(worldIn, pos, state);
 				}
 			}
@@ -86,9 +90,9 @@ public class DoubleCropBlock extends CropsBlock {
 
 	private boolean placementChecker(BlockState state, IWorldReader worldIn, BlockPos pos) {
 		BlockState testState = worldIn.getBlockState(pos.down());
-		if (testState.getBlock() == Blocks.FARMLAND)
+		if (testState.getBlock() instanceof FarmlandBlock)
 			return true;
-		if (testState == this.withAge(7).with(HALF, DoubleBlockHalf.LOWER) && worldIn.getBlockState(pos.down(2)).getBlock() == Blocks.FARMLAND)
+		if (testState == this.withAge(7).with(HALF, DoubleBlockHalf.LOWER) && worldIn.getBlockState(pos.down(2)).getBlock() instanceof FarmlandBlock)
 			return true;
 		else
 			return false;
