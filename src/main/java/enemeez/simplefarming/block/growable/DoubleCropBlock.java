@@ -18,9 +18,12 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
+import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.util.Constants;
+
+import javax.annotation.ParametersAreNonnullByDefault;
 
 /**
  * Modified by Elenterius on 02.08.2020
@@ -92,10 +95,27 @@ public class DoubleCropBlock extends CropsBlock {
 		BlockState testState = worldIn.getBlockState(pos.down());
 		if (testState.getBlock() instanceof FarmlandBlock)
 			return true;
-		if (testState == this.withAge(7).with(HALF, DoubleBlockHalf.LOWER) && worldIn.getBlockState(pos.down(2)).getBlock() instanceof FarmlandBlock)
-			return true;
-		else
-			return false;
+		return testState == this.withAge(7).with(HALF, DoubleBlockHalf.LOWER) && worldIn.getBlockState(pos.down(2)).getBlock() instanceof FarmlandBlock;
+	}
+
+	@Override
+	@ParametersAreNonnullByDefault
+	public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+		return !isMaxAge(state) && worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState() && worldIn.getBlockState(pos.down()).getBlock() instanceof FarmlandBlock;
+	}
+
+	@Override
+	@ParametersAreNonnullByDefault
+	public void grow(World worldIn, BlockPos pos, BlockState state) {
+		int newAge = getAge(state) + getBonemealAgeIncrease(worldIn);
+		int maxAge = getMaxAge() - 1;
+		if (newAge >= maxAge && worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState() && worldIn.getBlockState(pos.down()).getBlock() instanceof FarmlandBlock) {
+			worldIn.setBlockState(pos, withAge(7), Constants.BlockFlags.BLOCK_UPDATE);
+			worldIn.setBlockState(pos.up(), withAge(7).with(DoubleCropBlock.HALF, DoubleBlockHalf.UPPER), Constants.BlockFlags.BLOCK_UPDATE);
+			return;
+		}
+
+		worldIn.setBlockState(pos, withAge(newAge), Constants.BlockFlags.BLOCK_UPDATE);
 	}
 
 	@Override
