@@ -26,7 +26,7 @@ public class ThinBlock extends Block implements IWaterLoggable {
 
 	public ThinBlock(Block.Properties properties) {
 		super(properties);
-		this.setDefaultState(this.getDefaultState().with(WATERLOGGED, Boolean.valueOf(false)));
+		this.setDefaultState(this.getDefaultState().with(WATERLOGGED, Boolean.FALSE));
 	}
 
 	protected static boolean isInWater(BlockState state, IBlockReader worldIn, BlockPos pos) {
@@ -46,11 +46,10 @@ public class ThinBlock extends Block implements IWaterLoggable {
 	@Nullable
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		IFluidState ifluidstate = context.getWorld().getFluidState(context.getPos());
-		return this.getDefaultState().with(WATERLOGGED, Boolean.valueOf(ifluidstate.isTagged(FluidTags.WATER) && ifluidstate.getLevel() == 8));
+		return this.getDefaultState().with(WATERLOGGED, ifluidstate.isTagged(FluidTags.WATER) && ifluidstate.getLevel() == 8);
 	}
 
 	@Override
-	@SuppressWarnings("deprecation")
 	public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
 		if (stateIn.get(WATERLOGGED)) {
 			worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
@@ -65,7 +64,6 @@ public class ThinBlock extends Block implements IWaterLoggable {
 		builder.add(WATERLOGGED);
 	}
 
-	@SuppressWarnings("deprecation")
 	public IFluidState getFluidState(BlockState state) {
 		return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
 	}

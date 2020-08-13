@@ -13,18 +13,19 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
 
 public class CheeseBlock extends CakeBlock {
 
 	public CheeseBlock(Block.Properties properties) {
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState().with(BITES, Integer.valueOf(0)));
+		this.setDefaultState(this.stateContainer.getBaseState().with(BITES, 0));
 	}
 
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
 		if (worldIn.isRemote) {
 			ItemStack itemstack = player.getHeldItem(handIn);
-			if (this.func_226911_a_(worldIn, pos, state, player) == ActionResultType.SUCCESS) {
+			if (eatBlock(worldIn, pos, state, player) == ActionResultType.SUCCESS) {
 				return ActionResultType.SUCCESS;
 			}
 
@@ -33,14 +34,14 @@ public class CheeseBlock extends CakeBlock {
 			}
 		}
 
-		return this.func_226911_a_(worldIn, pos, state, player);
+		return eatBlock(worldIn, pos, state, player);
 	}
 
-	private ActionResultType func_226911_a_(IWorld world, BlockPos pos, BlockState state, PlayerEntity entity) {
-		int i = state.get(BITES);
+	private ActionResultType eatBlock(IWorld world, BlockPos pos, BlockState state, PlayerEntity entity) {
+		int bites = state.get(BITES);
 		world.addEntity(new ItemEntity((World) world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.cheese_slice, 1)));
-		if (i < 6) {
-			world.setBlockState(pos, state.with(BITES, Integer.valueOf(i + 1)), 3);
+		if (bites < 6) {
+			world.setBlockState(pos, state.with(BITES, bites + 1), Constants.BlockFlags.DEFAULT);
 		} else {
 			world.removeBlock(pos, false);
 		}

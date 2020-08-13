@@ -19,16 +19,13 @@ public class GrapeBlock extends BushBlock {
 
 	@Override
 	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
-		if (world.getBlockState(pos.up()).getBlock() == ModBlocks.grape_leaves)
-			return true;
-
-		return false;
+		return world.getBlockState(pos.up()).getBlock() == ModBlocks.grape_leaves;
 	}
 
 	@Override
 	public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
 		if (entityIn instanceof LivingEntity) {
-			entityIn.setMotionMultiplier(state, new Vec3d((double) 0.8F, 0.75D, (double) 0.8F));
+			entityIn.setMotionMultiplier(state, new Vec3d(0.8D, 0.75D, 0.8D));
 		}
 	}
 

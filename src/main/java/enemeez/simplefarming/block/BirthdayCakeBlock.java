@@ -14,16 +14,15 @@ public class BirthdayCakeBlock extends CakeBlock {
 
 	public BirthdayCakeBlock(Properties properties) {
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState().with(BITES, Integer.valueOf(0)));
+		setDefaultState(stateContainer.getBaseState().with(BITES, 0));
 	}
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		double d0 = (double) ((float) pos.getX() + 0.5F);
-		double d1 = (double) ((float) pos.getY() + 0.16D);
-		double d2 = (double) ((float) pos.getZ() + 0.5F);
-		if (stateIn.get(BITES) < 6)
-			worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+		double x = pos.getX() + 0.5D;
+		double y = pos.getY() + 0.16D;
+		double z = pos.getZ() + 0.5D;
+		if (stateIn.get(BITES) < 6) worldIn.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
 	}
 }

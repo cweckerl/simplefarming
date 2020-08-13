@@ -1,13 +1,7 @@
 package enemeez.simplefarming.block.growable;
 
-import java.util.Random;
-
-import enemeez.simplefarming.init.ModItems;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.CropsBlock;
-import net.minecraft.block.FarmlandBlock;
+import net.minecraft.block.*;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.IntegerProperty;
@@ -21,22 +15,25 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ForgeHooks;
 
+import java.util.Random;
+import java.util.function.Supplier;
+
 public class DoubleCropBlock extends CropsBlock {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
+	private final Supplier<Item> itemSupplier;
+	private final Supplier<Item> seedItemSupplier;
 
-	private String name;
-
-	public DoubleCropBlock(Block.Properties properties, String name) {
+	public DoubleCropBlock(Block.Properties properties, Supplier<Item> itemSupplier, Supplier<Item> seedItemSupplier) {
 		super(properties);
-		this.name = name;
-		this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)).with(HALF, DoubleBlockHalf.LOWER));
+		this.itemSupplier = itemSupplier;
+		this.seedItemSupplier = seedItemSupplier;
+		setDefaultState(stateContainer.getBaseState().with(getAgeProperty(), 0).with(HALF, DoubleBlockHalf.LOWER));
 	}
 
 	@Override
 	protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
 		return state.getBlock() instanceof FarmlandBlock;
-
 	}
 
 	// Max age of lower half of crop
@@ -101,26 +98,12 @@ public class DoubleCropBlock extends CropsBlock {
 
 	@Override
 	protected IItemProvider getSeedsItem() {
-		switch (name) {
-		case "corn":
-			return ModItems.corn_seeds;
-		case "kenaf":
-			return ModItems.kenaf_seeds;
-		default:
-			return ModItems.sorghum_seeds;
-		}
+		return seedItemSupplier.get();
 	}
 
 	@Override
 	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-		switch (name) {
-		case "corn":
-			return new ItemStack(ModItems.corn);
-		case "kenaf":
-			return new ItemStack(ModItems.kenaf_fiber);
-		default:
-			return new ItemStack(ModItems.sorghum);
-		}
+		return new ItemStack(itemSupplier.get());
 	}
 
 }

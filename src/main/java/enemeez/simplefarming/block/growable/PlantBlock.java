@@ -1,90 +1,37 @@
 package enemeez.simplefarming.block.growable;
 
-import java.util.Random;
-
-import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BushBlock;
-import net.minecraft.block.IGrowable;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 
-public class PlantBlock extends BushBlock implements IGrowable {
-	protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
-	private String name;
-	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
+import java.util.function.Supplier;
 
-	public PlantBlock(Block.Properties properties, String name) {
+public class PlantBlock extends GrowableBushBlock
+{
+	protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 14.0D, 14.0D);
+	private static final VoxelShape SMALL_SHAPE = Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
+	private final Supplier<Item> itemSupplier;
+
+	public PlantBlock(Block.Properties properties, Supplier<Item> itemSupplier) {
 		super(properties);
-		this.name = name;
-		this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
+		this.itemSupplier = itemSupplier;
 	}
 
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return SHAPE;
+		Vec3d vec = state.getOffset(worldIn, pos);
+		return state.get(AGE) < getMaxAge() ? SMALL_SHAPE.withOffset(vec.x, vec.y, vec.z) : SHAPE.withOffset(vec.x, vec.y, vec.z);
 	}
 
 	@Override
 	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-		switch (name) {
-		case "cumin":
-			return new ItemStack(ModItems.cumin_seeds);
-		case "sunflower":
-			return new ItemStack(ModItems.sunflower_seeds);
-		case "marshmallow":
-			return new ItemStack(ModItems.marshmallow_root);
-		case "chicory":
-			return new ItemStack(ModItems.chicory_root);
-		default:
-			return new ItemStack(ModItems.quinoa_seeds);
-		}
-
-	}
-
-	public boolean isMaxAge(BlockState state) {
-		return state.get(AGE) == 3;
-	}
-
-	// Tick method
-	@Override
-	public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-		int i = state.get(AGE);
-		if (i < 3 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
-			worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
-		}
-
-	}
-
-	@Override
-	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-		builder.add(AGE);
-	}
-
-	@Override
-	public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-		return state.get(AGE) < 3;
-	}
-
-	@Override
-	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
-		return true;
-	}
-
-	// Grow method
-	@Override
-	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
-		int i = Math.min(3, state.get(AGE) + 1);
-		worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i)), 2);
+		return new ItemStack(itemSupplier.get());
 	}
 
 	@Override

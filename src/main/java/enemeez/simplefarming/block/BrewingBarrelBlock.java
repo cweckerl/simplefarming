@@ -33,6 +33,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.util.Constants;
 
 public class BrewingBarrelBlock extends ContainerBlock {
 	public static final IntegerProperty PROGRESS = IntegerProperty.create("progress", 0, 3);
@@ -47,7 +48,7 @@ public class BrewingBarrelBlock extends ContainerBlock {
 
 	public BrewingBarrelBlock(Properties properties) {
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState().with(LAYERS, Integer.valueOf(0)).with(PROGRESS, Integer.valueOf(0)));
+		setDefaultState(stateContainer.getBaseState().with(LAYERS, 0).with(PROGRESS, 0));
 	}
 
 	public BlockRenderType getRenderType(BlockState state) {
@@ -83,11 +84,11 @@ public class BrewingBarrelBlock extends ContainerBlock {
 	}
 
 	private boolean readyToFerment(BlockState state) {
-		return getLayers(state) == 1 ? true : false;
+		return getLayers(state) == 1;
 	}
 
 	public void reset(BlockState state, World worldIn, BlockPos pos) {
-		worldIn.setBlockState(pos, this.getDefaultState().with(LAYERS, Integer.valueOf(0)).with(PROGRESS, Integer.valueOf(0)));
+		worldIn.setBlockState(pos, this.getDefaultState().with(LAYERS, 0).with(PROGRESS, 0));
 	}
 
 	@Override
@@ -96,8 +97,8 @@ public class BrewingBarrelBlock extends ContainerBlock {
 		if (tileentity instanceof BrewingBarrelTileEntity) {
 			if (player.isSneaking()) {
 				if (getLayers(state) == 1 && getProgress(state) == 0) {
-					this.dropItem(worldIn, pos);
-					state = state.with(LAYERS, Integer.valueOf(0));
+					dropItem(worldIn, pos);
+					state = state.with(LAYERS, 0);
 					worldIn.setBlockState(pos, state);
 					return ActionResultType.SUCCESS;
 				}
@@ -105,14 +106,14 @@ public class BrewingBarrelBlock extends ContainerBlock {
 			if (isAlcoholIngredient(worldIn, player.getHeldItemMainhand()) && ((BrewingBarrelTileEntity) tileentity).getCapacity() == 0) {
 				this.insertItem(worldIn, pos, state, player.getHeldItemMainhand().getItem());
 				player.getHeldItemMainhand().shrink(1);
-				state = state.with(LAYERS, Integer.valueOf(1));
+				state = state.with(LAYERS, 1);
 				worldIn.setBlockState(pos, state);
 				return ActionResultType.SUCCESS;
 			}
 			if (player.getHeldItemMainhand().getItem() == Items.GLASS_BOTTLE && this.getProgress(state) == 3) {
 				player.addItemStackToInventory(getProduct(worldIn, ((BrewingBarrelTileEntity) tileentity).getItem()));
 				((BrewingBarrelTileEntity) tileentity).clear();
-				worldIn.playSound((PlayerEntity) null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
+				worldIn.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 				player.getHeldItemMainhand().shrink(1);
 				this.reset(state, worldIn, pos);
 				return ActionResultType.SUCCESS;
@@ -127,7 +128,7 @@ public class BrewingBarrelBlock extends ContainerBlock {
 		if (tileentity instanceof BrewingBarrelTileEntity) {
 			if (((BrewingBarrelTileEntity) tileentity).getCapacity() == 0) {
 				((BrewingBarrelTileEntity) tileentity).setItem(item);
-				worldIn.setBlockState(pos, state.with(LAYERS, Integer.valueOf(1)), 2);
+				worldIn.setBlockState(pos, state.with(LAYERS, 1), 2);
 			}
 		}
 	}
@@ -139,13 +140,13 @@ public class BrewingBarrelBlock extends ContainerBlock {
 				BrewingBarrelTileEntity tile = (BrewingBarrelTileEntity) tileentity;
 				Item item = tile.getItem();
 				if (tile.getCapacity() > 0) {
-					worldIn.playEvent(1010, pos, 0);
+					worldIn.playEvent(Constants.WorldEvents.PLAY_RECORD_SOUND, pos, 0);
 					tile.clear();
-					double d0 = (double) (worldIn.rand.nextFloat() * 0.7F) + (double) 0.15F;
-					double d1 = (double) (worldIn.rand.nextFloat() * 0.7F) + (double) 0.060000002F + 0.6D;
-					double d2 = (double) (worldIn.rand.nextFloat() * 0.7F) + (double) 0.15F;
-					ItemStack itemstack1 = new ItemStack(item);
-					ItemEntity itementity = new ItemEntity(worldIn, (double) pos.getX() + d0, (double) pos.getY() + d1, (double) pos.getZ() + d2, itemstack1);
+					double d0 = worldIn.rand.nextFloat() * 0.7F + 0.15F;
+					double d1 = worldIn.rand.nextFloat() * 0.7F + 0.060000002F + 0.6D;
+					double d2 = worldIn.rand.nextFloat() * 0.7F + 0.15F;
+					ItemStack stack = new ItemStack(item);
+					ItemEntity itementity = new ItemEntity(worldIn, pos.getX() + d0, pos.getY() + d1, pos.getZ() + d2, stack);
 					itementity.setDefaultPickupDelay();
 					worldIn.addEntity(itementity);
 				}
@@ -156,7 +157,7 @@ public class BrewingBarrelBlock extends ContainerBlock {
 	@Override
 	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (state.getBlock() != newState.getBlock()) {
-			this.dropItem(worldIn, pos);
+			dropItem(worldIn, pos);
 			// super.onReplaced(state, worldIn, pos, newState, isMoving);
 		}
 	}
@@ -167,7 +168,7 @@ public class BrewingBarrelBlock extends ContainerBlock {
 			// super.tick(state, worldIn, pos, random);
 			int i = state.get(PROGRESS);
 			if (i < 3 && random.nextInt(5) == 0) {
-				worldIn.setBlockState(pos, this.getDefaultState().with(LAYERS, Integer.valueOf(1)).with(PROGRESS, Integer.valueOf(i + 1)), 2);
+				worldIn.setBlockState(pos, getDefaultState().with(LAYERS, 1).with(PROGRESS, i + 1), Constants.BlockFlags.BLOCK_UPDATE);
 			}
 		}
 	}
@@ -176,16 +177,15 @@ public class BrewingBarrelBlock extends ContainerBlock {
 	@OnlyIn(Dist.CLIENT)
 	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
 		if (this.getProgress(stateIn) < 3 && this.getProgress(stateIn) > 0) {
-			double d0 = (double) ((float) pos.getX() + (Double) Math.random());
-			double d1 = (double) ((float) pos.getY() + (Double) Math.random());
-			double d2 = (double) ((float) pos.getZ() + (Double) Math.random());
+			double d0 = (float) pos.getX() + Math.random();
+			double d1 = (float) pos.getY() + Math.random();
+			double d2 = (float) pos.getZ() + Math.random();
 			worldIn.addParticle(ParticleTypes.AMBIENT_ENTITY_EFFECT, d0, d1 + 1, d2, 0.0D, 0.0D, 0.0D);
 		}
 	}
 
 	public ItemStack getProduct(World worldIn, Item itemIn) {
-		return worldIn.getRecipeManager().getRecipe(ModRecipes.BREWING_BARREL_RECIPE_TYPE, new Inventory(new ItemStack(itemIn)), worldIn).map(recipe -> recipe.getCraftingResult(null))
-				.orElse(ItemStack.EMPTY);
+		return worldIn.getRecipeManager().getRecipe(ModRecipes.BREWING_BARREL_RECIPE_TYPE, new Inventory(new ItemStack(itemIn)), worldIn).map(recipe -> recipe.getCraftingResult(null)).orElse(ItemStack.EMPTY);
 	}
 
 	public boolean isAlcoholIngredient(World worldIn, ItemStack itemstackIn) {

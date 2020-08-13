@@ -7,6 +7,6 @@ public class SimpleCakeBlock extends CakeBlock {
 
 	public SimpleCakeBlock(Block.Properties properties) {
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState().with(BITES, Integer.valueOf(0)));
+		this.setDefaultState(this.stateContainer.getBaseState().with(BITES, 0));
 	}
 }
