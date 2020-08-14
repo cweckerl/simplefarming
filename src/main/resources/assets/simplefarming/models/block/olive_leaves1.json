@@ -1,57 +1,7 @@
 {
+	"parent": "simplefarming:block/fruit_leaves",
 	"textures": {
-		"fruit": "simplefarming:block/olive_leaves1",
-		"leaves": "block/birch_leaves",
-		"particle": "block/birch_leaves"
-	},
-	"elements": [
-		{
-			"from": [0, 0, 0],
-			"to": [16, 16, 16],
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#leaves", "tintindex": 0},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#leaves", "tintindex": 0},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#leaves", "tintindex": 0},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#leaves", "tintindex": 0},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#leaves", "tintindex": 0},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#leaves", "tintindex": 0}
-			}
-		},
-		{
-			"name": "fruit north",
-			"from": [0, 0, -0.01],
-			"to": [16, 16, -0.01],
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#fruit"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#fruit"}
-			}
-		},
-		{
-			"name": "fruit south",
-			"from": [0, 0, 16.01],
-			"to": [16, 16, 16.01],
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#fruit"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#fruit"}
-			}
-		},
-		{
-			"name": "fruit east",
-			"from": [16.01, 0, 0],
-			"to": [16.01, 16, 16],
-			"faces": {
-				"east": {"uv": [0, 0, 16, 16], "texture": "#fruit"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#fruit"}
-			}
-		},
-		{
-			"name": "fruit west",
-			"from": [-0.01, 0, 0],
-			"to": [-0.01, 16, 16],
-			"faces": {
-				"east": {"uv": [0, 0, 16, 16], "texture": "#fruit"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#fruit"}
-			}
-		}
-	]
+		"overlay": "simplefarming:block/olive_leaves1",
+		"all": "block/birch_leaves"
+	}
 }
