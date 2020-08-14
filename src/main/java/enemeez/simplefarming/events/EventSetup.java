@@ -3,7 +3,6 @@ package enemeez.simplefarming.events;
 import enemeez.simplefarming.config.EnableConfig;
 import enemeez.simplefarming.config.FeatureConfig;
 import enemeez.simplefarming.config.RightClickConfig;
-import enemeez.simplefarming.events.harvest.DoubleCropBreak;
 import enemeez.simplefarming.events.harvest.smart.SmartBerryBushHarvest;
 import enemeez.simplefarming.events.harvest.smart.SmartCactusCropHarvest;
 import enemeez.simplefarming.events.harvest.smart.SmartCropHarvest;
@@ -25,7 +24,6 @@ public class EventSetup {
 	public static void setupEvents() {
 		MinecraftForge.EVENT_BUS.register(new LootTableHandler());
 		MinecraftForge.EVENT_BUS.register(new TemptationTask());
-		MinecraftForge.EVENT_BUS.register(new DoubleCropBreak());
 		MinecraftForge.EVENT_BUS.register(new IntoxicationTracker());
 		MinecraftForge.EVENT_BUS.register(new ScarecrowEvent());
 
