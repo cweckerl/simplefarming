@@ -134,7 +134,7 @@ public class DoubleCropBlock extends CropsBlock {
 	}
 
 	@Override
-	protected IItemProvider getSeedsItem() {
+	public IItemProvider getSeedsItem() {
 		return seedItemSupplier.get();
 	}
 

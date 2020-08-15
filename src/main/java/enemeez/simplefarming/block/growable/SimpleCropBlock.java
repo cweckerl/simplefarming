@@ -26,7 +26,7 @@ public class SimpleCropBlock extends CropsBlock {
 		return state.getBlock() instanceof FarmlandBlock;
 	}
 
-	protected IItemProvider getSeedsItem() {
+	public IItemProvider getSeedsItem() {
 		return seedItemSupplier.get();
 	}
 

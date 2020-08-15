@@ -27,7 +27,7 @@ public class FeatureConfig
         rightClickHarvest = config
                 .comment(
                         "Configures if right-click harvesting of crops should be enabled. Which crops are affected by right-clicking can be configured in the \"Right-click Harvesting Settings\" section.",
-                        "DISABLED -> disables right-click harvesting feature completely",
+                        "DISABLED -> disables right-click harvesting feature for all crops completely",
                         "ENABLED_DROP -> loot is dropped on the ground",
                         "ENABLED_SMART -> loot is placed in the player's inventory")
                 .defineEnum("Right-Click Harvest", RightClickHarvestFeature.ENABLED_DROP, RightClickHarvestFeature.values());
