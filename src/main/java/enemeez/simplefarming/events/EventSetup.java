@@ -30,6 +30,23 @@ public class EventSetup {
 		if (EnableConfig.stem_toggle.get())
 			MinecraftForge.EVENT_BUS.register(new StemReplaceEvent());
 
+		if (FeatureConfig.smart_harvest.get()) {
+			if (RightClickConfig.bush_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new SmartBerryBushHarvest());
+			if (RightClickConfig.cactus_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new SmartCactusCropHarvest());
+			if (RightClickConfig.crop_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new SmartCropHarvest());
+			if (RightClickConfig.doublecrop_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new SmartDoubleCropHarvest());
+			if (RightClickConfig.tree_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new SmartFruitLeavesHarvest());
+			if (RightClickConfig.grape_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new SmartGrapeHarvest());
+			if (RightClickConfig.plant_right_click.get())
+				MinecraftForge.EVENT_BUS.register(new SmartWildPlantHarvest());
+		}
+
 		if (FeatureConfig.mod_harvest.get() && !FeatureConfig.smart_harvest.get()) {
 			if (RightClickConfig.bush_right_click.get())
 				MinecraftForge.EVENT_BUS.register(new BerryBushHarvest());
@@ -46,22 +63,7 @@ public class EventSetup {
 			if (RightClickConfig.plant_right_click.get())
 				MinecraftForge.EVENT_BUS.register(new WildPlantHarvest());
 		}
-		if (FeatureConfig.smart_harvest.get() && !FeatureConfig.mod_harvest.get()) {
-			if (RightClickConfig.bush_right_click.get())
-				MinecraftForge.EVENT_BUS.register(new SmartBerryBushHarvest());
-			if (RightClickConfig.cactus_right_click.get())
-				MinecraftForge.EVENT_BUS.register(new SmartCactusCropHarvest());
-			if (RightClickConfig.crop_right_click.get())
-				MinecraftForge.EVENT_BUS.register(new SmartCropHarvest());
-			if (RightClickConfig.doublecrop_right_click.get())
-				MinecraftForge.EVENT_BUS.register(new SmartDoubleCropHarvest());
-			if (RightClickConfig.tree_right_click.get())
-				MinecraftForge.EVENT_BUS.register(new SmartFruitLeavesHarvest());
-			if (RightClickConfig.grape_right_click.get())
-				MinecraftForge.EVENT_BUS.register(new SmartGrapeHarvest());
-			if (RightClickConfig.plant_right_click.get())
-				MinecraftForge.EVENT_BUS.register(new SmartWildPlantHarvest());
-		}
+
 	}
 
 }

@@ -3,8 +3,9 @@ package enemeez.simplefarming.config;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class FeatureConfig {
-	public static ForgeConfigSpec.BooleanValue mod_harvest;
+	//TODO: replace both config values with one unambiguous enum config value, with the following states: DISABLED, ENABLED_DROP, ENABLED_SMART
 	public static ForgeConfigSpec.BooleanValue smart_harvest;
+	public static ForgeConfigSpec.BooleanValue mod_harvest;
 
 	public static void init(ForgeConfigSpec.Builder config) {
 
