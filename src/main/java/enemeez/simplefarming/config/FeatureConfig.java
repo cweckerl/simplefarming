@@ -2,20 +2,34 @@ package enemeez.simplefarming.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
-public class FeatureConfig {
-	//TODO: replace both config values with one unambiguous enum config value, with the following states: DISABLED, ENABLED_DROP, ENABLED_SMART
-	public static ForgeConfigSpec.BooleanValue smart_harvest;
-	public static ForgeConfigSpec.BooleanValue mod_harvest;
+public class FeatureConfig
+{
+    public enum RightClickHarvestFeature
+    {
+        DISABLED, ENABLED_DROP, ENABLED_SMART;
 
-	public static void init(ForgeConfigSpec.Builder config) {
+        public boolean isEnabled() {
+            return this != DISABLED;
+        }
 
-		mod_harvest = config.comment("Indicates whether right-click harvesting crops should be enabled. Respective parts of the right-clicking function can be enabled/disabled below.")
-				.define("Enable right-click harvesting for crops", true);
+        public boolean isDropHarvest() {
+            return this == ENABLED_DROP;
+        }
 
-		smart_harvest = config.comment(
-				"Smart harvesting allows right-click harvested items to be placed directly in the player's inventory. Enabling this option will automatically disable normal right-click harvesting. Indicates whether smart-harvesting on crops should be enabled")
-				.define("Enable smart harvest for crops", false);
+        public boolean isSmartHarvest() {
+            return this == ENABLED_SMART;
+        }
+    }
 
-	}
+    public static ForgeConfigSpec.EnumValue<RightClickHarvestFeature> rightClickHarvest;
 
+    public static void init(ForgeConfigSpec.Builder config) {
+        rightClickHarvest = config
+                .comment(
+                        "Configures if right-click harvesting of crops should be enabled. Which crops are affected by right-clicking can be configured in the \"Right-click Harvesting Settings\" section.",
+                        "DISABLED -> disables right-click harvesting feature completely",
+                        "ENABLED_DROP -> loot is dropped on the ground",
+                        "ENABLED_SMART -> loot is placed in the player's inventory")
+                .defineEnum("Right-Click Harvest", RightClickHarvestFeature.ENABLED_DROP, RightClickHarvestFeature.values());
+    }
 }

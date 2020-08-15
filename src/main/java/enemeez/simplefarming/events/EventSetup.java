@@ -30,7 +30,9 @@ public class EventSetup {
 		if (EnableConfig.stem_toggle.get())
 			MinecraftForge.EVENT_BUS.register(new StemReplaceEvent());
 
-		if (FeatureConfig.smart_harvest.get()) {
+		FeatureConfig.RightClickHarvestFeature harvestFeature = FeatureConfig.rightClickHarvest.get();
+
+		if (harvestFeature.isSmartHarvest()) {
 			if (RightClickConfig.bush_right_click.get())
 				MinecraftForge.EVENT_BUS.register(new SmartBerryBushHarvest());
 			if (RightClickConfig.cactus_right_click.get())
@@ -47,7 +49,7 @@ public class EventSetup {
 				MinecraftForge.EVENT_BUS.register(new SmartWildPlantHarvest());
 		}
 
-		if (FeatureConfig.mod_harvest.get() && !FeatureConfig.smart_harvest.get()) {
+		if (harvestFeature.isDropHarvest()) {
 			if (RightClickConfig.bush_right_click.get())
 				MinecraftForge.EVENT_BUS.register(new BerryBushHarvest());
 			if (RightClickConfig.cactus_right_click.get())
