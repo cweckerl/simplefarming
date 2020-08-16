@@ -157,7 +157,7 @@ public class ModBlocks {
 		pear_leaves = register("pear_leaves", new FruitLeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT), () -> ModItems.pear, () -> ModItems.pear_sapling));
 		plum_leaves = register("plum_leaves", new FruitLeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT), () -> ModItems.plum, () -> ModItems.plum_sapling));
 
-		fruit_log = register("fruit_log", new ThinBlock(Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0F).sound(SoundType.WOOD)));
+		fruit_log = register("fruit_log", new ThinBlock(MaterialColor.OBSIDIAN, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0F).sound(SoundType.WOOD)));
 
 		birthday_cake = register("birthday_cake", new BirthdayCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).lightValue(14).sound(SoundType.CLOTH)));
 		chocolate_cake = register("chocolate_cake", new SimpleCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));

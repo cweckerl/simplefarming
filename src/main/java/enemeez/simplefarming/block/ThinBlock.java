@@ -2,10 +2,8 @@ package enemeez.simplefarming.block;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.IWaterLoggable;
+import net.minecraft.block.*;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
@@ -20,13 +18,16 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 
-public class ThinBlock extends Block implements IWaterLoggable {
+//TODO: rename to ThinLogBlock
+public class ThinBlock extends LogBlock implements IWaterLoggable {
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-	private static final VoxelShape BOX = Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+	private static final VoxelShape SHAPE_VERTICAL = Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+	private static final VoxelShape SHAPE_HORIZONTAL_X = Block.makeCuboidShape(0.0D, 4.0D, 4.0D, 16.0D, 12.0D, 12.0D);
+	private static final VoxelShape SHAPE_HORIZONTAL_Z = Block.makeCuboidShape(4.0D, 4.0D, 0.0D, 12.0D, 12.0D, 16.0D);
 
-	public ThinBlock(Block.Properties properties) {
-		super(properties);
-		this.setDefaultState(this.getDefaultState().with(WATERLOGGED, Boolean.FALSE));
+	public ThinBlock(MaterialColor verticalColorIn, Block.Properties properties) {
+		super(verticalColorIn, properties);
+		setDefaultState(getDefaultState().with(WATERLOGGED, Boolean.FALSE).with(AXIS, Direction.Axis.Y));
 	}
 
 	protected static boolean isInWater(BlockState state, IBlockReader worldIn, BlockPos pos) {
@@ -46,7 +47,7 @@ public class ThinBlock extends Block implements IWaterLoggable {
 	@Nullable
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		IFluidState ifluidstate = context.getWorld().getFluidState(context.getPos());
-		return this.getDefaultState().with(WATERLOGGED, ifluidstate.isTagged(FluidTags.WATER) && ifluidstate.getLevel() == 8);
+		return getDefaultState().with(WATERLOGGED, ifluidstate.isTagged(FluidTags.WATER) && ifluidstate.getLevel() == 8).with(AXIS, context.getFace().getAxis());
 	}
 
 	@Override
@@ -54,13 +55,12 @@ public class ThinBlock extends Block implements IWaterLoggable {
 		if (stateIn.get(WATERLOGGED)) {
 			worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
 		}
-
-		return facing == Direction.DOWN && !this.isValidPosition(stateIn, worldIn, currentPos) ? Blocks.AIR.getDefaultState()
-				: super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+		return facing == Direction.DOWN && !isValidPosition(stateIn, worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
 	}
 
 	@Override
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+		super.fillStateContainer(builder);
 		builder.add(WATERLOGGED);
 	}
 
@@ -70,7 +70,10 @@ public class ThinBlock extends Block implements IWaterLoggable {
 
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return BOX;
+		Direction.Axis axis = state.get(AXIS);
+		if (axis == Direction.Axis.X) return SHAPE_HORIZONTAL_X;
+		if (axis == Direction.Axis.Z) return SHAPE_HORIZONTAL_Z;
+		return SHAPE_VERTICAL;
 	}
 
 }
