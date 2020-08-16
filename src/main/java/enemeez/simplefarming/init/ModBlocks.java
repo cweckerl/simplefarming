@@ -195,7 +195,7 @@ public class ModBlocks {
 		cantaloupe_crop = register("cantaloupe_crop",	new GourdCropBlock(Block.Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.2f).sound(SoundType.STEM), () -> ModItems.cantaloupe_block, () -> ModItems.cantaloupe_seeds));
 		carrot_crop = register("carrot_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> Items.CARROT, () -> ModItems.carrot_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));
 
-		corn_crop = register("corn_crop", new DoubleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.corn, () -> ModItems.corn_seeds, true));
+		corn_crop = register("corn_crop", new DoubleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.corn, () -> ModItems.corn_seeds));
 
 		cotton_crop = register("cotton_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.cotton, () -> ModItems.cotton_seeds));
 		cassava_crop = register("cassava_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.cassava, () -> ModItems.cassava_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));

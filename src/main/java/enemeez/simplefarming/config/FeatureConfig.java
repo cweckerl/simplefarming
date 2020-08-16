@@ -22,6 +22,7 @@ public class FeatureConfig
     }
 
     public static ForgeConfigSpec.EnumValue<RightClickHarvestFeature> rightClickHarvest;
+    public static ForgeConfigSpec.BooleanValue doubleCropsSlowDownMotion;
 
     public static void init(ForgeConfigSpec.Builder config) {
         rightClickHarvest = config
@@ -31,5 +32,9 @@ public class FeatureConfig
                         "ENABLED_DROP -> loot is dropped on the ground",
                         "ENABLED_SMART -> loot is placed in the player's inventory")
                 .defineEnum("Right-Click Harvest", RightClickHarvestFeature.ENABLED_DROP, RightClickHarvestFeature.values());
+
+        doubleCropsSlowDownMotion = config
+                .comment("Configures if Double Crops (i.e. Corn, Sorghum, Kenaf) slow down living entities")
+                .define("Double Crops Slow Down Motion", true);
     }
 }

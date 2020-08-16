@@ -1,5 +1,6 @@
 package enemeez.simplefarming.block.growable;
 
+import enemeez.simplefarming.config.FeatureConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -30,16 +31,10 @@ import java.util.function.Supplier;
 public class DoubleCropBlock extends SimpleCropBlock
 {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
-    private final boolean slowsMovement;
 
     public DoubleCropBlock(Block.Properties properties, Supplier<Item> itemSupplier, Supplier<Item> seedItemSupplier) {
-        this(properties, itemSupplier, seedItemSupplier, false);
-    }
-
-    public DoubleCropBlock(Block.Properties properties, Supplier<Item> itemSupplier, Supplier<Item> seedItemSupplier, boolean slowsMovement) {
         super(properties, itemSupplier, seedItemSupplier);
         setDefaultState(stateContainer.getBaseState().with(getAgeProperty(), 0).with(HALF, DoubleBlockHalf.LOWER));
-        this.slowsMovement = slowsMovement;
     }
 
     @Override
@@ -130,7 +125,7 @@ public class DoubleCropBlock extends SimpleCropBlock
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if (slowsMovement && entityIn instanceof LivingEntity) {
+        if (FeatureConfig.doubleCropsSlowDownMotion.get() && entityIn instanceof LivingEntity) {
             entityIn.setMotionMultiplier(state, new Vec3d(0.8D, 0.75D, 0.8D));
         }
     }
