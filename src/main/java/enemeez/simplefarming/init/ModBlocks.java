@@ -12,6 +12,7 @@ import enemeez.simplefarming.block.SimpleCakeBlock;
 import enemeez.simplefarming.block.ThinBlock;
 import enemeez.simplefarming.block.WildCropBlock;
 import enemeez.simplefarming.block.growable.*;
+import enemeez.simplefarming.util.ModVoxelShapes;
 import net.minecraft.block.Block;
 import net.minecraft.block.HayBlock;
 import net.minecraft.block.SoundType;
@@ -159,9 +160,7 @@ public class ModBlocks {
 		fruit_log = register("fruit_log", new ThinBlock(Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0F).sound(SoundType.WOOD)));
 
 		birthday_cake = register("birthday_cake", new BirthdayCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).lightValue(14).sound(SoundType.CLOTH)));
-
 		chocolate_cake = register("chocolate_cake", new SimpleCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));
-
 		cheese_block = register("cheese_block", new CheeseBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));
 
 		barley_hay_block = register("barley_hay_block", new HayBlock(Block.Properties.create(Material.ORGANIC, MaterialColor.GREEN).hardnessAndResistance(0.5F).sound(SoundType.PLANT)));
@@ -187,51 +186,51 @@ public class ModBlocks {
 		raspberry_bush = register("raspberry_bush", new BerryBushBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().hardnessAndResistance(0.2f).notSolid().sound(SoundType.SWEET_BERRY_BUSH)), () -> ModItems.raspberry_bush));
 		strawberry_bush = register("strawberry_bush", new BerryBushBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().hardnessAndResistance(0.2f).notSolid().sound(SoundType.SWEET_BERRY_BUSH)), () -> ModItems.strawberry_bush));
 
-		squash_crop = register("squash_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.STEM), () -> ModItems.squash_block, () -> ModItems.squash_seeds));
+		squash_crop = register("squash_crop", new GourdCropBlock(Block.Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.2f).sound(SoundType.STEM), () -> ModItems.squash_block, () -> ModItems.squash_seeds));
 
 		cactus_crop = register("cactus_crop", new OpuntiaBlock((Block.Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.2f).sound(SoundType.CLOTH))));
 
 		barley_crop = register("barley_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.barley, () -> ModItems.barley_seeds));
-		broccoli_crop = register("broccoli_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.broccoli, () -> ModItems.broccoli_seeds));
-		cantaloupe_crop = register("cantaloupe_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.STEM), () -> ModItems.cantaloupe_block, () -> ModItems.cantaloupe_seeds));
-		carrot_crop = register("carrot_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> Items.CARROT, () -> ModItems.carrot_seeds));
+		broccoli_crop = register("broccoli_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.broccoli, () -> ModItems.broccoli_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));
+		cantaloupe_crop = register("cantaloupe_crop",	new GourdCropBlock(Block.Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.2f).sound(SoundType.STEM), () -> ModItems.cantaloupe_block, () -> ModItems.cantaloupe_seeds));
+		carrot_crop = register("carrot_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> Items.CARROT, () -> ModItems.carrot_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));
 
 		corn_crop = register("corn_crop", new DoubleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.corn, () -> ModItems.corn_seeds));
 
 		cotton_crop = register("cotton_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.cotton, () -> ModItems.cotton_seeds));
-		cassava_crop = register("cassava_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.cassava, () -> ModItems.cassava_seeds));
+		cassava_crop = register("cassava_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.cassava, () -> ModItems.cassava_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));
 		cucumber_crop = register("cucumber_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.cucumber, () -> ModItems.cucumber_seeds));
 		eggplant_crop = register("eggplant_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.eggplant, () -> ModItems.eggplant_seeds));
-		honeydew_crop = register("honeydew_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.honeydew_block, () -> ModItems.honeydew_seeds));
+		honeydew_crop = register("honeydew_crop",	new GourdCropBlock(Block.Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.2f).sound(SoundType.CROP), () -> ModItems.honeydew_block, () -> ModItems.honeydew_seeds));
 		ginger_crop = register("ginger_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.ginger, () -> ModItems.ginger_seeds));
 
 		kenaf_crop = register("kenaf_crop", new DoubleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.kenaf_fiber, () -> ModItems.kenaf_seeds));
 
-		lettuce_crop = register("lettuce_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.lettuce, () -> ModItems.lettuce_seeds));
+		lettuce_crop = register("lettuce_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.lettuce, () -> ModItems.lettuce_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));
 		oat_crop = register("oat_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.oat, () -> ModItems.oat_seeds));
-		onion_crop = register("onion_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.onion, () -> ModItems.onion_seeds));
+		onion_crop = register("onion_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.onion, () -> ModItems.onion_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));
 		pea_crop = register("pea_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.pea_pod, () -> ModItems.pea_seeds));
-		peanut_crop = register("peanut_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.peanut, () -> ModItems.peanut_seeds));
+		peanut_crop = register("peanut_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.peanut, () -> ModItems.peanut_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));
 		pepper_crop = register("pepper_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.pepper, () -> ModItems.pepper_seeds));
-		potato_crop = register("potato_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> Items.POTATO, () -> ModItems.potato_seeds));
-		radish_crop = register("radish_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.radish, () -> ModItems.radish_seeds));
+		potato_crop = register("potato_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> Items.POTATO, () -> ModItems.potato_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));
+		radish_crop = register("radish_crop",	new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.radish, () -> ModItems.radish_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));
 		rice_crop = register("rice_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.rice, () -> ModItems.rice_seeds));
 		rye_crop = register("rye_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.rye, () -> ModItems.rye_seeds));
 
 		sorghum_crop = register("sorghum_crop", new DoubleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.sorghum, () -> ModItems.sorghum_seeds));
 
 		soybean_crop = register("soybean_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.soybean, () -> ModItems.soybean_seeds));
-		spinach_crop = register("spinach_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.spinach, () -> ModItems.spinach_seeds));
-		sweet_potato_crop = register("sweet_potato_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.sweet_potato, () -> ModItems.sweet_potato_seeds));
+		spinach_crop = register("spinach_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.spinach, () -> ModItems.spinach_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));
+		sweet_potato_crop = register("sweet_potato_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.sweet_potato, () -> ModItems.sweet_potato_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));
 		tomato_crop = register("tomato_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.tomato, () -> ModItems.tomato_seeds));
-		turnip_crop = register("turnip_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.turnip, () -> ModItems.turnip_seeds));
-		yam_crop = register("yam_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.yam, () -> ModItems.yam_seeds));
+		turnip_crop = register("turnip_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.turnip, () -> ModItems.turnip_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));
+		yam_crop = register("yam_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.yam, () -> ModItems.yam_seeds, ModVoxelShapes.SMALL_CROP_SHAPES_0_7));
 		zucchini_crop = register("zucchini_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.CROP), () -> ModItems.zucchini, () -> ModItems.zucchini_seeds));
 
 		wild_crop = register("wild_crop", new WildCropBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.PLANT)));
 
-		melon_crop = register("melon_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.STEM), () -> Items.MELON, () -> Items.MELON_SEEDS));
-		pumpkin_crop = register("pumpkin_crop", new SimpleCropBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0).sound(SoundType.STEM), () -> Items.PUMPKIN, () -> Items.PUMPKIN_SEEDS));
+		melon_crop = register("melon_crop", new GourdCropBlock(Block.Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.2f).sound(SoundType.STEM), () -> Items.MELON, () -> Items.MELON_SEEDS));
+		pumpkin_crop = register("pumpkin_crop", new GourdCropBlock(Block.Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(0.2f).sound(SoundType.STEM), () -> Items.PUMPKIN, () -> Items.PUMPKIN_SEEDS));
 	}
 
 	private static <T extends Block> T register(String name, T block) {
