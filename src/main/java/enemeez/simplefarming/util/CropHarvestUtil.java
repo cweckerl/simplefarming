@@ -22,6 +22,9 @@ import javax.annotation.Nullable;
 import java.lang.reflect.Method;
 import java.util.List;
 
+/**
+ * Created by Elenterius on 15.08.2020
+ */
 public abstract class CropHarvestUtil
 {
     public static final Tag<Item> DENY_RIGHT_CLICK_HARVEST_TAG = new ItemTags.Wrapper(new ResourceLocation(SimpleFarming.MOD_ID, "deny_right_click_harvest"));

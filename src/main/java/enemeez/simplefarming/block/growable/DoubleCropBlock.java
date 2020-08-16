@@ -22,35 +22,19 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 /**
- * Modified by Elenterius on 14.08.2020
+ * Modified by Elenterius on 15.08.2020
  */
-public class DoubleCropBlock extends CropsBlock {
-	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
+public class DoubleCropBlock extends SimpleCropBlock {
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
-	private final Supplier<Item> itemSupplier;
-	private final Supplier<Item> seedItemSupplier;
 
 	public DoubleCropBlock(Block.Properties properties, Supplier<Item> itemSupplier, Supplier<Item> seedItemSupplier) {
-		super(properties);
-		this.itemSupplier = itemSupplier;
-		this.seedItemSupplier = seedItemSupplier;
+		super(properties, itemSupplier, seedItemSupplier);
 		setDefaultState(stateContainer.getBaseState().with(getAgeProperty(), 0).with(HALF, DoubleBlockHalf.LOWER));
 	}
 
 	@Override
 	protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
 		return state.getBlock() instanceof FarmlandBlock;
-	}
-
-	// Max age of lower half of crop
-	@Override
-	public int getMaxAge() {
-		return 7;
-	}
-
-	@Override
-	public int getAge(BlockState state) {
-		return state.get(getAgeProperty());
 	}
 
 	public DoubleBlockHalf getHalf(BlockState state) {
@@ -131,16 +115,6 @@ public class DoubleCropBlock extends CropsBlock {
 	@Override
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(AGE, HALF);
-	}
-
-	@Override
-	public IItemProvider getSeedsItem() {
-		return seedItemSupplier.get();
-	}
-
-	@Override
-	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-		return new ItemStack(itemSupplier.get());
 	}
 
 }
