@@ -125,7 +125,7 @@ public class DoubleCropBlock extends SimpleCropBlock
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if (FeatureConfig.doubleCropsSlowDownMotion.get() && entityIn instanceof LivingEntity) {
+        if (FeatureConfig.doubleCropsSlowDownMotion.get() && entityIn instanceof LivingEntity && isMaxAge(state)) {
             entityIn.setMotionMultiplier(state, new Vec3d(0.8D, 0.75D, 0.8D));
         }
     }
