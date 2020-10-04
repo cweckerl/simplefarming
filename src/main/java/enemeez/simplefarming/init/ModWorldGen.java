@@ -30,10 +30,11 @@ public class ModWorldGen {
 		registerGen(WILD_CROP, "wild_crop");
 		registerGen(WILD_PLANT, "wild_plant");
 	}
-	
+	/* unused
     public static void registerFeature(RegistryEvent.Register<Feature<?>> event) {
-    	// unused
+    	
     }
+    */
 
 	public static Feature<?> registerGen(Feature<?> feature, String name) {
 		feature.setRegistryName(new ResourceLocation(SimpleFarming.MOD_ID, name));

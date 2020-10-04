@@ -18,7 +18,6 @@ public class TemptationTask {
 			ModItems.radish_seeds, ModItems.rice_seeds, ModItems.rye_seeds, ModItems.soybean_seeds, ModItems.spinach_seeds, ModItems.squash_seeds, ModItems.tomato_seeds, ModItems.yam_seeds,
 			ModItems.ginger_seeds, ModItems.grape_seeds, ModItems.cumin_seeds, ModItems.quinoa_seeds, ModItems.sorghum_seeds, ModItems.peanut_seeds, ModItems.barley_seeds, ModItems.sunflower_seeds,
 			ModItems.pea_seeds, ModItems.cotton_seeds, ModItems.sweet_potato_seeds, ModItems.broccoli_seeds, ModItems.zucchini_seeds, ModItems.turnip_seeds
-
 	);
 
 	private static final Ingredient WHEATS = Ingredient.fromItems(ModItems.barley, ModItems.oat, ModItems.rye, ModItems.rice, ModItems.corn, ModItems.sorghum);

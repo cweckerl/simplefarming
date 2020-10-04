@@ -75,7 +75,6 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 				}
 			}
 		}
-
 		return state.with(DISTANCE, dist);
 	}
 

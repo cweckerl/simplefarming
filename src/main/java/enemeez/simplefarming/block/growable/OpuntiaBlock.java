@@ -44,7 +44,7 @@ public class OpuntiaBlock extends GrowableBushBlock
 	private static final VoxelShape TOP_MIDDLE_Z = Block.makeCuboidShape(7.0D, 10.0D, 4.0D, 9.0D, 12.0D, 12.0D);
 	private static final VoxelShape MIDDLE_Z = Block.makeCuboidShape(7.0D, 4.0D, 2.0D, 9.0D, 10.0D, 14.0D);
 	private static final VoxelShape BOT_MIDDLE_Z = Block.makeCuboidShape(7.0D, 2.0D, 4.0D, 9.0D, 4.0D, 12.0D);
-	private static final VoxelShape BOT_Z = Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D); // good
+	private static final VoxelShape BOT_Z = Block.makeCuboidShape(7.0D, 0.0D, 7.0D, 9.0D, 2.0D, 9.0D);
 	private static final VoxelShape FRUIT_1_Z = Block.makeCuboidShape(7.0D, 10.0D, 12.0D, 9.0D, 12.0D, 14.0D);
 	private static final VoxelShape FRUIT_2_Z = Block.makeCuboidShape(7.0D, 12.0D, 10.0D, 9.0D, 14.0D, 12.0D);
 	private static final VoxelShape FRUIT_3_Z = Block.makeCuboidShape(7.0D, 12.0D, 7.0D, 9.0D, 14.0D, 9.0D);
