@@ -22,36 +22,26 @@ public class FruitTreeFeature extends Feature<NoFeatureConfig> {
 		super(configFactory);
 	}
 
-	private static BlockState getLeaves(int verify) {
-		switch (verify) {
-		case 1:
-			return ModBlocks.apple_leaves.getDefaultState();
-		case 2:
-			return ModBlocks.apricot_leaves.getDefaultState();
-		case 3:
-			return ModBlocks.banana_leaves.getDefaultState();
-		case 4:
-			return ModBlocks.plum_leaves.getDefaultState();
-		case 5:
-			return ModBlocks.orange_leaves.getDefaultState();
-		case 6:
-			return ModBlocks.pear_leaves.getDefaultState();
-		case 7:
-			return ModBlocks.cherry_leaves.getDefaultState();
-		case 8:
-			return ModBlocks.mango_leaves.getDefaultState();
-		default:
-			return ModBlocks.olive_leaves.getDefaultState();
-		}
+	private final static BlockState[] leavesLookup = new BlockState[] {ModBlocks.apple_leaves.getDefaultState(),
+			ModBlocks.apricot_leaves.getDefaultState(), ModBlocks.banana_leaves.getDefaultState(),
+			ModBlocks.plum_leaves.getDefaultState(), ModBlocks.orange_leaves.getDefaultState(),
+			ModBlocks.pear_leaves.getDefaultState(), ModBlocks.cherry_leaves.getDefaultState(),
+			ModBlocks.mango_leaves.getDefaultState(), ModBlocks.olive_leaves.getDefaultState()};
+
+	private static BlockState getLeaves(int type) {
+		return leavesLookup[type - 1];
 	}
 
 	@Override
-	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random, BlockPos pos, NoFeatureConfig config) {
-		if (random.nextInt(GenConfig.tree_chance.get()) != 0 || DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
+	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random,
+			BlockPos pos, NoFeatureConfig config) {
+		if (random.nextInt(GenConfig.tree_chance.get()) != 0
+				|| DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
 				|| !DimensionConfig.whitelist.get().contains(world.getDimension().getType().getId())) {
 			return false;
 		}
-		if (WorldGenHelper.isValidGround(world.getBlockState(pos.down()), world, pos) && world.getBlockState(pos).getMaterial().isReplaceable()) {
+		if (WorldGenHelper.isValidGround(world.getBlockState(pos.down()), world, pos)
+				&& world.getBlockState(pos).getMaterial().isReplaceable()) {
 			int type = random.nextInt(9) + 1;
 			generateTree(world, pos, random, type);
 			return true;
