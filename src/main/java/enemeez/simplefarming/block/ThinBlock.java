@@ -18,7 +18,6 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 
-//TODO: rename to ThinLogBlock
 public class ThinBlock extends LogBlock implements IWaterLoggable {
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	private static final VoxelShape SHAPE_VERTICAL = Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
@@ -47,15 +46,18 @@ public class ThinBlock extends LogBlock implements IWaterLoggable {
 	@Nullable
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		IFluidState ifluidstate = context.getWorld().getFluidState(context.getPos());
-		return getDefaultState().with(WATERLOGGED, ifluidstate.isTagged(FluidTags.WATER) && ifluidstate.getLevel() == 8).with(AXIS, context.getFace().getAxis());
+		return getDefaultState().with(WATERLOGGED, ifluidstate.isTagged(FluidTags.WATER) && ifluidstate.getLevel() == 8)
+				.with(AXIS, context.getFace().getAxis());
 	}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+	public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn,
+			BlockPos currentPos, BlockPos facingPos) {
 		if (stateIn.get(WATERLOGGED)) {
 			worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
 		}
-		return facing == Direction.DOWN && !isValidPosition(stateIn, worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+		return facing == Direction.DOWN && !isValidPosition(stateIn, worldIn, currentPos) ? Blocks.AIR.getDefaultState()
+				: super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
 	}
 
 	@Override
@@ -71,8 +73,10 @@ public class ThinBlock extends LogBlock implements IWaterLoggable {
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
 		Direction.Axis axis = state.get(AXIS);
-		if (axis == Direction.Axis.X) return SHAPE_HORIZONTAL_X;
-		if (axis == Direction.Axis.Z) return SHAPE_HORIZONTAL_Z;
+		if (axis == Direction.Axis.X)
+			return SHAPE_HORIZONTAL_X;
+		if (axis == Direction.Axis.Z)
+			return SHAPE_HORIZONTAL_Z;
 		return SHAPE_VERTICAL;
 	}
 

@@ -17,31 +17,36 @@ public class SimpleGeneration {
 		if (EnableConfig.bush_validate.get()) {
 			for (Biome biome : ForgeRegistries.BIOMES) {
 				biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-						ModWorldGen.BERRY_BUSH.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
+						ModWorldGen.BERRY_BUSH.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG)
+								.withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
 			}
 			if (EnableConfig.tree_validate.get()) {
 				for (Biome biome : ForgeRegistries.BIOMES) {
 					biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-							ModWorldGen.FRUIT_TREE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
+							ModWorldGen.FRUIT_TREE.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG)
+									.withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
 				}
 			}
 			if (EnableConfig.wild_crop_validate.get()) {
 				for (Biome biome : ForgeRegistries.BIOMES) {
 					biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-							ModWorldGen.WILD_CROP.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
+							ModWorldGen.WILD_CROP.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG)
+									.withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
 				}
 			}
 			if (EnableConfig.cactus_validate.get()) {
 				BiomeDictionary.getBiomes(BiomeDictionary.Type.DRY).forEach((biome) -> {
 					biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-							ModWorldGen.CACTUS_CROP.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
+							ModWorldGen.CACTUS_CROP.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG)
+									.withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
 				});
 
 			}
 			if (EnableConfig.wild_plant_validate.get()) {
 				for (Biome biome : ForgeRegistries.BIOMES) {
 					biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-							ModWorldGen.WILD_PLANT.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
+							ModWorldGen.WILD_PLANT.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG)
+									.withPlacement(Placement.COUNT_HEIGHTMAP.configure(new FrequencyConfig(100))));
 				}
 			}
 		}

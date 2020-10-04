@@ -23,18 +23,14 @@ public class WildPlantFeature extends Feature<NoFeatureConfig> {
 		super(configFactory);
 	}
 
-	public BlockState getPlant(int type) {
-		switch (type) {
-		case 1:
-			return ModBlocks.cumin.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3));
-		case 2:
-			return ModBlocks.quinoa.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3));
-		case 3:
-			return ModBlocks.marshmallow.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3));
-		default:
-			return ModBlocks.chicory.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3));
+	private final BlockState[] plantLookup = new BlockState[] {
+			ModBlocks.cumin.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3)),
+			ModBlocks.quinoa.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3)),
+			ModBlocks.marshmallow.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3)),
+			ModBlocks.chicory.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3)) };
 
-		}
+	public BlockState getPlant(int type) {
+		return plantLookup[type - 1];
 	}
 
 	@Override

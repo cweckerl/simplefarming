@@ -24,8 +24,10 @@ public class CactusCropFeature extends Feature<NoFeatureConfig> {
 	}
 
 	@Override
-	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random, BlockPos pos, NoFeatureConfig config) {
-		if (random.nextInt(GenConfig.cactus_chance.get()) != 0 || DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
+	public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random,
+			BlockPos pos, NoFeatureConfig config) {
+		if (random.nextInt(GenConfig.cactus_chance.get()) != 0
+				|| DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
 				|| !DimensionConfig.whitelist.get().contains(world.getDimension().getType().getId()))
 			return false;
 
@@ -36,8 +38,10 @@ public class CactusCropFeature extends Feature<NoFeatureConfig> {
 
 	public static void generateCactus(IWorld world, BlockPos pos, Random rand) {
 		if (rand.nextFloat() < 0.5)
-			world.setBlockState(pos, ModBlocks.cactus_crop.getDefaultState().with(OpuntiaBlock.AGE, Integer.valueOf(3)).with(OpuntiaBlock.FACING, Direction.WEST), 2);
+			world.setBlockState(pos, ModBlocks.cactus_crop.getDefaultState().with(OpuntiaBlock.AGE, Integer.valueOf(3))
+					.with(OpuntiaBlock.FACING, Direction.WEST), 2);
 		else
-			world.setBlockState(pos, ModBlocks.cactus_crop.getDefaultState().with(OpuntiaBlock.AGE, Integer.valueOf(3)).with(OpuntiaBlock.FACING, Direction.NORTH), 2);
+			world.setBlockState(pos, ModBlocks.cactus_crop.getDefaultState().with(OpuntiaBlock.AGE, Integer.valueOf(3))
+					.with(OpuntiaBlock.FACING, Direction.NORTH), 2);
 	}
 }
