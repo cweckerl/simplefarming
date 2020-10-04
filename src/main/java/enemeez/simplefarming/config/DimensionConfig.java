@@ -15,19 +15,21 @@ public class DimensionConfig {
 
 	public static void init(ForgeConfigSpec.Builder config) {
 
-		whitelist = config.comment("Enter a dimension id to whitelist feature generation").defineList("white_dim", Arrays.asList(0), new Predicate<Object>() {
-			@Override
-			public boolean apply(@Nullable Object val) {
-				return val instanceof Integer && val != null;
-			}
-		});
+		whitelist = config.comment("Enter a dimension id to whitelist feature generation").defineList("white_dim",
+				Arrays.asList(0), new Predicate<Object>() {
+					@Override
+					public boolean apply(@Nullable Object val) {
+						return val instanceof Integer && val != null;
+					}
+				});
 
-		blacklist = config.comment("Enter a dimension id to blacklist feature generation").defineList("black_dim", Arrays.asList(-1, 1), new Predicate<Object>() {
-			@Override
-			public boolean apply(@Nullable Object val) {
-				return val instanceof Integer && val != null;
-			}
-		});
+		blacklist = config.comment("Enter a dimension id to blacklist feature generation").defineList("black_dim",
+				Arrays.asList(-1, 1), new Predicate<Object>() {
+					@Override
+					public boolean apply(@Nullable Object val) {
+						return val instanceof Integer && val != null;
+					}
+				});
 
 	}
 
