@@ -28,6 +28,7 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.util.Constants;
 
 public class ScarecrowBlock extends BushBlock {
 	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
@@ -35,13 +36,13 @@ public class ScarecrowBlock extends BushBlock {
 
 	public ScarecrowBlock(Block.Properties properties) {
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER));
+		setDefaultState(stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER));
 	}
 
 	@Override
 	public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
 		if (entityIn instanceof LivingEntity) {
-			entityIn.setMotionMultiplier(state, new Vec3d((double) 0.8F, 0.75D, (double) 0.8F));
+			entityIn.setMotionMultiplier(state, new Vec3d(0.8F, 0.75D, 0.8F));
 		}
 	}
 
@@ -66,14 +67,16 @@ public class ScarecrowBlock extends BushBlock {
 	@Nullable
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		BlockPos blockpos = context.getPos();
-		return blockpos.getY() < context.getWorld().getDimension().getHeight() - 1 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context)
-				? super.getStateForPlacement(context).with(FACING, context.getPlacementHorizontalFacing().rotateY())
-				: null;
+		if (blockpos.getY() < context.getWorld().getDimension().getHeight() - 1 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context)) {
+			BlockState state = super.getStateForPlacement(context);
+			if (state != null) return state.with(FACING, context.getPlacementHorizontalFacing().rotateY());
+		}
+		return null;
 	}
 
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-		worldIn.setBlockState(pos.up(), this.getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(FACING, worldIn.getBlockState(pos).get(FACING)), 3);
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+		worldIn.setBlockState(pos.up(), getDefaultState().with(HALF, DoubleBlockHalf.UPPER).with(FACING, worldIn.getBlockState(pos).get(FACING)), Constants.BlockFlags.DEFAULT);
 	}
 
 	@Override
@@ -82,9 +85,7 @@ public class ScarecrowBlock extends BushBlock {
 			return super.isValidPosition(state, worldIn, pos);
 		} else {
 			BlockState blockstate = worldIn.getBlockState(pos.down());
-			if (state.getBlock() != this)
-				return super.isValidPosition(state, worldIn, pos);
-
+			if (state.getBlock() != this) return super.isValidPosition(state, worldIn, pos);
 			return blockstate.getBlock() == this && blockstate.get(HALF) == DoubleBlockHalf.LOWER;
 		}
 	}
@@ -106,10 +107,10 @@ public class ScarecrowBlock extends BushBlock {
 		BlockState blockstate = worldIn.getBlockState(blockpos);
 		if (blockstate.getBlock() == this && blockstate.get(HALF) != doubleblockhalf) {
 			worldIn.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 35);
-			worldIn.playEvent(player, 2001, blockpos, Block.getStateId(blockstate));
+			worldIn.playEvent(player, Constants.WorldEvents.BREAK_BLOCK_EFFECTS, blockpos, Block.getStateId(blockstate));
 			if (!worldIn.isRemote && !player.isCreative()) {
-				spawnDrops(state, worldIn, pos, (TileEntity) null, player, player.getHeldItemMainhand());
-				spawnDrops(blockstate, worldIn, blockpos, (TileEntity) null, player, player.getHeldItemMainhand());
+				spawnDrops(state, worldIn, pos, null, player, player.getHeldItemMainhand());
+				spawnDrops(blockstate, worldIn, blockpos, null, player, player.getHeldItemMainhand());
 			}
 		}
 

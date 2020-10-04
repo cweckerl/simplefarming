@@ -1,15 +1,8 @@
 package enemeez.simplefarming.block.growable;
 
-import java.util.Random;
-
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BushBlock;
-import net.minecraft.block.FenceBlock;
-import net.minecraft.block.HorizontalBlock;
-import net.minecraft.block.IGrowable;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
@@ -26,6 +19,10 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.util.Constants;
+
+import java.util.Random;
 
 public class GrapeLeavesBlock extends BushBlock implements IGrowable {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
@@ -33,7 +30,7 @@ public class GrapeLeavesBlock extends BushBlock implements IGrowable {
 
 	public GrapeLeavesBlock(Block.Properties properties) {
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
+		setDefaultState(stateContainer.getBaseState().with(AGE, 0));
 	}
 
 	@Override
@@ -44,32 +41,42 @@ public class GrapeLeavesBlock extends BushBlock implements IGrowable {
 	// Tick method
 	@Override
 	public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-		int i = state.get(AGE);
-		if (i < 7 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
-			worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
-		}
-		if (i == 7) {
-			if (state.getBlock() == ModBlocks.grape_leaves && worldIn.getBlockState(pos.down()).getMaterial().isReplaceable() && random.nextInt(35) == 0) {
-				worldIn.setBlockState(pos.down(), ModBlocks.grape_block.getDefaultState(), 2);
-			}
-
-			if (worldIn.getBlockState(pos.east()).getBlock() instanceof FenceBlock && worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant) {
-				worldIn.setBlockState(pos.east(), ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0)).with(FACING, Direction.NORTH), 2);
-			}
-
-			if (worldIn.getBlockState(pos.west()).getBlock() instanceof FenceBlock && worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant) {
-				worldIn.setBlockState(pos.west(), ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0)).with(FACING, Direction.NORTH), 2);
-			}
-
-			if (worldIn.getBlockState(pos.north()).getBlock() instanceof FenceBlock && worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant) {
-				worldIn.setBlockState(pos.north(), ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0)).with(FACING, Direction.EAST), 2);
-			}
-
-			if (worldIn.getBlockState(pos.south()).getBlock() instanceof FenceBlock && worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant) {
-				worldIn.setBlockState(pos.south(), ModBlocks.grape_leaves.getDefaultState().with(AGE, Integer.valueOf(0)).with(FACING, Direction.EAST), 2);
-			}
+		int age = state.get(AGE);
+		if (age < 7 && worldIn.getLightSubtracted(pos.up(), 0) >= 9 && ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt(5) == 0)) {
+			worldIn.setBlockState(pos, state.with(AGE, age + 1), Constants.BlockFlags.BLOCK_UPDATE);
+			ForgeHooks.onCropsGrowPost(worldIn, pos, state);
 		}
 
+		//we fire the forge crop growth event here to allow other mods to cancel the growing of grapes/leaves (e.g. serene seasons)
+		if (age == 7 && ForgeHooks.onCropsGrowPre(worldIn, pos, state, true)) {
+
+			if (state.getBlock() == ModBlocks.grape_leaves) {
+				BlockState stateBelow = worldIn.getBlockState(pos.down());
+				if (stateBelow.getMaterial().isReplaceable() && random.nextInt(35) == 0) {
+					worldIn.setBlockState(pos.down(), ModBlocks.grape_block.getDefaultState(), Constants.BlockFlags.BLOCK_UPDATE);
+				}
+			}
+
+			if (worldIn.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant) {
+				if (worldIn.getBlockState(pos.east()).getBlock() instanceof FenceBlock) {
+					worldIn.setBlockState(pos.east(), ModBlocks.grape_leaves.getDefaultState().with(AGE, 0).with(FACING, Direction.NORTH), Constants.BlockFlags.BLOCK_UPDATE);
+				}
+
+				if (worldIn.getBlockState(pos.west()).getBlock() instanceof FenceBlock) {
+					worldIn.setBlockState(pos.west(), ModBlocks.grape_leaves.getDefaultState().with(AGE, 0).with(FACING, Direction.NORTH), Constants.BlockFlags.BLOCK_UPDATE);
+				}
+
+				if (worldIn.getBlockState(pos.north()).getBlock() instanceof FenceBlock) {
+					worldIn.setBlockState(pos.north(), ModBlocks.grape_leaves.getDefaultState().with(AGE, 0).with(FACING, Direction.EAST), Constants.BlockFlags.BLOCK_UPDATE);
+				}
+
+				if (worldIn.getBlockState(pos.south()).getBlock() instanceof FenceBlock) {
+					worldIn.setBlockState(pos.south(), ModBlocks.grape_leaves.getDefaultState().with(AGE, 0).with(FACING, Direction.EAST), Constants.BlockFlags.BLOCK_UPDATE);
+				}
+			}
+
+			ForgeHooks.onCropsGrowPost(worldIn, pos, state); //TODO: fire the event for each new grape/leave?
+		}
 	}
 
 	@Override
@@ -80,9 +87,9 @@ public class GrapeLeavesBlock extends BushBlock implements IGrowable {
 				BlockPos blockpos = pos.down();
 				BlockState blockstate = worldIn.getBlockState(blockpos);
 				if (!blockstate.isSolid() || !Block.hasSolidSide(blockstate, worldIn, blockpos, Direction.UP)) {
-					double d0 = (double) ((float) pos.getX() + rand.nextFloat());
+					double d0 = (float) pos.getX() + rand.nextFloat();
 					double d1 = (double) pos.getY() - 0.05D;
-					double d2 = (double) ((float) pos.getZ() + rand.nextFloat());
+					double d2 = (float) pos.getZ() + rand.nextFloat();
 					worldIn.addParticle(ParticleTypes.DRIPPING_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D);
 				}
 			}
@@ -99,11 +106,9 @@ public class GrapeLeavesBlock extends BushBlock implements IGrowable {
 	public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
 		if (state.getBlock() == ModBlocks.grape_leaves_base && world.getBlockState(pos.down()).getBlock() == ModBlocks.grape_plant)
 			return true;
-		if (state.getBlock() == ModBlocks.grape_leaves
+		return state.getBlock() == ModBlocks.grape_leaves
 				&& (world.getBlockState(pos.east()).getBlock() == ModBlocks.grape_leaves_base || world.getBlockState(pos.west()).getBlock() == ModBlocks.grape_leaves_base
-						|| world.getBlockState(pos.north()).getBlock() == ModBlocks.grape_leaves_base || world.getBlockState(pos.south()).getBlock() == ModBlocks.grape_leaves_base))
-			return true;
-		return false;
+				|| world.getBlockState(pos.north()).getBlock() == ModBlocks.grape_leaves_base || world.getBlockState(pos.south()).getBlock() == ModBlocks.grape_leaves_base);
 	}
 
 	@Override
@@ -131,10 +136,10 @@ public class GrapeLeavesBlock extends BushBlock implements IGrowable {
 		return true;
 	}
 
-	// Grow method
+	// bone meal grow method
 	@Override
 	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
-		int i = Math.min(7, state.get(AGE) + 1);
-		worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i)), 2);
+		int newAge = Math.min(7, state.get(AGE) + 1);
+		worldIn.setBlockState(pos, state.with(AGE, newAge), Constants.BlockFlags.BLOCK_UPDATE);
 	}
 }

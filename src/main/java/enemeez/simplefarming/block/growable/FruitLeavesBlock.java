@@ -1,16 +1,13 @@
 package enemeez.simplefarming.block.growable;
 
-import java.util.Random;
-
 import enemeez.simplefarming.init.ModBlocks;
-import enemeez.simplefarming.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -20,62 +17,31 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.util.Constants;
+
+import java.util.Random;
+import java.util.function.Supplier;
 
 public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
-	private String name;
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_0_7;
+	private final Supplier<Item> itemSupplier;
+	private final Supplier<Item> saplingItemSupplier;
 
-	public FruitLeavesBlock(Block.Properties properties, String name) {
+	public FruitLeavesBlock(Properties properties, Supplier<Item> itemSupplier, Supplier<Item> saplingItemSupplier) {
 		super(properties);
-		this.name = name;
-		this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)).with(DISTANCE, Integer.valueOf(1)).with(PERSISTENT, Boolean.valueOf(false)));
+		this.itemSupplier = itemSupplier;
+		this.saplingItemSupplier = saplingItemSupplier;
+		setDefaultState(stateContainer.getBaseState().with(AGE, 0).with(DISTANCE, 1).with(PERSISTENT, Boolean.FALSE));
 	}
 
 	@Override
 	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-		switch (name) {
-		case "apple":
-			return new ItemStack(Items.APPLE);
-		case "apricot":
-			return new ItemStack(ModItems.apricot);
-		case "banana":
-			return new ItemStack(ModItems.banana);
-		case "cherries":
-			return new ItemStack(ModItems.cherries);
-		case "orange":
-			return new ItemStack(ModItems.orange);
-		case "mango":
-			return new ItemStack(ModItems.mango);
-		case "pear":
-			return new ItemStack(ModItems.pear);
-		case "plum":
-			return new ItemStack(ModItems.plum);
-		default:
-			return new ItemStack(ModItems.olives);
-		}
+		return new ItemStack(itemSupplier.get());
 	}
 
 	public ItemStack getSapling(IBlockReader worldIn, BlockPos pos, BlockState state) {
-		switch (name) {
-		case "apple":
-			return new ItemStack(ModItems.apple_sapling);
-		case "apricot":
-			return new ItemStack(ModItems.apricot_sapling);
-		case "banana":
-			return new ItemStack(ModItems.banana_sapling);
-		case "cherries":
-			return new ItemStack(ModItems.cherry_sapling);
-		case "orange":
-			return new ItemStack(ModItems.orange_sapling);
-		case "mango":
-			return new ItemStack(ModItems.mango_sapling);
-		case "pear":
-			return new ItemStack(ModItems.pear_sapling);
-		case "plum":
-			return new ItemStack(ModItems.plum_sapling);
-		default:
-			return new ItemStack(ModItems.olive_sapling);
-		}
+		return new ItemStack(saplingItemSupplier.get());
 	}
 
 	@Override
@@ -89,27 +55,28 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 			spawnDrops(state, worldIn, pos);
 			worldIn.removeBlock(pos, false);
 		} else {
-			int i = state.get(AGE);
-			if (i < 7 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) {
-				worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
+			int age = state.get(AGE);
+			if (age < 7 && worldIn.getLightSubtracted(pos.up(), 0) >= 9 && ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt(5) == 0)) {
+				worldIn.setBlockState(pos, state.with(AGE, age + 1), Constants.BlockFlags.BLOCK_UPDATE);
+				ForgeHooks.onCropsGrowPost(worldIn, pos, state);
 			}
 		}
 	}
 
 	private static BlockState updateDistance(BlockState state, IWorld worldIn, BlockPos pos) {
-		int i = 7;
+		int dist = 7;
 
-		try (BlockPos.PooledMutable blockpos$pooledmutable = BlockPos.PooledMutable.retain()) {
+		try (BlockPos.PooledMutable mutablePos = BlockPos.PooledMutable.retain()) {
 			for (Direction direction : Direction.values()) {
-				blockpos$pooledmutable.setPos(pos).move(direction);
-				i = Math.min(i, getDistance(worldIn.getBlockState(blockpos$pooledmutable)) + 1);
-				if (i == 1) {
+				mutablePos.setPos(pos).move(direction);
+				dist = Math.min(dist, getDistance(worldIn.getBlockState(mutablePos)) + 1);
+				if (dist == 1) {
 					break;
 				}
 			}
 		}
 
-		return state.with(DISTANCE, Integer.valueOf(i));
+		return state.with(DISTANCE, dist);
 	}
 
 	private static int getDistance(BlockState neighbor) {
@@ -121,7 +88,7 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 	}
 
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		return updateDistance(this.getDefaultState().with(PERSISTENT, Boolean.valueOf(true)), context.getWorld(), context.getPos());
+		return updateDistance(this.getDefaultState().with(PERSISTENT, Boolean.TRUE), context.getWorld(), context.getPos());
 	}
 
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
@@ -141,7 +108,7 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 	}
 
 	public BlockState withAge(int age) {
-		return this.getDefaultState().with(this.getAgeProperty(), Integer.valueOf(age));
+		return this.getDefaultState().with(this.getAgeProperty(), age);
 	}
 
 	public boolean isMaxAge(BlockState state) {
@@ -160,8 +127,8 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 
 	@Override
 	public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
-		int i = Math.min(7, state.get(AGE) + 1);
-		worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i)), 2);
+		int newAge = Math.min(7, state.get(AGE) + 1);
+		worldIn.setBlockState(pos, state.with(AGE, newAge), Constants.BlockFlags.BLOCK_UPDATE);
 	}
 
 }

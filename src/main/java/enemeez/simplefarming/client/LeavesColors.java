@@ -15,18 +15,22 @@ public class LeavesColors {
 
 	@SubscribeEvent
 	public static void leavesColors(ColorHandlerEvent.Block event) {
-		event.getBlockColors().register((state, world, pos, index) -> {
-			return world == null || pos == null ? FoliageColors.getDefault() : BiomeColors.getFoliageColor(world, pos);
-		}, ModBlocks.grape_leaves, ModBlocks.grape_leaves_base, ModBlocks.blackberry_bush, ModBlocks.blueberry_bush, ModBlocks.raspberry_bush, ModBlocks.strawberry_bush, ModBlocks.apple_leaves,
-				ModBlocks.apricot_leaves, ModBlocks.banana_leaves, ModBlocks.cherry_leaves, ModBlocks.mango_leaves, ModBlocks.olive_leaves, ModBlocks.orange_leaves, ModBlocks.plum_leaves,
-				ModBlocks.pear_leaves);
+		event.getBlockColors().register(
+				(state, world, pos, index) -> {
+					if(index == 0) return world == null || pos == null ? FoliageColors.getDefault() : BiomeColors.getFoliageColor(world, pos);
+					return -1;
+				},
+				ModBlocks.grape_leaves, ModBlocks.grape_leaves_base, ModBlocks.blackberry_bush, ModBlocks.blueberry_bush, ModBlocks.raspberry_bush, ModBlocks.strawberry_bush,
+				ModBlocks.apple_leaves,	ModBlocks.apricot_leaves, ModBlocks.banana_leaves, ModBlocks.cherry_leaves, ModBlocks.mango_leaves, ModBlocks.olive_leaves,
+				ModBlocks.orange_leaves, ModBlocks.plum_leaves,	ModBlocks.pear_leaves
+		);
 	}
 
 	@SubscribeEvent
 	public static void itemColors(ColorHandlerEvent.Item event) {
-		event.getItemColors().register((stack, tintIndex) -> {
-			return FoliageColors.getDefault();
-		}, ModBlocks.blackberry_bush, ModBlocks.blueberry_bush, ModBlocks.raspberry_bush, ModBlocks.strawberry_bush);
-
+		event.getItemColors().register(
+				(stack, tintIndex) -> FoliageColors.getDefault(),
+				ModBlocks.blackberry_bush, ModBlocks.blueberry_bush, ModBlocks.raspberry_bush, ModBlocks.strawberry_bush
+		);
 	}
 }

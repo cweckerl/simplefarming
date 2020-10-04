@@ -10,6 +10,8 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public class BrewingBarrelRecipe implements IRecipe<IInventory> {
 
 	private final ResourceLocation id;
@@ -32,7 +34,7 @@ public class BrewingBarrelRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public ItemStack getCraftingResult(IInventory inv) {
+	public ItemStack getCraftingResult(@Nullable IInventory inv) {
 		return result.copy();
 	}
 

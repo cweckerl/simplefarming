@@ -5,7 +5,6 @@ import java.util.function.Function;
 
 import com.mojang.datafixers.Dynamic;
 
-import enemeez.simplefarming.block.growable.BerryBushBlock;
 import enemeez.simplefarming.config.DimensionConfig;
 import enemeez.simplefarming.config.GenConfig;
 import enemeez.simplefarming.init.ModBlocks;
@@ -17,23 +16,18 @@ import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationSettings;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraftforge.common.util.Constants;
 
-public class BerryBushFeature extends Feature<NoFeatureConfig> {
+public class BerryBushFeature extends Feature<NoFeatureConfig>
+{
+	private final BlockState[] bushLookup = new BlockState[] {ModBlocks.blackberry_bush.withMaxAge(), ModBlocks.blueberry_bush.withMaxAge(), ModBlocks.raspberry_bush.withMaxAge(), ModBlocks.strawberry_bush.withMaxAge()};
+
 	public BerryBushFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configFactory) {
 		super(configFactory);
 	}
 
 	private BlockState getBush(int type) {
-		switch (type) {
-		case 1:
-			return ModBlocks.blackberry_bush.getDefaultState().with(BerryBushBlock.AGE, Integer.valueOf(3));
-		case 2:
-			return ModBlocks.blueberry_bush.getDefaultState().with(BerryBushBlock.AGE, Integer.valueOf(3));
-		case 3:
-			return ModBlocks.raspberry_bush.getDefaultState().with(BerryBushBlock.AGE, Integer.valueOf(3));
-		default:
-			return ModBlocks.strawberry_bush.getDefaultState().with(BerryBushBlock.AGE, Integer.valueOf(3));
-		}
+		return bushLookup[type - 1];
 	}
 
 	@Override
@@ -41,7 +35,8 @@ public class BerryBushFeature extends Feature<NoFeatureConfig> {
 		if (random.nextInt(GenConfig.bush_chance.get()) != 0 || DimensionConfig.blacklist.get().contains(world.getDimension().getType().getId())
 				|| !DimensionConfig.whitelist.get().contains(world.getDimension().getType().getId()))
 			return false;
-		int type = random.nextInt(4) + 1;
+
+		int type = random.nextInt(bushLookup.length) + 1;
 		for (int i = 0; i < type; i++) {
 			if (i == 0) {
 				int initial = random.nextInt(2) + 1;
@@ -71,7 +66,7 @@ public class BerryBushFeature extends Feature<NoFeatureConfig> {
 	}
 
 	public void generateBush(IWorld world, BlockPos pos, Random random, int type) {
-		world.setBlockState(pos, getBush(type), 2);
+		world.setBlockState(pos, getBush(type), Constants.BlockFlags.BLOCK_UPDATE);
 	}
 
 }

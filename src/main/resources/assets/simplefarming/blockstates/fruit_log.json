@@ -1,5 +1,7 @@
 {
     "variants": {
-        "": { "model": "simplefarming:block/fruit_log" }
+        "axis=y":  { "model": "simplefarming:block/fruit_log" },
+        "axis=z":   { "model": "simplefarming:block/fruit_log", "x": 90 },
+        "axis=x":   { "model": "simplefarming:block/fruit_log", "x": 90, "y": 90 }
     }
 }
