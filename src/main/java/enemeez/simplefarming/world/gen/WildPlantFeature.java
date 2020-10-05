@@ -19,15 +19,15 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 
 public class WildPlantFeature extends Feature<NoFeatureConfig> {
-	public WildPlantFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configFactory) {
-		super(configFactory);
-	}
-
 	private final BlockState[] plantLookup = new BlockState[] {
 			ModBlocks.cumin.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3)),
 			ModBlocks.quinoa.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3)),
 			ModBlocks.marshmallow.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3)),
 			ModBlocks.chicory.getDefaultState().with(PlantBlock.AGE, Integer.valueOf(3)) };
+
+	public WildPlantFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configFactory) {
+		super(configFactory);
+	}
 
 	public BlockState getPlant(int type) {
 		return plantLookup[type - 1];

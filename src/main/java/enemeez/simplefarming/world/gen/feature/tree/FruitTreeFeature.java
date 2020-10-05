@@ -18,15 +18,15 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 
 public class FruitTreeFeature extends Feature<NoFeatureConfig> {
-	public FruitTreeFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configFactory) {
-		super(configFactory);
-	}
-
-	private final static BlockState[] leavesLookup = new BlockState[] {ModBlocks.apple_leaves.getDefaultState(),
+	private final static BlockState[] leavesLookup = new BlockState[] { ModBlocks.apple_leaves.getDefaultState(),
 			ModBlocks.apricot_leaves.getDefaultState(), ModBlocks.banana_leaves.getDefaultState(),
 			ModBlocks.plum_leaves.getDefaultState(), ModBlocks.orange_leaves.getDefaultState(),
 			ModBlocks.pear_leaves.getDefaultState(), ModBlocks.cherry_leaves.getDefaultState(),
-			ModBlocks.mango_leaves.getDefaultState(), ModBlocks.olive_leaves.getDefaultState()};
+			ModBlocks.mango_leaves.getDefaultState(), ModBlocks.olive_leaves.getDefaultState() };
+
+	public FruitTreeFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> configFactory) {
+		super(configFactory);
+	}
 
 	private static BlockState getLeaves(int type) {
 		return leavesLookup[type - 1];
