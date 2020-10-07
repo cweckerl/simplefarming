@@ -25,11 +25,3 @@ with open('mods.toml', 'w') as file:
 	file.write('displayName="Simple Farming"\ndisplayURL="https://www.curseforge.com/minecraft/mc-mods/simple-farming"\nauthors="enemeez"\n')
 	file.write("description='''Extends the farming system with more fruits, vegetables, and meals.'''\n")
 	file.write ('\n[[dependencies.examplemod]]\nmodId="forge"\nmandatory=true\nversionRange="[%d,)"\nordering="NONE"\nside="BOTH"\n\n[[dependencies.examplemod]]\nmodId="minecraft"\nmandatory=true\nversionRange="[%s]"\nordering="NONE"\nside="BOTH"\n' %(loaderVersion, mcVersion))
-
-
-  
-  
-  
-	
-	
-	
