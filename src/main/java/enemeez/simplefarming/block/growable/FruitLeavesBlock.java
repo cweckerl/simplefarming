@@ -91,7 +91,8 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 	}
 
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-		builder.add(DISTANCE, PERSISTENT, AGE);
+		super.fillStateContainer(builder);
+		builder.add(AGE);
 	}
 
 	public IntegerProperty getAgeProperty() {
