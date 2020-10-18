@@ -1,10 +1,9 @@
-
 modLoader="javafml" #mandatory
 loaderVersion="[31,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 issueTrackerURL="https://github.com/cweckerl/simplefarming/issues" #optional
 [[mods]] #mandatory
 modId="simplefarming" #mandatory
-version="1.15.1-1.3.0" #mandatory
+version="1.15.1-1.3.3" #mandatory
 displayName="Simple Farming" #mandatory
 displayURL="https://www.curseforge.com/minecraft/mc-mods/simple-farming" #optional
 logoFile="examplemod.png" #optional
