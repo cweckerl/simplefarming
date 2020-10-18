@@ -265,7 +265,6 @@
 	"item.simplefarming.borscht": "Борщ",
 	"item.simplefarming.candy": "Цукерка",
 	"item.simplefarming.jam": "Варення",
-	
 	"item.simplefarming.turnip": "Ріпа",
 	"item.simplefarming.turnip_seeds": "Насіння ріпи",
 	"item.simplefarming.chicory_root": "Корінь цикорію",
@@ -282,7 +281,23 @@
 	"block.simplefarming.turnip_crop": "Паросток ріпи",
 	"block.simplefarming.marshmallow": "Зефір",
 	"block.simplefarming.chicory": "Цикорій",
-
-	
+	"block.simplefarming.grape_leaves_base": "Листя винограду",
+	"item.simplefarming.sprinkles": "Кондитерська посипка",
+	"advancements.simplefarming.root.description": "Так багато страв на вибір!",
+	"advancements.simplefarming.berries.description": "Зберіть усі варіанти лісових ягід",
+	"advancements.simplefarming.birthday_cake.title": "Для декого особливого",
+	"advancements.simplefarming.birthday_cake.description": "Приготуйте іменинний торт для святкування!",
+	"advancements.simplefarming.cheese.title": "Прямо з ферми",
+	"advancements.simplefarming.cheese.description": "Зробіть головку сиру, використовуючи оцет",
+	"advancements.simplefarming.cheeseburger.description": "З'їжте ситний чизбургер",
+	"advancements.simplefarming.crops.title": "Вершки та корінці",
+	"advancements.simplefarming.crops.description": "Виростіть та зберіть кожну їстівну культуру",
+	"advancements.simplefarming.grapes.title": "Ботанічно ягода",
+	"advancements.simplefarming.grapes.description": "Виростіть та зберіть виноград з виноградника",
+	"advancements.simplefarming.scarecrow.title": "Найкращий друг фермера",
+	"advancements.simplefarming.scarecrow.description": "Створіть опудало, щоб запобігти потоптанню ваших посівів!",
+	"advancements.simplefarming.wine.title": "Женемо виноград",
+	"advancements.simplefarming.wine.description": "Створіть пляшку вина, використовуючи виноград у пивоварній діжці",
+	"item.simplefarming.mead": "Медовуха",
 	"item.simplefarming.veggie_burger": "Вегетіріаньский бургер"
 }
