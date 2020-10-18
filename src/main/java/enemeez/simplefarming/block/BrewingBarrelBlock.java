@@ -158,7 +158,7 @@ public class BrewingBarrelBlock extends ContainerBlock {
 	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (state.getBlock() != newState.getBlock()) {
 			dropItem(worldIn, pos);
-			// super.onReplaced(state, worldIn, pos, newState, isMoving);
+			//super.onReplaced(state, worldIn, pos, newState, isMoving);
 		}
 	}
 

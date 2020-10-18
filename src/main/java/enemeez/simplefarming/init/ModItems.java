@@ -1,6 +1,7 @@
 package enemeez.simplefarming.init;
 
 import enemeez.simplefarming.SimpleFarming;
+import enemeez.simplefarming.events.SimpleSoundEvents;
 import enemeez.simplefarming.integration.FoodTier;
 import enemeez.simplefarming.item.AlcoholItem;
 import enemeez.simplefarming.item.BottleItem;
@@ -8,14 +9,18 @@ import enemeez.simplefarming.item.DrinkItem;
 import enemeez.simplefarming.item.GrainItem;
 import enemeez.simplefarming.item.PigItem;
 import enemeez.simplefarming.item.SeedItem;
+import enemeez.simplefarming.item.SimpleMusicDiscItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.Foods;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
+import net.minecraft.item.MusicDiscItem;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.SoupItem;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvents;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -249,13 +254,6 @@ public class ModItems {
 	public static Item whiskey;
 	public static Item wine;
 
-	// Tools
-	public static Item wooden_scythe;
-	public static Item stone_scythe;
-	public static Item iron_scythe;
-	public static Item golden_scythe;
-	public static Item diamond_scythe;
-
 	// BlockItems
 	public static Item cantaloupe_block;
 	public static Item honeydew_block;
@@ -290,10 +288,15 @@ public class ModItems {
 	public static Item fruit_log;
 	public static Item scarecrow;
 	public static Item brewing_barrel;
+	
+	// Special
+	public static Item music_disc_nourish;
 
 	public static void registerAll(RegistryEvent.Register<Item> event) {
 		if (!event.getName().equals(ForgeRegistries.ITEMS.getRegistryName()))
 			return;
+
+		music_disc_nourish = register("music_disc_nourish", new SimpleMusicDiscItem(1, SimpleSoundEvents.music_disc_nourish, (new Item.Properties()).maxStackSize(1).group(SimpleFarming.ITEM_GROUP).rarity(Rarity.RARE)));
 
 		cantaloupe_block = register("cantaloupe_block", new BlockItem(ModBlocks.cantaloupe_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 		honeydew_block = register("honeydew_block", new BlockItem(ModBlocks.honeydew_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
