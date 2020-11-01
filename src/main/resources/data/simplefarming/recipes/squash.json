@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": 
+	[
+	{"item": "simplefarming:squash_block"}
+	],
+	
+	"result": 
+	{
+		"item": "simplefarming:squash",
+		"count": 5
+	}
+
+}

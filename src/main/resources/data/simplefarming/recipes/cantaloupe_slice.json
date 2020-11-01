@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": 
+	[
+	{"item": "simplefarming:cantaloupe_block"}
+	],
+	
+	"result": 
+	{
+		"item": "simplefarming:cantaloupe",
+		"count": 5
+	}
+
+}

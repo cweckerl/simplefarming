@@ -301,5 +301,7 @@
 	"advancements.simplefarming.wine.title": "Belt The Grape",
 	"advancements.simplefarming.wine.description": "Craft a bottle of wine using grapes in the brewing barrel",
 	"item.simplefarming.mead": "Mead",
+	"item.simplefarming.music_disc_nourish": "Music Disc",
+	"item.simplefarming.music_disc_nourish.desc": "Bearfan - Nourish",
 	"item.simplefarming.veggie_burger": "Veggie Burger"
 }

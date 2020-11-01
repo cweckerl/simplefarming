@@ -1,0 +1,10 @@
+{
+  "music_disc.nourish": {
+    "sounds": [
+      {
+        "name": "simplefarming:nourish",
+        "stream": true
+      }
+    ]
+  }
+}
