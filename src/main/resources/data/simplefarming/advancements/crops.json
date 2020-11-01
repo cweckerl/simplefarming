@@ -237,6 +237,11 @@
 			}
 		}
 	},
+	"rewards": {
+		"loot": [
+			"simplefarming:gameplay/music_disc"
+		]
+	},
 	"requirements": [
 		[
 			"broccoli"

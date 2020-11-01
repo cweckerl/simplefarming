@@ -295,9 +295,6 @@ public class ModItems {
 	public static void registerAll(RegistryEvent.Register<Item> event) {
 		if (!event.getName().equals(ForgeRegistries.ITEMS.getRegistryName()))
 			return;
-
-		music_disc_nourish = register("music_disc_nourish", new SimpleMusicDiscItem(1, SimpleSoundEvents.music_disc_nourish, (new Item.Properties()).maxStackSize(1).group(SimpleFarming.ITEM_GROUP).rarity(Rarity.RARE)));
-
 		cantaloupe_block = register("cantaloupe_block", new BlockItem(ModBlocks.cantaloupe_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 		honeydew_block = register("honeydew_block", new BlockItem(ModBlocks.honeydew_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 		squash_block = register("squash_block", new BlockItem(ModBlocks.squash_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
@@ -333,6 +330,8 @@ public class ModItems {
 		chocolate_cake = register("chocolate_cake", new BlockItem(ModBlocks.chocolate_cake, new Item.Properties().maxStackSize(1).group(SimpleFarming.ITEM_GROUP)));
 		cheese_block = register("cheese_block", new BlockItem(ModBlocks.cheese_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 
+		music_disc_nourish = register("music_disc_nourish", new SimpleMusicDiscItem(1, SimpleSoundEvents.nourish, (new Item.Properties()).maxStackSize(1).group(SimpleFarming.ITEM_GROUP).rarity(Rarity.RARE)));
+		
 		apricot = register("apricot", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
 		banana = register("banana", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
 		blackberries = register("blackberries", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY)));

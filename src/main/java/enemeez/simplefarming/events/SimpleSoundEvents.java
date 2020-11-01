@@ -7,7 +7,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class SimpleSoundEvents {
 
-	public static SoundEvent music_disc_nourish = register("music_disc.nourish");
+	public static SoundEvent nourish = register("music_disc.nourish");
 
 	private static SoundEvent register(String key) {
 		ResourceLocation id = SimpleFarming.getId(key);

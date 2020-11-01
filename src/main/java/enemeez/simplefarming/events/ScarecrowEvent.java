@@ -15,7 +15,6 @@ public class ScarecrowEvent {
 			int z = event.getPos().getZ();
 			if (searchForScarecrow(event.getWorld(), x, y + 1, z))
 				event.setCanceled(true);
-
 		}
 	}
 
@@ -24,7 +23,6 @@ public class ScarecrowEvent {
 			for (int z1 = z - 10; z1 < z + 10; z1++) {
 				if (world.getBlockState(new BlockPos(x1, y, z1)).getBlock() == ModBlocks.scarecrow)
 					return true;
-
 			}
 		return false;
 	}

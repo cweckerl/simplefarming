@@ -31,7 +31,7 @@ public class FeatureConfig {
 						RightClickHarvestFeature.ENABLED_DROP, RightClickHarvestFeature.values());
 
 		doubleCropsSlowDownMotion = config
-				.comment("Configures if Double Crops (i.e. Corn, Sorghum, Kenaf) slow down living entities")
-				.define("Double Crops Slow Down Motion", true);
+				.comment("Configures if Double Crops (i.e. Corn, Sorghum, Kenaf) slow down living entities (Default: false)")
+				.define("Double Crops Slow Down Motion", false);
 	}
 }
