@@ -3,7 +3,7 @@ loaderVersion="[31,)" #mandatory This is typically bumped every Minecraft versio
 issueTrackerURL="https://github.com/cweckerl/simplefarming/issues" #optional
 [[mods]] #mandatory
 modId="simplefarming" #mandatory
-version="1.15.1-1.3.3" #mandatory
+version="1.15.1-1.3.4" #mandatory
 displayName="Simple Farming" #mandatory
 displayURL="https://www.curseforge.com/minecraft/mc-mods/simple-farming" #optional
 logoFile="examplemod.png" #optional
