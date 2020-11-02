@@ -1,5 +1,12 @@
 package enemeez.simplefarming.util;
 
+import java.lang.reflect.Method;
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import org.apache.logging.log4j.MarkerManager;
+
 import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.block.growable.SimpleCropBlock;
 import enemeez.simplefarming.config.FeatureConfig;
@@ -10,28 +17,22 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tags.ITag.INamedTag;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
-import org.apache.logging.log4j.MarkerManager;
-
-import javax.annotation.Nullable;
-import java.lang.reflect.Method;
-import java.util.List;
 
 /**
  * Created by Elenterius on 15.08.2020
  */
 public abstract class CropHarvestUtil
 {
-    public static final Tag<Item> DENY_RIGHT_CLICK_HARVEST_TAG = new ItemTags.Wrapper(new ResourceLocation(SimpleFarming.MOD_ID, "deny_right_click_harvest"));
+    public static final INamedTag<Item> DENY_RIGHT_CLICK_HARVEST_TAG = ItemTags.makeWrapperTag(SimpleFarming.MOD_ID + ":deny_right_click_harvest");    
     private static final Method GET_SEED_ITEM = ObfuscationReflectionHelper.findMethod(CropsBlock.class, "func_199772_f");
 
     public static boolean isItemNotDenyingHarvest(Item item) {
-        return !CropHarvestUtil.DENY_RIGHT_CLICK_HARVEST_TAG.contains(item);
+        return !CropHarvestUtil.DENY_RIGHT_CLICK_HARVEST_TAG.contains(item); // contains
     }
 
     @Nullable

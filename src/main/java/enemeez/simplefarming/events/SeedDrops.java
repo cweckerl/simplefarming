@@ -11,9 +11,9 @@ import enemeez.simplefarming.init.ModItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.loot.LootContext;
+import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.storage.loot.LootContext;
-import net.minecraft.world.storage.loot.conditions.ILootCondition;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.event.RegistryEvent;
@@ -60,6 +60,14 @@ public class SeedDrops {
 		public SeedDropModifier read(ResourceLocation location, JsonObject object, ILootCondition[] ailootcondition) {
 			return new SeedDropModifier(ailootcondition);
 		}
+
+		@Override
+		public JsonObject write(SeedDropModifier instance) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+
 	}
 
 }

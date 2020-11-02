@@ -22,7 +22,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
@@ -42,7 +42,7 @@ public class ScarecrowBlock extends BushBlock {
 	@Override
 	public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
 		if (entityIn instanceof LivingEntity) {
-			entityIn.setMotionMultiplier(state, new Vec3d(0.8F, 0.75D, 0.8F));
+			entityIn.setMotionMultiplier(state, new Vector3d(0.8F, 0.75D, 0.8F));
 		}
 	}
 
@@ -67,11 +67,9 @@ public class ScarecrowBlock extends BushBlock {
 	@Nullable
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
 		BlockPos blockpos = context.getPos();
-		if (blockpos.getY() < context.getWorld().getDimension().getHeight() - 1 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context)) {
-			BlockState state = super.getStateForPlacement(context);
-			if (state != null) return state.with(FACING, context.getPlacementHorizontalFacing().rotateY());
-		}
-		return null;
+		return blockpos.getY() < context.getWorld().getHeight() - 1 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context)
+				? super.getStateForPlacement(context).with(FACING, context.getPlacementHorizontalFacing().rotateY())
+				: null;
 	}
 
 	@Override
@@ -109,7 +107,7 @@ public class ScarecrowBlock extends BushBlock {
 			worldIn.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 35);
 			worldIn.playEvent(player, Constants.WorldEvents.BREAK_BLOCK_EFFECTS, blockpos, Block.getStateId(blockstate));
 			if (!worldIn.isRemote && !player.isCreative()) {
-				spawnDrops(state, worldIn, pos, null, player, player.getHeldItemMainhand());
+				//spawnDrops(state, worldIn, pos, null, player, player.getHeldItemMainhand());
 				spawnDrops(blockstate, worldIn, blockpos, null, player, player.getHeldItemMainhand());
 			}
 		}

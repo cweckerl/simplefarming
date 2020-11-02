@@ -11,7 +11,17 @@ import enemeez.simplefarming.block.ScarecrowBlock;
 import enemeez.simplefarming.block.SimpleCakeBlock;
 import enemeez.simplefarming.block.ThinBlock;
 import enemeez.simplefarming.block.WildCropBlock;
-import enemeez.simplefarming.block.growable.*;
+import enemeez.simplefarming.block.growable.BerryBushBlock;
+import enemeez.simplefarming.block.growable.DoubleCropBlock;
+import enemeez.simplefarming.block.growable.FruitLeavesBlock;
+import enemeez.simplefarming.block.growable.GourdCropBlock;
+import enemeez.simplefarming.block.growable.GrapeLeavesBlock;
+import enemeez.simplefarming.block.growable.GrapePlantBlock;
+import enemeez.simplefarming.block.growable.GrowableBushBlock;
+import enemeez.simplefarming.block.growable.OpuntiaBlock;
+import enemeez.simplefarming.block.growable.PlantBlock;
+import enemeez.simplefarming.block.growable.SimpleCropBlock;
+import enemeez.simplefarming.block.growable.SimpleSaplingBlock;
 import enemeez.simplefarming.util.ModVoxelShapes;
 import net.minecraft.block.Block;
 import net.minecraft.block.HayBlock;
@@ -159,7 +169,11 @@ public class ModBlocks {
 
 		fruit_log = register("fruit_log", new ThinBlock(MaterialColor.OBSIDIAN, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0F).sound(SoundType.WOOD)));
 
-		birthday_cake = register("birthday_cake", new BirthdayCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).lightValue(14).sound(SoundType.CLOTH)));
+		
+		birthday_cake = register("birthday_cake", new BirthdayCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).setLightLevel((state) -> {
+			return 14;
+		}).sound(SoundType.CLOTH)));
+		
 		chocolate_cake = register("chocolate_cake", new SimpleCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));
 		cheese_block = register("cheese_block", new CheeseBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));
 

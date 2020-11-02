@@ -1,11 +1,9 @@
 package enemeez.simplefarming.integration;
 
-import enemeez.simplefarming.init.ModBlocks;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FireBlock;
-
 public class FlammableBlocks {
 	public static void registerFlammable() {
+		//TODO 
+		/*
 		((FireBlock) Blocks.FIRE).setFireInfo(ModBlocks.fruit_log, 5, 5);
 		((FireBlock) Blocks.FIRE).setFireInfo(ModBlocks.blackberry_bush, 60, 100);
 		((FireBlock) Blocks.FIRE).setFireInfo(ModBlocks.blueberry_bush, 60, 100);
@@ -28,5 +26,6 @@ public class FlammableBlocks {
 		((FireBlock) Blocks.FIRE).setFireInfo(ModBlocks.grape_leaves_base, 30, 60);
 		((FireBlock) Blocks.FIRE).setFireInfo(ModBlocks.grape_leaves, 30, 60);
 		((FireBlock) Blocks.FIRE).setFireInfo(ModBlocks.grape_plant, 5, 5);
+		*/
 	}
 }

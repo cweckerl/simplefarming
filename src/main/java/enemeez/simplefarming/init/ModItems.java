@@ -14,13 +14,10 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.Foods;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
-import net.minecraft.item.MusicDiscItem;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.SoupItem;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvents;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -254,6 +251,13 @@ public class ModItems {
 	public static Item whiskey;
 	public static Item wine;
 
+	// Tools
+	public static Item wooden_scythe;
+	public static Item stone_scythe;
+	public static Item iron_scythe;
+	public static Item golden_scythe;
+	public static Item diamond_scythe;
+
 	// BlockItems
 	public static Item cantaloupe_block;
 	public static Item honeydew_block;
@@ -295,6 +299,7 @@ public class ModItems {
 	public static void registerAll(RegistryEvent.Register<Item> event) {
 		if (!event.getName().equals(ForgeRegistries.ITEMS.getRegistryName()))
 			return;
+
 		cantaloupe_block = register("cantaloupe_block", new BlockItem(ModBlocks.cantaloupe_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 		honeydew_block = register("honeydew_block", new BlockItem(ModBlocks.honeydew_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 		squash_block = register("squash_block", new BlockItem(ModBlocks.squash_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
@@ -331,7 +336,7 @@ public class ModItems {
 		cheese_block = register("cheese_block", new BlockItem(ModBlocks.cheese_block, new Item.Properties().group(SimpleFarming.ITEM_GROUP)));
 
 		music_disc_nourish = register("music_disc_nourish", new SimpleMusicDiscItem(1, SimpleSoundEvents.nourish, (new Item.Properties()).maxStackSize(1).group(SimpleFarming.ITEM_GROUP).rarity(Rarity.RARE)));
-		
+
 		apricot = register("apricot", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
 		banana = register("banana", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.FRUIT)));
 		blackberries = register("blackberries", new Item((new Item.Properties()).group(SimpleFarming.ITEM_GROUP).food(FoodTier.BERRY)));

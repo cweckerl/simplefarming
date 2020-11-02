@@ -3,13 +3,19 @@ package enemeez.simplefarming;
 import enemeez.simplefarming.client.ClientRenderer;
 import enemeez.simplefarming.config.Config;
 import enemeez.simplefarming.events.EventSetup;
+import enemeez.simplefarming.events.SeedDrops;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.init.ModItems;
 import enemeez.simplefarming.init.ModWorldGen;
 import enemeez.simplefarming.integration.CompostItems;
 import enemeez.simplefarming.integration.FlammableBlocks;
 import enemeez.simplefarming.world.gen.SimpleGeneration;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
@@ -31,9 +37,13 @@ public class SideProxy {
 		eventBus.addListener(SideProxy::commonSetup);
 		eventBus.addListener(SideProxy::enqueueIMC);
 		eventBus.addListener(SideProxy::processIMC);
-		eventBus.addListener(ModBlocks::registerAll);
-		eventBus.addListener(ModItems::registerAll);
-		eventBus.addListener(ModWorldGen::registerAll);
+		
+		eventBus.addGenericListener(Block.class, ModBlocks::registerAll);
+		eventBus.addGenericListener(Item.class, ModItems::registerAll);
+		eventBus.addGenericListener(Feature.class, ModWorldGen::registerAll);
+		MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, SimpleGeneration::onBiomeLoad);
+		eventBus.addGenericListener(GlobalLootModifierSerializer.class, SeedDrops::registerModifiers);
+
 
 		MinecraftForge.EVENT_BUS.addListener(SideProxy::serverStarting);
 	}
@@ -41,7 +51,6 @@ public class SideProxy {
 	private static void commonSetup(FMLCommonSetupEvent event) {
 		SimpleFarming.LOGGER.debug("common setup");
 		EventSetup.setupEvents();
-		SimpleGeneration.registerWorldGen();
 		FlammableBlocks.registerFlammable();
 		CompostItems.register();
 	}

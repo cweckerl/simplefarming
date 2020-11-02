@@ -28,7 +28,7 @@ public class IntoxicationTracker {
 				effects.add(new EffectInstance(Effects.POISON, 2000, 0, false, true));
 				effects.add(new EffectInstance(Effects.UNLUCK, 2000, 0, false, true));
 				int random = (int) ((Math.random() * effects.size()));
-				event.getEntity().sendMessage(new StringTextComponent("You start to feel tipsy..."));
+				event.getEntity().sendMessage(new StringTextComponent("You start to feel tipsy..."), null);
 				event.getEntityLiving().addPotionEffect(effects.get(random));
 				foods.clear();
 			}
@@ -39,7 +39,8 @@ public class IntoxicationTracker {
 		boolean drunk = false;
 		if (foods.size() >= 3) {
 			for (int i = 0; i < foods.size() - 2; i++) {
-				if (foods.get(i).getItem() instanceof AlcoholItem && foods.get(i + 1).getItem() instanceof AlcoholItem && foods.get(i + 2).getItem() instanceof AlcoholItem) {
+				if (foods.get(i).getItem() instanceof AlcoholItem && foods.get(i + 1).getItem() instanceof AlcoholItem
+						&& foods.get(i + 2).getItem() instanceof AlcoholItem) {
 					drunk = true;
 					break;
 				}

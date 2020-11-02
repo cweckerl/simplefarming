@@ -79,23 +79,21 @@ public class GrapeLeavesBlock extends BushBlock implements IGrowable {
 		}
 	}
 
-	@Override
-	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-		if (worldIn.isRainingAt(pos.up())) {
-			if (rand.nextInt(15) == 1) {
-				BlockPos blockpos = pos.down();
-				BlockState blockstate = worldIn.getBlockState(blockpos);
-				if (!blockstate.isSolid() || !Block.hasSolidSide(blockstate, worldIn, blockpos, Direction.UP)) {
-					double d0 = (float) pos.getX() + rand.nextFloat();
-					double d1 = (double) pos.getY() - 0.05D;
-					double d2 = (float) pos.getZ() + rand.nextFloat();
-					worldIn.addParticle(ParticleTypes.DRIPPING_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-				}
-			}
-		}
-	}
-
+	   @OnlyIn(Dist.CLIENT)
+	   public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+	      if (worldIn.isRainingAt(pos.up())) {
+	         if (rand.nextInt(15) == 1) {
+	            BlockPos blockpos = pos.down();
+	            BlockState blockstate = worldIn.getBlockState(blockpos);
+	            if (!blockstate.isSolid() || !blockstate.isSolidSide(worldIn, blockpos, Direction.UP)) {
+	               double d0 = (double)pos.getX() + rand.nextDouble();
+	               double d1 = (double)pos.getY() - 0.05D;
+	               double d2 = (double)pos.getZ() + rand.nextDouble();
+	               worldIn.addParticle(ParticleTypes.DRIPPING_WATER, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+	            }
+	         }
+	      }
+	   }
 	@Override
 	protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
 		Block block = state.getBlock();

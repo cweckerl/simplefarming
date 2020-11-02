@@ -6,8 +6,7 @@ import net.minecraft.block.BushBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
@@ -25,13 +24,15 @@ public class GrapeBlock extends BushBlock {
 	@Override
 	public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
 		if (entityIn instanceof LivingEntity) {
-			entityIn.setMotionMultiplier(state, new Vec3d(0.8D, 0.75D, 0.8D));
+			entityIn.setMotionMultiplier(state, new Vector3d(0.8D, 0.75D, 0.8D));
 		}
 	}
 
+	/*
 	@Override
 	public boolean causesSuffocation(BlockState state, IBlockReader reader, BlockPos pos) {
 		return false;
 	}
+	*/
 
 }

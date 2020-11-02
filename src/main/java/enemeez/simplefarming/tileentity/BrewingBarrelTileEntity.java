@@ -2,6 +2,7 @@ package enemeez.simplefarming.tileentity;
 
 import static enemeez.simplefarming.init.ModTiles.BARREL_TILE;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.inventory.IClearable;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -40,8 +41,8 @@ public class BrewingBarrelTileEntity extends TileEntity implements IClearable {
 	}
 
 	@Override
-	public void read(CompoundNBT compound) {
-		super.read(compound);
+	public void read(BlockState state, CompoundNBT compound) {
+		super.read(state, compound);
 		if (compound.contains("capacity")) {
 			capacity = compound.getInt("capacity");
 		}
@@ -59,4 +60,5 @@ public class BrewingBarrelTileEntity extends TileEntity implements IClearable {
 		compound.putString("inventory", inventory.getRegistryName().toString());
 		return super.write(compound);
 	}
+
 }

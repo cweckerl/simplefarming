@@ -1,5 +1,8 @@
 package enemeez.simplefarming.block.growable;
 
+import java.util.Random;
+import java.util.function.Supplier;
+
 import enemeez.simplefarming.config.FeatureConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -14,16 +17,13 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.util.Constants;
-
-import java.util.Random;
-import java.util.function.Supplier;
 
 /**
  * Modified by Elenterius on 15.08.2020
@@ -126,7 +126,7 @@ public class DoubleCropBlock extends SimpleCropBlock
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
         if (FeatureConfig.doubleCropsSlowDownMotion.get() && entityIn instanceof LivingEntity && isMaxAge(state)) {
-            entityIn.setMotionMultiplier(state, new Vec3d(0.8D, 0.75D, 0.8D));
+            entityIn.setMotionMultiplier(state, new Vector3d(0.8D, 0.75D, 0.8D));
         }
     }
 }

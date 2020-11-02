@@ -56,7 +56,8 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 			worldIn.removeBlock(pos, false);
 		} else {
 			int age = state.get(AGE);
-			if (age < 7 && worldIn.getLightSubtracted(pos.up(), 0) >= 9 && ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt(5) == 0)) {
+			if (age < 7 && worldIn.getLightSubtracted(pos.up(), 0) >= 9
+					&& ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt(5) == 0)) {
 				worldIn.setBlockState(pos, state.with(AGE, age + 1), Constants.BlockFlags.BLOCK_UPDATE);
 				ForgeHooks.onCropsGrowPost(worldIn, pos, state);
 			}
@@ -64,18 +65,18 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 	}
 
 	private static BlockState updateDistance(BlockState state, IWorld worldIn, BlockPos pos) {
-		int dist = 7;
+		int i = 7;
+		BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
 
-		try (BlockPos.PooledMutable mutablePos = BlockPos.PooledMutable.retain()) {
-			for (Direction direction : Direction.values()) {
-				mutablePos.setPos(pos).move(direction);
-				dist = Math.min(dist, getDistance(worldIn.getBlockState(mutablePos)) + 1);
-				if (dist == 1) {
-					break;
-				}
+		for (Direction direction : Direction.values()) {
+			blockpos$mutable.setAndMove(pos, direction);
+			i = Math.min(i, getDistance(worldIn.getBlockState(blockpos$mutable)) + 1);
+			if (i == 1) {
+				break;
 			}
 		}
-		return state.with(DISTANCE, dist);
+
+		return state.with(DISTANCE, Integer.valueOf(i));
 	}
 
 	private static int getDistance(BlockState neighbor) {
@@ -87,7 +88,8 @@ public class FruitLeavesBlock extends LeavesBlock implements IGrowable {
 	}
 
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		return updateDistance(this.getDefaultState().with(PERSISTENT, Boolean.TRUE), context.getWorld(), context.getPos());
+		return updateDistance(this.getDefaultState().with(PERSISTENT, Boolean.TRUE), context.getWorld(),
+				context.getPos());
 	}
 
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {

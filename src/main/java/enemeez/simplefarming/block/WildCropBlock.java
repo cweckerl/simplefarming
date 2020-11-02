@@ -4,9 +4,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 
 public class WildCropBlock extends BushBlock {
@@ -18,7 +18,7 @@ public class WildCropBlock extends BushBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		Vec3d vec = state.getOffset(worldIn, pos);
+		Vector3d vec = state.getOffset(worldIn, pos);
 		return SHAPE.withOffset(vec.x, vec.y, vec.z);
 	}
 

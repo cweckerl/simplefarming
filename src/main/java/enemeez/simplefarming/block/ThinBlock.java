@@ -2,10 +2,14 @@ package enemeez.simplefarming.block;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.IWaterLoggable;
+import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -18,14 +22,14 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 
-public class ThinBlock extends LogBlock implements IWaterLoggable {
+public class ThinBlock extends RotatedPillarBlock implements IWaterLoggable {
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	private static final VoxelShape SHAPE_VERTICAL = Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 16.0D, 12.0D);
 	private static final VoxelShape SHAPE_HORIZONTAL_X = Block.makeCuboidShape(0.0D, 4.0D, 4.0D, 16.0D, 12.0D, 12.0D);
 	private static final VoxelShape SHAPE_HORIZONTAL_Z = Block.makeCuboidShape(4.0D, 4.0D, 0.0D, 12.0D, 12.0D, 16.0D);
 
 	public ThinBlock(MaterialColor verticalColorIn, Block.Properties properties) {
-		super(verticalColorIn, properties);
+		super(properties); // remove verticalColorIn
 		setDefaultState(getDefaultState().with(WATERLOGGED, Boolean.FALSE).with(AXIS, Direction.Axis.Y));
 	}
 
@@ -45,7 +49,7 @@ public class ThinBlock extends LogBlock implements IWaterLoggable {
 	@Override
 	@Nullable
 	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		IFluidState ifluidstate = context.getWorld().getFluidState(context.getPos());
+		FluidState ifluidstate = context.getWorld().getFluidState(context.getPos());
 		return getDefaultState().with(WATERLOGGED, ifluidstate.isTagged(FluidTags.WATER) && ifluidstate.getLevel() == 8)
 				.with(AXIS, context.getFace().getAxis());
 	}
@@ -66,7 +70,7 @@ public class ThinBlock extends LogBlock implements IWaterLoggable {
 		builder.add(WATERLOGGED);
 	}
 
-	public IFluidState getFluidState(BlockState state) {
+	public FluidState getFluidState(BlockState state) {
 		return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
 	}
 

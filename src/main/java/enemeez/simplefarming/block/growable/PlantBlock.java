@@ -1,16 +1,16 @@
 package enemeez.simplefarming.block.growable;
 
+import java.util.function.Supplier;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
-
-import java.util.function.Supplier;
 
 public class PlantBlock extends GrowableBushBlock
 {
@@ -25,7 +25,7 @@ public class PlantBlock extends GrowableBushBlock
 
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		Vec3d vec = state.getOffset(worldIn, pos);
+		Vector3d vec = state.getOffset(worldIn, pos);
 		return state.get(AGE) < getMaxAge() ? SMALL_SHAPE.withOffset(vec.x, vec.y, vec.z) : SHAPE.withOffset(vec.x, vec.y, vec.z);
 	}
 

@@ -96,7 +96,7 @@ public class OpuntiaBlock extends GrowableBushBlock
 
 	@Override
 	public PlantType getPlantType(IBlockReader world, BlockPos pos) {
-		return PlantType.Desert;
+		return PlantType.DESERT;
 	}
 
 	@Override

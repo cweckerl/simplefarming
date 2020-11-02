@@ -48,7 +48,7 @@ public class SimpleSaplingBlock extends BushBlock implements IGrowable
 
 	public void spawnTree(ServerWorld worldIn, BlockPos pos, BlockState state, Random rand) {
 		if (state.get(STAGE) == 0) {
-			worldIn.setBlockState(pos, state.cycle(STAGE), 4); // cycle
+			worldIn.setBlockState(pos, state.func_235896_a_(STAGE), 4); // cycle
 		} else {
 			if (!ForgeEventFactory.saplingGrowTree(worldIn, rand, pos))	return;
 			FruitTreeFeature.generateTree(worldIn, pos, rand, verify);
