@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.mojang.serialization.Codec;
 
-import enemeez.simplefarming.config.GenConfig;
+import enemeez.simplefarming.config.WorldGenChances;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.util.WorldGenHelper;
 import net.minecraft.block.BlockState;
@@ -31,7 +31,7 @@ public class BerryBushFeature extends Feature<NoFeatureConfig> {
 	@Override
 	public boolean generate(ISeedReader world, ChunkGenerator p_241855_2_, Random random, BlockPos pos,
 			NoFeatureConfig config) {
-		if (random.nextInt(GenConfig.bush_chance.get()) != 0)
+		if (random.nextInt(WorldGenChances.bush_chance.get()) != 0)
 			return false;
 		int type = random.nextInt(4) + 1;
 		for (int i = 0; i < type; i++) {

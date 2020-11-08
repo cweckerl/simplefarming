@@ -14,7 +14,7 @@ public class Config {
 	static {
 
 		BUILDER.push("Tweak World Generation Rates");
-		GenConfig.init(BUILDER);
+		WorldGenChances.init(BUILDER);
 		BUILDER.pop();
 
 		BUILDER.push("Enable/Disable World Generation");
@@ -22,17 +22,25 @@ public class Config {
 		BUILDER.pop();
 
 		BUILDER.push("Miscellaneous Features");
-		FeatureConfig.init(BUILDER);
+		MiscConfig.init(BUILDER);
 		BUILDER.pop();
 
 		BUILDER.push("Right-click Harvesting Settings");
 		RightClickConfig.init(BUILDER);
 		BUILDER.pop();
 
+		/*
 		BUILDER.push("Dimensions Settings");
 		DimensionConfig.init(BUILDER);
 		BUILDER.pop();
+		*/
+		BUILDER.push("Hunger Value Settings");
+		HungerConfig.init(BUILDER);
+		BUILDER.pop();
 
+		BUILDER.push("Seed Drop Settings");
+		SeedConfig.init(BUILDER);
+		BUILDER.pop();
 		CONFIG = BUILDER.build();
 	}
 

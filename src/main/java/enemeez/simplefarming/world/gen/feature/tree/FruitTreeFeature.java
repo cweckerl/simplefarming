@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.mojang.serialization.Codec;
 
-import enemeez.simplefarming.config.GenConfig;
+import enemeez.simplefarming.config.WorldGenChances;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.util.WorldGenHelper;
 import net.minecraft.block.BlockState;
@@ -32,7 +32,7 @@ public class FruitTreeFeature extends Feature<NoFeatureConfig> {
 
 	@Override
 	public boolean generate(ISeedReader world, ChunkGenerator p_241855_2_, Random random, BlockPos pos, NoFeatureConfig config) {
-		if (random.nextInt(GenConfig.tree_chance.get()) != 0)
+		if (random.nextInt(WorldGenChances.tree_chance.get()) != 0)
 			return false;
 
 		if (WorldGenHelper.isValidGround(world.getBlockState(pos.down()), world, pos) && world.getBlockState(pos).getMaterial().isReplaceable()) {

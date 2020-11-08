@@ -1,5 +1,6 @@
 package enemeez.simplefarming.events;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -7,6 +8,7 @@ import javax.annotation.Nonnull;
 import com.google.gson.JsonObject;
 
 import enemeez.simplefarming.SimpleFarming;
+import enemeez.simplefarming.config.SeedConfig;
 import enemeez.simplefarming.init.ModItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,13 +36,6 @@ public class SeedDrops {
 	}
 
 	private static class SeedDropModifier extends LootModifier {
-
-		private final Item[] SEEDS = { ModItems.cantaloupe_seeds, ModItems.carrot_seeds, ModItems.cassava_seeds, ModItems.corn_seeds, ModItems.cucumber_seeds, ModItems.eggplant_seeds,
-				ModItems.honeydew_seeds, ModItems.kenaf_seeds, ModItems.lettuce_seeds, ModItems.oat_seeds, ModItems.onion_seeds, ModItems.potato_seeds, ModItems.pepper_seeds, ModItems.radish_seeds,
-				ModItems.rice_seeds, ModItems.rye_seeds, ModItems.soybean_seeds, ModItems.spinach_seeds, ModItems.squash_seeds, ModItems.tomato_seeds, ModItems.yam_seeds, ModItems.ginger_seeds,
-				ModItems.grape_seeds, ModItems.sorghum_seeds, ModItems.peanut_seeds, ModItems.barley_seeds, ModItems.pea_seeds, ModItems.cotton_seeds, ModItems.sweet_potato_seeds,
-				ModItems.broccoli_seeds, ModItems.zucchini_seeds, ModItems.turnip_seeds, Items.PUMPKIN_SEEDS, Items.MELON_SEEDS, Items.BEETROOT_SEEDS };
-
 		protected SeedDropModifier(ILootCondition[] conditionsIn) {
 			super(conditionsIn);
 		}
@@ -48,8 +43,80 @@ public class SeedDrops {
 		@Nonnull
 		@Override
 		protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
+			List<Item> seeds = new ArrayList<Item>();
+			if (SeedConfig.barley.get())
+				seeds.add(ModItems.barley_seeds);
+			if (SeedConfig.beetroot.get())
+				seeds.add(Items.BEETROOT_SEEDS);
+			if (SeedConfig.broccoli.get())
+				seeds.add(ModItems.broccoli_seeds);
+			if (SeedConfig.cantaloupe.get())
+				seeds.add(ModItems.cantaloupe_seeds);
+			if (SeedConfig.carrot.get())
+				seeds.add(ModItems.carrot_seeds);
+			if (SeedConfig.cassava.get())
+				seeds.add(ModItems.cassava_seeds);
+			if (SeedConfig.corn.get())
+				seeds.add(ModItems.corn_seeds);
+			if (SeedConfig.cotton.get())
+				seeds.add(ModItems.cotton_seeds);
+			if (SeedConfig.cucumber.get())
+				seeds.add(ModItems.cucumber_seeds);
+			if (SeedConfig.eggplant.get())
+				seeds.add(ModItems.eggplant_seeds);
+			if (SeedConfig.ginger.get())
+				seeds.add(ModItems.barley_seeds);
+			if (SeedConfig.grape.get())
+				seeds.add(ModItems.grape_seeds);
+			if (SeedConfig.honeydew.get())
+				seeds.add(ModItems.honeydew_seeds);
+			if (SeedConfig.kenaf.get())
+				seeds.add(ModItems.kenaf_seeds);
+			if (SeedConfig.lettuce.get())
+				seeds.add(ModItems.lettuce_seeds);
+			if (SeedConfig.melon.get())
+				seeds.add(Items.MELON_SEEDS);
+			if (SeedConfig.oat.get())
+				seeds.add(ModItems.oat_seeds);
+			if (SeedConfig.onion.get())
+				seeds.add(ModItems.onion_seeds);
+			if (SeedConfig.pea.get())
+				seeds.add(ModItems.pea_seeds);
+			if (SeedConfig.peanut.get())
+				seeds.add(ModItems.peanut_seeds);
+			if (SeedConfig.pepper.get())
+				seeds.add(ModItems.pepper_seeds);
+			if (SeedConfig.potato.get())
+				seeds.add(ModItems.potato_seeds);
+			if (SeedConfig.pumpkin.get())
+				seeds.add(Items.PUMPKIN_SEEDS);
+			if (SeedConfig.radish.get())
+				seeds.add(ModItems.radish_seeds);
+			if (SeedConfig.rice.get())
+				seeds.add(ModItems.rice_seeds);
+			if (SeedConfig.rye.get())
+				seeds.add(ModItems.rye_seeds);
+			if (SeedConfig.sorghum.get())
+				seeds.add(ModItems.sorghum_seeds);
+			if (SeedConfig.soybean.get())
+				seeds.add(ModItems.soybean_seeds);
+			if (SeedConfig.spinach.get())
+				seeds.add(ModItems.spinach_seeds);
+			if (SeedConfig.squash.get())
+				seeds.add(ModItems.squash_seeds);
+			if (SeedConfig.sweet_potato.get())
+				seeds.add(ModItems.sweet_potato_seeds);
+			if (SeedConfig.tomato.get())
+				seeds.add(ModItems.tomato_seeds);
+			if (SeedConfig.turnip.get())
+				seeds.add(ModItems.turnip_seeds);
+			if (SeedConfig.yam.get())
+				seeds.add(ModItems.yam_seeds);
+			if (SeedConfig.zucchini.get())
+				seeds.add(ModItems.zucchini_seeds);
+			
 			generatedLoot.removeIf(item -> item.getItem() == Items.WHEAT_SEEDS);
-			generatedLoot.add(new ItemStack(SEEDS[(int) (Math.random() * SEEDS.length)]));
+			generatedLoot.add(new ItemStack(seeds.get((int)(Math.random() * seeds.size()))));
 			return generatedLoot;
 		}
 	}
@@ -63,8 +130,7 @@ public class SeedDrops {
 
 		@Override
 		public JsonObject write(SeedDropModifier instance) {
-			// TODO Auto-generated method stub
-			return null;
+			return new JsonObject();
 		}
 
 

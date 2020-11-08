@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.mojang.serialization.Codec;
 
-import enemeez.simplefarming.config.GenConfig;
+import enemeez.simplefarming.config.WorldGenChances;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.util.WorldGenHelper;
 import net.minecraft.util.math.BlockPos;
@@ -22,7 +22,7 @@ public class WildCropFeature extends Feature<NoFeatureConfig> {
 	@Override
 	public boolean generate(ISeedReader world, ChunkGenerator p_241855_2_, Random random, BlockPos pos,
 			NoFeatureConfig config) {
-		if (random.nextInt(GenConfig.wild_crop_chance.get()) != 0)
+		if (random.nextInt(WorldGenChances.wild_crop_chance.get()) != 0)
 			return false;
 		int rolls = random.nextInt(5) + 1;
 		for (int i = 0; i < rolls; i++) {

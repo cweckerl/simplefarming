@@ -9,7 +9,7 @@ import org.apache.logging.log4j.MarkerManager;
 
 import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.block.growable.SimpleCropBlock;
-import enemeez.simplefarming.config.FeatureConfig;
+import enemeez.simplefarming.config.RightClickConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
@@ -49,11 +49,11 @@ public abstract class CropHarvestUtil
     }
 
     public static void dropLoot(ServerWorld world, PlayerEntity player, BlockState state, BlockPos pos) {
-        dropLootExceptItem(world, player, state, pos, null, FeatureConfig.rightClickHarvest.get().isSmartHarvest());
+        dropLootExceptItem(world, player, state, pos, null, RightClickConfig.rightClickHarvest.get().isSmartHarvest());
     }
 
     public static void dropLootExceptItem(ServerWorld world, PlayerEntity player, BlockState state, BlockPos pos, @Nullable final Item denyItem) {
-        dropLootExceptItem(world, player, state, pos, denyItem, FeatureConfig.rightClickHarvest.get().isSmartHarvest());
+        dropLootExceptItem(world, player, state, pos, denyItem, RightClickConfig.rightClickHarvest.get().isSmartHarvest());
     }
 
     public static void dropLootExceptItem(ServerWorld world, PlayerEntity player, BlockState state, BlockPos pos, @Nullable final Item denyItem, boolean addLootToPlayerInv) {
@@ -84,7 +84,7 @@ public abstract class CropHarvestUtil
      * <br>anything else = something went wrong
      */
     public static int dropLootExceptOneSeed(ServerWorld world, PlayerEntity player, BlockState state, BlockPos pos, @Nullable final Item seedItem) {
-        return dropLootExceptOneSeed(world, player, state, pos, seedItem, FeatureConfig.rightClickHarvest.get().isSmartHarvest());
+        return dropLootExceptOneSeed(world, player, state, pos, seedItem, RightClickConfig.rightClickHarvest.get().isSmartHarvest());
     }
 
     /**

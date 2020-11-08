@@ -1,7 +1,6 @@
 package enemeez.simplefarming.events;
 
-import enemeez.simplefarming.config.EnableConfig;
-import enemeez.simplefarming.config.FeatureConfig;
+import enemeez.simplefarming.config.MiscConfig;
 import enemeez.simplefarming.config.RightClickConfig;
 import enemeez.simplefarming.events.harvest.BerryBushHarvest;
 import enemeez.simplefarming.events.harvest.CactusCropHarvest;
@@ -21,11 +20,11 @@ public class EventSetup
         MinecraftForge.EVENT_BUS.register(new IntoxicationTracker());
         MinecraftForge.EVENT_BUS.register(new ScarecrowEvent());
 
-        if (EnableConfig.stem_toggle.get()) {
+        if (MiscConfig.stem_toggle.get()) {
             MinecraftForge.EVENT_BUS.register(new StemReplaceEvent());
         }
 
-        if (FeatureConfig.rightClickHarvest.get().isEnabled()) {
+        if (RightClickConfig.rightClickHarvest.get().isEnabled()) {
             if (RightClickConfig.crop_right_click.get()) MinecraftForge.EVENT_BUS.register(new CropHarvest());
             if (RightClickConfig.bush_right_click.get()) MinecraftForge.EVENT_BUS.register(new BerryBushHarvest());
             if (RightClickConfig.cactus_right_click.get()) MinecraftForge.EVENT_BUS.register(new CactusCropHarvest());

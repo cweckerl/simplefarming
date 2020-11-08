@@ -5,7 +5,7 @@ import java.util.Random;
 import com.mojang.serialization.Codec;
 
 import enemeez.simplefarming.block.growable.OpuntiaBlock;
-import enemeez.simplefarming.config.GenConfig;
+import enemeez.simplefarming.config.WorldGenChances;
 import enemeez.simplefarming.init.ModBlocks;
 import enemeez.simplefarming.util.WorldGenHelper;
 import net.minecraft.util.Direction;
@@ -24,7 +24,7 @@ public class CactusCropFeature extends Feature<NoFeatureConfig> {
 	@Override
 	public boolean generate(ISeedReader world, ChunkGenerator p_241855_2_, Random random, BlockPos pos,
 			NoFeatureConfig config) {
-		if (random.nextInt(GenConfig.cactus_chance.get()) != 0)
+		if (random.nextInt(WorldGenChances.cactus_chance.get()) != 0)
 			return false;
 
 		if (WorldGenHelper.checkDryConditions(world, pos))
