@@ -11,15 +11,18 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
+import net.minecraftforge.common.PlantType;
 
 public class PlantBlock extends GrowableBushBlock
 {
 	protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 14.0D, 14.0D);
 	private static final VoxelShape SMALL_SHAPE = Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
 	private final Supplier<Item> itemSupplier;
+	private final boolean isCropyPlant;
 
-	public PlantBlock(Block.Properties properties, Supplier<Item> itemSupplier) {
+	public PlantBlock(Block.Properties properties, boolean isCropyPlant, Supplier<Item> itemSupplier) {
 		super(properties);
+		this.isCropyPlant = isCropyPlant;
 		this.itemSupplier = itemSupplier;
 	}
 
@@ -39,4 +42,8 @@ public class PlantBlock extends GrowableBushBlock
 		return Block.OffsetType.XZ;
 	}
 
+	@Override
+	public PlantType getPlantType(IBlockReader world, BlockPos pos) {
+		return isCropyPlant ? PlantType.CROP : super.getPlantType(world, pos);
+	}
 }

@@ -1,6 +1,7 @@
 package enemeez.simplefarming.item;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.ChickenEntity;
@@ -10,8 +11,13 @@ import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.PlantType;
 
-public class SeedItem extends BlockNamedItem {
+public class SeedItem extends BlockNamedItem implements IPlantable
+{
 
 	public SeedItem(Block blockIn, Properties properties) {
 		super(blockIn, properties);
@@ -55,4 +61,13 @@ public class SeedItem extends BlockNamedItem {
 		return ActionResultType.FAIL;
 	}
 
+	@Override
+	public PlantType getPlantType(IBlockReader world, BlockPos pos) {
+		return PlantType.CROP;
+	}
+
+	@Override
+	public BlockState getPlant(IBlockReader world, BlockPos pos) {
+		return getBlock().getDefaultState();
+	}
 }

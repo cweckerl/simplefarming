@@ -38,7 +38,7 @@ public abstract class GrowableBushBlock extends BushBlock implements IGrowable
     }
 
     public boolean isMaxAge(BlockState state) {
-        return state.get(getAgeProperty()) == getMaxAge();
+        return state.get(getAgeProperty()) >= getMaxAge();
     }
 
     public int getMaxAge() {

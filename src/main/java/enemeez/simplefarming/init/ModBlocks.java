@@ -184,11 +184,11 @@ public class ModBlocks {
 
 		scarecrow = register("scarecrow", new ScarecrowBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)));
 
-		chicory = register("chicory", new PlantBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().hardnessAndResistance(0.2f).sound(SoundType.PLANT)), () -> ModItems.chicory_root));
-		cumin = register("cumin", new PlantBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().hardnessAndResistance(0.2f).sound(SoundType.PLANT)), () -> ModItems.cumin_seeds));
-		marshmallow = register("marshmallow", new PlantBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().hardnessAndResistance(0.2f).sound(SoundType.PLANT)), () -> ModItems.marshmallow_root));
-		quinoa = register("quinoa", new PlantBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().hardnessAndResistance(0.2f).sound(SoundType.PLANT)), () -> ModItems.quinoa_seeds));
-		sunflower = register("sunflower",	new PlantBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().hardnessAndResistance(0.2f).sound(SoundType.PLANT)), () -> ModItems.sunflower_seeds));
+		chicory = register("chicory", new PlantBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().hardnessAndResistance(0.2f).sound(SoundType.PLANT)), true, () -> ModItems.chicory_root));
+		cumin = register("cumin", new PlantBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().hardnessAndResistance(0.2f).sound(SoundType.PLANT)), true, () -> ModItems.cumin_seeds));
+		marshmallow = register("marshmallow", new PlantBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().hardnessAndResistance(0.2f).sound(SoundType.PLANT)), true, () -> ModItems.marshmallow_root));
+		quinoa = register("quinoa", new PlantBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().hardnessAndResistance(0.2f).sound(SoundType.PLANT)), true, () -> ModItems.quinoa_seeds));
+		sunflower = register("sunflower",	new PlantBlock((Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().hardnessAndResistance(0.2f).sound(SoundType.PLANT)), true, () -> ModItems.sunflower_seeds));
 
 		grape_plant = register("grape_plant", new GrapePlantBlock((Block.Properties.create(Material.PLANTS).tickRandomly().hardnessAndResistance(2.0F).sound(SoundType.WOOD))));
 		grape_leaves = register("grape_leaves", new GrapeLeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).notSolid().tickRandomly().sound(SoundType.PLANT)));
