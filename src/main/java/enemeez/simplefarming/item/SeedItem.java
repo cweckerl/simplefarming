@@ -1,7 +1,6 @@
 package enemeez.simplefarming.item;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.ChickenEntity;
@@ -11,12 +10,8 @@ import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.PlantType;
 
-public class SeedItem extends BlockNamedItem implements IPlantable
+public class SeedItem extends BlockNamedItem
 {
 
 	public SeedItem(Block blockIn, Properties properties) {
@@ -28,7 +23,7 @@ public class SeedItem extends BlockNamedItem implements IPlantable
 
 		ItemStack stack = player.getHeldItem(hand);
 
-		if (!entity.world.isRemote && !entity.isChild() && entity instanceof AgeableEntity && (int) ((AgeableEntity) entity).getGrowingAge() == 0) {
+		if (!entity.world.isRemote && !entity.isChild() && entity instanceof AgeableEntity && ((AgeableEntity) entity).getGrowingAge() == 0) {
 			if (entity instanceof ChickenEntity) {
 				if (((ChickenEntity) entity).isInLove()) {
 					return ActionResultType.FAIL;
@@ -61,13 +56,4 @@ public class SeedItem extends BlockNamedItem implements IPlantable
 		return ActionResultType.FAIL;
 	}
 
-	@Override
-	public PlantType getPlantType(IBlockReader world, BlockPos pos) {
-		return PlantType.CROP;
-	}
-
-	@Override
-	public BlockState getPlant(IBlockReader world, BlockPos pos) {
-		return getBlock().getDefaultState();
-	}
 }
