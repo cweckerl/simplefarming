@@ -24,13 +24,13 @@ public abstract class FarmerWorkTaskMixin
         for (int j = 0; j < inv.getSizeInventory(); ++j) {
             ItemStack stack = inv.getStackInSlot(j);
             Item item = stack.getItem();
-            if (FarmingVillagerUtil.BREAD_INGREDIENT_MAP.containsKey(item)) {
+            if (FarmingVillagerUtil.SIMPLE_BREAD_INGREDIENT_MAP.containsKey(item)) {
                 anyBeadCount += stack.getCount();
             }
         }
 
         if (anyBeadCount <= 36) {
-            for (Map.Entry<Item, Item> entry : FarmingVillagerUtil.BREAD_INGREDIENT_MAP.entrySet()) {
+            for (Map.Entry<Item, Item> entry : FarmingVillagerUtil.SIMPLE_BREAD_INGREDIENT_MAP.entrySet()) {
                 if (FarmingVillagerUtil.tryToBakeSpecificBread(villager, entry.getKey(), entry.getValue())) {
                     ci.cancel();
                     break;

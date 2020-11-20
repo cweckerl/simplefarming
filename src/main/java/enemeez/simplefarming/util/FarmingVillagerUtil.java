@@ -28,12 +28,16 @@ import java.util.Map;
 public abstract class FarmingVillagerUtil
 {
     private static Map<Item, Integer> ORIGINAL_VILLAGER_FOOD_VALUES = ImmutableMap.of();
-    public static Map<Item, Item> BREAD_INGREDIENT_MAP;
+
+    /**
+     * Map of simple breads that only need one type of grain to be crafted.
+     */
+    public static Map<Item, Item> SIMPLE_BREAD_INGREDIENT_MAP;
 
     public static void onCommonSetup() {
         ORIGINAL_VILLAGER_FOOD_VALUES = VillagerEntity.FOOD_VALUES;
 
-        BREAD_INGREDIENT_MAP = new ImmutableMap.Builder<Item, Item>()
+        SIMPLE_BREAD_INGREDIENT_MAP = new ImmutableMap.Builder<Item, Item>()
                 .put(ModItems.barley_bread, ModItems.barley)
                 .put(ModItems.oat_bread, ModItems.oat)
                 .put(ModItems.rye_bread, ModItems.rye)
@@ -42,7 +46,7 @@ public abstract class FarmingVillagerUtil
 
         // allow more items to be composted by the farming villager
         List<Item> compostableItems = new ArrayList<>(FarmerWorkTaskAccessor.getCompostableItems()); //make shallow copy of immutable map
-        compostableItems.addAll(BREAD_INGREDIENT_MAP.values());
+        compostableItems.addAll(SIMPLE_BREAD_INGREDIENT_MAP.values());
         FarmerWorkTaskAccessor.setCompostableItems(ImmutableList.copyOf(compostableItems));
     }
 
@@ -54,7 +58,7 @@ public abstract class FarmingVillagerUtil
         int oldMapSize = foodValues.size();
         try {
             for (Item item : Tags.Items.CROPS.getAllElements()) {
-                if (item.isFood() && !foodValues.containsKey(item) || BREAD_INGREDIENT_MAP.containsValue(item)) {
+                if (item.isFood() && !foodValues.containsKey(item) || SIMPLE_BREAD_INGREDIENT_MAP.containsValue(item)) {
                     if (item.getFood() != null) {
                         int foodValue = item.getFood().getHealing() > 4 ? 4 : 1; //arbitrary guess based on bread food value for villagers, TODO: re-balance this?
                         foodValues.put(item, foodValue);

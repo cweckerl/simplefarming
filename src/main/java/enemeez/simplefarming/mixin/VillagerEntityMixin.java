@@ -13,13 +13,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.Tags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Mixin(VillagerEntity.class)
 public abstract class VillagerEntityMixin extends AbstractVillagerEntity
@@ -34,8 +30,12 @@ public abstract class VillagerEntityMixin extends AbstractVillagerEntity
     @Inject(method = "func_230293_i_", at = @At("HEAD"), cancellable = true)
     protected void onFunc_230293_i_(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
         Item item = stack.getItem();
-        //for now we only allow seeds, food crops or grain ears to be picked up by villagers
-        if ((Tags.Items.CROPS.contains(item) && item.isFood()) || ((getVillagerData().getProfession() == VillagerProfession.FARMER) && (Tags.Items.SEEDS.contains(item) || FarmingVillagerUtil.BREAD_INGREDIENT_MAP.containsValue(item)))) { //use unique tag instead? (e.g. isFarmingVillagerItem)
+        // for now we only allow seeds, food crops or grain ears to be picked up by villagers
+        // but every villager can pick up eatable crops and bread
+        if ((Tags.Items.CROPS.contains(item) && item.isFood()) || FarmingVillagerUtil.SIMPLE_BREAD_INGREDIENT_MAP.containsKey(item)) {
+            cir.setReturnValue(true);
+        }
+        else if (getVillagerData().getProfession() == VillagerProfession.FARMER && (Tags.Items.SEEDS.contains(item) || FarmingVillagerUtil.SIMPLE_BREAD_INGREDIENT_MAP.containsValue(item))) { //use unique tag instead?
             cir.setReturnValue(true);
         }
     }
