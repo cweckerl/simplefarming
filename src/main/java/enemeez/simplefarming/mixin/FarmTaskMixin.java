@@ -20,7 +20,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -46,9 +45,11 @@ public abstract class FarmTaskMixin
     @Shadow
     private int idleTime;
 
-    @Inject(method = "isValidPosForFarming", at = @At("TAIL"), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
-    protected void onIsValidPosForFarming(BlockPos pos, ServerWorld serverWorldIn, CallbackInfoReturnable<Boolean> cir, BlockState blockstate, Block block, Block block1) {
-        if (block instanceof GrowableBushBlock && ((GrowableBushBlock) block).getPlantType(serverWorldIn, pos) == PlantType.CROP && ((GrowableBushBlock) block).isMaxAge(blockstate)) {
+    @Inject(method = "isValidPosForFarming", at = @At("TAIL"), cancellable = true)
+    protected void onIsValidPosForFarming(BlockPos pos, ServerWorld serverWorldIn, CallbackInfoReturnable<Boolean> cir) {
+        BlockState state = serverWorldIn.getBlockState(pos);
+        Block block = state.getBlock();
+        if (block instanceof GrowableBushBlock && ((GrowableBushBlock) block).getPlantType(serverWorldIn, pos) == PlantType.CROP && ((GrowableBushBlock) block).isMaxAge(state)) {
             cir.setReturnValue(true);
         }
     }
@@ -84,7 +85,7 @@ public abstract class FarmTaskMixin
                     }
                 }
 
-                if (topBlock instanceof CropsBlock && !((CropsBlock) topBlock).isMaxAge(topState)) {
+                if ((topBlock instanceof CropsBlock && !((CropsBlock) topBlock).isMaxAge(topState)) || (topBlock instanceof GrowableBushBlock && ((GrowableBushBlock) topBlock).getPlantType(world, field_220422_a) == PlantType.CROP && !((GrowableBushBlock) topBlock).isMaxAge(topState))) {
                     farmableBlocks.remove(field_220422_a);
                     field_220422_a = getNextPosForFarming(world);
                     if (field_220422_a != null) {
