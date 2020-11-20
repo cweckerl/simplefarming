@@ -6,6 +6,7 @@ import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.init.ModItems;
 import enemeez.simplefarming.mixin.FarmerWorkTaskAccessor;
 import enemeez.simplefarming.mixin.VillagerEntityAccessor;
+import net.minecraft.block.ComposterBlock;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.BlockNamedItem;
@@ -28,6 +29,7 @@ import java.util.Map;
 public abstract class FarmingVillagerUtil
 {
     private static Map<Item, Integer> ORIGINAL_VILLAGER_FOOD_VALUES = ImmutableMap.of();
+    private static List<Item> ORIGINAL_COMPOSTABLE_ITEMS = ImmutableList.of();
 
     /**
      * Map of simple breads that only need one type of grain to be crafted.
@@ -44,10 +46,26 @@ public abstract class FarmingVillagerUtil
                 .put(ModItems.rice_bread, ModItems.rice)
                 .build();
 
+        ORIGINAL_COMPOSTABLE_ITEMS = FarmerWorkTaskAccessor.getCompostableItems();
+    }
+
+    public static void rebuildCompostableList() {
         // allow more items to be composted by the farming villager
-        List<Item> compostableItems = new ArrayList<>(FarmerWorkTaskAccessor.getCompostableItems()); //make shallow copy of immutable map
+
+        SimpleFarming.LOGGER.info("rebuilding compostable item list of FarmerWorkTask...");
+        List<Item> compostableItems = new ArrayList<>(ORIGINAL_COMPOSTABLE_ITEMS); //make shallow copy of immutable map
+        int oldListSize = compostableItems.size();
+        try {
+            for (Item item : Tags.Items.SEEDS.getAllElements()) {
+                if (!compostableItems.contains(item) && ComposterBlock.CHANCES.containsKey(item)) compostableItems.add(item);
+            }
+        }
+        catch (Exception e) {
+            SimpleFarming.LOGGER.error("failed to add items", e);
+        }
         compostableItems.addAll(SIMPLE_BREAD_INGREDIENT_MAP.values());
         FarmerWorkTaskAccessor.setCompostableItems(ImmutableList.copyOf(compostableItems));
+        SimpleFarming.LOGGER.debug(String.format("added %d items", FarmerWorkTaskAccessor.getCompostableItems().size() - oldListSize));
     }
 
     public static void rebuildFoodValueMap() {

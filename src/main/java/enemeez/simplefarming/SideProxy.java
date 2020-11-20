@@ -74,6 +74,7 @@ public class SideProxy {
 
 	private static void onTagsUpdated(final TagsUpdatedEvent.CustomTagTypes event) {
 		FarmingVillagerUtil.rebuildFoodValueMap();
+		FarmingVillagerUtil.rebuildCompostableList();
 	}
 
 	private static void enqueueIMC(final InterModEnqueueEvent event) {
