@@ -3,13 +3,16 @@ package enemeez.simplefarming.mixin;
 import enemeez.simplefarming.util.FarmingVillagerUtil;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
+import net.minecraft.entity.merchant.villager.VillagerData;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
+import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.Tags;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,6 +24,8 @@ import java.util.Map;
 @Mixin(VillagerEntity.class)
 public abstract class VillagerEntityMixin extends AbstractVillagerEntity
 {
+    @Shadow public abstract VillagerData getVillagerData();
+
     public VillagerEntityMixin(EntityType<? extends AbstractVillagerEntity> type, World worldIn) {
         super(type, worldIn);
     }
@@ -30,7 +35,7 @@ public abstract class VillagerEntityMixin extends AbstractVillagerEntity
     protected void onFunc_230293_i_(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
         Item item = stack.getItem();
         //for now we only allow seeds, food crops or grain ears to be picked up by villagers
-        if (Tags.Items.SEEDS.contains(item) || (Tags.Items.CROPS.contains(item) && item.isFood()) || FarmingVillagerUtil.BREAD_INGREDIENT_MAP.containsValue(item)) { //use unique tag instead? (e.g. isFarmingVillagerItem)
+        if ((Tags.Items.CROPS.contains(item) && item.isFood()) || ((getVillagerData().getProfession() == VillagerProfession.FARMER) && (Tags.Items.SEEDS.contains(item) || FarmingVillagerUtil.BREAD_INGREDIENT_MAP.containsValue(item)))) { //use unique tag instead? (e.g. isFarmingVillagerItem)
             cir.setReturnValue(true);
         }
     }
