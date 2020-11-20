@@ -3,7 +3,7 @@
   "package": "enemeez.simplefarming.mixin",
   "compatibilityLevel": "JAVA_8",
   "refmap": "mixins.simplefarming.refmap.json",
-  "mixins": ["FarmerWorkTaskAccessor", "FarmerWorkTaskMixin", "FarmTaskMixin", "VillagerEntityAccessor", "VillagerEntityMixin"],
+  "mixins": ["BoneMealCropsTaskMixin", "FarmerWorkTaskAccessor", "FarmerWorkTaskMixin", "FarmTaskMixin", "VillagerEntityAccessor", "VillagerEntityMixin"],
   "injectors": {
     "defaultRequire": 1
   },
