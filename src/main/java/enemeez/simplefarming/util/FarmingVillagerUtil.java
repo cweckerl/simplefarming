@@ -6,7 +6,9 @@ import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.init.ModItems;
 import enemeez.simplefarming.mixin.FarmerWorkTaskAccessor;
 import enemeez.simplefarming.mixin.VillagerEntityAccessor;
+import net.minecraft.block.Block;
 import net.minecraft.block.ComposterBlock;
+import net.minecraft.block.CropsBlock;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.BlockNamedItem;
@@ -15,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
@@ -47,6 +50,14 @@ public abstract class FarmingVillagerUtil
                 .build();
 
         ORIGINAL_COMPOSTABLE_ITEMS = FarmerWorkTaskAccessor.getCompostableItems();
+    }
+
+    public static boolean isCropPlantSeed(Item item, World world) {
+        if (Tags.Items.SEEDS.contains(item) && item instanceof BlockNamedItem) {
+            Block block = ((BlockNamedItem) item).getBlock();
+            return block instanceof CropsBlock || (block instanceof IPlantable && ((IPlantable) block).getPlantType(world, BlockPos.ZERO) == PlantType.CROP);
+        }
+        return false;
     }
 
     public static void rebuildCompostableList() {

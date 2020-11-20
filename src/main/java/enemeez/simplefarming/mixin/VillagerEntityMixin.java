@@ -35,7 +35,7 @@ public abstract class VillagerEntityMixin extends AbstractVillagerEntity
         if ((Tags.Items.CROPS.contains(item) && item.isFood()) || FarmingVillagerUtil.SIMPLE_BREAD_INGREDIENT_MAP.containsKey(item)) {
             cir.setReturnValue(true);
         }
-        else if (getVillagerData().getProfession() == VillagerProfession.FARMER && (Tags.Items.SEEDS.contains(item) || FarmingVillagerUtil.SIMPLE_BREAD_INGREDIENT_MAP.containsValue(item))) { //use unique tag instead?
+        else if (getVillagerData().getProfession() == VillagerProfession.FARMER && (FarmingVillagerUtil.isCropPlantSeed(item, world) || FarmingVillagerUtil.SIMPLE_BREAD_INGREDIENT_MAP.containsValue(item))) { //use unique tag instead?
             cir.setReturnValue(true);
         }
     }
