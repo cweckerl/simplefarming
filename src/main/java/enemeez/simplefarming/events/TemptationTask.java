@@ -8,6 +8,8 @@ import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.pathfinding.FlyingPathNavigator;
+import net.minecraft.pathfinding.GroundPathNavigator;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -30,22 +32,30 @@ public class TemptationTask {
 
 		if (entity instanceof ChickenEntity) {
 			ChickenEntity chicken = (ChickenEntity) entity;
-			chicken.goalSelector.addGoal(3, new MoreTemptation(chicken, 1.0D, false, SEEDS));
+			if ((chicken.getNavigator() instanceof GroundPathNavigator) || (chicken.getNavigator() instanceof FlyingPathNavigator)) {
+				chicken.goalSelector.addGoal(3, new MoreTemptation(chicken, 1.0D, false, SEEDS));
+			}
 		}
 
 		if (entity instanceof CowEntity) {
 			CowEntity cow = (CowEntity) entity;
-			cow.goalSelector.addGoal(3, new MoreTemptation(cow, 1.25D, false, WHEATS));
+			if ((cow.getNavigator() instanceof GroundPathNavigator) || (cow.getNavigator() instanceof FlyingPathNavigator)) {
+				cow.goalSelector.addGoal(3, new MoreTemptation(cow, 1.25D, false, WHEATS));
+			}
 		}
 
 		if (entity instanceof SheepEntity) {
 			SheepEntity sheep = (SheepEntity) entity;
-			sheep.goalSelector.addGoal(3, new MoreTemptation(sheep, 1.0D, false, WHEATS));
+			if ((sheep.getNavigator() instanceof GroundPathNavigator) || (sheep.getNavigator() instanceof FlyingPathNavigator)) {
+				sheep.goalSelector.addGoal(3, new MoreTemptation(sheep, 1.0D, false, WHEATS));
+			}
 		}
 
 		if (entity instanceof PigEntity) {
 			PigEntity pig = (PigEntity) entity;
-			pig.goalSelector.addGoal(4, new MoreTemptation(pig, 1.2D, false, PIGS));
+			if ((pig.getNavigator() instanceof GroundPathNavigator) || (pig.getNavigator() instanceof FlyingPathNavigator)) {
+				pig.goalSelector.addGoal(4, new MoreTemptation(pig, 1.2D, false, PIGS));
+			}
 		}
 
 	}
