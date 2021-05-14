@@ -25,9 +25,6 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.util.Constants;
 
-/**
- * Modified by Elenterius on 15.08.2020
- */
 public class DoubleCropBlock extends SimpleCropBlock
 {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
@@ -92,11 +89,12 @@ public class DoubleCropBlock extends SimpleCropBlock
 
     @Override
     public void grow(World worldIn, BlockPos pos, BlockState state) {
-        int newAge = getAge(state) + getBonemealAgeIncrease(worldIn);
-        int maxAge = getMaxAge() - 1;
-        if (newAge >= maxAge && worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState() && worldIn.getBlockState(pos.down()).getBlock() instanceof FarmlandBlock) {
-            worldIn.setBlockState(pos, withAge(getMaxAge()), Constants.BlockFlags.BLOCK_UPDATE);
-            worldIn.setBlockState(pos.up(), withAge(getMaxAge()).with(DoubleCropBlock.HALF, DoubleBlockHalf.UPPER), Constants.BlockFlags.BLOCK_UPDATE);
+        int maxAge = getMaxAge();
+        int newAge = Math.min(getAge(state) + getBonemealAgeIncrease(worldIn), maxAge);
+
+        if (newAge >= maxAge - 1 && worldIn.getBlockState(pos.up()) == Blocks.AIR.getDefaultState() && worldIn.getBlockState(pos.down()).getBlock() instanceof FarmlandBlock) {
+            worldIn.setBlockState(pos, withAge(maxAge), Constants.BlockFlags.BLOCK_UPDATE);
+            worldIn.setBlockState(pos.up(), withAge(maxAge).with(DoubleCropBlock.HALF, DoubleBlockHalf.UPPER), Constants.BlockFlags.BLOCK_UPDATE);
             return;
         }
 
