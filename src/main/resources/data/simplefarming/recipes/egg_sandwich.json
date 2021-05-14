@@ -1,20 +1,17 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	
-	"ingredients":
-	[
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
     {
       "tag": "forge:bread"
     },
     {
-      "item": "simplefarming:cooked_bacon"
+      "tag": "forge:cooked_bacon"
     },
     {
-      "item": "simplefarming:cooked_egg"
+      "tag": "forge:cooked_eggs"
     }
-
-	],
-	
-	"result": {"item": "simplefarming:egg_sandwich"}
-	
+  ],
+  "result": {
+    "item": "simplefarming:egg_sandwich"
+  }
 }
