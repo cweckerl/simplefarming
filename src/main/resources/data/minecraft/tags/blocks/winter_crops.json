@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "simplefarming:oat_crop",
+    "simplefarming:onion_crop",
+    "simplefarming:rye_crop"
+  ]
+}
