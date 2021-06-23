@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "simplefarming:barley_seeds",
+    "simplefarming:broccoli_seeds",
+    "simplefarming:kenaf_seeds",
+    "simplefarming:peanut_seeds",
+    "simplefarming:oat_seeds",
+    "simplefarming:onion_seeds",
+    "simplefarming:rye_seeds",
+    "simplefarming:squash_seeds",
+    "simplefarming:turnip_seeds",
+    "simplefarming:blackberry",
+    "simplefarming:apple",
+    "simplefarming:orange",
+    "simplefarming:pear",
+    "simplefarming:olive"
+  ]
+}
