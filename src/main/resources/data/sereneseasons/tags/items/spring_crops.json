@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "simplefarming:potato_seeds",
     "simplefarming:broccoli_seeds",
     "simplefarming:cucumber_seeds",
     "simplefarming:grape_seeds",
@@ -18,6 +19,7 @@
     "simplefarming:plum_sapling",
     "simplefarming:orange_sapling",
     "simplefarming:pear_sapling",
-    "simplefarming:olive_sapling"
+    "simplefarming:olive_sapling",
+		"simplefarming:carrot_seeds"
   ]
 }
