@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "simplefarming:broccoli_crop",
+    "simplefarming:cucumber_crop",
+    "simplefarming:grape_plant",
+    "simplefarming:lettuce_crop",
+    "simplefarming:onion_crop",
+    "simplefarming:pea_crop",
+    "simplefarming:pepper_crop",
+    "simplefarming:rye_crop",
+    "simplefarming:spinach_crop",
+    "simplefarming:tomato_crop",
+    "simplefarming:turnip_crop",
+    "simplefarming:cherry_leaves",
+    "simplefarming:mango_leaves",
+    "simplefarming:apple_sapling",
+    "simplefarming:apricot_sapling",
+    "simplefarming:banana_sapling",
+    "simplefarming:plum_sapling",
+    "simplefarming:orange_sapling",
+    "simplefarming:pear_sapling",
+    "simplefarming:olive_sapling"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "simplefarming:barley_crop",
+    "simplefarming:broccoli_crop",
+    "simplefarming:kenaf_crop",
+    "simplefarming:peanut_crop",
+    "simplefarming:oat_crop",
+    "simplefarming:onion_crop",
+    "simplefarming:squash_crop",
+    "simplefarming:turnip_crop",
+    "simplefarming:blackberry_bush",
+    "simplefarming:apple_leaves",
+    "simplefarming:orange_leaves",
+    "simplefarming:pear_leaves",
+    "simplefarming:olive_leaves",
+    "simplefarming:pumpkin_crop"
+  ]
+}

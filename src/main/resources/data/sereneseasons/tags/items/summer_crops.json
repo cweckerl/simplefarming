@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "values": [
+    "simplefarming:cantaloupe_seeds",
+    "simplefarming:cassava_seeds",
+    "simplefarming:corn_seeds",
+    "simplefarming:cotton_seeds",
+    "simplefarming:eggplant_seeds",
+    "simplefarming:ginger_seeds",
+    "simplefarming:honeydew_seeds",
+    "simplefarming:kenaf_seeds",
+    "simplefarming:peanut_seeds",
+    "simplefarming:pepper_seeds",
+    "simplefarming:radish_seeds",
+    "simplefarming:rice_seeds",
+    "simplefarming:sorghum_seeds",
+    "simplefarming:soybean_seeds",
+    "simplefarming:spinach_seeds",
+    "simplefarming:squash_seeds",
+    "simplefarming:sweet_potato_seeds",
+    "simplefarming:tomato_seeds",
+    "simplefarming:yam_seeds",
+    "simplefarming:zucchini_seeds",
+    "simplefarming:blueberry_bush",
+    "simplefarming:raspberry_bush",
+    "simplefarming:strawberry_bush",
+    "simplefarming:banana_sapling",
+    "simplefarming:cherry_sapling",
+    "simplefarming:mango_sapling"
+	]
+}

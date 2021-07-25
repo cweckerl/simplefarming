@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "simplefarming:potato_seeds",
+    "simplefarming:broccoli_seeds",
+    "simplefarming:cucumber_seeds",
+    "simplefarming:grape_seeds",
+    "simplefarming:lettuce_seeds",
+    "simplefarming:onion_seeds",
+    "simplefarming:pea_seeds",
+    "simplefarming:pepper_seeds",
+    "simplefarming:rye_seeds",
+    "simplefarming:spinach_seeds",
+    "simplefarming:tomato_seeds",
+    "simplefarming:turnip_seeds",
+    "simplefarming:apple_sapling",
+    "simplefarming:apricot_sapling",
+    "simplefarming:banana_sapling",
+    "simplefarming:plum_sapling",
+    "simplefarming:orange_sapling",
+    "simplefarming:pear_sapling",
+    "simplefarming:olive_sapling",
+		"simplefarming:carrot_seeds"
+  ]
+}
