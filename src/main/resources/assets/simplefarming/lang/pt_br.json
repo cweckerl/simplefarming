@@ -100,19 +100,19 @@
 	"item.simplefarming.spinach": "Espinafre",
 	"item.simplefarming.squash": "Abobrinha amarela",
 	"item.simplefarming.tomato": "Tomate",
-	"item.simplefarming.yam": "Yam",
+	"item.simplefarming.yam": "Inhame",
 	"item.simplefarming.kenaf_fiber": "Fibra de kenaf",
 	"item.simplefarming.vinegar": "Vinagre",
-	"item.simplefarming.noodles": "Lámen",*
+	"item.simplefarming.noodles": "Massa de macarrão",
 	"block.simplefarming.apple_leaves": "Folhas de macieira",
 	"block.simplefarming.apricot_leaves": "Folhas de damasqueiro",
 	"block.simplefarming.banana_leaves": "Folhas de pé de banana",
 	"block.simplefarming.cherry_leaves": "Folhas de cerejeira",
 	"block.simplefarming.mango_leaves": "Folhas de pé de manga",
-	"block.simplefarming.orange_leaves": "Folhas de alranjeira",
+	"block.simplefarming.orange_leaves": "Folhas de laranjeira",
 	"block.simplefarming.pear_leaves": "Folhas de pé de pera",
 	"block.simplefarming.plum_leaves": "Folhas de ameixeira",
-	"block.simplefarming.apple_sapling": "Muda de maciera",
+	"block.simplefarming.apple_sapling": "Muda de macieira",
 	"block.simplefarming.apricot_sapling": "Muda de damasqueiro",
 	"block.simplefarming.banana_sapling": "Muda de pé de banana",
 	"block.simplefarming.cherry_sapling": "Muda de cerejeira",
@@ -123,12 +123,12 @@
 	"block.simplefarming.fruit_log": "Tronco de pé de fruta",
 	"block.simplefarming.fruit_planks": "Tábuas de pé de fruta",
 	"block.simplefarming.chocolate_cake": "Bolo de chocolate",
-	"block.simplefarming.cheese_block": "Wheel of Cheese",*
+	"block.simplefarming.cheese_block": "Roda de queijo",
 	"block.simplefarming.cactus_crop": "Opuntia",
 	"item.simplefarming.apple_pie": "Torta de maçã",
 	"item.simplefarming.apricot_pie": "Torta de damasco",
-	"item.simplefarming.blackberry_pie": "Blackberry Pie",
-	"item.simplefarming.blueberry_pie": "Blueberry Pie",
+	"item.simplefarming.blackberry_pie": "Torta de amora-silvestre",
+	"item.simplefarming.blueberry_pie": "Torta de mirtilos",
 	"item.simplefarming.cherry_pie": "Torta de cereja",
 	"item.simplefarming.peanut_butter_pie": "Torta de manteiga de amendoim",
 	"item.simplefarming.pear_pie": "Torta de pera",
@@ -147,12 +147,12 @@
 	"item.simplefarming.chocolate": "Chocolate",
 	"item.simplefarming.cooked_bacon": "Bacon assado",
 	"item.simplefarming.cooked_chicken_wings": "Asas de frango assadas",
-	"item.simplefarming.cooked_sausage": "Cooked Sausage",*
-	"item.simplefarming.cooked_egg": "Ovo cozido",*
-	"item.simplefarming.cornbread": "Cornbread",*
-	"item.simplefarming.corn_salad": "Corn Salad",*
+	"item.simplefarming.cooked_sausage": "Linguiça assada",
+	"item.simplefarming.cooked_egg": "Ovo frito",
+	"item.simplefarming.cornbread": "Pão de milho",
+	"item.simplefarming.corn_salad": "Salada de milho",
 	"item.simplefarming.cucumber_soup": "Sopa de pepino",
-	"item.simplefarming.egg_sandwich": "Saduíche de ovo",
+	"item.simplefarming.egg_sandwich": "Sanduíche de ovo",
 	"item.simplefarming.eggplant_parmesan": "Eggplant Parmesan",*
 	"item.simplefarming.fish_fillet": "Fish Fillet",*
 	"item.simplefarming.fish_sandwich": "Fish Sandwich",*
@@ -164,15 +164,15 @@
 	"item.simplefarming.italian_beef": "Italian Beef",*
 	"item.simplefarming.jaffa_cake": "Jaffa Cake",*
 	"item.simplefarming.lasagna": "Lasanha",
-	"item.simplefarming.mac_and_cheese": "Mac and Cheese",*
-	"item.simplefarming.oatmeal": "Oatmeal",*
+	"item.simplefarming.mac_and_cheese": "Macarrão com queijo",
+	"item.simplefarming.oatmeal": "Mingau de aveia",
 	"item.simplefarming.onion_soup": "Sopa de cebola",
 	"item.simplefarming.pancakes": "Panquecas",
 	"item.simplefarming.pasta": "Macarrão",
 	"item.simplefarming.pbj": "PB&J",
 	"item.simplefarming.peanut_butter_cookie": "Biscoito de manteiga de amendoim",
-	"item.simplefarming.pickle": "Picles",*
-	"item.simplefarming.pickled_beetroot": "Pickled Beetroot",*
+	"item.simplefarming.pickle": "Picles",
+	"item.simplefarming.pickled_beetroot": "Beterraba em conserva",
 	"item.simplefarming.pizza": "Pizza",
 	"item.simplefarming.popcorn": "Pipoca",
 	"item.simplefarming.pulled_pork_sandwich": "Pulled Pork Sandwich",*
@@ -180,28 +180,28 @@
 	"item.simplefarming.raw_bacon": "Bacon cru",
 	"item.simplefarming.raw_calamari": "Lula crua",
 	"item.simplefarming.raw_chicken_wings": "Asas de frango cruas",
-	"item.simplefarming.raw_sausage": "Raw Sausage",*
+	"item.simplefarming.raw_sausage": "Linguiça crua",
 	"item.simplefarming.rice_bowl": "Tigela com arroz",
 	"item.simplefarming.salad": "Salada",
 	"item.simplefarming.sandwich": "Sanduíche",
 	"item.simplefarming.sorghum_bread": "Pão de sorgo",
-	"item.simplefarming.sorghum_porridge": "Sorghum Porridge",*
+	"item.simplefarming.sorghum_porridge": "Mingau de sorgo",
 	"item.simplefarming.spaghetti": "Espaguete",
-	"item.simplefarming.spinach_mushroom_quiche": "Spinach Mushroom Quiche",*
-	"item.simplefarming.squash_casserole": "Squash Casserole",*
+	"item.simplefarming.spinach_mushroom_quiche": "Quiche de espinafre e cogumelo",
+	"item.simplefarming.squash_casserole": "Caçarola de abobrinha amarela",
 	"item.simplefarming.sushi": "Sushi",
 	"item.simplefarming.tofu": "Tofu",
 	"item.simplefarming.tomato_soup": "Sopa de tomate",
-	"item.simplefarming.vegetable_medley": "Vegetable Medley",*
+	"item.simplefarming.vegetable_medley": "Mistura de vegetais",
 	"item.simplefarming.oat_bread": "Pão de aveia",
 	"item.simplefarming.rice_bread": "Pão de arroz",
 	"item.simplefarming.rye_bread": "Pão de centeio",
-	"item.simplefarming.raisins": "Raisins",*
-	"item.simplefarming.spinach_quinoa_quiche": "Spinach Quinoa Quiche",*
-	"item.simplefarming.chicken_noodle_soup": "Chicken Noodle Soup",*
+	"item.simplefarming.raisins": "Uvas passas",
+	"item.simplefarming.spinach_quinoa_quiche": "Quiche de espinafre e quinoa",
+	"item.simplefarming.chicken_noodle_soup": "Sopa de frango com macarrão",
 	"item.simplefarming.squash_soup": "Sopa de abobrinha amarela",
 	"item.simplefarming.quinoa_salad": "Salada de quinoa",
-	"item.simplefarming.tofu_scramble": "Tofu Scramble",*
+	"item.simplefarming.tofu_scramble": "Mexido de tofu",
 	"item.simplefarming.beef_curry": "Beef Curry",*
 	"item.simplefarming.chicken_curry": "Chicken Curry",*
 	"item.simplefarming.mutton_curry": "Mutton Curry",*
@@ -214,7 +214,7 @@
 	"block.simplefarming.sunflower": "Girassol",
 	"block.simplefarming.cumin": "Cominho",
 	"block.simplefarming.quinoa": "Quinoa",
-	"item.simplefarming.pea_pod": "Vagem de ervilhas",
+	"item.simplefarming.pea_pod": "Vagem de ervilha",
 	"item.simplefarming.pea_seeds": "Sementes de ervilha",
 	"item.simplefarming.sweet_potato": "Batata-doce",
 	"item.simplefarming.sweet_potato_seeds": "Sementes de batata-doce",
@@ -228,34 +228,34 @@
 	"item.simplefarming.pumpkin_soup": "Sopa de abóbora",
 	"item.simplefarming.raw_horse_meat": "Carne de cavalo crua",
 	"item.simplefarming.cooked_horse_meat": "Carne de cavalo assada",
-	"item.simplefarming.trail_mix": "Trail Mix",*
-	"item.simplefarming.sweet_potato_quinoa_cakes": "Sweet Potato Quinoa Cake",*
-	"item.simplefarming.sausage_barley_soup": "Sausage Barley Soup",*
-	"block.simplefarming.barley_hay_block": "Barley Hay Bale",*
+	"item.simplefarming.trail_mix": "Trail mix",
+	"item.simplefarming.sweet_potato_quinoa_cakes": "Bolo de batata doce e quinoa",
+	"item.simplefarming.sausage_barley_soup": "Sopa de cevada com linguiça",
+	"block.simplefarming.barley_hay_block": "Fardo de cevada",
 	"item.simplefarming.barley_bread": "Pão de cevada",
 	"item.simplefarming.pea_soup": "Sopa de ervilha",
 	"item.simplefarming.fried_rice": "Arroz frito",
-	"item.simplefarming.mushroom_barley": "Mushroom Barley",*
+	"item.simplefarming.mushroom_barley": "Cevada com cogumelos",
 	"item.simplefarming.olives": "Azeitonas",
 	"item.simplefarming.broccoli": "Brócolis",
-	"item.simplefarming.zucchini": "Abóbrinha",
+	"item.simplefarming.zucchini": "Abobrinha verde",
 	"item.simplefarming.olive_oil": "Azeite",
 	"item.simplefarming.broccoli_seeds": "Sementes de brócolis",
-	"item.simplefarming.zucchini_seeds": "Sementes de abóbrinha",
-	"item.simplefarming.beef_and_broccoli": "Beef and Broccoli",*
-	"item.simplefarming.broccoli_cheese_soup": "Broccoli Cheese Soup",*
-	"item.simplefarming.olive_tomato_salad": "Olive Tomato Salad",*
-	"item.simplefarming.stuffed_corn_zucchini": "Stuffed Corn Zucchini",*
-	"item.simplefarming.zucchini_bread": "Pão de abóbrinha",
+	"item.simplefarming.zucchini_seeds": "Sementes de abobrinha verde",
+	"item.simplefarming.beef_and_broccoli": "Filé com brócolis",
+	"item.simplefarming.broccoli_cheese_soup": "Sopa de brócolis e queijo",
+	"item.simplefarming.olive_tomato_salad": "Salada de tomate com azeitonas",
+	"item.simplefarming.stuffed_corn_zucchini": "Abobrinha verde recheada com milho",
+	"item.simplefarming.zucchini_bread": "Pão de abobrinha verde",
 	"block.simplefarming.olive_sapling": "Muda de oliveira",
 	"block.simplefarming.birthday_cake": "Bolo de aniversário",
 	"block.simplefarming.broccoli_crop": "Plantio de brócolis",
-	"block.simplefarming.zucchini_crop": "Plantio de abóbrinha",
+	"block.simplefarming.zucchini_crop": "Plantio de abobrinha verde",
 	"block.simplefarming.olive_leaves": "Folhas de oliveira",
 	"block.simplefarming.scarecrow": "Espantalho",
 	"block.simplefarming.brewing_barrel": "Barril de fermentação",
 	"item.simplefarming.beer": "Cerveja",
-	"item.simplefarming.cider": "Cider",*
+	"item.simplefarming.cider": "Sidra",
 	"item.simplefarming.wine": "Vinho",
 	"item.simplefarming.vodka": "Vodka",
 	"item.simplefarming.whiskey": "Uísque",
@@ -263,23 +263,23 @@
 	"item.simplefarming.cauim": "Cauim",*
 	"item.simplefarming.sake": "Sake",*
 	"item.simplefarming.borscht": "Borscht",*
-	"item.simplefarming.candy": "Candy",*
-	"item.simplefarming.jam": "Jam",*
+	"item.simplefarming.candy": "Doces",
+	"item.simplefarming.jam": "Geléia",
 	"item.simplefarming.turnip": "Nabo",
 	"item.simplefarming.turnip_seeds": "Sementes de nabo",
 	"item.simplefarming.chicory_root": "Raíz de chicória",
-	"item.simplefarming.marshmallow_root": "Marshmallow Root",*
-	"item.simplefarming.candy_cane": "Candy Cane",*
+	"item.simplefarming.marshmallow_root": "Raíz de malvarisco",
+	"item.simplefarming.candy_cane": "Bengala doce",
 	"item.simplefarming.chicory_gratin": "Chicory Gratin",*
 	"item.simplefarming.fish_and_chips": "Fish and Chips",*
 	"item.simplefarming.ice_cream_sundae": "Ice Cream Sundae",*
-	"item.simplefarming.marshmallow": "Marshmallow",*
+	"item.simplefarming.marshmallow": "Marshmallow",
 	"item.simplefarming.pad_thai": "Pad Thai",*
 	"item.simplefarming.potato_knish": "Potato Knish",*
-	"item.simplefarming.squid_ink_pasta": "Squid Ink Pasta",*
+	"item.simplefarming.squid_ink_pasta": "Macarrão com tinta de lula",
 	"item.simplefarming.turnip_beetroot_gratin": "Turnip Beetroot Gratin",*
 	"block.simplefarming.turnip_crop": "Plantio de nabo",
-	"block.simplefarming.marshmallow": "Marshmallow",*
+	"block.simplefarming.marshmallow": "Malvarisco",
 	"block.simplefarming.chicory": "Chicória",
 	"block.simplefarming.grape_leaves_base": "Folhas de parreira de uva",
 	"item.simplefarming.sprinkles": "Sprinkles",*
