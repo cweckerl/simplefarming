@@ -138,11 +138,11 @@
 	"item.simplefarming.baked_yam": "Inhame assado",
 	"item.simplefarming.banana_bread": "Pão de banana",
 	"item.simplefarming.blt": "BLT",
-	"item.simplefarming.caesar_salad": "Caesar Salad",*
+	"item.simplefarming.caesar_salad": "Salada Caesar",
 	"item.simplefarming.cassava_cake": "Bolo de mandioca",
 	"item.simplefarming.cheese_slice": "Fatia de queijo",
 	"item.simplefarming.cheeseburger": "X-burguer",
-	"item.simplefarming.chicken_parmesan": "Chicken Parmesan",*
+	"item.simplefarming.chicken_parmesan": "Frango à parmegiana",
 	"item.simplefarming.chili": "Chili",
 	"item.simplefarming.chocolate": "Chocolate",
 	"item.simplefarming.cooked_bacon": "Bacon assado",
@@ -153,12 +153,12 @@
 	"item.simplefarming.corn_salad": "Salada de milho",
 	"item.simplefarming.cucumber_soup": "Sopa de pepino",
 	"item.simplefarming.egg_sandwich": "Sanduíche de ovo",
-	"item.simplefarming.eggplant_parmesan": "Eggplant Parmesan",*
-	"item.simplefarming.fish_fillet": "Fish Fillet",*
-	"item.simplefarming.fish_sandwich": "Fish Sandwich",*
+	"item.simplefarming.eggplant_parmesan": "Berinjela à parmegiana",
+	"item.simplefarming.fish_fillet": "Filete de peixe",
+	"item.simplefarming.fish_sandwich": "Sanduíche de peixe",
 	"item.simplefarming.fried_calamari": "Lula frita",
 	"item.simplefarming.fruit_salad": "Salada de frutas",
-	"item.simplefarming.golden_habanero": "Golden Habanero",*
+	"item.simplefarming.golden_habanero": "Habanero dourado",
 	"item.simplefarming.hamburger": "Hamburguer",
 	"item.simplefarming.hotdog": "Cachorro-quente",
 	"item.simplefarming.italian_beef": "Italian Beef",*
@@ -181,7 +181,7 @@
 	"item.simplefarming.raw_calamari": "Lula crua",
 	"item.simplefarming.raw_chicken_wings": "Asas de frango cruas",
 	"item.simplefarming.raw_sausage": "Linguiça crua",
-	"item.simplefarming.rice_bowl": "Tigela com arroz",
+	"item.simplefarming.rice_bowl": "Tigela de arroz",
 	"item.simplefarming.salad": "Salada",
 	"item.simplefarming.sandwich": "Sanduíche",
 	"item.simplefarming.sorghum_bread": "Pão de sorgo",
@@ -202,11 +202,11 @@
 	"item.simplefarming.squash_soup": "Sopa de abobrinha amarela",
 	"item.simplefarming.quinoa_salad": "Salada de quinoa",
 	"item.simplefarming.tofu_scramble": "Mexido de tofu",
-	"item.simplefarming.beef_curry": "Beef Curry",*
-	"item.simplefarming.chicken_curry": "Chicken Curry",*
-	"item.simplefarming.mutton_curry": "Mutton Curry",*
-	"item.simplefarming.pork_curry": "Pork Curry",*
-	"item.simplefarming.vegetable_curry": "Vegetable Curry",*
+	"item.simplefarming.beef_curry": "Curry de carne",
+	"item.simplefarming.chicken_curry": "Curry de frango",
+	"item.simplefarming.mutton_curry": "Curry de carneiro",
+	"item.simplefarming.pork_curry": "Curry de porco",
+	"item.simplefarming.vegetable_curry": "Curry de vegetais",
 	"block.simplefarming.pea_crop": "Plantio de ervilha",
 	"block.simplefarming.cotton_crop": "Plantio de algodão",
 	"block.simplefarming.sweet_potato_crop": "Plantio de batata-doce",
@@ -228,7 +228,7 @@
 	"item.simplefarming.pumpkin_soup": "Sopa de abóbora",
 	"item.simplefarming.raw_horse_meat": "Carne de cavalo crua",
 	"item.simplefarming.cooked_horse_meat": "Carne de cavalo assada",
-	"item.simplefarming.trail_mix": "Trail mix",
+	"item.simplefarming.trail_mix": "Scroggin",
 	"item.simplefarming.sweet_potato_quinoa_cakes": "Bolo de batata doce e quinoa",
 	"item.simplefarming.sausage_barley_soup": "Sopa de cevada com linguiça",
 	"block.simplefarming.barley_hay_block": "Fardo de cevada",
@@ -261,8 +261,8 @@
 	"item.simplefarming.whiskey": "Uísque",
 	"item.simplefarming.tiswin": "Tiswin",*
 	"item.simplefarming.cauim": "Cauim",*
-	"item.simplefarming.sake": "Sake",*
-	"item.simplefarming.borscht": "Borscht",*
+	"item.simplefarming.sake": "Saquê",
+	"item.simplefarming.borscht": "Borche",
 	"item.simplefarming.candy": "Doces",
 	"item.simplefarming.jam": "Geléia",
 	"item.simplefarming.turnip": "Nabo",
@@ -271,37 +271,37 @@
 	"item.simplefarming.marshmallow_root": "Raíz de malvarisco",
 	"item.simplefarming.candy_cane": "Bengala doce",
 	"item.simplefarming.chicory_gratin": "Chicory Gratin",*
-	"item.simplefarming.fish_and_chips": "Fish and Chips",*
+	"item.simplefarming.fish_and_chips": "Peixe com fritas",
 	"item.simplefarming.ice_cream_sundae": "Ice Cream Sundae",*
 	"item.simplefarming.marshmallow": "Marshmallow",
-	"item.simplefarming.pad_thai": "Pad Thai",*
-	"item.simplefarming.potato_knish": "Potato Knish",*
+	"item.simplefarming.pad_thai": "Pad thai",
+	"item.simplefarming.potato_knish": "Knish de batata",
 	"item.simplefarming.squid_ink_pasta": "Macarrão com tinta de lula",
 	"item.simplefarming.turnip_beetroot_gratin": "Turnip Beetroot Gratin",*
 	"block.simplefarming.turnip_crop": "Plantio de nabo",
 	"block.simplefarming.marshmallow": "Malvarisco",
 	"block.simplefarming.chicory": "Chicória",
 	"block.simplefarming.grape_leaves_base": "Folhas de parreira de uva",
-	"item.simplefarming.sprinkles": "Sprinkles",*
-	"advancements.simplefarming.root.description": "So many foods to choose from!",
-	"advancements.simplefarming.berries.title": "Berry Good!",
-	"advancements.simplefarming.berries.description": "Collect all wild berry variants",
-	"advancements.simplefarming.birthday_cake.title": "For Someone Special",
-	"advancements.simplefarming.birthday_cake.description": "Craft a birthday cake to celebrate!",
-	"advancements.simplefarming.cheese.title": "Straight From the Farm",
-	"advancements.simplefarming.cheese.description": "Craft a wheel of cheese using vinegar",
-	"advancements.simplefarming.cheeseburger.title": "Big Kahuna Burger",
-	"advancements.simplefarming.cheeseburger.description": "Consume a hearty cheeseburger",
-	"advancements.simplefarming.crops.title": "Cream Of The Crop",
-	"advancements.simplefarming.crops.description": "Grow and gather every edible crop",
-	"advancements.simplefarming.grapes.title": "Botanically A Berry",
-	"advancements.simplefarming.grapes.description": "Grow and gather grapes from a vineyard",
-	"advancements.simplefarming.scarecrow.title": "Farmer's Best Friend",
-	"advancements.simplefarming.scarecrow.description": "Craft a scarecrow to prevent your crops from being trampled!",
-	"advancements.simplefarming.wine.title": "Belt The Grape",
-	"advancements.simplefarming.wine.description": "Craft a bottle of wine using grapes in the brewing barrel",
-	"item.simplefarming.mead": "Mead",*
+	"item.simplefarming.sprinkles": "Granulado",
+	"advancements.simplefarming.root.description": "Tanta comida para escolher!",
+	"advancements.simplefarming.berries.title": "\"Baga\"gem cheia!",
+	"advancements.simplefarming.berries.description": "Colete todas as variantes de bagas silvestres",
+	"advancements.simplefarming.birthday_cake.title": "Para alguém especial",
+	"advancements.simplefarming.birthday_cake.description": "Faça um bolo de aniversário para celebrar!",
+	"advancements.simplefarming.cheese.title": "Direto da roça",
+	"advancements.simplefarming.cheese.description": "Faça uma roda de queijo usando vinagre",
+	"advancements.simplefarming.cheeseburger.title": "Hamburgão!",
+	"advancements.simplefarming.cheeseburger.description": "Coma um delicioso x-burguer",
+	"advancements.simplefarming.crops.title": "Especialista em agronegócio",
+	"advancements.simplefarming.crops.description": "Plante e colha todas as plantas comestíveis",
+	"advancements.simplefarming.grapes.title": "Tecnicamente é uma baga",
+	"advancements.simplefarming.grapes.description": "Plante e colha uvas de um vinhedo",
+	"advancements.simplefarming.scarecrow.title": "Melhor amigo do agrigultor",
+	"advancements.simplefarming.scarecrow.description": "Faça um espantalho para prevenir suas plantações de serem pisoteadas!",
+	"advancements.simplefarming.wine.title": "Festa da uva",
+	"advancements.simplefarming.wine.description": "Faça vinho usando uvas em um barril de fermentação",
+	"item.simplefarming.mead": "Hidromel",
 	"item.simplefarming.music_disc_nourish": "Disco de música",
 	"item.simplefarming.music_disc_nourish.desc": "Bearfan - Nourish",
-	"item.simplefarming.veggie_burger": "Veggie Burger"*
+	"item.simplefarming.veggie_burger": "Hamburger vegetariano"
 }
