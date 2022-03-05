@@ -28,22 +28,15 @@ import java.util.List;
 public abstract class CropHarvestUtil
 {
     public static final TagKey<Item> DENY_RIGHT_CLICK_HARVEST_TAG = ItemTags.create(new ResourceLocation(SimpleFarming.MOD_ID, "deny_right_click_harvest"));
-    private static final Method GET_SEED_ITEM = ObfuscationReflectionHelper.findMethod(CropBlock.class, "getBaseSeedId");
 
     public static boolean isItemNotDenyingHarvest(ItemStack item) {
-        return item.is(CropHarvestUtil.DENY_RIGHT_CLICK_HARVEST_TAG);
+        return !item.is(CropHarvestUtil.DENY_RIGHT_CLICK_HARVEST_TAG);
     }
 
     @Nullable
     public static Item getCropSeedItem(Block block) {
-        if (block instanceof SimpleCropBlock) return ((SimpleCropBlock) block).getBaseSeedId().asItem();
-
-        try {
-            return (Item) GET_SEED_ITEM.invoke(block);
-        }
-        catch (Exception e) {
-            SimpleFarming.LOGGER.error(MarkerManager.getMarker("CropHarvest"), "couldn't find seed item", e);
-        }
+        if (block instanceof CropBlock)
+            return ((CropBlock) block).getBaseSeedId().asItem();
         return null;
     }
 

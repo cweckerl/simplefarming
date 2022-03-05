@@ -39,7 +39,7 @@ public class CropHarvest
                         int remainingSeeds = CropHarvestUtil.dropLootExceptOneSeed((ServerLevel) event.getWorld(), event.getPlayer(), state, pos, CropHarvestUtil.getCropSeedItem(crop));
 
                         //set crop to air if no seed item is left for replanting
-                        //this guards against the case where the loot was modified and no seed item is present //TODO: add config to always replant crop regardless if seed is present or not?
+                        //this guards against the case where the loot was modified and no seed item is present // TODO: add config to always replant crop regardless if seed is present or not?
                         BlockState newState = remainingSeeds > 0 ? crop.defaultBlockState() : Blocks.AIR.defaultBlockState();
 
                         event.getPlayer().causeFoodExhaustion(0.05F);
