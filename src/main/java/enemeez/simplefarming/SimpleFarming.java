@@ -17,7 +17,7 @@ public class SimpleFarming {
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final CreativeModeTab CREATIVE_TAB = new CreativeModeTab("simplefarming") {
 		public ItemStack makeIcon() {
-			return new ItemStack(ModItems.tomato);
+			return new ItemStack(ModItems.tomato.get());
 		}
 	};
 

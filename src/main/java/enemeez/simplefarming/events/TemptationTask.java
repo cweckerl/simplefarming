@@ -15,16 +15,17 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class TemptationTask {
 
-	private static final Ingredient SEEDS = Ingredient.of(ModItems.cantaloupe_seeds, ModItems.carrot_seeds, ModItems.cassava_seeds, ModItems.corn_seeds, ModItems.cucumber_seeds,
-			ModItems.eggplant_seeds, ModItems.honeydew_seeds, ModItems.kenaf_seeds, ModItems.lettuce_seeds, ModItems.oat_seeds, ModItems.onion_seeds, ModItems.potato_seeds, ModItems.pepper_seeds,
-			ModItems.radish_seeds, ModItems.rice_seeds, ModItems.rye_seeds, ModItems.soybean_seeds, ModItems.spinach_seeds, ModItems.squash_seeds, ModItems.tomato_seeds, ModItems.yam_seeds,
-			ModItems.ginger_seeds, ModItems.grape_seeds, ModItems.cumin_seeds, ModItems.quinoa_seeds, ModItems.sorghum_seeds, ModItems.peanut_seeds, ModItems.barley_seeds, ModItems.sunflower_seeds,
-			ModItems.pea_seeds, ModItems.cotton_seeds, ModItems.sweet_potato_seeds, ModItems.broccoli_seeds, ModItems.zucchini_seeds, ModItems.turnip_seeds
+	// Theoretically speaking, the get calls on the registry objects should be okay as we don't perform static initialization until these things start being used, which is after registration
+	private static final Ingredient SEEDS = Ingredient.of(ModItems.cantaloupe_seeds.get(), ModItems.carrot_seeds.get(), ModItems.cassava_seeds.get(), ModItems.corn_seeds.get(), ModItems.cucumber_seeds.get(),
+			ModItems.eggplant_seeds.get(), ModItems.honeydew_seeds.get(), ModItems.kenaf_seeds.get(), ModItems.lettuce_seeds.get(), ModItems.oat_seeds.get(), ModItems.onion_seeds.get(), ModItems.potato_seeds.get(), ModItems.pepper_seeds.get(),
+			ModItems.radish_seeds.get(), ModItems.rice_seeds.get(), ModItems.rye_seeds.get(), ModItems.soybean_seeds.get(), ModItems.spinach_seeds.get(), ModItems.squash_seeds.get(), ModItems.tomato_seeds.get(), ModItems.yam_seeds.get(),
+			ModItems.ginger_seeds.get(), ModItems.grape_seeds.get(), ModItems.cumin_seeds.get(), ModItems.quinoa_seeds.get(), ModItems.sorghum_seeds.get(), ModItems.peanut_seeds.get(), ModItems.barley_seeds.get(), ModItems.sunflower_seeds.get(),
+			ModItems.pea_seeds.get(), ModItems.cotton_seeds.get(), ModItems.sweet_potato_seeds.get(), ModItems.broccoli_seeds.get(), ModItems.zucchini_seeds.get(), ModItems.turnip_seeds.get()
 	);
 
-	private static final Ingredient WHEATS = Ingredient.of(ModItems.barley, ModItems.oat, ModItems.rye, ModItems.rice, ModItems.corn, ModItems.sorghum);
+	private static final Ingredient WHEATS = Ingredient.of(ModItems.barley.get(), ModItems.oat.get(), ModItems.rye.get(), ModItems.rice.get(), ModItems.corn.get(), ModItems.sorghum.get());
 
-	private static final Ingredient PIGS = Ingredient.of(ModItems.sweet_potato, ModItems.radish, ModItems.turnip, ModItems.yam);
+	private static final Ingredient PIGS = Ingredient.of(ModItems.sweet_potato.get(), ModItems.radish.get(), ModItems.turnip.get(), ModItems.yam.get());
 
 	@SubscribeEvent
 	public void onEntitySpawn(EntityJoinWorldEvent event) {

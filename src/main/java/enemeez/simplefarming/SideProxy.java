@@ -33,11 +33,10 @@ public class SideProxy {
         eventBus.addListener(SideProxy::commonSetup);
 
         // Registration
+        ModItems.registerItems();
         ModBlocks.registerBlocks();
         ModBlockEntities.registerBlockEntities();
         ModWorldGen.registerFeatures();
-
-        eventBus.addGenericListener(Item.class, ModItems::registerAll);
 
         // World gen and loot modifiers
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, SimpleGeneration::onBiomeLoad);

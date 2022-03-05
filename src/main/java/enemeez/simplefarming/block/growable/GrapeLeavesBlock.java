@@ -34,7 +34,7 @@ public class GrapeLeavesBlock extends BushBlock implements BonemealableBlock {
 
 	@Override
 	public ItemStack getCloneItemStack(BlockGetter worldIn, BlockPos pos, BlockState state) {
-		return new ItemStack(ModItems.grapes);
+		return new ItemStack(ModItems.grapes.get());
 	}
 
 	// Tick method
