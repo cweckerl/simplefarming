@@ -1,32 +1,32 @@
 package enemeez.simplefarming.util;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class WorldGenHelper {
 
-	public static boolean checkConditions(IWorld world, BlockPos pos) {
-		if (isValidGround(world.getBlockState(pos.down()), world, pos) && world.getBlockState(pos).getMaterial().isReplaceable() && world.getBlockState(pos) != Blocks.WATER.getDefaultState()
-				&& world.getBlockState(pos) != Blocks.LAVA.getDefaultState())
+	public static boolean checkConditions(LevelAccessor world, BlockPos pos) {
+		if (isValidGround(world.getBlockState(pos.below()), world, pos) && world.getBlockState(pos).getMaterial().isReplaceable() && world.getBlockState(pos) != Blocks.WATER.defaultBlockState()
+				&& world.getBlockState(pos) != Blocks.LAVA.defaultBlockState())
 			return true;
 		else
 			return false;
 	}
 
-	public static boolean checkDryConditions(IWorld world, BlockPos pos) {
-		if (world.getBlockState(pos.down()).getBlock().isIn(BlockTags.SAND) && world.getBlockState(pos).getMaterial().isReplaceable() && world.getBlockState(pos) != Blocks.WATER.getDefaultState()
-				&& world.getBlockState(pos) != Blocks.LAVA.getDefaultState())
+	public static boolean checkDryConditions(LevelAccessor world, BlockPos pos) {
+		if (world.getBlockState(pos.below()).is(BlockTags.SAND) && world.getBlockState(pos).getMaterial().isReplaceable() && world.getBlockState(pos) != Blocks.WATER.defaultBlockState()
+				&& world.getBlockState(pos) != Blocks.LAVA.defaultBlockState())
 			return true;
 		else
 			return false;
 	}
 
-	public static boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
+	public static boolean isValidGround(BlockState state, BlockGetter worldIn, BlockPos pos) {
 		Block block = state.getBlock();
 		return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL;
 	}

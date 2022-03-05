@@ -1,27 +1,25 @@
 package enemeez.simplefarming.events;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
 import com.google.gson.JsonObject;
-
 import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.config.SeedConfig;
 import enemeez.simplefarming.init.ModItems;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.conditions.ILootCondition;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 @EventBusSubscriber(modid = SimpleFarming.MOD_ID, bus = Bus.MOD)
 public class SeedDrops {
@@ -36,7 +34,7 @@ public class SeedDrops {
 	}
 
 	private static class SeedDropModifier extends LootModifier {
-		protected SeedDropModifier(ILootCondition[] conditionsIn) {
+		protected SeedDropModifier(LootItemCondition[] conditionsIn) {
 			super(conditionsIn);
 		}
 
@@ -124,7 +122,7 @@ public class SeedDrops {
 	public static class Serializer extends GlobalLootModifierSerializer<SeedDropModifier> {
 
 		@Override
-		public SeedDropModifier read(ResourceLocation location, JsonObject object, ILootCondition[] ailootcondition) {
+		public SeedDropModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] ailootcondition) {
 			return new SeedDropModifier(ailootcondition);
 		}
 

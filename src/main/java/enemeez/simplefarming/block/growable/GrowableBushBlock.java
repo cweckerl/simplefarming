@@ -1,28 +1,27 @@
 package enemeez.simplefarming.block.growable;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BushBlock;
-import net.minecraft.block.IGrowable;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.util.Constants;
 
 import java.util.Random;
 
-public abstract class GrowableBushBlock extends BushBlock implements IGrowable
+public abstract class GrowableBushBlock extends BushBlock implements BonemealableBlock
 {
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 
     protected GrowableBushBlock(Properties properties) {
         super(properties);
-        setDefaultState(stateContainer.getBaseState().with(getAgeProperty(), 0));
+        registerDefaultState(stateDefinition.any().setValue(getAgeProperty(), 0));
     }
 
     public IntegerProperty getAgeProperty() {
@@ -30,15 +29,15 @@ public abstract class GrowableBushBlock extends BushBlock implements IGrowable
     }
 
     public BlockState withAge(int age) {
-        return getDefaultState().with(getAgeProperty(), age);
+        return defaultBlockState().setValue(getAgeProperty(), age);
     }
 
     public BlockState withMaxAge() {
-        return getDefaultState().with(getAgeProperty(), getMaxAge());
+        return defaultBlockState().setValue(getAgeProperty(), getMaxAge());
     }
 
     public boolean isMaxAge(BlockState state) {
-        return state.get(getAgeProperty()) == getMaxAge();
+        return state.getValue(getAgeProperty()) == getMaxAge();
     }
 
     public int getMaxAge() {
@@ -46,33 +45,33 @@ public abstract class GrowableBushBlock extends BushBlock implements IGrowable
     }
 
     @Override
-    public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-        int age = state.get(getAgeProperty());
-        if (age < getMaxAge() && worldIn.getLightSubtracted(pos.up(), 0) >= 9 && ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt(5) == 0)) {
-            worldIn.setBlockState(pos, state.with(getAgeProperty(), age + 1), Constants.BlockFlags.BLOCK_UPDATE);
+    public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, Random random) {
+        int age = state.getValue(getAgeProperty());
+        if (age < getMaxAge() && worldIn.getRawBrightness(pos.above(), 0) >= 9 && ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt(5) == 0)) {
+            worldIn.setBlock(pos, state.setValue(getAgeProperty(), age + 1), Block.UPDATE_ALL);
             ForgeHooks.onCropsGrowPost(worldIn, pos, state);
         }
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(getAgeProperty());
     }
 
     @Override
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-        return state.get(getAgeProperty()) < getMaxAge();
+    public boolean isValidBonemealTarget(BlockGetter worldIn, BlockPos pos, BlockState state, boolean isClient) {
+        return state.getValue(getAgeProperty()) < getMaxAge();
     }
 
     @Override
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level worldIn, Random rand, BlockPos pos, BlockState state) {
         return true;
     }
 
     // grow method called by bone meal
     @Override
-    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
-        int newAge = Math.min(getMaxAge(), state.get(getAgeProperty()) + 1);
-        worldIn.setBlockState(pos, state.with(getAgeProperty(), newAge), Constants.BlockFlags.BLOCK_UPDATE);
+    public void performBonemeal(ServerLevel worldIn, Random rand, BlockPos pos, BlockState state) {
+        int newAge = Math.min(getMaxAge(), state.getValue(getAgeProperty()) + 1);
+        worldIn.setBlock(pos, state.setValue(getAgeProperty(), newAge), Block.UPDATE_ALL);
     }
 }

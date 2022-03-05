@@ -1,74 +1,82 @@
 {
-	"parent": "simplefarming:root",
-	"display": {
-		"icon": {
-			"item": "simplefarming:raspberries"
-		},
-		"title": {
-			"translate": "advancements.simplefarming.berries.title"
-		},
-		"description": {
-			"translate": "advancements.simplefarming.berries.description"
-		},
-		"frame": "task",
-		"show_toast": true,
-		"announce_to_chat": true,
-		"hidden": false
-	},
-	"criteria": {
-		"blackberries": {
-			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-				"items": [
-					{
-						"item": "simplefarming:blackberries"
-					}
-				]
-			}
-		},
-		"blueberries": {
-			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-				"items": [
-					{
-						"item": "simplefarming:blueberries"
-					}
-				]
-			}
-		},
-		"raspberries": {
-			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-				"items": [
-					{
-						"item": "simplefarming:raspberries"
-					}
-				]
-			}
-		},
-		"strawberries": {
-			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-				"items": [
-					{
-						"item": "simplefarming:strawberries"
-					}
-				]
-			}
-		}
-	},
-	"requirements": [
-		[
-			"blackberries"
-		],
-		[
-			"blueberries"
-		],
-		[
-			"raspberries"
-		],
-		[
-			"strawberries"
-		]
-	]
+  "parent": "simplefarming:root",
+  "display": {
+    "icon": {
+      "item": "simplefarming:raspberries"
+    },
+    "title": {
+      "translate": "advancements.simplefarming.berries.title"
+    },
+    "description": {
+      "translate": "advancements.simplefarming.berries.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "blackberries": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:blackberries"
+            ]
+          }
+        ]
+      }
+    },
+    "blueberries": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:blueberries"
+            ]
+          }
+        ]
+      }
+    },
+    "raspberries": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:raspberries"
+            ]
+          }
+        ]
+      }
+    },
+    "strawberries": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:strawberries"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "blackberries"
+    ],
+    [
+      "blueberries"
+    ],
+    [
+      "raspberries"
+    ],
+    [
+      "strawberries"
+    ]
+  ]
 }

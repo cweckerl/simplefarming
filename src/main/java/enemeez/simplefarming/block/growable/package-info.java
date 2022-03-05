@@ -2,6 +2,6 @@
 @MethodsReturnNonnullByDefault
 package enemeez.simplefarming.block.growable;
 
-import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.MethodsReturnNonnullByDefault;
 
 import javax.annotation.ParametersAreNonnullByDefault;

@@ -1,28 +1,28 @@
 package enemeez.simplefarming.block;
 
-import java.util.Random;
-
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CakeBlock;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.CakeBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+
+import java.util.Random;
 
 public class BirthdayCakeBlock extends CakeBlock {
 
 	public BirthdayCakeBlock(Properties properties) {
 		super(properties);
-		setDefaultState(stateContainer.getBaseState().with(BITES, 0));
+		registerDefaultState(stateDefinition.any().setValue(BITES, 0));
 	}
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+	public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
 		double x = pos.getX() + 0.5D;
 		double y = pos.getY() + 0.16D;
 		double z = pos.getZ() + 0.5D;
-		if (stateIn.get(BITES) < 6) worldIn.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
+		if (stateIn.getValue(BITES) < 6) worldIn.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
 	}
 }

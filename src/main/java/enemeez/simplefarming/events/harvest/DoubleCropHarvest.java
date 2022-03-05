@@ -2,18 +2,18 @@ package enemeez.simplefarming.events.harvest;
 
 import enemeez.simplefarming.block.growable.DoubleCropBlock;
 import enemeez.simplefarming.util.CropHarvestUtil;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.properties.DoubleBlockHalf;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.util.Constants;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -21,8 +21,8 @@ public class DoubleCropHarvest
 {
     @SubscribeEvent
     public void onCropHarvest(RightClickBlock event) {
-        ItemStack heldStack = event.getPlayer().getHeldItemMainhand();
-        if (CropHarvestUtil.isItemNotDenyingHarvest(heldStack.getItem())) {
+        ItemStack heldStack = event.getPlayer().getMainHandItem();
+        if (CropHarvestUtil.isItemNotDenyingHarvest(heldStack)) {
             BlockPos pos = event.getPos();
             BlockState state = event.getWorld().getBlockState(pos);
 
@@ -31,18 +31,18 @@ public class DoubleCropHarvest
                 if (crop.getAge(state) == 7 && crop.getHalf(state) == DoubleBlockHalf.UPPER) {
                     if (!heldStack.isEmpty()) {
                         event.setCanceled(true);
-                        event.setCancellationResult(ActionResultType.SUCCESS); //prevents use of item, prevents the player from attempting to eat fast to eat food (dried kelp, cactus fruit, berries)
+                        event.setCancellationResult(InteractionResult.SUCCESS); //prevents use of item, prevents the player from attempting to eat fast to eat food (dried kelp, cactus fruit, berries)
                     }
-                    if (!event.getWorld().isRemote) {
-                        Item seedItem = crop.getSeedsItem().asItem();
-                        CropHarvestUtil.dropLootExceptOneSeed((ServerWorld) event.getWorld(), event.getPlayer(), state, pos, seedItem);
+                    if (!event.getWorld().isClientSide) {
+                        Item seedItem = crop.getBaseSeedId().asItem();
+                        CropHarvestUtil.dropLootExceptOneSeed((ServerLevel) event.getWorld(), event.getPlayer(), state, pos, seedItem);
 
-                        event.getPlayer().addExhaustion(0.05F);
-                        event.getWorld().playSound(null, event.getPos(), SoundEvents.BLOCK_CROP_BREAK, SoundCategory.BLOCKS, 1.0F, 0.8F + event.getWorld().rand.nextFloat() * 0.4F);
-                        event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState(), Constants.BlockFlags.BLOCK_UPDATE);
-                        event.getWorld().setBlockState(event.getPos().down(), crop.getDefaultState(), Constants.BlockFlags.BLOCK_UPDATE);
+                        event.getPlayer().causeFoodExhaustion(0.05F);
+                        event.getWorld().playSound(null, event.getPos(), SoundEvents.CROP_BREAK, SoundSource.BLOCKS, 1.0F, 0.8F + event.getWorld().random.nextFloat() * 0.4F);
+                        event.getWorld().setBlock(event.getPos(), Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
+                        event.getWorld().setBlock(event.getPos().below(), crop.defaultBlockState(), Block.UPDATE_ALL);
                     }
-                    event.getPlayer().swingArm(Hand.MAIN_HAND);
+                    event.getPlayer().swing(InteractionHand.MAIN_HAND);
                 }
             }
         }

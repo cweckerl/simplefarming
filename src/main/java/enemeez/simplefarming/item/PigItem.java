@@ -1,13 +1,13 @@
 package enemeez.simplefarming.item;
 
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.passive.PigEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Pig;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 public class PigItem extends Item {
 	public PigItem(Properties properties) {
@@ -16,31 +16,31 @@ public class PigItem extends Item {
 	}
 
 	@Override
-	public ActionResultType itemInteractionForEntity(ItemStack itemstack, PlayerEntity player, LivingEntity entity, Hand hand) {
+	public InteractionResult interactLivingEntity(ItemStack itemstack, Player player, LivingEntity entity, InteractionHand hand) {
 
-		ItemStack stack = player.getHeldItem(hand);
+		ItemStack stack = player.getItemInHand(hand);
 
-		if (!entity.world.isRemote && !entity.isChild() && entity instanceof AgeableEntity && (int) ((AgeableEntity) entity).getGrowingAge() == 0) {
-			if (entity instanceof PigEntity) {
-				if (((PigEntity) entity).isInLove()) {
-					return ActionResultType.FAIL;
+		if (!entity.level.isClientSide && !entity.isBaby() && entity instanceof AgeableMob && (int) ((AgeableMob) entity).getAge() == 0) {
+			if (entity instanceof Pig) {
+				if (((Pig) entity).isInLove()) {
+					return InteractionResult.FAIL;
 				} else {
-					((PigEntity) entity).setInLove(player);
+					((Pig) entity).setInLove(player);
 					if (!player.isCreative())
 						stack.shrink(1);
-					return ActionResultType.SUCCESS;
+					return InteractionResult.SUCCESS;
 				}
 			}
 		}
 
-		if (entity.isChild()) {
+		if (entity.isBaby()) {
 			if (!player.isCreative())
 				stack.shrink(1);
-			((AgeableEntity) entity).ageUp((int) ((float) (-((AgeableEntity) entity).getGrowingAge() / 20) * 0.1F), true);
-			return ActionResultType.SUCCESS;
+			((AgeableMob) entity).ageUp((int) ((float) (-((AgeableMob) entity).getAge() / 20) * 0.1F), true);
+			return InteractionResult.SUCCESS;
 		}
 
-		return ActionResultType.FAIL;
+		return InteractionResult.FAIL;
 
 	}
 

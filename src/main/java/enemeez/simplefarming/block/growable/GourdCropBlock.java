@@ -1,13 +1,13 @@
 package enemeez.simplefarming.block.growable;
 
 import enemeez.simplefarming.util.ModVoxelShapes;
-import net.minecraft.block.BlockState;
-import net.minecraft.item.Item;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Supplier;
 
@@ -18,12 +18,12 @@ public class GourdCropBlock extends SimpleCropBlock
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        return ModVoxelShapes.GOURD_SHAPES_0_7[state.get(getAgeProperty())];
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+        return ModVoxelShapes.GOURD_SHAPES_0_7[state.getValue(getAgeProperty())];
     }
 
     @Override
-    public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        return state.get(getAgeProperty()) > 0 ? ModVoxelShapes.GOURD_SHAPES_0_7[state.get(getAgeProperty())] : VoxelShapes.empty();
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+        return state.getValue(getAgeProperty()) > 0 ? ModVoxelShapes.GOURD_SHAPES_0_7[state.getValue(getAgeProperty())] : Shapes.empty();
     }
 }

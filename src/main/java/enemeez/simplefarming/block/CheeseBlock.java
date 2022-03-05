@@ -1,51 +1,50 @@
 package enemeez.simplefarming.block;
 
 import enemeez.simplefarming.init.ModItems;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CakeBlock;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CakeBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 
 public class CheeseBlock extends CakeBlock {
 
 	public CheeseBlock(Block.Properties properties) {
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState().with(BITES, 0));
+		this.registerDefaultState(this.stateDefinition.any().setValue(BITES, 0));
 	}
 
-	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-		if (worldIn.isRemote) {
-			ItemStack itemstack = player.getHeldItem(handIn);
-			if (eatBlock(worldIn, pos, state, player) == ActionResultType.SUCCESS) {
-				return ActionResultType.SUCCESS;
+	public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
+		if (worldIn.isClientSide) {
+			ItemStack itemstack = player.getItemInHand(handIn);
+			if (eatBlock(worldIn, pos, state, player) == InteractionResult.SUCCESS) {
+				return InteractionResult.SUCCESS;
 			}
 
 			if (itemstack.isEmpty()) {
-				return ActionResultType.CONSUME;
+				return InteractionResult.CONSUME;
 			}
 		}
 
 		return eatBlock(worldIn, pos, state, player);
 	}
 
-	private ActionResultType eatBlock(IWorld world, BlockPos pos, BlockState state, PlayerEntity entity) {
-		int bites = state.get(BITES);
-		world.addEntity(new ItemEntity((World) world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.cheese_slice, 1)));
+	private InteractionResult eatBlock(LevelAccessor world, BlockPos pos, BlockState state, Player entity) {
+		int bites = state.getValue(BITES);
+		world.addFreshEntity(new ItemEntity((Level) world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.cheese_slice, 1)));
 		if (bites < 6) {
-			world.setBlockState(pos, state.with(BITES, bites + 1), Constants.BlockFlags.DEFAULT);
+			world.setBlock(pos, state.setValue(BITES, bites + 1), Block.UPDATE_ALL);
 		} else {
 			world.removeBlock(pos, false);
 		}
 
-		return ActionResultType.SUCCESS;
+		return InteractionResult.SUCCESS;
 	}
 }

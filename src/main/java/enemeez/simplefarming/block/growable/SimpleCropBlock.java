@@ -1,20 +1,20 @@
 package enemeez.simplefarming.block.growable;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CropsBlock;
-import net.minecraft.block.FarmlandBlock;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.FarmBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Supplier;
 
-public class SimpleCropBlock extends CropsBlock {
+public class SimpleCropBlock extends CropBlock {
 	private final Supplier<Item> itemSupplier;
 	private final Supplier<Item> seedItemSupplier;
 	private final VoxelShape[] SHAPES;
@@ -34,8 +34,8 @@ public class SimpleCropBlock extends CropsBlock {
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return SHAPES != null ? SHAPES[state.get(this.getAgeProperty())] : super.getShape(state, worldIn, pos, context);
+	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+		return SHAPES != null ? SHAPES[state.getValue(this.getAgeProperty())] : super.getShape(state, worldIn, pos, context);
 	}
 
 	@Override
@@ -44,17 +44,17 @@ public class SimpleCropBlock extends CropsBlock {
 	}
 
 	@Override
-	protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-		return state.getBlock() instanceof FarmlandBlock;
+	protected boolean mayPlaceOn(BlockState state, BlockGetter worldIn, BlockPos pos) {
+		return state.getBlock() instanceof FarmBlock;
 	}
 
 	@Override
-	public IItemProvider getSeedsItem() {
+	public ItemLike getBaseSeedId() {
 		return seedItemSupplier.get();
 	}
 
 	@Override
-	public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
+	public ItemStack getCloneItemStack(BlockGetter worldIn, BlockPos pos, BlockState state) {
 		return new ItemStack(itemSupplier.get());
 	}
 

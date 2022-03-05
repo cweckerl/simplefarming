@@ -2,9 +2,9 @@ package enemeez.simplefarming.events;
 
 import enemeez.simplefarming.block.growable.SimpleCropBlock;
 import enemeez.simplefarming.init.ModBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.event.world.BlockEvent.CropGrowEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -14,9 +14,9 @@ public class StemReplaceEvent {
 		BlockPos pos = event.getPos();
 		Block block = event.getWorld().getBlockState(pos).getBlock();
 		if (block == Blocks.PUMPKIN_STEM) {
-			event.getWorld().setBlockState(pos, ModBlocks.pumpkin_crop.getDefaultState().with(SimpleCropBlock.AGE, Integer.valueOf(0)), 2);
+			event.getWorld().setBlock(pos, ModBlocks.PUMPKIN_CROP.get().defaultBlockState().setValue(SimpleCropBlock.AGE, Integer.valueOf(0)), 2);
 		} else if (block == Blocks.MELON_STEM) {
-			event.getWorld().setBlockState(pos, ModBlocks.melon_crop.getDefaultState().with(SimpleCropBlock.AGE, Integer.valueOf(0)), 2);
+			event.getWorld().setBlock(pos, ModBlocks.MELON_CROP.get().defaultBlockState().setValue(SimpleCropBlock.AGE, Integer.valueOf(0)), 2);
 		}
 	}
 }

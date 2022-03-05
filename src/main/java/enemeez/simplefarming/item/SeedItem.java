@@ -1,58 +1,58 @@
 package enemeez.simplefarming.item;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.passive.ChickenEntity;
-import net.minecraft.entity.passive.ParrotEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockNamedItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Chicken;
+import net.minecraft.world.entity.animal.Parrot;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 
-public class SeedItem extends BlockNamedItem {
+public class SeedItem extends ItemNameBlockItem {
 
 	public SeedItem(Block blockIn, Properties properties) {
 		super(blockIn, properties);
 	}
 
 	@Override
-	public ActionResultType itemInteractionForEntity(ItemStack itemstack, PlayerEntity player, LivingEntity entity, Hand hand) {
+	public InteractionResult interactLivingEntity(ItemStack itemstack, Player player, LivingEntity entity, InteractionHand hand) {
 
-		ItemStack stack = player.getHeldItem(hand);
+		ItemStack stack = player.getItemInHand(hand);
 
-		if (!entity.world.isRemote && !entity.isChild() && entity instanceof AgeableEntity && (int) ((AgeableEntity) entity).getGrowingAge() == 0) {
-			if (entity instanceof ChickenEntity) {
-				if (((ChickenEntity) entity).isInLove()) {
-					return ActionResultType.FAIL;
+		if (!entity.level.isClientSide && !entity.isBaby() && entity instanceof AgeableMob && (int) ((AgeableMob) entity).getAge() == 0) {
+			if (entity instanceof Chicken) {
+				if (((Chicken) entity).isInLove()) {
+					return InteractionResult.FAIL;
 				} else {
-					((ChickenEntity) entity).setInLove(player);
+					((Chicken) entity).setInLove(player);
 					if (!player.isCreative())
 						stack.shrink(1);
-					return ActionResultType.SUCCESS;
+					return InteractionResult.SUCCESS;
 				}
 			}
 
-			if (entity instanceof ParrotEntity)
-				if (!entity.world.isRemote) {
-					if (!((ParrotEntity) entity).isTamed())
+			if (entity instanceof Parrot)
+				if (!entity.level.isClientSide) {
+					if (!((Parrot) entity).isTame())
 						if (Math.random() <= 0.33) {
-							((ParrotEntity) entity).setTamedBy(player);
-							((ParrotEntity) entity).setInLove(player);
+							((Parrot) entity).tame(player);
+							((Parrot) entity).setInLove(player);
 						}
 					if (!player.isCreative())
 						stack.shrink(1);
 				}
 		}
 
-		if (entity.isChild()) {
+		if (entity.isBaby()) {
 			if (!player.isCreative())
 				stack.shrink(1);
-			((AgeableEntity) entity).ageUp((int) ((float) (-((AgeableEntity) entity).getGrowingAge() / 20) * 0.1F), true);
-			return ActionResultType.SUCCESS;
+			((AgeableMob) entity).ageUp((int) ((float) (-((AgeableMob) entity).getAge() / 20) * 0.1F), true);
+			return InteractionResult.SUCCESS;
 		}
-		return ActionResultType.FAIL;
+		return InteractionResult.FAIL;
 	}
 
 }

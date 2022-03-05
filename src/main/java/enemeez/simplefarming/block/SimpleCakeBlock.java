@@ -1,12 +1,12 @@
 package enemeez.simplefarming.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.CakeBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CakeBlock;
 
 public class SimpleCakeBlock extends CakeBlock {
 
 	public SimpleCakeBlock(Block.Properties properties) {
 		super(properties);
-		this.setDefaultState(this.stateContainer.getBaseState().with(BITES, 0));
+		this.registerDefaultState(this.stateDefinition.any().setValue(BITES, 0));
 	}
 }

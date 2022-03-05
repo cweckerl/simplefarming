@@ -1,35 +1,35 @@
 package enemeez.simplefarming.events;
 
-import java.util.ArrayList;
-
 import enemeez.simplefarming.item.AlcoholItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+
+import java.util.ArrayList;
 
 public class IntoxicationTracker {
 	private ArrayList<ItemStack> foods = new ArrayList<ItemStack>();
 
 	@SubscribeEvent
 	public void intoxicationEffect(LivingEntityUseItemEvent.Finish event) {
-		if (!event.getEntityLiving().world.isRemote()) {
+		if (!event.getEntityLiving().level.isClientSide()) {
 			ItemStack consumed = event.getItem();
 			foods.add(consumed);
 			if (drunk()) {
-				ArrayList<EffectInstance> effects = new ArrayList<EffectInstance>();
-				effects.add(new EffectInstance(Effects.WEAKNESS, 2000, 0, false, true));
-				effects.add(new EffectInstance(Effects.BLINDNESS, 2000, 0, false, true));
-				effects.add(new EffectInstance(Effects.WITHER, 2000, 0, false, true));
-				effects.add(new EffectInstance(Effects.MINING_FATIGUE, 2000, 0, false, true));
-				effects.add(new EffectInstance(Effects.HUNGER, 2000, 0, false, true));
-				effects.add(new EffectInstance(Effects.POISON, 2000, 0, false, true));
-				effects.add(new EffectInstance(Effects.UNLUCK, 2000, 0, false, true));
+				ArrayList<MobEffectInstance> effects = new ArrayList<MobEffectInstance>();
+				effects.add(new MobEffectInstance(MobEffects.WEAKNESS, 2000, 0, false, true));
+				effects.add(new MobEffectInstance(MobEffects.BLINDNESS, 2000, 0, false, true));
+				effects.add(new MobEffectInstance(MobEffects.WITHER, 2000, 0, false, true));
+				effects.add(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 2000, 0, false, true));
+				effects.add(new MobEffectInstance(MobEffects.HUNGER, 2000, 0, false, true));
+				effects.add(new MobEffectInstance(MobEffects.POISON, 2000, 0, false, true));
+				effects.add(new MobEffectInstance(MobEffects.UNLUCK, 2000, 0, false, true));
 				int random = (int) ((Math.random() * effects.size()));
-				event.getEntity().sendMessage(new StringTextComponent("You start to feel tipsy..."), null);
-				event.getEntityLiving().addPotionEffect(effects.get(random));
+				event.getEntity().sendMessage(new TextComponent("You start to feel tipsy..."), null);
+				event.getEntityLiving().addEffect(effects.get(random));
 				foods.clear();
 			}
 		}

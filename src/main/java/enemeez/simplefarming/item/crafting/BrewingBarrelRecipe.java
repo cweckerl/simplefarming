@@ -1,18 +1,25 @@
 package enemeez.simplefarming.item.crafting;
 
+import com.google.gson.JsonObject;
 import enemeez.simplefarming.init.ModRecipes;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.Container;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nullable;
 
-public class BrewingBarrelRecipe implements IRecipe<IInventory> {
+public class BrewingBarrelRecipe implements Recipe<Container> {
+
+	public static final Serializer SERIALIZER = new Serializer();
 
 	private final ResourceLocation id;
 	private final ItemStack result;
@@ -29,22 +36,22 @@ public class BrewingBarrelRecipe implements IRecipe<IInventory> {
 	}
 
 	@Override
-	public boolean matches(IInventory inv, World worldIn) {
-		return ingredient.test(inv.getStackInSlot(0));
+	public boolean matches(Container inv, Level worldIn) {
+		return ingredient.test(inv.getItem(0));
 	}
 
 	@Override
-	public ItemStack getCraftingResult(@Nullable IInventory inv) {
+	public ItemStack assemble(@Nullable Container inv) {
 		return result.copy();
 	}
 
 	@Override
-	public boolean canFit(int width, int height) {
+	public boolean canCraftInDimensions(int width, int height) {
 		return true;
 	}
 
 	@Override
-	public ItemStack getRecipeOutput() {
+	public ItemStack getResultItem() {
 		return ItemStack.EMPTY;
 	}
 
@@ -55,18 +62,43 @@ public class BrewingBarrelRecipe implements IRecipe<IInventory> {
 
 	// Disable RecipeBook for this recipe
 	@Override
-	public boolean isDynamic() {
+	public boolean isSpecial() {
 		return true;
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer() {
-		return ModRecipes.BREWING_BARREL_RECIPE_SERIALIZER;
+	public RecipeSerializer<?> getSerializer() {
+		return SERIALIZER;
 	}
 
 	@Override
-	public IRecipeType<?> getType() {
+	public RecipeType<?> getType() {
 		return ModRecipes.BREWING_BARREL_RECIPE_TYPE;
+	}
+
+	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<BrewingBarrelRecipe> {
+
+		@Override
+		public BrewingBarrelRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
+			JsonObject ingredientJson = GsonHelper.getAsJsonObject(json, "ingredient");
+			Ingredient ingredient = Ingredient.fromJson(ingredientJson);
+			ItemStack result = CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, "result"), false);
+			return new BrewingBarrelRecipe(recipeId, ingredient, result);
+		}
+
+		@Override
+		public BrewingBarrelRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
+			Ingredient ingredient = Ingredient.fromNetwork(buffer);
+			ItemStack result = buffer.readItem();
+			return new BrewingBarrelRecipe(recipeId, ingredient, result);
+		}
+
+		@Override
+		public void toNetwork(FriendlyByteBuf buffer, BrewingBarrelRecipe recipe) {
+			recipe.getIngredient().toNetwork(buffer);
+			buffer.writeItem(recipe.assemble(null));
+		}
+
 	}
 
 }

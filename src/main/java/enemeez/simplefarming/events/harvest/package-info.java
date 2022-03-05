@@ -2,6 +2,6 @@
 @MethodsReturnNonnullByDefault
 package enemeez.simplefarming.events.harvest;
 
-import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.MethodsReturnNonnullByDefault;
 
 import javax.annotation.ParametersAreNonnullByDefault;

@@ -3,42 +3,30 @@ package enemeez.simplefarming.init;
 import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.world.gen.BerryBushFeature;
 import enemeez.simplefarming.world.gen.CactusCropFeature;
-import enemeez.simplefarming.world.gen.SimpleGeneration;
 import enemeez.simplefarming.world.gen.WildCropFeature;
 import enemeez.simplefarming.world.gen.WildPlantFeature;
 import enemeez.simplefarming.world.gen.feature.tree.FruitTreeFeature;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class ModWorldGen {
-	public static final Feature<NoFeatureConfig> FRUIT_TREE = new FruitTreeFeature(NoFeatureConfig.field_236558_a_);
-	public static final Feature<NoFeatureConfig> BERRY_BUSH = new BerryBushFeature(NoFeatureConfig.field_236558_a_);
-	public static final Feature<NoFeatureConfig> CACTUS_CROP = new CactusCropFeature(NoFeatureConfig.field_236558_a_);
-	public static final Feature<NoFeatureConfig> WILD_CROP = new WildCropFeature(NoFeatureConfig.field_236558_a_);
-	public static final Feature<NoFeatureConfig> WILD_PLANT = new WildPlantFeature(NoFeatureConfig.field_236558_a_);
+	private static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, SimpleFarming.MOD_ID);
 
-	@SubscribeEvent
-	public static void registerAll(RegistryEvent.Register<Feature<?>> event) {
-		if (!event.getName().equals(ForgeRegistries.FEATURES.getRegistryName()))
-			return;
-		registerGen(FRUIT_TREE, "fruit_tree");
-		registerGen(BERRY_BUSH, "berry_bush");
-		registerGen(CACTUS_CROP, "cactus_crop");
-		registerGen(WILD_CROP, "wild_crop");
-		registerGen(WILD_PLANT, "wild_plant");
-		SimpleGeneration.configureFeature();
-	}
-	
+	public static final RegistryObject<Feature<NoneFeatureConfiguration>> FRUIT_TREE = FEATURES.register("fruit_tree", () -> new FruitTreeFeature(NoneFeatureConfiguration.CODEC));
+	public static final RegistryObject<Feature<NoneFeatureConfiguration>> BERRY_BUSH = FEATURES.register("berry_bush", () -> new BerryBushFeature(NoneFeatureConfiguration.CODEC));
+	public static final RegistryObject<Feature<NoneFeatureConfiguration>> CACTUS_CROP = FEATURES.register("cactus_crop", () -> new CactusCropFeature(NoneFeatureConfiguration.CODEC));
+	public static final RegistryObject<Feature<NoneFeatureConfiguration>> WILD_CROP = FEATURES.register("wild_crop", () -> new WildCropFeature(NoneFeatureConfiguration.CODEC));
+	public static final RegistryObject<Feature<NoneFeatureConfiguration>> WILD_PLANT = FEATURES.register("wild_plant", () -> new WildPlantFeature(NoneFeatureConfiguration.CODEC));
 
-	public static Feature<?> registerGen(Feature<?> feature, String name) {
-		feature.setRegistryName(new ResourceLocation(SimpleFarming.MOD_ID, name));
-		ForgeRegistries.FEATURES.register(feature);
-
-		return feature;
+	public static void registerFeatures() {
+		FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
 	}
 
 }

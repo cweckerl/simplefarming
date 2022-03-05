@@ -1,43 +1,42 @@
 package enemeez.simplefarming.util;
 
-import java.lang.reflect.Method;
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import org.apache.logging.log4j.MarkerManager;
-
 import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.block.growable.SimpleCropBlock;
 import enemeez.simplefarming.config.RightClickConfig;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CropsBlock;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tags.ITag.INamedTag;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
+import org.apache.logging.log4j.MarkerManager;
+
+import javax.annotation.Nullable;
+import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * Created by Elenterius on 15.08.2020
  */
 public abstract class CropHarvestUtil
 {
-    public static final INamedTag<Item> DENY_RIGHT_CLICK_HARVEST_TAG = ItemTags.makeWrapperTag(SimpleFarming.MOD_ID + ":deny_right_click_harvest");    
-    private static final Method GET_SEED_ITEM = ObfuscationReflectionHelper.findMethod(CropsBlock.class, "func_199772_f");
+    public static final TagKey<Item> DENY_RIGHT_CLICK_HARVEST_TAG = ItemTags.create(new ResourceLocation(SimpleFarming.MOD_ID, "deny_right_click_harvest"));
+    private static final Method GET_SEED_ITEM = ObfuscationReflectionHelper.findMethod(CropBlock.class, "getBaseSeedId");
 
-    public static boolean isItemNotDenyingHarvest(Item item) {
-        return !CropHarvestUtil.DENY_RIGHT_CLICK_HARVEST_TAG.contains(item); // contains
+    public static boolean isItemNotDenyingHarvest(ItemStack item) {
+        return item.is(CropHarvestUtil.DENY_RIGHT_CLICK_HARVEST_TAG);
     }
 
     @Nullable
     public static Item getCropSeedItem(Block block) {
-        if (block instanceof SimpleCropBlock) return ((SimpleCropBlock) block).getSeedsItem().asItem();
+        if (block instanceof SimpleCropBlock) return ((SimpleCropBlock) block).getBaseSeedId().asItem();
 
         try {
             return (Item) GET_SEED_ITEM.invoke(block);
@@ -48,16 +47,16 @@ public abstract class CropHarvestUtil
         return null;
     }
 
-    public static void dropLoot(ServerWorld world, PlayerEntity player, BlockState state, BlockPos pos) {
+    public static void dropLoot(ServerLevel world, Player player, BlockState state, BlockPos pos) {
         dropLootExceptItem(world, player, state, pos, null, RightClickConfig.rightClickHarvest.get().isSmartHarvest());
     }
 
-    public static void dropLootExceptItem(ServerWorld world, PlayerEntity player, BlockState state, BlockPos pos, @Nullable final Item denyItem) {
+    public static void dropLootExceptItem(ServerLevel world, Player player, BlockState state, BlockPos pos, @Nullable final Item denyItem) {
         dropLootExceptItem(world, player, state, pos, denyItem, RightClickConfig.rightClickHarvest.get().isSmartHarvest());
     }
 
-    public static void dropLootExceptItem(ServerWorld world, PlayerEntity player, BlockState state, BlockPos pos, @Nullable final Item denyItem, boolean addLootToPlayerInv) {
-        List<ItemStack> drops = Block.getDrops(state, world, pos, world.getTileEntity(pos));
+    public static void dropLootExceptItem(ServerLevel world, Player player, BlockState state, BlockPos pos, @Nullable final Item denyItem, boolean addLootToPlayerInv) {
+        List<ItemStack> drops = Block.getDrops(state, world, pos, world.getBlockEntity(pos));
 
 //        SimpleFarming.LOGGER.debug(MarkerManager.getMarker("CropHarvest"), "deny item: " + denyItem);
 //        SimpleFarming.LOGGER.debug(MarkerManager.getMarker("CropHarvest"), "in: " + drops);
@@ -66,8 +65,8 @@ public abstract class CropHarvestUtil
         for (ItemStack stack : drops) {
             if (stack.getItem() != denyItem) {
 //                out.add(stack.copy());
-                if (!addLootToPlayerInv || !player.addItemStackToInventory(stack)) {
-                    world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack));
+                if (!addLootToPlayerInv || !player.addItem(stack)) {
+                    world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack));
                 }
             }
         }
@@ -83,7 +82,7 @@ public abstract class CropHarvestUtil
      * <br>1 = if seed item was present in loot
      * <br>anything else = something went wrong
      */
-    public static int dropLootExceptOneSeed(ServerWorld world, PlayerEntity player, BlockState state, BlockPos pos, @Nullable final Item seedItem) {
+    public static int dropLootExceptOneSeed(ServerLevel world, Player player, BlockState state, BlockPos pos, @Nullable final Item seedItem) {
         return dropLootExceptOneSeed(world, player, state, pos, seedItem, RightClickConfig.rightClickHarvest.get().isSmartHarvest());
     }
 
@@ -95,8 +94,8 @@ public abstract class CropHarvestUtil
      * <br>1 = if seed item was present in loot
      * <br>anything else = something went wrong
      */
-    public static int dropLootExceptOneSeed(ServerWorld world, PlayerEntity player, BlockState state, BlockPos pos, @Nullable final Item seedItem, boolean addLootToPlayerInv) {
-        List<ItemStack> drops = Block.getDrops(state, world, pos, world.getTileEntity(pos));
+    public static int dropLootExceptOneSeed(ServerLevel world, Player player, BlockState state, BlockPos pos, @Nullable final Item seedItem, boolean addLootToPlayerInv) {
+        List<ItemStack> drops = Block.getDrops(state, world, pos, world.getBlockEntity(pos));
         int seedCount = drops.stream().filter(stack -> stack.getItem() == seedItem).mapToInt(ItemStack::getCount).sum();
 
 //        SimpleFarming.LOGGER.debug(MarkerManager.getMarker("CropHarvest"), "seed item: " + seedItem);
@@ -115,13 +114,13 @@ public abstract class CropHarvestUtil
                     if (!stack.isEmpty()) {
                         seedCount -= stack.getCount();
 //                        out.add(stack.copy());
-                        if (!addLootToPlayerInv || !player.addItemStackToInventory(stack)) world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack));
+                        if (!addLootToPlayerInv || !player.addItem(stack)) world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack));
                     }
                 }
             }
             else {
 //                out.add(stack.copy());
-                if (!addLootToPlayerInv || !player.addItemStackToInventory(stack)) world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack));
+                if (!addLootToPlayerInv || !player.addItem(stack)) world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack));
             }
         }
 

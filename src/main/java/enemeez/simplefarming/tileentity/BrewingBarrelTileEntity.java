@@ -1,23 +1,23 @@
 package enemeez.simplefarming.tileentity;
 
-import static enemeez.simplefarming.init.ModTiles.BARREL_TILE;
-
-import net.minecraft.block.BlockState;
-import net.minecraft.inventory.IClearable;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
+import enemeez.simplefarming.init.ModBlockEntities;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.Clearable;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class BrewingBarrelTileEntity extends TileEntity implements IClearable {
+public class BrewingBarrelTileEntity extends BlockEntity implements Clearable {
 
 	private Item inventory = ItemStack.EMPTY.getItem();
 	private int capacity = 0;
 
-	public BrewingBarrelTileEntity() {
-		super(BARREL_TILE);
+	public BrewingBarrelTileEntity(BlockPos pos, BlockState state) {
+		super(ModBlockEntities.BARREL_TILE.get(), pos, state);
 	}
 
 	public Item getItem() {
@@ -27,13 +27,13 @@ public class BrewingBarrelTileEntity extends TileEntity implements IClearable {
 	public void setItem(Item item) {
 		this.inventory = item;
 		capacity++;
-		this.markDirty();
+		this.setChanged();
 	}
 
-	public void clear() {
+	public void clearContent() {
 		this.setItem(ItemStack.EMPTY.getItem());
 		capacity = 0;
-		this.markDirty();
+		this.setChanged();
 	}
 
 	public int getCapacity() {
@@ -41,8 +41,8 @@ public class BrewingBarrelTileEntity extends TileEntity implements IClearable {
 	}
 
 	@Override
-	public void read(BlockState state, CompoundNBT compound) {
-		super.read(state, compound);
+	public void load(CompoundTag compound) {
+		super.load(compound);
 		if (compound.contains("capacity")) {
 			capacity = compound.getInt("capacity");
 		}
@@ -55,10 +55,10 @@ public class BrewingBarrelTileEntity extends TileEntity implements IClearable {
 	}
 
 	@Override
-	public CompoundNBT write(CompoundNBT compound) {
+	protected void saveAdditional(CompoundTag compound) {
 		compound.putInt("capacity", capacity);
 		compound.putString("inventory", inventory.getRegistryName().toString());
-		return super.write(compound);
+		super.saveAdditional(compound);
 	}
 
 }

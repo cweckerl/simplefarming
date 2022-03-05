@@ -1,18 +1,18 @@
 package enemeez.simplefarming.item;
 
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.UseAction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.Level;
 
 public class BottleItem extends Item {
 
@@ -21,30 +21,30 @@ public class BottleItem extends Item {
 	}
 
 	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-		if (!worldIn.isRemote)
+	public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity entityLiving) {
+		if (!worldIn.isClientSide)
 			entityLiving.curePotionEffects(stack);
-		if (entityLiving instanceof ServerPlayerEntity) {
-			ServerPlayerEntity serverplayerentity = (ServerPlayerEntity) entityLiving;
+		if (entityLiving instanceof ServerPlayer) {
+			ServerPlayer serverplayerentity = (ServerPlayer) entityLiving;
 			CriteriaTriggers.CONSUME_ITEM.trigger(serverplayerentity, stack);
-			serverplayerentity.addStat(Stats.ITEM_USED.get(this));
+			serverplayerentity.awardStat(Stats.ITEM_USED.get(this));
 		}
 
-		if (entityLiving instanceof PlayerEntity && !((PlayerEntity) entityLiving).abilities.isCreativeMode) {
+		if (entityLiving instanceof Player && !((Player) entityLiving).isCreative()) {
 			stack.shrink(1);
 		}
 
-		if (!worldIn.isRemote) {
-			((PlayerEntity) entityLiving).getFoodStats().addStats(1, 0F);
+		if (!worldIn.isClientSide) {
+			((Player) entityLiving).getFoodData().eat(1, 0F);
 		}
 
-		if (entityLiving == null || !((PlayerEntity) entityLiving).isCreative()) {
+		if (entityLiving == null || !((Player) entityLiving).isCreative()) {
 			if (stack.isEmpty()) {
 				return new ItemStack(Items.GLASS_BOTTLE);
 			}
 
 			if (entityLiving != null) {
-				((PlayerEntity) entityLiving).addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
+				((Player) entityLiving).addItem(new ItemStack(Items.GLASS_BOTTLE));
 			}
 		}
 
@@ -57,13 +57,13 @@ public class BottleItem extends Item {
 	}
 
 	@Override
-	public UseAction getUseAction(ItemStack stack) {
-		return UseAction.DRINK;
+	public UseAnim getUseAnimation(ItemStack stack) {
+		return UseAnim.DRINK;
 	}
 
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-		playerIn.setActiveHand(handIn);
-		return new ActionResult<>(ActionResultType.SUCCESS, playerIn.getHeldItem(handIn));
+	public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
+		playerIn.startUsingItem(handIn);
+		return new InteractionResultHolder<>(InteractionResult.SUCCESS, playerIn.getItemInHand(handIn));
 	}
 }

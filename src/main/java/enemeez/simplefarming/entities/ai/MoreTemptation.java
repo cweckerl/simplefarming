@@ -1,12 +1,12 @@
 package enemeez.simplefarming.entities.ai;
 
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.ai.goal.TemptGoal;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.goal.TemptGoal;
+import net.minecraft.world.item.crafting.Ingredient;
 
 public class MoreTemptation extends TemptGoal {
-	public MoreTemptation(CreatureEntity creatureIn, double speedIn, boolean bool, Ingredient temptItemsIn) {
-		super(creatureIn, speedIn, bool, temptItemsIn);
+	public MoreTemptation(PathfinderMob creatureIn, double speedIn, boolean bool, Ingredient temptItemsIn) {
+		super(creatureIn, speedIn, temptItemsIn, bool);
 	}
 
 }

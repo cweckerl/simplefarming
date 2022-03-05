@@ -2,13 +2,7 @@ package enemeez.simplefarming.events;
 
 import enemeez.simplefarming.config.MiscConfig;
 import enemeez.simplefarming.config.RightClickConfig;
-import enemeez.simplefarming.events.harvest.BerryBushHarvest;
-import enemeez.simplefarming.events.harvest.CactusCropHarvest;
-import enemeez.simplefarming.events.harvest.CropHarvest;
-import enemeez.simplefarming.events.harvest.DoubleCropHarvest;
-import enemeez.simplefarming.events.harvest.FruitLeavesHarvest;
-import enemeez.simplefarming.events.harvest.GrapeHarvest;
-import enemeez.simplefarming.events.harvest.WildPlantHarvest;
+import enemeez.simplefarming.events.harvest.*;
 import net.minecraftforge.common.MinecraftForge;
 
 public class EventSetup
