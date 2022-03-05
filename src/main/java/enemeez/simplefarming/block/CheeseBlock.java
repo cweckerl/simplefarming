@@ -38,7 +38,7 @@ public class CheeseBlock extends CakeBlock {
 
 	private InteractionResult eatBlock(LevelAccessor world, BlockPos pos, BlockState state, Player entity) {
 		int bites = state.getValue(BITES);
-		world.addFreshEntity(new ItemEntity((Level) world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.cheese_slice.get(), 1)));
+		world.addFreshEntity(new ItemEntity((Level) world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.CHEESE_SLICE.get(), 1)));
 		if (bites < 6) {
 			world.setBlock(pos, state.setValue(BITES, bites + 1), Block.UPDATE_ALL);
 		} else {

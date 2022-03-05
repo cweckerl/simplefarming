@@ -86,7 +86,7 @@ public class OpuntiaBlock extends GrowableBushBlock
 
 	@Override
 	public ItemStack getCloneItemStack(BlockGetter worldIn, BlockPos pos, BlockState state) {
-		return new ItemStack(ModItems.cactus_crop.get());
+		return new ItemStack(ModItems.CACTUS_CROP.get());
 	}
 
 	@Override
