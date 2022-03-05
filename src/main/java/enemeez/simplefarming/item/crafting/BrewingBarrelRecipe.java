@@ -1,6 +1,7 @@
 package enemeez.simplefarming.item.crafting;
 
 import com.google.gson.JsonObject;
+import enemeez.simplefarming.SimpleFarming;
 import enemeez.simplefarming.init.ModRecipes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -77,6 +78,10 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
 	}
 
 	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<BrewingBarrelRecipe> {
+
+		public Serializer() {
+			setRegistryName(SimpleFarming.getId("brewing"));
+		}
 
 		@Override
 		public BrewingBarrelRecipe fromJson(ResourceLocation recipeId, JsonObject json) {

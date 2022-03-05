@@ -23,57 +23,53 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 
 public class SideProxy {
-	SideProxy() {
-		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.CONFIG, "simplefarming.toml");
-		Config.loadConfig(Config.CONFIG, FMLPaths.CONFIGDIR.get().resolve("simplefarming.toml").toString());
+    SideProxy() {
+        // Load configs
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.CONFIG, "simplefarming.toml");
+        Config.loadConfig(Config.CONFIG, FMLPaths.CONFIGDIR.get().resolve("simplefarming.toml").toString());
 
-		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-		eventBus.addListener(SideProxy::commonSetup);
-		eventBus.addListener(SideProxy::enqueueIMC);
-		eventBus.addListener(SideProxy::processIMC);
+        // Common setup event
+        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        eventBus.addListener(SideProxy::commonSetup);
 
-		ModBlocks.registerBlocks();
-		ModBlockEntities.registerBlockEntities();
-		ModWorldGen.registerFeatures();
+        // Registration
+        ModBlocks.registerBlocks();
+        ModBlockEntities.registerBlockEntities();
+        ModWorldGen.registerFeatures();
 
-		eventBus.addGenericListener(Item.class, ModItems::registerAll);
-		MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, SimpleGeneration::onBiomeLoad);
-		eventBus.addGenericListener(GlobalLootModifierSerializer.class, SeedDrops::registerModifiers);
-	}
+        eventBus.addGenericListener(Item.class, ModItems::registerAll);
 
-	private static void commonSetup(FMLCommonSetupEvent event) {
-		SimpleFarming.LOGGER.debug("common setup");
-		EventSetup.setupEvents();
-		FlammableBlocks.registerFlammable();
-		CompostItems.register();
-	}
+        // World gen and loot modifiers
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, SimpleGeneration::onBiomeLoad);
+        eventBus.addGenericListener(GlobalLootModifierSerializer.class, SeedDrops::registerModifiers);
+    }
 
-	private static void enqueueIMC(final InterModEnqueueEvent event) {
-	}
+    private static void commonSetup(FMLCommonSetupEvent event) {
+        SimpleFarming.LOGGER.debug("common setup");
+        EventSetup.setupEvents();
+        FlammableBlocks.registerFlammable();
+        CompostItems.register();
+    }
 
-	private static void processIMC(final InterModProcessEvent event) {
-	}
+    static class Client extends SideProxy {
+        Client() {
+            FMLJavaModLoadingContext.get().getModEventBus().addListener(Client::clientSetup);
+        }
 
-	static class Client extends SideProxy {
-		Client() {
-			FMLJavaModLoadingContext.get().getModEventBus().addListener(Client::clientSetup);
-		}
+        private static void clientSetup(FMLClientSetupEvent event) {
+            ClientRenderer.registerBlocks();
+        }
 
-		private static void clientSetup(FMLClientSetupEvent event) {
-			ClientRenderer.registerBlocks();
-		}
+    }
 
-	}
+    static class Server extends SideProxy {
+        Server() {
+            FMLJavaModLoadingContext.get().getModEventBus().addListener(Server::serverSetup);
+        }
 
-	static class Server extends SideProxy {
-		Server() {
-			FMLJavaModLoadingContext.get().getModEventBus().addListener(Server::serverSetup);
+        private static void serverSetup(FMLDedicatedServerSetupEvent event) {
 
-		}
-
-		private static void serverSetup(FMLDedicatedServerSetupEvent event) {
-
-		}
-	}
+        }
+    }
 
 }

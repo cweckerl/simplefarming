@@ -15,7 +15,7 @@ import javax.annotation.Nonnull;
 public class SimpleFarming {
 	public static final String MOD_ID = "simplefarming";
 	public static final Logger LOGGER = LogManager.getLogger();
-	public static final CreativeModeTab ITEM_GROUP = new CreativeModeTab("simplefarming") {
+	public static final CreativeModeTab CREATIVE_TAB = new CreativeModeTab("simplefarming") {
 		public ItemStack makeIcon() {
 			return new ItemStack(ModItems.tomato);
 		}
