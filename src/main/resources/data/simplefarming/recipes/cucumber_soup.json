@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "tag": "forge:crops/cucumber"
+    },
+    {
+      "tag": "forge:crops/cucumber"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:cucumber_soup"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "name": "grapevine",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:grapes"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "simplefarming:grapevine",
+          "properties": {
+            "age": "3"
+          }
+        }
+      ]
+    }
+  ]
+}

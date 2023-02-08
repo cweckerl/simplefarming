@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "simplefarming:block/chocolate_yellow_candle_cake"
+    },
+    "lit=true": {
+      "model": "simplefarming:block/chocolate_yellow_candle_cake_lit"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:hay_bales/barley_hay_block",
+    "#forge:hay_bales/oat_hay_block",
+    "#forge:hay_bales/rice_hay_block",
+    "#forge:hay_bales/rye_hay_block",
+    "#forge:hay_bales/hay_block"
+  ]
+}

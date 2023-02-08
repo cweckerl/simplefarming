@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "tag": "forge:quinoa"
+    },
+    {
+      "tag": "forge:quinoa"
+    },
+    {
+      "tag": "forge:quinoa"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:quinoa_salad"
+  }
+}

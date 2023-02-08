@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:fruits/strawberries"
+    },
+    {
+      "tag": "forge:fruits/strawberries"
+    },
+    {
+      "tag": "forge:fruits/strawberries"
+    }
+  ],
+  "result": {
+    "item": "minecraft:red_dye"
+  }
+}

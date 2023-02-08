@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "size=small": {
+      "model": "simplefarming:block/fruit_log_small"
+    },
+    "size=medium": {
+      "model": "simplefarming:block/fruit_log_medium"
+    },
+    "size=large": {
+      "model": "simplefarming:block/fruit_log_large"
+    }
+  }
+}

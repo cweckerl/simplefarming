@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:salad_ingredients/lettuce",
+    "#forge:salad_ingredients/spinach"
+  ]
+}

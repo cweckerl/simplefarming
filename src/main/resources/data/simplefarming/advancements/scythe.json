@@ -1,0 +1,42 @@
+{
+  "parent": "simplefarming:root",
+  "display": {
+    "icon": {
+      "item": "simplefarming:iron_scythe"
+    },
+    "title": {
+      "translate": "advancements.simplefarming.scythe.title"
+    },
+    "description": {
+      "translate": "advancements.simplefarming.scythe.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "scythe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:wooden_scythe",
+              "simplefarming:stone_scythe",
+              "simplefarming:iron_scythe",
+              "simplefarming:golden_scythe",
+              "simplefarming:diamond_scythe",
+              "simplefarming:netherite_scythe"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "scythe"
+    ]
+  ]
+}

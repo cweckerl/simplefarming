@@ -1,0 +1,44 @@
+{
+  "textures": {
+    "particle": "simplefarming:block/cheese_side",
+    "bottom": "simplefarming:block/cheese_bottom",
+    "top": "simplefarming:block/cheese_top",
+    "side": "simplefarming:block/cheese_side",
+    "inside": "simplefarming:block/cheese_inner"
+  },
+  "elements": [
+    {
+      "from": [
+        11,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        8,
+        15
+      ],
+      "faces": {
+        "down": {
+          "texture": "#bottom",
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "north": {
+          "texture": "#side"
+        },
+        "south": {
+          "texture": "#side"
+        },
+        "west": {
+          "texture": "#inside"
+        },
+        "east": {
+          "texture": "#side"
+        }
+      }
+    }
+  ]
+}

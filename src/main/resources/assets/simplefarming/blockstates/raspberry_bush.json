@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "simplefarming:block/bush"
+    },
+    "age=1": {
+      "model": "simplefarming:block/bush"
+    },
+    "age=2": {
+      "model": "simplefarming:block/bush"
+    },
+    "age=3": [
+      {
+        "model": "simplefarming:block/raspberry_bush1"
+      },
+      {
+        "model": "simplefarming:block/raspberry_bush2"
+      }
+    ]
+  }
+}

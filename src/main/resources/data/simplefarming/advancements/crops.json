@@ -1,0 +1,342 @@
+{
+  "parent": "simplefarming:berries",
+  "display": {
+    "icon": {
+      "item": "simplefarming:broccoli"
+    },
+    "title": {
+      "translate": "advancements.simplefarming.crops.title"
+    },
+    "description": {
+      "translate": "advancements.simplefarming.crops.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "broccoli": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:broccoli"
+            ]
+          }
+        ]
+      }
+    },
+    "cassava": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:cassava"
+            ]
+          }
+        ]
+      }
+    },
+    "corn": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:corn"
+            ]
+          }
+        ]
+      }
+    },
+    "cucumber": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:cucumber"
+            ]
+          }
+        ]
+      }
+    },
+    "eggplant": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:eggplant"
+            ]
+          }
+        ]
+      }
+    },
+    "habanero": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:habanero"
+            ]
+          }
+        ]
+      }
+    },
+    "ginger": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:ginger"
+            ]
+          }
+        ]
+      }
+    },
+    "lettuce": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:lettuce"
+            ]
+          }
+        ]
+      }
+    },
+    "onion": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:onion"
+            ]
+          }
+        ]
+      }
+    },
+    "pea_pod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:pea_pod"
+            ]
+          }
+        ]
+      }
+    },
+    "peanut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:peanut"
+            ]
+          }
+        ]
+      }
+    },
+    "pepper": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:pepper"
+            ]
+          }
+        ]
+      }
+    },
+    "radish": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:radish"
+            ]
+          }
+        ]
+      }
+    },
+    "sorghum": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:sorghum"
+            ]
+          }
+        ]
+      }
+    },
+    "soybean": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:soybean"
+            ]
+          }
+        ]
+      }
+    },
+    "spinach": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:spinach"
+            ]
+          }
+        ]
+      }
+    },
+    "sweet_potato": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:sweet_potato"
+            ]
+          }
+        ]
+      }
+    },
+    "tomato": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:tomato"
+            ]
+          }
+        ]
+      }
+    },
+    "turnip": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:turnip"
+            ]
+          }
+        ]
+      }
+    },
+    "yam": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:yam"
+            ]
+          }
+        ]
+      }
+    },
+    "zucchini": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:zucchini"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "loot": [
+      "simplefarming:gameplay/music_disc"
+    ]
+  },
+  "requirements": [
+    [
+      "broccoli"
+    ],
+    [
+      "cassava"
+    ],
+    [
+      "corn"
+    ],
+    [
+      "cucumber"
+    ],
+    [
+      "eggplant"
+    ],
+    [
+      "habanero"
+    ],
+    [
+      "ginger"
+    ],
+    [
+      "lettuce"
+    ],
+    [
+      "onion"
+    ],
+    [
+      "pea_pod"
+    ],
+    [
+      "peanut"
+    ],
+    [
+      "pepper"
+    ],
+    [
+      "radish"
+    ],
+    [
+      "sorghum"
+    ],
+    [
+      "soybean"
+    ],
+    [
+      "spinach"
+    ],
+    [
+      "sweet_potato"
+    ],
+    [
+      "tomato"
+    ],
+    [
+      "turnip"
+    ],
+    [
+      "yam"
+    ],
+    [
+      "zucchini"
+    ]
+  ]
+}

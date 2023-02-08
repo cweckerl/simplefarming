@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "name": "blackberry0",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:blackberry_bush"
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "name": "blackberry1",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:blackberries"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "simplefarming:blackberry_bush",
+          "properties": {
+            "age": "3"
+          }
+        }
+      ]
+    }
+  ]
+}

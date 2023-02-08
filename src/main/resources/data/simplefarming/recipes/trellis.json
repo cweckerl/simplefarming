@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "KWK",
+    "WWW",
+    "KWK"
+  ],
+  "key": {
+    "W": {
+      "tag": "minecraft:planks"
+    },
+    "K": {
+      "item": "simplefarming:kenaf_fiber"
+    }
+  },
+  "result": {
+    "item": "simplefarming:trellis",
+    "count": 5
+  }
+}

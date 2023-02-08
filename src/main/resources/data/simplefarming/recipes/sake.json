@@ -1,0 +1,9 @@
+{
+  "type": "simplefarming:fermenting",
+  "ingredient": {
+    "tag": "forge:crops/rice"
+  },
+  "result": {
+    "item": "simplefarming:sake"
+  }
+}

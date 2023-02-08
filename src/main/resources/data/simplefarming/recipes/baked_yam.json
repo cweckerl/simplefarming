@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "forge:crops/yam"
+  },
+  "result": "simplefarming:baked_yam",
+  "experience": 0.35,
+  "cookingtime": 200
+}

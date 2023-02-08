@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": {
+    "tag": "forge:crops/sweet_potato"
+  },
+  "result": "simplefarming:baked_sweet_potato",
+  "experience": 0.35,
+  "cookingtime": 600
+}

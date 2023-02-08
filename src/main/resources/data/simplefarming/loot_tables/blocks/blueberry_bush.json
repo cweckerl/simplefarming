@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "name": "blueberry0",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:blueberry_bush"
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "name": "blueberry1",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:blueberries"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "simplefarming:blueberry_bush",
+          "properties": {
+            "age": "3"
+          }
+        }
+      ]
+    }
+  ]
+}

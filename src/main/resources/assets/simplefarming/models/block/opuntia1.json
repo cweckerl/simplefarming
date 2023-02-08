@@ -1,0 +1,712 @@
+{
+  "textures": {
+    "0": "block/cactus_bottom",
+    "1": "block/cactus_side",
+    "2": "block/cactus_top",
+    "3": "simplefarming:item/cactus_fruit",
+    "particle": "block/cactus_bottom"
+  },
+  "elements": [
+    {
+      "name": "top_leaf",
+      "from": [
+        4,
+        10,
+        7
+      ],
+      "to": [
+        12,
+        12,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            3,
+            12,
+            5
+          ],
+          "texture": "#1"
+        },
+        "east": {
+          "uv": [
+            7,
+            1,
+            9,
+            3
+          ],
+          "texture": "#1"
+        },
+        "south": {
+          "uv": [
+            4,
+            3,
+            12,
+            5
+          ],
+          "texture": "#1"
+        },
+        "west": {
+          "uv": [
+            7,
+            1,
+            9,
+            3
+          ],
+          "texture": "#1"
+        },
+        "up": {
+          "uv": [
+            4,
+            3,
+            12,
+            5
+          ],
+          "texture": "#2"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            8,
+            2
+          ],
+          "texture": "#1"
+        }
+      }
+    },
+    {
+      "name": "middle_leaf",
+      "from": [
+        2,
+        4,
+        7
+      ],
+      "to": [
+        14,
+        10,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            0,
+            14,
+            6
+          ],
+          "texture": "#1"
+        },
+        "east": {
+          "uv": [
+            7,
+            0,
+            9,
+            6
+          ],
+          "texture": "#1"
+        },
+        "south": {
+          "uv": [
+            2,
+            0,
+            14,
+            6
+          ],
+          "texture": "#1"
+        },
+        "west": {
+          "uv": [
+            7,
+            0,
+            9,
+            6
+          ],
+          "texture": "#1"
+        },
+        "up": {
+          "uv": [
+            2,
+            7,
+            14,
+            9
+          ],
+          "texture": "#2"
+        },
+        "down": {
+          "uv": [
+            2,
+            7,
+            14,
+            9
+          ],
+          "texture": "#2"
+        }
+      }
+    },
+    {
+      "name": "bottom_leaf",
+      "from": [
+        4,
+        2,
+        7
+      ],
+      "to": [
+        12,
+        4,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            7,
+            12,
+            9
+          ],
+          "texture": "#1"
+        },
+        "east": {
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ],
+          "texture": "#1"
+        },
+        "south": {
+          "uv": [
+            4,
+            7,
+            12,
+            9
+          ],
+          "texture": "#1"
+        },
+        "west": {
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ],
+          "texture": "#1"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            8,
+            2
+          ],
+          "texture": "#1"
+        },
+        "down": {
+          "uv": [
+            4,
+            7,
+            12,
+            9
+          ],
+          "texture": "#2"
+        }
+      }
+    },
+    {
+      "name": "stem",
+      "from": [
+        7,
+        0,
+        7
+      ],
+      "to": [
+        9,
+        2,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ],
+          "texture": "#1"
+        },
+        "east": {
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ],
+          "texture": "#1"
+        },
+        "south": {
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ],
+          "texture": "#1"
+        },
+        "west": {
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ],
+          "texture": "#1"
+        },
+        "down": {
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ],
+          "texture": "#0"
+        }
+      }
+    },
+    {
+      "name": "fruit",
+      "from": [
+        12,
+        10,
+        7
+      ],
+      "to": [
+        14,
+        12,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            6,
+            8,
+            8
+          ],
+          "texture": "#3"
+        },
+        "east": {
+          "uv": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "texture": "#3"
+        },
+        "south": {
+          "uv": [
+            6,
+            8,
+            8,
+            10
+          ],
+          "texture": "#3"
+        },
+        "west": {
+          "uv": [
+            10,
+            4,
+            12,
+            6
+          ],
+          "texture": "#3"
+        },
+        "up": {
+          "uv": [
+            7,
+            5,
+            9,
+            7
+          ],
+          "texture": "#3"
+        },
+        "down": {
+          "uv": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "texture": "#3"
+        }
+      }
+    },
+    {
+      "name": "fruit4",
+      "from": [
+        2,
+        10,
+        7
+      ],
+      "to": [
+        4,
+        12,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            7,
+            6,
+            9
+          ],
+          "texture": "#3"
+        },
+        "east": {
+          "uv": [
+            8,
+            9,
+            10,
+            11
+          ],
+          "texture": "#3"
+        },
+        "south": {
+          "uv": [
+            4,
+            10,
+            6,
+            12
+          ],
+          "texture": "#3"
+        },
+        "west": {
+          "uv": [
+            8,
+            5,
+            10,
+            7
+          ],
+          "texture": "#3"
+        },
+        "up": {
+          "uv": [
+            6,
+            6,
+            8,
+            8
+          ],
+          "texture": "#3"
+        },
+        "down": {
+          "uv": [
+            7,
+            6,
+            9,
+            8
+          ],
+          "texture": "#3"
+        }
+      }
+    },
+    {
+      "name": "fruit2",
+      "from": [
+        10,
+        12,
+        7
+      ],
+      "to": [
+        12,
+        14,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "texture": "#3"
+        },
+        "east": {
+          "uv": [
+            7,
+            4,
+            9,
+            6
+          ],
+          "texture": "#3"
+        },
+        "south": {
+          "uv": [
+            8,
+            6,
+            10,
+            8
+          ],
+          "texture": "#3"
+        },
+        "west": {
+          "uv": [
+            10,
+            4,
+            12,
+            6
+          ],
+          "texture": "#3"
+        },
+        "up": {
+          "uv": [
+            5,
+            7,
+            7,
+            9
+          ],
+          "texture": "#3"
+        },
+        "down": {
+          "uv": [
+            7,
+            6,
+            9,
+            8
+          ],
+          "texture": "#3"
+        }
+      }
+    },
+    {
+      "name": "fruit3",
+      "from": [
+        7,
+        12,
+        7
+      ],
+      "to": [
+        9,
+        14,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            4,
+            9,
+            6
+          ],
+          "texture": "#3"
+        },
+        "east": {
+          "uv": [
+            5,
+            9,
+            7,
+            11
+          ],
+          "texture": "#3"
+        },
+        "south": {
+          "uv": [
+            6,
+            6,
+            8,
+            8
+          ],
+          "texture": "#3"
+        },
+        "west": {
+          "uv": [
+            9,
+            5,
+            11,
+            7
+          ],
+          "texture": "#3"
+        },
+        "up": {
+          "uv": [
+            5,
+            5,
+            7,
+            7
+          ],
+          "texture": "#3"
+        },
+        "down": {
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ],
+          "texture": "#3"
+        }
+      }
+    },
+    {
+      "name": "fruit5",
+      "from": [
+        4,
+        12,
+        7
+      ],
+      "to": [
+        6,
+        14,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ],
+          "texture": "#3"
+        },
+        "east": {
+          "uv": [
+            6,
+            5,
+            8,
+            7
+          ],
+          "texture": "#3"
+        },
+        "south": {
+          "uv": [
+            9,
+            5,
+            11,
+            7
+          ],
+          "texture": "#3"
+        },
+        "west": {
+          "uv": [
+            4,
+            8,
+            6,
+            10
+          ],
+          "texture": "#3"
+        },
+        "up": {
+          "uv": [
+            6,
+            5,
+            8,
+            7
+          ],
+          "texture": "#3"
+        },
+        "down": {
+          "uv": [
+            6,
+            6,
+            8,
+            8
+          ],
+          "texture": "#3"
+        }
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        75,
+        -45,
+        0
+      ],
+      "translation": [
+        0,
+        2.5,
+        0
+      ],
+      "scale": [
+        0.375,
+        0.375,
+        0.375
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        75,
+        -45,
+        0
+      ],
+      "translation": [
+        0,
+        2.5,
+        0
+      ],
+      "scale": [
+        0.375,
+        0.375,
+        0.375
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        -45,
+        0
+      ],
+      "translation": [
+        0,
+        2.5,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        -45,
+        0
+      ],
+      "translation": [
+        0,
+        2.5,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    "ground": {
+      "scale": [
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "gui": {
+      "rotation": [
+        30,
+        -45,
+        0
+      ],
+      "scale": [
+        0.625,
+        0.625,
+        0.625
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "simplefarming:cantaloupe",
+    "simplefarming:squash",
+    "simplefarming:honeydew",
+    "#minecraft:fences",
+    "#minecraft:fence_gates",
+    "#minecraft:walls"
+  ]
+}

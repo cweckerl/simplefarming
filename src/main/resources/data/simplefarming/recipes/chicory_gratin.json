@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "HOH",
+    "GCG"
+  ],
+  "key": {
+    "O": {
+      "tag": "forge:crops/onion"
+    },
+    "H": {
+      "item": "simplefarming:chicory_root"
+    },
+    "C": {
+      "item": "simplefarming:cheese_slice"
+    },
+    "G": {
+      "tag": "forge:grain"
+    }
+  },
+  "result": {
+    "item": "simplefarming:chicory_gratin"
+  }
+}

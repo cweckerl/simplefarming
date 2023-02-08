@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:bread"
+    },
+    {
+      "tag": "forge:crops/peanut"
+    },
+    {
+      "item": "simplefarming:jam"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:pbj"
+  }
+}

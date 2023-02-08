@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "simplefarming:block/squash_block"
+    }
+  }
+}

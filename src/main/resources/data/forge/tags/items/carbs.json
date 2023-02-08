@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:carbs/barley",
+    "#forge:carbs/oat",
+    "#forge:carbs/rye",
+    "#forge:carbs/corn",
+    "#forge:carbs/potato",
+    "#forge:carbs/rice",
+    "#forge:carbs/sweet_potato",
+    "#forge:carbs/yam",
+    "#forge:carbs/sorghum"
+  ]
+}

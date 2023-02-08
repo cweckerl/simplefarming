@@ -1,0 +1,6 @@
+{
+  "parent": "simplefarming:block/crop",
+  "textures": {
+    "crop": "simplefarming:block/rice_crop3"
+  }
+}

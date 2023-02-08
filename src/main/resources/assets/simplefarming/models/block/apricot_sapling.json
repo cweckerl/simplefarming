@@ -1,0 +1,6 @@
+{
+  "parent": "simplefarming:block/cross",
+  "textures": {
+    "cross": "simplefarming:block/apricot_sapling"
+  }
+}

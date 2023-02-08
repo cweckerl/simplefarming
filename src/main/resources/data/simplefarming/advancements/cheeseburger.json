@@ -1,0 +1,37 @@
+{
+  "parent": "simplefarming:cheese",
+  "display": {
+    "icon": {
+      "item": "simplefarming:cheeseburger"
+    },
+    "title": {
+      "translate": "advancements.simplefarming.cheeseburger.title"
+    },
+    "description": {
+      "translate": "advancements.simplefarming.cheeseburger.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cheeseburger": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:cheeseburger"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cheeseburger"
+    ]
+  ]
+}

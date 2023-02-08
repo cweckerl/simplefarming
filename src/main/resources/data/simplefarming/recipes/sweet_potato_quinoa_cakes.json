@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/sweet_potato"
+    },
+    {
+      "tag": "forge:quinoa"
+    },
+    {
+      "tag": "forge:crops/onion"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:sweet_potato_quinoa_cakes"
+  }
+}

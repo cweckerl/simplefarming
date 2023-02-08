@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "name": "strawberry0",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:strawberry_bush"
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "name": "strawberry1",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:strawberries"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "simplefarming:strawberry_bush",
+          "properties": {
+            "age": "3"
+          }
+        }
+      ]
+    }
+  ]
+}

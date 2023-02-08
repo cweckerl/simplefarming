@@ -1,0 +1,37 @@
+{
+  "parent": "simplefarming:root",
+  "display": {
+    "icon": {
+      "item": "simplefarming:cheese_wheel"
+    },
+    "title": {
+      "translate": "advancements.simplefarming.cheese.title"
+    },
+    "description": {
+      "translate": "advancements.simplefarming.cheese.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "cheese": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:cheese_wheel"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cheese"
+    ]
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#forge:is_desert",
+  "features": "simplefarming:opuntia_checked",
+  "step": "vegetal_decoration"
+}

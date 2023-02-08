@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:cooked_fishes/salmon",
+    "#forge:cooked_fishes/cod"
+  ]
+}

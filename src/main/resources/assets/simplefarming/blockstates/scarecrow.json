@@ -1,0 +1,35 @@
+{
+  "variants": {
+    "facing=south,half=lower": {
+      "model": "simplefarming:block/scarecrow_bot",
+      "y": 270
+    },
+    "facing=south,half=upper": {
+      "model": "simplefarming:block/scarecrow_top",
+      "y": 270
+    },
+    "facing=west,half=lower": {
+      "model": "simplefarming:block/scarecrow_bot"
+    },
+    "facing=west,half=upper": {
+      "model": "simplefarming:block/scarecrow_top"
+    },
+    "facing=east,half=lower": {
+      "model": "simplefarming:block/scarecrow_bot",
+      "y": 180
+    },
+    "facing=east,half=upper": {
+      "model": "simplefarming:block/scarecrow_top",
+      "y": 180
+    },
+    "facing=north,half=lower": {
+      "model": "simplefarming:block/scarecrow_bot",
+      "y": 90
+    },
+    "facing=north,half=upper": {
+      "model": "simplefarming:block/scarecrow_top",
+      "y": 90
+    }
+  }
+}
+

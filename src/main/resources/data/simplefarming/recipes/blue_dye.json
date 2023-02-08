@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:fruits/blueberries"
+    },
+    {
+      "tag": "forge:fruits/blueberries"
+    },
+    {
+      "tag": "forge:fruits/blueberries"
+    }
+  ],
+  "result": {
+    "item": "minecraft:blue_dye"
+  }
+}

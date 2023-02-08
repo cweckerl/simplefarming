@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:vegetables/broccoli",
+    "#forge:vegetables/cassava",
+    "#forge:vegetables/corn",
+    "#forge:vegetables/cucumber",
+    "#forge:vegetables/eggplant",
+    "#forge:vegetables/lettuce",
+    "#forge:vegetables/onion",
+    "#forge:vegetables/pepper",
+    "#forge:vegetables/radish",
+    "#forge:vegetables/soybean",
+    "#forge:vegetables/spinach",
+    "#forge:vegetables/squash",
+    "#forge:vegetables/tomato",
+    "#forge:vegetables/turnip",
+    "#forge:vegetables/ginger",
+    "#forge:vegetables/sorghum",
+    "#forge:vegetables/pea",
+    "#forge:vegetables/sweet_potato",
+    "#forge:vegetables/zucchini",
+    "#forge:vegetables/carrot",
+    "#forge:vegetables/potato",
+    "#forge:vegetables/beetroot",
+    "#forge:vegetables/habanero",
+    "#forge:vegetables/yam"
+  ]
+}

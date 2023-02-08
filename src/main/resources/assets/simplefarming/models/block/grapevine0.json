@@ -1,0 +1,6 @@
+{
+  "parent": "simplefarming:block/hanging_crop",
+  "textures": {
+    "hanging_crop": "simplefarming:block/grapevine0"
+  }
+}

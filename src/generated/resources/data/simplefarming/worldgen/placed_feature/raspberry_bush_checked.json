@@ -1,0 +1,25 @@
+{
+  "feature": "simplefarming:raspberry_bush",
+  "placement": [
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "MOTION_BLOCKING"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "simplefarming:raspberry_bush",
+          "Properties": {
+            "age": "0"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 80
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplefarming:cotton"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:cotton_seeds"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GBG"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:grain"
+    },
+    "B": {
+      "tag": "forge:fruits/banana"
+    }
+  },
+  "result": {
+    "item": "simplefarming:banana_bread"
+  }
+}

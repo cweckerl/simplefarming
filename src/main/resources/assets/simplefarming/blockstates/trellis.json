@@ -1,0 +1,136 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_node"
+      },
+      "when": {
+        "can_grow": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_leaves_node"
+      },
+      "when": {
+        "can_grow": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_horizontal_connector",
+        "y": 270
+      },
+      "when": {
+        "north": "true",
+        "can_grow": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_leaves_horizontal_connector",
+        "y": 270
+      },
+      "when": {
+        "north": "true",
+        "can_grow": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_horizontal_connector",
+        "y": 90
+      },
+      "when": {
+        "south": "true",
+        "can_grow": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_leaves_horizontal_connector",
+        "y": 90
+      },
+      "when": {
+        "south": "true",
+        "can_grow": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_horizontal_connector"
+      },
+      "when": {
+        "east": "true",
+        "can_grow": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_leaves_horizontal_connector"
+      },
+      "when": {
+        "east": "true",
+        "can_grow": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_horizontal_connector",
+        "y": 180
+      },
+      "when": {
+        "west": "true",
+        "can_grow": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_leaves_horizontal_connector",
+        "y": 180
+      },
+      "when": {
+        "west": "true",
+        "can_grow": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_vertical_connector"
+      },
+      "when": {
+        "up": "true",
+        "can_grow": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_leaves_vertical_connector"
+      },
+      "when": {
+        "up": "true",
+        "can_grow": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_vertical_connector",
+        "x": 180
+      },
+      "when": {
+        "down": "true",
+        "can_grow": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "simplefarming:block/trellis_leaves_vertical_connector",
+        "x": 180
+      },
+      "when": {
+        "down": "true",
+        "can_grow": "true"
+      }
+    }
+  ]
+}

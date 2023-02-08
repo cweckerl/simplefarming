@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "name": "olive_leaves0",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:olives"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "simplefarming:olive_leaves",
+          "properties": {
+            "age": "7"
+          }
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "name": "olive_leaves1",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:olive_sapling"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        },
+        {
+          "condition": "minecraft:table_bonus",
+          "enchantment": "minecraft:fortune",
+          "chances": [
+            0.10,
+            0.125,
+            0.167,
+            0.2
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "simplefarming:block/quinoa_plant0"
+    },
+    "age=1": {
+      "model": "simplefarming:block/quinoa_plant0"
+    },
+    "age=2": {
+      "model": "simplefarming:block/quinoa_plant0"
+    },
+    "age=3": [
+      {
+        "model": "simplefarming:block/quinoa_plant1a"
+      },
+      {
+        "model": "simplefarming:block/quinoa_plant1b"
+      },
+      {
+        "model": "simplefarming:block/quinoa_plant1c"
+      }
+    ]
+  }
+}

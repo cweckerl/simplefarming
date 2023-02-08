@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "simplefarming:raw_bacon"
+  },
+  "result": "simplefarming:cooked_bacon",
+  "experience": 0.35,
+  "cookingtime": 100
+}

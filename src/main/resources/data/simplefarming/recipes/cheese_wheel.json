@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "simplefarming:vinegar"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:cheese_wheel"
+  }
+}

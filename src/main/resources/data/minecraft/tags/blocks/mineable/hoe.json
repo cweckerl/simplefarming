@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "simplefarming:barley_hay_block",
+    "simplefarming:oat_hay_block",
+    "simplefarming:rice_hay_block",
+    "simplefarming:rye_hay_block",
+    "simplefarming:apple_leaves",
+    "simplefarming:apricot_leaves",
+    "simplefarming:banana_leaves",
+    "simplefarming:cherry_leaves",
+    "simplefarming:mango_leaves",
+    "simplefarming:olive_leaves",
+    "simplefarming:orange_leaves",
+    "simplefarming:plum_leaves",
+    "simplefarming:pear_leaves",
+    "simplefarming:blackberry_bush",
+    "simplefarming:blueberry_bush",
+    "simplefarming:raspberry_bush",
+    "simplefarming:strawberry_bush"
+  ]
+}

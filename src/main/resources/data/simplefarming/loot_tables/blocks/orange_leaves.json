@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "name": "orange_leaves0",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:orange"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "simplefarming:orange_leaves",
+          "properties": {
+            "age": "7"
+          }
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "name": "orange_leaves1",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:orange_sapling"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        },
+        {
+          "condition": "minecraft:table_bonus",
+          "enchantment": "minecraft:fortune",
+          "chances": [
+            0.10,
+            0.125,
+            0.167,
+            0.2
+          ]
+        }
+      ]
+    }
+  ]
+}

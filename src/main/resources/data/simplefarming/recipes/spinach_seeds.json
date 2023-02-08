@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplefarming:spinach"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:spinach_seeds"
+  }
+}

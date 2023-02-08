@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:bread"
+    },
+    {
+      "item": "minecraft:cooked_beef"
+    },
+    {
+      "tag": "forge:crops/tomato"
+    },
+    {
+      "item": "simplefarming:cheese_slice"
+    },
+    {
+      "tag": "forge:salad_ingredients"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:cheeseburger"
+  }
+}

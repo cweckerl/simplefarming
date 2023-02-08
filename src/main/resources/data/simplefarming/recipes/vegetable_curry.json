@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PMP",
+    "RRR"
+  ],
+  "key": {
+    "M": {
+      "tag": "forge:vegetables"
+    },
+    "R": {
+      "tag": "forge:grain/rice"
+    },
+    "P": {
+      "item": "simplefarming:curry_powder"
+    }
+  },
+  "result": {
+    "item": "simplefarming:vegetable_curry"
+  }
+}

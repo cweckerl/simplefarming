@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#H#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:gold_nugget"
+    },
+    "H": {
+      "tag": "forge:peppers/habanero"
+    }
+  },
+  "result": {
+    "item": "simplefarming:golden_habanero"
+  }
+}

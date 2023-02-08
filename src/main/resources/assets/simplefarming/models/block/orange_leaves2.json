@@ -1,0 +1,7 @@
+{
+  "parent": "simplefarming:block/fruit_leaves",
+  "textures": {
+    "overlay": "simplefarming:block/orange_leaves2",
+    "all": "block/jungle_leaves"
+  }
+}

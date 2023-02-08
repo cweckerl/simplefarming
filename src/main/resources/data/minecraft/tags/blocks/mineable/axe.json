@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "simplefarming:fruit_log",
+    "simplefarming:scarecrow",
+    "simplefarming:trellis",
+    "simplefarming:grape_trunk",
+    "simplefarming:cantaloupe",
+    "simplefarming:honeydew",
+    "simplefarming:squash"
+  ]
+}

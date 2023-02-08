@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplefarming:cucumber"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:cucumber_seeds"
+  }
+}

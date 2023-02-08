@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "item": "simplefarming:chocolate"
+    },
+    {
+      "tag": "forge:fruits/orange"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:jaffa_cake"
+  }
+}

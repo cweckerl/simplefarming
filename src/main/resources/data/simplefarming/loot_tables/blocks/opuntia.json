@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "name": "cactus0",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:opuntia"
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "name": "cactus1",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:cactus_fruit"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "simplefarming:opuntia",
+          "properties": {
+            "age": "3"
+          }
+        }
+      ]
+    }
+  ]
+}

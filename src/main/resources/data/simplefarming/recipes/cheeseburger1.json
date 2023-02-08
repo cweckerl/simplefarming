@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplefarming:hamburger"
+    },
+    {
+      "item": "simplefarming:cheese_slice"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:cheeseburger"
+  }
+}

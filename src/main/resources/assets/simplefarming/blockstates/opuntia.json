@@ -1,0 +1,65 @@
+{
+  "variants": {
+    "facing=south,age=0": {
+      "model": "simplefarming:block/opuntia0",
+      "y": 90
+    },
+    "facing=west,age=0": {
+      "model": "simplefarming:block/opuntia0"
+    },
+    "facing=north,age=0": {
+      "model": "simplefarming:block/opuntia0",
+      "y": 270
+    },
+    "facing=east,age=0": {
+      "model": "simplefarming:block/opuntia0",
+      "y": 180
+    },
+    "facing=south,age=1": {
+      "model": "simplefarming:block/opuntia0",
+      "y": 90
+    },
+    "facing=west,age=1": {
+      "model": "simplefarming:block/opuntia0"
+    },
+    "facing=north,age=1": {
+      "model": "simplefarming:block/opuntia0",
+      "y": 270
+    },
+    "facing=east,age=1": {
+      "model": "simplefarming:block/opuntia0",
+      "y": 180
+    },
+    "facing=south,age=2": {
+      "model": "simplefarming:block/opuntia0",
+      "y": 90
+    },
+    "facing=west,age=2": {
+      "model": "simplefarming:block/opuntia0"
+    },
+    "facing=north,age=2": {
+      "model": "simplefarming:block/opuntia0",
+      "y": 270
+    },
+    "facing=east,age=2": {
+      "model": "simplefarming:block/opuntia0",
+      "y": 180
+    },
+    "facing=south,age=3": {
+      "model": "simplefarming:block/opuntia1",
+      "y": 90
+    },
+    "facing=west,age=3": {
+      "model": "simplefarming:block/opuntia1"
+    },
+    "facing=north,age=3": {
+      "model": "simplefarming:block/opuntia1",
+      "y": 270
+    },
+    "facing=east,age=3": {
+      "model": "simplefarming:block/opuntia1",
+      "y": 180
+    }
+  }
+}
+

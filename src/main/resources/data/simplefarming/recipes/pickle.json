@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplefarming:vinegar"
+    },
+    {
+      "tag": "forge:crops/cucumber"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:pickle"
+  }
+}

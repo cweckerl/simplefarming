@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "simplefarming:block/attached_stem",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "simplefarming:block/attached_stem",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "simplefarming:block/attached_stem",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "simplefarming:block/attached_stem"
+    }
+  }
+}

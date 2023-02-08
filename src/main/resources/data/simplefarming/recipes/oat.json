@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplefarming:oat_hay_block"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:oat",
+    "count": 9
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PMP",
+    "RRR"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:cooked_mutton"
+    },
+    "R": {
+      "tag": "forge:grain/rice"
+    },
+    "P": {
+      "item": "simplefarming:curry_powder"
+    }
+  },
+  "result": {
+    "item": "simplefarming:mutton_curry"
+  }
+}

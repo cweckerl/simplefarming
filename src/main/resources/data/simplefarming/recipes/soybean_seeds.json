@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplefarming:soybean"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:soybean_seeds"
+  }
+}

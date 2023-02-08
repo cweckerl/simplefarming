@@ -1,0 +1,9 @@
+{
+  "type": "simplefarming:fermenting",
+  "ingredient": {
+    "tag": "forge:crops/potato"
+  },
+  "result": {
+    "item": "simplefarming:vodka"
+  }
+}

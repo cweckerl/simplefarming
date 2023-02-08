@@ -1,0 +1,37 @@
+{
+  "parent": "simplefarming:root",
+  "display": {
+    "icon": {
+      "item": "simplefarming:scarecrow"
+    },
+    "title": {
+      "translate": "advancements.simplefarming.scarecrow.title"
+    },
+    "description": {
+      "translate": "advancements.simplefarming.scarecrow.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "scarecrow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "simplefarming:scarecrow"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "scarecrow"
+    ]
+  ]
+}

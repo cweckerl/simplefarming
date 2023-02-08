@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "simplefarming:raw_sausage"
+  },
+  "result": "simplefarming:cooked_sausage",
+  "experience": 0.35,
+  "cookingtime": 200
+}

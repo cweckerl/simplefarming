@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "name": "raspberry0",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:raspberry_bush"
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "name": "raspberry1",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "simplefarming:raspberries"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "simplefarming:raspberry_bush",
+          "properties": {
+            "age": "3"
+          }
+        }
+      ]
+    }
+  ]
+}

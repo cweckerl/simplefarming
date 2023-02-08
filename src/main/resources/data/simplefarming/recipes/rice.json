@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplefarming:rice_hay_block"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:rice",
+    "count": 9
+  }
+}

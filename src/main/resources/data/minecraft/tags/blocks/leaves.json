@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "simplefarming:apple_leaves",
+    "simplefarming:apricot_leaves",
+    "simplefarming:banana_leaves",
+    "simplefarming:cherry_leaves",
+    "simplefarming:mango_leaves",
+    "simplefarming:olive_leaves",
+    "simplefarming:orange_leaves",
+    "simplefarming:plum_leaves",
+    "simplefarming:pear_leaves"
+  ]
+}

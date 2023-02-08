@@ -1,0 +1,9 @@
+{
+  "type": "simplefarming:fermenting",
+  "ingredient": {
+    "item": "minecraft:honeycomb"
+  },
+  "result": {
+    "item": "simplefarming:mead"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OOO"
+  ],
+  "key": {
+    "O": {
+      "tag": "forge:grain/oat"
+    }
+  },
+  "result": {
+    "item": "simplefarming:oat_bread"
+  }
+}

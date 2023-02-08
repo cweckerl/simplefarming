@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "tag": "forge:crops/pea"
+    },
+    {
+      "tag": "forge:crops/pea"
+    }
+  ],
+  "result": {
+    "item": "simplefarming:pea_soup"
+  }
+}
