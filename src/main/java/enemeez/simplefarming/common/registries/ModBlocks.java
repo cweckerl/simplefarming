@@ -273,7 +273,7 @@ public class ModBlocks {
             @Override
             public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
                 if (pDirection == Direction.DOWN) {
-                    if (!(pNeighborState.getBlock() instanceof DoubleCropBlock) || pNeighborState.getBlock() instanceof DoubleCropBlock && !pNeighborState.getValue(DoubleCropBlock.RIPE)) {
+                    if (!(pNeighborState.getBlock() instanceof DoubleCropBlock) || !pNeighborState.getValue(DoubleCropBlock.RIPE)) {
                         return Blocks.AIR.defaultBlockState();
                     }
                 }
@@ -420,9 +420,8 @@ public class ModBlocks {
         ) {
             @Override
             public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-                // TODO
                 if (pDirection == Direction.DOWN) {
-                    if (!(pNeighborState.getBlock() instanceof DoubleCropBlock) || pNeighborState.getBlock() instanceof DoubleCropBlock && !pNeighborState.getValue(DoubleCropBlock.RIPE)) {
+                    if (!(pNeighborState.getBlock() instanceof DoubleCropBlock) || !pNeighborState.getValue(DoubleCropBlock.RIPE)) {
                         return Blocks.AIR.defaultBlockState();
                     }
                 }

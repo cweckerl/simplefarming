@@ -31,19 +31,23 @@ public class GrapevineSourceBlock extends Block {
 
     @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        // Source can only spread in one direction
         Stream.of(Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST, Direction.UP)
-            .forEach(dir -> {
-                var neighborPos = pPos.relative(dir);
+            .filter(tmpDir -> {
+                var neighborPos = pPos.relative(tmpDir);
                 var neighborState = pLevel.getBlockState(neighborPos);
-                if (neighborState.getBlock() instanceof TrellisBlock && !neighborState.getValue(TrellisBlock.CAN_GROW)) {
-                    pLevel.setBlock(neighborPos, neighborState
-                        .setValue(TrellisBlock.CAN_GROW, true)
-                        .setValue(TrellisBlock.CAN_SPREAD, true)
-                        .setValue(TrellisBlock.DISTANCE_FROM_SOURCE, TrellisBlock.MIN_DISTANCE), 2
-                    );
-
-                    pLevel.setBlock(pPos, pState.setValue(CAN_SPREAD, false), 2);
-                }
+                return neighborState.getBlock() instanceof TrellisBlock && !neighborState.getValue(TrellisBlock.CAN_GROW);
+            })
+            .findFirst()
+            .ifPresent(tmpDir -> {
+                var neighborPos = pPos.relative(tmpDir);
+                var neighborState = pLevel.getBlockState(neighborPos);
+                pLevel.setBlock(neighborPos, neighborState
+                    .setValue(TrellisBlock.CAN_GROW, true)
+                    .setValue(TrellisBlock.CAN_SPREAD, true)
+                    .setValue(TrellisBlock.DISTANCE_FROM_SOURCE, TrellisBlock.MIN_DISTANCE), 2
+                );
+                pLevel.setBlock(pPos, pState.setValue(CAN_SPREAD, false), 2);
             });
     }
 }

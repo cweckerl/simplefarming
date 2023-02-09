@@ -26,13 +26,16 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.ForgeHooks;
 
 public class GrapevineBlock extends Block {
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-    public final int MAX_AGE = 3;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_5;
+    public final int MAX_AGE = 5;
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
-        Shapes.empty(),
-        Shapes.empty(),
+        Block.box(4, 19, 4, 12, 20, 12),
+        Block.box(4, 19, 4, 12, 20, 12),
+        Block.box(4, 19, 4, 12, 20, 12),
+        Block.box(4, 12, 4, 12, 20, 12),
         Block.box(4, 12, 4, 12, 20, 12),
         Block.box(4, 12, 4, 12, 20, 12),
     };
@@ -56,7 +59,9 @@ public class GrapevineBlock extends Block {
     @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         var age = pState.getValue(AGE);
-        pLevel.setBlock(pPos, pState.setValue(AGE, age + 1), 2);
+        if (ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt(5) == 0)) {
+            pLevel.setBlock(pPos, pState.setValue(AGE, age + 1), 2);
+        }
     }
 
     @Override
@@ -78,7 +83,7 @@ public class GrapevineBlock extends Block {
         if (age != MAX_AGE && pPlayer.getItemInHand(pHand).is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
         } else if (age == MAX_AGE) {
-            popResource(pLevel, pPos, new ItemStack(ModItems.GRAPES.get()));
+            popResourceFromFace(pLevel, pPos, Direction.DOWN, new ItemStack(ModItems.GRAPES.get()));
             pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
             BlockState blockstate = pState.setValue(AGE, 0);
             pLevel.setBlock(pPos, pState.setValue(AGE, 0), 2);

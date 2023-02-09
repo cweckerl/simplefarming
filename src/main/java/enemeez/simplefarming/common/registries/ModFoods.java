@@ -5,7 +5,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
-public class ModFoods {
+class ModFoods {
     protected static final FoodProperties BERRY = new FoodProperties.Builder().nutrition(Config.berry.get()).saturationMod(0.1F).fast().build();
     protected static final FoodProperties FRUIT = new FoodProperties.Builder().nutrition(Config.fruit.get()).saturationMod(0.3F).build();
     protected static final FoodProperties GOURD_SLICE = new FoodProperties.Builder().nutrition(Config.gourd_slice.get()).saturationMod(0.3F).build();

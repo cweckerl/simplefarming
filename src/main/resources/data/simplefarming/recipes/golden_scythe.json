@@ -11,7 +11,7 @@
   "pattern": [
     "XX#",
     " # ",
-    " # "
+    "#  "
   ],
   "result": {
     "item": "simplefarming:golden_scythe"

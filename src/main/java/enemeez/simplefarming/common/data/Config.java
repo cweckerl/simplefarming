@@ -135,7 +135,9 @@ public class Config {
 
     static {
         final ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+        builder.push("Hunger values");
         setup(builder);
+        builder.pop();
         CONFIG_SPEC = builder.build();
         final var FILE_CONFIG = CommentedFileConfig.builder(FMLPaths.CONFIGDIR.get().resolve(SimpleFarming.MOD_ID + ".toml"))
             .sync()
@@ -147,7 +149,6 @@ public class Config {
     }
 
     private static void setup(ForgeConfigSpec.Builder builder) {
-        builder.comment("Hunger values for consumables");
         berry = builder.defineInRange("berry (default = 2)", 2, 0, Integer.MAX_VALUE);
         fruit = builder.defineInRange("fruit (default = 4)", 4, 0, Integer.MAX_VALUE);
         gourd_slice = builder.defineInRange("gourd_slice (default = 2)", 2, 0, Integer.MAX_VALUE);
@@ -242,7 +243,7 @@ public class Config {
         sorghum_bread = builder.defineInRange("sorghum_bread (default = 7)", 7, 0, Integer.MAX_VALUE);
         sorghum_porridge = builder.defineInRange("sorghum_porridge (default = 8)", 8, 0, Integer.MAX_VALUE);
         italian_beef = builder.defineInRange("italian_beef (default = 18)", 18, 0, Integer.MAX_VALUE);
-        peanut_butter_cookie = builder.defineInRange("peanut_butter_cookie (default = 4)", 4, 0, Integer.MAX_VALUE);
+        peanut_butter_cookie = builder.defineInRange("peanut_butter_cookie (default = 4)", 2, 0, Integer.MAX_VALUE);
         pbj = builder.defineInRange("pbj (default = 8)", 8, 0, Integer.MAX_VALUE);
         trail_mix = builder.defineInRange("trail_mix (default = 12)", 12, 0, Integer.MAX_VALUE);
         carrot_soup = builder.defineInRange("carrot_soup (default = 6)", 6, 0, Integer.MAX_VALUE);

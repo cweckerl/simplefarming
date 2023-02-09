@@ -11,7 +11,7 @@ public class ModSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, SimpleFarming.MOD_ID);
 
     public static final RegistryObject<SoundEvent> MUSIC_DISC_NOURISH = SOUND_EVENTS.register("music_disc.nourish",
-        () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(SimpleFarming.MOD_ID, "music_disc.nourish")
-        ));
+        () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(SimpleFarming.MOD_ID, "music_disc.nourish"))
+    );
 
 }

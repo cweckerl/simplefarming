@@ -7,9 +7,15 @@
       "model": "simplefarming:block/grapevine1"
     },
     "age=2": {
-      "model": "simplefarming:block/grapevine2"
+      "model": "simplefarming:block/grapevine1"
     },
     "age=3": {
+      "model": "simplefarming:block/grapevine2"
+    },
+    "age=4": {
+      "model": "simplefarming:block/grapevine2"
+    },
+    "age=5": {
       "model": "simplefarming:block/grapevine3"
     }
   }
