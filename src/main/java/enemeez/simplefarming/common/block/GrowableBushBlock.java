@@ -44,7 +44,7 @@ public abstract class GrowableBushBlock extends BushBlock implements Bonemealabl
     abstract public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext);
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+    public boolean isValidBonemealTarget(BlockGetter pLevel, BlockPos pPos, BlockState pState, boolean pIsClien) {
         return pState.getValue(AGE) < MAX_AGE;
     }
 

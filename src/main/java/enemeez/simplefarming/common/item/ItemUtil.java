@@ -8,10 +8,6 @@ import net.minecraft.world.item.ItemStack;
 
 class ItemUtil {
 
-    protected static int convertRGBToInt(short r, short g, short b) {
-        return 0x10000 * r + 0x100 * g + b;
-    }
-
     protected static void usePlayerItem(Player pPlayer, ItemStack pStack) {
         if (!pPlayer.getAbilities().instabuild) {
             pStack.shrink(1);

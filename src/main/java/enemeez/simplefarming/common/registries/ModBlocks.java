@@ -24,6 +24,7 @@ import enemeez.simplefarming.common.block.TrellisBlock;
 import enemeez.simplefarming.common.world.grower.FruitTreeGrower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -183,15 +184,15 @@ public class ModBlocks {
     );
 
     // Saplings
-    public static final RegistryObject<Block> APPLE_SAPLING = registerSapling("apple_sapling", ModFeatures.APPLE_TREE);
-    public static final RegistryObject<Block> APRICOT_SAPLING = registerSapling("apricot_sapling", ModFeatures.APRICOT_TREE);
-    public static final RegistryObject<Block> BANANA_SAPLING = registerSapling("banana_sapling", ModFeatures.BANANA_TREE);
-    public static final RegistryObject<Block> CHERRY_SAPLING = registerSapling("cherry_sapling", ModFeatures.CHERRY_TREE);
-    public static final RegistryObject<Block> MANGO_SAPLING = registerSapling("mango_sapling", ModFeatures.MANGO_TREE);
-    public static final RegistryObject<Block> OLIVE_SAPLING = registerSapling("olive_sapling", ModFeatures.OLIVE_TREE);
-    public static final RegistryObject<Block> ORANGE_SAPLING = registerSapling("orange_sapling", ModFeatures.ORANGE_TREE);
-    public static final RegistryObject<Block> PEAR_SAPLING = registerSapling("pear_sapling", ModFeatures.PEAR_TREE);
-    public static final RegistryObject<Block> PLUM_SAPLING = registerSapling("plum_sapling", ModFeatures.PLUM_TREE);
+    public static final RegistryObject<Block> APPLE_SAPLING = registerSapling("apple_sapling", ModFeatures.APPLE_TREE.getHolder().get());
+    public static final RegistryObject<Block> APRICOT_SAPLING = registerSapling("apricot_sapling", ModFeatures.APRICOT_TREE.getHolder().get());
+    public static final RegistryObject<Block> BANANA_SAPLING = registerSapling("banana_sapling", ModFeatures.BANANA_TREE.getHolder().get());
+    public static final RegistryObject<Block> CHERRY_SAPLING = registerSapling("cherry_sapling", ModFeatures.CHERRY_TREE.getHolder().get());
+    public static final RegistryObject<Block> MANGO_SAPLING = registerSapling("mango_sapling", ModFeatures.MANGO_TREE.getHolder().get());
+    public static final RegistryObject<Block> OLIVE_SAPLING = registerSapling("olive_sapling", ModFeatures.OLIVE_TREE.getHolder().get());
+    public static final RegistryObject<Block> ORANGE_SAPLING = registerSapling("orange_sapling", ModFeatures.ORANGE_TREE.getHolder().get());
+    public static final RegistryObject<Block> PEAR_SAPLING = registerSapling("pear_sapling", ModFeatures.PEAR_TREE.getHolder().get());
+    public static final RegistryObject<Block> PLUM_SAPLING = registerSapling("plum_sapling", ModFeatures.PLUM_TREE.getHolder().get());
 
     // Wild crop
     public static final RegistryObject<Block> WILD_CROP = BLOCKS.register("wild_crop", () -> new Block(
@@ -361,8 +362,8 @@ public class ModBlocks {
         ));
     }
 
-    private static RegistryObject<Block> registerSapling(String name, ResourceKey<ConfiguredFeature<?, ?>> tree) {
-        return BLOCKS.register(name, () -> new SaplingBlock(new FruitTreeGrower(tree), BlockBehaviour.Properties.of(Material.PLANT)
+    private static RegistryObject<Block> registerSapling(String name, Holder<? extends ConfiguredFeature<?, ?>> holder) {
+        return BLOCKS.register(name, () -> new SaplingBlock(new FruitTreeGrower(holder), BlockBehaviour.Properties.of(Material.PLANT)
             .noCollission()
             .randomTicks()
             .instabreak()

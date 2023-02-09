@@ -329,7 +329,7 @@ public class ModItems {
 
 
     private static RegistryObject<Item> registerItem(String name) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(new Item.Properties()));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(new Item.Properties().tab(SimpleFarming.TAB)));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
@@ -341,7 +341,7 @@ public class ModItems {
     }
 
     private static RegistryObject<Item> registerFood(String name, FoodProperties pFood) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(new Item.Properties().food(pFood)));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(new Item.Properties().food(pFood).tab(SimpleFarming.TAB)));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
@@ -353,21 +353,21 @@ public class ModItems {
     }
 
     private static RegistryObject<Item> registerGoldenHabanero(String name, FoodProperties pFood) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(new Item.Properties().rarity(Rarity.RARE).food(pFood)));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(new Item.Properties().rarity(Rarity.RARE).food(pFood).tab(SimpleFarming.TAB)));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
 
     private static RegistryObject<Item> registerBowlFood(String name, FoodProperties pFood) {
         final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new BowlFoodItem(
-            new Item.Properties().stacksTo(1).food(pFood)
+            new Item.Properties().stacksTo(1).food(pFood).tab(SimpleFarming.TAB)
         ));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
 
     private static RegistryObject<Item> registerSeed(String name, Supplier<Block> crop) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new SeedItem(crop.get(), new Item.Properties()));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new SeedItem(crop.get(), new Item.Properties().tab(SimpleFarming.TAB)));
         ITEM_LIST.add(ITEM);
         COMPOSTABLES.put(ITEM, 0.3F);
         SEEDS.add(ITEM);
@@ -377,6 +377,7 @@ public class ModItems {
     private static RegistryObject<Item> registerEdibleSeed(String name, Supplier<Block> flower) {
         final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new ItemNameBlockItem(flower.get(), new Item.Properties()
             .food(ModFoods.SEEDS)
+            .tab(SimpleFarming.TAB)
         ));
         ITEM_LIST.add(ITEM);
         COMPOSTABLES.put(ITEM, 0.3F);
@@ -384,28 +385,28 @@ public class ModItems {
     }
 
     private static RegistryObject<Item> registerGrainCropItem(String name) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new GrainCropItem(new Item.Properties()));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new GrainCropItem(new Item.Properties().tab(SimpleFarming.TAB)));
         ITEM_LIST.add(ITEM);
         COMPOSTABLES.put(ITEM, 0.65F);
         return ITEM;
     }
 
     private static RegistryObject<Item> registerGrainCropItem(String name, FoodProperties pFood) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new GrainCropItem(new Item.Properties().food(pFood)));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new GrainCropItem(new Item.Properties().food(pFood).tab(SimpleFarming.TAB)));
         ITEM_LIST.add(ITEM);
         COMPOSTABLES.put(ITEM, 0.65F);
         return ITEM;
     }
 
     private static RegistryObject<Item> registerRootCropItem(String name, FoodProperties pFood) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new RootCropItem(new Item.Properties().food(pFood)));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new RootCropItem(new Item.Properties().food(pFood).tab(SimpleFarming.TAB)));
         ITEM_LIST.add(ITEM);
         COMPOSTABLES.put(ITEM, 0.65F);
         return ITEM;
     }
 
     private static RegistryObject<Item> registerBlockItem(String name, Supplier<Block> block) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(SimpleFarming.TAB)));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
@@ -417,27 +418,27 @@ public class ModItems {
     }
 
     private static RegistryObject<Item> registerCakeLike(String name, Supplier<Block> block) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().stacksTo(1)));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().stacksTo(1).tab(SimpleFarming.TAB)));
         ITEM_LIST.add(ITEM);
         COMPOSTABLES.put(ITEM, 1.0F);
         return ITEM;
     }
 
     private static RegistryObject<Item> registerAlcohol(String name, MobEffect effect) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new AlcoholItem(new Item.Properties().stacksTo(1), effect));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new AlcoholItem(new Item.Properties().stacksTo(1).tab(SimpleFarming.TAB), effect));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
 
     private static RegistryObject<Item> registerScythe(String name, Tier tier) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new ScytheItem(tier, 2, -3.0F, new Item.Properties()));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new ScytheItem(tier, 2, -3.0F, new Item.Properties().tab(SimpleFarming.TAB)));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
 
     private static RegistryObject<Item> registerMusicDisc(String name, int tickLength) {
         final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new RecordItem(15, () -> ModSoundEvents.MUSIC_DISC_NOURISH.get(),
-            new Item.Properties().stacksTo(1).rarity(Rarity.RARE), tickLength)
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE).tab(SimpleFarming.TAB), tickLength)
         );
         ITEM_LIST.add(ITEM);
         return ITEM;
