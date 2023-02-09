@@ -156,7 +156,7 @@ public class ModFeatures {
         ));
 
         register(context, STRAWBERRY_BUSH, Feature.RANDOM_PATCH, new RandomPatchConfiguration(16, 2, 1,
-            PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.RASPBERRY_BUSH.get()
+            PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.STRAWBERRY_BUSH.get()
                 .defaultBlockState()
                 .setValue(GrowableBushBlock.AGE, GrowableBushBlock.MAX_AGE)
             )))

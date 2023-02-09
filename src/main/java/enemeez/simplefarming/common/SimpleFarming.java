@@ -34,7 +34,7 @@ public class SimpleFarming {
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModFeatures.FOLIAGE_PLACER_TYPES.register(modEventBus);
-        ModPlacements.FOLIAGE_PLACER.register(modEventBus);
+        ModPlacements.PLACED_FEATURES.register(modEventBus);
         ModSoundEvents.SOUND_EVENTS.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
         ModMenus.MENU_TYPES.register(modEventBus);

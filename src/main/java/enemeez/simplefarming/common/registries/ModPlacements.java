@@ -18,7 +18,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import java.util.List;
 
 public class ModPlacements {
-    public static final DeferredRegister<PlacedFeature> FOLIAGE_PLACER = DeferredRegister.create(
+    public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(
         Registries.PLACED_FEATURE, SimpleFarming.MOD_ID
     );
 

@@ -80,7 +80,7 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
 
     @Override
     public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
-        return pState.getValue(AGE) == MAX_AGE;
+        return pState.getValue(AGE) != MAX_AGE;
     }
 
     @Override
