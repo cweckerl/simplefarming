@@ -25,7 +25,6 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
 
@@ -97,7 +96,7 @@ public class GrapevineBlock extends Block implements BonemealableBlock {
 
     @Override
     public boolean isValidBonemealTarget(BlockGetter pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
-        return pState.getValue(AGE) == MAX_AGE;
+        return pState.getValue(AGE) != MAX_AGE;
     }
 
     @Override
