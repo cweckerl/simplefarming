@@ -4,7 +4,7 @@
       "item": "simplefarming:tomato"
     },
     "title": {
-      "translate": "item_group.simplefarming"
+      "translate": "itemGroup.simplefarming"
     },
     "description": {
       "translate": "advancements.simplefarming.root.description"
