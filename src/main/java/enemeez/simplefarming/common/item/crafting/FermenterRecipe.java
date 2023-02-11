@@ -40,7 +40,7 @@ public class FermenterRecipe implements Recipe<Container> {
 
         @Override
         public void toNetwork(FriendlyByteBuf pBuffer, FermenterRecipe pRecipe) {
-            pRecipe.getIngredients().get(0).toNetwork(pBuffer);
+            pRecipe.INGREDIENT.toNetwork(pBuffer);
             pBuffer.writeItemStack(pRecipe.getResultItem(), false);
         }
     }
