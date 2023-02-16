@@ -48,6 +48,7 @@ public class AlcoholItem extends Item {
             return new ItemStack(Items.GLASS_BOTTLE);
         } else {
             if (pEntityLiving instanceof Player && !((Player) pEntityLiving).getAbilities().instabuild) {
+                pStack.shrink(1);
                 ItemStack itemstack = new ItemStack(Items.GLASS_BOTTLE);
                 Player player = (Player) pEntityLiving;
                 if (!player.getInventory().add(itemstack)) {
