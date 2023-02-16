@@ -4,7 +4,7 @@ license="MIT"
 issueTrackerURL="https://github.com/cweckerl/simplefarming/issues"
 [[mods]]
 modId="simplefarming"
-version="1.19.3-2.0.1"
+version="1.19.3-2.0.2"
 displayName="Simple Farming"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/simple-farming"
 logoFile="examplemod.png"
