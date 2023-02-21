@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "simplefarming:barley",
+    "simplefarming:broccoli",
+    "simplefarming:kenaf",
+    "simplefarming:peanuts",
+    "simplefarming:oat",
+    "simplefarming:onions",
+    "simplefarming:squash_stem",
+    "simplefarming:turnips",
+    "simplefarming:blackberry_bush",
+    "simplefarming:apple_leaves",
+    "simplefarming:orange_leaves",
+    "simplefarming:pear_leaves",
+    "simplefarming:olive_leaves"
+  ]
+}
