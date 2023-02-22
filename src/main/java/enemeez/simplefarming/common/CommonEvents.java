@@ -18,10 +18,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
-@Mod.EventBusSubscriber(modid = SimpleFarming.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = SimpleFarming.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CommonEvents {
     @SubscribeEvent
-    public void cancelTrample(BlockEvent.FarmlandTrampleEvent event) {
+    public static void cancelTrample(BlockEvent.FarmlandTrampleEvent event) {
         final var pos = event.getPos();
         event.setCanceled(
             BlockPos.betweenClosedStream(pos.offset(new Vec3i(-5, 1, -5)), pos.offset(new Vec3i(5, 1, 5)))
@@ -30,7 +30,7 @@ public class CommonEvents {
     }
 
     @SubscribeEvent
-    public void addEntityGoal(EntityJoinLevelEvent event) {
+    public static void addEntityGoal(EntityJoinLevelEvent event) {
         final Ingredient GRAINS = Ingredient.of(
             ModItems.BARLEY.get(),
             ModItems.OAT.get(),
