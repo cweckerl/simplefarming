@@ -1,6 +1,7 @@
 package enemeez.simplefarming.common.item.crafting;
 
 import com.google.gson.JsonObject;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -41,7 +42,7 @@ public class FermenterRecipe implements Recipe<Container> {
         @Override
         public void toNetwork(FriendlyByteBuf pBuffer, FermenterRecipe pRecipe) {
             pRecipe.INGREDIENT.toNetwork(pBuffer);
-            pBuffer.writeItemStack(pRecipe.getResultItem(), false);
+            pBuffer.writeItemStack(pRecipe.RESULT, false);
         }
     }
 
@@ -61,7 +62,7 @@ public class FermenterRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack assemble(Container pContainer) {
+    public ItemStack assemble(Container pContainer, RegistryAccess access) {
         return RESULT.copy();
     }
 
@@ -71,7 +72,7 @@ public class FermenterRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack getResultItem() {
+    public ItemStack getResultItem(RegistryAccess access) {
         return RESULT;
     }
 

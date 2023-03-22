@@ -24,7 +24,7 @@ public class DefaultFruitTreeFoliagePlacer extends FruitTreeFoliagePlacer {
     @Override
     protected void createFoliage(
         LevelSimulatedReader pLevel,
-        BiConsumer<BlockPos, BlockState> pBlockSetter,
+        FoliageSetter pBlockSetter,
         RandomSource pRandom,
         TreeConfiguration pConfig,
         int pMaxFreeTreeHeight,
@@ -35,7 +35,8 @@ public class DefaultFruitTreeFoliagePlacer extends FruitTreeFoliagePlacer {
     ) {
         this.placeLeavesRow(pLevel, pBlockSetter, pRandom, pConfig, pAttachment.pos(), 1, -2, pAttachment.doubleTrunk());
         Stream.of(new Vec3i(0, 0, 0), new Vec3i(1, -1, 0), new Vec3i(-1, -1, 0), new Vec3i(0, -1, 1), new Vec3i(0, -1, -1))
-            .forEach(v -> tryPlaceLeaf(pLevel, pBlockSetter, pRandom, pConfig, pAttachment.pos().offset(v)));
+            // tryPlaceLeaf
+            .forEach(v -> m_272253_(pLevel, pBlockSetter, pRandom, pConfig, pAttachment.pos().offset(v)));
     }
 
     @Override

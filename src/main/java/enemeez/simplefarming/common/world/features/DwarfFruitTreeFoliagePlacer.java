@@ -22,7 +22,7 @@ public class DwarfFruitTreeFoliagePlacer extends FruitTreeFoliagePlacer {
     @Override
     protected void createFoliage(
         LevelSimulatedReader pLevel,
-        BiConsumer<BlockPos, BlockState> pBlockSetter,
+        FoliageSetter pBlockSetter,
         RandomSource pRandom,
         TreeConfiguration pConfig,
         int pMaxFreeTreeHeight,
@@ -31,7 +31,7 @@ public class DwarfFruitTreeFoliagePlacer extends FruitTreeFoliagePlacer {
         int pFoliageRadius,
         int pOffset
     ) {
-        tryPlaceLeaf(pLevel, pBlockSetter, pRandom, pConfig, pAttachment.pos());
+        m_272253_(pLevel, pBlockSetter, pRandom, pConfig, pAttachment.pos());
         this.placeLeavesRow(pLevel, pBlockSetter, pRandom, pConfig, pAttachment.pos(), 1, -1, pAttachment.doubleTrunk());
     }
 

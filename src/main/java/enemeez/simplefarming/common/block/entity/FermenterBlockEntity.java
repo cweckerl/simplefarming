@@ -140,7 +140,7 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider, W
                 var bottle = entity.items.get(SLOT_BOTTLE);
                 entity.items.set(SLOT_INPUT, input.getCount() > 0 ? new ItemStack(input.getItem(), input.getCount() - 1) : ItemStack.EMPTY);
                 entity.items.set(SLOT_BOTTLE, bottle.getCount() > 0 ? new ItemStack(bottle.getItem(), bottle.getCount() - 1) : ItemStack.EMPTY);
-                entity.items.set(SLOT_RESULT, new ItemStack(recipe.get().getResultItem().getItem()));
+                entity.items.set(SLOT_RESULT, new ItemStack(recipe.get().getResultItem(level.m_9598_()).getItem()));
             }
 
             setChanged(level, blockPos, blockState);

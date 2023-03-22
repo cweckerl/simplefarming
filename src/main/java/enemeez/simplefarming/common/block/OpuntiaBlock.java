@@ -104,7 +104,8 @@ public class OpuntiaBlock extends GrowableBushBlock implements IPlantable {
     @Override
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         if (pState.getValue(AGE) == MAX_AGE) {
-            pEntity.hurt(DamageSource.CACTUS, 1.0F);
+            // pEntity.hurt(DamageSource.CACTUS, 1.0F);
+            pEntity.hurt(pLevel.m_269111_().m_269325_(), 1.0F);
         }
     }
 }

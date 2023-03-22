@@ -5,7 +5,7 @@ plugins {
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-version = '1.19.3-2.0.3'
+version = '1.19.4-2.0.3'
 group = 'enemeez.simplefarming' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'simplefarming'
 
@@ -163,7 +163,7 @@ dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.19.3-44.1.16'
+    minecraft 'net.minecraftforge:forge:1.19.4-45.0.20'
 
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
