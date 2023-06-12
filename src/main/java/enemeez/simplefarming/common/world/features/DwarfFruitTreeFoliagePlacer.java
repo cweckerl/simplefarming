@@ -31,7 +31,7 @@ public class DwarfFruitTreeFoliagePlacer extends FruitTreeFoliagePlacer {
         int pFoliageRadius,
         int pOffset
     ) {
-        m_272253_(pLevel, pBlockSetter, pRandom, pConfig, pAttachment.pos());
+        tryPlaceLeaf(pLevel, pBlockSetter, pRandom, pConfig, pAttachment.pos());
         this.placeLeavesRow(pLevel, pBlockSetter, pRandom, pConfig, pAttachment.pos(), 1, -1, pAttachment.doubleTrunk());
     }
 

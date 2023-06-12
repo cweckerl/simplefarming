@@ -119,7 +119,7 @@ public class TrellisBlock extends Block {
     private Boolean canConnect(BlockState state) {
         var block = state.getBlock();
         return block instanceof TrellisBlock || block instanceof GrapevineSourceBlock
-            || !isExceptionForConnection(state) && state.getMaterial().isSolid() && !state.is(ModTags.TRELLIS_BLACKLIST);
+            || !isExceptionForConnection(state) && state.isSolid() && !state.is(ModTags.TRELLIS_BLACKLIST);
     }
 
     @Nullable

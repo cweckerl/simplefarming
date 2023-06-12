@@ -36,9 +36,10 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -86,9 +87,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> RASPBERRY_BUSH = registerBerryBush("raspberry_bush", () -> ModItems.RASPBERRIES.get());
     public static final RegistryObject<Block> STRAWBERRY_BUSH = registerBerryBush("strawberry_bush", () -> ModItems.STRAWBERRIES.get());
     public static final RegistryObject<Block> OPUNTIA = BLOCKS.register("opuntia", () -> new OpuntiaBlock(
-        BlockBehaviour.Properties.of(Material.CACTUS)
+        BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
             .randomTicks()
             .strength(0.4F)
+            .pushReaction(PushReaction.DESTROY)
             .sound(SoundType.WOOL),
         () -> ModItems.CACTUS_FRUIT.get()
     ));
@@ -134,14 +137,14 @@ public class ModBlocks {
 
     // Cheese
     public static final RegistryObject<Block> CHEESE_WHEEL = BLOCKS.register("cheese_wheel", () -> new CheeseBlock(
-        BlockBehaviour.Properties.of(Material.CAKE).strength(0.5F).sound(SoundType.WOOL)
+        BlockBehaviour.Properties.of().strength(0.5F).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)
     ));
 
     // Hay bales
-    public static final RegistryObject<Block> BARLEY_HAY_BLOCK = registerHayBale("barley_hay_block", MaterialColor.COLOR_YELLOW);
-    public static final RegistryObject<Block> OAT_HAY_BLOCK = registerHayBale("oat_hay_block", MaterialColor.COLOR_YELLOW);
-    public static final RegistryObject<Block> RICE_HAY_BLOCK = registerHayBale("rice_hay_block", MaterialColor.COLOR_LIGHT_GREEN);
-    public static final RegistryObject<Block> RYE_HAY_BLOCK = registerHayBale("rye_hay_block", MaterialColor.COLOR_LIGHT_GREEN);
+    public static final RegistryObject<Block> BARLEY_HAY_BLOCK = registerHayBale("barley_hay_block", MapColor.COLOR_YELLOW);
+    public static final RegistryObject<Block> OAT_HAY_BLOCK = registerHayBale("oat_hay_block", MapColor.COLOR_YELLOW);
+    public static final RegistryObject<Block> RICE_HAY_BLOCK = registerHayBale("rice_hay_block", MapColor.COLOR_LIGHT_GREEN);
+    public static final RegistryObject<Block> RYE_HAY_BLOCK = registerHayBale("rye_hay_block", MapColor.COLOR_LIGHT_GREEN);
 
     // Growable flowers
     public static final RegistryObject<Block> CHICORY = registerGrowableFlower("chicory", () -> ModItems.CHICORY_ROOT.get());
@@ -150,9 +153,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> QUINOA = registerGrowableFlower("quinoa", () -> ModItems.QUINOA_SEEDS.get());
 
     // Gourd-like
-    public static final RegistryObject<Block> CANTALOUPE = registerGourd("cantaloupe", MaterialColor.COLOR_LIGHT_GREEN);
-    public static final RegistryObject<Block> HONEYDEW = registerGourd("honeydew", MaterialColor.COLOR_LIGHT_GREEN);
-    public static final RegistryObject<Block> SQUASH = registerGourd("squash", MaterialColor.COLOR_YELLOW);
+    public static final RegistryObject<Block> CANTALOUPE = registerGourd("cantaloupe", MapColor.COLOR_LIGHT_GREEN);
+    public static final RegistryObject<Block> HONEYDEW = registerGourd("honeydew", MapColor.COLOR_LIGHT_GREEN);
+    public static final RegistryObject<Block> SQUASH = registerGourd("squash", MapColor.COLOR_YELLOW);
 
     // Gourd-like crops
     public static final RegistryObject<Block> CANTALOUPE_STEM = registerStem(
@@ -176,7 +179,8 @@ public class ModBlocks {
 
     // Fruit log
     public static final RegistryObject<Block> FRUIT_LOG = BLOCKS.register("fruit_log",
-        () -> new FruitTreeLogBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.PODZOL)
+        () -> new FruitTreeLogBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.WOOD)
             .strength(2.0F)
             .sound(SoundType.WOOD)
         )
@@ -195,11 +199,13 @@ public class ModBlocks {
 
     // Wild crop
     public static final RegistryObject<Block> WILD_CROP = BLOCKS.register("wild_crop", () -> new Block(
-        BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT)
+        BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
             .noCollission()
             .instabreak()
             .sound(SoundType.GRASS)
             .offsetType(BlockBehaviour.OffsetType.XZ)
+            .pushReaction(PushReaction.DESTROY)
     ));
 
     // Fruit Leaves
@@ -215,10 +221,12 @@ public class ModBlocks {
 
     // Scarecrow
     public static final RegistryObject<Block> SCARECROW = BLOCKS.register("scarecrow", () -> new ScarecrowBlock(
-        BlockBehaviour.Properties.of(Material.PLANT)
+        BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
             .noCollission()
             .strength(2.0F)
             .sound(SoundType.WOOD)
+            .pushReaction(PushReaction.DESTROY)
     ));
 
     // Trellis
@@ -227,35 +235,42 @@ public class ModBlocks {
     // Grape crop
     public static final RegistryObject<Block> GRAPE_TRUNK = registerGrapeplant("grape_trunk", () -> ModItems.GRAPE_SEEDS.get());
     public static final RegistryObject<Block> GRAPEVINE = BLOCKS.register("grapevine", () -> new GrapevineBlock(
-        BlockBehaviour.Properties.of(Material.PLANT)
+        BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
             .randomTicks()
             .noCollission()
             .instabreak()
             .sound(SoundType.GRASS)
+            .pushReaction(PushReaction.DESTROY)
     ));
 
     public static final RegistryObject<Block> FERMENTER = BLOCKS.register("fermenter", () -> new FermenterBlock(
-        BlockBehaviour.Properties.of(Material.STONE)
+        BlockBehaviour.Properties.of()
+            .mapColor(MapColor.STONE)
             .strength(3.5F)
             .noOcclusion()
             .requiresCorrectToolForDrops()
     ));
 
     private static RegistryObject<Block> registerCrop(final String name, Supplier<Item> seed) {
-        return BLOCKS.register(name, () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT)
+        return BLOCKS.register(name, () -> new SingleCropBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
             .noCollission()
             .randomTicks()
             .instabreak()
+            .pushReaction(PushReaction.DESTROY)
             .sound(SoundType.CROP),
             seed
         ));
     }
 
     private static RegistryObject<Block> registerCrop(final String name, Supplier<Item> seed, SingleCropBlock.Size size) {
-        return BLOCKS.register(name, () -> new SingleCropBlock(BlockBehaviour.Properties.of(Material.PLANT)
+        return BLOCKS.register(name, () -> new SingleCropBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
             .noCollission()
             .randomTicks()
             .instabreak()
+            .pushReaction(PushReaction.DESTROY)
             .sound(SoundType.CROP),
             seed, size
         ));
@@ -264,10 +279,12 @@ public class ModBlocks {
     private static RegistryObject<Block> registerDoubleCrop(String name, Supplier<Item> seed) {
 
         final var TOP_BLOCK = BLOCKS.register(name + "_top", () -> new Block(
-            BlockBehaviour.Properties.of(Material.PLANT)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.PLANT)
                 .noCollission()
                 .instabreak()
                 .sound(SoundType.CROP)
+                .pushReaction(PushReaction.DESTROY)
         ) {
 
             @Override
@@ -282,20 +299,24 @@ public class ModBlocks {
         });
 
         return BLOCKS.register(name, () -> new DoubleCropBlock(
-            BlockBehaviour.Properties.of(Material.PLANT)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.PLANT)
                 .noCollission()
                 .randomTicks()
                 .instabreak()
+                .pushReaction(PushReaction.DESTROY)
                 .sound(SoundType.CROP),
             seed, TOP_BLOCK.get()
         ));
     }
 
     private static RegistryObject<Block> registerBerryBush(String name, Supplier<Item> berry) {
-        final RegistryObject<Block> BLOCK = BLOCKS.register(name, () -> new BerryBushBlock(BlockBehaviour.Properties.of(Material.PLANT)
+        final RegistryObject<Block> BLOCK = BLOCKS.register(name, () -> new BerryBushBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
             .randomTicks()
             .noCollission()
             .strength(0.2F)
+            .pushReaction(PushReaction.DESTROY)
             .sound(SoundType.SWEET_BERRY_BUSH),
             berry
         ));
@@ -303,79 +324,72 @@ public class ModBlocks {
         return BLOCK;
     }
 
-    private static RegistryObject<Block> registerHayBale(String name, MaterialColor color) {
-        return BLOCKS.register(name, () -> new HayBlock(BlockBehaviour.Properties.of(Material.GRASS, color)
+    private static RegistryObject<Block> registerHayBale(String name, MapColor color) {
+        return BLOCKS.register(name, () -> new HayBlock(BlockBehaviour.Properties.of()
+            .mapColor(color)
             .strength(0.5F)
             .sound(SoundType.GRASS)
+            .instrument(NoteBlockInstrument.BANJO)
         ));
     }
 
     private static RegistryObject<Block> registerChocolateCake(String name) {
-        return BLOCKS.register(name, () -> new ChocolateCakeBlock(BlockBehaviour.Properties.of(Material.CAKE)
-            .strength(0.5F)
-            .sound(SoundType.WOOL)
-        ));
+        return BLOCKS.register(name, () -> new ChocolateCakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
     }
 
     private static RegistryObject<Block> registerChocolateCandleCake(String name, Block candleBlock) {
-        return BLOCKS.register(name, () -> new ChocolateCandleCakeBlock(candleBlock, BlockBehaviour.Properties.of(Material.CAKE)
-            .strength(0.5F)
-            .sound(SoundType.WOOL)
-            .noOcclusion()
-            .lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 3 : 0)
-        ));
+        return BLOCKS.register(name, () -> new ChocolateCandleCakeBlock(candleBlock, BlockBehaviour.Properties.copy(Blocks.CANDLE_CAKE)));
     }
 
     private static RegistryObject<Block> registerSprinkleCake(String name) {
-        return BLOCKS.register(name, () -> new SprinkleCakeBlock(BlockBehaviour.Properties.of(Material.CAKE)
-            .strength(0.5F)
-            .sound(SoundType.WOOL)
-        ));
+        return BLOCKS.register(name, () -> new SprinkleCakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
     }
 
     private static RegistryObject<Block> registerSprinkleCandleCake(String name, Block candleBlock) {
-        return BLOCKS.register(name, () -> new SprinkleCandleCakeBlock(candleBlock, BlockBehaviour.Properties.of(Material.CAKE)
-            .strength(0.5F)
-            .sound(SoundType.WOOL)
-            .noOcclusion()
-            .lightLevel(state -> state.getValue(BlockStateProperties.LIT) ? 3 : 0)
-        ));
+        return BLOCKS.register(name, () -> new SprinkleCandleCakeBlock(candleBlock, BlockBehaviour.Properties.copy(Blocks.CANDLE_CAKE)));
     }
 
-
     private static RegistryObject<Block> registerGrowableFlower(String name, Supplier<Item> seed) {
-        return BLOCKS.register(name, () -> new GrowableFlowerBlock(BlockBehaviour.Properties.of(Material.PLANT)
+        return BLOCKS.register(name, () -> new GrowableFlowerBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
             .randomTicks()
             .noCollission()
             .strength(0.2F)
             .sound(SoundType.GRASS)
+            .pushReaction(PushReaction.DESTROY)
             .offsetType(BlockBehaviour.OffsetType.XZ),
             seed
         ));
     }
 
-    private static RegistryObject<Block> registerGourd(String name, MaterialColor color) {
-        return BLOCKS.register(name, () -> new Block(BlockBehaviour.Properties.of(Material.VEGETABLE, color)
+    private static RegistryObject<Block> registerGourd(String name, MapColor color) {
+        return BLOCKS.register(name, () -> new Block(BlockBehaviour.Properties.of()
+            .mapColor(color)
             .strength(1.0F)
             .sound(SoundType.WOOD)
+            .pushReaction(PushReaction.DESTROY)
         ));
     }
 
     private static RegistryObject<Block> registerSapling(String name, ResourceKey<ConfiguredFeature<?, ?>> tree) {
-        return BLOCKS.register(name, () -> new SaplingBlock(new FruitTreeGrower(tree), BlockBehaviour.Properties.of(Material.PLANT)
+        return BLOCKS.register(name, () -> new SaplingBlock(new FruitTreeGrower(tree), BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
             .noCollission()
             .randomTicks()
             .instabreak()
             .sound(SoundType.GRASS)
+            .pushReaction(PushReaction.DESTROY)
         ));
     }
 
     private static RegistryObject<Block> registerFruitLeaves(String name, Supplier<Item> fruit) {
-        final RegistryObject<Block> BLOCK = BLOCKS.register(name, () -> new FruitLeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES)
+        final RegistryObject<Block> BLOCK = BLOCKS.register(name, () -> new FruitLeavesBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
             .strength(0.2F)
             .randomTicks()
             .sound(SoundType.GRASS)
             .noOcclusion()
+            .pushReaction(PushReaction.DESTROY)
             .isSuffocating((p1, p2, p3) -> false)
             .isViewBlocking((p1, p2, p3) -> false),
             fruit
@@ -387,7 +401,8 @@ public class ModBlocks {
     private static RegistryObject<Block> registerStem(
         String name, Supplier<Item> seed, Supplier<Block> fruit, Supplier<Block> attachedStem
     ) {
-        return BLOCKS.register(name, () -> new GourdStemBlock(BlockBehaviour.Properties.of(Material.PLANT)
+        return BLOCKS.register(name, () -> new GourdStemBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
             .noCollission()
             .randomTicks()
             .instabreak()
@@ -399,9 +414,10 @@ public class ModBlocks {
     private static RegistryObject<Block> registerAttachedStem(
         String name, Supplier<Item> seed, Supplier<Block> fruit, Supplier<Block> stem
     ) {
-        return BLOCKS.register(name, () -> new GourdAttachedStemBlock(BlockBehaviour.Properties.of(Material.PLANT)
+        return BLOCKS.register(name, () -> new GourdAttachedStemBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
             .noCollission()
             .instabreak()
+            .pushReaction(PushReaction.DESTROY)
             .sound(SoundType.WOOD),
             seed, fruit, stem
         ));
@@ -410,13 +426,15 @@ public class ModBlocks {
     private static RegistryObject<Block> registerGrapeplant(String name, Supplier<Item> seed) {
 
         final RegistryObject<Block> TOP_BLOCK = BLOCKS.register(name + "_top", () -> new GrapevineSourceBlock(
-            BlockBehaviour.Properties.of(Material.LEAVES)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.PLANT)
                 .strength(0.2F)
                 .randomTicks()
                 .sound(SoundType.GRASS)
                 .noOcclusion()
                 .isSuffocating((p1, p2, p3) -> false)
                 .isViewBlocking((p1, p2, p3) -> false)
+                .pushReaction(PushReaction.DESTROY)
         ) {
             @Override
             public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
@@ -431,9 +449,11 @@ public class ModBlocks {
 
         FOLIAGE_COLOR_BLOCKS.add(TOP_BLOCK);
 
-        return BLOCKS.register(name, () -> new GrapeTrunkBlock(BlockBehaviour.Properties.of(Material.PLANT)
+        return BLOCKS.register(name, () -> new GrapeTrunkBlock(BlockBehaviour.Properties.of()
+            .mapColor(MapColor.PLANT)
             .randomTicks()
             .strength(2.0F)
+            .pushReaction(PushReaction.DESTROY)
             .sound(SoundType.WOOD),
             seed, TOP_BLOCK.get()
         ));
@@ -441,7 +461,8 @@ public class ModBlocks {
 
     private static RegistryObject<Block> registerTrellis(String name) {
         final RegistryObject<Block> BLOCK = BLOCKS.register(name, () -> new TrellisBlock(
-            BlockBehaviour.Properties.of(Material.WOOD)
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.WOOD)
                 .randomTicks()
                 .strength(2.0F, 3.0F)
                 .sound(SoundType.WOOD)

@@ -25,7 +25,7 @@ public class FermenterMenu extends AbstractContainerMenu {
         this(
             id,
             inventory,
-            (FermenterBlockEntity) inventory.player.level.getBlockEntity(buffer.readBlockPos()),
+            (FermenterBlockEntity) inventory.player.level().getBlockEntity(buffer.readBlockPos()),
             new SimpleContainerData(2)
         );
     }
@@ -36,7 +36,7 @@ public class FermenterMenu extends AbstractContainerMenu {
         checkContainerDataCount(containerData, 2);
         this.CONTAINER = container;
         this.DATA = containerData;
-        this.LEVEL = inventory.player.level;
+        this.LEVEL = inventory.player.level();
 
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {

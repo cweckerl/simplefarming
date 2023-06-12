@@ -20,17 +20,17 @@ class ItemUtil {
 
     protected static InteractionResult mobInteract(ItemStack pStack, Player pPlayer, Animal animal) {
         final int AGE = animal.getAge();
-        if (!pPlayer.level.isClientSide && AGE == 0 && animal.canFallInLove()) {
+        if (!pPlayer.level().isClientSide && AGE == 0 && animal.canFallInLove()) {
             usePlayerItem(pPlayer, pStack);
             animal.setInLove(pPlayer);
             return InteractionResult.SUCCESS;
         } else if (animal.isBaby()) {
             usePlayerItem(pPlayer, pStack);
             animal.ageUp(AgeableMob.getSpeedUpSecondsWhenFeeding(-AGE), true);
-            return InteractionResult.sidedSuccess(pPlayer.level.isClientSide);
+            return InteractionResult.sidedSuccess(pPlayer.level().isClientSide);
         }
 
-        if (pPlayer.level.isClientSide) {
+        if (pPlayer.level().isClientSide) {
             return InteractionResult.CONSUME;
         }
 
