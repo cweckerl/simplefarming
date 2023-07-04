@@ -454,6 +454,7 @@ public class ModBlocks {
             .randomTicks()
             .strength(2.0F)
             .pushReaction(PushReaction.DESTROY)
+            .forceSolidOff() // temp solution
             .sound(SoundType.WOOD),
             seed, TOP_BLOCK.get()
         ));
