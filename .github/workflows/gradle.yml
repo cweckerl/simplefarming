@@ -7,15 +7,7 @@
 
 name: Java CI with Gradle
 
-on:
-  push:
-    branches:
-      '*'
-      '!web'
-  pull_request:
-    branches:
-      '*'
-      '!web'
+on: [push, pull_request]
 
 permissions:
   contents: read
