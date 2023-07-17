@@ -5,9 +5,9 @@ plugins {
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-version = '1.20.1-2.0.5'
+version = '1.20.1-2.0.6'
 group = 'enemeez.simplefarming' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-// archivesBaseName = 'simplefarming'
+archivesBaseName = 'simplefarming'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)

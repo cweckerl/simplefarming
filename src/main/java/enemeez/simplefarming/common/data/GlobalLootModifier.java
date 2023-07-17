@@ -26,7 +26,7 @@ public class GlobalLootModifier extends LootModifier {
 
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        var index = context.getRandom().nextInt(ModItems.SEEDS.size() - 1);
+        var index = context.getRandom().nextInt(ModItems.SEEDS.size());
         generatedLoot.add(new ItemStack(ModItems.SEEDS.get(index).get()));
         return generatedLoot;
     }

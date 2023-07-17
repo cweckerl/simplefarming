@@ -8,7 +8,7 @@
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "simplefarming:raspberry_bush",
+              "Name": "simplefarming:strawberry_bush",
               "Properties": {
                 "age": "3"
               }
