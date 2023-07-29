@@ -96,9 +96,6 @@ public class FermenterRecipe implements Recipe<Container> {
     
     @Override
     public NonNullList<Ingredient> getIngredients() {
-        NonNullList<Ingredient> ingredients = NonNullList.createWithCapacity(2);
-        ingredients.add(INGREDIENT);
-        ingredients.add(Ingredient.of(Items.GLASS_BOTTLE));
-        return ingredients;
+        return NonNullList.of(null, INGREDIENT, Ingredient.of(Items.GLASS_BOTTLE));
     }
 }

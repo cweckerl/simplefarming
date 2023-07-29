@@ -13,7 +13,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModWorldGenProvider extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-        .add(Registries.CONFIGURED_FEATURE, b -> ModFeatures.bootstrap(b)) // ModFeatures::bootstrap
+        .add(Registries.CONFIGURED_FEATURE, ModFeatures::bootstrap)
         .add(Registries.PLACED_FEATURE, ModPlacements::bootstrap);
 
     public ModWorldGenProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, Set<String> modIds) {
