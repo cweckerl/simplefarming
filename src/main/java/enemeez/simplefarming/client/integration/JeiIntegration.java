@@ -4,8 +4,10 @@ import java.util.List;
 
 import enemeez.simplefarming.client.gui.FermenterScreen;
 import enemeez.simplefarming.common.SimpleFarming;
+import enemeez.simplefarming.common.block.menu.FermenterMenu;
 import enemeez.simplefarming.common.item.crafting.FermenterRecipe;
 import enemeez.simplefarming.common.registries.ModItems;
+import enemeez.simplefarming.common.registries.ModMenus;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -21,6 +23,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.NonNullList;
@@ -56,6 +59,11 @@ public class JeiIntegration implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModItems.FERMENTER.get()), FERMENTER_RECIPE_TYPE);
+    }
+    
+    @Override
+    public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
+        registration.addRecipeTransferHandler(FermenterMenu.class, ModMenus.FERMENTER_MENU.get(), FERMENTER_RECIPE_TYPE, 36, 2, 0, 36);
     }
     
     private static class FermenterCategory implements IRecipeCategory<FermenterRecipe> {
