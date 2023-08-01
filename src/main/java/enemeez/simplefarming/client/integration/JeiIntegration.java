@@ -73,7 +73,7 @@ public class JeiIntegration implements IModPlugin {
         private final IDrawable icon;
         
         public FermenterCategory(IGuiHelper guiHelper) {
-            arrow = guiHelper.drawableBuilder(FermenterScreen.TEXTURE, 176, 14, 24, 17).buildAnimated(200, IDrawableAnimated.StartDirection.LEFT, false);
+            arrow = guiHelper.drawableBuilder(FermenterScreen.TEXTURE, 176, 14, 24, 17).buildAnimated(2000, IDrawableAnimated.StartDirection.LEFT, false);
             background = guiHelper.createDrawable(FermenterScreen.TEXTURE, 51, 12, 90, 62);
             icon = guiHelper.createDrawableItemStack(new ItemStack(ModItems.FERMENTER.get()));
         }
