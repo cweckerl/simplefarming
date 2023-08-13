@@ -1,12 +1,15 @@
 package enemeez.simplefarming.common.item.crafting;
 
 import com.google.gson.JsonObject;
+
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -89,5 +92,10 @@ public class FermenterRecipe implements Recipe<Container> {
     @Override
     public RecipeType<?> getType() {
         return Type.INSTANCE;
+    }
+    
+    @Override
+    public NonNullList<Ingredient> getIngredients() {
+        return NonNullList.of(null, INGREDIENT, Ingredient.of(Items.GLASS_BOTTLE));
     }
 }
