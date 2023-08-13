@@ -5,8 +5,8 @@ plugins {
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-version = '1.20.1-2.0.6'
-group = 'enemeez.simplefarming' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = '1.20.1-2.1.6'
+group = 'dev.enemeez.simplefarming' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'simplefarming'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
@@ -173,7 +173,7 @@ dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft', it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.20.1-47.0.43'
+    minecraft 'net.minecraftforge:forge:1.20.1-47.1.44'
     
     // compile against the JEI API but do not include it at runtime
     compileOnly(fg.deobf("mezz.jei:jei-1.20.1-common-api:15.2.0.23"))

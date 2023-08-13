@@ -339,5 +339,13 @@
   "block.simplefarming.sprinkle_red_candle_cake": "Sprinkle Cake with Red Candle",
   "block.simplefarming.sprinkle_black_candle_cake": "Sprinkle Cake with Black Candle",
   "advancements.simplefarming.scythe.title": "The Reaper",
-  "advancements.simplefarming.scythe.description": "Craft a scythe to harvest plants in a larger area."
+  "advancements.simplefarming.scythe.description": "Craft a scythe to harvest plants in a larger area.",
+  "item.simplefarming.fiber_seed_packet": "Fiber Seed Packet",
+  "item.simplefarming.fruit_seed_packet": "Fruit Seed Packet",
+  "item.simplefarming.gourd_seed_packet": "Gourd Seed Packet",
+  "item.simplefarming.grain_seed_packet": "Grain Seed Packet",
+  "item.simplefarming.leafy_seed_packet": "Leafy Seed Packet",
+  "item.simplefarming.legume_seed_packet": "Legume Seed Packet",
+  "item.simplefarming.root_seed_packet": "Root Seed Packet",
+  "item.simplefarming.tuber_seed_packet": "Tuber Seed Packet"
 }
