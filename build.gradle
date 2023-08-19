@@ -5,7 +5,7 @@ plugins {
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-version = '1.20.1-2.1.6'
+version = '1.20.1-2.2.6'
 group = 'dev.enemeez.simplefarming' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'simplefarming'
 
