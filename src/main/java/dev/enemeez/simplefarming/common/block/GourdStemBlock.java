@@ -1,5 +1,6 @@
 package dev.enemeez.simplefarming.common.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -30,6 +31,11 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 public class GourdStemBlock extends BushBlock implements BonemealableBlock {
+    @Override
+    protected MapCodec<? extends GourdStemBlock> codec() {
+        return MapCodec.unit(this);
+    }
+
     public static final int MAX_AGE = 7;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
     protected static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
@@ -97,12 +103,12 @@ public class GourdStemBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
+    public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return new ItemStack(this.SEED.get());
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return pState.getValue(AGE) != MAX_AGE;
     }
 

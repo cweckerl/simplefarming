@@ -29,6 +29,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import java.util.List;
 
@@ -52,7 +53,8 @@ public class JeiIntegration implements IModPlugin {
     @SuppressWarnings("resource")
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        List<FermenterRecipe> fermenterRecipies = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(FermenterRecipe.Type.INSTANCE);
+        List<FermenterRecipe> fermenterRecipies = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(FermenterRecipe.Type.INSTANCE)
+            .stream().map(RecipeHolder::value).toList();
         registration.addRecipes(FERMENTER_RECIPE_TYPE, fermenterRecipies);
     }
 

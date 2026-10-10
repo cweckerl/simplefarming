@@ -72,7 +72,7 @@ public class DoubleCropBlock extends SingleCropBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return !pState.getValue(RIPE);
     }
 

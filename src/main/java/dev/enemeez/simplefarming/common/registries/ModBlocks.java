@@ -333,19 +333,19 @@ public class ModBlocks {
     }
 
     private static RegistryObject<Block> registerChocolateCake(String name) {
-        return BLOCKS.register(name, () -> new ChocolateCakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
+        return BLOCKS.register(name, () -> new ChocolateCakeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
     }
 
     private static RegistryObject<Block> registerChocolateCandleCake(String name, Block candleBlock) {
-        return BLOCKS.register(name, () -> new ChocolateCandleCakeBlock(candleBlock, BlockBehaviour.Properties.copy(Blocks.CANDLE_CAKE)));
+        return BLOCKS.register(name, () -> new ChocolateCandleCakeBlock(candleBlock, BlockBehaviour.Properties.ofFullCopy(Blocks.CANDLE_CAKE)));
     }
 
     private static RegistryObject<Block> registerSprinkleCake(String name) {
-        return BLOCKS.register(name, () -> new SprinkleCakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
+        return BLOCKS.register(name, () -> new SprinkleCakeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
     }
 
     private static RegistryObject<Block> registerSprinkleCandleCake(String name, Block candleBlock) {
-        return BLOCKS.register(name, () -> new SprinkleCandleCakeBlock(candleBlock, BlockBehaviour.Properties.copy(Blocks.CANDLE_CAKE)));
+        return BLOCKS.register(name, () -> new SprinkleCandleCakeBlock(candleBlock, BlockBehaviour.Properties.ofFullCopy(Blocks.CANDLE_CAKE)));
     }
 
     private static RegistryObject<Block> registerGrowableFlower(String name, Supplier<Item> seed) {
@@ -371,7 +371,7 @@ public class ModBlocks {
     }
 
     private static RegistryObject<Block> registerSapling(String name, ResourceKey<ConfiguredFeature<?, ?>> tree) {
-        return BLOCKS.register(name, () -> new SaplingBlock(new FruitTreeGrower(tree), BlockBehaviour.Properties.of()
+        return BLOCKS.register(name, () -> new SaplingBlock(FruitTreeGrower.create(name, tree), BlockBehaviour.Properties.of()
             .mapColor(MapColor.PLANT)
             .noCollission()
             .randomTicks()

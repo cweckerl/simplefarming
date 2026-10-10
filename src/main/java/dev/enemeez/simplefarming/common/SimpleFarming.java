@@ -37,6 +37,7 @@ public class SimpleFarming {
         ModMenus.MENU_TYPES.register(modEventBus);
         ModLootModifiers.GLOBAL_LOOT_MODIFIERS.register(modEventBus);
         ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
+        ModRecipes.RECIPE_TYPES.register(modEventBus);
         ModCreativeTabs.CREATIVE_TABS.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
 

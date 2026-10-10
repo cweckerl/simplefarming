@@ -19,6 +19,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -129,7 +130,7 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider, W
     }
 
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, FermenterBlockEntity entity) {
-        Optional<FermenterRecipe> recipe;
+        Optional<RecipeHolder<FermenterRecipe>> recipe;
         if (canCraft(entity) && (recipe = level.getRecipeManager().getRecipeFor(FermenterRecipe.Type.INSTANCE, entity, level)).isPresent()) {
             entity.progress++;
 
@@ -140,7 +141,7 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider, W
                 var bottle = entity.items.get(SLOT_BOTTLE);
                 entity.items.set(SLOT_INPUT, input.getCount() > 0 ? new ItemStack(input.getItem(), input.getCount() - 1) : ItemStack.EMPTY);
                 entity.items.set(SLOT_BOTTLE, bottle.getCount() > 0 ? new ItemStack(bottle.getItem(), bottle.getCount() - 1) : ItemStack.EMPTY);
-                entity.items.set(SLOT_RESULT, new ItemStack(recipe.get().getResultItem(level.registryAccess()).getItem()));
+                entity.items.set(SLOT_RESULT, new ItemStack(recipe.get().value().getResultItem(level.registryAccess()).getItem()));
             }
 
             setChanged(level, blockPos, blockState);

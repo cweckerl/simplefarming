@@ -1,5 +1,6 @@
 package dev.enemeez.simplefarming.common.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -30,6 +31,11 @@ import net.minecraftforge.common.ForgeHooks;
 import java.util.function.Supplier;
 
 public abstract class GrowableBushBlock extends BushBlock implements BonemealableBlock {
+    @Override
+    protected MapCodec<? extends GrowableBushBlock> codec() {
+        return MapCodec.unit(this);
+    }
+
     public static final int MAX_AGE = 3;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     private final Supplier<Item> OUTPUT;
@@ -44,7 +50,7 @@ public abstract class GrowableBushBlock extends BushBlock implements Bonemealabl
     abstract public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext);
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return pState.getValue(AGE) < MAX_AGE;
     }
 
@@ -59,7 +65,7 @@ public abstract class GrowableBushBlock extends BushBlock implements Bonemealabl
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
+    public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return new ItemStack(OUTPUT.get());
     }
 
