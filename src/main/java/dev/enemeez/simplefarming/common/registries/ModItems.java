@@ -1,5 +1,7 @@
 package dev.enemeez.simplefarming.common.registries;
 
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import dev.enemeez.simplefarming.common.SimpleFarming;
 import dev.enemeez.simplefarming.common.item.AlcoholItem;
 import dev.enemeez.simplefarming.common.item.GrainCropItem;
@@ -7,21 +9,20 @@ import dev.enemeez.simplefarming.common.item.RootCropItem;
 import dev.enemeez.simplefarming.common.item.ScytheItem;
 import dev.enemeez.simplefarming.common.item.SeedItem;
 import dev.enemeez.simplefarming.common.item.SeedPacketItem;
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.BowlFoodItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.RecordItem;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.HashMap;
@@ -30,7 +31,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class ModItems {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, SimpleFarming.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, SimpleFarming.MOD_ID);
     public static final LinkedList<RegistryObject<Item>> ITEM_LIST = new LinkedList<>();
     public static final Map<RegistryObject<Item>, Float> COMPOSTABLES = new HashMap<>();
     public static final LinkedList<RegistryObject<Item>> SEEDS = new LinkedList<>();
@@ -81,15 +82,15 @@ public class ModItems {
     // ************************************************
 
     // Scythes
-    public static final RegistryObject<Item> WOODEN_SCYTHE = registerScythe("wooden_scythe", Tiers.WOOD);
-    public static final RegistryObject<Item> STONE_SCYTHE = registerScythe("stone_scythe", Tiers.STONE);
-    public static final RegistryObject<Item> IRON_SCYTHE = registerScythe("iron_scythe", Tiers.IRON);
-    public static final RegistryObject<Item> GOLDEN_SCYTHE = registerScythe("golden_scythe", Tiers.GOLD);
-    public static final RegistryObject<Item> DIAMOND_SCYTHE = registerScythe("diamond_scythe", Tiers.DIAMOND);
-    public static final RegistryObject<Item> NETHERITE_SCYTHE = registerScythe("netherite_scythe", Tiers.NETHERITE);
+    public static final RegistryObject<Item> WOODEN_SCYTHE = registerScythe("wooden_scythe", ToolMaterial.WOOD);
+    public static final RegistryObject<Item> STONE_SCYTHE = registerScythe("stone_scythe", ToolMaterial.STONE);
+    public static final RegistryObject<Item> IRON_SCYTHE = registerScythe("iron_scythe", ToolMaterial.IRON);
+    public static final RegistryObject<Item> GOLDEN_SCYTHE = registerScythe("golden_scythe", ToolMaterial.GOLD);
+    public static final RegistryObject<Item> DIAMOND_SCYTHE = registerScythe("diamond_scythe", ToolMaterial.DIAMOND);
+    public static final RegistryObject<Item> NETHERITE_SCYTHE = registerScythe("netherite_scythe", ToolMaterial.NETHERITE);
 
     // Music disc
-    public static final RegistryObject<Item> MUSIC_DISC_NOURISH = registerMusicDisc("music_disc_nourish", 2340);
+    public static final RegistryObject<Item> MUSIC_DISC_NOURISH = registerMusicDisc("music_disc_nourish");
 
     // Seed packets
     public static final RegistryObject<Item> FIBER_SEED_PACKET = registerSeedPacket("fiber_seed_packet", SeedPacketItem.Type.FIBER);
@@ -167,13 +168,13 @@ public class ModItems {
     public static final RegistryObject<Item> NOODLES = registerItem("noodles", 0.85F);
 
     // Beverages
-    public static final RegistryObject<Item> BEER = registerAlcohol("beer", MobEffects.DAMAGE_BOOST);
-    public static final RegistryObject<Item> CAUIM = registerAlcohol("cauim", MobEffects.JUMP);
+    public static final RegistryObject<Item> BEER = registerAlcohol("beer", MobEffects.STRENGTH);
+    public static final RegistryObject<Item> CAUIM = registerAlcohol("cauim", MobEffects.JUMP_BOOST);
     public static final RegistryObject<Item> CIDER = registerAlcohol("cider", MobEffects.LUCK);
-    public static final RegistryObject<Item> MEAD = registerAlcohol("mead", MobEffects.DIG_SPEED);
-    public static final RegistryObject<Item> SAKE = registerAlcohol("sake", MobEffects.MOVEMENT_SPEED);
+    public static final RegistryObject<Item> MEAD = registerAlcohol("mead", MobEffects.HASTE);
+    public static final RegistryObject<Item> SAKE = registerAlcohol("sake", MobEffects.SPEED);
     public static final RegistryObject<Item> TISWIN = registerAlcohol("tiswin", MobEffects.HEALTH_BOOST);
-    public static final RegistryObject<Item> VODKA = registerAlcohol("vodka", MobEffects.DAMAGE_RESISTANCE);
+    public static final RegistryObject<Item> VODKA = registerAlcohol("vodka", MobEffects.RESISTANCE);
     public static final RegistryObject<Item> WHISKEY = registerAlcohol("whiskey", MobEffects.ABSORPTION);
     public static final RegistryObject<Item> WINE = registerAlcohol("wine", MobEffects.REGENERATION);
 
@@ -340,7 +341,7 @@ public class ModItems {
 
 
     private static RegistryObject<Item> registerItem(String name) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(new Item.Properties()));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(new Item.Properties().setId(itemKey(name))));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
@@ -352,7 +353,7 @@ public class ModItems {
     }
 
     private static RegistryObject<Item> registerFood(String name, FoodProperties pFood) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(new Item.Properties().food(pFood)));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(new Item.Properties().setId(itemKey(name)).food(pFood, ModFoods.consumableFor(pFood))));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
@@ -364,21 +365,24 @@ public class ModItems {
     }
 
     private static RegistryObject<Item> registerGoldenHabanero(String name, FoodProperties pFood) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(new Item.Properties().rarity(Rarity.RARE).food(pFood)));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(new Item.Properties().setId(itemKey(name)).rarity(Rarity.RARE).food(pFood, ModFoods.consumableFor(pFood))));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
 
     private static RegistryObject<Item> registerBowlFood(String name, FoodProperties pFood) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new BowlFoodItem(
-            new Item.Properties().stacksTo(1).food(pFood)
+        // BowlFoodItem is gone; returning the bowl is an item property
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(
+            new Item.Properties().setId(itemKey(name)).stacksTo(1).food(pFood, ModFoods.consumableFor(pFood)).usingConvertsTo(Items.BOWL)
         ));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
 
+
+
     private static RegistryObject<Item> registerSeed(String name, Supplier<Block> crop) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new SeedItem(crop.get(), new Item.Properties()));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new SeedItem(crop.get(), new Item.Properties().setId(itemKey(name))));
         ITEM_LIST.add(ITEM);
         COMPOSTABLES.put(ITEM, 0.3F);
         SEEDS.add(ITEM);
@@ -386,8 +390,8 @@ public class ModItems {
     }
 
     private static RegistryObject<Item> registerEdibleSeed(String name, Supplier<Block> flower) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new ItemNameBlockItem(flower.get(), new Item.Properties()
-            .food(ModFoods.SEEDS)
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new BlockItem(flower.get(), new Item.Properties().setId(itemKey(name))
+            .food(ModFoods.SEEDS, ModFoods.consumableFor(ModFoods.SEEDS))
         ));
         ITEM_LIST.add(ITEM);
         COMPOSTABLES.put(ITEM, 0.3F);
@@ -395,28 +399,28 @@ public class ModItems {
     }
 
     private static RegistryObject<Item> registerGrainCropItem(String name) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new GrainCropItem(new Item.Properties()));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new GrainCropItem(new Item.Properties().setId(itemKey(name))));
         ITEM_LIST.add(ITEM);
         COMPOSTABLES.put(ITEM, 0.65F);
         return ITEM;
     }
 
     private static RegistryObject<Item> registerGrainCropItem(String name, FoodProperties pFood) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new GrainCropItem(new Item.Properties().food(pFood)));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new GrainCropItem(new Item.Properties().setId(itemKey(name)).food(pFood, ModFoods.consumableFor(pFood))));
         ITEM_LIST.add(ITEM);
         COMPOSTABLES.put(ITEM, 0.65F);
         return ITEM;
     }
 
     private static RegistryObject<Item> registerRootCropItem(String name, FoodProperties pFood) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new RootCropItem(new Item.Properties().food(pFood)));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new RootCropItem(new Item.Properties().setId(itemKey(name)).food(pFood, ModFoods.consumableFor(pFood))));
         ITEM_LIST.add(ITEM);
         COMPOSTABLES.put(ITEM, 0.65F);
         return ITEM;
     }
 
     private static RegistryObject<Item> registerBlockItem(String name, Supplier<Block> block) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().setId(itemKey(name)).useBlockDescriptionPrefix()));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
@@ -428,35 +432,41 @@ public class ModItems {
     }
 
     private static RegistryObject<Item> registerCakeLike(String name, Supplier<Block> block) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().stacksTo(1)));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().setId(itemKey(name)).useBlockDescriptionPrefix().stacksTo(1)));
         ITEM_LIST.add(ITEM);
         COMPOSTABLES.put(ITEM, 1.0F);
         return ITEM;
     }
 
-    private static RegistryObject<Item> registerAlcohol(String name, MobEffect effect) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new AlcoholItem(new Item.Properties().stacksTo(1), effect));
+    private static RegistryObject<Item> registerAlcohol(String name, Holder<MobEffect> effect) {
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new AlcoholItem(new Item.Properties().setId(itemKey(name)).stacksTo(1), effect));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
 
-    private static RegistryObject<Item> registerScythe(String name, Tier tier) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new ScytheItem(tier, 2, -3.0F, new Item.Properties()));
+    private static RegistryObject<Item> registerScythe(String name, ToolMaterial tier) {
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new ScytheItem(tier, 2, -3.0F, new Item.Properties().setId(itemKey(name))));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
 
-    private static RegistryObject<Item> registerMusicDisc(String name, int tickLength) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new RecordItem(15, () -> ModSoundEvents.MUSIC_DISC_NOURISH.get(),
-            new Item.Properties().stacksTo(1).rarity(Rarity.RARE), tickLength)
-        );
+    private static RegistryObject<Item> registerMusicDisc(String name) {
+        // RecordItem is gone since 1.21; discs reference a data-driven jukebox_song
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(
+            new Item.Properties().setId(itemKey(name)).stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ModSoundEvents.NOURISH_SONG)
+        ));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
+
 
     private static RegistryObject<Item> registerSeedPacket(String name, SeedPacketItem.Type type) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new SeedPacketItem(new Item.Properties(), type));
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new SeedPacketItem(new Item.Properties().setId(itemKey(name)), type));
         ITEM_LIST.add(ITEM);
         return ITEM;
+    }
+
+    private static ResourceKey<Item> itemKey(String name) {
+        return ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(SimpleFarming.MOD_ID, name));
     }
 }

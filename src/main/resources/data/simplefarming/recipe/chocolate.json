@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:sugar",
+    "minecraft:milk_bucket",
+    "minecraft:cocoa_beans"
+  ],
+  "result": {
+    "id": "simplefarming:chocolate"
+  }
+}

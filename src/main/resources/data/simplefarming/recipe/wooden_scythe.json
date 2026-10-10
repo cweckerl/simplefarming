@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "#minecraft:planks"
+  },
+  "pattern": [
+    "XX#",
+    " # ",
+    "#  "
+  ],
+  "result": {
+    "id": "simplefarming:wooden_scythe"
+  }
+}

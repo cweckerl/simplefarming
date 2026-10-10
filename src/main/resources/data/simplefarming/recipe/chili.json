@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "minecraft:cooked_beef",
+    "#c:crops/tomato",
+    "#c:peppers"
+  ],
+  "result": {
+    "id": "simplefarming:chili"
+  }
+}

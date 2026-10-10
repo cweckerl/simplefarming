@@ -1,101 +1,113 @@
 package dev.enemeez.simplefarming.common.item.crafting;
 
-import com.google.gson.JsonObject;
-
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
-import net.minecraft.world.Container;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.enemeez.simplefarming.common.SimpleFarming;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.PlacementInfo;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeBookCategories;
+import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
-public class FermenterRecipe implements Recipe<Container> {
+public class FermenterRecipe implements Recipe<SingleRecipeInput> {
 
     public static class Type implements RecipeType<FermenterRecipe> {
         public static final Type INSTANCE = new Type();
         public static final String ID = "fermenting";
-    }
-
-    public static class Serializer implements RecipeSerializer<FermenterRecipe> {
-        public static final Serializer INSTANCE = new Serializer();
 
         @Override
-        public FermenterRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
-            Ingredient ingredient = Ingredient.fromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "ingredient"));
-            ItemStack result = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "result"));
-            return new FermenterRecipe(pRecipeId, ingredient, result);
-        }
-
-        @Override
-        public @Nullable FermenterRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
-            Ingredient ingredient = Ingredient.fromNetwork(pBuffer);
-            ItemStack result = pBuffer.readItem();
-            return new FermenterRecipe(pRecipeId, ingredient, result);
-        }
-
-        @Override
-        public void toNetwork(FriendlyByteBuf pBuffer, FermenterRecipe pRecipe) {
-            pRecipe.INGREDIENT.toNetwork(pBuffer);
-            pBuffer.writeItemStack(pRecipe.RESULT, false);
+        public String toString() {
+            return SimpleFarming.MOD_ID + ":" + ID;
         }
     }
 
-    private final ResourceLocation ID;
+    public static class Serializer {
+        private static final MapCodec<FermenterRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
+            Ingredient.CODEC.fieldOf("ingredient").forGetter(FermenterRecipe::getIngredient),
+            ItemStackTemplate.CODEC.fieldOf("result").forGetter(recipe -> recipe.RESULT)
+        ).apply(inst, FermenterRecipe::new));
+        private static final StreamCodec<RegistryFriendlyByteBuf, FermenterRecipe> STREAM_CODEC = StreamCodec.composite(
+            Ingredient.CONTENTS_STREAM_CODEC, FermenterRecipe::getIngredient,
+            ItemStackTemplate.STREAM_CODEC, recipe -> recipe.RESULT,
+            FermenterRecipe::new
+        );
+
+        public static final RecipeSerializer<FermenterRecipe> INSTANCE = new RecipeSerializer<>(CODEC, STREAM_CODEC);
+    }
+
     private final Ingredient INGREDIENT;
-    private final ItemStack RESULT;
+    // 26.x recipes keep results as templates (item stacks can only be built once item components are bound)
+    private final ItemStackTemplate RESULT;
+    private @Nullable PlacementInfo placementInfo;
 
-    public FermenterRecipe(ResourceLocation id, Ingredient ingredient, ItemStack result) {
-        this.ID = id;
+    public FermenterRecipe(Ingredient ingredient, ItemStackTemplate result) {
         this.RESULT = result;
         this.INGREDIENT = ingredient;
     }
 
-    @Override
-    public boolean matches(Container pContainer, Level pLevel) {
-        return this.INGREDIENT.test(pContainer.getItem(0));
+    public Ingredient getIngredient() {
+        return INGREDIENT;
+    }
+
+    public ItemStack getResult() {
+        return RESULT.create();
     }
 
     @Override
-    public ItemStack assemble(Container pContainer, RegistryAccess access) {
-        return RESULT.copy();
+    public boolean matches(SingleRecipeInput pInput, Level pLevel) {
+        return this.INGREDIENT.test(pInput.item());
     }
 
     @Override
-    public boolean canCraftInDimensions(int pWidth, int pHeight) {
+    public ItemStack assemble(SingleRecipeInput pInput) {
+        return RESULT.create();
+    }
+
+    // Fermenting isn't shown in the vanilla recipe book
+    @Override
+    public boolean showNotification() {
+        return false;
+    }
+
+    @Override
+    public String group() {
+        return "";
+    }
+
+    @Override
+    public boolean isSpecial() {
         return true;
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess access) {
-        return RESULT;
+    public PlacementInfo placementInfo() {
+        if (this.placementInfo == null) {
+            this.placementInfo = PlacementInfo.create(this.INGREDIENT);
+        }
+        return this.placementInfo;
     }
 
     @Override
-    public ResourceLocation getId() {
-        return ID;
+    public RecipeBookCategory recipeBookCategory() {
+        return RecipeBookCategories.CRAFTING_MISC;
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<FermenterRecipe> getSerializer() {
         return Serializer.INSTANCE;
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public RecipeType<FermenterRecipe> getType() {
         return Type.INSTANCE;
-    }
-    
-    @Override
-    public NonNullList<Ingredient> getIngredients() {
-        return NonNullList.of(null, INGREDIENT, Ingredient.of(Items.GLASS_BOTTLE));
     }
 }

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:eggplant"
+  ],
+  "result": {
+    "id": "simplefarming:eggplant_seeds"
+  }
+}

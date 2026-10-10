@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:bread",
+    "#c:crops/peanut",
+    "simplefarming:jam"
+  ],
+  "result": {
+    "id": "simplefarming:pbj"
+  }
+}

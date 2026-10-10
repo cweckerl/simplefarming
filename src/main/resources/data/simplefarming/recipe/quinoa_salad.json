@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "#c:quinoa",
+    "#c:quinoa",
+    "#c:quinoa"
+  ],
+  "result": {
+    "id": "simplefarming:quinoa_salad"
+  }
+}

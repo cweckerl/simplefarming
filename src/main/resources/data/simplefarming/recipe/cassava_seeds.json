@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:cassava"
+  ],
+  "result": {
+    "id": "simplefarming:cassava_seeds"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:sweet_potato"
+  ],
+  "result": {
+    "id": "simplefarming:sweet_potato_seeds"
+  }
+}

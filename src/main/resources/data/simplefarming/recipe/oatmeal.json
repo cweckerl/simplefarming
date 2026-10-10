@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "#c:grain/oat",
+    "#c:grain/oat"
+  ],
+  "result": {
+    "id": "simplefarming:oatmeal"
+  }
+}

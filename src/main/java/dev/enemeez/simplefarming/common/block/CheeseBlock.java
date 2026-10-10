@@ -20,19 +20,26 @@ public class CheeseBlock extends CakeBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (pLevel.isClientSide) {
+    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        // Cheese is sliced with any item (and must not turn into a candle cake like CakeBlock does)
+        return InteractionResult.TRY_WITH_EMPTY_HAND;
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHit) {
+        if (pLevel.isClientSide()) {
             if (slice(pLevel, pPos, pState, pPlayer).consumesAction()) {
                 return InteractionResult.SUCCESS;
             }
 
-            if (pPlayer.getItemInHand(pHand).isEmpty()) {
+            if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
                 return InteractionResult.CONSUME;
             }
         }
 
         return slice(pLevel, pPos, pState, pPlayer);
     }
+
 
     private InteractionResult slice(LevelAccessor pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
         int bites = pState.getValue(BITES);

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:bread",
+    "simplefarming:cooked_sausage"
+  ],
+  "result": {
+    "id": "simplefarming:hotdog"
+  }
+}

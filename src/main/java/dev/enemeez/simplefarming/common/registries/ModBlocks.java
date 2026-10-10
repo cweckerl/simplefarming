@@ -1,5 +1,10 @@
 package dev.enemeez.simplefarming.common.registries;
 
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.util.RandomSource;
+import net.minecraft.resources.Identifier;
 import dev.enemeez.simplefarming.common.SimpleFarming;
 import dev.enemeez.simplefarming.common.block.BerryBushBlock;
 import dev.enemeez.simplefarming.common.block.CheeseBlock;
@@ -40,7 +45,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.HashSet;
@@ -49,7 +54,7 @@ import java.util.function.Supplier;
 
 public class ModBlocks {
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, SimpleFarming.MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, SimpleFarming.MOD_ID);
     public static final Set<RegistryObject<Block>> FOLIAGE_COLOR_BLOCKS = new HashSet<>();
 
     // Crops
@@ -86,7 +91,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> RASPBERRY_BUSH = registerBerryBush("raspberry_bush", () -> ModItems.RASPBERRIES.get());
     public static final RegistryObject<Block> STRAWBERRY_BUSH = registerBerryBush("strawberry_bush", () -> ModItems.STRAWBERRIES.get());
     public static final RegistryObject<Block> OPUNTIA = BLOCKS.register("opuntia", () -> new OpuntiaBlock(
-        BlockBehaviour.Properties.of()
+        BlockBehaviour.Properties.of().setId(blockKey("opuntia"))
             .mapColor(MapColor.PLANT)
             .randomTicks()
             .strength(0.4F)
@@ -98,45 +103,45 @@ public class ModBlocks {
     // Cakes
     public static final RegistryObject<Block> CHOCOLATE_CAKE = registerChocolateCake("chocolate_cake");
     public static final RegistryObject<Block> CHOCOLATE_CANDLE_CAKE = registerChocolateCandleCake("chocolate_candle_cake", Blocks.CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_WHITE_CANDLE_CAKE = registerChocolateCandleCake("chocolate_white_candle_cake", Blocks.WHITE_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_ORANGE_CANDLE_CAKE = registerChocolateCandleCake("chocolate_orange_candle_cake", Blocks.ORANGE_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_MAGENTA_CANDLE_CAKE = registerChocolateCandleCake("chocolate_magenta_candle_cake", Blocks.MAGENTA_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_LIGHT_BLUE_CANDLE_CAKE = registerChocolateCandleCake("chocolate_light_blue_candle_cake", Blocks.LIGHT_BLUE_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_YELLOW_CANDLE_CAKE = registerChocolateCandleCake("chocolate_yellow_candle_cake", Blocks.YELLOW_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_LIME_CANDLE_CAKE = registerChocolateCandleCake("chocolate_lime_candle_cake", Blocks.LIME_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_PINK_CANDLE_CAKE = registerChocolateCandleCake("chocolate_pink_candle_cake", Blocks.PINK_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_GRAY_CANDLE_CAKE = registerChocolateCandleCake("chocolate_gray_candle_cake", Blocks.GRAY_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_LIGHT_GRAY_CANDLE_CAKE = registerChocolateCandleCake("chocolate_light_gray_candle_cake", Blocks.LIGHT_GRAY_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_CYAN_CANDLE_CAKE = registerChocolateCandleCake("chocolate_cyan_candle_cake", Blocks.CYAN_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_PURPLE_CANDLE_CAKE = registerChocolateCandleCake("chocolate_purple_candle_cake", Blocks.PURPLE_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_BLUE_CANDLE_CAKE = registerChocolateCandleCake("chocolate_blue_candle_cake", Blocks.BLUE_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_BROWN_CANDLE_CAKE = registerChocolateCandleCake("chocolate_brown_candle_cake", Blocks.BROWN_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_GREEN_CANDLE_CAKE = registerChocolateCandleCake("chocolate_green_candle_cake", Blocks.GREEN_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_RED_CANDLE_CAKE = registerChocolateCandleCake("chocolate_red_candle_cake", Blocks.RED_CANDLE);
-    public static final RegistryObject<Block> CHOCOLATE_BLACK_CANDLE_CAKE = registerChocolateCandleCake("chocolate_black_candle_cake", Blocks.BLACK_CANDLE);
+    public static final RegistryObject<Block> CHOCOLATE_WHITE_CANDLE_CAKE = registerChocolateCandleCake("chocolate_white_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.WHITE));
+    public static final RegistryObject<Block> CHOCOLATE_ORANGE_CANDLE_CAKE = registerChocolateCandleCake("chocolate_orange_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.ORANGE));
+    public static final RegistryObject<Block> CHOCOLATE_MAGENTA_CANDLE_CAKE = registerChocolateCandleCake("chocolate_magenta_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.MAGENTA));
+    public static final RegistryObject<Block> CHOCOLATE_LIGHT_BLUE_CANDLE_CAKE = registerChocolateCandleCake("chocolate_light_blue_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.LIGHT_BLUE));
+    public static final RegistryObject<Block> CHOCOLATE_YELLOW_CANDLE_CAKE = registerChocolateCandleCake("chocolate_yellow_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.YELLOW));
+    public static final RegistryObject<Block> CHOCOLATE_LIME_CANDLE_CAKE = registerChocolateCandleCake("chocolate_lime_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.LIME));
+    public static final RegistryObject<Block> CHOCOLATE_PINK_CANDLE_CAKE = registerChocolateCandleCake("chocolate_pink_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.PINK));
+    public static final RegistryObject<Block> CHOCOLATE_GRAY_CANDLE_CAKE = registerChocolateCandleCake("chocolate_gray_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.GRAY));
+    public static final RegistryObject<Block> CHOCOLATE_LIGHT_GRAY_CANDLE_CAKE = registerChocolateCandleCake("chocolate_light_gray_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.LIGHT_GRAY));
+    public static final RegistryObject<Block> CHOCOLATE_CYAN_CANDLE_CAKE = registerChocolateCandleCake("chocolate_cyan_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.CYAN));
+    public static final RegistryObject<Block> CHOCOLATE_PURPLE_CANDLE_CAKE = registerChocolateCandleCake("chocolate_purple_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.PURPLE));
+    public static final RegistryObject<Block> CHOCOLATE_BLUE_CANDLE_CAKE = registerChocolateCandleCake("chocolate_blue_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.BLUE));
+    public static final RegistryObject<Block> CHOCOLATE_BROWN_CANDLE_CAKE = registerChocolateCandleCake("chocolate_brown_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.BROWN));
+    public static final RegistryObject<Block> CHOCOLATE_GREEN_CANDLE_CAKE = registerChocolateCandleCake("chocolate_green_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.GREEN));
+    public static final RegistryObject<Block> CHOCOLATE_RED_CANDLE_CAKE = registerChocolateCandleCake("chocolate_red_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.RED));
+    public static final RegistryObject<Block> CHOCOLATE_BLACK_CANDLE_CAKE = registerChocolateCandleCake("chocolate_black_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.BLACK));
 
     public static final RegistryObject<Block> SPRINKLE_CAKE = registerSprinkleCake("sprinkle_cake");
     public static final RegistryObject<Block> SPRINKLE_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_candle_cake", Blocks.CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_WHITE_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_white_candle_cake", Blocks.WHITE_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_ORANGE_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_orange_candle_cake", Blocks.ORANGE_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_MAGENTA_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_magenta_candle_cake", Blocks.MAGENTA_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_LIGHT_BLUE_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_light_blue_candle_cake", Blocks.LIGHT_BLUE_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_YELLOW_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_yellow_candle_cake", Blocks.YELLOW_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_LIME_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_lime_candle_cake", Blocks.LIME_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_PINK_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_pink_candle_cake", Blocks.PINK_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_GRAY_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_gray_candle_cake", Blocks.GRAY_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_LIGHT_GRAY_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_light_gray_candle_cake", Blocks.LIGHT_GRAY_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_CYAN_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_cyan_candle_cake", Blocks.CYAN_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_PURPLE_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_purple_candle_cake", Blocks.PURPLE_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_BLUE_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_blue_candle_cake", Blocks.BLUE_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_BROWN_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_brown_candle_cake", Blocks.BROWN_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_GREEN_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_green_candle_cake", Blocks.GREEN_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_RED_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_red_candle_cake", Blocks.RED_CANDLE);
-    public static final RegistryObject<Block> SPRINKLE_BLACK_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_black_candle_cake", Blocks.BLACK_CANDLE);
+    public static final RegistryObject<Block> SPRINKLE_WHITE_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_white_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.WHITE));
+    public static final RegistryObject<Block> SPRINKLE_ORANGE_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_orange_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.ORANGE));
+    public static final RegistryObject<Block> SPRINKLE_MAGENTA_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_magenta_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.MAGENTA));
+    public static final RegistryObject<Block> SPRINKLE_LIGHT_BLUE_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_light_blue_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.LIGHT_BLUE));
+    public static final RegistryObject<Block> SPRINKLE_YELLOW_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_yellow_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.YELLOW));
+    public static final RegistryObject<Block> SPRINKLE_LIME_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_lime_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.LIME));
+    public static final RegistryObject<Block> SPRINKLE_PINK_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_pink_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.PINK));
+    public static final RegistryObject<Block> SPRINKLE_GRAY_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_gray_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.GRAY));
+    public static final RegistryObject<Block> SPRINKLE_LIGHT_GRAY_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_light_gray_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.LIGHT_GRAY));
+    public static final RegistryObject<Block> SPRINKLE_CYAN_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_cyan_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.CYAN));
+    public static final RegistryObject<Block> SPRINKLE_PURPLE_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_purple_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.PURPLE));
+    public static final RegistryObject<Block> SPRINKLE_BLUE_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_blue_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.BLUE));
+    public static final RegistryObject<Block> SPRINKLE_BROWN_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_brown_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.BROWN));
+    public static final RegistryObject<Block> SPRINKLE_GREEN_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_green_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.GREEN));
+    public static final RegistryObject<Block> SPRINKLE_RED_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_red_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.RED));
+    public static final RegistryObject<Block> SPRINKLE_BLACK_CANDLE_CAKE = registerSprinkleCandleCake("sprinkle_black_candle_cake", Blocks.DYED_CANDLE.pick(DyeColor.BLACK));
 
     // Cheese
     public static final RegistryObject<Block> CHEESE_WHEEL = BLOCKS.register("cheese_wheel", () -> new CheeseBlock(
-        BlockBehaviour.Properties.of().strength(0.5F).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)
+        BlockBehaviour.Properties.of().setId(blockKey("cheese_wheel")).strength(0.5F).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)
     ));
 
     // Hay bales
@@ -178,7 +183,7 @@ public class ModBlocks {
 
     // Fruit log
     public static final RegistryObject<Block> FRUIT_LOG = BLOCKS.register("fruit_log",
-        () -> new FruitTreeLogBlock(BlockBehaviour.Properties.of()
+        () -> new FruitTreeLogBlock(BlockBehaviour.Properties.of().setId(blockKey("fruit_log"))
             .mapColor(MapColor.WOOD)
             .strength(2.0F)
             .sound(SoundType.WOOD)
@@ -198,9 +203,9 @@ public class ModBlocks {
 
     // Wild crop
     public static final RegistryObject<Block> WILD_CROP = BLOCKS.register("wild_crop", () -> new Block(
-        BlockBehaviour.Properties.of()
+        BlockBehaviour.Properties.of().setId(blockKey("wild_crop"))
             .mapColor(MapColor.PLANT)
-            .noCollission()
+            .noCollision()
             .instabreak()
             .sound(SoundType.GRASS)
             .offsetType(BlockBehaviour.OffsetType.XZ)
@@ -220,9 +225,9 @@ public class ModBlocks {
 
     // Scarecrow
     public static final RegistryObject<Block> SCARECROW = BLOCKS.register("scarecrow", () -> new ScarecrowBlock(
-        BlockBehaviour.Properties.of()
+        BlockBehaviour.Properties.of().setId(blockKey("scarecrow"))
             .mapColor(MapColor.PLANT)
-            .noCollission()
+            .noCollision()
             .strength(2.0F)
             .sound(SoundType.WOOD)
             .pushReaction(PushReaction.DESTROY)
@@ -234,17 +239,17 @@ public class ModBlocks {
     // Grape crop
     public static final RegistryObject<Block> GRAPE_TRUNK = registerGrapeplant("grape_trunk", () -> ModItems.GRAPE_SEEDS.get());
     public static final RegistryObject<Block> GRAPEVINE = BLOCKS.register("grapevine", () -> new GrapevineBlock(
-        BlockBehaviour.Properties.of()
+        BlockBehaviour.Properties.of().setId(blockKey("grapevine"))
             .mapColor(MapColor.PLANT)
             .randomTicks()
-            .noCollission()
+            .noCollision()
             .instabreak()
             .sound(SoundType.GRASS)
             .pushReaction(PushReaction.DESTROY)
     ));
 
     public static final RegistryObject<Block> FERMENTER = BLOCKS.register("fermenter", () -> new FermenterBlock(
-        BlockBehaviour.Properties.of()
+        BlockBehaviour.Properties.of().setId(blockKey("fermenter"))
             .mapColor(MapColor.STONE)
             .strength(3.5F)
             .noOcclusion()
@@ -252,9 +257,9 @@ public class ModBlocks {
     ));
 
     private static RegistryObject<Block> registerCrop(final String name, Supplier<Item> seed) {
-        return BLOCKS.register(name, () -> new SingleCropBlock(BlockBehaviour.Properties.of()
+        return BLOCKS.register(name, () -> new SingleCropBlock(BlockBehaviour.Properties.of().setId(blockKey(name))
             .mapColor(MapColor.PLANT)
-            .noCollission()
+            .noCollision()
             .randomTicks()
             .instabreak()
             .pushReaction(PushReaction.DESTROY)
@@ -264,9 +269,9 @@ public class ModBlocks {
     }
 
     private static RegistryObject<Block> registerCrop(final String name, Supplier<Item> seed, SingleCropBlock.Size size) {
-        return BLOCKS.register(name, () -> new SingleCropBlock(BlockBehaviour.Properties.of()
+        return BLOCKS.register(name, () -> new SingleCropBlock(BlockBehaviour.Properties.of().setId(blockKey(name))
             .mapColor(MapColor.PLANT)
-            .noCollission()
+            .noCollision()
             .randomTicks()
             .instabreak()
             .pushReaction(PushReaction.DESTROY)
@@ -278,29 +283,29 @@ public class ModBlocks {
     private static RegistryObject<Block> registerDoubleCrop(String name, Supplier<Item> seed) {
 
         final var TOP_BLOCK = BLOCKS.register(name + "_top", () -> new Block(
-            BlockBehaviour.Properties.of()
+            BlockBehaviour.Properties.of().setId(blockKey(name + "_top"))
                 .mapColor(MapColor.PLANT)
-                .noCollission()
+                .noCollision()
                 .instabreak()
                 .sound(SoundType.CROP)
                 .pushReaction(PushReaction.DESTROY)
         ) {
 
             @Override
-            public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+            protected BlockState updateShape(BlockState pState, LevelReader pLevel, ScheduledTickAccess pTickAccess, BlockPos pCurrentPos, Direction pDirection, BlockPos pNeighborPos, BlockState pNeighborState, RandomSource pRandom) {
                 if (pDirection == Direction.DOWN) {
                     if (!(pNeighborState.getBlock() instanceof DoubleCropBlock) || !pNeighborState.getValue(DoubleCropBlock.RIPE)) {
                         return Blocks.AIR.defaultBlockState();
                     }
                 }
-                return super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+                return super.updateShape(pState, pLevel, pTickAccess, pCurrentPos, pDirection, pNeighborPos, pNeighborState, pRandom);
             }
         });
 
         return BLOCKS.register(name, () -> new DoubleCropBlock(
-            BlockBehaviour.Properties.of()
+            BlockBehaviour.Properties.of().setId(blockKey(name))
                 .mapColor(MapColor.PLANT)
-                .noCollission()
+                .noCollision()
                 .randomTicks()
                 .instabreak()
                 .pushReaction(PushReaction.DESTROY)
@@ -310,10 +315,10 @@ public class ModBlocks {
     }
 
     private static RegistryObject<Block> registerBerryBush(String name, Supplier<Item> berry) {
-        final RegistryObject<Block> BLOCK = BLOCKS.register(name, () -> new BerryBushBlock(BlockBehaviour.Properties.of()
+        final RegistryObject<Block> BLOCK = BLOCKS.register(name, () -> new BerryBushBlock(BlockBehaviour.Properties.of().setId(blockKey(name))
             .mapColor(MapColor.PLANT)
             .randomTicks()
-            .noCollission()
+            .noCollision()
             .strength(0.2F)
             .pushReaction(PushReaction.DESTROY)
             .sound(SoundType.SWEET_BERRY_BUSH),
@@ -324,7 +329,7 @@ public class ModBlocks {
     }
 
     private static RegistryObject<Block> registerHayBale(String name, MapColor color) {
-        return BLOCKS.register(name, () -> new HayBlock(BlockBehaviour.Properties.of()
+        return BLOCKS.register(name, () -> new HayBlock(BlockBehaviour.Properties.of().setId(blockKey(name))
             .mapColor(color)
             .strength(0.5F)
             .sound(SoundType.GRASS)
@@ -333,26 +338,26 @@ public class ModBlocks {
     }
 
     private static RegistryObject<Block> registerChocolateCake(String name) {
-        return BLOCKS.register(name, () -> new ChocolateCakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
+        return BLOCKS.register(name, () -> new ChocolateCakeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).setId(blockKey(name))));
     }
 
     private static RegistryObject<Block> registerChocolateCandleCake(String name, Block candleBlock) {
-        return BLOCKS.register(name, () -> new ChocolateCandleCakeBlock(candleBlock, BlockBehaviour.Properties.copy(Blocks.CANDLE_CAKE)));
+        return BLOCKS.register(name, () -> new ChocolateCandleCakeBlock(candleBlock, BlockBehaviour.Properties.ofFullCopy(Blocks.CANDLE_CAKE).setId(blockKey(name))));
     }
 
     private static RegistryObject<Block> registerSprinkleCake(String name) {
-        return BLOCKS.register(name, () -> new SprinkleCakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
+        return BLOCKS.register(name, () -> new SprinkleCakeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).setId(blockKey(name))));
     }
 
     private static RegistryObject<Block> registerSprinkleCandleCake(String name, Block candleBlock) {
-        return BLOCKS.register(name, () -> new SprinkleCandleCakeBlock(candleBlock, BlockBehaviour.Properties.copy(Blocks.CANDLE_CAKE)));
+        return BLOCKS.register(name, () -> new SprinkleCandleCakeBlock(candleBlock, BlockBehaviour.Properties.ofFullCopy(Blocks.CANDLE_CAKE).setId(blockKey(name))));
     }
 
     private static RegistryObject<Block> registerGrowableFlower(String name, Supplier<Item> seed) {
-        return BLOCKS.register(name, () -> new GrowableFlowerBlock(BlockBehaviour.Properties.of()
+        return BLOCKS.register(name, () -> new GrowableFlowerBlock(BlockBehaviour.Properties.of().setId(blockKey(name))
             .mapColor(MapColor.PLANT)
             .randomTicks()
-            .noCollission()
+            .noCollision()
             .strength(0.2F)
             .sound(SoundType.GRASS)
             .pushReaction(PushReaction.DESTROY)
@@ -362,7 +367,7 @@ public class ModBlocks {
     }
 
     private static RegistryObject<Block> registerGourd(String name, MapColor color) {
-        return BLOCKS.register(name, () -> new Block(BlockBehaviour.Properties.of()
+        return BLOCKS.register(name, () -> new Block(BlockBehaviour.Properties.of().setId(blockKey(name))
             .mapColor(color)
             .strength(1.0F)
             .sound(SoundType.WOOD)
@@ -371,9 +376,9 @@ public class ModBlocks {
     }
 
     private static RegistryObject<Block> registerSapling(String name, ResourceKey<ConfiguredFeature<?, ?>> tree) {
-        return BLOCKS.register(name, () -> new SaplingBlock(new FruitTreeGrower(tree), BlockBehaviour.Properties.of()
+        return BLOCKS.register(name, () -> new SaplingBlock(FruitTreeGrower.create(name, tree), BlockBehaviour.Properties.of().setId(blockKey(name))
             .mapColor(MapColor.PLANT)
-            .noCollission()
+            .noCollision()
             .randomTicks()
             .instabreak()
             .sound(SoundType.GRASS)
@@ -382,7 +387,7 @@ public class ModBlocks {
     }
 
     private static RegistryObject<Block> registerFruitLeaves(String name, Supplier<Item> fruit) {
-        final RegistryObject<Block> BLOCK = BLOCKS.register(name, () -> new FruitLeavesBlock(BlockBehaviour.Properties.of()
+        final RegistryObject<Block> BLOCK = BLOCKS.register(name, () -> new FruitLeavesBlock(BlockBehaviour.Properties.of().setId(blockKey(name))
             .mapColor(MapColor.PLANT)
             .strength(0.2F)
             .randomTicks()
@@ -400,9 +405,9 @@ public class ModBlocks {
     private static RegistryObject<Block> registerStem(
         String name, Supplier<Item> seed, Supplier<Block> fruit, Supplier<Block> attachedStem
     ) {
-        return BLOCKS.register(name, () -> new GourdStemBlock(BlockBehaviour.Properties.of()
+        return BLOCKS.register(name, () -> new GourdStemBlock(BlockBehaviour.Properties.of().setId(blockKey(name))
             .mapColor(MapColor.PLANT)
-            .noCollission()
+            .noCollision()
             .randomTicks()
             .instabreak()
             .sound(SoundType.HARD_CROP),
@@ -413,8 +418,8 @@ public class ModBlocks {
     private static RegistryObject<Block> registerAttachedStem(
         String name, Supplier<Item> seed, Supplier<Block> fruit, Supplier<Block> stem
     ) {
-        return BLOCKS.register(name, () -> new GourdAttachedStemBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT)
-            .noCollission()
+        return BLOCKS.register(name, () -> new GourdAttachedStemBlock(BlockBehaviour.Properties.of().setId(blockKey(name)).mapColor(MapColor.PLANT)
+            .noCollision()
             .instabreak()
             .pushReaction(PushReaction.DESTROY)
             .sound(SoundType.WOOD),
@@ -425,7 +430,7 @@ public class ModBlocks {
     private static RegistryObject<Block> registerGrapeplant(String name, Supplier<Item> seed) {
 
         final RegistryObject<Block> TOP_BLOCK = BLOCKS.register(name + "_top", () -> new GrapevineSourceBlock(
-            BlockBehaviour.Properties.of()
+            BlockBehaviour.Properties.of().setId(blockKey(name + "_top"))
                 .mapColor(MapColor.PLANT)
                 .strength(0.2F)
                 .randomTicks()
@@ -436,19 +441,19 @@ public class ModBlocks {
                 .pushReaction(PushReaction.DESTROY)
         ) {
             @Override
-            public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+            protected BlockState updateShape(BlockState pState, LevelReader pLevel, ScheduledTickAccess pTickAccess, BlockPos pCurrentPos, Direction pDirection, BlockPos pNeighborPos, BlockState pNeighborState, RandomSource pRandom) {
                 if (pDirection == Direction.DOWN) {
                     if (!(pNeighborState.getBlock() instanceof DoubleCropBlock) || !pNeighborState.getValue(DoubleCropBlock.RIPE)) {
                         return Blocks.AIR.defaultBlockState();
                     }
                 }
-                return super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+                return super.updateShape(pState, pLevel, pTickAccess, pCurrentPos, pDirection, pNeighborPos, pNeighborState, pRandom);
             }
         });
 
         FOLIAGE_COLOR_BLOCKS.add(TOP_BLOCK);
 
-        return BLOCKS.register(name, () -> new GrapeTrunkBlock(BlockBehaviour.Properties.of()
+        return BLOCKS.register(name, () -> new GrapeTrunkBlock(BlockBehaviour.Properties.of().setId(blockKey(name))
             .mapColor(MapColor.PLANT)
             .randomTicks()
             .strength(2.0F)
@@ -461,7 +466,7 @@ public class ModBlocks {
 
     private static RegistryObject<Block> registerTrellis(String name) {
         final RegistryObject<Block> BLOCK = BLOCKS.register(name, () -> new TrellisBlock(
-            BlockBehaviour.Properties.of()
+            BlockBehaviour.Properties.of().setId(blockKey(name))
                 .mapColor(MapColor.WOOD)
                 .randomTicks()
                 .strength(2.0F, 3.0F)
@@ -470,5 +475,9 @@ public class ModBlocks {
 
         FOLIAGE_COLOR_BLOCKS.add(BLOCK);
         return BLOCK;
+    }
+
+    private static ResourceKey<Block> blockKey(String name) {
+        return ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(SimpleFarming.MOD_ID, name));
     }
 }

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "#c:crops/tomato",
+    "#c:crops/tomato"
+  ],
+  "result": {
+    "id": "simplefarming:tomato_soup"
+  }
+}

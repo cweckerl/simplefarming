@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "#c:crops/broccoli",
+    "simplefarming:cheese_slice"
+  ],
+  "result": {
+    "id": "simplefarming:broccoli_cheese_soup"
+  }
+}

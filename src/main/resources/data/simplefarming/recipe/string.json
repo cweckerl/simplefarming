@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:kenaf_fiber",
+    "simplefarming:kenaf_fiber",
+    "simplefarming:kenaf_fiber"
+  ],
+  "result": {
+    "id": "minecraft:string"
+  }
+}

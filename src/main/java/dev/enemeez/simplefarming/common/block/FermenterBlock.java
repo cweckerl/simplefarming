@@ -1,5 +1,6 @@
 package dev.enemeez.simplefarming.common.block;
 
+import com.mojang.serialization.MapCodec;
 import dev.enemeez.simplefarming.common.block.entity.FermenterBlockEntity;
 import dev.enemeez.simplefarming.common.registries.ModBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -21,10 +22,14 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 public class FermenterBlock extends BaseEntityBlock {
+    @Override
+    protected MapCodec<? extends FermenterBlock> codec() {
+        return MapCodec.unit(this);
+    }
+
     public FermenterBlock(Properties pProperties) {
         super(pProperties);
     }
@@ -52,37 +57,22 @@ public class FermenterBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (!pState.is(pNewState.getBlock())) {
-            BlockEntity blockentity = pLevel.getBlockEntity(pPos);
-            if (blockentity instanceof FermenterBlockEntity fermenterBlockEntity) {
-                if (pLevel instanceof ServerLevel) {
-                    fermenterBlockEntity.dropContents();
-                }
-
-                pLevel.updateNeighbourForOutputSignal(pPos, this);
-            }
-
-            super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-        }
-    }
-
-    @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (pLevel.isClientSide) {
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHit) {
+        if (pLevel.isClientSide()) {
             return InteractionResult.SUCCESS;
         } else {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
             if (entity instanceof FermenterBlockEntity fermenterBlockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer) pPlayer), fermenterBlockEntity, pPos);
+                ((ServerPlayer) pPlayer).openMenu(fermenterBlockEntity, pPos);
             }
             return InteractionResult.CONSUME;
         }
     }
 
+
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        return pLevel.isClientSide ? null : createTickerHelper(pBlockEntityType, ModBlockEntities.FERMENTER.get(), FermenterBlockEntity::serverTick);
+        return pLevel.isClientSide() ? null : createTickerHelper(pBlockEntityType, ModBlockEntities.FERMENTER.get(), FermenterBlockEntity::serverTick);
     }
 }

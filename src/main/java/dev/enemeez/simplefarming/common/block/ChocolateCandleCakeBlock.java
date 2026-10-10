@@ -1,5 +1,9 @@
 package dev.enemeez.simplefarming.common.block;
 
+import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.util.RandomSource;
+import com.mojang.serialization.MapCodec;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import dev.enemeez.simplefarming.common.registries.ModBlocks;
@@ -10,6 +14,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -37,6 +42,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.Map;
 
 public class ChocolateCandleCakeBlock extends AbstractCandleBlock {
+    @Override
+    protected MapCodec<? extends ChocolateCandleCakeBlock> codec() {
+        return MapCodec.unit(this);
+    }
+
     public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
     protected static final float AABB_OFFSET = 1.0F;
     protected static final VoxelShape CAKE_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D);
@@ -59,29 +69,31 @@ public class ChocolateCandleCakeBlock extends AbstractCandleBlock {
         return SHAPE;
     }
 
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        ItemStack itemstack = pPlayer.getItemInHand(pHand);
-        if (!itemstack.is(Items.FLINT_AND_STEEL) && !itemstack.is(Items.FIRE_CHARGE)) {
-            if (candleHit(pHit) && pPlayer.getItemInHand(pHand).isEmpty() && pState.getValue(LIT)) {
-                extinguish(pPlayer, pState, pLevel, pPos);
-                return InteractionResult.sidedSuccess(pLevel.isClientSide);
-            } else {
-                InteractionResult interactionresult = ChocolateCakeBlock.eat(pLevel, pPos, ModBlocks.CHOCOLATE_CAKE.get().defaultBlockState(), pPlayer);
-                if (interactionresult.consumesAction()) {
-                    dropResources(pState, pLevel, pPos);
-                }
-
-                return interactionresult;
-            }
-        } else {
+    @Override
+    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (pStack.is(Items.FLINT_AND_STEEL) || pStack.is(Items.FIRE_CHARGE)) {
             pLevel.playSound(pPlayer, pPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, pLevel.getRandom().nextFloat() * 0.4F + 0.8F);
             pLevel.setBlock(pPos, pState.setValue(BlockStateProperties.LIT, true), 11);
             pLevel.gameEvent(pPlayer, GameEvent.BLOCK_CHANGE, pPos);
-            pPlayer.getItemInHand(pHand).hurtAndBreak(1, pPlayer, (player) -> player.broadcastBreakEvent(pHand));
-
-            return InteractionResult.sidedSuccess(pLevel.isClientSide());
+            pStack.hurtAndBreak(1, pPlayer, pHand.asEquipmentSlot());
+            return InteractionResult.SUCCESS;
+        } else if (candleHit(pHit) && pStack.isEmpty() && pState.getValue(LIT)) {
+            extinguish(pPlayer, pState, pLevel, pPos);
+            return InteractionResult.SUCCESS;
         }
+        return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHit) {
+        InteractionResult interactionresult = ChocolateCakeBlock.eat(pLevel, pPos, ModBlocks.CHOCOLATE_CAKE.get().defaultBlockState(), pPlayer);
+        if (interactionresult.consumesAction()) {
+            dropResources(pState, pLevel, pPos);
+        }
+
+        return interactionresult;
+    }
+
 
     private static boolean candleHit(BlockHitResult pHit) {
         return pHit.getLocation().y - (double) pHit.getBlockPos().getY() > 0.5D;
@@ -91,7 +103,7 @@ public class ChocolateCandleCakeBlock extends AbstractCandleBlock {
         pBuilder.add(LIT);
     }
 
-    public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
+    protected ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIncludeData) {
         return new ItemStack(Blocks.CAKE);
     }
 
@@ -101,8 +113,8 @@ public class ChocolateCandleCakeBlock extends AbstractCandleBlock {
      * returns its solidified counterpart.
      * Note that this method should ideally consider only the specific direction passed in.
      */
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-        return pDirection == Direction.DOWN && !pState.canSurvive(pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+    protected BlockState updateShape(BlockState pState, LevelReader pLevel, ScheduledTickAccess pTickAccess, BlockPos pCurrentPos, Direction pDirection, BlockPos pNeighborPos, BlockState pNeighborState, RandomSource pRandom) {
+        return pDirection == Direction.DOWN && !pState.canSurvive(pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pLevel, pTickAccess, pCurrentPos, pDirection, pNeighborPos, pNeighborState, pRandom);
     }
 
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
@@ -114,7 +126,8 @@ public class ChocolateCandleCakeBlock extends AbstractCandleBlock {
      * net.minecraft.world.level.block.state.BlockBehaviour.BlockStateBase#getAnalogOutputSignal} whenever possible.
      * Implementing/overriding is fine.
      */
-    public int getAnalogOutputSignal(BlockState pState, Level pLevel, BlockPos pPos) {
+    @Override
+    protected int getAnalogOutputSignal(BlockState pState, Level pLevel, BlockPos pPos, Direction pDirection) {
         return CakeBlock.FULL_CAKE_SIGNAL;
     }
 
@@ -127,7 +140,7 @@ public class ChocolateCandleCakeBlock extends AbstractCandleBlock {
         return true;
     }
 
-    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
+    protected boolean isPathfindable(BlockState pState, PathComputationType pType) {
         return false;
     }
 

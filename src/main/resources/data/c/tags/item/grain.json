@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#c:grain/barley",
+    "#c:grain/oat",
+    "#c:grain/rye",
+    "#c:grain/rice",
+    "#c:grain/wheat"
+  ]
+}

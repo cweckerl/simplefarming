@@ -1,5 +1,8 @@
 package dev.enemeez.simplefarming.common.block;
 
+import net.minecraftforge.common.PlantType;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -14,18 +17,16 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.PlantType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
-public class OpuntiaBlock extends GrowableBushBlock implements IPlantable {
-    private static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+public class OpuntiaBlock extends GrowableBushBlock {
+    private static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
 
     // X axis
     private final VoxelShape TOP_MIDDLE_X = Block.box(4.0D, 10.0D, 7.0D, 12.0D, 12.0D, 9.0D);
@@ -86,25 +87,20 @@ public class OpuntiaBlock extends GrowableBushBlock implements IPlantable {
     }
 
     @Override
-    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        return pLevel.getBlockState(pPos.below()).is(BlockTags.SAND);
-    }
-
-    @Override
     public PlantType getPlantType(BlockGetter level, BlockPos pos) {
         return PlantType.DESERT;
     }
 
     @Override
-    public BlockState getPlant(BlockGetter world, BlockPos pos) {
-        return defaultBlockState();
+    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        return pLevel.getBlockState(pPos.below()).is(BlockTags.SAND);
     }
 
     @Override
-    public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
+    protected void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity, InsideBlockEffectApplier pApplier, boolean pIntersects) {
         if (pState.getValue(AGE) == MAX_AGE) {
             // pEntity.hurt(DamageSource.CACTUS, 1.0F);
-            pEntity.hurt(pLevel.damageSources().cactus(), 1.0F);
+            if (pLevel instanceof ServerLevel serverLevel) pEntity.hurtServer(serverLevel, pLevel.damageSources().cactus(), 1.0F);
         }
     }
 }

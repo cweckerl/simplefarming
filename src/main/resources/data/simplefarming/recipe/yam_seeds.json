@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:yam"
+  ],
+  "result": {
+    "id": "simplefarming:yam_seeds"
+  }
+}

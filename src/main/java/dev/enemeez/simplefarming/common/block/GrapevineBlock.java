@@ -1,5 +1,8 @@
 package dev.enemeez.simplefarming.common.block;
 
+import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.util.RandomSource;
 import dev.enemeez.simplefarming.common.registries.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -66,11 +69,11 @@ public class GrapevineBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+    protected BlockState updateShape(BlockState pState, LevelReader pLevel, ScheduledTickAccess pTickAccess, BlockPos pCurrentPos, Direction pDirection, BlockPos pNeighborPos, BlockState pNeighborState, RandomSource pRandom) {
         if (pDirection == Direction.UP && !(pNeighborState.getBlock() instanceof TrellisBlock)) {
             return Blocks.AIR.defaultBlockState();
         }
-        return super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+        return super.updateShape(pState, pLevel, pTickAccess, pCurrentPos, pDirection, pNeighborPos, pNeighborState, pRandom);
     }
 
     @Override
@@ -79,24 +82,29 @@ public class GrapevineBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        final int age = pState.getValue(AGE);
-        if (age != MAX_AGE && pPlayer.getItemInHand(pHand).is(Items.BONE_MEAL)) {
+    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        // Let bone meal do its thing on unripe plants instead of trying to harvest
+        if (pState.getValue(AGE) != MAX_AGE && pStack.is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
-        } else if (age == MAX_AGE) {
-            popResourceFromFace(pLevel, pPos, Direction.DOWN, new ItemStack(ModItems.GRAPES.get()));
-            pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
-            BlockState blockstate = pState.setValue(AGE, 0);
-            pLevel.setBlock(pPos, pState.setValue(AGE, 0), 2);
-            pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, blockstate));
-            return InteractionResult.sidedSuccess(pLevel.isClientSide);
-        } else {
-            return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
         }
+        return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHit) {
+        if (pState.getValue(AGE) == MAX_AGE) {
+            popResourceFromFace(pLevel, pPos, Direction.DOWN, new ItemStack(ModItems.GRAPES.get()));
+            pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + pLevel.getRandom().nextFloat() * 0.4F);
+            BlockState blockstate = pState.setValue(AGE, 0);
+            pLevel.setBlock(pPos, pState.setValue(AGE, 0), 2);
+            pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, blockstate));
+            return InteractionResult.SUCCESS;
+        }
+        return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHit);
+    }
+
+    @Override
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return pState.getValue(AGE) != MAX_AGE;
     }
 

@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "#c:vinegar_ingredients/barley",
+    "#c:vinegar_ingredients/oat",
+    "#c:vinegar_ingredients/rye",
+    "#c:vinegar_ingredients/rice",
+    "#c:vinegar_ingredients/wheat",
+    "#c:vinegar_ingredients/sugar_cane",
+    "#c:vinegar_ingredients/apple"
+  ]
+}
