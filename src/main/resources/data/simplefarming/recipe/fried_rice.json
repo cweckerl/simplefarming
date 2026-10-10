@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#forge:grain/rice",
+    "#forge:cooked_eggs",
+    "#forge:vegetables"
+  ],
+  "result": {
+    "id": "simplefarming:fried_rice"
+  }
+}

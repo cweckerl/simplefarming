@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": "#forge:crops/soybean",
+  "result": {
+    "id": "simplefarming:tofu"
+  },
+  "experience": 0.35,
+  "cookingTime": 100
+}

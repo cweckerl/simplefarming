@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TOT",
+    "BCB"
+  ],
+  "key": {
+    "O": "#forge:crops/onion",
+    "T": "#forge:crops/turnip",
+    "C": "simplefarming:cheese_slice",
+    "B": "minecraft:beetroot"
+  },
+  "result": {
+    "id": "simplefarming:turnip_beetroot_gratin"
+  }
+}

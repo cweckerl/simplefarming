@@ -1,5 +1,8 @@
 package dev.enemeez.simplefarming.common.block;
 
+import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.util.RandomSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -62,17 +65,17 @@ public class DoubleCropBlock extends SingleCropBlock {
 
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
+    protected BlockState updateShape(BlockState pState, LevelReader pLevel, ScheduledTickAccess pTickAccess, BlockPos pCurrentPos, Direction pFacing, BlockPos pFacingPos, BlockState pFacingState, RandomSource pRandom) {
         if (pFacing == Direction.UP) {
             if (pState.getValue(RIPE) && pFacingState.getBlock() != TOP_BLOCK) {
                 return Blocks.AIR.defaultBlockState();
             }
         }
-        return super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+        return super.updateShape(pState, pLevel, pTickAccess, pCurrentPos, pFacing, pFacingPos, pFacingState, pRandom);
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return !pState.getValue(RIPE);
     }
 

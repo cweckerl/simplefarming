@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#forge:crops/peanut",
+    "#forge:eggs",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "id": "simplefarming:peanut_butter_pie"
+  }
+}

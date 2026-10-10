@@ -21,7 +21,7 @@ public class GrowableFlowerBlock extends GrowableBushBlock {
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        Vec3 v = pState.getOffset(pLevel, pPos);
+        Vec3 v = pState.getOffset(pPos);
         return pState.getValue(AGE) < MAX_AGE ? SMALL_SHAPE.move(v.x, v.y, v.z) : SHAPE.move(v.x, v.y, v.z);
     }
 }

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:cantaloupe"
+  ],
+  "result": {
+    "id": "simplefarming:cantaloupe_seeds"
+  }
+}

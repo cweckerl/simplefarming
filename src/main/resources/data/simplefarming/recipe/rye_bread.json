@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OOO"
+  ],
+  "key": {
+    "O": "#forge:grain/rye"
+  },
+  "result": {
+    "id": "simplefarming:rye_bread"
+  }
+}

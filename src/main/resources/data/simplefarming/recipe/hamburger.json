@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#forge:bread",
+    "minecraft:cooked_beef",
+    "#forge:crops/tomato",
+    "#forge:salad_ingredients"
+  ],
+  "result": {
+    "id": "simplefarming:hamburger"
+  }
+}

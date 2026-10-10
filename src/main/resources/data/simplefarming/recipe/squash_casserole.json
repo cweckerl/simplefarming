@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SOS",
+    "GEG"
+  ],
+  "key": {
+    "O": "#forge:crops/onion",
+    "S": "#forge:crops/squash",
+    "E": "#forge:eggs",
+    "G": "#forge:grain"
+  },
+  "result": {
+    "id": "simplefarming:squash_casserole"
+  }
+}

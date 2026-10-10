@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "minecraft:cooked_chicken",
+    "simplefarming:noodles",
+    "simplefarming:noodles"
+  ],
+  "result": {
+    "id": "simplefarming:chicken_noodle_soup"
+  }
+}

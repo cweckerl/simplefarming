@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "#forge:ingots/gold"
+  },
+  "pattern": [
+    "XX#",
+    " # ",
+    "#  "
+  ],
+  "result": {
+    "id": "simplefarming:golden_scythe"
+  }
+}

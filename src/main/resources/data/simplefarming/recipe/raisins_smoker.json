@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": "#forge:fruits/grapes",
+  "result": {
+    "id": "simplefarming:raisins"
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

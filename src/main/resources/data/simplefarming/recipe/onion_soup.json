@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "#forge:crops/onion",
+    "#forge:crops/onion"
+  ],
+  "result": {
+    "id": "simplefarming:onion_soup"
+  }
+}

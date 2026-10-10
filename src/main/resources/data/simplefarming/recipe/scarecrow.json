@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "LHL",
+    " S "
+  ],
+  "key": {
+    "P": "minecraft:carved_pumpkin",
+    "L": "minecraft:leather",
+    "H": "#forge:hay_bales",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "simplefarming:scarecrow"
+  }
+}

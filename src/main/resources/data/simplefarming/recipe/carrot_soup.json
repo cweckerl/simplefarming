@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "#forge:crops/carrot",
+    "#forge:crops/carrot"
+  ],
+  "result": {
+    "id": "simplefarming:carrot_soup"
+  }
+}

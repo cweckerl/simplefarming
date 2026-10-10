@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#forge:grain/rice",
+    "minecraft:dried_kelp",
+    "#minecraft:fishes"
+  ],
+  "result": {
+    "id": "simplefarming:sushi"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "SES",
+    "GGG"
+  ],
+  "key": {
+    "G": "#forge:grain",
+    "E": "#forge:eggs",
+    "S": "minecraft:sugar",
+    "C": "simplefarming:chocolate"
+  },
+  "result": {
+    "id": "simplefarming:chocolate_cake"
+  }
+}

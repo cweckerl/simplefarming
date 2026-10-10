@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "GEO",
+    " P "
+  ],
+  "key": {
+    "P": "#forge:crops/potato",
+    "G": "#forge:grain",
+    "E": "#forge:eggs",
+    "O": "#forge:crops/onion"
+  },
+  "result": {
+    "id": "simplefarming:potato_knish"
+  }
+}

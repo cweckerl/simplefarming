@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#forge:bread",
+    "simplefarming:tofu",
+    "#forge:crops/tomato",
+    "#forge:salad_ingredients"
+  ],
+  "result": {
+    "id": "simplefarming:veggie_burger"
+  }
+}

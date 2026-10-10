@@ -1,8 +1,10 @@
 {
-    "pack": {
-        "description": "simplefarming resources",
-        "pack_format": 12,
-        "forge:resource_pack_format": 12,
-        "forge:data_pack_format": 10
-    }
+  "pack": {
+    "description": "simplefarming resources",
+    "max_format": 94,
+    "min_format": [
+      94,
+      1
+    ]
+  }
 }

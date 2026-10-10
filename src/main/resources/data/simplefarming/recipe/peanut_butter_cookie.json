@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GBG"
+  ],
+  "key": {
+    "G": "#forge:grain",
+    "B": "#forge:crops/peanut"
+  },
+  "result": {
+    "id": "simplefarming:peanut_butter_cookie",
+    "count": 8
+  }
+}

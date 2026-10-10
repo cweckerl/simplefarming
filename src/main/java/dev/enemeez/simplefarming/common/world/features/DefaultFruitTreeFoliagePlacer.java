@@ -1,6 +1,6 @@
 package dev.enemeez.simplefarming.common.world.features;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import dev.enemeez.simplefarming.common.registries.ModFeatures;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.RandomSource;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import java.util.stream.Stream;
 
 public class DefaultFruitTreeFoliagePlacer extends FruitTreeFoliagePlacer {
-    public static final Codec<FruitTreeFoliagePlacer> CODEC = Codec.unit(DefaultFruitTreeFoliagePlacer::new);
+    public static final MapCodec<FruitTreeFoliagePlacer> CODEC = MapCodec.unit(DefaultFruitTreeFoliagePlacer::new);
 
     @Override
     protected FoliagePlacerType<?> type() {

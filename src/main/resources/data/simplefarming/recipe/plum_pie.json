@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#forge:fruits/plum",
+    "#forge:eggs",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "id": "simplefarming:plum_pie"
+  }
+}

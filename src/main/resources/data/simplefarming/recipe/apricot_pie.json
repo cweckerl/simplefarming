@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#forge:fruits/apricot",
+    "#forge:eggs",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "id": "simplefarming:apricot_pie"
+  }
+}

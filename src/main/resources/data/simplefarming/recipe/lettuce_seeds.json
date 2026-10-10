@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:lettuce"
+  ],
+  "result": {
+    "id": "simplefarming:lettuce_seeds"
+  }
+}

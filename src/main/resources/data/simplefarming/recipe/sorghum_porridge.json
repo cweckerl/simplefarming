@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "#forge:crops/sorghum",
+    "#forge:crops/sorghum"
+  ],
+  "result": {
+    "id": "simplefarming:sorghum_porridge"
+  }
+}

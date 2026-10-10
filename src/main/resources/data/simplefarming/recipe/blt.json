@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#forge:bread",
+    "#forge:crops/lettuce",
+    "#forge:cooked_bacon",
+    "#forge:crops/tomato"
+  ],
+  "result": {
+    "id": "simplefarming:blt"
+  }
+}

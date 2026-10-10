@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MMM",
+    "SES",
+    "GGG"
+  ],
+  "key": {
+    "G": "#forge:grain",
+    "E": "#forge:eggs",
+    "S": "minecraft:sugar",
+    "M": "minecraft:milk_bucket"
+  },
+  "result": {
+    "id": "minecraft:cake"
+  }
+}

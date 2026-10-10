@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GBG"
+  ],
+  "key": {
+    "G": "#forge:grain",
+    "B": "#forge:crops/zucchini"
+  },
+  "result": {
+    "id": "simplefarming:zucchini_bread"
+  }
+}

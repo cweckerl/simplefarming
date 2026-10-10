@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GCG"
+  ],
+  "key": {
+    "G": "#forge:grain",
+    "C": "minecraft:cocoa_beans"
+  },
+  "result": {
+    "id": "minecraft:cookie",
+    "count": 8
+  }
+}

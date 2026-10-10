@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "IBI",
+    "S S"
+  ],
+  "key": {
+    "I": "#forge:ingots/iron",
+    "S": "minecraft:stone",
+    "B": "minecraft:bucket"
+  },
+  "result": {
+    "id": "simplefarming:fermenter"
+  }
+}

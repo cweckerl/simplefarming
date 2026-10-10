@@ -12,9 +12,8 @@ import dev.enemeez.simplefarming.common.registries.ModFeatures;
 import dev.enemeez.simplefarming.common.registries.ModItems;
 import dev.enemeez.simplefarming.common.registries.ModLootModifiers;
 import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -25,8 +24,8 @@ public class SimpleFarming {
     public static final String MOD_ID = "simplefarming";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public SimpleFarming() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public SimpleFarming(FMLJavaModLoadingContext context) {
+        BusGroup modEventBus = context.getModBusGroup();
 
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
@@ -37,11 +36,10 @@ public class SimpleFarming {
         ModMenus.MENU_TYPES.register(modEventBus);
         ModLootModifiers.GLOBAL_LOOT_MODIFIERS.register(modEventBus);
         ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
+        ModRecipes.RECIPE_TYPES.register(modEventBus);
         ModCreativeTabs.CREATIVE_TABS.register(modEventBus);
-        MinecraftForge.EVENT_BUS.register(this);
-
-        modEventBus.addListener(this::addCreative);
-        modEventBus.addListener(this::commonSetup);
+        BuildCreativeModeTabContentsEvent.BUS.addListener(SimpleFarming::addCreative);
+        FMLCommonSetupEvent.getBus(modEventBus).addListener(this::commonSetup);
 
         LOGGER.info("Simple Farming setup complete!");
     }
@@ -50,7 +48,7 @@ public class SimpleFarming {
         ModItems.COMPOSTABLES.forEach((item, chance) -> ComposterBlock.COMPOSTABLES.put(item.get(), chance));
     }
 
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTab() == ModCreativeTabs.TAB.get()) ModItems.ITEM_LIST.forEach(event::accept);
+    private static void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTab() == ModCreativeTabs.TAB.get()) ModItems.ITEM_LIST.forEach(item -> event.accept(item.get()));
     }
 }

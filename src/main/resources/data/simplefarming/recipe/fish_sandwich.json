@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#forge:bread",
+    "#forge:cooked_fishes",
+    "#forge:crops/tomato",
+    "#forge:salad_ingredients"
+  ],
+  "result": {
+    "id": "simplefarming:fish_sandwich"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "type": "simplefarming:fermenting",
+  "ingredient": "#forge:crops/cassava",
+  "result": {
+    "id": "simplefarming:cauim"
+  }
+}

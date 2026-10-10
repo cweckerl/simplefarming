@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "GBG",
+    " P "
+  ],
+  "key": {
+    "G": "#forge:grain",
+    "P": "#forge:crops/potato",
+    "B": "#forge:cooked_fishes"
+  },
+  "result": {
+    "id": "simplefarming:fish_and_chips"
+  }
+}

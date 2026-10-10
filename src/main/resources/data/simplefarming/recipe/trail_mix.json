@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:raisins",
+    "#forge:crops/peanut",
+    "simplefarming:chocolate"
+  ],
+  "result": {
+    "id": "simplefarming:trail_mix"
+  }
+}

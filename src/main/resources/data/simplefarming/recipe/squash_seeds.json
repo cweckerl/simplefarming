@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:squash"
+  ],
+  "result": {
+    "id": "simplefarming:squash_seeds"
+  }
+}
