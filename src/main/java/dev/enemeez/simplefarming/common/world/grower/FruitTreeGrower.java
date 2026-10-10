@@ -1,23 +1,16 @@
 package dev.enemeez.simplefarming.common.world.grower;
 
+import dev.enemeez.simplefarming.common.SimpleFarming;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import org.jetbrains.annotations.Nullable;
 
-public class FruitTreeGrower extends AbstractTreeGrower {
-    private final ResourceKey<ConfiguredFeature<?, ?>> KEY;
+import java.util.Optional;
 
-    public FruitTreeGrower(ResourceKey<ConfiguredFeature<?, ?>> key) {
-        this.KEY = key;
-    }
+public class FruitTreeGrower {
+    private FruitTreeGrower() {}
 
-    @Nullable
-    @Override
-    protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource pRandom, boolean pHasFlowers) {
-        return KEY;
+    public static TreeGrower create(String name, ResourceKey<ConfiguredFeature<?, ?>> key) {
+        return new TreeGrower(SimpleFarming.MOD_ID + ":" + name, Optional.empty(), Optional.of(key), Optional.empty());
     }
 }
-
-

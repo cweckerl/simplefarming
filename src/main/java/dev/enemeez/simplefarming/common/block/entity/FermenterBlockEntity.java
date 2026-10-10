@@ -19,15 +19,10 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.SidedInvWrapper;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -44,8 +39,6 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider, W
     private NonNullList<ItemStack> items = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
     private int progress = 0;
     private int totalTime = 2000;
-
-    private LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
 
     protected final ContainerData dataAccess = new ContainerData() {
         @Override
@@ -81,33 +74,6 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider, W
     }
 
     @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction facing) {
-        if (!this.remove && facing != null && capability == ForgeCapabilities.ITEM_HANDLER) {
-            if (facing == Direction.UP)
-                return handlers[0].cast();
-            else if (facing == Direction.DOWN)
-                return handlers[1].cast();
-            else
-                return handlers[2].cast();
-        }
-        return super.getCapability(capability, facing);
-    }
-
-    @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
-        for (LazyOptional<? extends IItemHandler> handler : handlers) {
-            handler.invalidate();
-        }
-    }
-
-    @Override
-    public void reviveCaps() {
-        super.reviveCaps();
-        this.handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
-    }
-
-    @Override
     public void load(CompoundTag pTag) {
         super.load(pTag);
         this.items = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
@@ -129,7 +95,7 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider, W
     }
 
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, FermenterBlockEntity entity) {
-        Optional<FermenterRecipe> recipe;
+        Optional<RecipeHolder<FermenterRecipe>> recipe;
         if (canCraft(entity) && (recipe = level.getRecipeManager().getRecipeFor(FermenterRecipe.Type.INSTANCE, entity, level)).isPresent()) {
             entity.progress++;
 
@@ -140,7 +106,7 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider, W
                 var bottle = entity.items.get(SLOT_BOTTLE);
                 entity.items.set(SLOT_INPUT, input.getCount() > 0 ? new ItemStack(input.getItem(), input.getCount() - 1) : ItemStack.EMPTY);
                 entity.items.set(SLOT_BOTTLE, bottle.getCount() > 0 ? new ItemStack(bottle.getItem(), bottle.getCount() - 1) : ItemStack.EMPTY);
-                entity.items.set(SLOT_RESULT, new ItemStack(recipe.get().getResultItem(level.registryAccess()).getItem()));
+                entity.items.set(SLOT_RESULT, new ItemStack(recipe.get().value().getResultItem(level.registryAccess()).getItem()));
             }
 
             setChanged(level, blockPos, blockState);

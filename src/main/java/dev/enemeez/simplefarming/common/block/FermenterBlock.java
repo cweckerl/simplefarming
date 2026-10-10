@@ -1,5 +1,6 @@
 package dev.enemeez.simplefarming.common.block;
 
+import com.mojang.serialization.MapCodec;
 import dev.enemeez.simplefarming.common.block.entity.FermenterBlockEntity;
 import dev.enemeez.simplefarming.common.registries.ModBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -21,10 +22,14 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 public class FermenterBlock extends BaseEntityBlock {
+    @Override
+    protected MapCodec<? extends FermenterBlock> codec() {
+        return MapCodec.unit(this);
+    }
+
     public FermenterBlock(Properties pProperties) {
         super(pProperties);
     }
@@ -74,7 +79,7 @@ public class FermenterBlock extends BaseEntityBlock {
         } else {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
             if (entity instanceof FermenterBlockEntity fermenterBlockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer) pPlayer), fermenterBlockEntity, pPos);
+                ((ServerPlayer) pPlayer).openMenu(fermenterBlockEntity, pPos);
             }
             return InteractionResult.CONSUME;
         }

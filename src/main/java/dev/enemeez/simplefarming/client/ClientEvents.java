@@ -10,12 +10,12 @@ import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.StemBlock;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 @Mod.EventBusSubscriber(modid = SimpleFarming.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEvents {
@@ -29,7 +29,7 @@ public class ClientEvents {
         event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> pLevel != null && pPos != null
                 ? BiomeColors.getAverageFoliageColor(pLevel, pPos)
                 : FoliageColor.getDefaultColor(),
-            ModBlocks.FOLIAGE_COLOR_BLOCKS.stream().map(RegistryObject::get).toArray(Block[]::new)
+            ModBlocks.FOLIAGE_COLOR_BLOCKS.stream().map(DeferredHolder::get).toArray(Block[]::new)
         );
 
         event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> {

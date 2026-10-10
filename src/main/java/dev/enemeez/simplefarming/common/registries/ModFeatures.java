@@ -21,21 +21,21 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class ModFeatures {
     public static final DeferredRegister<FoliagePlacerType<?>> FOLIAGE_PLACER_TYPES = DeferredRegister.create(
         Registries.FOLIAGE_PLACER_TYPE, SimpleFarming.MOD_ID
     );
 
-    public static final RegistryObject<FoliagePlacerType<?>> DEFAULT_FRUIT_TREE_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register(
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<?>> DEFAULT_FRUIT_TREE_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register(
         "default_fruit_tree_foliage_placer", () -> new FoliagePlacerType<>(DefaultFruitTreeFoliagePlacer.CODEC)
     );
-    public static final RegistryObject<FoliagePlacerType<?>> DWARF_FRUIT_TREE_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register(
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<?>> DWARF_FRUIT_TREE_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register(
         "dwarf_fruit_tree_foliage_placer", () -> new FoliagePlacerType<>(DwarfFruitTreeFoliagePlacer.CODEC)
     );
-    public static final RegistryObject<FoliagePlacerType<?>> TROPIC_FRUIT_TREE_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register(
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<?>> TROPIC_FRUIT_TREE_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register(
         "tropic_fruit_tree_foliage_placer", () -> new FoliagePlacerType<>(TropicFruitTreeFoliagePlacer.CODEC)
     );
 

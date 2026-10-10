@@ -25,7 +25,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.ForgeHooks;
+import net.neoforged.neoforge.common.CommonHooks;
 
 import java.util.function.Supplier;
 
@@ -59,9 +59,9 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
             if (pLevel.getRawBrightness(pPos, 0) >= 9) {
                 int age = pState.getValue(AGE);
                 if (age < MAX_AGE) {
-                    if (ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt(5) == 0)) {
+                    if (CommonHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt(5) == 0)) {
                         pLevel.setBlock(pPos, pState.setValue(AGE, age + 1), 2);
-                        ForgeHooks.onCropsGrowPost(pLevel, pPos, pState);
+                        CommonHooks.onCropsGrowPost(pLevel, pPos, pState);
                     }
                 }
             }
@@ -79,7 +79,7 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return pState.getValue(AGE) != MAX_AGE;
     }
 

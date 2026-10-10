@@ -31,7 +31,6 @@ public class FermenterScreen extends AbstractContainerScreen<FermenterMenu> {
 
     @Override
     public void render(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick) {
-        renderBackground(graphics);
         super.render(graphics, pMouseX, pMouseY, pPartialTick);
         renderTooltip(graphics, pMouseX, pMouseY);
     }

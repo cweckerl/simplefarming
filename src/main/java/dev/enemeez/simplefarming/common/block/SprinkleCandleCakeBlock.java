@@ -1,5 +1,6 @@
 package dev.enemeez.simplefarming.common.block;
 
+import com.mojang.serialization.MapCodec;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import dev.enemeez.simplefarming.common.registries.ModBlocks;
@@ -37,6 +38,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.Map;
 
 public class SprinkleCandleCakeBlock extends AbstractCandleBlock {
+    @Override
+    protected MapCodec<? extends SprinkleCandleCakeBlock> codec() {
+        return MapCodec.unit(this);
+    }
+
     public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
     protected static final float AABB_OFFSET = 1.0F;
     protected static final VoxelShape CAKE_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D);
@@ -91,7 +97,7 @@ public class SprinkleCandleCakeBlock extends AbstractCandleBlock {
         pBuilder.add(LIT);
     }
 
-    public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
+    public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return new ItemStack(Blocks.CAKE);
     }
 

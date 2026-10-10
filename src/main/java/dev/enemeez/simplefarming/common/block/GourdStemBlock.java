@@ -1,5 +1,6 @@
 package dev.enemeez.simplefarming.common.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -22,14 +23,19 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.PlantType;
+import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.common.IPlantable;
+import net.neoforged.neoforge.common.PlantType;
 
 import java.util.Set;
 import java.util.function.Supplier;
 
 public class GourdStemBlock extends BushBlock implements BonemealableBlock {
+    @Override
+    protected MapCodec<? extends GourdStemBlock> codec() {
+        return MapCodec.unit(this);
+    }
+
     public static final int MAX_AGE = 7;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
     protected static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
@@ -72,7 +78,7 @@ public class GourdStemBlock extends BushBlock implements BonemealableBlock {
         if (!pLevel.isAreaLoaded(pPos, 1)) return;
         if (pLevel.getRawBrightness(pPos, 0) >= 9) {
             float f = getGrowthSpeed(this, pLevel, pPos);
-            if (ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt((int) (25.0F / f) + 1) == 0)) {
+            if (CommonHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt((int) (25.0F / f) + 1) == 0)) {
                 final int CURR_AGE = pState.getValue(AGE);
                 if (CURR_AGE < MAX_AGE) {
                     pLevel.setBlock(pPos, pState.setValue(AGE, CURR_AGE + 1), 2);
@@ -90,19 +96,19 @@ public class GourdStemBlock extends BushBlock implements BonemealableBlock {
                         );
                     }
                 }
-                ForgeHooks.onCropsGrowPost(pLevel, pPos, pState);
+                CommonHooks.onCropsGrowPost(pLevel, pPos, pState);
             }
 
         }
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
+    public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return new ItemStack(this.SEED.get());
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return pState.getValue(AGE) != MAX_AGE;
     }
 
