@@ -1,5 +1,6 @@
 package dev.enemeez.simplefarming.common.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -7,6 +8,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -30,6 +32,11 @@ import net.minecraftforge.common.ForgeHooks;
 import java.util.function.Supplier;
 
 public abstract class GrowableBushBlock extends BushBlock implements BonemealableBlock {
+    @Override
+    protected MapCodec<? extends GrowableBushBlock> codec() {
+        return MapCodec.unit(this);
+    }
+
     public static final int MAX_AGE = 3;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     private final Supplier<Item> OUTPUT;
@@ -44,7 +51,7 @@ public abstract class GrowableBushBlock extends BushBlock implements Bonemealabl
     abstract public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext);
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return pState.getValue(AGE) < MAX_AGE;
     }
 
@@ -59,7 +66,7 @@ public abstract class GrowableBushBlock extends BushBlock implements Bonemealabl
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
+    public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return new ItemStack(OUTPUT.get());
     }
 
@@ -80,20 +87,25 @@ public abstract class GrowableBushBlock extends BushBlock implements Bonemealabl
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        final int age = pState.getValue(AGE);
-        if (age != MAX_AGE && pPlayer.getItemInHand(pHand).is(Items.BONE_MEAL)) {
-            return InteractionResult.PASS;
-        } else if (age == MAX_AGE) {
+    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        // Let bone meal do its thing on unripe plants instead of trying to harvest
+        if (pState.getValue(AGE) != MAX_AGE && pStack.is(Items.BONE_MEAL)) {
+            return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+        }
+        return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHit);
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHit) {
+        if (pState.getValue(AGE) == MAX_AGE) {
             popResource(pLevel, pPos, new ItemStack(OUTPUT.get()));
             pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
             BlockState blockstate = pState.setValue(AGE, 0);
             pLevel.setBlock(pPos, blockstate, 2);
             pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, blockstate));
             return InteractionResult.sidedSuccess(pLevel.isClientSide);
-        } else {
-            return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
         }
+        return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHit);
     }
 
     @Override

@@ -1,9 +1,0 @@
-{
-  "type": "simplefarming:fermenting",
-  "ingredient": {
-    "tag": "forge:crops/barley"
-  },
-  "result": {
-    "item": "simplefarming:beer"
-  }
-}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplefarming:ginger"
+    }
+  ],
+  "result": {
+    "id": "simplefarming:ginger_seeds"
+  }
+}

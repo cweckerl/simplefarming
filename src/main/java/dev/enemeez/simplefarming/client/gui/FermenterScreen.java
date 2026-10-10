@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 public class FermenterScreen extends AbstractContainerScreen<FermenterMenu> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(SimpleFarming.MOD_ID, "textures/gui/fermenter.png");
+    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(SimpleFarming.MOD_ID, "textures/gui/fermenter.png");
 
     public FermenterScreen(FermenterMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -31,7 +31,6 @@ public class FermenterScreen extends AbstractContainerScreen<FermenterMenu> {
 
     @Override
     public void render(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick) {
-        renderBackground(graphics);
         super.render(graphics, pMouseX, pMouseY, pPartialTick);
         renderTooltip(graphics, pMouseX, pMouseY);
     }

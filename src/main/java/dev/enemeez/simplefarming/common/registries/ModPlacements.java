@@ -4,7 +4,7 @@ import dev.enemeez.simplefarming.common.SimpleFarming;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -42,7 +42,7 @@ public class ModPlacements {
     public static final ResourceKey<PlacedFeature> MARSHMALLOW_CHECKED = createKey("marshmallow_checked");
     public static final ResourceKey<PlacedFeature> QUINOA_CHECKED = createKey("quinoa_checked");
 
-    public static void bootstrap(BootstapContext<PlacedFeature> context) {
+    public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> getter = context.lookup(Registries.CONFIGURED_FEATURE);
 
         Holder<ConfiguredFeature<?, ?>> APPLE_TREE = getter.getOrThrow(ModFeatures.APPLE_TREE);
@@ -177,10 +177,10 @@ public class ModPlacements {
     }
 
     public static ResourceKey<PlacedFeature> createKey(String pName) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(SimpleFarming.MOD_ID, pName));
+        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(SimpleFarming.MOD_ID, pName));
     }
 
-    private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> feature, List<PlacementModifier> modifiers) {
+    private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> feature, List<PlacementModifier> modifiers) {
         context.register(key, new PlacedFeature(feature, modifiers));
     }
 }

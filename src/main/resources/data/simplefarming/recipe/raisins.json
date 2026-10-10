@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "forge:fruits/grapes"
+  },
+  "result": {
+    "id": "simplefarming:raisins"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

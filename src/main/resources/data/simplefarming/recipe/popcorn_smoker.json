@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "simplefarming:corn_seeds"
+  },
+  "result": {
+    "id": "simplefarming:popcorn"
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

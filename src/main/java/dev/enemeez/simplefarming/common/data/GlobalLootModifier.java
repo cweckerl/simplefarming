@@ -1,7 +1,7 @@
 package dev.enemeez.simplefarming.common.data;
 
 import com.google.common.base.Suppliers;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.enemeez.simplefarming.common.registries.ModItems;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -16,8 +16,8 @@ import java.util.function.Supplier;
 
 public class GlobalLootModifier extends LootModifier {
 
-    public static final Supplier<Codec<GlobalLootModifier>> CODEC = Suppliers.memoize(
-        () -> RecordCodecBuilder.create(inst -> LootModifier.codecStart(inst).apply(inst, GlobalLootModifier::new))
+    public static final Supplier<MapCodec<GlobalLootModifier>> CODEC = Suppliers.memoize(
+        () -> RecordCodecBuilder.mapCodec(inst -> LootModifier.codecStart(inst).apply(inst, GlobalLootModifier::new))
     );
 
     protected GlobalLootModifier(LootItemCondition[] conditionsIn) {
@@ -32,7 +32,7 @@ public class GlobalLootModifier extends LootModifier {
     }
 
     @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
+    public MapCodec<? extends IGlobalLootModifier> codec() {
         return CODEC.get();
     }
 }

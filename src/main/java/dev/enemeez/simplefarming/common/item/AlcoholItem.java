@@ -2,6 +2,7 @@ package dev.enemeez.simplefarming.common.item;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -25,9 +26,9 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class AlcoholItem extends Item {
-    private final MobEffect EFFECT;
+    private final Holder<MobEffect> EFFECT;
 
-    public AlcoholItem(Properties pProperties, MobEffect effect) {
+    public AlcoholItem(Properties pProperties, Holder<MobEffect> effect) {
         super(pProperties);
         this.EFFECT = effect;
     }
@@ -61,7 +62,7 @@ public class AlcoholItem extends Item {
     }
 
     @Override
-    public int getUseDuration(ItemStack pStack) {
+    public int getUseDuration(ItemStack pStack, LivingEntity pEntity) {
         return 40;
     }
 
@@ -86,7 +87,7 @@ public class AlcoholItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable(EFFECT.getDescriptionId()).withStyle(ChatFormatting.GREEN));
+    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        pTooltipComponents.add(Component.translatable(EFFECT.value().getDescriptionId()).withStyle(ChatFormatting.GREEN));
     }
 }

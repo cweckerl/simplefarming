@@ -5,7 +5,6 @@ import dev.enemeez.simplefarming.common.registries.ModMenus;
 import dev.enemeez.simplefarming.common.SimpleFarming;
 import dev.enemeez.simplefarming.common.registries.ModBlocks;
 import dev.enemeez.simplefarming.common.registries.ModItems;
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Block;
@@ -14,6 +13,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -21,7 +21,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ClientEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-        MenuScreens.register(ModMenus.FERMENTER_MENU.get(), FermenterScreen::new);
+        event.enqueueWork(() -> MenuScreens.register(ModMenus.FERMENTER_MENU.get(), FermenterScreen::new));
     }
 
     @SubscribeEvent

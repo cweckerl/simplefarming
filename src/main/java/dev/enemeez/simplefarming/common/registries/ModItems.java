@@ -7,30 +7,32 @@ import dev.enemeez.simplefarming.common.item.RootCropItem;
 import dev.enemeez.simplefarming.common.item.ScytheItem;
 import dev.enemeez.simplefarming.common.item.SeedItem;
 import dev.enemeez.simplefarming.common.item.SeedPacketItem;
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.BowlFoodItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.RecordItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class ModItems {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, SimpleFarming.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, SimpleFarming.MOD_ID);
     public static final LinkedList<RegistryObject<Item>> ITEM_LIST = new LinkedList<>();
     public static final Map<RegistryObject<Item>, Float> COMPOSTABLES = new HashMap<>();
     public static final LinkedList<RegistryObject<Item>> SEEDS = new LinkedList<>();
@@ -89,7 +91,7 @@ public class ModItems {
     public static final RegistryObject<Item> NETHERITE_SCYTHE = registerScythe("netherite_scythe", Tiers.NETHERITE);
 
     // Music disc
-    public static final RegistryObject<Item> MUSIC_DISC_NOURISH = registerMusicDisc("music_disc_nourish", 2340);
+    public static final RegistryObject<Item> MUSIC_DISC_NOURISH = registerMusicDisc("music_disc_nourish");
 
     // Seed packets
     public static final RegistryObject<Item> FIBER_SEED_PACKET = registerSeedPacket("fiber_seed_packet", SeedPacketItem.Type.FIBER);
@@ -370,12 +372,18 @@ public class ModItems {
     }
 
     private static RegistryObject<Item> registerBowlFood(String name, FoodProperties pFood) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new BowlFoodItem(
-            new Item.Properties().stacksTo(1).food(pFood)
+        // BowlFoodItem is gone since 1.20.5; the bowl is now part of the food component
+        final FoodProperties bowlFood = new FoodProperties(
+            pFood.nutrition(), pFood.saturation(), pFood.canAlwaysEat(), pFood.eatSeconds(),
+            Optional.of(new ItemStack(Items.BOWL)), pFood.effects()
+        );
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(
+            new Item.Properties().stacksTo(1).food(bowlFood)
         ));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
+
 
     private static RegistryObject<Item> registerSeed(String name, Supplier<Block> crop) {
         final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new SeedItem(crop.get(), new Item.Properties()));
@@ -434,7 +442,7 @@ public class ModItems {
         return ITEM;
     }
 
-    private static RegistryObject<Item> registerAlcohol(String name, MobEffect effect) {
+    private static RegistryObject<Item> registerAlcohol(String name, Holder<MobEffect> effect) {
         final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new AlcoholItem(new Item.Properties().stacksTo(1), effect));
         ITEM_LIST.add(ITEM);
         return ITEM;
@@ -446,13 +454,15 @@ public class ModItems {
         return ITEM;
     }
 
-    private static RegistryObject<Item> registerMusicDisc(String name, int tickLength) {
-        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new RecordItem(15, () -> ModSoundEvents.MUSIC_DISC_NOURISH.get(),
-            new Item.Properties().stacksTo(1).rarity(Rarity.RARE), tickLength)
-        );
+    private static RegistryObject<Item> registerMusicDisc(String name) {
+        // RecordItem is gone since 1.21; discs reference a data-driven jukebox_song
+        final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new Item(
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ModSoundEvents.NOURISH_SONG)
+        ));
         ITEM_LIST.add(ITEM);
         return ITEM;
     }
+
 
     private static RegistryObject<Item> registerSeedPacket(String name, SeedPacketItem.Type type) {
         final RegistryObject<Item> ITEM = ITEMS.register(name, () -> new SeedPacketItem(new Item.Properties(), type));

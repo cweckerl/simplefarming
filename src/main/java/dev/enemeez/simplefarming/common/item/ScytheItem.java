@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class ScytheItem extends DiggerItem {
 
     public ScytheItem(Tier pTier, float pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
-        super(pAttackDamageModifier, pAttackSpeedModifier, pTier, ModTags.MINEABLE_WITH_SCYTHE, pProperties);
+        super(pTier, ModTags.MINEABLE_WITH_SCYTHE, pProperties.attributes(DiggerItem.createAttributes(pTier, pAttackDamageModifier, pAttackSpeedModifier)));
     }
 
     @Override
@@ -24,7 +24,7 @@ public class ScytheItem extends DiggerItem {
             return false;
         }
 
-        pStack.hurtAndBreak(1, pEntityLiving, (player) -> player.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+        pStack.hurtAndBreak(1, pEntityLiving, EquipmentSlot.MAINHAND);
         final BlockState STATE = pLevel.getBlockState(pPos);
         if (!isCorrectToolForDrops(pStack, STATE)) {
             return false;
@@ -36,7 +36,7 @@ public class ScytheItem extends DiggerItem {
                 if (pLevel.getBlockState(tmpPos) == STATE) {
                     Block.dropResources(pLevel.getBlockState(tmpPos), pLevel, tmpPos);
                     pLevel.destroyBlock(tmpPos, false, pEntityLiving);
-                    pStack.hurtAndBreak(1, pEntityLiving, (player) -> player.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+                    pStack.hurtAndBreak(1, pEntityLiving, EquipmentSlot.MAINHAND);
                 }
             });
 

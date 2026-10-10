@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplefarming:zucchini"
+    }
+  ],
+  "result": {
+    "id": "simplefarming:zucchini_seeds"
+  }
+}

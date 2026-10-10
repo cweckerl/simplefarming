@@ -12,7 +12,6 @@ import dev.enemeez.simplefarming.common.registries.ModFeatures;
 import dev.enemeez.simplefarming.common.registries.ModItems;
 import dev.enemeez.simplefarming.common.registries.ModLootModifiers;
 import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -37,8 +36,8 @@ public class SimpleFarming {
         ModMenus.MENU_TYPES.register(modEventBus);
         ModLootModifiers.GLOBAL_LOOT_MODIFIERS.register(modEventBus);
         ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
+        ModRecipes.RECIPE_TYPES.register(modEventBus);
         ModCreativeTabs.CREATIVE_TABS.register(modEventBus);
-        MinecraftForge.EVENT_BUS.register(this);
 
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::commonSetup);
@@ -51,6 +50,6 @@ public class SimpleFarming {
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTab() == ModCreativeTabs.TAB.get()) ModItems.ITEM_LIST.forEach(event::accept);
+        if (event.getTab() == ModCreativeTabs.TAB.get()) ModItems.ITEM_LIST.forEach(item -> event.accept(item.get()));
     }
 }

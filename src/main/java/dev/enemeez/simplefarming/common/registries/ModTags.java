@@ -9,13 +9,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 public class ModTags {
-    public static final TagKey<Block> MINEABLE_WITH_SCYTHE = BlockTags.create(new ResourceLocation(
+    public static final TagKey<Block> MINEABLE_WITH_SCYTHE = BlockTags.create(ResourceLocation.fromNamespaceAndPath(
         SimpleFarming.MOD_ID, "mineable/scythe"
     ));
-    public static final TagKey<Block> TRELLIS_BLACKLIST = BlockTags.create(new ResourceLocation(
+    public static final TagKey<Block> TRELLIS_BLACKLIST = BlockTags.create(ResourceLocation.fromNamespaceAndPath(
         SimpleFarming.MOD_ID, "trellis_blacklist"
     ));
-    public static final TagKey<Item> FERMENTABLE = ItemTags.create(new ResourceLocation(
+    public static final TagKey<Item> FERMENTABLE = ItemTags.create(ResourceLocation.fromNamespaceAndPath(
         SimpleFarming.MOD_ID, "fermentable"
     ));
 }

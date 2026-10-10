@@ -14,6 +14,7 @@ import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.level.BlockEvent;
@@ -82,7 +83,7 @@ public class CommonEvents {
                 ModItems.ROOT_SEED_PACKET.get(),
                 ModItems.TUBER_SEED_PACKET.get()
             ).forEach(packet -> event.getTrades().get(1).add((entity, rand) -> new MerchantOffer(
-                new ItemStack(Items.EMERALD, 1),
+                new ItemCost(Items.EMERALD, 1),
                 new ItemStack(packet, 1),
                 16,
                 2,

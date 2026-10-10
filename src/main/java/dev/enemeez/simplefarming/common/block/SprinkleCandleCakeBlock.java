@@ -1,5 +1,6 @@
 package dev.enemeez.simplefarming.common.block;
 
+import com.mojang.serialization.MapCodec;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import dev.enemeez.simplefarming.common.registries.ModBlocks;
@@ -10,6 +11,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -37,6 +40,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.Map;
 
 public class SprinkleCandleCakeBlock extends AbstractCandleBlock {
+    @Override
+    protected MapCodec<? extends SprinkleCandleCakeBlock> codec() {
+        return MapCodec.unit(this);
+    }
+
     public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
     protected static final float AABB_OFFSET = 1.0F;
     protected static final VoxelShape CAKE_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D);
@@ -59,29 +67,31 @@ public class SprinkleCandleCakeBlock extends AbstractCandleBlock {
         return SHAPE;
     }
 
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        ItemStack itemstack = pPlayer.getItemInHand(pHand);
-        if (!itemstack.is(Items.FLINT_AND_STEEL) && !itemstack.is(Items.FIRE_CHARGE)) {
-            if (candleHit(pHit) && pPlayer.getItemInHand(pHand).isEmpty() && pState.getValue(LIT)) {
-                extinguish(pPlayer, pState, pLevel, pPos);
-                return InteractionResult.sidedSuccess(pLevel.isClientSide);
-            } else {
-                InteractionResult interactionresult = SprinkleCakeBlock.eat(pLevel, pPos, ModBlocks.SPRINKLE_CAKE.get().defaultBlockState(), pPlayer);
-                if (interactionresult.consumesAction()) {
-                    dropResources(pState, pLevel, pPos);
-                }
-
-                return interactionresult;
-            }
-        } else {
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (pStack.is(Items.FLINT_AND_STEEL) || pStack.is(Items.FIRE_CHARGE)) {
             pLevel.playSound(pPlayer, pPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, pLevel.getRandom().nextFloat() * 0.4F + 0.8F);
             pLevel.setBlock(pPos, pState.setValue(BlockStateProperties.LIT, true), 11);
             pLevel.gameEvent(pPlayer, GameEvent.BLOCK_CHANGE, pPos);
-            pPlayer.getItemInHand(pHand).hurtAndBreak(1, pPlayer, (player) -> player.broadcastBreakEvent(pHand));
-
-            return InteractionResult.sidedSuccess(pLevel.isClientSide());
+            pStack.hurtAndBreak(1, pPlayer, LivingEntity.getSlotForHand(pHand));
+            return ItemInteractionResult.sidedSuccess(pLevel.isClientSide);
+        } else if (candleHit(pHit) && pStack.isEmpty() && pState.getValue(LIT)) {
+            extinguish(pPlayer, pState, pLevel, pPos);
+            return ItemInteractionResult.sidedSuccess(pLevel.isClientSide);
         }
+        return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHit) {
+        InteractionResult interactionresult = SprinkleCakeBlock.eat(pLevel, pPos, ModBlocks.SPRINKLE_CAKE.get().defaultBlockState(), pPlayer);
+        if (interactionresult.consumesAction()) {
+            dropResources(pState, pLevel, pPos);
+        }
+
+        return interactionresult;
+    }
+
 
     private static boolean candleHit(BlockHitResult pHit) {
         return pHit.getLocation().y - (double) pHit.getBlockPos().getY() > 0.5D;
@@ -91,7 +101,7 @@ public class SprinkleCandleCakeBlock extends AbstractCandleBlock {
         pBuilder.add(LIT);
     }
 
-    public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
+    public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return new ItemStack(Blocks.CAKE);
     }
 
@@ -127,7 +137,7 @@ public class SprinkleCandleCakeBlock extends AbstractCandleBlock {
         return true;
     }
 
-    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
+    protected boolean isPathfindable(BlockState pState, PathComputationType pType) {
         return false;
     }
 

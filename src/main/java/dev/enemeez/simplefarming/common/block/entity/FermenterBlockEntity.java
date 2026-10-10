@@ -6,6 +6,7 @@ import dev.enemeez.simplefarming.common.item.crafting.FermenterRecipe;
 import dev.enemeez.simplefarming.common.registries.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -19,6 +20,8 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -106,19 +109,18 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider, W
         super.reviveCaps();
         this.handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
     }
-
     @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
+    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+        super.loadAdditional(pTag, pRegistries);
         this.items = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(pTag, this.items);
+        ContainerHelper.loadAllItems(pTag, this.items, pRegistries);
         this.progress = pTag.getInt("Progress");
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag) {
-        super.saveAdditional(pTag);
-        ContainerHelper.saveAllItems(pTag, this.items);
+    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+        super.saveAdditional(pTag, pRegistries);
+        ContainerHelper.saveAllItems(pTag, this.items, pRegistries);
         pTag.putInt("Progress", this.progress);
     }
 
@@ -129,8 +131,8 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider, W
     }
 
     public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, FermenterBlockEntity entity) {
-        Optional<FermenterRecipe> recipe;
-        if (canCraft(entity) && (recipe = level.getRecipeManager().getRecipeFor(FermenterRecipe.Type.INSTANCE, entity, level)).isPresent()) {
+        Optional<RecipeHolder<FermenterRecipe>> recipe;
+        if (canCraft(entity) && (recipe = level.getRecipeManager().getRecipeFor(FermenterRecipe.Type.INSTANCE, new SingleRecipeInput(entity.items.get(SLOT_INPUT)), level)).isPresent()) {
             entity.progress++;
 
             if (entity.progress == entity.totalTime) {
@@ -140,7 +142,7 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider, W
                 var bottle = entity.items.get(SLOT_BOTTLE);
                 entity.items.set(SLOT_INPUT, input.getCount() > 0 ? new ItemStack(input.getItem(), input.getCount() - 1) : ItemStack.EMPTY);
                 entity.items.set(SLOT_BOTTLE, bottle.getCount() > 0 ? new ItemStack(bottle.getItem(), bottle.getCount() - 1) : ItemStack.EMPTY);
-                entity.items.set(SLOT_RESULT, new ItemStack(recipe.get().getResultItem(level.registryAccess()).getItem()));
+                entity.items.set(SLOT_RESULT, new ItemStack(recipe.get().value().getResultItem(level.registryAccess()).getItem()));
             }
 
             setChanged(level, blockPos, blockState);
@@ -189,7 +191,7 @@ public class FermenterBlockEntity extends BlockEntity implements MenuProvider, W
     @Override
     public void setItem(int pSlot, ItemStack pStack) {
         ItemStack itemstack = this.items.get(pSlot);
-        boolean flag = !pStack.isEmpty() && ItemStack.isSameItem(pStack, itemstack) && ItemStack.isSameItemSameTags(pStack, itemstack);
+        boolean flag = !pStack.isEmpty() && ItemStack.isSameItem(pStack, itemstack) && ItemStack.isSameItemSameComponents(pStack, itemstack);
 
         this.items.set(pSlot, pStack);
         if (pStack.getCount() > this.getMaxStackSize()) {

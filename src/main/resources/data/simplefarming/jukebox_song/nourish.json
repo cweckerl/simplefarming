@@ -1,0 +1,8 @@
+{
+  "comparator_output": 15,
+  "description": {
+    "translate": "item.simplefarming.music_disc_nourish.desc"
+  },
+  "length_in_seconds": 117.0,
+  "sound_event": "simplefarming:music_disc.nourish"
+}

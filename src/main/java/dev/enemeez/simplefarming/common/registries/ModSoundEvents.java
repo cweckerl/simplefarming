@@ -1,17 +1,23 @@
 package dev.enemeez.simplefarming.common.registries;
 
 import dev.enemeez.simplefarming.common.SimpleFarming;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.item.JukeboxSong;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModSoundEvents {
-    public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, SimpleFarming.MOD_ID);
+    public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(Registries.SOUND_EVENT, SimpleFarming.MOD_ID);
 
     public static final RegistryObject<SoundEvent> MUSIC_DISC_NOURISH = SOUND_EVENTS.register("music_disc.nourish",
-        () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(SimpleFarming.MOD_ID, "music_disc.nourish"))
+        () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(SimpleFarming.MOD_ID, "music_disc.nourish"))
     );
 
+    public static final ResourceKey<JukeboxSong> NOURISH_SONG = ResourceKey.create(
+        Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(SimpleFarming.MOD_ID, "nourish")
+    );
 }
