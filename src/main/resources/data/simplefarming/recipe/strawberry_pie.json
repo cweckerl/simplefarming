@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:fruits/strawberries",
+    "#c:eggs",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "id": "simplefarming:strawberry_pie"
+  }
+}

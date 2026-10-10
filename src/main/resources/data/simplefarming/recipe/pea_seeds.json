@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:pea_pod"
+  ],
+  "result": {
+    "id": "simplefarming:pea_seeds"
+  }
+}

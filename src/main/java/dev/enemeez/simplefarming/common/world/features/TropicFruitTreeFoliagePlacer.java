@@ -1,17 +1,17 @@
 package dev.enemeez.simplefarming.common.world.features;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import dev.enemeez.simplefarming.common.registries.ModFeatures;
 import net.minecraft.core.Vec3i;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 
 import java.util.stream.Stream;
 
 public class TropicFruitTreeFoliagePlacer extends FruitTreeFoliagePlacer {
-    public static final Codec<FruitTreeFoliagePlacer> CODEC = Codec.unit(TropicFruitTreeFoliagePlacer::new);
+    public static final MapCodec<FruitTreeFoliagePlacer> CODEC = MapCodec.unit(TropicFruitTreeFoliagePlacer::new);
 
     @Override
     protected FoliagePlacerType<?> type() {
@@ -20,7 +20,7 @@ public class TropicFruitTreeFoliagePlacer extends FruitTreeFoliagePlacer {
 
     @Override
     protected void createFoliage(
-        LevelSimulatedReader pLevel,
+        WorldGenLevel pLevel,
         FoliageSetter pBlockSetter,
         RandomSource pRandom,
         TreeConfiguration pConfig,

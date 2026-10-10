@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:barley"
+  ],
+  "result": {
+    "id": "simplefarming:barley_seeds"
+  }
+}

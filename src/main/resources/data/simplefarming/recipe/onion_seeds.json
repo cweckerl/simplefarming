@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:onion"
+  ],
+  "result": {
+    "id": "simplefarming:onion_seeds"
+  }
+}

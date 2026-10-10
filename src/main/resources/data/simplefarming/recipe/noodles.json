@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "N",
+    "N"
+  ],
+  "key": {
+    "N": "#c:grain"
+  },
+  "result": {
+    "id": "simplefarming:noodles"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:beef"
+  ],
+  "result": {
+    "id": "simplefarming:raw_sausage",
+    "count": 2
+  }
+}

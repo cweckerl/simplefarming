@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "#c:crops/tomato",
+    "simplefarming:olives"
+  ],
+  "result": {
+    "id": "simplefarming:olive_tomato_salad"
+  }
+}

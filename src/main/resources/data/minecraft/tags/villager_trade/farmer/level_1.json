@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "simplefarming:farmer/1/fiber_seed_packet",
+    "simplefarming:farmer/1/fruit_seed_packet",
+    "simplefarming:farmer/1/gourd_seed_packet",
+    "simplefarming:farmer/1/grain_seed_packet",
+    "simplefarming:farmer/1/leafy_seed_packet",
+    "simplefarming:farmer/1/legume_seed_packet",
+    "simplefarming:farmer/1/root_seed_packet",
+    "simplefarming:farmer/1/tuber_seed_packet"
+  ]
+}

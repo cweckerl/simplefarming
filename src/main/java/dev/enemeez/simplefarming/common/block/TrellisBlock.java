@@ -1,5 +1,8 @@
 package dev.enemeez.simplefarming.common.block;
 
+import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.util.RandomSource;
 import dev.enemeez.simplefarming.common.registries.ModTags;
 import dev.enemeez.simplefarming.common.registries.ModBlocks;
 import net.minecraft.core.BlockPos;
@@ -136,12 +139,12 @@ public class TrellisBlock extends Block {
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+    protected BlockState updateShape(BlockState pState, LevelReader pLevel, ScheduledTickAccess pTickAccess, BlockPos pCurrentPos, Direction pDirection, BlockPos pNeighborPos, BlockState pNeighborState, RandomSource pRandom) {
         return pState.setValue(DIRECTION_TO_PROPERTY.get(pDirection), canConnect(pNeighborState));
     }
 
     @Override
-    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
+    protected boolean isPathfindable(BlockState pState, PathComputationType pType) {
         return false;
     }
 

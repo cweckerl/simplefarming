@@ -2,10 +2,11 @@ package dev.enemeez.simplefarming.common.block.menu;
 
 import dev.enemeez.simplefarming.common.block.entity.FermenterBlockEntity;
 import dev.enemeez.simplefarming.common.registries.ModMenus;
+import dev.enemeez.simplefarming.common.registries.ModTags;
 import dev.enemeez.simplefarming.common.item.crafting.FermenterRecipe;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -121,7 +122,7 @@ public class FermenterMenu extends AbstractContainerMenu {
     }
 
     private boolean canFerment(ItemStack pStack) {
-        return this.LEVEL.getRecipeManager().getRecipeFor(FermenterRecipe.Type.INSTANCE, new SimpleContainer(pStack), this.LEVEL).isPresent();
+        return pStack.is(ModTags.FERMENTABLE);
     }
 
     @Override

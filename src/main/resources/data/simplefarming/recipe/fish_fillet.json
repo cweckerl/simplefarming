@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GBG"
+  ],
+  "key": {
+    "G": "#c:grain",
+    "B": "#c:cooked_fishes"
+  },
+  "result": {
+    "id": "simplefarming:fish_fillet"
+  }
+}

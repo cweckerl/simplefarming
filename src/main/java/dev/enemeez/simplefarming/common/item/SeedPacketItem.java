@@ -5,7 +5,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -98,12 +98,12 @@ public class SeedPacketItem extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
-        if (!pLevel.isClientSide) {
+    public InteractionResult use(Level pLevel, Player pPlayer, InteractionHand pHand) {
+        if (!pLevel.isClientSide()) {
             final var packet = getContents();
-            final var amount = pLevel.random.nextInt(2,4);
+            final var amount = pLevel.getRandom().nextInt(2,4);
             for (int i = 0; i < amount; i++) {
-                final ItemStack seed = new ItemStack(getRandomSeed(pLevel.random, packet));
+                final ItemStack seed = new ItemStack(getRandomSeed(pLevel.getRandom(), packet));
                 if (!pPlayer.getInventory().add(seed)) {
                     pPlayer.drop(seed, false);
                 }
@@ -122,7 +122,7 @@ public class SeedPacketItem extends Item {
             SoundEvents.CHICKEN_EGG,
             SoundSource.NEUTRAL,
             0.5F,
-            0.4F / (pLevel.random.nextFloat() * 0.4F + 0.8F)
+            0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F)
         );
         return super.use(pLevel, pPlayer, pHand);
     }

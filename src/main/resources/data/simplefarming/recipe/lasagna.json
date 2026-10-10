@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NCN",
+    "TBT"
+  ],
+  "key": {
+    "N": "simplefarming:noodles",
+    "T": "#c:crops/tomato",
+    "C": "simplefarming:cheese_slice",
+    "B": "minecraft:cooked_beef"
+  },
+  "result": {
+    "id": "simplefarming:lasagna"
+  }
+}

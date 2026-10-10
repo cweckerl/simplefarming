@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BMB"
+  ],
+  "key": {
+    "B": "#c:grain/barley",
+    "M": "#c:mushrooms"
+  },
+  "result": {
+    "id": "simplefarming:mushroom_barley"
+  }
+}

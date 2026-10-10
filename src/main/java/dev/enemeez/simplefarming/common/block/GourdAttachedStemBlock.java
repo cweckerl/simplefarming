@@ -1,5 +1,9 @@
 package dev.enemeez.simplefarming.common.block;
 
+import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.util.RandomSource;
+import com.mojang.serialization.MapCodec;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import net.minecraft.core.BlockPos;
@@ -7,25 +11,31 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class GourdAttachedStemBlock extends BushBlock {
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+public class GourdAttachedStemBlock extends VegetationBlock {
+    @Override
+    protected MapCodec<? extends GourdAttachedStemBlock> codec() {
+        return MapCodec.unit(this);
+    }
+
+    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     private static final Map<Direction, VoxelShape> AABBS = Maps.newEnumMap(ImmutableMap.of(
         Direction.SOUTH, Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 16.0D),
         Direction.WEST, Block.box(0.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D),
@@ -52,12 +62,10 @@ public class GourdAttachedStemBlock extends BushBlock {
     }
 
     @Override
-    public BlockState updateShape(
-        BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos
-    ) {
+    protected BlockState updateShape(BlockState pState, LevelReader pLevel, ScheduledTickAccess pTickAccess, BlockPos pCurrentPos, Direction pFacing, BlockPos pFacingPos, BlockState pFacingState, RandomSource pRandom) {
         return !pFacingState.is(getFruit()) && pFacing == pState.getValue(FACING)
             ? getStem().defaultBlockState().setValue(GourdStemBlock.AGE, 7)
-            : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+            : super.updateShape(pState, pLevel, pTickAccess, pCurrentPos, pFacing, pFacingPos, pFacingState, pRandom);
     }
 
     @Override
@@ -66,7 +74,7 @@ public class GourdAttachedStemBlock extends BushBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
+    protected ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIncludeData) {
         return new ItemStack(this.SEED.get());
     }
 

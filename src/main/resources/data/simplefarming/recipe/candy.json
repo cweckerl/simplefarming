@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SCS"
+  ],
+  "key": {
+    "C": "simplefarming:chocolate",
+    "S": "minecraft:sugar"
+  },
+  "result": {
+    "id": "simplefarming:candy"
+  }
+}

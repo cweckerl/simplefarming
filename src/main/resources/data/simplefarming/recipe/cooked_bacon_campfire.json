@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": "simplefarming:raw_bacon",
+  "result": {
+    "id": "simplefarming:cooked_bacon"
+  },
+  "experience": 0.35,
+  "cookingtime": 600
+}

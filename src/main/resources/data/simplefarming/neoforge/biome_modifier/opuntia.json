@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#c:is_desert",
+  "features": "simplefarming:opuntia_checked",
+  "step": "vegetal_decoration"
+}

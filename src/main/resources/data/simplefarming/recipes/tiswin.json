@@ -1,9 +1,0 @@
-{
-  "type": "simplefarming:fermenting",
-  "ingredient": {
-    "tag": "forge:fruits/cactus_fruit"
-  },
-  "result": {
-    "item": "simplefarming:tiswin"
-  }
-}

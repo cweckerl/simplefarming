@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:broccoli"
+  ],
+  "result": {
+    "id": "simplefarming:broccoli_seeds"
+  }
+}

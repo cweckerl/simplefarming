@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NTN",
+    "VEV"
+  ],
+  "key": {
+    "V": "#c:vegetables",
+    "E": "#c:eggs",
+    "N": "simplefarming:noodles",
+    "T": "simplefarming:tofu"
+  },
+  "result": {
+    "id": "simplefarming:pad_thai"
+  }
+}

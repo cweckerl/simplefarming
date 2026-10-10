@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": "simplefarming:corn_seeds",
+  "result": {
+    "id": "simplefarming:popcorn"
+  },
+  "experience": 0.35,
+  "cookingtime": 600
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:vinegar",
+    "minecraft:beetroot"
+  ],
+  "result": {
+    "id": "simplefarming:pickled_beetroot"
+  }
+}

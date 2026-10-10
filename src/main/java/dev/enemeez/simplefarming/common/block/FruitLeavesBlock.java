@@ -1,5 +1,6 @@
 package dev.enemeez.simplefarming.common.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -18,24 +19,29 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.TintedParticleLeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.ForgeHooks;
+import net.neoforged.neoforge.common.CommonHooks;
 
 import java.util.function.Supplier;
 
-public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
+public class FruitLeavesBlock extends TintedParticleLeavesBlock implements BonemealableBlock {
+    @Override
+    public MapCodec<? extends FruitLeavesBlock> codec() {
+        return MapCodec.unit(this);
+    }
+
     public static final int MAX_AGE = 7;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
     private final Supplier<Item> FRUIT;
 
     public FruitLeavesBlock(Properties pProperties, Supplier<Item> fruit) {
-        super(pProperties);
+        super(0.01F, pProperties);
         this.FRUIT = fruit;
         this.registerDefaultState(this.stateDefinition.any()
             .setValue(DISTANCE, 7)
@@ -59,9 +65,9 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
             if (pLevel.getRawBrightness(pPos, 0) >= 9) {
                 int age = pState.getValue(AGE);
                 if (age < MAX_AGE) {
-                    if (ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt(5) == 0)) {
+                    if (CommonHooks.canCropGrow(pLevel, pPos, pState, pRandom.nextInt(5) == 0)) {
                         pLevel.setBlock(pPos, pState.setValue(AGE, age + 1), 2);
-                        ForgeHooks.onCropsGrowPost(pLevel, pPos, pState);
+                        CommonHooks.fireCropGrowPost(pLevel, pPos, pState);
                     }
                 }
             }
@@ -79,7 +85,7 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return pState.getValue(AGE) != MAX_AGE;
     }
 
@@ -109,19 +115,24 @@ public class FruitLeavesBlock extends LeavesBlock implements BonemealableBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        final int age = pState.getValue(AGE);
-        if (age != MAX_AGE && pPlayer.getItemInHand(pHand).is(Items.BONE_MEAL)) {
+    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        // Let bone meal do its thing on unripe plants instead of trying to harvest
+        if (pState.getValue(AGE) != MAX_AGE && pStack.is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
-        } else if (age == MAX_AGE) {
+        }
+        return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHit);
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHit) {
+        if (pState.getValue(AGE) == MAX_AGE) {
             popResourceFromFace(pLevel, pPos, Direction.DOWN, new ItemStack(FRUIT.get()));
-            pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + pLevel.random.nextFloat() * 0.4F);
+            pLevel.playSound(null, pPos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + pLevel.getRandom().nextFloat() * 0.4F);
             BlockState blockstate = pState.setValue(AGE, 0);
             pLevel.setBlock(pPos, blockstate, 2);
             pLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(pPlayer, blockstate));
-            return InteractionResult.sidedSuccess(pLevel.isClientSide);
-        } else {
-            return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+            return InteractionResult.SUCCESS;
         }
+        return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHit);
     }
 }

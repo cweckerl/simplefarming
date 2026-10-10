@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "#c:fruits/apricot",
+    "#c:fruits/banana",
+    "#c:fruits/blackberries",
+    "#c:fruits/blueberries",
+    "#c:fruits/cactus_fruit",
+    "#c:fruits/cantaloupe",
+    "#c:fruits/cherries",
+    "#c:fruits/grapes",
+    "#c:fruits/honeydew",
+    "#c:fruits/mango",
+    "#c:fruits/orange",
+    "#c:fruits/pear",
+    "#c:fruits/plum",
+    "#c:fruits/raspberries",
+    "#c:fruits/apple",
+    "#c:fruits/melon",
+    "#c:fruits/sweet_berries",
+    "#c:fruits/strawberries"
+  ]
+}

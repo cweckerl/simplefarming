@@ -1,55 +1,39 @@
 package dev.enemeez.simplefarming.client;
 
+import java.util.List;
 import dev.enemeez.simplefarming.client.gui.FermenterScreen;
 import dev.enemeez.simplefarming.common.registries.ModMenus;
 import dev.enemeez.simplefarming.common.SimpleFarming;
 import dev.enemeez.simplefarming.common.registries.ModBlocks;
 import dev.enemeez.simplefarming.common.registries.ModItems;
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.world.level.FoliageColor;
+import net.minecraft.client.color.block.BlockTintSources;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.StemBlock;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
-@Mod.EventBusSubscriber(modid = SimpleFarming.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = SimpleFarming.MOD_ID, value = Dist.CLIENT)
 public class ClientEvents {
     @SubscribeEvent
-    public static void onClientSetup(FMLClientSetupEvent event) {
-        MenuScreens.register(ModMenus.FERMENTER_MENU.get(), FermenterScreen::new);
+    public static void registerScreens(RegisterMenuScreensEvent event) {
+        event.register(ModMenus.FERMENTER_MENU.get(), FermenterScreen::new);
     }
 
     @SubscribeEvent
-    public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
-        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> pLevel != null && pPos != null
-                ? BiomeColors.getAverageFoliageColor(pLevel, pPos)
-                : FoliageColor.getDefaultColor(),
-            ModBlocks.FOLIAGE_COLOR_BLOCKS.stream().map(RegistryObject::get).toArray(Block[]::new)
+    public static void registerBlockColors(RegisterColorHandlersEvent.BlockTintSources event) {
+        // 26.x tints blocks through BlockTintSources; these are the same sources vanilla uses for leaves and melon stems
+        event.register(List.of(BlockTintSources.foliage()),
+            ModBlocks.FOLIAGE_COLOR_BLOCKS.stream().map(DeferredHolder::get).toArray(Block[]::new)
         );
-
-        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> {
-                int i = pState.getValue(StemBlock.AGE);
-                int j = i * 32;
-                int k = 255 - i * 8;
-                int l = i * 4;
-                return j << 16 | k << 8 | l;
-            }, ModBlocks.CANTALOUPE_STEM.get(), ModBlocks.HONEYDEW_STEM.get(), ModBlocks.SQUASH_STEM.get()
+        event.register(List.of(BlockTintSources.stem()),
+            ModBlocks.CANTALOUPE_STEM.get(), ModBlocks.HONEYDEW_STEM.get(), ModBlocks.SQUASH_STEM.get()
         );
-
-        event.getBlockColors().register((pState, pLevel, pPos, pTintIndex) -> 14_731_036,
+        event.register(List.of(BlockTintSources.constant(0xFFE0C71C)),
             ModBlocks.ATTACHED_CANTALOUPE_STEM.get(), ModBlocks.ATTACHED_HONEYDEW_STEM.get(), ModBlocks.ATTACHED_SQUASH_STEM.get()
         );
     }
 
-    @SubscribeEvent
-    public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
-        event.getItemColors().register((pStack, pTintIndex) -> FoliageColor.getDefaultColor(),
-            ModItems.BLACKBERRY_BUSH.get(), ModItems.BLUEBERRY_BUSH.get(), ModItems.RASPBERRY_BUSH.get(), ModItems.STRAWBERRY_BUSH.get()
-        );
-    }
 }
