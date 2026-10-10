@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#c:carbs/barley",
+    "#c:carbs/oat",
+    "#c:carbs/rye",
+    "#c:carbs/corn",
+    "#c:carbs/potato",
+    "#c:carbs/rice",
+    "#c:carbs/sweet_potato",
+    "#c:carbs/yam",
+    "#c:carbs/sorghum"
+  ]
+}

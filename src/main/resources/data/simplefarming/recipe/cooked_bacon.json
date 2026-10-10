@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "simplefarming:raw_bacon"
+  },
+  "result": {
+    "id": "simplefarming:cooked_bacon"
+  },
+  "experience": 0.35,
+  "cookingTime": 200
+}

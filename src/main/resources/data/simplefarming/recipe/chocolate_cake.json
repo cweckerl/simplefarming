@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "SES",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "tag": "c:grain"
+    },
+    "E": {
+      "tag": "c:eggs"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "C": {
+      "item": "simplefarming:chocolate"
+    }
+  },
+  "result": {
+    "id": "simplefarming:chocolate_cake"
+  }
+}

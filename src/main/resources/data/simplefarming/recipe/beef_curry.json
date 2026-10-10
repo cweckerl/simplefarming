@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PMP",
+    "RRR"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:cooked_beef"
+    },
+    "R": {
+      "tag": "c:grain/rice"
+    },
+    "P": {
+      "item": "simplefarming:curry_powder"
+    }
+  },
+  "result": {
+    "id": "simplefarming:beef_curry"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OOO"
+  ],
+  "key": {
+    "O": {
+      "item": "simplefarming:barley"
+    }
+  },
+  "result": {
+    "id": "simplefarming:barley_bread"
+  }
+}

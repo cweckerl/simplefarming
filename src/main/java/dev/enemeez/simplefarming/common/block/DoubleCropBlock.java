@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraftforge.common.ForgeHooks;
+import net.neoforged.neoforge.common.CommonHooks;
 
 import java.util.function.Supplier;
 
@@ -36,10 +36,10 @@ public class DoubleCropBlock extends SingleCropBlock {
         if (pLevel.getRawBrightness(pPos, 0) >= 9) {
             final int CURR_AGE = this.getAge(pState);
             if (CURR_AGE < this.getMaxAge()) {
-                float f = getGrowthSpeed(this, pLevel, pPos);
-                if (ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt((int) (25.0F / f) + 1) == 0)) {
+                float f = getGrowthSpeed(pState, pLevel, pPos);
+                if (CommonHooks.canCropGrow(pLevel, pPos, pState, pRandom.nextInt((int) (25.0F / f) + 1) == 0)) {
                     pLevel.setBlock(pPos, this.getStateForAge(CURR_AGE + 1), 2);
-                    ForgeHooks.onCropsGrowPost(pLevel, pPos, pState);
+                    CommonHooks.fireCropGrowPost(pLevel, pPos, pState);
                 }
             } else {
                 if (pLevel.getBlockState(pPos.above()).getBlock() == Blocks.AIR) {
@@ -72,7 +72,7 @@ public class DoubleCropBlock extends SingleCropBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState, boolean pIsClient) {
+    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return !pState.getValue(RIPE);
     }
 

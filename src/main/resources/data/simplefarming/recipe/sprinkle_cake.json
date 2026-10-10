@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLL",
+    "SES",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "tag": "c:grain"
+    },
+    "E": {
+      "tag": "c:eggs"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "L": {
+      "item": "simplefarming:sprinkles"
+    }
+  },
+  "result": {
+    "id": "simplefarming:sprinkle_cake"
+  }
+}

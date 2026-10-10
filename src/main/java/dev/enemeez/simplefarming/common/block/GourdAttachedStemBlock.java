@@ -1,5 +1,6 @@
 package dev.enemeez.simplefarming.common.block;
 
+import com.mojang.serialization.MapCodec;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import net.minecraft.core.BlockPos;
@@ -7,6 +8,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -25,6 +27,11 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class GourdAttachedStemBlock extends BushBlock {
+    @Override
+    protected MapCodec<? extends GourdAttachedStemBlock> codec() {
+        return MapCodec.unit(this);
+    }
+
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     private static final Map<Direction, VoxelShape> AABBS = Maps.newEnumMap(ImmutableMap.of(
         Direction.SOUTH, Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 16.0D),
@@ -66,7 +73,7 @@ public class GourdAttachedStemBlock extends BushBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
+    public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
         return new ItemStack(this.SEED.get());
     }
 

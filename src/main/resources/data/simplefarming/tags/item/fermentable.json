@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:honeycomb",
+    "#c:crops/wheat",
+    "#c:crops/potato",
+    "#c:crops/barley",
+    "#c:crops/cassava",
+    "#c:fruits/apple",
+    "#c:crops/rice",
+    "#c:fruits/cactus_fruit",
+    "#c:fruits/grapes"
+  ]
+}

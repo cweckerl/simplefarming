@@ -141,7 +141,7 @@ public class TrellisBlock extends Block {
     }
 
     @Override
-    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
+    protected boolean isPathfindable(BlockState pState, PathComputationType pType) {
         return false;
     }
 

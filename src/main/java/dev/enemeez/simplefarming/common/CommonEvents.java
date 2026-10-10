@@ -14,17 +14,18 @@ import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.event.village.VillagerTradesEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.village.VillagerTradesEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.stream.Stream;
 
-@Mod.EventBusSubscriber(modid = SimpleFarming.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = SimpleFarming.MOD_ID, bus = EventBusSubscriber.Bus.GAME)
 public class CommonEvents {
     @SubscribeEvent
     public static void cancelTrample(BlockEvent.FarmlandTrampleEvent event) {
@@ -58,7 +59,7 @@ public class CommonEvents {
 
         if (entityType == EntityType.CHICKEN) {
             ((Chicken) entity).goalSelector.addGoal(3, new TemptGoal((Chicken) entity, 1.0D,
-                Ingredient.of(ModItems.SEEDS.stream().map(RegistryObject::get).map(ItemStack::new)), false)
+                Ingredient.of(ModItems.SEEDS.stream().map(DeferredHolder::get).map(ItemStack::new)), false)
             );
         } else if (entityType == EntityType.COW) {
             ((Cow) entity).goalSelector.addGoal(3, new TemptGoal((Cow) entity, 1.25D, GRAINS, false));
@@ -82,7 +83,7 @@ public class CommonEvents {
                 ModItems.ROOT_SEED_PACKET.get(),
                 ModItems.TUBER_SEED_PACKET.get()
             ).forEach(packet -> event.getTrades().get(1).add((entity, rand) -> new MerchantOffer(
-                new ItemStack(Items.EMERALD, 1),
+                new ItemCost(Items.EMERALD, 1),
                 new ItemStack(packet, 1),
                 16,
                 2,

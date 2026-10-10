@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OOO"
+  ],
+  "key": {
+    "O": {
+      "tag": "c:grain/rye"
+    }
+  },
+  "result": {
+    "id": "simplefarming:rye_bread"
+  }
+}

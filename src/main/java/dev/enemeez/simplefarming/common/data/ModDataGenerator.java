@@ -2,13 +2,13 @@ package dev.enemeez.simplefarming.common.data;
 
 import dev.enemeez.simplefarming.common.SimpleFarming;
 import net.minecraft.data.DataGenerator;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 
 import java.util.Set;
 
-@Mod.EventBusSubscriber(modid = SimpleFarming.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = SimpleFarming.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class ModDataGenerator {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {

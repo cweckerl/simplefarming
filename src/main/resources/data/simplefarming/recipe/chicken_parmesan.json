@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:grain"
+    },
+    {
+      "tag": "c:eggs"
+    },
+    {
+      "tag": "c:crops/tomato"
+    },
+    {
+      "item": "simplefarming:cheese_slice"
+    },
+    {
+      "item": "minecraft:cooked_chicken"
+    }
+  ],
+  "result": {
+    "id": "simplefarming:chicken_parmesan"
+  }
+}

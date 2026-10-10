@@ -7,6 +7,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -26,37 +27,35 @@ public class SprinkleCakeBlock extends CakeBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        ItemStack itemstack = pPlayer.getItemInHand(pHand);
-        Item item = itemstack.getItem();
-        if (itemstack.is(ItemTags.CANDLES) && pState.getValue(BITES) == 0) {
-            Block block = Block.byItem(item);
-            if (block instanceof CandleBlock) {
-                if (!pPlayer.isCreative()) {
-                    itemstack.shrink(1);
-                }
-
-                pLevel.playSound(null, pPos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                // Only change from CakeBlock class
-                pLevel.setBlockAndUpdate(pPos, SprinkleCandleCakeBlock.byCandle(block));
-                pLevel.gameEvent(pPlayer, GameEvent.BLOCK_CHANGE, pPos);
-                pPlayer.awardStat(Stats.ITEM_USED.get(item));
-                return InteractionResult.SUCCESS;
-            }
+    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        Item item = pStack.getItem();
+        if (pStack.is(ItemTags.CANDLES) && pState.getValue(BITES) == 0 && Block.byItem(item) instanceof CandleBlock candleBlock) {
+            pStack.consume(1, pPlayer);
+            pLevel.playSound(null, pPos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
+            // Only change from CakeBlock class
+            pLevel.setBlockAndUpdate(pPos, SprinkleCandleCakeBlock.byCandle(candleBlock));
+            pLevel.gameEvent(pPlayer, GameEvent.BLOCK_CHANGE, pPos);
+            pPlayer.awardStat(Stats.ITEM_USED.get(item));
+            return ItemInteractionResult.SUCCESS;
         }
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
 
+    @Override
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHit) {
         if (pLevel.isClientSide) {
             if (eat(pLevel, pPos, pState, pPlayer).consumesAction()) {
                 return InteractionResult.SUCCESS;
             }
 
-            if (itemstack.isEmpty()) {
+            if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
                 return InteractionResult.CONSUME;
             }
         }
 
         return eat(pLevel, pPos, pState, pPlayer);
     }
+
 
     protected static InteractionResult eat(LevelAccessor pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
         if (!pPlayer.canEat(false)) {

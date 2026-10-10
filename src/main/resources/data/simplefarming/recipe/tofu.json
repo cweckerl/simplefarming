@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "c:crops/soybean"
+  },
+  "result": {
+    "id": "simplefarming:tofu"
+  },
+  "experience": 0.35,
+  "cookingTime": 200
+}

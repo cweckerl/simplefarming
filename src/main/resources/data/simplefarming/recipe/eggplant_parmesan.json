@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GCG",
+    "TET"
+  ],
+  "key": {
+    "G": {
+      "tag": "c:crops/eggplant"
+    },
+    "T": {
+      "tag": "c:crops/tomato"
+    },
+    "C": {
+      "item": "simplefarming:cheese_slice"
+    },
+    "E": {
+      "tag": "c:eggs"
+    }
+  },
+  "result": {
+    "id": "simplefarming:eggplant_parmesan"
+  }
+}

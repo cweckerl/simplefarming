@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "simplefarming:raw_bacon",
+    "simplefarming:cooked_bacon",
+    "simplefarming:raw_chicken_wings",
+    "simplefarming:cooked_chicken_wings",
+    "simplefarming:raw_sausage",
+    "simplefarming:cooked_sausage"
+  ]
+}

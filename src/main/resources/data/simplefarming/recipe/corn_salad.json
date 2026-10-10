@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "tag": "c:crops/corn"
+    },
+    {
+      "tag": "c:crops/corn"
+    },
+    {
+      "tag": "c:crops/tomato"
+    },
+    {
+      "tag": "c:salad_ingredients"
+    }
+  ],
+  "result": {
+    "id": "simplefarming:corn_salad"
+  }
+}

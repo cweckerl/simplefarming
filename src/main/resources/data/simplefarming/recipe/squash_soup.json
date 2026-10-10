@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "tag": "c:crops/squash"
+    },
+    {
+      "tag": "c:crops/squash"
+    },
+    {
+      "tag": "c:crops/squash"
+    },
+    {
+      "tag": "c:crops/squash"
+    },
+    {
+      "tag": "c:crops/squash"
+    },
+    {
+      "tag": "c:crops/squash"
+    }
+  ],
+  "result": {
+    "id": "simplefarming:squash_soup"
+  }
+}

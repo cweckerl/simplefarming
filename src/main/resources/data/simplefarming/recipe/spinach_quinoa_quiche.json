@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SGS",
+    "GEG"
+  ],
+  "key": {
+    "S": {
+      "tag": "c:crops/spinach"
+    },
+    "E": {
+      "tag": "c:eggs"
+    },
+    "G": {
+      "tag": "c:quinoa"
+    }
+  },
+  "result": {
+    "id": "simplefarming:spinach_quinoa_quiche"
+  }
+}

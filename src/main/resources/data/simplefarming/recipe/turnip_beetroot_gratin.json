@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TOT",
+    "BCB"
+  ],
+  "key": {
+    "O": {
+      "tag": "c:crops/onion"
+    },
+    "T": {
+      "tag": "c:crops/turnip"
+    },
+    "C": {
+      "item": "simplefarming:cheese_slice"
+    },
+    "B": {
+      "item": "minecraft:beetroot"
+    }
+  },
+  "result": {
+    "id": "simplefarming:turnip_beetroot_gratin"
+  }
+}

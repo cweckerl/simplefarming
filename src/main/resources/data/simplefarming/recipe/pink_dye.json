@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:fruits/cactus_fruit"
+    },
+    {
+      "tag": "c:fruits/cactus_fruit"
+    },
+    {
+      "tag": "c:fruits/cactus_fruit"
+    }
+  ],
+  "result": {
+    "id": "minecraft:pink_dye"
+  }
+}

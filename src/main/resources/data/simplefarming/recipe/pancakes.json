@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GS",
+    "ME"
+  ],
+  "key": {
+    "G": {
+      "tag": "c:grain"
+    },
+    "M": {
+      "item": "minecraft:milk_bucket"
+    },
+    "E": {
+      "tag": "c:eggs"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "result": {
+    "id": "simplefarming:pancakes"
+  }
+}

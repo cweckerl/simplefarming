@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "#c:vegetables/broccoli",
+    "#c:vegetables/cassava",
+    "#c:vegetables/corn",
+    "#c:vegetables/cucumber",
+    "#c:vegetables/eggplant",
+    "#c:vegetables/lettuce",
+    "#c:vegetables/onion",
+    "#c:vegetables/pepper",
+    "#c:vegetables/radish",
+    "#c:vegetables/soybean",
+    "#c:vegetables/spinach",
+    "#c:vegetables/squash",
+    "#c:vegetables/tomato",
+    "#c:vegetables/turnip",
+    "#c:vegetables/ginger",
+    "#c:vegetables/sorghum",
+    "#c:vegetables/pea",
+    "#c:vegetables/sweet_potato",
+    "#c:vegetables/zucchini",
+    "#c:vegetables/carrot",
+    "#c:vegetables/potato",
+    "#c:vegetables/beetroot",
+    "#c:vegetables/habanero",
+    "#c:vegetables/yam"
+  ]
+}

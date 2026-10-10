@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "tag": "c:grain/rice"
+    },
+    {
+      "tag": "c:grain/rice"
+    }
+  ],
+  "result": {
+    "id": "simplefarming:rice_bowl"
+  }
+}

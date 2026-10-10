@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OOO"
+  ],
+  "key": {
+    "O": {
+      "tag": "c:grain/rice"
+    }
+  },
+  "result": {
+    "id": "simplefarming:rice_bread"
+  }
+}

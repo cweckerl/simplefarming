@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "c:peppers"
+    },
+    {
+      "item": "simplefarming:cumin_seeds"
+    },
+    {
+      "tag": "c:crops/ginger"
+    }
+  ],
+  "result": {
+    "id": "simplefarming:curry_powder",
+    "count": 2
+  }
+}

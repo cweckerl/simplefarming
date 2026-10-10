@@ -18,13 +18,11 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.PlantType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
-public class OpuntiaBlock extends GrowableBushBlock implements IPlantable {
+public class OpuntiaBlock extends GrowableBushBlock {
     private static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
     // X axis
@@ -88,16 +86,6 @@ public class OpuntiaBlock extends GrowableBushBlock implements IPlantable {
     @Override
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         return pLevel.getBlockState(pPos.below()).is(BlockTags.SAND);
-    }
-
-    @Override
-    public PlantType getPlantType(BlockGetter level, BlockPos pos) {
-        return PlantType.DESERT;
-    }
-
-    @Override
-    public BlockState getPlant(BlockGetter world, BlockPos pos) {
-        return defaultBlockState();
     }
 
     @Override

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "tag": "c:crops/yam"
+  },
+  "result": {
+    "id": "simplefarming:baked_yam"
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

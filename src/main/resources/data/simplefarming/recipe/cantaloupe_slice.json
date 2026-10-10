@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplefarming:cantaloupe_block"
+    }
+  ],
+  "result": {
+    "id": "simplefarming:cantaloupe",
+    "count": 5
+  }
+}

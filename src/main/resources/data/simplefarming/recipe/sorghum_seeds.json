@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplefarming:sorghum"
+    }
+  ],
+  "result": {
+    "id": "simplefarming:sorghum_seeds"
+  }
+}

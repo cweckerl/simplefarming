@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "GBG",
+    " P "
+  ],
+  "key": {
+    "G": {
+      "tag": "c:grain"
+    },
+    "P": {
+      "tag": "c:crops/potato"
+    },
+    "B": {
+      "tag": "c:cooked_fishes"
+    }
+  },
+  "result": {
+    "id": "simplefarming:fish_and_chips"
+  }
+}

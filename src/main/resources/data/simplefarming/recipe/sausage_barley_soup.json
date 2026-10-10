@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "simplefarming:cooked_sausage"
+    },
+    {
+      "tag": "c:grain/barley"
+    },
+    {
+      "tag": "c:vegetables"
+    },
+    {
+      "tag": "c:vegetables"
+    }
+  ],
+  "result": {
+    "id": "simplefarming:sausage_barley_soup"
+  }
+}
