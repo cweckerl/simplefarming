@@ -1,0 +1,7 @@
+{
+  "type": "simplefarming:fermenting",
+  "ingredient": "#c:crops/barley",
+  "result": {
+    "id": "simplefarming:beer"
+  }
+}

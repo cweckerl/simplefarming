@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:noodles",
+    "simplefarming:noodles",
+    "simplefarming:noodles"
+  ],
+  "result": {
+    "id": "simplefarming:pasta"
+  }
+}

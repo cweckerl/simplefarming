@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SMS",
+    "GEG"
+  ],
+  "key": {
+    "M": "#c:mushrooms",
+    "S": "#c:crops/spinach",
+    "E": "#c:eggs",
+    "G": "#c:grain"
+  },
+  "result": {
+    "id": "simplefarming:spinach_mushroom_quiche"
+  }
+}

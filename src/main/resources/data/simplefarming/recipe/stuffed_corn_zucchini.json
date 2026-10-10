@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:crops/corn",
+    "#c:crops/corn",
+    "#c:crops/tomato",
+    "#c:crops/zucchini"
+  ],
+  "result": {
+    "id": "simplefarming:stuffed_corn_zucchini"
+  }
+}

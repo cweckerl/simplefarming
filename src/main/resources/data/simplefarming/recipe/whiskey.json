@@ -1,0 +1,7 @@
+{
+  "type": "simplefarming:fermenting",
+  "ingredient": "minecraft:wheat",
+  "result": {
+    "id": "simplefarming:whiskey"
+  }
+}

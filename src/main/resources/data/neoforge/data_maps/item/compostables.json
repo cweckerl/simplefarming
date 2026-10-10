@@ -1,0 +1,490 @@
+{
+  "values": {
+    "simplefarming:blackberry_bush": {
+      "chance": 0.3
+    },
+    "simplefarming:blueberry_bush": {
+      "chance": 0.3
+    },
+    "simplefarming:raspberry_bush": {
+      "chance": 0.3
+    },
+    "simplefarming:strawberry_bush": {
+      "chance": 0.3
+    },
+    "simplefarming:opuntia": {
+      "chance": 0.5
+    },
+    "simplefarming:barley_hay_block": {
+      "chance": 0.85
+    },
+    "simplefarming:oat_hay_block": {
+      "chance": 0.85
+    },
+    "simplefarming:rice_hay_block": {
+      "chance": 0.85
+    },
+    "simplefarming:rye_hay_block": {
+      "chance": 0.85
+    },
+    "simplefarming:cantaloupe_block": {
+      "chance": 1
+    },
+    "simplefarming:honeydew_block": {
+      "chance": 1
+    },
+    "simplefarming:squash_block": {
+      "chance": 1
+    },
+    "simplefarming:apple_sapling": {
+      "chance": 0.3
+    },
+    "simplefarming:apricot_sapling": {
+      "chance": 0.3
+    },
+    "simplefarming:banana_sapling": {
+      "chance": 0.3
+    },
+    "simplefarming:cherry_sapling": {
+      "chance": 0.3
+    },
+    "simplefarming:mango_sapling": {
+      "chance": 0.3
+    },
+    "simplefarming:olive_sapling": {
+      "chance": 0.3
+    },
+    "simplefarming:orange_sapling": {
+      "chance": 0.3
+    },
+    "simplefarming:pear_sapling": {
+      "chance": 0.3
+    },
+    "simplefarming:plum_sapling": {
+      "chance": 0.3
+    },
+    "simplefarming:chocolate_cake": {
+      "chance": 1
+    },
+    "simplefarming:sprinkle_cake": {
+      "chance": 1
+    },
+    "simplefarming:cheese_wheel": {
+      "chance": 1
+    },
+    "simplefarming:grapes": {
+      "chance": 0.65
+    },
+    "simplefarming:apricot": {
+      "chance": 0.65
+    },
+    "simplefarming:banana": {
+      "chance": 0.65
+    },
+    "simplefarming:cherries": {
+      "chance": 0.65
+    },
+    "simplefarming:mango": {
+      "chance": 0.65
+    },
+    "simplefarming:olives": {
+      "chance": 0.65
+    },
+    "simplefarming:orange": {
+      "chance": 0.65
+    },
+    "simplefarming:pear": {
+      "chance": 0.65
+    },
+    "simplefarming:plum": {
+      "chance": 0.65
+    },
+    "simplefarming:cantaloupe": {
+      "chance": 0.3
+    },
+    "simplefarming:honeydew": {
+      "chance": 0.3
+    },
+    "simplefarming:squash": {
+      "chance": 0.3
+    },
+    "simplefarming:blackberries": {
+      "chance": 0.3
+    },
+    "simplefarming:blueberries": {
+      "chance": 0.3
+    },
+    "simplefarming:raspberries": {
+      "chance": 0.3
+    },
+    "simplefarming:strawberries": {
+      "chance": 0.3
+    },
+    "simplefarming:cactus_fruit": {
+      "chance": 0.3
+    },
+    "simplefarming:broccoli": {
+      "chance": 0.65
+    },
+    "simplefarming:cassava": {
+      "chance": 0.65
+    },
+    "simplefarming:corn": {
+      "chance": 0.65
+    },
+    "simplefarming:cucumber": {
+      "chance": 0.65
+    },
+    "simplefarming:eggplant": {
+      "chance": 0.65
+    },
+    "simplefarming:habanero": {
+      "chance": 0.65
+    },
+    "simplefarming:ginger": {
+      "chance": 0.65
+    },
+    "simplefarming:lettuce": {
+      "chance": 0.65
+    },
+    "simplefarming:onion": {
+      "chance": 0.65
+    },
+    "simplefarming:pea_pod": {
+      "chance": 0.65
+    },
+    "simplefarming:peanut": {
+      "chance": 0.65
+    },
+    "simplefarming:pepper": {
+      "chance": 0.65
+    },
+    "simplefarming:radish": {
+      "chance": 0.65
+    },
+    "simplefarming:sorghum": {
+      "chance": 0.65
+    },
+    "simplefarming:soybean": {
+      "chance": 0.65
+    },
+    "simplefarming:spinach": {
+      "chance": 0.65
+    },
+    "simplefarming:sweet_potato": {
+      "chance": 0.65
+    },
+    "simplefarming:tomato": {
+      "chance": 0.65
+    },
+    "simplefarming:turnip": {
+      "chance": 0.65
+    },
+    "simplefarming:yam": {
+      "chance": 0.65
+    },
+    "simplefarming:zucchini": {
+      "chance": 0.65
+    },
+    "simplefarming:cotton": {
+      "chance": 0.65
+    },
+    "simplefarming:kenaf_fiber": {
+      "chance": 0.65
+    },
+    "simplefarming:barley": {
+      "chance": 0.65
+    },
+    "simplefarming:oat": {
+      "chance": 0.65
+    },
+    "simplefarming:rye": {
+      "chance": 0.65
+    },
+    "simplefarming:rice": {
+      "chance": 0.65
+    },
+    "simplefarming:cheese_slice": {
+      "chance": 0.3
+    },
+    "simplefarming:curry_powder": {
+      "chance": 0.85
+    },
+    "simplefarming:sprinkles": {
+      "chance": 0.3
+    },
+    "simplefarming:noodles": {
+      "chance": 0.85
+    },
+    "simplefarming:barley_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:broccoli_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:cantaloupe_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:corn_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:cotton_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:cassava_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:cucumber_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:eggplant_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:ginger_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:grape_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:honeydew_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:kenaf_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:lettuce_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:oat_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:onion_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:pea_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:peanut_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:pepper_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:radish_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:rice_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:rye_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:sorghum_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:soybean_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:spinach_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:squash_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:sweet_potato_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:tomato_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:turnip_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:yam_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:zucchini_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:chicory_root": {
+      "chance": 0.3
+    },
+    "simplefarming:cumin_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:marshmallow_root": {
+      "chance": 0.3
+    },
+    "simplefarming:quinoa_seeds": {
+      "chance": 0.3
+    },
+    "simplefarming:apple_pie": {
+      "chance": 1
+    },
+    "simplefarming:apricot_pie": {
+      "chance": 1
+    },
+    "simplefarming:blackberry_pie": {
+      "chance": 1
+    },
+    "simplefarming:blueberry_pie": {
+      "chance": 1
+    },
+    "simplefarming:cherry_pie": {
+      "chance": 1
+    },
+    "simplefarming:peanut_butter_pie": {
+      "chance": 1
+    },
+    "simplefarming:pear_pie": {
+      "chance": 1
+    },
+    "simplefarming:plum_pie": {
+      "chance": 1
+    },
+    "simplefarming:raspberry_pie": {
+      "chance": 1
+    },
+    "simplefarming:strawberry_pie": {
+      "chance": 1
+    },
+    "simplefarming:banana_bread": {
+      "chance": 0.85
+    },
+    "simplefarming:barley_bread": {
+      "chance": 0.85
+    },
+    "simplefarming:cornbread": {
+      "chance": 0.85
+    },
+    "simplefarming:oat_bread": {
+      "chance": 0.85
+    },
+    "simplefarming:rice_bread": {
+      "chance": 0.85
+    },
+    "simplefarming:rye_bread": {
+      "chance": 0.85
+    },
+    "simplefarming:sorghum_bread": {
+      "chance": 0.85
+    },
+    "simplefarming:zucchini_bread": {
+      "chance": 0.85
+    },
+    "simplefarming:pbj": {
+      "chance": 1
+    },
+    "simplefarming:sandwich": {
+      "chance": 1
+    },
+    "simplefarming:veggie_burger": {
+      "chance": 1
+    },
+    "simplefarming:vegetable_curry": {
+      "chance": 1
+    },
+    "simplefarming:chicory_gratin": {
+      "chance": 1
+    },
+    "simplefarming:fried_rice": {
+      "chance": 1
+    },
+    "simplefarming:mac_and_cheese": {
+      "chance": 1
+    },
+    "simplefarming:mushroom_barley": {
+      "chance": 1
+    },
+    "simplefarming:pad_thai": {
+      "chance": 1
+    },
+    "simplefarming:pasta": {
+      "chance": 1
+    },
+    "simplefarming:spaghetti": {
+      "chance": 1
+    },
+    "simplefarming:spinach_mushroom_quiche": {
+      "chance": 1
+    },
+    "simplefarming:spinach_quinoa_quiche": {
+      "chance": 1
+    },
+    "simplefarming:squash_casserole": {
+      "chance": 1
+    },
+    "simplefarming:tofu_scramble": {
+      "chance": 1
+    },
+    "simplefarming:turnip_beetroot_gratin": {
+      "chance": 1
+    },
+    "simplefarming:baked_sweet_potato": {
+      "chance": 0.85
+    },
+    "simplefarming:baked_yam": {
+      "chance": 0.85
+    },
+    "simplefarming:eggplant_parmesan": {
+      "chance": 1
+    },
+    "simplefarming:pancakes": {
+      "chance": 1
+    },
+    "simplefarming:pickle": {
+      "chance": 1
+    },
+    "simplefarming:pickled_beetroot": {
+      "chance": 1
+    },
+    "simplefarming:pizza": {
+      "chance": 1
+    },
+    "simplefarming:popcorn": {
+      "chance": 1
+    },
+    "simplefarming:potato_knish": {
+      "chance": 1
+    },
+    "simplefarming:raisins": {
+      "chance": 1
+    },
+    "simplefarming:stuffed_corn_zucchini": {
+      "chance": 1
+    },
+    "simplefarming:sweet_potato_quinoa_cakes": {
+      "chance": 1
+    },
+    "simplefarming:tofu": {
+      "chance": 0.85
+    },
+    "simplefarming:trail_mix": {
+      "chance": 1
+    },
+    "simplefarming:candy": {
+      "chance": 1
+    },
+    "simplefarming:candy_cane": {
+      "chance": 1
+    },
+    "simplefarming:cassava_cake": {
+      "chance": 1
+    },
+    "simplefarming:chocolate": {
+      "chance": 1
+    },
+    "simplefarming:ice_cream_sundae": {
+      "chance": 1
+    },
+    "simplefarming:jaffa_cake": {
+      "chance": 1
+    },
+    "simplefarming:marshmallow": {
+      "chance": 1
+    },
+    "simplefarming:peanut_butter_cookie": {
+      "chance": 1
+    }
+  }
+}

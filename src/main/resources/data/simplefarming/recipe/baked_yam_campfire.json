@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": "#c:crops/yam",
+  "result": {
+    "id": "simplefarming:baked_yam"
+  },
+  "experience": 0.35,
+  "cookingtime": 600
+}

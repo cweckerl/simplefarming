@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:pepper"
+  ],
+  "result": {
+    "id": "simplefarming:pepper_seeds"
+  }
+}

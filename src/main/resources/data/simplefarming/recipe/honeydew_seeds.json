@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:honeydew"
+  ],
+  "result": {
+    "id": "simplefarming:honeydew_seeds"
+  }
+}

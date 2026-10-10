@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:soybean"
+  ],
+  "result": {
+    "id": "simplefarming:soybean_seeds"
+  }
+}

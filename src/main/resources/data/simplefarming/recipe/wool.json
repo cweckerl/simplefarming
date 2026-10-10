@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": "#c:crops/cotton"
+  },
+  "result": {
+    "id": "minecraft:white_wool"
+  }
+}

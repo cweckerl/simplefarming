@@ -6,25 +6,28 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
-import net.minecraft.world.entity.animal.Chicken;
-import net.minecraft.world.entity.animal.Cow;
-import net.minecraft.world.entity.animal.Pig;
-import net.minecraft.world.entity.animal.Sheep;
-import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.animal.chicken.Chicken;
+import net.minecraft.world.entity.animal.cow.Cow;
+import net.minecraft.world.entity.animal.pig.Pig;
+import net.minecraft.world.entity.animal.sheep.Sheep;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.event.village.VillagerTradesEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegistryObject;
+import dev.enemeez.simplefarming.common.item.crafting.FermenterRecipe;
+import net.neoforged.neoforge.event.OnDatapackSyncEvent;
+import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.village.VillagerTradesEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.stream.Stream;
 
-@Mod.EventBusSubscriber(modid = SimpleFarming.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = SimpleFarming.MOD_ID)
 public class CommonEvents {
     @SubscribeEvent
     public static void cancelTrample(BlockEvent.FarmlandTrampleEvent event) {
@@ -58,7 +61,7 @@ public class CommonEvents {
 
         if (entityType == EntityType.CHICKEN) {
             ((Chicken) entity).goalSelector.addGoal(3, new TemptGoal((Chicken) entity, 1.0D,
-                Ingredient.of(ModItems.SEEDS.stream().map(RegistryObject::get).map(ItemStack::new)), false)
+                Ingredient.of(ModItems.SEEDS.stream().map(DeferredHolder::get)), false)
             );
         } else if (entityType == EntityType.COW) {
             ((Cow) entity).goalSelector.addGoal(3, new TemptGoal((Cow) entity, 1.25D, GRAINS, false));
@@ -70,8 +73,14 @@ public class CommonEvents {
     }
 
     @SubscribeEvent
+    public static void syncRecipes(OnDatapackSyncEvent event) {
+        // Clients only get the recipe types the server sends them since 1.21.2 (used by JEI)
+        event.sendRecipes(FermenterRecipe.Type.INSTANCE);
+    }
+
+    @SubscribeEvent
     public static void addTrade(VillagerTradesEvent event) {
-        if (event.getType() == VillagerProfession.FARMER) {
+        if (VillagerProfession.FARMER.equals(event.getType())) {
             Stream.of(
                 ModItems.FIBER_SEED_PACKET.get(),
                 ModItems.FRUIT_SEED_PACKET.get(),
@@ -81,8 +90,8 @@ public class CommonEvents {
                 ModItems.LEGUME_SEED_PACKET.get(),
                 ModItems.ROOT_SEED_PACKET.get(),
                 ModItems.TUBER_SEED_PACKET.get()
-            ).forEach(packet -> event.getTrades().get(1).add((entity, rand) -> new MerchantOffer(
-                new ItemStack(Items.EMERALD, 1),
+            ).forEach(packet -> event.getTrades().get(1).add((level, entity, rand) -> new MerchantOffer(
+                new ItemCost(Items.EMERALD, 1),
                 new ItemStack(packet, 1),
                 16,
                 2,

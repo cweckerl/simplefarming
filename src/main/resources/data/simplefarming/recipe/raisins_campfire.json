@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": "#c:fruits/grapes",
+  "result": {
+    "id": "simplefarming:raisins"
+  },
+  "experience": 0.35,
+  "cookingtime": 600
+}

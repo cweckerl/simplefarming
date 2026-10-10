@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:salad_ingredients",
+    "minecraft:bowl",
+    "minecraft:cooked_chicken",
+    "simplefarming:cheese_slice"
+  ],
+  "result": {
+    "id": "simplefarming:caesar_salad"
+  }
+}

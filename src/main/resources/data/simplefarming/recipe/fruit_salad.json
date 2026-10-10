@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "#c:fruits",
+    "#c:fruits",
+    "#c:fruits"
+  ],
+  "result": {
+    "id": "simplefarming:fruit_salad"
+  }
+}

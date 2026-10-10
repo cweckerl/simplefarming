@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:rye"
+  ],
+  "result": {
+    "id": "simplefarming:rye_seeds"
+  }
+}

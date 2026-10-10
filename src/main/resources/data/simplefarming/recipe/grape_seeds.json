@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:grapes"
+  ],
+  "result": {
+    "id": "simplefarming:grape_seeds"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "#c:fruits/blackberries",
+    "#c:fruits/blackberries",
+    "#c:fruits/blackberries"
+  ],
+  "result": {
+    "id": "minecraft:black_dye"
+  }
+}

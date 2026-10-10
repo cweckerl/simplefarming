@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": "simplefarming:blackberry_bush_checked",
+  "step": "vegetal_decoration"
+}

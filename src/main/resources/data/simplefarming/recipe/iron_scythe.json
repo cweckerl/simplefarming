@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "#c:ingots/iron"
+  },
+  "pattern": [
+    "XX#",
+    " # ",
+    "#  "
+  ],
+  "result": {
+    "id": "simplefarming:iron_scythe"
+  }
+}

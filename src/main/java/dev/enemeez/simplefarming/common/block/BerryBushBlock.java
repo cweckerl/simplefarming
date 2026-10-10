@@ -1,5 +1,6 @@
 package dev.enemeez.simplefarming.common.block;
 
+import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -31,7 +32,7 @@ public class BerryBushBlock extends GrowableBushBlock {
     }
 
     @Override
-    public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
+    protected void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity, InsideBlockEffectApplier pApplier, boolean pIntersects) {
         if (pEntity instanceof LivingEntity && pEntity.getType() != EntityType.FOX && pEntity.getType() != EntityType.BEE) {
             pEntity.makeStuckInBlock(pState, new Vec3(0.8F, 0.75D, 0.8F));
         }

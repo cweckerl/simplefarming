@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": "simplefarming:barley"
+  },
+  "result": {
+    "id": "simplefarming:barley_hay_block"
+  }
+}

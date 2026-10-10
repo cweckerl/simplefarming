@@ -1,0 +1,7 @@
+{
+  "type": "simplefarming:fermenting",
+  "ingredient": "#c:fruits/apple",
+  "result": {
+    "id": "simplefarming:cider"
+  }
+}

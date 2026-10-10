@@ -7,10 +7,10 @@ import dev.enemeez.simplefarming.common.world.features.DefaultFruitTreeFoliagePl
 import dev.enemeez.simplefarming.common.world.features.DwarfFruitTreeFoliagePlacer;
 import dev.enemeez.simplefarming.common.world.features.TropicFruitTreeFoliagePlacer;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
@@ -21,21 +21,21 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class ModFeatures {
     public static final DeferredRegister<FoliagePlacerType<?>> FOLIAGE_PLACER_TYPES = DeferredRegister.create(
         Registries.FOLIAGE_PLACER_TYPE, SimpleFarming.MOD_ID
     );
 
-    public static final RegistryObject<FoliagePlacerType<?>> DEFAULT_FRUIT_TREE_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register(
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<?>> DEFAULT_FRUIT_TREE_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register(
         "default_fruit_tree_foliage_placer", () -> new FoliagePlacerType<>(DefaultFruitTreeFoliagePlacer.CODEC)
     );
-    public static final RegistryObject<FoliagePlacerType<?>> DWARF_FRUIT_TREE_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register(
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<?>> DWARF_FRUIT_TREE_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register(
         "dwarf_fruit_tree_foliage_placer", () -> new FoliagePlacerType<>(DwarfFruitTreeFoliagePlacer.CODEC)
     );
-    public static final RegistryObject<FoliagePlacerType<?>> TROPIC_FRUIT_TREE_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register(
+    public static final DeferredHolder<FoliagePlacerType<?>, FoliagePlacerType<?>> TROPIC_FRUIT_TREE_FOLIAGE_PLACER = FOLIAGE_PLACER_TYPES.register(
         "tropic_fruit_tree_foliage_placer", () -> new FoliagePlacerType<>(TropicFruitTreeFoliagePlacer.CODEC)
     );
 
@@ -60,7 +60,7 @@ public class ModFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> QUINOA = createKey("quinoa");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_CROP = createKey("wild_crop");
 
-    public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+    public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 
         register(context, APPLE_TREE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
             BlockStateProvider.simple(ModBlocks.FRUIT_LOG.get().defaultBlockState().setValue(FruitTreeLogBlock.SIZE, FruitTreeLogBlock.Size.MEDIUM)),
@@ -205,11 +205,11 @@ public class ModFeatures {
     }
 
     private static ResourceKey<ConfiguredFeature<?, ?>> createKey(String pName) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(SimpleFarming.MOD_ID, pName));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(SimpleFarming.MOD_ID, pName));
     }
 
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(
-        BootstapContext<ConfiguredFeature<?, ?>> pContext, ResourceKey<ConfiguredFeature<?, ?>> pKey, F pFeature, FC pConfig
+        BootstrapContext<ConfiguredFeature<?, ?>> pContext, ResourceKey<ConfiguredFeature<?, ?>> pKey, F pFeature, FC pConfig
     ) {
         pContext.register(pKey, new ConfiguredFeature<>(pFeature, pConfig));
     }

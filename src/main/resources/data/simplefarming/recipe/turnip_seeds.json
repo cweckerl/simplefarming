@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:turnip"
+  ],
+  "result": {
+    "id": "simplefarming:turnip_seeds"
+  }
+}

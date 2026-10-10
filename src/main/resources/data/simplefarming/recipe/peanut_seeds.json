@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "simplefarming:peanut"
+  ],
+  "result": {
+    "id": "simplefarming:peanut_seeds"
+  }
+}
